@@ -17,7 +17,7 @@ jobs:
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/v4.1.2/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-          elan toolchain install leanprover/lean4:v4.19.0
+          "$HOME/.elan/bin/elan" toolchain install leanprover/lean4:v4.19.0
       - name: Mathlib cache and kernel build
         working-directory: formal/lean
         run: |

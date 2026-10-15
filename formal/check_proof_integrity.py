@@ -7,7 +7,7 @@ import json
 ROOT = Path(__file__).resolve().parent
 project = ROOT / 'lean'
 names = []
-for path in sorted((project / 'MarketCrash').glob('*.lean')):
+for path in sorted((project / 'MarketCrash').rglob('*.lean')):
     if path.name == 'AxiomAudit.lean':
         continue
     source = path.read_text(encoding='utf-8')
@@ -31,7 +31,7 @@ for path in sorted((project / 'MarketCrash').glob('*.lean')):
     source = re.sub(r'--[^\n]*', '', source)
     if re.search(r'\b(sorry|admit|axiom)\b', source):
         raise SystemExit('Unproved declaration in ' + str(path))
-    names.extend(re.findall(r'^theorem\s+(\w+)', source, flags=re.M))
+    names.extend(re.findall(r'^(?:(?:private|protected|noncomputable)\s+)*(?:theorem|lemma)\s+(\w+)', source, flags=re.M))
 audit = 'import MarketCrash\n\n' + ''.join(
     '#print axioms MarketCrash.' + name + '\n' for name in names)
 audit_path = project / 'MarketCrash/AxiomAudit.lean'
