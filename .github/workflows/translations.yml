@@ -1,0 +1,33 @@
+name: Translation editions
+on:
+  push:
+    paths: ['translations/**', 'scripts/*translation*', '.github/workflows/translations.yml', 'paper/**', 'supplementary/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  translations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/check_translation_consistency.py
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-luatex texlive-latex-extra texlive-fonts-recommended texlive-lang-chinese texlive-lang-japanese
+      - run: python scripts/build_translations.py
+      - run: python scripts/check_translation_consistency.py --aux-root build/translations --out build/translations/compiled_consistency.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multilingual-editions-review
+          path: |
+            build/translations/en/*.pdf
+            build/translations/zh-CN/*.pdf
+            build/translations/ja/*.pdf
+            build/translations/*/*.txt
+            build/translations/*/*.log
+            build/translations/*.json
