@@ -1,0 +1,33 @@
+name: SIAM submission format
+on:
+  push:
+    paths: ['submission/siam/**', 'scripts/*siam*', 'paper/**', 'supplementary/**', '.github/workflows/siam.yml']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  siam:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/check_siam_submission.py
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended
+      - run: python scripts/build_siam_submission.py
+      - run: python scripts/build_papers.py --output-root build/siam-baseline
+      - run: python scripts/check_siam_submission.py --compiled
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: siam-submission-edition
+          path: |
+            build/siam/*.pdf
+            build/siam/*.json
+            build/siam/*.log
+            build/siam/*.txt
+            build/siam/author-sources/

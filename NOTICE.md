@@ -7,7 +7,7 @@ verification programs, build/CI configuration and accompanying software
 documentation. The author selected MIT for the code on 2026-10-15.
 
 The manuscript and supplementary text, their LaTeX/BibTeX sources, PDFs and
-figures under `paper/` and `supplementary/`, and all translated manuscript and
+figures under `paper/`, `supplementary/` and `submission/`, and all translated manuscript and
 supplementary text, LaTeX sources and generated PDFs under `translations/` or
 translation build/release artifacts, are excluded from the MIT grant.
 Their copyright is retained by Siyuan Ye; no Creative Commons license has
