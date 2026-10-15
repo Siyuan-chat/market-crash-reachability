@@ -1,6 +1,22 @@
 cff-version: 1.2.0
 message: "Please cite the manuscript for mathematical results and this software version and commit for computations."
 type: software
+abstract: >-
+  Reproducibility software for a theoretical study of endogenous systemic
+  market drawdown reachability under resilient liquidity, nonlinear price
+  impact and paired-dollar execution in an idealized multi-asset market.
+  Includes numerical checks, one interval-certified ten-asset existence
+  construction and a partial Lean 4 formalization of foundational results.
+keywords:
+  - market crash reachability
+  - endogenous market crashes
+  - systemic drawdown
+  - market microstructure
+  - nonlinear price impact
+  - market resilience
+  - mathematical finance
+  - interval arithmetic
+  - Lean 4
 title: "When Can Markets Crash Without News? — Reproducibility Software"
 authors:
   - family-names: Ye

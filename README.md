@@ -2,6 +2,9 @@
 
 **Siyuan Ye · V12 Final · reproducibility companion (1.0.0rc1)**
 
+**Research areas:** endogenous (news-free) market crashes, systemic risk, nonlinear price impact, resilient market microstructure, and mathematical reachability.
+
+
 In an idealized multi-asset market with fixed fundamentals and dollar-balanced
 trading, which systemic drawdowns are reachable without adverse fundamental
 news? This paper studies structural feasibility and execution constraints,
@@ -24,6 +27,16 @@ path; analytical theorems rely on the proofs in the manuscript.
 - [Supplement PDF](supplementary/supplementary.pdf) · [LaTeX](supplementary/supplementary.tex)
 - [Mathematical results and code](docs/MATHEMATICAL_RESULTS.md)
 - [Verification scope](docs/VERIFICATION_SCOPE.md)
+- [Research overview and FAQ](docs/RESEARCH_OVERVIEW.md)
+
+## Main findings at a glance
+
+- **When are systemic drawdowns excluded?** Under the paper's paired-dollar, resilient model, response elasticity at least 2 excludes positive systemic drawdowns; elasticity at least 1 excludes a simultaneous decline of all assets.
+- **When can large losses be reached?** The A/B/C regimes differ across price-impact response functions. Partial-coverage severity is conditional on the impact law, execution horizon and permission for pulses.
+- **What do trading constraints change?** Dollar turnover, share inventory, bounded execution rates and daily price limits restrict feasible paths.
+- **What is rigorously constructed?** One specified ten-asset, two-session path with nine repeated lower-limit closes and a computer-certified systemic log-loss measure above 0.020.
+
+These results are theoretical and **do not predict real market crashes**. For exact hypotheses, the crisis definition and proof boundaries, read the [research overview and FAQ](docs/RESEARCH_OVERVIEW.md) and [theorem-to-code map](docs/MATHEMATICAL_RESULTS.md).
 
 ## Research editions and Lean foundations
 
