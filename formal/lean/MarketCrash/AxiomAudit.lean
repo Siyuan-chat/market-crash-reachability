@@ -1,0 +1,36 @@
+import MarketCrash
+
+#print axioms MarketCrash.paired_column_sum
+#print axioms MarketCrash.ones_transpose_paired
+#print axioms MarketCrash.trading_sum_zero
+#print axioms MarketCrash.paired_trading_sum_zero
+#print axioms MarketCrash.pulse_preserves_potential
+#print axioms MarketCrash.normal_form_sum_derivative
+#print axioms MarketCrash.coordinate_at_benchmark
+#print axioms MarketCrash.coordinate_hasDerivAt
+#print axioms MarketCrash.coordinate_strictMonoOn
+#print axioms MarketCrash.normalized_trade_coefficient
+#print axioms MarketCrash.coordinate_unique
+#print axioms MarketCrash.inverseOnImage_spec
+#print axioms MarketCrash.inverseOnImage_left
+#print axioms MarketCrash.coordinate_slope_hasDerivAt
+#print axioms MarketCrash.coordinate_slope_elasticity
+#print axioms MarketCrash.logCoordinate_hasDerivAt
+#print axioms MarketCrash.log_slope_hasDerivAt
+#print axioms MarketCrash.constantCoordinate_normalized
+#print axioms MarketCrash.linearCoordinate_normalized
+#print axioms MarketCrash.logarithmicCoordinate_normalized
+#print axioms MarketCrash.constantCoordinate_hasDerivAt
+#print axioms MarketCrash.linearCoordinate_hasDerivAt
+#print axioms MarketCrash.logarithmicCoordinate_hasDerivAt
+#print axioms MarketCrash.constantCoordinate_eq_integral
+#print axioms MarketCrash.linearCoordinate_eq_integral
+#print axioms MarketCrash.logarithmicCoordinate_eq_integral
+#print axioms MarketCrash.constantCoordinate_lower_bound
+#print axioms MarketCrash.constantCoordinate_range
+#print axioms MarketCrash.constantCoordinate_image
+#print axioms MarketCrash.linearCoordinate_lower_bound
+#print axioms MarketCrash.linearCoordinate_range
+#print axioms MarketCrash.linearCoordinate_image
+#print axioms MarketCrash.logarithmicCoordinate_range
+#print axioms MarketCrash.logarithmicCoordinate_image

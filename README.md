@@ -25,6 +25,22 @@ path; analytical theorems rely on the proofs in the manuscript.
 - [Mathematical results and code](docs/MATHEMATICAL_RESULTS.md)
 - [Verification scope](docs/VERIFICATION_SCOPE.md)
 
+## Research editions and Lean foundations
+
+- **English canonical edition:** [paper](paper/manuscript.pdf) and [supplement](supplementary/supplementary.pdf), V12 Final.
+- **简体中文:** [complete manuscript and supplement sources, build and review status](translations/zh-CN/README.md).
+- **日本語:** [complete manuscript and supplement sources, build and review status](translations/ja/README.md).
+- [Trilingual glossary](translations/GLOSSARY.md) and [translation consistency and build instructions](translations/README.md).
+- [Lean formalization](formal/README.md): 34 foundational theorems checked locally with Lean 4.19.0 and pinned Mathlib. See the [complete theorem map](formal/THEOREM_MAP.md).
+
+The complete translation editions are publicly distributed with the author’s
+permission; their copyright statements remain unchanged. English remains the authoritative mathematical
+source. The Lean project proves coordinate, conservation and selected
+response-family foundations; it does not formalize the complete paper or the
+interval certificate. Phase 2 CI runs on pull requests; consult the PR checks for current results.
+Generated translation PDFs are review/build artifacts rather than duplicated
+committed binaries. Paper and translation copyrights are separate from software MIT.
+
 ## Quick start
 
 Python 3.11 is the primary CI environment. From the repository root:

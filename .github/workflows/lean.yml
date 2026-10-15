@@ -1,0 +1,32 @@
+name: Lean partial formalization
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed Lean toolchain
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/v4.1.2/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/elan" toolchain install leanprover/lean4:v4.19.0
+      - name: Mathlib cache and kernel build
+        working-directory: formal/lean
+        run: |
+          lake exe cache get
+          lake build
+      - name: Proof integrity and axiom audit
+        run: python formal/check_proof_integrity.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lean-proof-audit
+          path: build/formal/

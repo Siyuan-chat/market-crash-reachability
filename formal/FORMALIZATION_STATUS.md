@@ -1,0 +1,49 @@
+# Lean 形式化当前状态
+
+状态日期：2026-10-15。本文件是 formal 子项目的当前状态入口。目标是逐步形式化论文基础并准确记录覆盖边界；当前获准范围为局部基础和逐项结果映射。论文全部 17 项 Theorem/Proposition 的原文、编号和整项状态见 THEOREM_MAP.md。没有任何整项论文定理被声明为已经完成 Lean 证明。
+
+## 可复现身份与实际验证
+
+- Lean：`leanprover/lean4:v4.19.0`，证据 `lean/lean-toolchain:1`。
+- mathlib：`c44e0c8ee63ca166450922a373c7409c5d26b00b`，证据 `lean/lake-manifest.json` 的 mathlib `rev` 与 `inputRev`。
+- 本地构建：**passed**，由主 agent 实际执行并确认；本次文档作者未另行重跑。
+- axiom 审计：**passed**，实际审查全部 34 个项目 theorem；仅依赖标准基础公理 propext、Classical.choice、Quot.sound。证据为 `../build/formal/axioms.log` 和 `../build/formal/integrity.json`，可由 `python formal/check_proof_integrity.py` 重现。
+- 静态审查未检出 `sorry`、`admit` 或自定义 `axiom`。使用 Mathlib 和经典选择不意味着无基础公理依赖。
+- 英文论文、数学内容及外部认证算法保持基线不变。
+
+## 已编译局部基础与论文对应
+
+以下名称均位于 `MarketCrash` namespace，路径相对 `formal/lean/MarketCrash/`。它们是基础引理，不是对整篇论文或整项结果的替代证明。
+
+| 文件与 Lean 名称 | 论文对应 | 实际覆盖与限制 |
+|---|---|---|
+| `Definitions.lean:13–24`：`positivePrices`, `Response`, `coordinate`, `coordinateImage` | `paper/main.tex:74,127–135` | 严格正价格域、连续正响应和积分坐标；尚无完整 admissible path 定义。Response 的连续性已足够当前一阶积分引理；曲率另行假设可微性。 |
+| `Coordinates.lean:7–37`：`coordinate_at_benchmark`, `coordinate_hasDerivAt`, `coordinate_strictMonoOn`, `normalized_trade_coefficient` | `paper/main.tex:127` | 坐标归一化、导数、正域严格单调、边际交易系数恒等式；未从价格控制方程推导路径链式法则。 |
+| `Coordinates.lean:39–51`：`coordinate_unique` | `paper/main.tex:127` | 在正域、归一化及指定导数交易系数假设下唯一；不是任何未给定交易协议下的无条件唯一性。 |
+| `Coordinates.lean:53–66`：`inverseOnImage`, `inverseOnImage_spec`, `inverseOnImage_left` | `paper/main.tex:129–135` | 仅在实际坐标像子类型上选取逆并证明对应；未证明逆的连续、可微或可达性等价。 |
+| `Conservation.lean:8–25`：`paired_column_sum`, `ones_transpose_paired`, `trading_sum_zero`, `paired_trading_sum_zero` | `paper/main.tex:87,133,175–178` | 有限配对网络的代数列和与交易输入总和为零；边集任意，rates 可为任意实数，不是论文完整双向图、非负交易流的完整模型。 |
+| `Conservation.lean:27–31`：`pulse_preserves_potential` | `paper/main.tex:105,175–180` | 抽象实坐标增量保持总和；未证明脉冲中间价格正性、坐标像约束或执行可行性。 |
+| `Conservation.lean:33–44`：`normal_form_sum_derivative` | `paper/main.tex:129–135,175–178` | 假设各坐标路径已满足法向方程，证明总和导数；R 是任意函数，尚未定义或连接论文具体恢复函数，也未证明整个时间区间上的常量守恒。 |
+| `ResponseFamilies.lean:6–50`：`constantCoordinate`, `linearCoordinate`, `logarithmicCoordinate`；`constantResponse`, `linearResponse`, `quadraticResponse`；三个 `*Coordinate_normalized` 和三个 `*Coordinate_hasDerivAt` | `paper/main.tex:219–234` | p=0、1、2 的闭式、归一化与导数。部分代数引理允许更宽参数域，连接到市场解释时仍使用正 F、正 η、正 S。 |
+| `ResponseFamilies.lean:52–85`：`constantCoordinate_eq_integral`, `linearCoordinate_eq_integral`, `logarithmicCoordinate_eq_integral` | `paper/main.tex:229–234` | 三种闭式与原积分坐标在正域一致，不仅是未连接的公式。 |
+| `ResponseFamilies.lean:87–157`：`constantCoordinate_lower_bound`, `constantCoordinate_range`, `constantCoordinate_image`, `linearCoordinate_lower_bound`, `linearCoordinate_range`, `linearCoordinate_image`, `logarithmicCoordinate_range`, `logarithmicCoordinate_image` | `paper/main.tex:135` | p=0、1、2 的确切坐标像；没有任意实数 p 或 p>2 分支。 |
+| `Curvature.lean:6–17`：`responseElasticity`, `coordinate_slope_hasDerivAt`, `coordinate_slope_elasticity` | `paper/main.tex:181–188` | 证明 S/g(S) 的导数与弹性恒等式；未封装 Φ 二阶导数定理及全域凹性。 |
+| `Curvature.lean:19–37`：`logCoordinate`, `logCoordinate_hasDerivAt`, `log_slope_hasDerivAt` | `paper/main.tex:185–188` | 对数复合坐标的一阶导数，以及其斜率导数恒等式；未完成全域凹性、Jensen 或障碍定理。 |
+
+## 整项结果的当前边界
+
+上表三个响应族的名称完整展开为：`constantCoordinate_normalized`, `linearCoordinate_normalized`, `logarithmicCoordinate_normalized`, `constantCoordinate_hasDerivAt`, `linearCoordinate_hasDerivAt`, `logarithmicCoordinate_hasDerivAt`。这些声明的名称与作用均直接来自对应 Lean 源码。
+
+`docs/MATHEMATICAL_RESULTS.md` 中的符号检查、普通 ODE、离散抽样或精确有理数一致性检查，均不自动成为 Lean 证明。Theorem 1.1、3.1、3.2、4.1、Proposition 4.2、4.3、Theorem 4.4、5.1、Proposition 6.1、Theorem 6.2、6.3、Proposition 7.1、7.2、Theorem 7.3、Proposition 7.4、7.5 的整项状态均为纸面证明或概览，未完成 Lean 形式化。
+
+Proposition 7.6 的整项状态为外部 Python 严格区间计算机辅助存在性证明，未在 Lean 中重建或核验。它限于指定十资产、九目标、两日固定路径；不证明最优控制、一般异质市场可行性或真实市场概率。当前 Lean 不包含区间 ODE 证书检查器。`AxiomAudit.lean` 的打印命令只检查所列基础声明的依赖，不检查外部证书。
+
+## 后续障碍与下一步
+
+1. 后续提交继续运行 kernel 构建与全部声明 axiom 审计；两者分开验收。
+2. 定义实际恢复函数、正价格受控路径、非负配对美元流和 flow-completed 脉冲；连接价格方程、坐标方程及逆映射，证明全过程正性与像内约束。
+3. 从当前斜率导数引理建立二阶导数、全域凹性、恢复比较与 Jensen 论证，才有条件推进 Theorem 3.1/3.2。
+4. 单独处理一般 p 的坐标范围、局部 Taylor 展开与余项、有限资源构造、变差账本和滚动价格带；现有三个响应特例不能代替这些步骤。
+5. 对 7.6 另行设计可信的有理数及区间 ODE 验证接口。外部证书成功不等于 Lean 核已检查证书。
+
+本阶段最低目标已达到：项目可构建，34 个局部基础 theorem 通过 kernel 与 axiom 审计；完整动力学定理留待后续工作。
