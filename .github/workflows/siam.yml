@@ -1,7 +1,7 @@
 name: SIAM submission format
 on:
   push:
-    paths: ['submission/siam/**', 'scripts/*siam*', 'paper/**', 'supplementary/**', '.github/workflows/siam.yml']
+    paths: ['submission/siam/**', 'third_party/siam/**', 'scripts/*siam*', 'paper/**', 'supplementary/**', '.github/workflows/siam.yml']
   pull_request:
   workflow_dispatch:
 permissions:

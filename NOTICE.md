@@ -17,4 +17,6 @@ code license unless explicitly stated otherwise. Public availability does
 not itself grant a separate copyright license to these research artifacts.
 
 Third-party dependencies and cited works retain their respective rights.
+The complete unmodified SIAM macro distribution under `third_party/siam/`
+is excluded from the MIT grant and retains SIAM's redistribution conditions.
 The original manuscript's AI-assisted tools declaration is unchanged.

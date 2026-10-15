@@ -1,0 +1,22 @@
+{
+  "official_archive_url": "https://epubs.siam.org/pb-assets/macros/standard/siamart_251216.zip",
+  "original_archive_sha256": "b0caa37505e7de560ce7c59f9644baec9283f61b6b445fa44bd09e4f0bfaca6a",
+  "added_official_documentation_source_url": "https://epubs.siam.org/pb-assets/macros/standard/docsiamart.tex",
+  "complete_archive_sha256": "7116c268af4319b6d158642b64dd5e21a7c355ae5045dbef58712df0b2235eb4",
+  "members_sha256": {
+    "data.dat": "553b8d91b622f39aa6d47d8304995a107d9b65321ffc739063b0d706e69e43cc",
+    "docsiamart.pdf": "eeb023a366fc66f9c28301729802094e56408a1b4998cac0d473b9ea2918eab2",
+    "docsiamart.tex": "99da5fb774a55fd982ddf5eea88f7555dba5930f4980c16ae7a65cdf220586e5",
+    "ex_article.pdf": "d3e31fff5c62d09a745631429e608cd1847eca5146f14d709f01e6233835483a",
+    "ex_article.tex": "a8d64b565e6e31aee347eb653f27c2494db8ce18246300cacd5622b153eabed0",
+    "ex_shared.tex": "b66df18ceda54ec909d1c8d619709cbb7623d40f57e33c03015825f7b42fc6f5",
+    "ex_supplement.pdf": "d3b87ffd9844b373f842fc5bf6f5856e3aa298781fb83a53c96f4e7cfbe0837b",
+    "ex_supplement.tex": "18c0bc6af1dc1313a27f31aabd8e883efbdc635497d68be69e74671eba04a385",
+    "lexample_fig1.eps": "78c635a200c9cbb1ec582c5739295052cbd2177a993e95cd4f733739c0c85228",
+    "lexample_fig2.eps": "5cc9a7f554eb6e8b06aec24af20ab38f54f2a635531ccdd58a09844a26d91dba",
+    "references.bib": "c46480a27b100949f4d6be5cbd9b3b9b5f1c1787e4f5f6b3ad94425dc6a9ab4a",
+    "siamart251216.cls": "33f2eb091c8bcbda9baed2e868489460da868047b0a518b4ce1b2f2c15fda530",
+    "siamplain.bst": "a5df7c482dc7d4459f08b91c28437c3779284dcd82591acf1c977de7508ac6c7"
+  },
+  "modifications": "No member content modified; official missing documentation source added to complete distribution."
+}

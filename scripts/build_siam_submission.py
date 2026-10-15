@@ -1,12 +1,11 @@
 """Generate a format-only SIAM review edition from the locked English baseline."""
 from pathlib import Path
 import argparse, hashlib, json, re, shutil, subprocess, tempfile, zipfile
-from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 TITLE = 'When Can Markets Crash Without News?'
-TEMPLATE_URL = 'https://epubs.siam.org/pb-assets/macros/standard/siamart_251216.zip'
-TEMPLATE_SHA256 = 'b0caa37505e7de560ce7c59f9644baec9283f61b6b445fa44bd09e4f0bfaca6a'
+TEMPLATE_SHA256 = '7116c268af4319b6d158642b64dd5e21a7c355ae5045dbef58712df0b2235eb4'
+ORIGINAL_TEMPLATE_SHA256 = 'b0caa37505e7de560ce7c59f9644baec9283f61b6b445fa44bd09e4f0bfaca6a'
 LAYOUT_REPLACEMENTS = [(
     '101600000000h^2-97138000000h-6646157699=0,\n'
     r'\quad1.02020225507905<h<1.02020225507908.',
@@ -61,12 +60,8 @@ def main():
     for name, digest in baseline['sha256'].items():
         assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, name
     out = ROOT / 'build/siam'; out.mkdir(parents=True, exist_ok=True)
-    archive_path = args.template_zip
-    if archive_path is None:
-        archive_path = out / 'siamart_251216.zip'
-        with urlopen(Request(TEMPLATE_URL, headers={'User-Agent': 'Mozilla/5.0'}), timeout=60) as response:
-            archive_path.write_bytes(response.read())
-    assert hashlib.sha256(archive_path.read_bytes()).hexdigest() == TEMPLATE_SHA256, 'Unexpected SIAM template archive; do not silently update'
+    archive_path = args.template_zip or ROOT/'third_party/siam/siamart_251216_complete.zip'
+    assert hashlib.sha256(archive_path.read_bytes()).hexdigest() in {TEMPLATE_SHA256, ORIGINAL_TEMPLATE_SHA256}, 'Unexpected SIAM template archive; do not silently update'
     work = Path(tempfile.mkdtemp(prefix='source-', dir=out))
     generated = sources()
     with zipfile.ZipFile(archive_path) as archive:

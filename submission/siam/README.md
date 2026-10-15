@@ -33,8 +33,10 @@ python scripts/build_papers.py --output-root build/siam-baseline
 python scripts/check_siam_submission.py --compiled
 ```
 
-The build fetches the exact [official standard macro archive](https://epubs.siam.org/pb-assets/macros/standard/siamart_251216.zip)
-and verifies its pinned SHA-256. Alternatively, pass
+The build reads the pinned complete distribution in `third_party/siam/`,
+without contacting SIAM's server (which can reject CI runners with HTTP 403).
+Its unmodified members come from the [official standard macro archive](https://epubs.siam.org/pb-assets/macros/standard/siamart_251216.zip)
+plus the separately supplied official documentation source. Alternatively, pass
 `--template-zip /path/to/siamart_251216.zip` for offline/local template use.
 Portable TeX installations can supply `--pdflatex /path/to/pdflatex` and
 `--bibtex /path/to/bibtex`. The canonical comparison script accepts its own
@@ -53,9 +55,12 @@ are checked independently of PDF byte identity.
 ## Template rights and scope
 
 The SIAM class prohibits modification and redistribution by itself. The supplied
-ZIP lacks `docsiamart.tex`, a file named in its redistribution conditions. No
-SIAM class, style, sample files or template archive is committed or uploaded as
-our CI artifact. The unchanged class/style are only local build dependencies.
+ZIP lacks `docsiamart.tex`, a file named in its redistribution conditions. The
+repository therefore preserves the complete distribution as a single ZIP under
+`third_party/siam/`, adding that missing file from SIAM's official download.
+All member contents, including the class/style, are unmodified. Provenance and
+license conditions are recorded there. The CI author-source artifact excludes
+SIAM's third-party files; they are not relicensed under MIT.
 They retain SIAM's rights; the manuscript/supplement and their generated sources
 retain the author's existing copyright and do not inherit software MIT.
 
