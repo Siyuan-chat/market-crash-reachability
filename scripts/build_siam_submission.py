@@ -4,14 +4,14 @@ import argparse, hashlib, json, re, shutil, subprocess, tempfile, zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 TITLE = 'When Can Markets Crash Without News?'
-TEMPLATE_SHA256 = '7116c268af4319b6d158642b64dd5e21a7c355ae5045dbef58712df0b2235eb4'
-ORIGINAL_TEMPLATE_SHA256 = 'b0caa37505e7de560ce7c59f9644baec9283f61b6b445fa44bd09e4f0bfaca6a'
+TEMPLATE_SHA256 = '45477e268578328bfaeb56f53f319a0d6e8b88e5394da29413e15c076a6a40ab'
+ORIGINAL_TEMPLATE_SHA256 = '2d74fc697977dbbd1283ec814eb57777be701c76a9325fbdf754ba9abf7a3e98'
 LAYOUT_REPLACEMENTS = [(
     '101600000000h^2-97138000000h-6646157699=0,\n'
     r'\quad1.02020225507905<h<1.02020225507908.',
     '\\begin{aligned}\n&101600000000h^2-97138000000h-6646157699=0,\\\\\n'
     '&1.02020225507905<h<1.02020225507908.\n\\end{aligned}'
-)]
+), ('Direct integration also gives', r'\linebreak Direct integration also gives')]
 
 def sources():
     main = (ROOT / 'paper/main.tex').read_text(encoding='utf-8')
@@ -30,6 +30,8 @@ def sources():
 \author{Siyuan Ye\thanks{Independent Researcher.}}
 \hypersetup{pdftitle={When Can Markets Crash Without News?},pdfauthor={Siyuan Ye}}
 \setlength{\emergencystretch}{1em}
+% The unmodified online class's two-line running head exceeds its 10pt preset.
+\setlength{\headheight}{14pt}
 ''' + macros
     body = main[main.index(r'\begin{abstract}'):main.index(r'\end{document}')]
     body = body.replace(r'\begin{abstract}\noindent', r'\begin{abstract}')
@@ -41,11 +43,11 @@ def sources():
     for old, new in LAYOUT_REPLACEMENTS:
         assert body.count(old) == 1, 'Layout replacement no longer matches baseline'
         body = body.replace(old, new)
-    article = '\\documentclass[review,hidelinks,onefignum,onetabnum]{siamart251216}\n'
+    article = '\\documentclass[review,hidelinks,onefignum,onetabnum]{siamonline250211}\n'
     article += '\\input{shared}\n\\begin{document}\n\\maketitle\n' + body + '\\end{document}\n'
     sb = supplement[supplement.index(r'\section*'):supplement.index(r'\end{document}')]
     sb = sb.replace(r'\section*', r'\section')
-    supp = '\\documentclass[review,supplement,hidelinks,onefignum,onetabnum]{siamart251216}\n'
+    supp = '\\documentclass[review,supplement,hidelinks,onefignum,onetabnum]{siamonline250211}\n'
     supp += '\\input{shared}\n\\begin{document}\n\\maketitle\n' + sb + '\\end{document}\n'
     return {'main.tex': article, 'supplementary.tex': supp, 'shared.tex': shared}
 
@@ -60,12 +62,12 @@ def main():
     for name, digest in baseline['sha256'].items():
         assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, name
     out = ROOT / 'build/siam'; out.mkdir(parents=True, exist_ok=True)
-    archive_path = args.template_zip or ROOT/'third_party/siam/siamart_251216_complete.zip'
+    archive_path = args.template_zip or ROOT/'third_party/siam/siamonline_250211_complete.zip'
     assert hashlib.sha256(archive_path.read_bytes()).hexdigest() in {TEMPLATE_SHA256, ORIGINAL_TEMPLATE_SHA256}, 'Unexpected SIAM template archive; do not silently update'
     work = Path(tempfile.mkdtemp(prefix='source-', dir=out))
     generated = sources()
     with zipfile.ZipFile(archive_path) as archive:
-        for name in ('siamart251216.cls', 'siamplain.bst'):
+        for name in ('siamonline250211.cls', 'siamplain.bst'):
             (work / name).write_bytes(archive.read(name))
     for name, text in generated.items():
         (work / name).write_bytes(text.encode('utf-8'))

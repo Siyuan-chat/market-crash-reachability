@@ -1,10 +1,10 @@
-# Complete SIAM standard macro distribution
+# Complete SIAM online macro distribution
 
-The `siamart251216.cls` license header prohibits modifying the class or
+The `siamonline250211.cls` license header prohibits modifying the class or
 redistributing it alone. It permits distribution together with all files named
-in that header. The author's supplied archive omitted `docsiamart.tex`.
+in that header. The official archive omitted `docsiamonline.tex`.
 
-`siamart_251216_complete.zip` includes every original archive member plus that
+`siamonline_250211_complete.zip` includes every original archive member plus that
 missing documentation source fetched from SIAM's official site. No member
 content was modified. The ZIP container is reconstructed deterministically;
 each member's SHA-256 and source URLs are recorded in PROVENANCE.json.
@@ -19,6 +19,6 @@ runners; no credentials or access-control workaround is involved.
 
 Official sources:
 
-- https://epubs.siam.org/pb-assets/macros/standard/siamart_251216.zip
-- https://epubs.siam.org/pb-assets/macros/standard/docsiamart.tex
+- https://epubs.siam.org/pb-assets/macros/online/siamonline_250211.zip
+- https://epubs.siam.org/pb-assets/macros/online/docsiamonline.tex
 - https://epubs.siam.org/journal-authors
