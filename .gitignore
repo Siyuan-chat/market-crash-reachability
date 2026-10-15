@@ -14,3 +14,4 @@ verification/v6_multiday_checks.json
 *.toc
 paper/main.pdf
 release/rebuilt/
+formal/lean/.lake/
