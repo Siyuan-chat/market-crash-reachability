@@ -25,6 +25,7 @@ path; analytical theorems rely on the proofs in the manuscript.
 
 - [Manuscript PDF](paper/manuscript.pdf) · [LaTeX](paper/main.tex)
 - [Supplement PDF](supplementary/supplementary.pdf) · [LaTeX](supplementary/supplementary.tex)
+- [SIFIN review edition: PDF, LaTeX and build instructions](submission/siam/README.md)
 - [Mathematical results and code](docs/MATHEMATICAL_RESULTS.md)
 - [Verification scope](docs/VERIFICATION_SCOPE.md)
 - [Research overview and FAQ](docs/RESEARCH_OVERVIEW.md)

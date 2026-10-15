@@ -1,0 +1,23 @@
+{
+  "target_journal": "SIAM Journal on Financial Mathematics",
+  "official_archive_url": "https://epubs.siam.org/pb-assets/macros/online/siamonline_250211.zip",
+  "original_archive_sha256": "2d74fc697977dbbd1283ec814eb57777be701c76a9325fbdf754ba9abf7a3e98",
+  "added_official_documentation_source_url": "https://epubs.siam.org/pb-assets/macros/online/docsiamonline.tex",
+  "complete_archive_sha256": "45477e268578328bfaeb56f53f319a0d6e8b88e5394da29413e15c076a6a40ab",
+  "members_sha256": {
+    "data.dat": "553b8d91b622f39aa6d47d8304995a107d9b65321ffc739063b0d706e69e43cc",
+    "docsiamonline.pdf": "9773546f23eb3edecea82d54051a53140d25b31ae204f7c6172e4255adcb3e59",
+    "docsiamonline.tex": "69f93e048502dcfd209c001c49cbad0b2f55f888b560aa93996b9eeba6a03fd3",
+    "ex_article.pdf": "ecf60a729b5680ed9aaa1f48eeec755ca350943fb2161d1251cf8f4078b9c7ef",
+    "ex_article.tex": "15f8443efd0509d766806f484139a6c9f372dc5da297f5012f56d9f4b641a8e8",
+    "ex_shared.tex": "cb8ef58ba34c5a09ea1c6789137e22781cee6e2c7444efe24fe18a9449762c53",
+    "ex_supplement.pdf": "1f506cacc7a978ed21edf1787f9dc27971b3fbbcae06d97f22160c06338eb3e6",
+    "ex_supplement.tex": "d40fd7d52640ea32c8bad1b9cb9e921981b42069575bd29f282a0cfc7c0428df",
+    "lexample_fig1.eps": "78c635a200c9cbb1ec582c5739295052cbd2177a993e95cd4f733739c0c85228",
+    "lexample_fig2.eps": "5cc9a7f554eb6e8b06aec24af20ab38f54f2a635531ccdd58a09844a26d91dba",
+    "references.bib": "cc9d9fb9727e6acc6b6f1580dc83297d23e9a1bde4b0fa2b523cef35d6b7a9bc",
+    "siamonline250211.cls": "1592e0ba520271156c7260b5f1424ad76d3cf591f2bf743d86eddcb4391a7e0c",
+    "siamplain.bst": "a5df7c482dc7d4459f08b91c28437c3779284dcd82591acf1c977de7508ac6c7"
+  },
+  "modifications": "No member content modified; official missing documentation source added to complete distribution."
+}

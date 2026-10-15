@@ -7,7 +7,7 @@ verification programs, build/CI configuration and accompanying software
 documentation. The author selected MIT for the code on 2026-10-15.
 
 The manuscript and supplementary text, their LaTeX/BibTeX sources, PDFs and
-figures under `paper/` and `supplementary/`, and all translated manuscript and
+figures under `paper/`, `supplementary/` and `submission/`, and all translated manuscript and
 supplementary text, LaTeX sources and generated PDFs under `translations/` or
 translation build/release artifacts, are excluded from the MIT grant.
 Their copyright is retained by Siyuan Ye; no Creative Commons license has
@@ -17,4 +17,6 @@ code license unless explicitly stated otherwise. Public availability does
 not itself grant a separate copyright license to these research artifacts.
 
 Third-party dependencies and cited works retain their respective rights.
+The complete unmodified SIAM macro distribution under `third_party/siam/`
+is excluded from the MIT grant and retains SIAM's redistribution conditions.
 The original manuscript's AI-assisted tools declaration is unchanged.
