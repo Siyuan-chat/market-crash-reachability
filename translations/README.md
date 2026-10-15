@@ -3,10 +3,9 @@
 [简体中文](zh-CN/README.md) · [日本語](ja/README.md) · [Trilingual glossary](GLOSSARY.md)
 
 Both editions include the complete manuscript, proofs, appendices and supplement.
-Canonical mathematics is English V12 Final at commit
-`e5339a47f29ccb669d1f228ca930a1c1146200bf`; hashes are locked in
-`docs/PHASE2_BASELINE.json`. Draft date: 2026-10-15. Author language acceptance
-and public-edition permission remain pending. English is the authoritative
+Canonical mathematics is English V12 Final. Engineering provenance is recorded
+separately in `docs/PHASE2_BASELINE.json`. Edition date: 2026-10-15. The author
+has authorized public distribution; further language corrections may follow. English is the authoritative
 mathematical source and the reference to cite; see the root CITATION.cff.
 The software MIT grant does not extend to translated manuscript text or figures.
 

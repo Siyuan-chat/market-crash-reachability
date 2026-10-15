@@ -33,11 +33,11 @@ path; analytical theorems rely on the proofs in the manuscript.
 - [Trilingual glossary](translations/GLOSSARY.md) and [translation consistency and build instructions](translations/README.md).
 - [Lean formalization](formal/README.md): 34 foundational theorems checked locally with Lean 4.19.0 and pinned Mathlib. See the [complete theorem map](formal/THEOREM_MAP.md).
 
-The translation editions are complete drafts pending author language acceptance
-and public-edition approval. English remains the authoritative mathematical
+The complete translation editions are publicly distributed with the author’s
+permission; their copyright statements remain unchanged. English remains the authoritative mathematical
 source. The Lean project proves coordinate, conservation and selected
 response-family foundations; it does not formalize the complete paper or the
-interval certificate. Phase 2 CI is configured; remote execution remains pending.
+interval certificate. Phase 2 CI runs on pull requests; consult the PR checks for current results.
 Generated translation PDFs are review/build artifacts rather than duplicated
 committed binaries. Paper and translation copyrights are separate from software MIT.
 

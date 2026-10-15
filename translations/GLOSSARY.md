@@ -1,6 +1,6 @@
 # English / 简体中文 / 日本語 terminology
 
-Canonical source: V12 Final, commit e5339a47f29ccb669d1f228ca930a1c1146200bf.
+Canonical source: English V12 Final.
 These terms guide the complete editions; a translated statement must retain
 the scope, hypotheses and evidential status of its English counterpart.
 

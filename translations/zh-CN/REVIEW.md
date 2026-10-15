@@ -1,6 +1,6 @@
 # 中文译稿审校记录
 
-译稿日期：2026-10-15。英文权威基线：`e5339a47f29ccb669d1f228ca930a1c1146200bf`。
+译稿日期：2026-10-15。英文权威基线：V12 Final。
 
 ## 覆盖与方法
 
@@ -30,7 +30,7 @@
 
 另保留作者及被引作者姓名、数学符号及数学缩写、MSC 分类码、TSE/OHLCV/AI 等缩写、程序与文件路径、软件名称、原文参考文献题名，以及原始 PDF 图内的英文标签。原图内文字未在本分配范围内重绘。补充图 `fig:streak-rate` 原文含重复的“scalar constant-impact”短语，中文以完整语义表述保留其比较模型限定，不重复制版错误。
 
-作者需审阅经济与数学术语、个别长句对应关系及中文文风；图形内嵌英语若要求全中文视觉版，需在另行明确的图形编辑范围内处理。不存在新增的统计结论、实证校准或作者批准公开声明。
+作者需审阅经济与数学术语、个别长句对应关系及中文文风；图形内嵌英语若要求全中文视觉版，需在另行明确的图形编辑范围内处理。不存在新增的统计结论、实证校准或作者批准公开声明（此处为初次审校记录；现已另获作者公开授权）。
 
 ## 严格顺序复核（修订后）
 
@@ -44,7 +44,7 @@
 
 ## Integration review — 2026-10-15
 
-LuaLaTeX-ja preambles omit microtype for compatibility. Chinese serif, bold, italic and sans serif families are explicitly Fandol; Japanese uses HaranoAji. No font binaries are distributed. An invalid spaced table dimension in the Japanese supplement was restored to the canonical `.48\linewidth`. The Japanese Appendix wording at the two-pulse expansion was corrected to distinguish the k-th largest loss from the small amplitude h; formula content and order are unchanged. All four PDFs compile without missing glyph or overfull warnings; compiled label numbers and exact mathematical units match English. Author language acceptance remains pending.
+LuaLaTeX-ja preambles omit microtype for compatibility. Chinese serif, bold, italic and sans serif families are explicitly Fandol; Japanese uses HaranoAji. No font binaries are distributed. An invalid spaced table dimension in the Japanese supplement was restored to the canonical `.48\linewidth`. The Japanese Appendix wording at the two-pulse expansion was corrected to distinguish the k-th largest loss from the small amplitude h; formula content and order are unchanged. All four PDFs compile without missing glyph or overfull warnings; compiled label numbers and exact mathematical units match English. Public distribution has been authorized by the author; further language review remains possible.
 
 ## 全文证明与语义角色深审（2026-10-15）
 

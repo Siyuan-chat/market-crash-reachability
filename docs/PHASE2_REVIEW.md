@@ -2,7 +2,12 @@
 
 Review date: 2026-10-15. Canonical mathematical baseline: English V12 Final,
 commit `e5339a47f29ccb669d1f228ca930a1c1146200bf`.
-This document records a local review candidate, not a public release.
+This document records the initial local review checkpoint, not a Release.
+The author has subsequently authorized publication of the Chinese/Japanese
+editions without reader-facing hashes, retaining existing copyright statements,
+and has authorized a public Phase 2 PR and CI. Main merge and Release remain
+explicitly deferred. Statements below about remote publication describe the
+initial checkpoint; current remote status is available in the PR checks.
 
 ## Delivered scope
 
@@ -89,10 +94,10 @@ Tag, Release or Zenodo deposit has been performed.
 - [ ] Accept Chinese terminology and complete text, including supplement.
 - [ ] Accept Japanese terminology and complete text, including supplement.
 - [ ] Accept the clearly partial Lean scope and unfinished-results list.
-- [ ] Confirm permission to publish the translated research editions; their
+- [x] Confirm permission to publish the translated research editions; their
       text/figures retain copyright and are excluded from software MIT. No CC
       grant is presumed. Any future journal agreement needs separate review.
-- [ ] Approve pushing development/review branches and opening the public PR.
+- [x] Approve pushing the review branch and opening the public PR.
 - [ ] Run and review both new GitHub workflows on the real remote PR.
 - [ ] Approve public-main merge only after mathematical/language acceptance and CI.
 - [ ] Choose the final Release version; bind its commit/tag, PDFs, certificate,

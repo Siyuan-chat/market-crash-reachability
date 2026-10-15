@@ -28,6 +28,6 @@ and `Quot.sound`. Logs and a machine-readable inventory are generated in
 
 Local validation on 2026-10-15: kernel build passed; all 34 project theorems
 passed the axiom audit. There are advisory tactic/unused-variable lint warnings.
-The GitHub workflow is configured but has not been run for this unpublished
-Phase 2 branch. Lean source is software under the repository's MIT license;
+The GitHub workflow checks Phase 2 pull requests; consult their checks for
+remote execution results. Lean source is software under the repository's MIT license;
 the manuscript and translations retain their separate copyright status.

@@ -2,7 +2,7 @@
 
 本目录包含完整主文 `main.tex` 与完整补充材料 `supplementary.tex` 的简体中文译稿。范围包括标题、摘要、正文、定理与命题、证明、全部附录、图表题、表头和表内文字、代码与数据可用性以及 AI 辅助工具声明。参考文献作者、书目原题及文内引文键保留英文原貌。
 
-英文权威基线：`e5339a47f29ccb669d1f228ca930a1c1146200bf`，源文件为 `paper/main.tex` 与 `supplementary/supplementary.tex`。译稿日期：2026-10-15。英文原稿是数学内容的权威版本；本译稿完整覆盖原文，但尚待作者审阅、验收，不表示作者已经批准公开。
+英文权威基线：V12 Final，源文件为 `paper/main.tex` 与 `supplementary/supplementary.tex`。译稿日期：2026-10-15。英文原稿是数学内容的权威版本；本译本完整覆盖原文，已获作者公开授权；后续仍可进行语言校订。
 
 ## 构建
 
@@ -23,7 +23,7 @@ lualatex -interaction=nonstopmode -halt-on-error supplementary.tex
 
 原文、译文及图形的版权和许可应分别核实。本目录没有单独授予这些论文材料 MIT 许可，仓库其他代码的许可不自动扩展到论文或译文。使用现有英文图形文件；图题已翻译，图内嵌入的英文标签及原图设计保持不变。详细残留项及实际检查见 `REVIEW.md`。
 
-当前状态：完整译稿、LuaLaTeX 编译、数学与编号一致性及版式检查已完成；作者语言验收和公开版授权待确认。
+当前状态：完整译稿、LuaLaTeX 编译、数学与编号一致性及版式检查已完成；作者已授权公开，后续语言校订不改变现有版权声明。
 
 
 Canonical build from the repository root: `python scripts/build_translations.py`; then `python scripts/check_translation_consistency.py --aux-root build/translations`. PDFs: `build/translations/zh-CN/main.pdf` and `supplementary.pdf`. Full dependency and output details: [translation build guide](../README.md).

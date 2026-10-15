@@ -1,6 +1,6 @@
 # 日本語訳の確認記録
 
-基準：英語コミット `e5339a47f29ccb669d1f228ca930a1c1146200bf`、2026-10-15。英語原稿が数学上の権威である。著者による訳文の審査・承認は未完了。
+基準：英語コミット V12 Final、2026-10-15。英語原稿が数学上の権威である。著者による公開許可を取得済み。
 
 ## 翻訳範囲
 
@@ -66,9 +66,9 @@
 
 ## 残る確認
 
-LuaLaTeXによる実ビルド、文献処理、改ページ、禁則・長文の折り返し、図表の視覚確認、コンパイル後の参照番号照合は主担当の統合検証事項である。本担当は実施していない。著者には専門用語、危機とドローダウンの使い分け、対数損失と単純価格損失、必要条件と十分条件、計算機支援認証と高精度数値診断の区別を最終確認していただく必要がある。公開権限と翻訳著作権の承認も未取得である。
+LuaLaTeXによる実ビルド、文献処理、改ページ、禁則・長文の折り返し、図表の視覚確認、コンパイル後の参照番号照合は主担当の統合検証事項である。本担当は実施していない。著者には専門用語、危機とドローダウンの使い分け、対数損失と単純価格損失、必要条件と十分条件、計算機支援認証と高精度数値診断の区別を最終確認していただく必要がある。公開許可は著者から取得済みであり、著作権の声明は変更しない。
 
 
 ## Integration review — 2026-10-15
 
-LuaLaTeX-ja preambles omit microtype for compatibility. Chinese serif, bold, italic and sans serif families are explicitly Fandol; Japanese uses HaranoAji. No font binaries are distributed. An invalid spaced table dimension in the Japanese supplement was restored to the canonical `.48\linewidth`. The Japanese Appendix wording at the two-pulse expansion was corrected to distinguish the k-th largest loss from the small amplitude h; formula content and order are unchanged. All four PDFs compile without missing glyph or overfull warnings; compiled label numbers and exact mathematical units match English. Author language acceptance remains pending.
+LuaLaTeX-ja preambles omit microtype for compatibility. Chinese serif, bold, italic and sans serif families are explicitly Fandol; Japanese uses HaranoAji. No font binaries are distributed. An invalid spaced table dimension in the Japanese supplement was restored to the canonical `.48\linewidth`. The Japanese Appendix wording at the two-pulse expansion was corrected to distinguish the k-th largest loss from the small amplitude h; formula content and order are unchanged. All four PDFs compile without missing glyph or overfull warnings; compiled label numbers and exact mathematical units match English. Public distribution has been authorized by the author; further language review remains possible.
