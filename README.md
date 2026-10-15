@@ -23,9 +23,9 @@ and a rigorously feasible two-session consecutive-limit-down construction.
 The computer-assisted existence certificate concerns one specified ten-asset
 path; analytical theorems rely on the proofs in the manuscript.
 
-- [Manuscript PDF](paper/manuscript.pdf) · [LaTeX](paper/main.tex)
-- [Supplement PDF](supplementary/supplementary.pdf) · [LaTeX](supplementary/supplementary.tex)
-- [SIFIN review edition: PDF, LaTeX and build instructions](submission/siam/README.md)
+- **SIFIN submission edition:** [Manuscript PDF](submission/siam/manuscript.pdf) · [LaTeX](submission/siam/main.tex)
+- **SIFIN supplementary material:** [Supplement PDF](submission/siam/supplementary.pdf) · [LaTeX](submission/siam/supplementary.tex)
+- [SIFIN build instructions and author items pending](submission/siam/README.md)
 - [Mathematical results and code](docs/MATHEMATICAL_RESULTS.md)
 - [Verification scope](docs/VERIFICATION_SCOPE.md)
 - [Research overview and FAQ](docs/RESEARCH_OVERVIEW.md)
@@ -41,7 +41,7 @@ These results are theoretical and **do not predict real market crashes**. For ex
 
 ## Research editions and Lean foundations
 
-- **English canonical edition:** [paper](paper/manuscript.pdf) and [supplement](supplementary/supplementary.pdf), V12 Final.
+- **V12 Final 原始研究版 (original research edition):** [Manuscript PDF](paper/manuscript.pdf) · [LaTeX](paper/main.tex) · [Supplement PDF](supplementary/supplementary.pdf) · [Supplement LaTeX](supplementary/supplementary.tex). This remains the canonical mathematical baseline; the main links above open the SIFIN submission edition.
 - **简体中文:** [complete manuscript and supplement sources, build and review status](translations/zh-CN/README.md).
 - **日本語:** [complete manuscript and supplement sources, build and review status](translations/ja/README.md).
 - [Trilingual glossary](translations/GLOSSARY.md) and [translation consistency and build instructions](translations/README.md).
