@@ -1,0 +1,44 @@
+{
+  "certified_interval": [
+    "1.40478740981483169755689137671669",
+    "1.40555423111958453123472102742373"
+  ],
+  "publication_outward_interval": [
+    "1.4047874",
+    "1.4055543"
+  ],
+  "independent_ode_y40": 1.4051608219897378,
+  "independent_ode_crisis_function": 0.02081139744399201,
+  "target_net_dollar_residual_independent_formula": -2.0816681711721685e-16,
+  "day_end_states": [
+    {
+      "end_time": 2.3,
+      "numeric_y": 0.7883887153592303
+    },
+    {
+      "end_time": 17.7,
+      "numeric_y": 0.7545124435269196
+    },
+    {
+      "end_time": 20.0,
+      "numeric_y": 1.222222955022696
+    },
+    {
+      "end_time": 22.3,
+      "numeric_y": 1.0312361769565788
+    },
+    {
+      "end_time": 37.7,
+      "numeric_y": 1.0429126932497514
+    },
+    {
+      "end_time": 40.0,
+      "numeric_y": 1.4051608219897378
+    }
+  ],
+  "gross_rate_upper_from_cert": "0.284480404287",
+  "source_sha256": "2e1c739947ef521a82d52830c2abc613cba75d1dbcdcbd02967d2fa75eceecac",
+  "certificate_sha256": "354c7797c1e25ebee143d04d11e23ec92cb93214b7333eed7fcd91dd0493c18f",
+  "scope": "certificate-source rerun + independent high-precision ODE; not a second formal interval proof",
+  "status": "PASS"
+}

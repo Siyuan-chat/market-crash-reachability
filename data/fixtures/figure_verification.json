@@ -1,0 +1,49 @@
+{
+  "model": "idealized marginally settled paired-dollar resilient model, F=eta=rho=1",
+  "crisis_definition": "min(mean log loss, kth largest log loss)",
+  "figure_files": [
+    "abc_control_comparison.pdf",
+    "all_asset_boundary_heatmap.pdf",
+    "bounded_rate_continuous_path.pdf",
+    "closed_flow_price_paths.pdf",
+    "dollar_vs_share_closure.pdf",
+    "elasticity_examples.pdf",
+    "finite_rate_quadratic.pdf",
+    "finite_resources_severe_crashes.pdf",
+    "full_coverage_threshold.pdf",
+    "market_specification.pdf",
+    "multiday_crisis_trigger.pdf",
+    "multiday_fullbreadth_obstruction.pdf",
+    "multiday_ledgers_and_rates.pdf",
+    "multiday_rate_frontier.pdf",
+    "multiday_streak_witness.pdf",
+    "old_pulse_path_fails_limits.pdf",
+    "rate_and_price_limit_bounds.pdf",
+    "resource_lower_bounds.pdf",
+    "resource_scaling_N.pdf",
+    "response_regimes.pdf",
+    "v7_certified_multiday_prices.pdf",
+    "v7_certified_rate_path.pdf",
+    "v7_cut_capacity_N.pdf",
+    "v7_minimum_rate_bracket.pdf"
+  ],
+  "n3_case": {
+    "T": 3,
+    "k": 2,
+    "target_log_loss": 5,
+    "crisis": 3.3168233401308993,
+    "turnover": 2.6178515781406126,
+    "max_gross_sale_shares": 3.932024408903603,
+    "max_dollar_closure_residual": 3.722269346050078e-16
+  },
+  "n12_case": {
+    "T": 4,
+    "k": 11,
+    "target_log_loss": 5,
+    "crisis": 4.578083205478048,
+    "turnover": 38.68614846671431,
+    "max_gross_sale_shares": 8.080439815351212,
+    "max_dollar_closure_residual": 6.082052315123723e-15
+  },
+  "figure_description": "Figures are analytic curves or deterministic constructed paths, not estimated time series and not actual market observations"
+}

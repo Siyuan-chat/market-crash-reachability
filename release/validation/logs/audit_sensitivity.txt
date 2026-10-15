@@ -1,0 +1,6 @@
+V9 sensitivity audit PASS: {
+  "certified_fixed_path_band_24_7_percent": true,
+  "certified_fixed_path_band_25_percent": true,
+  "fixed_path_fails_band_24_percent": true,
+  "fixed_path_failure_reason": "y(17.7) upper < 0.760, below proposed lower bound 0.760"
+}

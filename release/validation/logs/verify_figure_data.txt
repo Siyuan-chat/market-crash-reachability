@@ -1,0 +1,1 @@
+PASS: two figure-data cases and all manuscript/supplement figure references; not pixel-equivalence validation.

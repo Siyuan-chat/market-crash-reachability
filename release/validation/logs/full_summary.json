@@ -1,0 +1,57 @@
+[
+  {
+    "command": [
+      "verification/certify_streak_interval.py",
+      "--out",
+      "build/final_interval_certificate.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "scripts/verify_results.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "scripts/verify_multiday.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "scripts/verify_figure_data.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "verification/verify_generalized_coordinate.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "verification/verify_consistency.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "verification/audit_manuscript_certificate.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "verification/audit_sensitivity.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "check": "certificate_byte_identity",
+    "passed": true,
+    "sha256": "354c7797c1e25ebee143d04d11e23ec92cb93214b7333eed7fcd91dd0493c18f"
+  }
+]

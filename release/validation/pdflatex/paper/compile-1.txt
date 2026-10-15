@@ -1,0 +1,460 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex)
+entering extended mode
+(./main.tex
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-09-09>
+(c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/base/size11.clo)) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/microtype/microtype-pdftex.def) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg)) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty))) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty)) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty)) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty)) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/mathtools/mathtools.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/tools/calc.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/mathtools/mhsetup.sty)) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/tools/bm.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def))) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/enumitem/enumitem.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/float/float.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/tools/tabularx.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/tools/array.sty)) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/natbib/natbib.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/placeins/placeins.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty))) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty))) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/url/url.sty) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty))) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/caption/caption.sty (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty)) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/l3kernel/l3backend-pdftex.def)
+No file main.aux.
+(c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+
+Package epstopdf Warning: Shell escape feature is not enabled.
+
+(c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg)) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd) (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+
+Package natbib Warning: Citation `GennotteLeland1990' on page 1 undefined on input line 52.
+
+
+Package natbib Warning: Citation `Romer1993' on page 1 undefined on input line 52.
+
+
+Package natbib Warning: Citation `HuangWang2009' on page 1 undefined on input line 52.
+
+
+Package natbib Warning: Citation `CespaFoucault2014' on page 1 undefined on input line 52.
+
+
+Package natbib Warning: Citation `ContWagalath2013' on page 1 undefined on input line 52.
+
+
+Package natbib Warning: Citation `Kyle1985' on page 1 undefined on input line 54.
+
+
+Package natbib Warning: Citation `ObizhaevaWang2013' on page 1 undefined on input line 54.
+
+
+Package natbib Warning: Citation `AlfonsiSchied2010' on page 1 undefined on input line 54.
+
+
+Package natbib Warning: Citation `Gatheral2010' on page 1 undefined on input line 54.
+
+
+Package natbib Warning: Citation `AlfonsiSchiedSlynko2012' on page 1 undefined on input line 54.
+
+
+Package natbib Warning: Citation `HubermanStanzl2004' on page 1 undefined on input line 54.
+
+
+Package natbib Warning: Citation `AlfonsiKlockSchied2016' on page 1 undefined on input line 54.
+
+
+Package natbib Warning: Citation `CordoniLillo2024' on page 1 undefined on input line 54.
+
+
+Package natbib Warning: Citation `KyleObizhaeva2023' on page 1 undefined on input line 54.
+
+[1{c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+
+LaTeX Warning: Reference `sec:model' on page 2 undefined on input line 63.
+
+[2]
+
+LaTeX Warning: Reference `eq:cost' on page 3 undefined on input line 95.
+
+[3] [4]
+
+LaTeX Warning: Reference `eq:phi-intro' on page 5 undefined on input line 127.
+
+[5]
+
+LaTeX Warning: Reference `app:accounting' on page 6 undefined on input line 169.
+
+
+LaTeX Warning: Reference `eq:cost' on page 6 undefined on input line 172.
+
+
+LaTeX Warning: Reference `eq:normal-form' on page 6 undefined on input line 175.
+
+
+LaTeX Warning: Reference `eq:curvature' on page 6 undefined on input line 197.
+
+
+LaTeX Warning: Reference `eq:potential-law' on page 6 undefined on input line 197.
+
+[6]
+
+LaTeX Warning: Reference `eq:curvature' on page 7 undefined on input line 208.
+
+
+LaTeX Warning: Reference `def:crash' on page 7 undefined on input line 213.
+
+
+LaTeX Warning: Reference `eq:no-crash' on page 7 undefined on input line 213.
+
+
+LaTeX Warning: Reference `eq:master' on page 7 undefined on input line 223.
+
+
+LaTeX Warning: Reference `fig:response' on page 7 undefined on input line 234.
+
+[7]
+
+LaTeX Warning: Reference `eq:power' on page 8 undefined on input line 242.
+
+
+LaTeX Warning: Reference `thm:barrier2' on page 8 undefined on input line 251.
+
+
+LaTeX Warning: Reference `prop:two-pulse' on page 8 undefined on input line 251.
+
+
+LaTeX Warning: Reference `eq:inventoryb' on page 8 undefined on input line 251.
+
+
+LaTeX Warning: Reference `app:severe' on page 8 undefined on input line 251.
+
+[8 <./figures/response_regimes.pdf>]
+
+LaTeX Warning: Reference `eq:E' on page 9 undefined on input line 256.
+
+
+LaTeX Warning: Reference `eq:cost' on page 9 undefined on input line 260.
+
+
+LaTeX Warning: Reference `eq:three-pulse' on page 9 undefined on input line 270.
+
+
+LaTeX Warning: Reference `app:local' on page 9 undefined on input line 270.
+
+
+LaTeX Warning: Reference `eq:two-pulse' on page 9 undefined on input line 280.
+
+
+LaTeX Warning: Reference `app:local' on page 9 undefined on input line 280.
+
+[9]
+
+LaTeX Warning: Reference `asmp:model' on page 10 undefined on input line 298.
+
+
+LaTeX Warning: Reference `app:sharp' on page 10 undefined on input line 310.
+
+[10 <./figures/abc_control_comparison.pdf>]
+
+LaTeX Warning: Reference `eq:resource-lower' on page 11 undefined on input line 330.
+
+
+LaTeX Warning: Reference `eq:share-bound' on page 11 undefined on input line 330.
+
+
+LaTeX Warning: Reference `eq:cost' on page 11 undefined on input line 330.
+
+
+LaTeX Warning: Reference `app:accounting' on page 11 undefined on input line 330.
+
+
+LaTeX Warning: Reference `eq:resource-lower' on page 11 undefined on input line 335.
+
+[11]
+
+Package natbib Warning: Citation `Yang2019' on page 12 undefined on input line 348.
+
+
+LaTeX Warning: Reference `eq:band' on page 12 undefined on input line 363.
+
+
+Package natbib Warning: Citation `JPX2026' on page 12 undefined on input line 363.
+
+
+LaTeX Warning: Reference `eq:grossrate' on page 12 undefined on input line 366.
+
+
+LaTeX Warning: Reference `eq:band' on page 12 undefined on input line 370.
+
+[12]
+
+LaTeX Warning: Reference `eq:rate-floor' on page 13 undefined on input line 388.
+
+
+LaTeX Warning: Reference `thm:resource' on page 13 undefined on input line 396.
+
+
+LaTeX Warning: Reference `eq:cost' on page 13 undefined on input line 401.
+
+
+LaTeX Warning: Reference `eq:min-speed' on page 13 undefined on input line 407.
+
+
+LaTeX Warning: Reference `eq:rate-budget-lower' on page 13 undefined on input line 407.
+
+
+LaTeX Warning: Reference `eq:rate-energy' on page 13 undefined on input line 407.
+
+
+LaTeX Warning: Reference `eq:grossrate' on page 13 undefined on input line 412.
+
+[13]
+
+LaTeX Warning: Reference `thm:finite-rate-construct' on page 14 undefined on input line 423.
+
+
+LaTeX Warning: Reference `eq:quadratic-rate' on page 14 undefined on input line 438.
+
+
+LaTeX Warning: Reference `thm:finite-rate-construct' on page 14 undefined on input line 438.
+
+[14]
+
+LaTeX Warning: Reference `thm:ABC' on page 15 undefined on input line 477.
+
+
+LaTeX Warning: Reference `eq:grossrate' on page 15 undefined on input line 477.
+
+
+LaTeX Warning: Reference `thm:finite-rate-construct' on page 15 undefined on input line 477.
+
+
+Underfull \hbox (badness 4316) in paragraph at lines 488--488
+[]|\T1/lmr/m/n/10 (+20) Hard ses-sion band
+
+Underfull \hbox (badness 1681) in paragraph at lines 488--488
+[]|\T1/lmr/m/n/10 (+20) Local all-asset loss when band has
+
+Underfull \hbox (badness 10000) in paragraph at lines 488--488
+[]|\T1/lmr/m/n/10 (+20) Local all-asset loss for pos-i-tive
+
+Underfull \hbox (badness 10000) in paragraph at lines 488--488
+\T1/lmr/m/n/10 (+20) caps/widths; rate and price-floor
+
+LaTeX Warning: Reference `eq:finite-rate-coefficient' on page 15 undefined on input line 494.
+
+
+LaTeX Warning: Reference `eq:finite-rate-coefficient' on page 15 undefined on input line 494.
+
+[15]
+
+Package natbib Warning: Citation `KimRhee1997' on page 16 undefined on input line 502.
+
+
+Package natbib Warning: Citation `Chen2019' on page 16 undefined on input line 502.
+
+
+LaTeX Warning: Reference `def:crash' on page 16 undefined on input line 511.
+
+[16 <./figures/finite_rate_quadratic.pdf>]
+
+Package natbib Warning: Citation `JPX2026' on page 17 undefined on input line 521.
+
+
+LaTeX Warning: Reference `eq:multiday-trigger-product' on page 17 undefined on input line 540.
+
+
+LaTeX Warning: Reference `eq:multiday-trigger-exact' on page 17 undefined on input line 540.
+
+
+LaTeX Warning: Reference `prop:certified-v7' on page 17 undefined on input line 542.
+
+[17] [18 <./figures/multiday_crisis_trigger.pdf>]
+
+LaTeX Warning: Reference `eq:single-session-streak-rate' on page 19 undefined on input line 571.
+
+
+LaTeX Warning: Reference `eq:D-streak-speed' on page 19 undefined on input line 571.
+
+
+LaTeX Warning: Reference `eq:streak-D-bound' on page 19 undefined on input line 571.
+
+
+LaTeX Warning: Reference `eq:no-second-condition' on page 19 undefined on input line 587.
+
+[19]
+
+LaTeX Warning: Reference `sec:barriers' on page 20 undefined on input line 599.
+
+
+LaTeX Warning: Reference `eq:streak-precondition' on page 20 undefined on input line 620.
+
+[20]
+
+LaTeX Warning: Reference `eq:market-cut-instant' on page 21 undefined on input line 644.
+
+
+LaTeX Warning: Reference `eq:cut-necessary' on page 21 undefined on input line 647.
+
+
+LaTeX Warning: Reference `prop:multiday-crisis-trigger' on page 21 undefined on input line 649.
+
+[21]
+
+LaTeX Warning: Reference `subsec:v7-certified' on page 22 undefined on input line 661.
+
+
+LaTeX Warning: Reference `app:v7certificate' on page 22 undefined on input line 667.
+
+
+LaTeX Warning: Reference `eq:v7-certified-result' on page 22 undefined on input line 690.
+
+
+LaTeX Warning: Reference `eq:quadratic-rate' on page 22 undefined on input line 692.
+
+
+LaTeX Warning: Reference `eq:quadratic-rate' on page 22 undefined on input line 698.
+
+
+LaTeX Warning: Reference `prop:certified-v7' on page 22 undefined on input line 698.
+
+[22]
+
+LaTeX Warning: Reference `tab:sensitivity' on page 23 undefined on input line 705.
+
+
+LaTeX Warning: Reference `app:v7certificate' on page 23 undefined on input line 719.
+
+
+LaTeX Warning: Reference `app:v7certificate' on page 23 undefined on input line 719.
+
+[23] [24 <./figures/v7_certified_multiday_prices.pdf> <./figures/v7_certified_rate_path.pdf>]
+
+LaTeX Warning: Reference `eq:normal-form' on page 25 undefined on input line 728.
+
+
+Package natbib Warning: Citation `HuangWang2009' on page 25 undefined on input line 730.
+
+
+Package natbib Warning: Citation `CespaFoucault2014' on page 25 undefined on input line 730.
+
+
+Package natbib Warning: Citation `ContWagalath2013' on page 25 undefined on input line 730.
+
+
+Package natbib Warning: Citation `CordoniLillo2024' on page 25 undefined on input line 730.
+
+
+Package natbib Warning: Citation `KyleObizhaeva2023' on page 25 undefined on input line 730.
+
+
+LaTeX Warning: Reference `tab:sensitivity' on page 25 undefined on input line 732.
+
+
+Package natbib Warning: Citation `JPX2026' on page 25 undefined on input line 734.
+
+(c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/lm/ot1lmss.fd)
+
+Package natbib Warning: Citation `AlfonsiKlockSchied2016' on page 25 undefined on input line 739.
+
+
+Package natbib Warning: Citation `CordoniLillo2024' on page 25 undefined on input line 739.
+
+[25] (c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd)
+
+LaTeX Warning: Reference `eq:cost' on page 26 undefined on input line 765.
+
+
+LaTeX Warning: Reference `eq:E' on page 26 undefined on input line 765.
+
+[26]
+
+LaTeX Warning: Reference `eq:appendix-yz' on page 27 undefined on input line 777.
+
+
+LaTeX Warning: Reference `eq:cost' on page 27 undefined on input line 777.
+
+
+LaTeX Warning: Reference `thm:resource' on page 27 undefined on input line 781.
+
+
+LaTeX Warning: Reference `prop:two-pulse' on page 27 undefined on input line 786.
+
+
+LaTeX Warning: Reference `prop:three-pulse' on page 27 undefined on input line 786.
+
+
+LaTeX Warning: Reference `eq:local-Taylor' on page 27 undefined on input line 799.
+
+[27]
+
+LaTeX Warning: Reference `thm:ABC' on page 28 undefined on input line 813.
+
+
+LaTeX Warning: Reference `eq:R' on page 28 undefined on input line 841.
+
+[28]
+
+LaTeX Warning: Reference `eq:radius-appendix' on page 29 undefined on input line 856.
+
+
+LaTeX Warning: Reference `eq:R' on page 29 undefined on input line 866.
+
+
+LaTeX Warning: Reference `eq:abcs' on page 29 undefined on input line 866.
+
+
+LaTeX Warning: Reference `eq:Xledger' on page 29 undefined on input line 878.
+
+[29]
+
+LaTeX Warning: Reference `thm:ABC' on page 30 undefined on input line 892.
+
+
+LaTeX Warning: Reference `thm:critical' on page 30 undefined on input line 895.
+
+
+LaTeX Warning: Reference `eq:R' on page 30 undefined on input line 901.
+
+
+LaTeX Warning: Reference `eq:Xledger' on page 30 undefined on input line 909.
+
+
+LaTeX Warning: Reference `eq:fullend' on page 30 undefined on input line 911.
+
+
+LaTeX Warning: Reference `eq:bounded-control' on page 30 undefined on input line 918.
+
+[30]
+
+LaTeX Warning: Reference `eq:finite-rate-coefficient' on page 31 undefined on input line 923.
+
+
+LaTeX Warning: Reference `eq:finite-rate-coefficient' on page 31 undefined on input line 923.
+
+
+LaTeX Warning: Reference `app:severe' on page 31 undefined on input line 951.
+
+[31]
+
+LaTeX Warning: Reference `eq:v7-root' on page 32 undefined on input line 961.
+
+
+LaTeX Warning: Reference `eq:v7-bounds' on page 32 undefined on input line 981.
+
+[32] (./main.bbl [33])
+
+Package natbib Warning: There were undefined citations.
+
+[34] (./main.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)<c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmib10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/Users/Siyuan Ye/Documents/ChatGPT/市场动力学论文/.tooling/tinytex/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (34 pages, 644064 bytes).
+Transcript written on main.log.

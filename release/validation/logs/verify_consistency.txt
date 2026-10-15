@@ -1,0 +1,22 @@
+{
+  "certificate": "PASS, all exact rational and enclosure assertions",
+  "target_prices": [
+    "0.9700",
+    "0.9409"
+  ],
+  "certified_crisis": ">0.020 and <0.021",
+  "tight_compensator_max_gross_rate_upper": "284480404287/1000000000000",
+  "tight_target_max_gross_rate_upper": "23581164317/500000000000",
+  "max_comp_sale_shares_upper": "1.8793421247301402009737783627958",
+  "total_paired_turnover_upper": "2.98308878179821217357707560765354",
+  "minimum_rate_lower_strict": "0.044",
+  "minimum_rate_upper_strict": "0.285",
+  "quadratic_bound_at_rate_0_044": "0.01973792450448176",
+  "scalar_day2_rate_necessary_approx": "0.023643906095337792",
+  "cut_day2_rate_necessary_k9_m1": "0.00800743536",
+  "cut_day2_rate_necessary_k999_m1": "0.88882532496",
+  "numerical_y20_in_interval": true,
+  "numerical_y40_in_interval": true,
+  "numerical_sales_and_turnover_inside_certificate": true,
+  "limitation": "No claim of the global optimal rate or real-world locked-order-book limit-down."
+}

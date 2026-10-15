@@ -1,0 +1,84 @@
+\begin{thebibliography}{10}
+
+\bibitem{AlfonsiKlockSchied2016}
+{\sc A.~Alfonsi, F.~Kl{\"o}ck, and A.~Schied}, {\em {Multivariate transient
+  price impact and matrix-valued positive definite functions}}, Mathematics of
+  Operations Research, 41 (2016), pp.~914--934.
+
+\bibitem{AlfonsiSchied2010}
+{\sc A.~Alfonsi and A.~Schied}, {\em {Optimal trade execution and absence of
+  price manipulations in limit order book models}}, SIAM Journal on Financial
+  Mathematics, 1 (2010), pp.~490--522.
+
+\bibitem{AlfonsiSchiedSlynko2012}
+{\sc A.~Alfonsi, A.~Schied, and A.~Slynko}, {\em {Order book resilience, price
+  manipulation, and the positive portfolio problem}}, SIAM Journal on Financial
+  Mathematics, 3 (2012), pp.~511--533.
+
+\bibitem{CespaFoucault2014}
+{\sc G.~Cespa and T.~Foucault}, {\em {Illiquidity contagion and liquidity
+  crashes}}, The Review of Financial Studies, 27 (2014), pp.~1615--1660.
+
+\bibitem{Chen2019}
+{\sc T.~Chen, Z.~Gao, J.~He, W.~Jiang, and W.~Xiong}, {\em {Daily price limits
+  and destructive market behavior}}, Journal of Econometrics, 208 (2019),
+  pp.~249--264.
+
+\bibitem{ContWagalath2013}
+{\sc R.~Cont and L.~Wagalath}, {\em {Running for the exit: Distressed selling
+  and endogenous correlation in financial markets}}, Mathematical Finance, 23
+  (2013), pp.~718--741.
+
+\bibitem{CordoniLillo2024}
+{\sc F.~Cordoni and F.~Lillo}, {\em {Instabilities in multi-asset and
+  multi-agent market impact games}}, Annals of Operations Research, 336 (2024),
+  pp.~505--539.
+
+\bibitem{Gatheral2010}
+{\sc J.~Gatheral}, {\em {No-dynamic-arbitrage and market impact}}, Quantitative
+  Finance, 10 (2010), pp.~749--759.
+
+\bibitem{GennotteLeland1990}
+{\sc G.~Gennotte and H.~Leland}, {\em {Market liquidity, hedging, and
+  crashes}}, American Economic Review, 80 (1990), pp.~999--1021.
+
+\bibitem{HuangWang2009}
+{\sc J.~Huang and J.~Wang}, {\em {Liquidity and market crashes}}, The Review of
+  Financial Studies, 22 (2009), pp.~2607--2643.
+
+\bibitem{HubermanStanzl2004}
+{\sc G.~Huberman and W.~Stanzl}, {\em {Price manipulation and
+  quasi-arbitrage}}, Econometrica, 72 (2004), pp.~1247--1275.
+
+\bibitem{JPX2026}
+{\sc {Japan Exchange Group}}, {\em Daily price limits: Trading rules of
+  domestic stocks}.
+\newblock
+  \url{https://www.jpx.co.jp/english/equities/trading/domestic/06.html}, 2026.
+\newblock Accessed October 2026.
+
+\bibitem{KimRhee1997}
+{\sc K.~A. Kim and S.~G. Rhee}, {\em {Price limit performance: Evidence from
+  the Tokyo Stock Exchange}}, The Journal of Finance, 52 (1997), pp.~885--901.
+
+\bibitem{Kyle1985}
+{\sc A.~S. Kyle}, {\em {Continuous auctions and insider trading}},
+  Econometrica, 53 (1985), pp.~1315--1336.
+
+\bibitem{KyleObizhaeva2023}
+{\sc A.~S. Kyle and A.~A. Obizhaeva}, {\em {Large bets and stock market
+  crashes}}, Review of Finance, 27 (2023), pp.~2163--2203.
+
+\bibitem{ObizhaevaWang2013}
+{\sc A.~A. Obizhaeva and J.~Wang}, {\em {Optimal trading strategy and
+  supply/demand dynamics}}, Journal of Financial Markets, 16 (2013), pp.~1--32.
+
+\bibitem{Romer1993}
+{\sc D.~Romer}, {\em {Rational asset-price movements without news}}, American
+  Economic Review, 83 (1993), pp.~1112--1130.
+
+\bibitem{Yang2019}
+{\sc Y.~Yang}, {\em {Finite horizon optimal execution with bounded rate of
+  transaction}}, Stochastic Models, 35 (2019), pp.~469--495.
+
+\end{thebibliography}

@@ -68,4 +68,3 @@ The model uses idealized execution and hypothetical normalized assets.
 Feasibility under its assumptions is neither a claim about general financial
 markets nor a trading or forecasting result. Earlier exploratory displays in
 the supplement are numerical illustrations, not additional interval proofs.
-

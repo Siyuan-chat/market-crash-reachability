@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+/figures/
+data/*.json
+data/*.csv
+verification/v6_multiday_checks.json
+*.aux
+*.log
+*.out
+*.toc
+paper/main.pdf
+release/rebuilt/

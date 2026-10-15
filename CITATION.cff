@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "Please cite the manuscript for mathematical results and this software version and commit for computations."
+type: software
+title: "When Can Markets Crash Without News? — Reproducibility Software"
+authors:
+  - family-names: Ye
+    given-names: Siyuan
+version: 1.0.0rc1
+license: MIT
+repository-code: "https://github.com/Siyuan-chat/market-crash-reachability"
+url: "https://github.com/Siyuan-chat/market-crash-reachability"
+preferred-citation:
+  type: unpublished
+  title: "When Can Markets Crash Without News?"
+  authors:
+    - family-names: Ye
+      given-names: Siyuan
+  year: 2026
+  url: "https://github.com/Siyuan-chat/market-crash-reachability/blob/main/paper/manuscript.pdf"
+  notes: "V12 Final manuscript; no arXiv identifier or archival DOI has been issued."

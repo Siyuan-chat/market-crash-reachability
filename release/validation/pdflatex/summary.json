@@ -1,0 +1,31 @@
+{
+  "status": "local pdfLaTeX comparison accepted; original PDFs retained; no publication",
+  "toolchain": "TinyTeX v2026.10; pdfTeX 1.40.29; TeX Live 2026",
+  "portable_archive_sha256": "dc1d6e63b21af62130ede1dcc4113bffdc184544690a23e3f489d75340f4ff61",
+  "documents": {
+    "paper": {
+      "source_sha256": "2e1c739947ef521a82d52830c2abc613cba75d1dbcdcbd02967d2fa75eceecac",
+      "source_matches_original": true,
+      "original_pdf_sha256": "1b8dc974190ccda1b19d6fb7aab254feda7f5a38abe0c54cadd6a55ee4abe44c",
+      "rebuilt_pdf_sha256": "03ca3bb473834a58e0a09056c3650bb9dce18ed12ac60a4956de5780a37abc38",
+      "pages": 34,
+      "passes": 3,
+      "overfull": 0,
+      "underfull": 4,
+      "unresolved_references": false,
+      "original_and_pdflatex_definition_2_2_overflow": false
+    },
+    "supplementary": {
+      "source_sha256": "15959cac27a4c9cbe825c9fd94f004e9a4c08420b6aa2ba2e145b6f93669953e",
+      "source_matches_original": true,
+      "original_pdf_sha256": "7b974fd350b86b7fa25ccf680fb81363039a66ded3677b98db0e5fcce0e057da",
+      "rebuilt_pdf_sha256": "2a3458baff5ab9bf3813dbb146ce468f02b50008c2790f3e6ba0c23e97e4939e",
+      "pages": 10,
+      "passes": 2,
+      "overfull": 0,
+      "underfull": 0,
+      "unresolved_references": false,
+      "original_and_pdflatex_definition_2_2_overflow": null
+    }
+  }
+}

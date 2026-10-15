@@ -1,0 +1,40 @@
+{
+  "n": 10,
+  "k": 9,
+  "coverage": 0.9,
+  "number_of_sessions": 2,
+  "rho": 0.4,
+  "session_length": 20.0,
+  "target_lower_fraction": 0.97,
+  "target_band": 0.03,
+  "comp_band": 0.25,
+  "rate_cap": 1.0,
+  "first_high": 1.0142982125039777,
+  "second_high": 0.995,
+  "target_closes": [
+    0.97,
+    0.9409
+  ],
+  "comp_closes": [
+    1.2281037783238062,
+    1.4175738314753674
+  ],
+  "gross_rate_target_max": 0.10092571428571405,
+  "gross_rate_comp_max": 0.6807794732204333,
+  "net_dollar_per_target_first_day": 0.07823535273333235,
+  "net_dollar_per_target_second_day": -0.07823535273333301,
+  "net_dollar_per_target_final": -6.661338147750939e-16,
+  "net_dollar_comp_final": 5.995204332975845e-15,
+  "max_pairing_derivative_error": 1.1102230246251565e-16,
+  "gross_turnover": 2.5930975991416885,
+  "max_gross_sold_shares": 1.462403849192831,
+  "target_gross_sold_shares": 0.14674302929054922,
+  "comp_gross_sold_shares": 1.462403849192831,
+  "terminal_crisis_functional": 0.019931889376448974,
+  "terminal_average_log_loss": 0.019931889376448974,
+  "terminal_cover_quantile_log_loss": 0.06091841496941724,
+  "max_upper_band_violation": 0.0,
+  "min_strict_band_slack": 0.0040999999999999925,
+  "independent_rk4_comp_end_difference": 2.2035706592760107e-11
+}
+All 44 multiday checks passed.

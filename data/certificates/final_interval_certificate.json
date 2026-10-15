@@ -1,0 +1,221 @@
+{
+  "method": "outward-rounded fixedpoint interval Euler with global second derivative bound and scalar order preservation",
+  "arithmetic": "integer endpoints with outward floor/ceil, grid Q=10**32",
+  "fixedpoint_scale": "100000000000000000000000000000000",
+  "algebraic_plateau_root_interval": [
+    "1.02020225507905",
+    "1.02020225507908"
+  ],
+  "plateau_root_exact_signs": [
+    "-726172695155753/500000000000000000",
+    "1447396528633183/781250000000000000"
+  ],
+  "second_derivative_bound": 5,
+  "bootstrap_state_interval": [
+    "0.70",
+    "1.60"
+  ],
+  "bootstrap_velocity_bound": "1.70",
+  "step": "0.0005",
+  "steps": 80000,
+  "y_at_knots": [
+    {
+      "time": "23/10",
+      "y_interval": [
+        "0.78822479411629403220297599351719",
+        "0.78856622715320423484191889089875"
+      ]
+    },
+    {
+      "time": "177/10",
+      "y_interval": [
+        "0.75433596625190211785491250949208",
+        "0.75468878764120949462684386750761"
+      ]
+    },
+    {
+      "time": "20",
+      "y_interval": [
+        "1.22193882108272462678373443015812",
+        "1.22253552023031466215922378630777"
+      ]
+    },
+    {
+      "time": "223/10",
+      "y_interval": [
+        "1.03101647832853887493203810146415",
+        "1.0314715688675902138826503708894"
+      ]
+    },
+    {
+      "time": "377/10",
+      "y_interval": [
+        "1.04284286265911120885362432766689",
+        "1.04298257550197558068749365311097"
+      ]
+    },
+    {
+      "time": "40",
+      "y_interval": [
+        "1.40478740981483169755689137671669",
+        "1.40555423111958453123472102742373"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "segment": 1,
+      "t0": "0",
+      "t1": "23/10",
+      "target_slope": [
+        "0.00878358916480434782608695652173",
+        "0.00878358916481739130434782608696"
+      ],
+      "u_enclosure": [
+        "0.00878358916480434782608695652173",
+        "0.01720519194937896096588826134262"
+      ],
+      "second_derivative_bound": "0.3782222875274701",
+      "y_min_lower_bound": "0.78737479411629403220297599351719",
+      "y_max_upper_bound": "1.00085",
+      "gross_rate_y_upper_bound": "0.196662032747",
+      "gross_rate_x_upper_bound": "0.01720519195",
+      "gross_rate_y_tight_upper": "0.196662032747",
+      "gross_rate_x_tight_upper": "0.016864563796"
+    },
+    {
+      "segment": 2,
+      "t0": "23/10",
+      "t1": "177/10",
+      "target_slope": [
+        "-1.94805194805194806E-15",
+        "1.94805194805194806E-15"
+      ],
+      "u_enclosure": [
+        "0.00824415447572961320170914726622",
+        "0.00824415447574607286981187235222"
+      ],
+      "second_derivative_bound": "0.19079038713459123",
+      "y_min_lower_bound": "0.75348596625190211785491250949208",
+      "y_max_upper_bound": "0.78941622715320423484191889089875",
+      "gross_rate_y_upper_bound": "0.098472159543",
+      "gross_rate_x_upper_bound": "0.008080902032",
+      "gross_rate_y_tight_upper": "0.098472159543",
+      "gross_rate_x_tight_upper": "0.008080902032"
+    },
+    {
+      "segment": 3,
+      "t0": "177/10",
+      "t1": "20",
+      "target_slope": [
+        "-0.02182706742568695652173913043479",
+        "-0.02182706742567391304347826086956"
+      ],
+      "u_enclosure": [
+        "-0.03451045047039792245958854191306",
+        "-0.01333378043222065565217391304347"
+      ],
+      "second_derivative_bound": "0.8175233990338008",
+      "y_min_lower_bound": "0.75348596625190211785491250949208",
+      "y_max_upper_bound": "1.22338552023031466215922378630777",
+      "gross_rate_y_upper_bound": "0.412209474556",
+      "gross_rate_x_upper_bound": "0.035577783991",
+      "gross_rate_y_tight_upper": "0.24185962837",
+      "gross_rate_x_tight_upper": "0.033827448017"
+    },
+    {
+      "segment": 4,
+      "t0": "20",
+      "t1": "223/10",
+      "target_slope": [
+        "0.01086956521739130434782608695652",
+        "0.01086956521739130434782608695653"
+      ],
+      "u_enclosure": [
+        "-0.00112478260869565217391304347827",
+        "0.00882521739130434782608695652175"
+      ],
+      "second_derivative_bound": "0.2555430255248089",
+      "y_min_lower_bound": "1.03016647832853887493203810146415",
+      "y_max_upper_bound": "1.22338552023031466215922378630777",
+      "gross_rate_y_upper_bound": "0.077101088215",
+      "gross_rate_x_upper_bound": "0.00909816226",
+      "gross_rate_y_tight_upper": "0.077101088215",
+      "gross_rate_x_tight_upper": "0.008869613665"
+    },
+    {
+      "segment": 5,
+      "t0": "223/10",
+      "t1": "377/10",
+      "target_slope": [
+        "0",
+        "0"
+      ],
+      "u_enclosure": [
+        "-0.00199",
+        "-0.00199"
+      ],
+      "second_derivative_bound": "0.11594171457725948",
+      "y_min_lower_bound": "1.03016647832853887493203810146415",
+      "y_max_upper_bound": "1.04383257550197558068749365311097",
+      "gross_rate_y_upper_bound": "0.0173855395",
+      "gross_rate_x_upper_bound": "0.002",
+      "gross_rate_y_tight_upper": "0.0173855395",
+      "gross_rate_x_tight_upper": "0.002"
+    },
+    {
+      "segment": 6,
+      "t0": "377/10",
+      "t1": "40",
+      "target_slope": [
+        "-0.02352173913043478260869565217392",
+        "-0.02352173913043478260869565217391"
+      ],
+      "u_enclosure": [
+        "-0.04692593043478260869565217391306",
+        "-0.02401340434782608695652173913043"
+      ],
+      "second_derivative_bound": "1.1768522469949338",
+      "y_min_lower_bound": "1.04199286265911120885362432766689",
+      "y_max_upper_bound": "1.40640423111958453123472102742373",
+      "gross_rate_y_upper_bound": "0.405313115903",
+      "gross_rate_x_upper_bound": "0.049873451414",
+      "gross_rate_y_tight_upper": "0.284480404287",
+      "gross_rate_x_tight_upper": "0.047162328634"
+    }
+  ],
+  "session1_y_bounds": [
+    "0.7534859662519021",
+    "1.2233855202303148"
+  ],
+  "session2_y_bounds": [
+    "1.030166478328539",
+    "1.4064042311195846"
+  ],
+  "reset_day2_y1_bounds": [
+    "1.2219388210827247",
+    "1.2225355202303148"
+  ],
+  "gross_rate_strictly_under_1": true,
+  "compensator_sold_shares_certified_upper": "1.8793421247301402009737783627958",
+  "target_sold_shares_certified_upper_each": "0.16925450899741382062689416295734",
+  "paired_dollar_turnover_certified_upper": "2.98308878179821217357707560765354",
+  "daily_bands_strictly_respected": true,
+  "target_end_closings": [
+    "0.97",
+    "0.9409"
+  ],
+  "terminal_crisis_lower_and_upper_numerical": [
+    "0.020783403917434951840149185381632550611106754435163257765242",
+    "0.0208379753127851668384091306551967603236844869427490715379671"
+  ],
+  "certified_delta_0_020_reached_by_exact_rationals": true,
+  "certified_delta_0_021_not_reached_by_exact_rationals": true,
+  "exp_0_20_rational_bounds": [
+    "1091049185658779335728712809527463887/893275521419531250000000000000000000",
+    "20882528819217335957269139578158522089/17097168546330468750000000000000000000"
+  ],
+  "zero_dollar_target_exact_from_quadratic_root": true,
+  "zero_dollar_comp_from_pairing": true,
+  "note": "For a rigorous delta=0.02 crisis, use the exact rational exponential inequality check below."
+}

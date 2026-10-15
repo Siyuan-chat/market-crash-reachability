@@ -1,0 +1,2157 @@
+{
+  "paper": {
+    "old_pages": 34,
+    "new_pages": 34,
+    "pages": [
+      {
+        "page": 1,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": " adapted generalized price coordinate Φ(S) = R S F u/g(u) du, uniquely normalized so that an",
+            "new": " adapted generalized price coordinate Φ(S) = ∫︁S F u/g(u) du, uniquely normalized so that an",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 2,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 3,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "-adapted generalized price coordinate Φ(S) = Z S F u g(u) du. (1.1) It is the coordinate in ",
+            "new": "-adapted generalized price coordinate Φ(S) = ∫︂S F u g(u) du. (1.1) It is the coordinate in ",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 4,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "pose the stronger terminal condition Xi(T) = R T 0 Si dθi = 0 to study residual price displa",
+            "new": "pose the stronger terminal condition Xi(T) = ∫︁T 0 Si dθi = 0 to study residual price displa",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "re inventory: F[θi(0) −θi(T)] = E(Si(T)) + ρ R T 0 (Si −F)2/g(Si) dt. Terminal dollar closur",
+            "new": "re inventory: F[θi(0) −θi(T)] = E(Si(T)) + ρ ∫︁T 0 (Si −F)2/g(Si) dt. Terminal dollar closur",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "pecified within-event parameter a ∈[0, z]: d eSi da = −g( eSi) eSi , d eSj da = g( eSj) eSj",
+            "new": "pecified within-event parameter a ∈[0, z]: d ̃︁Si da = −g( ̃︁Si) ̃︁Si , d ̃︁Sj da = g( ̃︁Sj)",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "in-event parameter a ∈[0, z]: d eSi da = −g( eSi) eSi , d eSj da = g( eSj) eSj , deθi da = ",
+            "new": "n-event parameter a ∈[0, z]: d ̃︁Si da = −g( ̃︁Si) ̃︁Si , d ̃︁Sj da = g( ̃︁Sj) ̃︁Sj , d ̃︁θi",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ent parameter a ∈[0, z]: d eSi da = −g( eSi) eSi , d eSj da = g( eSj) eSj , deθi da = −1 eS",
+            "new": "t parameter a ∈[0, z]: d ̃︁Si da = −g( ̃︁Si) ̃︁Si , d ̃︁Sj da = g( ̃︁Sj) ̃︁Sj , d ̃︁θi da = ",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "meter a ∈[0, z]: d eSi da = −g( eSi) eSi , d eSj da = g( eSj) eSj , deθi da = −1 eSi , deθj",
+            "new": "er a ∈[0, z]: d ̃︁Si da = −g( ̃︁Si) ̃︁Si , d ̃︁Sj da = g( ̃︁Sj) ̃︁Sj , d ̃︁θi da = −1 ̃︁Si ,",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " z]: d eSi da = −g( eSi) eSi , d eSj da = g( eSj) eSj , deθi da = −1 eSi , deθj da = 1 eSj ",
+            "new": " d ̃︁Si da = −g( ̃︁Si) ̃︁Si , d ̃︁Sj da = g( ̃︁Sj) ̃︁Sj , d ̃︁θi da = −1 ̃︁Si , d ̃︁θj da = ",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "d eSi da = −g( eSi) eSi , d eSj da = g( eSj) eSj , deθi da = −1 eSi , deθj da = 1 eSj . (2.",
+            "new": "i da = −g( ̃︁Si) ̃︁Si , d ̃︁Sj da = g( ̃︁Sj) ̃︁Sj , d ̃︁θi da = −1 ̃︁Si , d ̃︁θj da = 1 ̃︁Sj",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "a = −g( eSi) eSi , d eSj da = g( eSj) eSj , deθi da = −1 eSi , deθj da = 1 eSj . (2.1) The ",
+            "new": "g( ̃︁Si) ̃︁Si , d ̃︁Sj da = g( ̃︁Sj) ̃︁Sj , d ̃︁θi da = −1 ̃︁Si , d ̃︁θj da = 1 ̃︁Sj . (2.1) ",
+            "old_delta": "e",
+            "new_delta": " ̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " eSi , d eSj da = g( eSj) eSj , deθi da = −1 eSi , deθj da = 1 eSj . (2.1) The resulting en",
+            "new": ", d ̃︁Sj da = g( ̃︁Sj) ̃︁Sj , d ̃︁θi da = −1 ̃︁Si , d ̃︁θj da = 1 ̃︁Sj . (2.1) The resulting",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "d eSj da = g( eSj) eSj , deθi da = −1 eSi , deθj da = 1 eSj . (2.1) The resulting endpoint ",
+            "new": " da = g( ̃︁Sj) ̃︁Sj , d ̃︁θi da = −1 ̃︁Si , d ̃︁θj da = 1 ̃︁Sj . (2.1) The resulting endpoint",
+            "old_delta": "e",
+            "new_delta": " ̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "g( eSj) eSj , deθi da = −1 eSi , deθj da = 1 eSj . (2.1) The resulting endpoint flows satis",
+            "new": ") ̃︁Sj , d ̃︁θi da = −1 ̃︁Si , d ̃︁θj da = 1 ̃︁Sj . (2.1) The resulting endpoint flows satis",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ngle-share impulse is evaluated by solving d eS/ dξ = g( eS) and integrating R eS dξ along ",
+            "new": "ngle-share impulse is evaluated by solving d ̃︁S/ dξ = g( ̃︁S) and integrating ∫︁ ̃︁S dξ alo",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "mpulse is evaluated by solving d eS/ dξ = g( eS) and integrating R eS dξ along that respons",
+            "new": "pulse is evaluated by solving d ̃︁S/ dξ = g( ̃︁S) and integrating ∫︁ ̃︁S dξ along that respo",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "by solving d eS/ dξ = g( eS) and integrating R eS dξ along that response trajectory. Jumps ",
+            "new": " solving d ̃︁S/ dξ = g( ̃︁S) and integrating ∫︁ ̃︁S dξ along that response trajectory. Jumps",
+            "old_delta": "R",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " solving d eS/ dξ = g( eS) and integrating R eS dξ along that response trajectory. Jumps ar",
+            "new": "lving d ̃︁S/ dξ = g( ̃︁S) and integrating ∫︁ ̃︁S dξ along that response trajectory. Jumps ar",
+            "old_delta": "e",
+            "new_delta": "̃︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "fication, the level-price law is dSi(t) = −ρ \u0000Si(t) −F \u0001 dt + g(Si(t)) dθi(t), dXi = Si dθi",
+            "new": "fication, the level-price law is dSi(t) = −ρ (︁Si(t) −F )︁dt + g(Si(t)) dθi(t), dXi = Si dθi",
+            "old_delta": "\u0000",
+            "new_delta": "(︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "the level-price law is dSi(t) = −ρ \u0000Si(t) −F \u0001 dt + g(Si(t)) dθi(t), dXi = Si dθi. (2.3) Cho",
+            "new": "he level-price law is dSi(t) = −ρ (︁Si(t) −F )︁dt + g(Si(t)) dθi(t), dXi = Si dθi. (2.3) Cho",
+            "old_delta": "\u0001 ",
+            "new_delta": ")︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "Si/F). Conversion to paired dollars gives dqi trade = g(Si) S2 i dXi. (2.4) 4 ",
+            "new": "Si/F). Conversion to paired dollars gives dqi⃓⃓trade = g(Si) S2 i dXi. (2.4) 4 ",
+            "old_delta": " ",
+            "new_delta": "⃓⃓",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 5,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "wn). Let Li(T) = log[F/Si(T)] and L(T) = N−1 P i Li(T). The kth-largest loss, where k = ⌈αN",
+            "new": "wn). Let Li(T) = log[F/Si(T)] and L(T) = N−1 ∑︁ i Li(T). The kth-largest loss, where k = ⌈αN",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "udget). For an admissible path γ, set M(γ) = X e Z T 0 dze, H− i (γ) = Z T 0 \u0000 −dθi \u0001 +. (2",
+            "new": "udget). For an admissible path γ, set M(γ) = ∑︂ e ∫︂T 0 dze, H− i (γ) = ∫︂T 0 (︁−dθi )︁ +. (",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "t). For an admissible path γ, set M(γ) = X e Z T 0 dze, H− i (γ) = Z T 0 \u0000 −dθi \u0001 +. (2.8) U",
+            "new": "). For an admissible path γ, set M(γ) = ∑︂ e ∫︂T 0 dze, H− i (γ) = ∫︂T 0 (︁−dθi )︁ +. (2.8) ",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "path γ, set M(γ) = X e Z T 0 dze, H− i (γ) = Z T 0 \u0000 −dθi \u0001 +. (2.8) Under allowed initial i",
+            "new": "ath γ, set M(γ) = ∑︂ e ∫︂T 0 dze, H− i (γ) = ∫︂T 0 (︁−dθi )︁ +. (2.8) Under allowed initial ",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": ", set M(γ) = X e Z T 0 dze, H− i (γ) = Z T 0 \u0000 −dθi \u0001 +. (2.8) Under allowed initial invento",
+            "new": " set M(γ) = ∑︂ e ∫︂T 0 dze, H− i (γ) = ∫︂T 0 (︁−dθi )︁ +. (2.8) Under allowed initial invent",
+            "old_delta": "\u0000 ",
+            "new_delta": "(︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "(γ) = X e Z T 0 dze, H− i (γ) = Z T 0 \u0000 −dθi \u0001 +. (2.8) Under allowed initial inventory Hi ",
+            "new": "γ) = ∑︂ e ∫︂T 0 dze, H− i (γ) = ∫︂T 0 (︁−dθi )︁ +. (2.8) Under allowed initial inventory Hi ",
+            "old_delta": "\u0001",
+            "new_delta": ")︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 6,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "rofitable-round-trip property. Define E(S) = Z S F u −F g(u) du ≥0. (2.10) For any admissibl",
+            "new": "rofitable-round-trip property. Define E(S) = ∫︂S F u −F g(u) du ≥0. (2.10) For any admissibl",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "eginning at F the execution-cost identity is Z T 0 Si dθi = F[θi(T) −θi(0)] + E(Si(T)) + ρ Z",
+            "new": "eginning at F the execution-cost identity is ∫︂T 0 Si dθi = F[θi(T) −θi(0)] + E(Si(T)) + ρ ∫",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " T 0 Si dθi = F[θi(T) −θi(0)] + E(Si(T)) + ρ Z T 0 (Si −F)2 g(Si) dt. (2.11) Thus a share-fl",
+            "new": "︂T 0 Si dθi = F[θi(T) −θi(0)] + E(Si(T)) + ρ ∫︂T 0 (Si −F)2 g(Si) dt. (2.11) Thus a share-fl",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "s well as terminally dollar-flat would force P i[E(Si(T)) + ρ R T 0 (Si −F)2/g(Si) dt] = 0.",
+            "new": "s well as terminally dollar-flat would force ∑︁ i[E(Si(T)) + ρ ∫︁T 0 (Si −F)2/g(Si) dt] = 0.",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "lly dollar-flat would force P i[E(Si(T)) + ρ R T 0 (Si −F)2/g(Si) dt] = 0. Thus there can be",
+            "new": "ly dollar-flat would force ∑︁ i[E(Si(T)) + ρ ∫︁T 0 (Si −F)2/g(Si) dt] = 0. Thus there can be",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ed scalar during trading. Write H(S) = 1⊤y = P i Φ(Si). Summing over assets cancels every m",
+            "new": "ed scalar during trading. Write H(S) = 1⊤y = ∑︁ i Φ(Si). Summing over assets cancels every m",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "transfer and leaves only recovery: dH = −ρ N X i=1 R(yi) dt = −ρ N X i=1 Si(Si −F) g(Si) dt",
+            "new": "transfer and leaves only recovery: dH = −ρ N ∑︂ i=1 R(yi) dt = −ρ N ∑︂ i=1 Si(Si −F) g(Si) d",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ly recovery: dH = −ρ N X i=1 R(yi) dt = −ρ N X i=1 Si(Si −F) g(Si) dt. (3.1) The scalar H i",
+            "new": "y recovery: dH = −ρ N ∑︂ i=1 R(yi) dt = −ρ N ∑︂ i=1 Si(Si −F) g(Si) dt. (3.1) The scalar H i",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 7,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": ". Jensen’s inequality yields 0 ≤H(t) N = 1 N X i G(qi(t)) ≤G 1 N X i qi(t) ! . As G(0) = 0 ",
+            "new": ". Jensen’s inequality yields 0 ≤H(t) N = 1 N ∑︂ i G(qi(t)) ≤G (︄ 1 N ∑︂ i qi(t) )︄ . As G(0)",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "insert",
+            "old": "ality yields 0 ≤H(t) N = 1 N X i G(qi(t)) ≤G 1 N X i qi(t) ! . As G(0) = 0 and G is strict",
+            "new": "lity yields 0 ≤H(t) N = 1 N ∑︂ i G(qi(t)) ≤G (︄ 1 N ∑︂ i qi(t) )︄ . As G(0) = 0 and G is stri",
+            "old_delta": "",
+            "new_delta": "(︄ ",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "y yields 0 ≤H(t) N = 1 N X i G(qi(t)) ≤G 1 N X i qi(t) ! . As G(0) = 0 and G is strictly in",
+            "new": "elds 0 ≤H(t) N = 1 N ∑︂ i G(qi(t)) ≤G (︄ 1 N ∑︂ i qi(t) )︄ . As G(0) = 0 and G is strictly i",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " ≤H(t) N = 1 N X i G(qi(t)) ≤G 1 N X i qi(t) ! . As G(0) = 0 and G is strictly increasing, ",
+            "new": ") N = 1 N ∑︂ i G(qi(t)) ≤G (︄ 1 N ∑︂ i qi(t) )︄ . As G(0) = 0 and G is strictly increasing, ",
+            "old_delta": "!",
+            "new_delta": ")︄",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " . As G(0) = 0 and G is strictly increasing, P i qi(t) ≥0. Hence the mean loss L(t) = −N−1 ",
+            "new": " . As G(0) = 0 and G is strictly increasing, ∑︁ i qi(t) ≥0. Hence the mean loss L(t) = −N−1 ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " i qi(t) ≥0. Hence the mean loss L(t) = −N−1 P i qi(t) is nonpositive; Definition 2.2 impli",
+            "new": " i qi(t) ≥0. Hence the mean loss L(t) = −N−1 ∑︁ i qi(t) is nonpositive; Definition 2.2 impli",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "y the response shape in the family gp(S) = η \u0012 S F \u0013p , p ∈{2, 1, 0}, η > 0. (4.1) All three",
+            "new": "y the response shape in the family gp(S) = η (︃S F )︃p , p ∈{2, 1, 0}, η > 0. (4.1) All thre",
+            "old_delta": "\u0012 ",
+            "new_delta": "(︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "response shape in the family gp(S) = η \u0012 S F \u0013p , p ∈{2, 1, 0}, η > 0. (4.1) All three mark",
+            "new": "response shape in the family gp(S) = η (︃S F )︃p , p ∈{2, 1, 0}, η > 0. (4.1) All three mark",
+            "old_delta": "\u0013",
+            "new_delta": ")︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "rates explicitly for every exponent: Φp(S) =        F p η(2 −p) \u0000S2−p −F 2−p\u0001, p̸ = ",
+            "new": "rates explicitly for every exponent: Φp(S) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ F p η(2 −p) (︁S2−p −F 2−p)︁, p̸ ",
+            "old_delta": "",
+            "new_delta": "⎧",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "tes explicitly for every exponent: Φp(S) =        F p η(2 −p) \u0000S2−p −F 2−p\u0001, p̸ = 2,",
+            "new": "tes explicitly for every exponent: Φp(S) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ F p η(2 −p) (︁S2−p −F 2−p)︁, p̸ = ",
+            "old_delta": "",
+            "new_delta": "⎪",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "s explicitly for every exponent: Φp(S) =        F p η(2 −p) \u0000S2−p −F 2−p\u0001, p̸ = 2, F",
+            "new": "s explicitly for every exponent: Φp(S) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ F p η(2 −p) (︁S2−p −F 2−p)︁, p̸ = 2,",
+            "old_delta": "",
+            "new_delta": "⎪",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "explicitly for every exponent: Φp(S) =        F p η(2 −p) \u0000S2−p −F 2−p\u0001, p̸ = 2, F 2",
+            "new": "explicitly for every exponent: Φp(S) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ F p η(2 −p) (︁S2−p −F 2−p)︁, p̸ = 2, F",
+            "old_delta": "",
+            "new_delta": "⎨",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "plicitly for every exponent: Φp(S) =        F p η(2 −p) \u0000S2−p −F 2−p\u0001, p̸ = 2, F 2 η",
+            "new": "plicitly for every exponent: Φp(S) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ F p η(2 −p) (︁S2−p −F 2−p)︁, p̸ = 2, F 2",
+            "old_delta": "",
+            "new_delta": "⎪",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "icitly for every exponent: Φp(S) =        F p η(2 −p) \u0000S2−p −F 2−p\u0001, p̸ = 2, F 2 η l",
+            "new": "icitly for every exponent: Φp(S) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ F p η(2 −p) (︁S2−p −F 2−p)︁, p̸ = 2, F 2 η",
+            "old_delta": "",
+            "new_delta": "⎪",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "itly for every exponent: Φp(S) =        F p η(2 −p) \u0000S2−p −F 2−p\u0001, p̸ = 2, F 2 η log",
+            "new": "itly for every exponent: Φp(S) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ F p η(2 −p) (︁S2−p −F 2−p)︁, p̸ = 2, F 2 η l",
+            "old_delta": "",
+            "new_delta": "⎩",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " exponent: Φp(S) =        F p η(2 −p) \u0000S2−p −F 2−p\u0001, p̸ = 2, F 2 η log(S/F), p = 2. ",
+            "new": " exponent: Φp(S) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ F p η(2 −p) (︁S2−p −F 2−p)︁, p̸ = 2, F 2 η log(S/F), p = 2.",
+            "old_delta": "\u0000",
+            "new_delta": "(︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "p(S) =        F p η(2 −p) \u0000S2−p −F 2−p\u0001, p̸ = 2, F 2 η log(S/F), p = 2. 7 ",
+            "new": "(S) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ F p η(2 −p) (︁S2−p −F 2−p)︁, p̸ = 2, F 2 η log(S/F), p = 2. 7 ",
+            "old_delta": "\u0001",
+            "new_delta": ")︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 8,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "d trades conserve a quantity proportional to P i S2 i , P i Si, or P i log Si for p = 0, 1,",
+            "new": "d trades conserve a quantity proportional to ∑︁ i S2 i , ∑︁ i Si, or ∑︁ i log Si for p = 0, ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "nserve a quantity proportional to P i S2 i , P i Si, or P i log Si for p = 0, 1, 2, respect",
+            "new": "serve a quantity proportional to ∑︁ i S2 i , ∑︁ i Si, or ∑︁ i log Si for p = 0, 1, 2, respec",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "antity proportional to P i S2 i , P i Si, or P i log Si for p = 0, 1, 2, respectively. Reco",
+            "new": "tity proportional to ∑︁ i S2 i , ∑︁ i Si, or ∑︁ i log Si for p = 0, 1, 2, respectively. Reco",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 9,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "ry potential from (2.10) is E1(Fe−L) = F 2 η \u0010 L + e−L −1 \u0011 . (4.3) By (2.11), terminal dol",
+            "new": "ry potential from (2.10) is E1(Fe−L) = F 2 η (︂ L + e−L −1 )︂ . (4.3) By (2.11), terminal do",
+            "old_delta": "\u0010",
+            "new_delta": "(︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "from (2.10) is E1(Fe−L) = F 2 η \u0010 L + e−L −1 \u0011 . (4.3) By (2.11), terminal dollar closure a",
+            "new": "rom (2.10) is E1(Fe−L) = F 2 η (︂ L + e−L −1 )︂ . (4.3) By (2.11), terminal dollar closure a",
+            "old_delta": "\u0011",
+            "new_delta": ")︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "l h > 0, and L(T) = c2h2 2N (1 −r)(2 −e0 −r) X i u2 i + O(h3). (4.5) Proof. The individual ",
+            "new": "l h > 0, and L(T) = c2h2 2N (1 −r)(2 −e0 −r) ∑︂ i u2 i + O(h3). (4.5) Proof. The individual ",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "st-order term vanishes when averaged because P i ui = 0. The strictly positive quadratic co",
+            "new": "st-order term vanishes when averaged because ∑︁ i ui = 0. The strictly positive quadratic co",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 10,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "mmon log drawdown. Proof sketch. Set R(t)2 = P i Si(t)2. Under constant response, any paire",
+            "new": "mmon log drawdown. Proof sketch. Set R(t)2 = ∑︁ i Si(t)2. Under constant response, any paire",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "paired-dollar trade satisfies dR2|trade = 2η P i dXi = 0. Between trades, ̇R = −ρ \u0012 R −F P ",
+            "new": "paired-dollar trade satisfies dR2|trade = 2η ∑︁ i dXi = 0. Between trades, ̇R = −ρ (︃ R −F ∑",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "de = 2η P i dXi = 0. Between trades, ̇R = −ρ \u0012 R −F P i Si R \u0013 . 10 ",
+            "new": "e = 2η ∑︁ i dXi = 0. Between trades, ̇R = −ρ (︃ R −F ∑︁ i Si R )︃ . 10 ",
+            "old_delta": "\u0012",
+            "new_delta": "(︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " P i dXi = 0. Between trades, ̇R = −ρ \u0012 R −F P i Si R \u0013 . 10 ",
+            "new": "︁ i dXi = 0. Between trades, ̇R = −ρ (︃ R −F ∑︁ i Si R )︃ . 10 ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "= 0. Between trades, ̇R = −ρ \u0012 R −F P i Si R \u0013 . 10 ",
+            "new": "0. Between trades, ̇R = −ρ (︃ R −F ∑︁ i Si R )︃ . 10 ",
+            "old_delta": "\u0013",
+            "new_delta": ")︃",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 11,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "For positive prices, P i Si/R > 1, whence R(T) > F{1 + ( √ N −1)e−ρ",
+            "new": "For positive prices, ∑︁ i Si/R > 1, whence R(T) > F{1 + ( √ N −1)e−ρ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " and equal recovery integrals, together with P i Xi(T) = 0, give Xi(T) = 0 for every i. Mov",
+            "new": " and equal recovery integrals, together with ∑︁ i Xi(T) = 0, give Xi(T) = 0 for every i. Mov",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "he monotone share-response coordinate Ψ(S) = R S F du/g(u). Then the necessary dollar-turnov",
+            "new": "he monotone share-response coordinate Ψ(S) = ∫︁S F du/g(u). Then the necessary dollar-turnov",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ive coordinate distances to s: M ≥−kΦ(s) = k Z F s u g(u) du, X i H− i ≥−kΨ(s) = k Z F s du ",
+            "new": "ive coordinate distances to s: M ≥−kΦ(s) = k ∫︂F s u g(u) du, ∑︂ i H− i ≥−kΨ(s) = k ∫︂F s du",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "stances to s: M ≥−kΦ(s) = k Z F s u g(u) du, X i H− i ≥−kΨ(s) = k Z F s du g(u). (5.1) More",
+            "new": "stances to s: M ≥−kΦ(s) = k ∫︂F s u g(u) du, ∑︂ i H− i ≥−kΨ(s) = k ∫︂F s du g(u). (5.1) More",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "s) = k Z F s u g(u) du, X i H− i ≥−kΨ(s) = k Z F s du g(u). (5.1) Moreover, if Xi(T) = 0, no",
+            "new": ") = k ∫︂F s u g(u) du, ∑︂ i H− i ≥−kΨ(s) = k ∫︂F s du g(u). (5.1) Moreover, if Xi(T) = 0, no",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ny qualifying asset does not exceed Hi, then Z F s F −u g(u) du ≤FHi. (5.2) These inequaliti",
+            "new": "ny qualifying asset does not exceed Hi, then ∫︂F s F −u g(u) du ≤FHi. (5.2) These inequaliti",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 12,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "minate different kinds of resource scarcity: Z F 0 u g(u) du, Z F 0 du g(u). (5.3) For a loc",
+            "new": "minate different kinds of resource scarcity: ∫︂F 0 u g(u) du, ∫︂F 0 du g(u). (5.3) For a loc",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "kinds of resource scarcity: Z F 0 u g(u) du, Z F 0 du g(u). (5.3) For a local power law g(u)",
+            "new": "kinds of resource scarcity: ∫︂F 0 u g(u) du, ∫︂F 0 du g(u). (5.3) For a local power law g(u)",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "xecuted share rate by rgross i (t) = 1 Si(t) X e |Bie| ̇ze(t), 0 ≤rgross i (t) ≤ ̄v, i = 1,",
+            "new": "xecuted share rate by rgross i (t) = 1 Si(t) ∑︂ e |Bie| ̇ze(t), 0 ≤rgross i (t) ≤ ̄v, i = 1,",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "dditional price band (6.2), put Sfloor = max \u001a F(1 −β−), F −G ̄v ρ (1 −e−ρT ) \u001b > 0. (6.4) ",
+            "new": "dditional price band (6.2), put Sfloor = max {︃ F(1 −β−), F −G ̄v ρ (1 −e−ρT ) }︃ > 0. (6.4)",
+            "old_delta": "\u001a",
+            "new_delta": "{︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "floor = max \u001a F(1 −β−), F −G ̄v ρ (1 −e−ρT ) \u001b > 0. (6.4) 12 ",
+            "new": "loor = max {︃ F(1 −β−), F −G ̄v ρ (1 −e−ρT ) }︃ > 0. (6.4) 12 ",
+            "old_delta": "\u001b",
+            "new_delta": "}︃",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 13,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "sions the elementary bound is only Si(TD) ≥F QD d=1(1 −β−,d) and Cα(TD) ≤−PD d=1 log(1 −β−,",
+            "new": "sions the elementary bound is only Si(TD) ≥F ∏︁D d=1(1 −β−,d) and Cα(TD) ≤−∑︁D d=1 log(1 −β−",
+            "old_delta": "Q",
+            "new_delta": "∏︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " only Si(TD) ≥F QD d=1(1 −β−,d) and Cα(TD) ≤−PD d=1 log(1 −β−,d). Thus a daily band cannot ",
+            "new": "only Si(TD) ≥F ∏︁D d=1(1 −β−,d) and Cα(TD) ≤−∑︁D d=1 log(1 −β−,d). Thus a daily band cannot ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "i) ̇θi and | ̇θi| ≤ ̄v yields Si(t) ≥F −G ̄v R t 0 e−ρ(t−s) ds, proving (6.3). The price ban",
+            "new": "i) ̇θi and | ̇θi| ≤ ̄v yields Si(t) ≥F −G ̄v ∫︁t 0 e−ρ(t−s) ds, proving (6.3). The price ban",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "nted twice in gross share execution, M = 1 2 Z T 0 X i Si(t)rgross i (t) dt ≤NF(1 + β+) ̄vT ",
+            "new": "nted twice in gross share execution, M = 1 2 ∫︂T 0 ∑︂ i Si(t)rgross i (t) dt ≤NF(1 + β+) ̄vT",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "wice in gross share execution, M = 1 2 Z T 0 X i Si(t)rgross i (t) dt ≤NF(1 + β+) ̄vT 2 . (",
+            "new": "wice in gross share execution, M = 1 2 ∫︂T 0 ∑︂ i Si(t)rgross i (t) dt ≤NF(1 + β+) ̄vT 2 . (",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "cessary joint constraint ̄v ≥ 2k NF(1 + β+)T Z F Fe−δ u g(u) du. (6.8) For a closed executed",
+            "new": "cessary joint constraint ̄v ≥ 2k NF(1 + β+)T ∫︂F Fe−δ u g(u) du. (6.8) For a closed executed",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 14,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "act). Let g(S) ≡η > 0, assume dollar pairing P i Si ̇θi = 0, and impose the gross share-rat",
+            "new": "act). Let g(S) ≡η > 0, assume dollar pairing ∑︁ i Si ̇θi = 0, and impose the gross share-rat",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "re and for every N ≥2 and breadth α, Cα(T) ≤ \u0012 η ̄v Fρ \u00132 \" dT −ρTe−ρT + d2 T 2(1 −bT )2 # .",
+            "new": "re and for every N ≥2 and breadth α, Cα(T) ≤ (︃η ̄v Fρ )︃2 [︄ dT −ρTe−ρT + d2 T 2(1 −bT )2 ]",
+            "old_delta": "\u0012 ",
+            "new_delta": "(︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " every N ≥2 and breadth α, Cα(T) ≤ \u0012 η ̄v Fρ \u00132 \" dT −ρTe−ρT + d2 T 2(1 −bT )2 # . (6.11) I",
+            "new": " every N ≥2 and breadth α, Cα(T) ≤ (︃η ̄v Fρ )︃2 [︄ dT −ρTe−ρT + d2 T 2(1 −bT )2 ]︄ . (6.11)",
+            "old_delta": "\u0013",
+            "new_delta": ")︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ery N ≥2 and breadth α, Cα(T) ≤ \u0012 η ̄v Fρ \u00132 \" dT −ρTe−ρT + d2 T 2(1 −bT )2 # . (6.11) In p",
+            "new": "ry N ≥2 and breadth α, Cα(T) ≤ (︃η ̄v Fρ )︃2 [︄ dT −ρTe−ρT + d2 T 2(1 −bT )2 ]︄ . (6.11) In ",
+            "old_delta": "\"",
+            "new_delta": "[︄",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " \u0012 η ̄v Fρ \u00132 \" dT −ρTe−ρT + d2 T 2(1 −bT )2 # . (6.11) In particular, the maximum possible",
+            "new": "︃η ̄v Fρ )︃2 [︄ dT −ρTe−ρT + d2 T 2(1 −bT )2 ]︄ . (6.11) In particular, the maximum possible",
+            "old_delta": "#",
+            "new_delta": "]︄",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "tion. Proof. Set xi(t) = Si(t) −F and m(t) = P i xi(t). Variation of constants gives |xi(t)",
+            "new": "tion. Proof. Set xi(t) = Si(t) −F and m(t) = ∑︁ i xi(t). Variation of constants gives |xi(t)",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "tants gives |xi(t)| ≤η ̄v(1 − e−ρt)/ρ. Since P i Si ̇θi = 0, P i ̇θi = −F −1 P i xi ̇θi and",
+            "new": "tants gives |xi(t)| ≤η ̄v(1 − e−ρt)/ρ. Since ∑︁ i Si ̇θi = 0, ∑︁ i ̇θi = −F −1 ∑︁ i xi ̇θi a",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "t)| ≤η ̄v(1 − e−ρt)/ρ. Since P i Si ̇θi = 0, P i ̇θi = −F −1 P i xi ̇θi and therefore ̇m = ",
+            "new": ")| ≤η ̄v(1 − e−ρt)/ρ. Since ∑︁ i Si ̇θi = 0, ∑︁ i ̇θi = −F −1 ∑︁ i xi ̇θi and therefore ̇m =",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ρt)/ρ. Since P i Si ̇θi = 0, P i ̇θi = −F −1 P i xi ̇θi and therefore ̇m = −ρm −(η/F) P i x",
+            "new": ")/ρ. Since ∑︁ i Si ̇θi = 0, ∑︁ i ̇θi = −F −1 ∑︁ i xi ̇θi and therefore ̇m = −ρm −(η/F) ∑︁ i ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " −1 P i xi ̇θi and therefore ̇m = −ρm −(η/F) P i xi ̇θi. Integrating and bounding the gross",
+            "new": "−1 ∑︁ i xi ̇θi and therefore ̇m = −ρm −(η/F) ∑︁ i xi ̇θi. Integrating and bounding the gross",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " bounding the gross rates yields |m(T)| NF ≤ \u0012 η ̄v Fρ \u00132 [dT −ρTe−ρT ]. (6.12) For |xi(T)|/",
+            "new": " bounding the gross rates yields |m(T)| NF ≤ (︃η ̄v Fρ )︃2 [dT −ρTe−ρT ]. (6.12) For |xi(T)|",
+            "old_delta": "\u0012 ",
+            "new_delta": "(︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "the gross rates yields |m(T)| NF ≤ \u0012 η ̄v Fρ \u00132 [dT −ρTe−ρT ]. (6.12) For |xi(T)|/F ≤bT < 1",
+            "new": "the gross rates yields |m(T)| NF ≤ (︃η ̄v Fρ )︃2 [dT −ρTe−ρT ]. (6.12) For |xi(T)|/F ≤bT < 1",
+            "old_delta": "\u0013",
+            "new_delta": ")︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "and set the bounded, three-bin signal f(t) =        1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆,",
+            "new": "and set the bounded, three-bin signal f(t) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ 1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆,",
+            "old_delta": "",
+            "new_delta": "⎧",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "d set the bounded, three-bin signal f(t) =        1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r",
+            "new": "d set the bounded, three-bin signal f(t) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ 1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r",
+            "old_delta": "",
+            "new_delta": "⎪",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "set the bounded, three-bin signal f(t) =        1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r, ",
+            "new": "set the bounded, three-bin signal f(t) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ 1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r, ",
+            "old_delta": "",
+            "new_delta": "⎪",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "t the bounded, three-bin signal f(t) =        1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r, 2∆",
+            "new": "t the bounded, three-bin signal f(t) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ 1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r, 2∆",
+            "old_delta": "",
+            "new_delta": "⎨",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "the bounded, three-bin signal f(t) =        1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r, 2∆≤t",
+            "new": "the bounded, three-bin signal f(t) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ 1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r, 2∆≤t",
+            "old_delta": "",
+            "new_delta": "⎪",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "e bounded, three-bin signal f(t) =        1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r, 2∆≤t ≤",
+            "new": "e bounded, three-bin signal f(t) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ 1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r, 2∆≤t ≤",
+            "old_delta": "",
+            "new_delta": "⎪",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "bounded, three-bin signal f(t) =        1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r, 2∆≤t ≤T,",
+            "new": "bounded, three-bin signal f(t) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ 1, 0 ≤t < ∆, −(1 + r), ∆≤t < 2∆, r, 2∆≤t ≤T,",
+            "old_delta": "",
+            "new_delta": "⎩",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "t). (6.14) The dollar rates sum to zero, and R T 0 f(t) dt = 0. Direct integration also give",
+            "new": "t). (6.14) The dollar rates sum to zero, and ∫︁T 0 f(t) dt = 0. Direct integration also give",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "0 f(t) dt = 0. Direct integration also gives R T 0 e−ρ(T−t)f(t) dt = 0. Write h(S) = g(S)/S ",
+            "new": "0 f(t) dt = 0. Direct integration also gives ∫︁T 0 e−ρ(T−t)f(t) dt = 0. Write h(S) = g(S)/S ",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 15,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "ts yields log F Si(T) = ρ(1 −e0) 2F 2 a2u2 i Z T 0 e−ρ(T−t)y(t)2 dt + O(a3). (6.15) The inte",
+            "new": "ts yields log F Si(T) = ρ(1 −e0) 2F 2 a2u2 i ∫︂T 0 e−ρ(T−t)y(t)2 dt + O(a3). (6.15) The inte",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "sset signed dollars integrate to zero, while P i Si(T) = NF and strict concavity of log mak",
+            "new": "sset signed dollars integrate to zero, while ∑︁ i Si(T) = NF and strict concavity of log mak",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 16,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 17,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "bands the right side can be replaced by maxi PD d=1[−log(1 −βi,d,−)]. These are geometric c",
+            "new": "bands the right side can be replaced by maxi ∑︁D d=1[−log(1 −βi,d,−)]. These are geometric c",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "threshold Cα(TD) ≥δ holds if and only if N−k Y j=1 Yj F ≤exp \u0000kDλ −Nδ \u0001. (7.3) If all other",
+            "new": "threshold Cα(TD) ≥δ holds if and only if N−k ∏︂ j=1 Yj F ≤exp (︁kDλ −Nδ )︁. (7.3) If all oth",
+            "old_delta": "Y",
+            "new_delta": "∏︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " ≥δ holds if and only if N−k Y j=1 Yj F ≤exp \u0000kDλ −Nδ \u0001. (7.3) If all other assets have ind",
+            "new": "≥δ holds if and only if N−k ∏︂ j=1 Yj F ≤exp (︁kDλ −Nδ )︁. (7.3) If all other assets have in",
+            "old_delta": "\u0000",
+            "new_delta": "(︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " if and only if N−k Y j=1 Yj F ≤exp \u0000kDλ −Nδ \u0001. (7.3) If all other assets have individual l",
+            "new": "f and only if N−k ∏︂ j=1 Yj F ≤exp (︁kDλ −Nδ )︁. (7.3) If all other assets have individual l",
+            "old_delta": "\u0001",
+            "new_delta": ")︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "inal crisis severity is exactly Cα(TD) = min ( Dλ, kDλ −PN−k j=1 log(Yj/F) N ) . (7.4) In p",
+            "new": "inal crisis severity is exactly Cα(TD) = min {︄ Dλ, kDλ −∑︁N−k j=1 log(Yj/F) N }︄ . (7.4) In",
+            "old_delta": "(",
+            "new_delta": "{︄",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " severity is exactly Cα(TD) = min ( Dλ, kDλ −PN−k j=1 log(Yj/F) N ) . (7.4) In particular, ",
+            "new": "severity is exactly Cα(TD) = min {︄ Dλ, kDλ −∑︁N−k j=1 log(Yj/F) N }︄ . (7.4) In particular,",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "Cα(TD) = min ( Dλ, kDλ −PN−k j=1 log(Yj/F) N ) . (7.4) In particular, with a single compens",
+            "new": "(TD) = min {︄ Dλ, kDλ −∑︁N−k j=1 log(Yj/F) N }︄ . (7.4) In particular, with a single compens",
+            "old_delta": ")",
+            "new_delta": "}︄",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ubstituting the terminal prices into A = N−1 P i log(F/Si) gives (7.3). If every other loss",
+            "new": "ubstituting the terminal prices into A = N−1 ∑︁ i log(F/Si) gives (7.3). If every other loss",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 18,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "in a session starting at s > 0 requires ̄v ≥ \u0014ρ η \u0012 F −s + βs 1 −e−ρτ \u0013\u0015 + . (7.5) If the s",
+            "new": "in a session starting at s > 0 requires ̄v ≥ [︃ρ η (︃ F −s + βs 1 −e−ρτ )︃]︃ + . (7.5) If th",
+            "old_delta": "\u0014",
+            "new_delta": "[︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "session starting at s > 0 requires ̄v ≥ \u0014ρ η \u0012 F −s + βs 1 −e−ρτ \u0013\u0015 + . (7.5) If the same a",
+            "new": "ession starting at s > 0 requires ̄v ≥ [︃ρ η (︃ F −s + βs 1 −e−ρτ )︃]︃ + . (7.5) If the same",
+            "old_delta": "\u0012",
+            "new_delta": "(︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "s > 0 requires ̄v ≥ \u0014ρ η \u0012 F −s + βs 1 −e−ρτ \u0013\u0015 + . (7.5) If the same asset closes at the sa",
+            "new": "> 0 requires ̄v ≥ [︃ρ η (︃ F −s + βs 1 −e−ρτ )︃]︃ + . (7.5) If the same asset closes at the sa",
+            "old_delta": "\u0013\u0015",
+            "new_delta": ")︃]︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " τ, with sd = Fqd−1, then ̄v ≥ρF η max 1≤d≤D \u0014 1 + qd−1 \u0012 1 −q 1 −e−ρτ −1 \u0013\u0015 . (7.6) 18 ",
+            "new": " τ, with sd = Fqd−1, then ̄v ≥ρF η max 1≤d≤D [︃ 1 + qd−1 (︃ 1 −q 1 −e−ρτ −1 )︃]︃ . (7.6) 18 ",
+            "old_delta": "\u0014",
+            "new_delta": "[︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " = Fqd−1, then ̄v ≥ρF η max 1≤d≤D \u0014 1 + qd−1 \u0012 1 −q 1 −e−ρτ −1 \u0013\u0015 . (7.6) 18 ",
+            "new": "= Fqd−1, then ̄v ≥ρF η max 1≤d≤D [︃ 1 + qd−1 (︃ 1 −q 1 −e−ρτ −1 )︃]︃ . (7.6) 18 ",
+            "old_delta": "\u0012",
+            "new_delta": "(︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "≥ρF η max 1≤d≤D \u0014 1 + qd−1 \u0012 1 −q 1 −e−ρτ −1 \u0013\u0015 . (7.6) 18 ",
+            "new": "F η max 1≤d≤D [︃ 1 + qd−1 (︃ 1 −q 1 −e−ρτ −1 )︃]︃ . (7.6) 18 ",
+            "old_delta": "\u0013\u0015",
+            "new_delta": ")︃]︃",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 19,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "antaneous interasset executed-dollar balance P i dXi = 0. Suppose every asset closes the fi",
+            "new": "antaneous interasset executed-dollar balance ∑︁ i dXi = 0. Suppose every asset closes the fi",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "gi. Proof. Use Φ′ i(S) = S/gi(S) > 0 and H = P i Φi(Si). Trade settlement preserves H, and ",
+            "new": "gi. Proof. Use Φ′ i(S) = S/gi(S) > 0 and H = ∑︁ i Φi(Si). Trade settlement preserves H, and ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " preserves H, and recovery contributes ̇H = −P i ρiSi(Si −Fi)/gi(Si) ≥0 whenever every Si ≤",
+            "new": " preserves H, and recovery contributes ̇H = −∑︁ i ρiSi(Si −Fi)/gi(Si) ≥0 whenever every Si ≤",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 20,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "every asset, contradicting P i ̇Xi = 0. A limit-hit closing print is inst",
+            "new": "every asset, contradicting ∑︁ i ̇Xi = 0. A limit-hit closing print is inst",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ositive trading-time measure and satisfies ρ Z TD 0 Si(t)(Si(t) −F) g(Si(t)) dt = Z F sD u g",
+            "new": "ositive trading-time measure and satisfies ρ ∫︂TD 0 Si(t)(Si(t) −F) g(Si(t)) dt = ∫︂F sD u g",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "sfies ρ Z TD 0 Si(t)(Si(t) −F) g(Si(t)) dt = Z F sD u g(u) du > 0. (7.9) If every session af",
+            "new": "sfies ρ ∫︂TD 0 Si(t)(Si(t) −F) g(Si(t)) dt = ∫︂F sD u g(u) du > 0. (7.9) If every session af",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "y condition is ρτ1 max F≤u≤U1 u(u −F) g(u) ≥ Z F sD u g(u) du. (7.10) For constant impact g ",
+            "new": "y condition is ρτ1 max F≤u≤U1 u(u −F) g(u) ≥ ∫︂F sD u g(u) du. (7.10) For constant impact g ",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 21,
+        "equal": false,
+        "changes": [
+          {
+            "op": "insert",
+            "old": "ontinuous path satisfies, for almost every t, X i∈J ̇Xi(t) ≤ ̄v min    X i∈J Si(t), X j",
+            "new": "ontinuous path satisfies, for almost every t,⃓⃓⃓⃓⃓ ∑︂ i∈J ̇Xi(t)⃓⃓⃓⃓⃓≤ ̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t",
+            "old_delta": "",
+            "new_delta": "⃓⃓⃓⃓⃓",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ntinuous path satisfies, for almost every t, X i∈J ̇Xi(t) ≤ ̄v min    X i∈J Si(t), X j∈J",
+            "new": "ous path satisfies, for almost every t,⃓⃓⃓⃓⃓ ∑︂ i∈J ̇Xi(t)⃓⃓⃓⃓⃓≤ ̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t), ",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "h satisfies, for almost every t, X i∈J ̇Xi(t) ≤ ̄v min    X i∈J Si(t), X j∈Jc Sj(t)   ",
+            "new": "sfies, for almost every t,⃓⃓⃓⃓⃓ ∑︂ i∈J ̇Xi(t)⃓⃓⃓⃓⃓≤ ̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t), ∑︂ j∈Jc Sj(t) ⎫ ",
+            "old_delta": " ",
+            "new_delta": "⃓⃓⃓⃓⃓",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "s, for almost every t, X i∈J ̇Xi(t) ≤ ̄v min    X i∈J Si(t), X j∈Jc Sj(t)   . (7.12) ",
+            "new": "ost every t,⃓⃓⃓⃓⃓ ∑︂ i∈J ̇Xi(t)⃓⃓⃓⃓⃓≤ ̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t), ∑︂ j∈Jc Sj(t) ⎫ ⎬ ⎭. (7.12",
+            "old_delta": "",
+            "new_delta": "⎧",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " for almost every t, X i∈J ̇Xi(t) ≤ ̄v min    X i∈J Si(t), X j∈Jc Sj(t)   . (7.12) Su",
+            "new": "t every t,⃓⃓⃓⃓⃓ ∑︂ i∈J ̇Xi(t)⃓⃓⃓⃓⃓≤ ̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t), ∑︂ j∈Jc Sj(t) ⎫ ⎬ ⎭. (7.12) ",
+            "old_delta": "",
+            "new_delta": "⎨",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "or almost every t, X i∈J ̇Xi(t) ≤ ̄v min    X i∈J Si(t), X j∈Jc Sj(t)   . (7.12) Supp",
+            "new": "every t,⃓⃓⃓⃓⃓ ∑︂ i∈J ̇Xi(t)⃓⃓⃓⃓⃓≤ ̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t), ∑︂ j∈Jc Sj(t) ⎫ ⎬ ⎭. (7.12) Su",
+            "old_delta": "",
+            "new_delta": "⎩",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " almost every t, X i∈J ̇Xi(t) ≤ ̄v min    X i∈J Si(t), X j∈Jc Sj(t)   . (7.12) Suppos",
+            "new": "ery t,⃓⃓⃓⃓⃓ ∑︂ i∈J ̇Xi(t)⃓⃓⃓⃓⃓≤ ̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t), ∑︂ j∈Jc Sj(t) ⎫ ⎬ ⎭. (7.12) Suppo",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " t, X i∈J ̇Xi(t) ≤ ̄v min    X i∈J Si(t), X j∈Jc Sj(t)   . (7.12) Suppose that throug",
+            "new": " i∈J ̇Xi(t)⃓⃓⃓⃓⃓≤ ̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t), ∑︂ j∈Jc Sj(t) ⎫ ⎬ ⎭. (7.12) Suppose that throug",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "(t) ≤ ̄v min    X i∈J Si(t), X j∈Jc Sj(t)   . (7.12) Suppose that throughout a sessio",
+            "new": "⃓⃓≤ ̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t), ∑︂ j∈Jc Sj(t) ⎫ ⎬ ⎭. (7.12) Suppose that throughout a sessio",
+            "old_delta": "",
+            "new_delta": "⎫",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": ") ≤ ̄v min    X i∈J Si(t), X j∈Jc Sj(t)   . (7.12) Suppose that throughout a session ",
+            "new": "≤ ̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t), ∑︂ j∈Jc Sj(t) ⎫ ⎬ ⎭. (7.12) Suppose that throughout a session ",
+            "old_delta": "",
+            "new_delta": "⎬",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "≤ ̄v min    X i∈J Si(t), X j∈Jc Sj(t)   . (7.12) Suppose that throughout a session [T",
+            "new": "̄v min ⎧ ⎨ ⎩ ∑︂ i∈J Si(t), ∑︂ j∈Jc Sj(t) ⎫ ⎬ ⎭. (7.12) Suppose that throughout a session [T",
+            "old_delta": "",
+            "new_delta": "⎭",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "1. Let Φ′ i(S) = S/gi(S) > 0 and put KJ,d := X i∈J \u0002Φi(si,d−1) −Φi(si,d) \u0003 > 0. (7.13) If a",
+            "new": "1. Let Φ′ i(S) = S/gi(S) > 0 and put KJ,d := ∑︂ i∈J [︁Φi(si,d−1) −Φi(si,d) ]︁> 0. (7.13) If ",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " Φ′ i(S) = S/gi(S) > 0 and put KJ,d := X i∈J \u0002Φi(si,d−1) −Φi(si,d) \u0003 > 0. (7.13) If all com",
+            "new": "Φ′ i(S) = S/gi(S) > 0 and put KJ,d := ∑︂ i∈J [︁Φi(si,d−1) −Φi(si,d) ]︁> 0. (7.13) If all com",
+            "old_delta": "\u0002",
+            "new_delta": "[︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " and put KJ,d := X i∈J \u0002Φi(si,d−1) −Φi(si,d) \u0003 > 0. (7.13) If all compensating assets satisf",
+            "new": "nd put KJ,d := ∑︂ i∈J [︁Φi(si,d−1) −Φi(si,d) ]︁> 0. (7.13) If all compensating assets satisf",
+            "old_delta": "\u0003 ",
+            "new_delta": "]︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "hare-rate cap satisfy Md ≥KJ,d, ̄v ≥ KJ,d τd P j∈Jc Uj,d . (7.14) When Jc = ∅, the hypothes",
+            "new": "hare-rate cap satisfy Md ≥KJ,d, ̄v ≥ KJ,d τd ∑︁ j∈Jc Uj,d . (7.14) When Jc = ∅, the hypothes",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "elow benchmarks. Proof. Dollar pairing gives P i∈J ̇Xi = −P j∈Jc ̇Xj. In either set, | ̇Xi|",
+            "new": "elow benchmarks. Proof. Dollar pairing gives ∑︁ i∈J ̇Xi = −∑︁ j∈Jc ̇Xj. In either set, | ̇Xi",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ks. Proof. Dollar pairing gives P i∈J ̇Xi = −P j∈Jc ̇Xj. In either set, | ̇Xi| ≤Sirgross i ",
+            "new": "s. Proof. Dollar pairing gives ∑︁ i∈J ̇Xi = −∑︁ j∈Jc ̇Xj. In either set, | ̇Xi| ≤Sirgross i ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "dinate obeys ∆Xi = Φi(si,d) −Φi(si,d−1) + ρi R Td Td−1 Si(Si − Fi)/gi(Si) dt. The integral i",
+            "new": "dinate obeys ∆Xi = Φi(si,d) −Φi(si,d−1) + ρi ∫︁Td Td−1 Si(Si − Fi)/gi(Si) dt. The integral i",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " The integral is nonpositive for i ∈J, hence P i∈J ∆Xi ≤−KJ,d. The net executed dollars ent",
+            "new": " The integral is nonpositive for i ∈J, hence ∑︁ i∈J ∆Xi ≤−KJ,d. The net executed dollars ent",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "’s gross-share capacity is no more than ̄vτd P j∈Jc Uj,d. These yield (7.14). If Jc is empt",
+            "new": "’s gross-share capacity is no more than ̄vτd ∑︁ j∈Jc Uj,d. These yield (7.14). If Jc is empt",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "c,+, the dth-day specialization is ̄v ≥k m F \u0000q2(d−1) −q2d\u0001 2ητd(1 + βc,+)d (d ≥2), (7.15) ",
+            "new": "c,+, the dth-day specialization is ̄v ≥k m F (︁q2(d−1) −q2d)︁ 2ητd(1 + βc,+)d (d ≥2), (7.15)",
+            "old_delta": "\u0000",
+            "new_delta": "(︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "day specialization is ̄v ≥k m F \u0000q2(d−1) −q2d\u0001 2ητd(1 + βc,+)d (d ≥2), (7.15) provided all ",
+            "new": "ay specialization is ̄v ≥k m F (︁q2(d−1) −q2d)︁ 2ητd(1 + βc,+)d (d ≥2), (7.15) provided all ",
+            "old_delta": "\u0001",
+            "new_delta": ")︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 22,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": " < 1.4055543, sup t 9|u(t)|/y(t) < 0.284481, Z 40 0 9[u(t)]+/y(t) dt < 1.880, 9 Z 40 0 |u(t)",
+            "new": " < 1.4055543, sup t 9|u(t)|/y(t) < 0.284481, ∫︂40 0 9[u(t)]+/y(t) dt < 1.880, 9 ∫︂40 0 |u(t)",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "0.284481, Z 40 0 9[u(t)]+/y(t) dt < 1.880, 9 Z 40 0 |u(t)| dt < 2.984. (7.19) The targets ha",
+            "new": "0.284481, ∫︂40 0 9[u(t)]+/y(t) dt < 1.880, 9 ∫︂40 0 |u(t)| dt < 2.984. (7.19) The targets ha",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 23,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": " = 1, ρ = 0.4, T = 40): C0.9(40) ≤( ̄v/0.4)2 \u0014 1 + 1 2(1 − ̄v/0.4)2 \u0015 ≤1563441 79210000 < 0",
+            "new": " = 1, ρ = 0.4, T = 40): C0.9(40) ≤( ̄v/0.4)2 [︃ 1 + 1 2(1 − ̄v/0.4)2 ]︃ ≤1563441 79210000 < ",
+            "old_delta": "\u0014",
+            "new_delta": "[︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " C0.9(40) ≤( ̄v/0.4)2 \u0014 1 + 1 2(1 − ̄v/0.4)2 \u0015 ≤1563441 79210000 < 0.020. Since the right-h",
+            "new": "C0.9(40) ≤( ̄v/0.4)2 [︃ 1 + 1 2(1 − ̄v/0.4)2 ]︃ ≤1563441 79210000 < 0.020. Since the right-h",
+            "old_delta": "\u0015",
+            "new_delta": "]︃",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 24,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 25,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 26,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "e’s executed dollar transfer is the integral R Si dθi, not the beginning-of-pulse price time",
+            "new": "e’s executed dollar transfer is the integral ∫︁Si dθi, not the beginning-of-pulse price time",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "A.1) Decompose S = F + (S −F) and integrate: Z T 0 S dθ = F[θ(T) −θ(0)] + Z S(T) F u −F g(u)",
+            "new": "A.1) Decompose S = F + (S −F) and integrate: ∫︂T 0 S dθ = F[θ(T) −θ(0)] + ∫︂S(T) F u −F g(u)",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " and integrate: Z T 0 S dθ = F[θ(T) −θ(0)] + Z S(T) F u −F g(u) du + ρ Z T 0 (S −F)2 g(S) dt",
+            "new": " and integrate: ∫︂T 0 S dθ = F[θ(T) −θ(0)] + ∫︂S(T) F u −F g(u) du + ρ ∫︂T 0 (S −F)2 g(S) dt",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " = F[θ(T) −θ(0)] + Z S(T) F u −F g(u) du + ρ Z T 0 (S −F)2 g(S) dt, where the initial price ",
+            "new": " = F[θ(T) −θ(0)] + ∫︂S(T) F u −F g(u) du + ρ ∫︂T 0 (S −F)2 g(S) dt, where the initial price ",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 27,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "hui + c2h2 2 λ(r, e0)u2 i + O(h3), (B.3) 1 N X i Li(T) = c2h2 2N (1 −r)(2 −e0 −r) X i u2 i ",
+            "new": "hui + c2h2 2 λ(r, e0)u2 i + O(h3), (B.3) 1 N ∑︂ i Li(T) = c2h2 2N (1 −r)(2 −e0 −r) ∑︂ i u2 i",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": ".3) 1 N X i Li(T) = c2h2 2N (1 −r)(2 −e0 −r) X i u2 i + O(h3), 27 ",
+            "new": "3) 1 N ∑︂ i Li(T) = c2h2 2N (1 −r)(2 −e0 −r) ∑︂ i u2 i + O(h3), 27 ",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 28,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "The linear term vanishes in the mean because P i ui = 0. If at least k components are posit",
+            "new": "The linear term vanishes in the mean because ∑︁ i ui = 0. If at least k components are posit",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "Si −F) dt + 2η dXi, 1⊤dX = 0. (C.1) Let R = (P i S2 i )1/2. A paired-dollar trade keeps R f",
+            "new": "Si −F) dt + 2η dXi, 1⊤dX = 0. (C.1) Let R = (∑︁ i S2 i )1/2. A paired-dollar trade keeps R f",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " the same sum: every intermediate Yi > 0 and P i dYi = 0, so dXi = dYi/(2η) is a legal pair",
+            "new": " the same sum: every intermediate Yi > 0 and ∑︁ i dYi = 0, so dXi = dYi/(2η) is a legal pair",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " β), where one may take β = 1/5, so that a = q 1 −b2 −(m −1)c2 > b > c > 0, H = a + (m −1)c",
+            "new": " β), where one may take β = 1/5, so that a = √︂ 1 −b2 −(m −1)c2 > b > c > 0, H = a + (m −1)c",
+            "old_delta": "q",
+            "new_delta": "√︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "x the spherical direction uj = (c, . . . , a |{z} j , . . . , c, b), ∥uj∥2 = 1. (C.3) Set S(t)",
+            "new": "x the spherical direction uj = (c, . . . , a ⏞⏟⏟⏞ j , . . . , c, b), ∥uj∥2 = 1. (C.3) Set S(t)",
+            "old_delta": "|{z}",
+            "new_delta": "⏞⏟⏟⏞",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "e it solve the price equations, use R(t) = F h H + ( √ N −H)e−ρti , ̇θi = ρF η (uj,iH −1) .",
+            "new": "e it solve the price equations, use R(t) = F [︂ H + ( √ N −H)e−ρt]︂ , ̇θi = ρF η (uj,iH −1) ",
+            "old_delta": "h",
+            "new_delta": "[︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "e equations, use R(t) = F h H + ( √ N −H)e−ρti , ̇θi = ρF η (uj,iH −1) . (C.4) Indeed, diff",
+            "new": " equations, use R(t) = F [︂ H + ( √ N −H)e−ρt]︂ , ̇θi = ρF η (uj,iH −1) . (C.4) Indeed, diff",
+            "old_delta": "i",
+            "new_delta": "]︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ves (C.4) and ̇Xi = ρFR(t) η uj,i(uj,iH −1), X i ̇Xi = ρFR(t) η H X i u2 j,i − X i uj,i ! =",
+            "new": "ves (C.4) and ̇Xi = ρFR(t) η uj,i(uj,iH −1), ∑︂ i ̇Xi = ρFR(t) η (︄ H ∑︂ i u2 j,i − ∑︂ i uj,",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "insert",
+            "old": " ρFR(t) η uj,i(uj,iH −1), X i ̇Xi = ρFR(t) η H X i u2 j,i − X i uj,i ! = 0, (C.5) because ",
+            "new": "ρFR(t) η uj,i(uj,iH −1), ∑︂ i ̇Xi = ρFR(t) η (︄ H ∑︂ i u2 j,i − ∑︂ i uj,i )︄ = 0, (C.5) becau",
+            "old_delta": "",
+            "new_delta": "(︄ ",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "FR(t) η uj,i(uj,iH −1), X i ̇Xi = ρFR(t) η H X i u2 j,i − X i uj,i ! = 0, (C.5) because P i",
+            "new": ") η uj,i(uj,iH −1), ∑︂ i ̇Xi = ρFR(t) η (︄ H ∑︂ i u2 j,i − ∑︂ i uj,i )︄ = 0, (C.5) because ∑",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "uj,iH −1), X i ̇Xi = ρFR(t) η H X i u2 j,i − X i uj,i ! = 0, (C.5) because P i u2 j,i = 1 a",
+            "new": " −1), ∑︂ i ̇Xi = ρFR(t) η (︄ H ∑︂ i u2 j,i − ∑︂ i uj,i )︄ = 0, (C.5) because ∑︁ i u2 j,i = 1",
+            "old_delta": "X",
+            "new_delta": "∑︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": ", X i ̇Xi = ρFR(t) η H X i u2 j,i − X i uj,i ! = 0, (C.5) because P i u2 j,i = 1 and P i uj",
+            "new": " ̇Xi = ρFR(t) η (︄ H ∑︂ i u2 j,i − ∑︂ i uj,i )︄ = 0, (C.5) because ∑︁ i u2 j,i = 1 and ∑︁ i ",
+            "old_delta": "!",
+            "new_delta": ")︄",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "H X i u2 j,i − X i uj,i ! = 0, (C.5) because P i u2 j,i = 1 and P i uj,i = H. 28 ",
+            "new": "︂ i u2 j,i − ∑︂ i uj,i )︄ = 0, (C.5) because ∑︁ i u2 j,i = 1 and ∑︁ i uj,i = H. 28 ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "uj,i ! = 0, (C.5) because P i u2 j,i = 1 and P i uj,i = H. 28 ",
+            "new": ",i )︄ = 0, (C.5) because ∑︁ i u2 j,i = 1 and ∑︁ i uj,i = H. 28 ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 29,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": " to reach S1(T) = · · · = Sm(T) = ε, SN(T) = q R(T)2 −mε2. (C.6) The terminal price vector ",
+            "new": " to reach S1(T) = · · · = Sm(T) = ε, SN(T) = √︂ R(T)2 −mε2. (C.6) The terminal price vector ",
+            "old_delta": "q",
+            "new_delta": "√︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "d-dollar ledger Xi(T) = Si(T)2 −F 2 2η + ρ η Z T 0 Si(t)[Si(t) −F] dt. (C.7) For the compens",
+            "new": "d-dollar ledger Xi(T) = Si(T)2 −F 2 2η + ρ η ∫︂T 0 Si(t)[Si(t) −F] dt. (C.7) For the compens",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " b. Define Fε(b) = Rb(T)2 −mε2 −F 2 2η + ρ η Z T 0 bRb(t)[bRb(t) −F] dt, (C.8) where Rb depe",
+            "new": " b. Define Fε(b) = Rb(T)2 −mε2 −F 2 2η + ρ η ∫︂T 0 bRb(t)[bRb(t) −F] dt, (C.8) where Rb depe",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " its recovery-integrand is W(t) = (a −c)R(t) \u0002(a + c)R(t) −F \u0003. (C.9) This is strictly posi",
+            "new": " its recovery-integrand is W(t) = (a −c)R(t) [︁(a + c)R(t) −F ]︁. (C.9) This is strictly pos",
+            "old_delta": "\u0002",
+            "new_delta": "[︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "tegrand is W(t) = (a −c)R(t) \u0002(a + c)R(t) −F \u0003. (C.9) This is strictly positive: (a + c)H =",
+            "new": "egrand is W(t) = (a −c)R(t) [︁(a + c)R(t) −F ]︁. (C.9) This is strictly positive: (a + c)H =",
+            "old_delta": "\u0003",
+            "new_delta": "]︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " partition 0 = t0 < · · · < tm = T such that Z tj tj−1 W(t) dt = 1 m Z T 0 W(t) dt, j = 1, .",
+            "new": " partition 0 = t0 < · · · < tm = T such that ∫︂tj tj−1 W(t) dt = 1 m ∫︂T 0 W(t) dt, j = 1, .",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "· < tm = T such that Z tj tj−1 W(t) dt = 1 m Z T 0 W(t) dt, j = 1, . . . , m. (C.10) The con",
+            "new": "· < tm = T such that ∫︂tj tj−1 W(t) dt = 1 m ∫︂T 0 W(t) dt, j = 1, . . . , m. (C.10) The con",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " Xi(T). Every pulse and every stage respects P i dXi = 0; since XN(T) = 0, the common targe",
+            "new": " Xi(T). Every pulse and every stage respects ∑︁ i dXi = 0; since XN(T) = 0, the common targe",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 30,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "F 2/(4η). During recovery-controlled stages, P i | ̇Xi|/2 ≤ρNF 2/η, giving M(γ) ≤M0 := N3F ",
+            "new": "F 2/(4η). During recovery-controlled stages, ∑︁ i | ̇Xi|/2 ≤ρNF 2/η, giving M(γ) ≤M0 := N3F ",
+            "old_delta": "P",
+            "new_delta": "∑︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "truction. Fix 0 < b < 1/ √ N, and choose a = q 1 −(N −1)b2 > b, H = a + (N −1)b, Rb(t) = F ",
+            "new": "truction. Fix 0 < b < 1/ √ N, and choose a = √︂ 1 −(N −1)b2 > b, H = a + (N −1)b, Rb(t) = F ",
+            "old_delta": "q",
+            "new_delta": "√︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " 1 −(N −1)b2 > b, H = a + (N −1)b, Rb(t) = F h H + ( √ N −H)e−ρti . (D.1) Use the N positiv",
+            "new": " 1 −(N −1)b2 > b, H = a + (N −1)b, Rb(t) = F [︂ H + ( √ N −H)e−ρt]︂ . (D.1) Use the N positi",
+            "old_delta": "h",
+            "new_delta": "[︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " = a + (N −1)b, Rb(t) = F h H + ( √ N −H)e−ρti . (D.1) Use the N positive unit-vector direc",
+            "new": "= a + (N −1)b, Rb(t) = F [︂ H + ( √ N −H)e−ρt]︂ . (D.1) Use the N positive unit-vector direc",
+            "old_delta": "i",
+            "new_delta": "]︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " for every asset, define Wb(t) = (a −b)Rb(t) \u0002(a + b)Rb(t) −F \u0003. (D.3) Here (a + b)H = 1 + ",
+            "new": " for every asset, define Wb(t) = (a −b)Rb(t) [︁(a + b)Rb(t) −F ]︁. (D.3) Here (a + b)H = 1 +",
+            "old_delta": "\u0002",
+            "new_delta": "[︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " define Wb(t) = (a −b)Rb(t) \u0002(a + b)Rb(t) −F \u0003. (D.3) Here (a + b)H = 1 + Nab > 1, so Wb(t)",
+            "new": "define Wb(t) = (a −b)Rb(t) [︁(a + b)Rb(t) −F ]︁. (D.3) Here (a + b)H = 1 + Nab > 1, so Wb(t)",
+            "old_delta": "\u0003",
+            "new_delta": "]︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "terminal equal price in (D.2) tends to F √ N h 1 + ( √ N −1)e−ρT i , whereas b ↑1/ √ N yiel",
+            "new": "terminal equal price in (D.2) tends to F √ N [︂ 1 + ( √ N −1)e−ρT ]︂ , whereas b ↑1/ √ N yie",
+            "old_delta": "h",
+            "new_delta": "[︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": " in (D.2) tends to F √ N h 1 + ( √ N −1)e−ρT i , whereas b ↑1/ √ N yields Si(T) →F. Continu",
+            "new": "in (D.2) tends to F √ N [︂ 1 + ( √ N −1)e−ρT ]︂ , whereas b ↑1/ √ N yields Si(T) →F. Continu",
+            "old_delta": "i",
+            "new_delta": "]︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 31,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "the three-bin control (6.14), the identities R f = 0 and R e−ρ(T−t)f(t) dt = 0 follow from e",
+            "new": "the three-bin control (6.14), the identities ∫︁f = 0 and ∫︁e−ρ(T−t)f(t) dt = 0 follow from e",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "n control (6.14), the identities R f = 0 and R e−ρ(T−t)f(t) dt = 0 follow from equal bin wid",
+            "new": "n control (6.14), the identities ∫︁f = 0 and ∫︁e−ρ(T−t)f(t) dt = 0 follow from equal bin wid",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "ntegration by parts gives the exact identity Z T 0 e−ρ(T−t)f(t)y(t) dt = ρ 2h0 Z T 0 e−ρ(T−t",
+            "new": "ntegration by parts gives the exact identity ∫︂T 0 e−ρ(T−t)f(t)y(t) dt = ρ 2h0 ∫︂T 0 e−ρ(T−t",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "t identity Z T 0 e−ρ(T−t)f(t)y(t) dt = ρ 2h0 Z T 0 e−ρ(T−t)y(t)2 dt. (E.1) The resulting coe",
+            "new": "t identity ∫︂T 0 e−ρ(T−t)f(t)y(t) dt = ρ 2h0 ∫︂T 0 e−ρ(T−t)y(t)2 dt. (E.1) The resulting coe",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 32,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "ese imply |f| < 1.70 and |y′′| ≤9|u′| 0.70 + \u0012 ρ + 9|u| 0.702 \u0013 \u0012 0.60ρ + 9|u| 0.70 \u0013 < 5. ",
+            "new": "ese imply |f| < 1.70 and |y′′| ≤9|u′| 0.70 + (︃ ρ + 9|u| 0.702 )︃(︃ 0.60ρ + 9|u| 0.70 )︃ < 5",
+            "old_delta": "\u0012",
+            "new_delta": "(︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": ".70 and |y′′| ≤9|u′| 0.70 + \u0012 ρ + 9|u| 0.702 \u0013 \u0012 0.60ρ + 9|u| 0.70 \u0013 < 5. A tighter value of ",
+            "new": "70 and |y′′| ≤9|u′| 0.70 + (︃ ρ + 9|u| 0.702 )︃(︃ 0.60ρ + 9|u| 0.70 )︃ < 5. A tighter value of",
+            "old_delta": "\u0013 \u0012",
+            "new_delta": ")︃(︃",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": ".70 + \u0012 ρ + 9|u| 0.702 \u0013 \u0012 0.60ρ + 9|u| 0.70 \u0013 < 5. A tighter value of this last bound is r",
+            "new": "0 + (︃ ρ + 9|u| 0.702 )︃(︃ 0.60ρ + 9|u| 0.70 )︃ < 5. A tighter value of this last bound is r",
+            "old_delta": "\u0013",
+            "new_delta": ")︃",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 33,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 34,
+        "equal": true,
+        "changes": []
+      }
+    ],
+    "checks": [
+      {
+        "page": 1,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 2,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 3,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 4,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 5,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 6,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 7,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 8,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 9,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 10,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 11,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 12,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 13,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 14,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 15,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 16,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 17,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 18,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 19,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 20,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 21,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 22,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 23,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 24,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 25,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 26,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 27,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 28,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 29,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 30,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 31,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 32,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 33,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 34,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      }
+    ],
+    "classification": {
+      "hyphenation_changes": 0,
+      "math_glyph_extraction_changes": 195,
+      "substantive_text_changes_observed": 0,
+      "note": "Reviewed all distinct delta pairs and their local contexts; original legacy math-font extraction uses Latin letters, controls or private-use characters where new PDF exposes math Unicode."
+    }
+  },
+  "supplementary": {
+    "old_pages": 10,
+    "new_pages": 10,
+    "pages": [
+      {
+        "page": 1,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": "polynomial equation Xi(T2) = x(T2)2 −1 2 + ρ Z T2 0 x(t)[x(t) −1] dt = 0, i = 1, . . . , 9. ",
+            "new": "polynomial equation Xi(T2) = x(T2)2 −1 2 + ρ ∫︂T2 0 x(t)[x(t) −1] dt = 0, i = 1, . . . , 9. ",
+            "old_delta": "Z ",
+            "new_delta": "∫︂",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 2,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 3,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 4,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 5,
+        "equal": false,
+        "changes": [
+          {
+            "op": "replace",
+            "old": " F = η = 1 and k = 11, the curves evaluate k R 1 e−δ S/g(S) dS (dollars) and k R 1 e−δ 1/g(S",
+            "new": " F = η = 1 and k = 11, the curves evaluate k ∫︁1 e−δ S/g(S) dS (dollars) and k ∫︁1 e−δ 1/g(S",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          },
+          {
+            "op": "replace",
+            "old": "evaluate k R 1 e−δ S/g(S) dS (dollars) and k R 1 e−δ 1/g(S) dS (shares), for p = 0, 1. The b",
+            "new": "evaluate k ∫︁1 e−δ S/g(S) dS (dollars) and k ∫︁1 e−δ 1/g(S) dS (shares), for p = 0, 1. The b",
+            "old_delta": "R ",
+            "new_delta": "∫︁",
+            "category": "math_glyph_unicode_mapping"
+          }
+        ]
+      },
+      {
+        "page": 6,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 7,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 8,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 9,
+        "equal": true,
+        "changes": []
+      },
+      {
+        "page": 10,
+        "equal": true,
+        "changes": []
+      }
+    ],
+    "checks": [
+      {
+        "page": 1,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 2,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 3,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 4,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 5,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 6,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 7,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 8,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 9,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      },
+      {
+        "page": 10,
+        "number_sequence_equal": true,
+        "square_bracket_numeric_citations_equal": true,
+        "equation_numbers_equal": true
+      }
+    ],
+    "classification": {
+      "hyphenation_changes": 0,
+      "math_glyph_extraction_changes": 3,
+      "substantive_text_changes_observed": 0,
+      "note": "Reviewed all distinct delta pairs and their local contexts; original legacy math-font extraction uses Latin letters, controls or private-use characters where new PDF exposes math Unicode."
+    }
+  },
+  "new_page5_definition_lines": [
+    {
+      "bbox": [
+        74.16000366210938,
+        407.7309875488281,
+        537.8397827148438,
+        419.7052001953125
+      ],
+      "text": "Definition 2.2 (Terminal systemic drawdown). Let Li(T) = log[F/Si(T)] and L(T) ="
+    },
+    {
+      "bbox": [
+        74.16000366210938,
+        419.5858154296875,
+        107.77151489257812,
+        435.2579345703125
+      ],
+      "text": "N−1 ∑︁"
+    },
+    {
+      "bbox": [
+        107.76700592041016,
+        421.2098083496094,
+        414.81951904296875,
+        435.0122985839844
+      ],
+      "text": "i Li(T). The kth-largest loss, where k = ⌈αN⌉, is Qα(T). Define"
+    }
+  ]
+}

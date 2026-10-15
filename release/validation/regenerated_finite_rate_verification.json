@@ -1,0 +1,96 @@
+{
+  "checks": 17,
+  "assumptions": {
+    "N": 3,
+    "T": 3.0,
+    "F": 1.0,
+    "eta": 1.0,
+    "rho": 1.0,
+    "gross_rate_cap": 0.15,
+    "single_session_beta": 0.15
+  },
+  "local_three_stage": {
+    "p0_C": 6.335429621533101e-05,
+    "p1_C": 7.401486830834311e-17,
+    "p2_C": -0.0001252829074914506,
+    "minimum_price_p0": 0.9543797746572541,
+    "maximum_price_p0": 1.0429658275854454,
+    "terminal_dollar_residual": 0.0,
+    "maximum_gross_share_rate": 0.10032857299012668,
+    "total_executed_dollar_turnover": 0.19150312176400197,
+    "maximum_share_sales": 0.09720462470148448,
+    "first_variation_terminal": 0.0,
+    "quadratic_coefficient": 0.05084144259289422
+  },
+  "p1_partial": {
+    "C": 0.0007340539989364412,
+    "peak_gross_rate": 0.10674774438332743,
+    "terminal_dollar_residual": 0.0,
+    "minprice": 0.9367879441171468,
+    "maxprice": 1.0546572343959772
+  },
+  "minspeed_necessary_formula": "v >= rho F (1-exp(-delta))/(G*(1-exp(-rho*T)))",
+  "paired_quadratic_formula": "(eta*v/(F*rho))^2 * [ (1-e^-rhoT)-rho*T*e^-rhoT + (1-e^-rhoT)^2/(2(1-b)^2) ], b=eta*v*(1-e^-rhoT)/(F*rho)<1",
+  "quadratic_certificate_at_v_015": 0.031834405676339744,
+  "speed_caps": [
+    [
+      0.025,
+      0.02404203063778488
+    ],
+    [
+      0.05,
+      0.04867634955724791
+    ],
+    [
+      0.1,
+      0.09984386391614919
+    ],
+    [
+      0.15,
+      0.1537713481515735
+    ],
+    [
+      0.2,
+      0.21077360840944234
+    ],
+    [
+      0.3,
+      0.33556208222291206
+    ],
+    [
+      0.5,
+      0.6445598289862031
+    ]
+  ],
+  "price_bands": [
+    [
+      0.025,
+      0.025317807984289897
+    ],
+    [
+      0.05,
+      0.05129329438755058
+    ],
+    [
+      0.1,
+      0.10536051565782628
+    ],
+    [
+      0.15,
+      0.16251892949777494
+    ],
+    [
+      0.2,
+      0.2231435513142097
+    ],
+    [
+      0.3,
+      0.35667494393873245
+    ],
+    [
+      0.5,
+      0.6931471805599453
+    ]
+  ],
+  "note": "Deterministic controlled price paths, no stochastic frequencies or observed prices"
+}

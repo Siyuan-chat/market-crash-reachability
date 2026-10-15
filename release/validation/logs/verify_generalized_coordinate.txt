@@ -1,0 +1,8 @@
+{
+  "p_family_symbolic_derivative": "PASS",
+  "coordinate_normalization_at_F": "PASS",
+  "arbitrary_g_curvature_formulae": "PASS",
+  "independent_nontrivial_pair_ODE_comparison": "PASS",
+  "max_dollar_coordinate_residual": 2.742298575719726e-13,
+  "note": "Numerical comparison only verifies coordinate equivalence in a two-asset test, not the global theorems."
+}

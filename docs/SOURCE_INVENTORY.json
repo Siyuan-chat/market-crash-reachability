@@ -1,0 +1,247 @@
+[
+  {
+    "source": "arxiv_source/main.tex",
+    "destination": "paper/main.tex",
+    "source_sha256": "2e1c739947ef521a82d52830c2abc613cba75d1dbcdcbd02967d2fa75eceecac"
+  },
+  {
+    "source": "arxiv_source/main.bbl",
+    "destination": "paper/main.bbl",
+    "source_sha256": "27c1ccb48b35027824e8a6f610a780b05683c05a560ad5ecc60c53f78e6fa82b"
+  },
+  {
+    "source": "arxiv_source/references.bib",
+    "destination": "paper/references.bib",
+    "source_sha256": "f9038e15566541be95bf984c46ff6709ad3c34d54a40a026bd60f7e55339710b"
+  },
+  {
+    "source": "When_Can_Markets_Crash_Without_News_V12_Final.pdf",
+    "destination": "paper/manuscript.pdf",
+    "source_sha256": "1b8dc974190ccda1b19d6fb7aab254feda7f5a38abe0c54cadd6a55ee4abe44c"
+  },
+  {
+    "source": "research/supplementary.tex",
+    "destination": "supplementary/supplementary.tex",
+    "source_sha256": "15959cac27a4c9cbe825c9fd94f004e9a4c08420b6aa2ba2e145b6f93669953e"
+  },
+  {
+    "source": "Supplementary_Material.pdf",
+    "destination": "supplementary/supplementary.pdf",
+    "source_sha256": "7b974fd350b86b7fa25ccf680fb81363039a66ded3677b98db0e5fcce0e057da"
+  },
+  {
+    "source": "research/figures/response_regimes.pdf",
+    "destination": "paper/figures/response_regimes.pdf",
+    "source_sha256": "ea2ce5e7fe9497ca16bc698f7076792a408fc3babac7acba86d153abaeb280ed"
+  },
+  {
+    "source": "research/figures/abc_control_comparison.pdf",
+    "destination": "paper/figures/abc_control_comparison.pdf",
+    "source_sha256": "fcd7dd0185b23460e6048a814f517726ed02108948e7cc36882239dbf95b3854"
+  },
+  {
+    "source": "research/figures/finite_rate_quadratic.pdf",
+    "destination": "paper/figures/finite_rate_quadratic.pdf",
+    "source_sha256": "dfa755d2f665dd07a39c84a8d4d6cf26f09852854b7dee3bb869192cc7e8825c"
+  },
+  {
+    "source": "research/figures/multiday_crisis_trigger.pdf",
+    "destination": "paper/figures/multiday_crisis_trigger.pdf",
+    "source_sha256": "2af2297bbbf06015ede7b58002c226bc5653a6f32e66371466b8ca60aab4c4de"
+  },
+  {
+    "source": "research/figures/v7_certified_multiday_prices.pdf",
+    "destination": "paper/figures/v7_certified_multiday_prices.pdf",
+    "source_sha256": "56ac6fd0a2963fddbce3d451cfe34ea7bf49b732ee105ad4c3c98142bc2fa9b3"
+  },
+  {
+    "source": "research/figures/v7_certified_rate_path.pdf",
+    "destination": "paper/figures/v7_certified_rate_path.pdf",
+    "source_sha256": "b1ba935dc027f5244a80965205ab457b160f9dbad83ea07104031cd71a8ad5f7"
+  },
+  {
+    "source": "research/figures/multiday_streak_witness.pdf",
+    "destination": "supplementary/figures/multiday_streak_witness.pdf",
+    "source_sha256": "0cc089afa4699a5c68a9e9820c818d02654a9999dd04a3651207155b1061a9e8"
+  },
+  {
+    "source": "research/figures/multiday_ledgers_and_rates.pdf",
+    "destination": "supplementary/figures/multiday_ledgers_and_rates.pdf",
+    "source_sha256": "2bc6492a48b834300fc06922d8b24b18691e9703f687b0d9b92dda7f20f655d6"
+  },
+  {
+    "source": "research/figures/market_specification.pdf",
+    "destination": "supplementary/figures/market_specification.pdf",
+    "source_sha256": "139c46786d653dd724be2715ec57421b5a3fc81dd64654f60260cd7b7981a664"
+  },
+  {
+    "source": "research/figures/elasticity_examples.pdf",
+    "destination": "supplementary/figures/elasticity_examples.pdf",
+    "source_sha256": "425aba5354047951d741b7489b3ff7fb56ef5012bfe97417030e76d4d065ef71"
+  },
+  {
+    "source": "research/figures/full_coverage_threshold.pdf",
+    "destination": "supplementary/figures/full_coverage_threshold.pdf",
+    "source_sha256": "82ea1e0cf8375ccc79c82736cd4da63e2feed193aac700bbe02b64bbf7d5301a"
+  },
+  {
+    "source": "research/figures/all_asset_boundary_heatmap.pdf",
+    "destination": "supplementary/figures/all_asset_boundary_heatmap.pdf",
+    "source_sha256": "564dbb23b483924e5058c94fef2fbc08f15d172c370ad0c8b24ba5e8b380418c"
+  },
+  {
+    "source": "research/figures/resource_lower_bounds.pdf",
+    "destination": "supplementary/figures/resource_lower_bounds.pdf",
+    "source_sha256": "061d11c2ee306a80b3060d649562e736180544cd0e75b4e9f2fa704bf80a763a"
+  },
+  {
+    "source": "research/figures/resource_scaling_N.pdf",
+    "destination": "supplementary/figures/resource_scaling_N.pdf",
+    "source_sha256": "b51f8248a22cce2455ae23a3067333a6095754b4b1caca46407dba95f926e8cb"
+  },
+  {
+    "source": "research/figures/bounded_rate_continuous_path.pdf",
+    "destination": "supplementary/figures/bounded_rate_continuous_path.pdf",
+    "source_sha256": "73d43cc7a04f9b4da44b95ae41bf542946e23af498b0ebb052a5eb5ee14977d3"
+  },
+  {
+    "source": "research/figures/rate_and_price_limit_bounds.pdf",
+    "destination": "supplementary/figures/rate_and_price_limit_bounds.pdf",
+    "source_sha256": "9f1e3c994e2f6d088a6c093608859582f234f71a897fcd1b88033fae5ed4d113"
+  },
+  {
+    "source": "research/figures/multiday_rate_frontier.pdf",
+    "destination": "supplementary/figures/multiday_rate_frontier.pdf",
+    "source_sha256": "263e7377d7be8d8735b6fc9c4848381ed1e41133c09c8954730f939ff0441636"
+  },
+  {
+    "source": "research/figures/multiday_fullbreadth_obstruction.pdf",
+    "destination": "supplementary/figures/multiday_fullbreadth_obstruction.pdf",
+    "source_sha256": "fe9f55120e7c320fec7a9a01b38e91783c8afee7308cfa1d925517ad57479ac2"
+  },
+  {
+    "source": "research/figures/v7_minimum_rate_bracket.pdf",
+    "destination": "supplementary/figures/v7_minimum_rate_bracket.pdf",
+    "source_sha256": "1f90f27dc50a7f0c67f24328f6d27c1153df86de0d5f64a6ac82b0a152c5d2a0"
+  },
+  {
+    "source": "research/figures/v7_cut_capacity_N.pdf",
+    "destination": "supplementary/figures/v7_cut_capacity_N.pdf",
+    "source_sha256": "fd197d8e63867ea2275b7b4ac81362319757fc9f7be6a477ed579bffa396eb64"
+  },
+  {
+    "source": "research/figures/closed_flow_price_paths.pdf",
+    "destination": "supplementary/figures/closed_flow_price_paths.pdf",
+    "source_sha256": "e125639e83aadb8cf91e35605287e2dbdaf34dc77367543b31b08727cd397361"
+  },
+  {
+    "source": "research/figures/dollar_vs_share_closure.pdf",
+    "destination": "supplementary/figures/dollar_vs_share_closure.pdf",
+    "source_sha256": "d1b2ec6b07ea4a5691fe61c0d2cd4d39e9b2db0a79ec1f3a3778b0e747bcd3d1"
+  },
+  {
+    "source": "research/figures/finite_resources_severe_crashes.pdf",
+    "destination": "supplementary/figures/finite_resources_severe_crashes.pdf",
+    "source_sha256": "8964ab6831a91529c152ff036909defa6d97209bec46509d5569d84c18ca8384"
+  },
+  {
+    "source": "research/figures/old_pulse_path_fails_limits.pdf",
+    "destination": "supplementary/figures/old_pulse_path_fails_limits.pdf",
+    "source_sha256": "480beedef8de36fc7203262a54f80cf449319b8c7c3dd9a6821760c601b41506"
+  },
+  {
+    "source": "research/scripts/numerical_experiments.py",
+    "destination": "scripts/numerical_experiments.py",
+    "source_sha256": "3dfc7f5fbe6759cd1205bd908599b40d51bc6fb605162d9042636d05b6162b8f"
+  },
+  {
+    "source": "research/scripts/verify_results.py",
+    "destination": "scripts/verify_results.py",
+    "source_sha256": "d8d53a4a2692a2a98031c8bf715e2457a647d109218e8e4f71af1b0d08a11e90"
+  },
+  {
+    "source": "research/scripts/verify_multiday.py",
+    "destination": "scripts/verify_multiday.py",
+    "source_sha256": "6c1df7d5e6f3e443fc414eec4f887c2ac52dcd29aad6362589e5ca223cdbfd83"
+  },
+  {
+    "source": "research/scripts/consecutive_limit_down.py",
+    "destination": "scripts/consecutive_limit_down.py",
+    "source_sha256": "f32a4dec77c85fd3ba9e8e8dc8afa9be286dc9ee8e4be1a38cff285edfe9bb1d"
+  },
+  {
+    "source": "research/scripts/improved_multiday_witness.py",
+    "destination": "scripts/improved_multiday_witness.py",
+    "source_sha256": "b726087685e3186fd9a7757578f2b00f3fc9b5c4711bde33b2d38e8cd2064d6a"
+  },
+  {
+    "source": "research/scripts/make_figures.py",
+    "destination": "scripts/make_figures.py",
+    "source_sha256": "eac5e876490c69cc86cd0fd278d2978dc657e61f8c0d00947e16947d4a4048be"
+  },
+  {
+    "source": "research/scripts/make_multiday_figures.py",
+    "destination": "scripts/make_multiday_figures.py",
+    "source_sha256": "29bd3758ecc28c91b572449dda9038ba573d54e84aa5845076792451e6e91971"
+  },
+  {
+    "source": "research/verification/certify_streak_interval.py",
+    "destination": "verification/certify_streak_interval.py",
+    "source_sha256": "b62d9029069077ba8aca0f3868f7c477cffda59228df2deca3eedff64028ce81"
+  },
+  {
+    "source": "research/verification/verify_consistency.py",
+    "destination": "verification/verify_consistency.py",
+    "source_sha256": "9762677d015f80af44f91772cfafe926dd1d9e3b1625d693f3e9a892da3a80fd"
+  },
+  {
+    "source": "research/verification/verify_generalized_coordinate.py",
+    "destination": "verification/verify_generalized_coordinate.py",
+    "source_sha256": "900988267752a9e12c5b9a31f54dcf1b877a0ea5fcded9b4b9f19df5f27e82f2"
+  },
+  {
+    "source": "research/verification/finite_rate_and_bands.py",
+    "destination": "verification/finite_rate_and_bands.py",
+    "source_sha256": "87792234555873c55a4ed0fc5410e57dcb180358848a4343fe812ee653c3c963"
+  },
+  {
+    "source": "research/verification/illustrate_removed_pulse_paths.py",
+    "destination": "verification/illustrate_removed_pulse_paths.py",
+    "source_sha256": "d049db8775b84320f044201bf5310ea4df5e54dda3923714f31c27e152e24ccd"
+  },
+  {
+    "source": "research/verification/audit_manuscript_certificate_v11.py",
+    "destination": "verification/audit_manuscript_certificate.py",
+    "source_sha256": "12c84406eba6c75c77c5f74082dc750c7fba1e00cd9bdb8353eebaa3e0568507"
+  },
+  {
+    "source": "research/data/final_interval_certificate.json",
+    "destination": "data/certificates/final_interval_certificate.json",
+    "source_sha256": "354c7797c1e25ebee143d04d11e23ec92cb93214b7333eed7fcd91dd0493c18f"
+  },
+  {
+    "source": "research/data/improved_witness_illustration.json",
+    "destination": "data/fixtures/improved_witness_illustration.json",
+    "source_sha256": "6fc44918d3faf1237fbc0e9c1fd505a347b7aa67207a7882f46e4ab19348f9b1"
+  },
+  {
+    "source": "research/sensitivity_probe.py",
+    "destination": "scripts/sensitivity_probe.py",
+    "source_sha256": "603ec019eb918b04ad6494b2b31e330aac2c5bb94b0e220801a2d86e08a9b75d"
+  },
+  {
+    "source": "research/verification/audit_v9_sensitivity.py",
+    "destination": "verification/audit_sensitivity.py",
+    "source_sha256": "7b611ee4b050039c4fb4d58a8b1ab95f72bf564dff431fbd7d27746f873e4867"
+  },
+  {
+    "source": "research/data/figure_verification.json",
+    "destination": "data/fixtures/figure_verification.json",
+    "source_sha256": "7f97655ad5833756c3a0c0be5365559f960fd82236c99a952a23210c2eb744b0"
+  },
+  {
+    "source": "research/data/finite_rate_verification.json",
+    "destination": "data/fixtures/finite_rate_verification.json",
+    "source_sha256": "b0cba5450763adbae0274451cacb2befc55359f9eda83218272f945cb61e9358"
+  }
+]

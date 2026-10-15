@@ -1,0 +1,83 @@
+{
+  "validated_existing_interval_certificate": true,
+  "certificate_steps": 80000,
+  "day1_y_outward_interval": [
+    "9418574578148776473186406368651/12500000000000000000000000000000",
+    "122338552023031466215922378630777/100000000000000000000000000000000"
+  ],
+  "day2_y_outward_interval": [
+    "20603329566570777498640762029283/20000000000000000000000000000000",
+    "140640423111958453123472102742373/100000000000000000000000000000000"
+  ],
+  "day1_reference_reset_y20_interval": [
+    "30548470527068115669593360753953/25000000000000000000000000000000",
+    "122253552023031466215922378630777/100000000000000000000000000000000"
+  ],
+  "certified_fixed_path_band_24_7_percent": true,
+  "certified_fixed_path_band_25_percent": true,
+  "fixed_path_fails_band_24_percent": true,
+  "fixed_path_failure_reason": "y(17.7) upper < 0.760, below proposed lower bound 0.760",
+  "alternative_target_counts_exploratory_not_certified": [
+    {
+      "k": 6,
+      "m": 4,
+      "y20": 1.0427840411041367,
+      "y40": 1.0811174568896116,
+      "day1min": 0.9680662075440855,
+      "day1max": 1.0427840411041367,
+      "day2min": 1.0068964682536536,
+      "day2max": 1.0811174568896116,
+      "max_rate_comp": 0.06156751988191748,
+      "required_band_for_fixed_path": 0.042784041104136694,
+      "mean_loss": 0.0053529735710366785,
+      "max_price_end": 1.0811174568896116,
+      "crisis_threshold_002": false
+    },
+    {
+      "k": 7,
+      "m": 3,
+      "y20": 1.0654929460619211,
+      "y40": 1.1230236834608118,
+      "day1min": 0.9493471263579919,
+      "day1max": 1.0654929460619211,
+      "day2min": 1.010434476581238,
+      "day2max": 1.1230236834608118,
+      "max_rate_comp": 0.09219792571591012,
+      "required_band_for_fixed_path": 0.06549294606192113,
+      "mean_loss": 0.00783546098115349,
+      "max_price_end": 1.1230236834608118,
+      "crisis_threshold_002": false
+    },
+    {
+      "k": 8,
+      "m": 2,
+      "y20": 1.1088018177562895,
+      "y40": 1.2014062949397055,
+      "day1min": 0.9093554429767043,
+      "day1max": 1.1088018177562895,
+      "day2min": 1.0169115018533803,
+      "day2max": 1.2014062949397055,
+      "max_rate_comp": 0.14774179404496346,
+      "required_band_for_fixed_path": 0.1088018177562895,
+      "mean_loss": 0.012036175357466422,
+      "max_price_end": 1.2014062949397055,
+      "crisis_threshold_002": false
+    },
+    {
+      "k": 9,
+      "m": 1,
+      "y20": 1.2222229550217907,
+      "y40": 1.4051608219940497,
+      "day1min": 0.7545124435324047,
+      "day1max": 1.2222229550217907,
+      "day2min": 1.03123617697115,
+      "day2max": 1.4051608219940497,
+      "max_rate_comp": 0.2842168076987038,
+      "required_band_for_fixed_path": 0.24548755646759535,
+      "mean_loss": 0.02081139744368505,
+      "max_price_end": 1.4051608219940497,
+      "crisis_threshold_002": true
+    }
+  ],
+  "limitations": "Changing the target count or the band may allow another optimized path; this only tests one frozen target-control shape."
+}

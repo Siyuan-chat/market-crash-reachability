@@ -1,0 +1,17 @@
+[
+  {
+    "pass": 1,
+    "exit_code": 0,
+    "rerun_required": true
+  },
+  {
+    "pass": 2,
+    "exit_code": 0,
+    "rerun_required": true
+  },
+  {
+    "pass": 3,
+    "exit_code": 0,
+    "rerun_required": false
+  }
+]

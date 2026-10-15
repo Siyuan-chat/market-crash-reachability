@@ -1,0 +1,38 @@
+[
+  {
+    "command": [
+      "scripts/verify_results.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "scripts/verify_multiday.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "scripts/verify_figure_data.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "verification/verify_generalized_coordinate.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "verification/verify_consistency.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "verification/audit_manuscript_certificate.py"
+    ],
+    "exit_code": 0
+  }
+]
