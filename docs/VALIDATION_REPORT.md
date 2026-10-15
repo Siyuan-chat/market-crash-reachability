@@ -54,6 +54,11 @@ Acceptance date: 2026-10-15 (Asia/Tokyo).
   code. The repository URL is https://github.com/Siyuan-chat/market-crash-reachability.
   Check Actions for actual Ubuntu CI results; the local evidence does not
   certify a remote workflow. No formal release tag or DOI is asserted.
+  Subsequent remote acceptance is complete for source-publication commit
+  `ba2af5771bbaf74166545818a0e90fe6fea0fb2b`: both the Push quick run
+  (38744237565) and manual full run (38744445130) succeeded. The latter includes
+  exact certificate regeneration, figure generation and clean Ubuntu pdfLaTeX.
+  Evidence artifacts are downloadable from the corresponding Actions run.
 - MIT applies to software as scoped in NOTICE.md. No CC BY permission was
   added to the manuscript or figures. No claims of journal acceptance or
   machine formalization have been introduced.
