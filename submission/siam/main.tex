@@ -247,6 +247,8 @@ The next two propositions explain the local end of the classification. A two-pul
 \paragraph{A concrete common-budget comparison.} For $N=3$, $k=2$, $F=\eta=\rho=1$, $T=3$, common turnover cap $M_0=3$, and per-asset initial inventory cap $H_0=8.2$, the $p=2$ market cannot reach any positive crisis; the $p=1$ market can reach a small positive crisis but not the threshold $\delta=10$ (it would require over $9$ shares of selling by any qualifying asset); a constructive $p=0$ path reaches $\Cris_{2/3}(T)\approx13.32$ with turnover approximately $2.62$ and a maximum per-asset cumulative share sale below $3.94$. The large $\delta$ is chosen as a rigorous stress-test separating bounded from unbounded \emph{log} loss; it is not a representative empirical crash size. Validation code accompanies the source files.
 
 
+The common trading experiment across the three response regimes is illustrated in Figure~\ref{fig:abcnum}.
+
 \begin{figure}[tbp]
 \centering\includegraphics[width=0.98\linewidth]{figures/abc_control_comparison.pdf}
 \caption{\textbf{An identical trading experiment across A/B/C response functions.} Two terminally offsetting executed-dollar pulses act on $N=3$ assets with $k=2$, $F=\eta=\rho=1$, and $T=3$. Left: the measured \emph{terminal} crisis functional as paired-dollar turnover increases; right: terminal prices under the same total turnover $M=0.8$. This local illustration is distinct from the severe-crash existence construction. The dotted threshold is illustrative, not calibrated.}\label{fig:abcnum}
@@ -451,6 +453,8 @@ Both restrictions & Local all-asset loss for positive caps/widths; rate and pric
 \end{table}
 
 
+Figure~\ref{fig:localrate} compares the numerical small-rate loss with the quadratic coefficient.
+
 \begin{figure}[tbp]\centering
 \includegraphics[width=0.76\linewidth]{figures/finite_rate_quadratic.pdf}
 \caption{\textbf{Quadratic local all-asset loss under a finite-rate control.} Independently integrated nonlinear price paths for constant $g$ converge to the analytical $a^2$ coefficient in~\eqref{eq:finite-rate-coefficient}. The plotted amplitude is sufficiently small to preserve positive prices; the admissibility checks for the highlighted $a=0.035$ case are reported in the code bundle.}\label{fig:localrate}
@@ -502,6 +506,8 @@ In particular, with a single compensator ($k=N-1$), its terminal price must obey
 The $k$ streaking assets have loss $D\lambda$, hence $Q_\alpha\ge D\lambda$. For $\delta\le D\lambda$, the coverage part of the crisis criterion is therefore automatic, and the remaining requirement is $A\ge\delta$. Substituting the terminal prices into $A=N^{-1}\sum_i\log(F/S_i)$ gives \eqref{eq:multiday-trigger-product}. If every other loss is at most $D\lambda$, or if $N-k<k$, the $k$th-largest loss is exactly $D\lambda$, proving \eqref{eq:multiday-trigger-exact}.
 \end{proof}
 For the interval-certified $N=10$, $k=9$, $q=0.97$, $D=2$ construction of Proposition~\ref{prop:certified-v7}, $D\lambda\approx0.060918$. The compensator closes at $Y/F\approx1.405161$ in the high-accuracy reconstruction, yielding $\Cris_{0.9}\approx0.020811$. The outward-rounded certificate gives $1.4047874<Y/F<1.4055543$, which rigorously implies $\Cris_{0.9}>0.020$ for the specified trajectory. The threshold $\delta=0.020$ requires $Y/F\le\exp(9D\lambda-10(0.020))\approx1.416609$, which the certified path satisfies. Thus the receiving asset's terminal price determines whether the same broad lower-limit streak qualifies as a systemic loss event.
+
+Figure~\ref{fig:multiday-crisis-trigger} illustrates the distinction between repeated closing-limit losses and the systemic crisis criterion.
 
 \begin{figure}[tbp]\centering
  \includegraphics[width=0.85\linewidth]{figures/multiday_crisis_trigger.pdf}
@@ -678,10 +684,14 @@ Targets $k$ & Compensators & $y(40)$ & Mean log loss & Computed band needed \\\m
 \bottomrule\end{tabular}
 \end{table}
 
+Figure~\ref{fig:v7path} displays the price paths of the certified construction.
+
 \begin{figure}[H]\centering
 \includegraphics[width=0.87\linewidth]{figures/v7_certified_multiday_prices.pdf}
 \caption{\textbf{Interval-certified lower-rate path.} Continuous target and compensator prices for the improved two-day construction. The nine targets close at the reset lower limits; the compensator stays inside its 25\% daily limits. Curves are illustrative numerical reconstructions; admissibility is independently certified by the outward-rounded arithmetic described in Appendix~\ref{app:v7certificate}.}\label{fig:v7path}
 \end{figure}
+Figure~\ref{fig:v7rates} displays the corresponding gross execution rates.
+
 \begin{figure}[H]\centering
 \includegraphics[width=0.87\linewidth]{figures/v7_certified_rate_path.pdf}
 \caption{\textbf{Gross execution rates in the certified path.} The largest computed gross share-rate is approximately $0.28422$; rigorous interval rounding certifies a bound strictly below $0.285$, without instantaneous pulses. The cap is per asset, before netting buys and sells.}\label{fig:v7rates}
@@ -706,7 +716,7 @@ Our cross-asset dependence is generated by executed-dollar pairing, while the ma
 The response-adapted generalized price coordinate reduces nonlinear trading impact to additive, dollar-balanced transfers and a restoring drift. Its curvature identifies global exclusion barriers; its coordinate distances yield necessary resource bounds. A common response family exhibits three reachability regimes, and a bounded-rate, multiday interval-certified construction shows that a systemic drawdown can survive the tighter execution restrictions. Structural feasibility, available resources, and multiday execution capacity thus form successive, mathematically distinct tests of market stability.
 
 \section*{Code and numerical data availability}
-The accompanying reproducibility package includes \path{verification/certify_streak_interval.py} (exact rational root isolation and outward-rounded fixed-point enclosures), \path{verification/verify_consistency.py}, numerical sensitivity scripts, figure-generating code, machine-readable outputs, the LaTeX source, and a file-hash manifest. Reproduction commands and software requirements are in \path{REPRODUCE.md}. The certificate was rerun from source, with independent floating-point ODE and exact-rational consistency checks. A versioned, checksum-indexed reproducibility archive accompanies this manuscript; the computations are tied to the supplied source and certificate versions.
+The research code, numerical data, certificates, and reproduction instructions are publicly available at \url{https://github.com/Siyuan-chat/market-crash-reachability}. The computational baseline for this SIFIN edition is identified by \href{https://github.com/Siyuan-chat/market-crash-reachability/tree/ea831c44f5b77b7039dd6644f6f0a791bb74d176}{commit \texttt{ea831c4}}. The repository includes \path{verification/certify_streak_interval.py} (exact rational root isolation and outward-rounded fixed-point enclosures), \path{verification/verify_consistency.py}, numerical sensitivity scripts, figure-generating code, and machine-readable outputs. Reproduction commands and software requirements are in \path{REPRODUCE.md}; the checksum manifest is \path{release/SHA256SUMS}. The certificate was rerun from source, with independent floating-point ODE and exact-rational consistency checks. The SIFIN build instructions describe the separate, nonmathematical bibliography and figure-style transformations used for this edition.
 
 \section*{Declaration on AI-assisted tools}
 AI-assisted tools were used in drafting and organizing parts of the manuscript, developing and checking mathematical calculations, writing computational scripts, and preparing figures. The author assumes responsibility for all content, including mathematical claims, source attribution, and the reproducibility of the numerical certificate.

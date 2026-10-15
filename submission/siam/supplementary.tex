@@ -34,10 +34,14 @@ Terminal $\Cris_{0.9}(T_2)$ / breadth loss $Q_{0.9}(T_2)$ & $0.019932$ / $0.0609
 \bottomrule\end{tabular}
 \end{table}
 
+Figure~\ref{fig:streak-witness} displays the earlier exploratory two-session price paths.
+
 \begin{figure}[tbp]\centering
  \includegraphics[width=.94\linewidth]{figures/multiday_streak_witness.pdf}
  \caption{\textbf{Repeated partial-coverage lower-limit closing prices under rolling daily bands.} The same nine target assets close at their 3\% lower limits twice. The tenth, higher-band compensating asset stays within its own 25\% limits. The displayed paths contain no instantaneous trades. The horizon and bands are specified model inputs, not observations.}\label{fig:streak-witness}
 \end{figure}
+Figure~\ref{fig:streak-ledger} displays the ledgers and rates of that exploratory witness.
+
 \begin{figure}[tbp]\centering
  \includegraphics[width=.94\linewidth]{figures/multiday_ledgers_and_rates.pdf}
  \caption{\textbf{Trading ledgers and gross-rate check for the same two-session witness.} The first session builds positive net dollar flow in the targets; the second reverses it, leaving every asset's final signed-dollar balance zero. Gross rates remain below the imposed share-rate limit; dollar balance is enforced continuously, not just at maturity.}\label{fig:streak-ledger}
@@ -48,6 +52,8 @@ The example proves neither a trader's incentive to undertake the sequence nor a 
 
 
 \section{Other diagnostic displays}
+Figures~\ref{fig:market} and~\ref{fig:elasticity} present the market primitives and local elasticity examples, respectively.
+
 \begin{figure}[tbp]
 \centering\includegraphics[width=.99\linewidth]{figures/market_specification.pdf}
 \caption{\textbf{One explicitly defined ideal market.} Price priority, signed-share accounting, effective price impact, resilience, and paired-dollar trading have distinct mathematical roles. All quantitative panels in this paper are illustrations of this specified model rather than observations of a live order book.}\label{fig:market}
@@ -56,6 +62,8 @@ The example proves neither a trader's incentive to undertake the sequence nor a 
 \centering\includegraphics[width=.79\linewidth]{figures/elasticity_examples.pdf}
 \caption{\textbf{Local elasticity of three positive, smooth, non-power-law impact functions.} The dotted vertical line marks the common initial price $S=F$. The global elasticity-barrier theorems in the main manuscript require their elasticity inequalities throughout the \emph{relevant attainable price region}; a value at $F$ alone gives no global classification. This is a formula-based illustration, not empirical market depth.}\label{fig:elasticity}
 \end{figure}
+Figures~\ref{fig:sharp} and~\ref{fig:heatmap} illustrate the model-specific full-coverage boundary. Figures~\ref{fig:resource} and~\ref{fig:nscale} illustrate the necessary resource bounds and their asset-count dependence.
+
 \begin{figure}[t]
 \centering\includegraphics[width=.78\linewidth]{figures/full_coverage_threshold.pdf}
 \caption{\textbf{A sharp, model-specific common-decline boundary.} For $g=\eta$ and $k=N$, the upper envelope of the common simple-price decline is $100(1-e^{-\delta_{\rm crit}})\%$. Every strictly smaller log-loss threshold is reachable with some finite budget; the boundary itself is not attained with strictly positive prices. This is not a probability curve.}\label{fig:sharp}
@@ -72,6 +80,8 @@ The example proves neither a trader's incentive to undertake the sequence nor a 
 \centering\includegraphics[width=.78\linewidth]{figures/resource_scaling_N.pdf}
 \caption{\textbf{Dependence on asset number of the necessary dollar-resource bound.} The experiment copies per-asset benchmark price and response parameters, fixes $\alpha=0.9$ and $\delta=0.4$, and increases the number of assets $N$. The steps arise from the discrete coverage count $\lceil\alpha N\rceil$. It is not a capitalization-scaled prediction for an actual stock index.}\label{fig:nscale}
 \end{figure}
+Figure~\ref{fig:continuous} displays the bounded-rate continuous example and its closed dollar ledgers. Figure~\ref{fig:regulation} compares the rate and price-limit exclusion bounds. Figures~\ref{fig:streak-rate} and~\ref{fig:streak-full-obstruction} show the scalar necessary-rate floor and the region covered by the all-asset obstruction.
+
 \begin{figure}[tbp]\centering
 \includegraphics[width=.97\linewidth]{figures/bounded_rate_continuous_path.pdf}
 \caption{\textbf{A new bounded-rate, terminally dollar-closed path (not a pulse approximation).} For $N=3$, $T=3$, $a=.035$, $F=\rho=\eta=1$, and $u=(1,1,-2)$, the price trajectories under $p=0,1,2$ share the same absolutely continuous dollar-rate signal; right panel shows dollar ledgers that close exactly. The peak per-asset gross share rate is below $0.15$, and all prices remain inside a $\pm15\%$ band.}\label{fig:continuous}
@@ -88,6 +98,8 @@ The example proves neither a trader's incentive to undertake the sequence nor a 
  \includegraphics[width=.73\linewidth]{figures/multiday_fullbreadth_obstruction.pdf}
  \caption{\textbf{Parameter region in which the second all-asset lower-limit close is ruled out.} The region beneath the curve satisfies $(1+\beta_+)(1-\beta_-)\le1$. Symmetric proportional bands lie strictly inside this region. This is a conditional invariant-region result, not a model of exchange-wide order queues.}\label{fig:streak-full-obstruction}
 \end{figure}
+Figure~\ref{fig:v7bracket} distinguishes the necessary rate floor from the certified feasible rate; Figure~\ref{fig:v7cutN} displays the funding-capacity constraint as the falling majority grows.
+
 \begin{figure}[tbp]\centering
 \includegraphics[width=.80\linewidth]{figures/v7_minimum_rate_bracket.pdf}
 \caption{\textbf{What is and is not optimized.} A strict rate floor from the existing quadratic systemic bound and a certified feasible execution path bracket the unknown global minimum $\bar v_*$. The interval is a logical admissibility bracket, not a statistical confidence interval.}\label{fig:v7bracket}
@@ -96,6 +108,8 @@ The example proves neither a trader's incentive to undertake the sequence nor a 
 \includegraphics[width=.80\linewidth]{figures/v7_cut_capacity_N.pdf}
 \caption{\textbf{A funding-capacity constraint that grows with the falling majority.} The necessary second-day rate in the main manuscript increases as $k/(N-k)$ when a single asset absorbs the net matched dollars of an expanding majority. This does not prove that a feasible market exists at every plotted $N$.}\label{fig:v7cutN}
 \end{figure}
+Figure~\ref{fig:paths} displays terminally dollar-closed price paths, while Figure~\ref{fig:closure} distinguishes dollar closure from net share positions. Figure~\ref{fig:finite} illustrates the construction families with bounded feasible resources. Figure~\ref{fig:oldrejected} shows why the earlier pulse example does not satisfy the newer execution restrictions.
+
 \begin{figure}[tbp]\centering
 \includegraphics[width=.98\linewidth]{figures/closed_flow_price_paths.pdf}
 \caption{\textbf{Constructed price paths with terminally closed dollar flows.} For $N=3$ and $N=12$, one compensating asset ends above its initial value, while the other $N-1$ prices fall by the common target log loss $L=3$. Logarithmic vertical scales keep near-zero prices visible. Kinks and jumps are permitted control pulses, not simulated exchange events.}\label{fig:paths}

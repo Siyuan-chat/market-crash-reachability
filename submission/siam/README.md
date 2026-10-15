@@ -7,15 +7,18 @@ online/multimedia `siamonline250211` template (2025-02-11).
 - [Manuscript PDF](manuscript.pdf) · [LaTeX](main.tex)
 - [Supplement PDF](supplementary.pdf) · [LaTeX](supplementary.tex)
 - [Shared preamble](shared.tex) · [Bibliography](references.bib)
+- [Editorial changes and evidence](EDITORIAL_CHANGES.md) · [Author items pending](AUTHOR_TODO.md)
 
 The manuscript has 35 pages and the separate supplement 11 pages. Both use SIAM
 review line numbering, running headers, the class typography, and hidden link
 colors. Keywords and MSC codes use the class environments; references are
 regenerated with `siamplain`. The supplement uses the class's `SM` numbering
 and the same title/author as the article. Main theorem, equation, figure and
-table numbers are unchanged. All body prose and mathematical content are
-unchanged after reversing explicitly recorded display/prose line breaks and
-front-matter/section formatting. The AI-assisted tools declaration is preserved.
+table numbers are unchanged. The only body-text edits are explicit figure
+callouts and the public code/data availability paragraph. All mathematical
+content, captions, proofs and remaining prose are unchanged after reversing
+the enumerated editorial/layout transformations. The AI-assisted tools
+declaration is preserved.
 
 The canonical files under `paper/` and `supplementary/`, translations, Lean
 formalization and numerical certificate are not replaced or modified.
@@ -29,6 +32,7 @@ original manuscript's packages. On Ubuntu, install `texlive-latex-extra`,
 From the repository root:
 
 ```bash
+python -m pip install -r requirements-siam.txt
 python scripts/check_siam_submission.py
 python scripts/build_siam_submission.py
 python scripts/build_papers.py --output-root build/siam-baseline
@@ -46,10 +50,11 @@ Portable TeX installations can supply `--pdflatex /path/to/pdflatex` and
 
 Build outputs, logs, the original-to-SM label map and content checks are in
 `build/siam/`. `author-sources/` contains a standalone set of author-owned
-sources and original figures, but excludes SIAM's class/style files. Install
+sources and style-only derived figures, but excludes SIAM's class/style files. Install
 those from the official distribution to compile the sources. The repository
-snapshots use original figure assets through relative paths rather than
-duplicating all figure PDFs. `--update-edition` intentionally refreshes the
+snapshots use the derived assets in `figures/`. Each is compared to its canonical
+source, allowing only stroke-width operands to change, with a minimum of 1.02pt
+at the specified embedding size. `--update-edition` intentionally refreshes the
 committed sources/PDFs after a successful zero-overflow build. PDF timestamps
 may change bytes between builds; mathematical/prose equivalence and numbering
 are checked independently of PDF byte identity.
@@ -73,9 +78,11 @@ is not applied. The running title is below 50 characters and the abstract below
 250 words. Figures remain inline. The unmodified class's running header needs
 14pt head height, set in the author preamble; no class file is modified.
 
-Before journal submission, verify journal-name abbreviations against Mathematical
-Reviews: bibliography metadata currently remains identical to the canonical
-edition, rather than substituting unverified abbreviations. The existing
+Journal names now use the documented abbreviations; other bibliography metadata
+remains identical to the canonical edition. Direct MR evidence was obtained for
+eight journals, historical MR index cache supports two, and publisher usage
+supports three; the exact limits are in [EDITORIAL_CHANGES.md](EDITORIAL_CHANGES.md).
+The existing
 author information is retained; no email, address, ORCID, funding, submission
 date or acceptance status has been invented. Complete contact details and any
 cover letter must be supplied before an actual journal submission.
