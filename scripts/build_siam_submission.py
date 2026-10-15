@@ -1,6 +1,7 @@
 """Generate a format-only SIAM review edition from the locked English baseline."""
 from pathlib import Path
 import argparse, hashlib, json, re, shutil, subprocess, tempfile, zipfile
+from siam_editorial import editorial_changes, bibliography
 
 ROOT = Path(__file__).resolve().parents[1]
 TITLE = 'When Can Markets Crash Without News?'
@@ -21,7 +22,7 @@ def sources():
 \usepackage{microtype,xurl}
 \usepackage{amsfonts,amssymb,mathtools,bm}
 \usepackage{graphicx,booktabs,enumitem,float,tabularx,placeins}
-\graphicspath{{../../paper/}{../../supplementary/}}
+\graphicspath{{./}}
 \usepackage[numbers,sort&compress]{natbib}
 \newsiamremark{assumption}{Assumption}
 \newsiamremark{remark}{Remark}
@@ -43,10 +44,12 @@ def sources():
     for old, new in LAYOUT_REPLACEMENTS:
         assert body.count(old) == 1, 'Layout replacement no longer matches baseline'
         body = body.replace(old, new)
+    body = editorial_changes(body, 'main')
     article = '\\documentclass[review,hidelinks,onefignum,onetabnum]{siamonline250211}\n'
     article += '\\input{shared}\n\\begin{document}\n\\maketitle\n' + body + '\\end{document}\n'
     sb = supplement[supplement.index(r'\section*'):supplement.index(r'\end{document}')]
     sb = sb.replace(r'\section*', r'\section')
+    sb = editorial_changes(sb, 'supplementary')
     supp = '\\documentclass[review,supplement,hidelinks,onefignum,onetabnum]{siamonline250211}\n'
     supp += '\\input{shared}\n\\begin{document}\n\\maketitle\n' + sb + '\\end{document}\n'
     return {'main.tex': article, 'supplementary.tex': supp, 'shared.tex': shared}
@@ -71,16 +74,10 @@ def main():
             (work / name).write_bytes(archive.read(name))
     for name, text in generated.items():
         (work / name).write_bytes(text.encode('utf-8'))
-    shutil.copyfile(ROOT / 'paper/references.bib', work / 'references.bib')
-    # Keep original figure names: main and supplement share no differing basename.
-    (work / 'figures').mkdir()
-    seen = {}
-    for folder in ('paper', 'supplementary'):
-        for file in (ROOT / folder / 'figures').iterdir():
-            if file.name in seen:
-                assert seen[file.name] == file.read_bytes(), file.name
-            seen[file.name] = file.read_bytes()
-            shutil.copyfile(file, work / 'figures' / file.name)
+    (work / 'references.bib').write_bytes(bibliography((ROOT/'paper/references.bib').read_text(encoding='utf-8')).encode('utf-8'))
+    from prepare_siam_figures import prepare_figures
+    figure_metrics = prepare_figures(ROOT, work/'figures', generated['main.tex'], generated['supplementary.tex'])
+    (out/'figure_metrics.json').write_bytes((json.dumps(figure_metrics,indent=2)+'\n').encode())
     summary = []
     for stem in ('main', 'supplementary'):
         for iteration in range(6):
@@ -118,6 +115,7 @@ def main():
             shutil.copyfile(work / name, edition / name)
         shutil.copyfile(out / 'main.pdf', edition / 'manuscript.pdf')
         shutil.copyfile(out / 'supplementary.pdf', edition / 'supplementary.pdf')
+        shutil.copytree(work/'figures', edition/'figures', dirs_exist_ok=True)
     print('Generated sources:', exported)
 
 if __name__ == '__main__':
