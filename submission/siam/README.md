@@ -23,8 +23,9 @@ formalization and numerical certificate are not replaced or modified.
 
 Install Python 3.11 and a TeX distribution with pdfLaTeX, BibTeX, `ntheorem`,
 `cleveref`, `algorithms`, `hypcap`, `lineno`, `microtype` and `xurl`, plus the
-original manuscript's packages. On Ubuntu, install `texlive-latex-extra` and
-`texlive-fonts-recommended`. From the repository root:
+original manuscript's packages. On Ubuntu, install `texlive-latex-extra`,
+`texlive-fonts-recommended` and `texlive-science` (which supplies `algorithm.sty`).
+From the repository root:
 
 ```bash
 python scripts/check_siam_submission.py

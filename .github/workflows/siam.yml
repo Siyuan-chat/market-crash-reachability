@@ -17,7 +17,7 @@ jobs:
       - run: python scripts/check_siam_submission.py
       - run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-science
       - run: python scripts/build_siam_submission.py
       - run: python scripts/build_papers.py --output-root build/siam-baseline
       - run: python scripts/check_siam_submission.py --compiled
