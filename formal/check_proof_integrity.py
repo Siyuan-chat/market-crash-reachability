@@ -49,7 +49,7 @@ if len(rows) != len(names):
     raise SystemExit('Incomplete axiom audit output')
 allowed = {'propext', 'Classical.choice', 'Quot.sound'}
 for name, dependencies in rows:
-    unexpected = set(filter(None, dependencies.split(', '))) - allowed
+    unexpected = set(filter(None, (part.strip() for part in dependencies.split(',')))) - allowed
     if unexpected:
         raise SystemExit(f'Unexpected axioms in {name}: {unexpected}')
 (out / 'integrity.json').write_text(json.dumps({
