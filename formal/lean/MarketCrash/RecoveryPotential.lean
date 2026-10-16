@@ -25,8 +25,13 @@ theorem recovery_step_potential_lower_bound
   have hsingle (i : ι) :
       lam * coordinate F g.impact (S i) ≤
         coordinate F g.impact ((1 - lam) * F + lam * S i) := by
-    have hJ := hConcave.2 (x := F) hF (y := S i) (hS i)
-      (a := 1 - lam) (b := lam) (sub_nonneg.mpr hlam1) hlam0 (by ring)
+    have hJ :
+        (1 - lam) • coordinate F g.impact F +
+          lam • coordinate F g.impact (S i) ≤
+          coordinate F g.impact ((1 - lam) • F + lam • S i) := by
+      exact hConcave.2 (show F ∈ positivePrices from hF)
+        (show S i ∈ positivePrices from hS i)
+        (sub_nonneg.mpr hlam1) hlam0 (by ring)
     simpa only [smul_eq_mul, coordinate_at_benchmark, mul_zero, zero_add] using hJ
   calc
     lam * potential (fun i => coordinate F g.impact (S i)) =
