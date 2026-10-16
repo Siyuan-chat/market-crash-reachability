@@ -189,3 +189,4 @@ import MarketCrash
 #print axioms MarketCrash.RadiallyElasticWeakBVPriceReachable.no_systemic_crisis_at_breadth
 #print axioms MarketCrash.ContinuousWeakBVPriceSegment.no_systemic_crisis_at_breadth
 #print axioms MarketCrash.systemicCrisis_product_threshold_iff
+#print axioms MarketCrash.systemicCrisis_product_iff_of_prescribed_decliners
