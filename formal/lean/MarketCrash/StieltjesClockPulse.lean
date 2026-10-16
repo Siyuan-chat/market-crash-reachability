@@ -164,6 +164,30 @@ theorem StieltjesClockPulse.nonnegative_shares
     0 ≤ m.shares t i :=
   m.pulse.no_short_sales _ (m.dollar_clock_mem t ht) i
 
+/-- Execution-share positions retain finite total variation even when
+physical time has an atomic or singular-continuous execution clock.
+This is inherited from bounded variation in operational dollars under
+a monotone change of parameter. -/
+theorem StieltjesClockPulse.finite_share_variation
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {F : ℝ} {g : Response} {edges : κ → PairedEdge ι}
+    (m : StieltjesClockPulse F g edges) (i : ι) :
+    BoundedVariationOn (fun t => m.shares t i) (Set.Icc m.a m.b) := by
+  have hmono : MonotoneOn m.executedDollars (Set.Icc m.a m.b) := by
+    intro x hx y hy hxy
+    change m.cumulative x - m.cumulative m.a ≤
+      m.cumulative y - m.cumulative m.a
+    exact sub_le_sub_right (m.cumulative.mono hxy) _
+  have hbound :
+      eVariationOn (fun t => m.shares t i) (Set.Icc m.a m.b) ≤
+        eVariationOn (fun u => m.pulse.shares u i)
+          (Set.Icc (0 : ℝ) m.pulse.mass) := by
+    simpa only [StieltjesClockPulse.shares, Function.comp_def] using
+      (eVariationOn.comp_le_of_monotoneOn
+        (fun u : ℝ => m.pulse.shares u i)
+        m.executedDollars hmono (fun t ht => m.dollar_clock_mem t ht))
+  exact ne_top_of_le_ne_top (m.pulse.finite_share_variation i) hbound
+
 theorem StieltjesClockPulse.intervalMass_eq_delta
     {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
     {F : ℝ} {g : Response} {edges : κ → PairedEdge ι}
