@@ -4,3 +4,4 @@ import MarketCrash.ResponseFamilies
 import MarketCrash.Curvature
 import MarketCrash.CrisisFunctional
 import MarketCrash.BarrierEndpoint
+import MarketCrash.ElasticityConcavity

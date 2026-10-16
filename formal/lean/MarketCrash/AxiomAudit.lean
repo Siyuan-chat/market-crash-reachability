@@ -23,6 +23,9 @@ import MarketCrash
 #print axioms MarketCrash.coordinate_slope_elasticity
 #print axioms MarketCrash.logCoordinate_hasDerivAt
 #print axioms MarketCrash.log_slope_hasDerivAt
+#print axioms MarketCrash.coordinate_concaveOn_of_elasticity_ge_one
+#print axioms MarketCrash.logCoordinate_concaveOn_of_elasticity_ge_two
+#print axioms MarketCrash.no_positive_crisis_of_elasticity_ge_two_and_potential
 #print axioms MarketCrash.constantCoordinate_normalized
 #print axioms MarketCrash.linearCoordinate_normalized
 #print axioms MarketCrash.logarithmicCoordinate_normalized
