@@ -2,6 +2,8 @@
 
 **权威原文**：English V12 Final，见 `paper/main.tex`；具体原文映射见 [THEOREM_MAP.md](THEOREM_MAP.md)。**源代码证明范围以 Lean 定理的精确量词与假设为准，不能以声明总数量代替全文完成度。**
 
+> **2026-10-16 direct-proof priority update:** [DIRECT_PAPER_PROOF_ROUTE.md](DIRECT_PAPER_PROOF_ROUTE.md) replaces the previously suggested requirement to solve arbitrary countably-atomic completed graphs as a prerequisite to Theorems 3.1/3.2. The original paper M5 allows only finitely many instantaneous flow-completed pulses. The **remaining genuine bridge** is primitive M2 physical marginal settlement → integrated weak-normal-form law for every admissible continuous finite-variation execution piece, followed by finite physical concatenation. The wider general-BV extensions remain optional. All 16 original-result statuses below remain unchanged until matching Lean statements pass CI.
+
 ## 严格完成定义
 
 - **基础声明（kernel-certified local result）**：固定 Lean 4.19/Mathlib 下 `lake build` 通过；逐条 `#print axioms` 只允许 `propext`、`Classical.choice`、`Quot.sound`；无 `sorry`、`admit` 或自定义 `axiom`。
