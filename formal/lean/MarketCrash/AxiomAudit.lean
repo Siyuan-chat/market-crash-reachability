@@ -63,6 +63,9 @@ import MarketCrash
 #print axioms MarketCrash.hybrid_step_preserves_nonnegative_potential
 #print axioms MarketCrash.hybrid_step_target_positive
 #print axioms MarketCrash.hybrid_reachable_target_positive
+#print axioms MarketCrash.coordinate_concaveOn_Icc_of_local_elasticity
+#print axioms MarketCrash.restoring_drain_le_coordinate_of_radial_elasticity
+#print axioms MarketCrash.restoring_drain_sum_le_potential_of_radial_elasticity
 #print axioms MarketCrash.PhysicalSmoothSegment.coordinate_ode
 #print axioms MarketCrash.PhysicalSmoothSegment.potential_ode
 #print axioms MarketCrash.PhysicalSmoothSegment.potential_nonnegative

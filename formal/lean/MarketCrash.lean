@@ -21,3 +21,4 @@ import MarketCrash.BoundedVariationLedger
 import MarketCrash.CrisisParameters
 import MarketCrash.CrisisQuantile
 import MarketCrash.StieltjesExecution
+import MarketCrash.LocalElasticity
