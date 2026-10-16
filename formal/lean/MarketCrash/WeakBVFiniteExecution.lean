@@ -52,6 +52,13 @@ inductive RadiallyElasticWeakBVPriceStep
       RadiallyElasticWeakBVPriceStep F rho g edges
         ⟨seg.a, seg.prices seg.a⟩
         ⟨seg.b, seg.prices seg.b⟩
+  | smooth (seg : PhysicalSmoothSegment F rho g edges)
+      (hel : ∀ t i u,
+        u ∈ Set.Icc (min F (seg.prices t i)) (max F (seg.prices t i)) →
+          1 ≤ responseElasticity g.impact u) :
+      RadiallyElasticWeakBVPriceStep F rho g edges
+        ⟨seg.a, seg.prices seg.a⟩
+        ⟨seg.b, seg.prices seg.b⟩
   | pulse (atTime : ℝ) (p : FlowCompletedPulse F g edges) :
       RadiallyElasticWeakBVPriceStep F rho g edges
         ⟨atTime, p.prices 0⟩
@@ -93,6 +100,16 @@ theorem RadiallyElasticWeakBVPriceStep.potential_nonnegative
       exact seg.potential_nonnegative_of_radial_elasticity
         F rho g edges hF hrho hdiff hel hstart
         seg.b ⟨seg.time_order, le_rfl⟩
+  | smooth seg hel =>
+      change 0 ≤ potential
+        (fun i => coordinate F g.impact (seg.prices seg.a i)) at hstart
+      change 0 ≤ potential
+        (fun i => coordinate F g.impact (seg.prices seg.b i))
+      exact seg.potential_nonnegative_of_radial_elasticity
+        F rho g edges hF hrho
+        (fun t i u hu => hdiff u
+          ((lt_min hF (seg.positive_prices t i)).trans_le hu.1))
+        hel hstart
   | pulse atTime p =>
       change 0 ≤ potential (fun i => coordinate F g.impact (p.prices 0 i))
         at hstart
@@ -126,6 +143,8 @@ theorem RadiallyElasticWeakBVPriceStep.positive_terminal
   cases step with
   | continuous seg hel =>
       exact seg.positive_prices seg.b ⟨seg.time_order, le_rfl⟩
+  | smooth seg hel =>
+      exact seg.positive_prices seg.b
   | pulse atTime p =>
       exact p.positive_prices p.mass ⟨p.nonnegative_mass, le_rfl⟩
 
