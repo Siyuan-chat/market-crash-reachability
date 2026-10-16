@@ -1,4 +1,4 @@
-import MarketCrash.RestoringTangent
+import MarketCrash.PhysicalSmoothMarket
 
 /-!
 Local response-elasticity lemmas for paper Theorem 3.1.
@@ -114,5 +114,67 @@ theorem restoring_drain_sum_le_potential_of_radial_elasticity
   intro i _
   exact restoring_drain_le_coordinate_of_radial_elasticity
     F g hF (S i) (hS i) (hdiff i) (hel i)
+
+
+/-- The physical smooth execution equation preserves the potential
+using only elasticity on the radial interval between F and each
+actually observed asset price at each real execution time. -/
+theorem PhysicalSmoothSegment.potential_nonnegative_of_radial_elasticity
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (m : PhysicalSmoothSegment F rho g edges)
+    (hF : 0 < F) (hrho : 0 ≤ rho)
+    (hdiff : ∀ t i u,
+      u ∈ Set.Icc (min F (m.prices t i)) (max F (m.prices t i)) →
+      DifferentiableAt ℝ g.impact u)
+    (hel : ∀ t i u,
+      u ∈ Set.Icc (min F (m.prices t i)) (max F (m.prices t i)) →
+      1 ≤ responseElasticity g.impact u)
+    (hstart : 0 ≤ potential
+      (fun i => coordinate F g.impact (m.prices m.a i))) :
+    0 ≤ potential (fun i => coordinate F g.impact (m.prices m.b i)) := by
+  let H : ℝ → ℝ := fun t =>
+    potential (fun i => coordinate F g.impact (m.prices t i))
+  let slope : ℝ → ℝ := fun t =>
+    -rho * ∑ i, m.prices t i * (m.prices t i - F) /
+      g.impact (m.prices t i)
+  have hd (t : ℝ) : HasDerivAt H (slope t) t :=
+    m.potential_ode F rho g edges hF t
+  have hb (t : ℝ) : -rho * H t ≤ slope t := by
+    have ht := restoring_drain_sum_le_potential_of_radial_elasticity
+      F g hF (m.prices t) (m.positive_prices t)
+      (fun i u hu => hdiff t i u hu)
+      (fun i u hu => hel t i u hu)
+    have hn : 0 ≤ rho * (H t -
+        ∑ i, m.prices t i * (m.prices t i - F) /
+          g.impact (m.prices t i)) :=
+      mul_nonneg hrho (sub_nonneg.mpr ht)
+    dsimp [slope]
+    nlinarith
+  exact nonnegative_of_derivative_ge_linear_from
+    H slope rho hd hb m.a m.b m.time_order hstart
+
+/-- A physical smooth segment with local radial elasticity cannot
+end with every asset strictly below its benchmark, provided its
+initial transformed potential was nonnegative. -/
+theorem PhysicalSmoothSegment.no_all_asset_decline_of_radial_elasticity
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    [DecidableEq ι] [Nonempty ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (m : PhysicalSmoothSegment F rho g edges)
+    (hF : 0 < F) (hrho : 0 ≤ rho)
+    (hdiff : ∀ t i u,
+      u ∈ Set.Icc (min F (m.prices t i)) (max F (m.prices t i)) →
+      DifferentiableAt ℝ g.impact u)
+    (hel : ∀ t i u,
+      u ∈ Set.Icc (min F (m.prices t i)) (max F (m.prices t i)) →
+      1 ≤ responseElasticity g.impact u)
+    (hstart : 0 ≤ potential
+      (fun i => coordinate F g.impact (m.prices m.a i))) :
+    ¬ ∀ i, m.prices m.b i < F := by
+  exact not_all_below_benchmark F g hF (m.prices m.b)
+    (m.positive_prices m.b)
+    (m.potential_nonnegative_of_radial_elasticity
+      F rho g edges hF hrho hdiff hel hstart)
 
 end MarketCrash
