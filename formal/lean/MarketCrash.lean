@@ -5,3 +5,4 @@ import MarketCrash.Curvature
 import MarketCrash.CrisisFunctional
 import MarketCrash.BarrierEndpoint
 import MarketCrash.ElasticityConcavity
+import MarketCrash.RecoveryPotential
