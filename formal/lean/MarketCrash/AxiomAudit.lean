@@ -110,3 +110,14 @@ import MarketCrash
 #print axioms MarketCrash.StieltjesPairedExecution.intervalLedger_eq_cumulative
 #print axioms MarketCrash.StieltjesPairedExecution.intervalLedger_add
 #print axioms MarketCrash.StieltjesPairedExecution.terminalClosure_iff
+
+#print axioms MarketCrash.StieltjesPairedExecution.terminalClosure_concat
+#print axioms MarketCrash.FlowCompletedPulse.coordinate_between
+#print axioms MarketCrash.FlowCompletedPulse.ledger_between
+#print axioms MarketCrash.StieltjesClockPulse.dollar_clock_mem
+#print axioms MarketCrash.StieltjesClockPulse.positive_prices
+#print axioms MarketCrash.StieltjesClockPulse.nonnegative_shares
+#print axioms MarketCrash.StieltjesClockPulse.intervalMass_eq_delta
+#print axioms MarketCrash.StieltjesClockPulse.coordinate_increment
+#print axioms MarketCrash.StieltjesClockPulse.ledger_increment
+#print axioms MarketCrash.StieltjesClockPulse.potential_preserved
