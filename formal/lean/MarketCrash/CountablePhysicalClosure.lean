@@ -115,4 +115,49 @@ theorem physical_reachable_prefix_limit_no_all_decline
       F rho g edges hF hrho hdiff hel initial prefix hpath
       hstart S hS hlim)
 
+/-- The systemic-crisis exclusion extends from every genuine finite
+physical execution prefix to any strictly-positive terminal price vector
+that is a pointwise limit of those prefixes. This result still requires
+the stronger GLOBAL elasticity-2 condition and DOES NOT construct a BV
+solution or its approximating physical execution traces. -/
+theorem physical_reachable_prefix_limit_no_systemic_crisis
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    [DecidableEq ι] [Nonempty ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (hF : 0 < F) (hrho : 0 ≤ rho)
+    (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
+    (hel : ∀ S : ℝ, 0 < S → 2 ≤ responseElasticity g.impact S)
+    (initial : PhysicalMarketState ι)
+    (prefix : ℕ → PhysicalMarketState ι)
+    (hpath : ∀ n, PhysicalMarketReachable F rho g edges
+      initial (prefix n))
+    (hstart : 0 ≤ potential
+      (fun i => coordinate F g.impact (initial.prices i)))
+    (S : ι → ℝ) (hS : ∀ i, 0 < S i)
+    (hlim : ∀ i, Tendsto (fun n => (prefix n).prices i) atTop (𝓝 (S i)))
+    (q : ι → ℝ) (hq : ∀ i, S i = F * Real.exp (q i))
+    (k : ℕ) :
+    systemicCrisis q k ≤ 0 := by
+  have hel1 : ∀ S : ℝ, 0 < S → 1 ≤ responseElasticity g.impact S := by
+    intro z hz
+    linarith [hel z hz]
+  have hpotential : 0 ≤
+      potential (fun i => coordinate F g.impact (S i)) :=
+    physical_reachable_prefix_limit_potential_nonnegative
+      F rho g edges hF hrho hdiff hel1 initial prefix hpath
+      hstart S hS hlim
+  have hlog :
+      (∑ i, logCoordinate F g.impact (q i)) =
+        potential (fun i => coordinate F g.impact (S i)) := by
+    unfold potential
+    apply Finset.sum_congr rfl
+    intro i _
+    change coordinate F g.impact (F * Real.exp (q i)) =
+      coordinate F g.impact (S i)
+    rw [hq i]
+  apply no_positive_crisis_of_elasticity_ge_two_and_potential
+    F g hF hdiff hel q k
+  rw [hlog]
+  exact hpotential
+
 end MarketCrash
