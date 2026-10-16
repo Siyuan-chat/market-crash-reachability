@@ -160,4 +160,49 @@ theorem coverageQuantile_is_kth_largest
       exact (not_le_of_gt hx) hle
     omega
 
+
+/-- A systemic threshold is attained exactly when BOTH the mean loss and
+    the requisite number of individual losses meet that threshold. -/
+theorem systemicCrisis_threshold_iff
+    (q : ι → ℝ) (k : ℕ)
+    (hk : 0 < k) (hkn : k ≤ Fintype.card ι) (delta : ℝ) :
+    delta ≤ systemicCrisis q k ↔
+      delta ≤ meanLogLoss q ∧
+        k ≤ (Finset.univ.filter (fun i : ι => delta ≤ -q i)).card := by
+  simp only [systemicCrisis, le_min_iff,
+    coverageQuantile_threshold_iff q k hk hkn delta]
+
+/-- Exact paper-definition equivalence at ANY loss threshold:
+    with alpha in (0,1], the Lean crisis score reaches delta iff
+    the mean of ACTUAL log losses reaches delta and at least
+    ceil(alpha*N) actual losses reach delta. -/
+theorem actual_systemic_crisis_threshold_iff
+    (F : ℝ) (prices : ι → ℝ)
+    (hF : 0 < F) (hS : ∀ i, 0 < prices i)
+    (alpha : ℝ) (hpos : 0 < alpha) (hle : alpha ≤ 1)
+    (delta : ℝ) :
+    delta ≤ systemicCrisis (logPriceFromBenchmark F prices)
+      (requiredAssetCount (ι := ι) alpha) ↔
+      delta ≤ (∑ i, actualLogLoss F prices i) /
+        (Fintype.card ι : ℝ) ∧
+      requiredAssetCount (ι := ι) alpha ≤
+        (Finset.univ.filter (fun i : ι =>
+          delta ≤ actualLogLoss F prices i)).card := by
+  classical
+  obtain ⟨hk, hkn⟩ :=
+    requiredAssetCount_valid (ι := ι) alpha hpos hle
+  have hfilter :
+      (Finset.univ.filter (fun i : ι =>
+        delta ≤ -logPriceFromBenchmark F prices i)) =
+      (Finset.univ.filter (fun i : ι =>
+        delta ≤ actualLogLoss F prices i)) := by
+    apply Finset.ext
+    intro i
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and]
+    rw [actualLogLoss_eq_neg_logPrice F prices hF hS i]
+  rw [systemicCrisis_threshold_iff
+    (logPriceFromBenchmark F prices)
+      (requiredAssetCount (ι := ι) alpha) hk hkn delta,
+    meanLogLoss_eq_actual F prices hF hS, hfilter]
+
 end MarketCrash
