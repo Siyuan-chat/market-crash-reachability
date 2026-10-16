@@ -4,11 +4,13 @@
 
 ## 全文形式化工程与阶段一边界
 
-[GitHub #5 全文验证总任务](https://github.com/Siyuan-chat/market-crash-reachability/issues/5)明确了 16 项实质性编号结果（另有非正式综述 Theorem 1.1）的逐项验收条件。[PR #6](https://github.com/Siyuan-chat/market-crash-reachability/pull/6)目前只增加了 6 项条件性桥接引理，不能替代原文 3.1/3.2 的完整路径证明：
+[GitHub #5 全文验证总任务](https://github.com/Siyuan-chat/market-crash-reachability/issues/5)明确了 16 项实质性编号结果（另有非正式综述 Theorem 1.1）的逐项验收条件。[PR #6](https://github.com/Siyuan-chat/market-crash-reachability/pull/6)目前增加了 12 项基础与条件性桥接引理，不能替代原文 3.1/3.2 的完整路径证明：
 
 - `CrisisFunctional.lean`：固定基准的平均对数损失、覆盖率分位阈值及其最小值定义；验证由非负对数价格和推出危机函数非正。仍需补齐 `k=ceil(αN)` 的有效取值与排序分位数等价证明，并连接真实价格 `log(S/F)`。
 - `BarrierEndpoint.lean`：在已知势函数非负的前提下排除所有资产低于基准；证明响应坐标在对数价格下严格单调；在额外假设 `G` 为全域凹且严格增、`G(0)=0` 时，用有限 Jensen 不等式推出平均对数损失不正。
-- **尚未在 Lean 中导出**：由弹性条件 e(S)≥1（对应 3.1）及 e(S)≥2（对应 3.2）分别得到所需凹性、恢复动力学的全局势函数比较、脉冲中间价格正性与逐段不变量、终点账本与可容许交易路径的精确定义。因此 3.1、3.2 仍为“未完成整项证明”。
+- \`ElasticityConcavity.lean\`：已从对**全正价格域**的 e(S)≥1 与 e(S)≥2 假设，分别导出原价格坐标与对数价格坐标凹性，且给出**仍依赖势函数非负**的条件性危机上界。原论文仅要求“可容许路径能到达的价格范围”，对应关系仍需证明，不能视为原定理已完结。
+- \`RecoveryPotential.lean\`：已在 Lean 中证明离散**纯恢复步骤** \(S'=(1-lam)F+lam S\)、\(0≤lam≤1\) 保持势函数非负。证明不适用于未经建模的连续交易/恢复并发过程。
+- **尚未在 Lean 中导出**：原模型完整动力学势函数比较、flow-completed 脉冲中间价格正性和不变量、逐资产终点美元账本与所有可容许路径的形式化。因此 3.1、3.2 仍为“未完成整项证明”。
 
 原始论文与 Python 区间认证保持不变；Lean 的 kernel 构建成功不意味着 7.6 的区间证书已通过 Lean 审核。
 
@@ -17,7 +19,7 @@
 - Lean：`leanprover/lean4:v4.19.0`，证据 `lean/lean-toolchain:1`。
 - mathlib：`c44e0c8ee63ca166450922a373c7409c5d26b00b`，证据 `lean/lake-manifest.json` 的 mathlib `rev` 与 `inputRev`。
 - 本地构建：**passed**，由主 agent 实际执行并确认；本次文档作者未另行重跑。
-- axiom 审计：**passed**，原版 34 项基础声明；Stage-1 在通过的 GitHub CI 上审查 40 项项目 theorem（新增 6 项定义/终点桥接引理）；仅依赖标准基础公理 propext、Classical.choice、Quot.sound。证据为 `../build/formal/axioms.log` 和 `../build/formal/integrity.json`，可由 `python formal/check_proof_integrity.py` 重现。
+- axiom 审计：**passed**，原版 34 项基础声明，加上 12 项 Stage-1 辅助引理，合计 46 项项目 theorem；已通过 GitHub Actions #38835500287 的 kernel 编译和全量 axiom 审计；仅依赖标准基础公理 propext、Classical.choice、Quot.sound。证据为 `../build/formal/axioms.log` 和 `../build/formal/integrity.json`，可由 `python formal/check_proof_integrity.py` 重现。
 - 静态审查未检出 `sorry`、`admit` 或自定义 `axiom`。使用 Mathlib 和经典选择不意味着无基础公理依赖。
 - 英文论文、数学内容及外部认证算法保持基线不变。
 
