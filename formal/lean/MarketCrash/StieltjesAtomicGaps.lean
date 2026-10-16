@@ -153,9 +153,9 @@ theorem StieltjesPairedExecution.gapClock_one
     (exec : StieltjesPairedExecution edges)
     (scale t : ℝ) :
     exec.gapClock scale t 1 = exec.variationClock scale t := by
+  have h := exec.atomic_clock_gap scale t
   unfold StieltjesPairedExecution.gapClock
-  rw [exec.atomic_clock_gap]
-  ring
+  nlinarith
 
 theorem StieltjesPairedExecution.gapClock_monotone
     {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
