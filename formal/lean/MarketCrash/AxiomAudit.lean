@@ -26,6 +26,9 @@ import MarketCrash
 #print axioms MarketCrash.coordinate_concaveOn_of_elasticity_ge_one
 #print axioms MarketCrash.logCoordinate_concaveOn_of_elasticity_ge_two
 #print axioms MarketCrash.no_positive_crisis_of_elasticity_ge_two_and_potential
+#print axioms MarketCrash.recovery_step_potential_lower_bound
+#print axioms MarketCrash.recovery_step_preserves_nonnegative_potential
+#print axioms MarketCrash.recovery_step_preserves_potential_of_elasticity_ge_one
 #print axioms MarketCrash.constantCoordinate_normalized
 #print axioms MarketCrash.linearCoordinate_normalized
 #print axioms MarketCrash.logarithmicCoordinate_normalized
@@ -43,6 +46,3 @@ import MarketCrash
 #print axioms MarketCrash.linearCoordinate_image
 #print axioms MarketCrash.logarithmicCoordinate_range
 #print axioms MarketCrash.logarithmicCoordinate_image
-#print axioms MarketCrash.recovery_step_potential_lower_bound
-#print axioms MarketCrash.recovery_step_preserves_nonnegative_potential
-#print axioms MarketCrash.recovery_step_preserves_potential_of_elasticity_ge_one
