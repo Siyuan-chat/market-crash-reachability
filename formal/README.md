@@ -22,6 +22,12 @@ The 159 declarations include the inverse-variation-clock inequalities
 on its actual image and conditional a.e.-FTC comparison, still for
 **typed restricted classes**. No entire-original-BV theorem is
 claimed from these checkpoints.
+Phase 4's [Stieltjes atomic gap and ordered-jump proof gates](PHASE4_ATOMIC_GATES.md)
+distinguish measure-level gap accounting, genuine marginal-settled physical
+pulse sequences, and the still-unproved existence/absolute-continuity
+bridges for all original BV controls. These new declarations live in
+[Draft PR #10](https://github.com/Siyuan-chat/market-crash-reachability/pull/10);
+consult its exact-head CI before counting them as verified.
 See the [M1–M5 fidelity audit](MODEL_FIDELITY.md), [complete theorem map](THEOREM_MAP.md) and
 [the precise status and hypotheses](FORMALIZATION_STATUS.md).
 
