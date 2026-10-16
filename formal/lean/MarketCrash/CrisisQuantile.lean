@@ -345,25 +345,27 @@ theorem proposition_7_1_terminal_product
         (∏ i ∈ Finset.univ \ decliners, prices i / F) := by
     rw [← hsplit, hdecl, hrest, mul_comm]
   rw [hfull]
-  let c : ℝ := (k : ℝ) * (D * lambda)
-  let n : ℝ := (Fintype.card ι : ℝ) * delta
   constructor
   · intro h
-    have hm := mul_le_mul_of_nonneg_left h (Real.exp_pos c).le
-    have hc : Real.exp c * Real.exp (-c) = 1 := by
+    have hm := mul_le_mul_of_nonneg_left h
+      (Real.exp_pos ((k : ℝ) * (D * lambda))).le
+    have hc : Real.exp ((k : ℝ) * (D * lambda)) *
+        Real.exp (-((k : ℝ) * (D * lambda))) = 1 := by
       rw [← Real.exp_add]
       simp
-    rw [← mul_assoc, hc, one_mul] at hm
-    simpa [← Real.exp_add, sub_eq_add_neg] using hm
+    rw [hc, one_mul] at hm
+    rw [← Real.exp_add] at hm
+    simpa only [sub_eq_add_neg] using hm
   · intro h
-    have hm := mul_le_mul_of_nonneg_left h (Real.exp_pos (-c)).le
-    have hc : Real.exp (-c) * Real.exp c = 1 := by
-      rw [← Real.exp_add]
-      simp
-    rw [← mul_assoc, ← Real.exp_add] at hm
-    have he : -c + (c - n) = -n := by ring
+    have hm := mul_le_mul_of_nonneg_left h
+      (Real.exp_pos (-((k : ℝ) * (D * lambda)))).le
+    rw [← Real.exp_add] at hm
+    have he : -((k : ℝ) * (D * lambda)) +
+        ((k : ℝ) * (D * lambda) -
+          (Fintype.card ι : ℝ) * delta) =
+        -((Fintype.card ι : ℝ) * delta) := by ring
     rw [he] at hm
-    simpa [mul_assoc] using hm
+    exact hm
 
 
 /-- Exact kth largest loss for the prescribed streak, when none of
