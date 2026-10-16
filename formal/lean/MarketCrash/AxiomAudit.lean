@@ -184,3 +184,4 @@ import MarketCrash
 #print axioms MarketCrash.OrderedAtomicJumpTrace.full_atom_ledger
 #print axioms MarketCrash.StieltjesPairedExecution.atomicTimes_countable
 #print axioms MarketCrash.StieltjesPairedExecution.atomicMass_zero_of_not_atomic
+#print axioms MarketCrash.OrderedAtomicJumpTrace.physical_reachable
