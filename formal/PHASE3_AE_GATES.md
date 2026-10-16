@@ -6,9 +6,9 @@
 
 ## Verified intermediate milestone
 
-At commit `38bac5381ffece9664f3cf8d1c7e6f9cc5f54267`, the fixed Lean 4.19.0 + pinned Mathlib workflow [#38859956202](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38859956202) **passed 151/151 theorem declarations**: kernel build, no `sorry`/`axiom`, and individual allowed-axiom inventory. Subsequent work must be independently rechecked at its own exact SHA.
+**Latest verified mathematical source:** commit `c619ba26805facb0cf5d5cf2a87383fdd0d517a4`, [Lean CI #38861075606](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38861075606) **passed 159/159 declarations**, full kernel/axiom audit, without unfinished proofs or additional axioms. Previous exact-head checkpoints passed [153/153](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38860430862) and [151/151](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38859956202). The number counts formal statements at their precisely tested SHAs, **not** manuscript theorem coverage.
 
-## Two mathematical upgrades that are already kernel-checked (151 milestone)
+## Completed mathematical upgrades (159 milestone)
 
 ### 1. Input clock for general Stieltjes cumulative controls
 
@@ -24,6 +24,16 @@ The file `StieltjesVariationClock.lean` derives, for any ordered times `s≤t`,
 - `u` is monotone.
 
 The clock `u` can jump when trading contains atoms. These inequalities **do not** construct the completed graph, prove an inverse is 1-Lipschitz, or define execution order within simultaneous atoms. Do not infer any of those claims solely from the clock estimate.
+
+### Clock inverse on its actual image (new 159 milestone)
+
+`StieltjesVariationClock.lean` additionally proves the total clock is **strictly** increasing for `λ≥0`. It constructs a unique inverse `t(u)` **only on the clock's actual image**, proves left inversion and order preservation, and establishes
+
+`0 ≤ t(u₂)-t(u₁) ≤ u₂-u₁` for ordered clock-image points `u₁≤u₂`,
+
+together with `λ·μ_e((t(u₁),t(u₂)]) ≤ u₂-u₁` for every directed trading edge. This is the precise nonexpansion estimate needed before constructing a completed inverse graph.
+
+**It is not yet a map on the whole operational interval:** at jump atoms, `u(t)` skips intervals, and multiple simultaneous edge jumps require the ordered internal execution protocol. These arcs, their physical solutions, and preservation of inventory/positive prices remain unconstructed.
 
 ### 2. Genuine a.e. nonlinear physical response for a Lipschitz operational solution
 
@@ -45,7 +55,7 @@ This is a **genuine physical-model-to-coordinate a.e. chain-rule proof for the t
 
 A nonnegative derivative almost everywhere does **not** imply that a continuous real function is monotone. The Cantor function is the standard counterexample. Absolute continuity is needed.
 
-The new `OperationalClockAEComparison.lean` (separate post-151 candidate; CI status to be checked) establishes the exact mathematical bridge **conditional** on
+`OperationalClockAEComparison.lean` is verified at the **153** and **159** checkpoints and establishes the exact mathematical bridge **conditional** on
 
 `integral_a^b J'(u) du = J(b) - J(a)`, where `J(u) = exp(rho·t(u))·H(u)`.
 
@@ -57,7 +67,7 @@ Under this explicitly stated FTC identity, `J'(u)≥0` a.e. and `H(a)≥0` yield
 
 1. **From original control to completed graph.** For the full finite-variation, piecewise-continuous controls and finitely many marginally settled pulses, construct a parameterized common graph. Fill every jump explicitly, preserving the directed edge execution order and nonnegative cumulative rates; verify physical time is nondecreasing. An inverse-graph existence theorem and correct handling of co-jumps are still absent.
 2. **Physical response solution.** Construct or verify the weak/measure price-share-ledger solution for those controls, including singular-continuous transactions and ordered jump arcs. Then prove the resulting `S_i, theta_i, X_i` meet the `AEOperationalClockSegment` hypotheses with suitable extensions. Do not simply assert the generalized price-coordinate equation.
-3. **Absolute continuity and FTC.** Prove the integrating factor `J` is locally absolutely continuous and satisfies its a.e. derivative integral identity. The 151-milestone a.e. derivative proof is not by itself the endpoint comparison.
+3. **Absolute continuity and FTC.** Prove the integrating factor `J` is locally absolutely continuous and satisfies its a.e. derivative integral identity. The verified a.e. derivative proof, inverse-clock estimates and the conditional FTC theorem are not by themselves the original all-BV endpoint comparison.
 4. **Model side conditions.** Prove strict positive prices at *every* internal graph point, no-short inventory throughout each jump, finite total variation, correct physical-time matching and exact terminal **per-asset** dollar closure for the whole constructed path.
 5. **Attainable-price curvature.** Extend the radial/visited-price argument and the log-Jensen argument to the complete original path, including internal jump prices and all concatenations. The current multi-segment barrier uses stronger global elasticity premises.
 6. **Original paper theorem scope.** Only after all gates can the full M1–M5 quantifiers in manuscript Theorems 3.1/3.2 be declared Lean-verified. Other numbered results and Proposition 7.6's interval certificate are separate verification projects.
