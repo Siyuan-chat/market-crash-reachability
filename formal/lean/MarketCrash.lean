@@ -34,7 +34,6 @@ import MarketCrash.OperationalClockAEComparison
 import MarketCrash.StieltjesAtomicGaps
 import MarketCrash.AtomicFlowCompletion
 import MarketCrash.OrderedAtomicCompletion
-import MarketCrash.CountablePhysicalClosure
 
 import MarketCrash.RadialSystemicBarrier
 import MarketCrash.AEAttainableBarrier
