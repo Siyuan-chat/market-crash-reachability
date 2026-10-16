@@ -111,4 +111,44 @@ theorem OperationalClockSegment.no_all_asset_decline_of_attained_elasticity
     (m.potential_nonnegative_of_attained_elasticity
       F rho g edges hF hrho hdiff hinit hel)
 
+/-- Theorem 3.2 analogue for the joint physical operational-clock
+segment, using the existing precise terminal log-loss semantics. For
+now this e>=2 assumption is GLOBAL, not restricted to visited prices. -/
+theorem OperationalClockSegment.no_systemic_crisis_of_global_elasticity
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    [DecidableEq ι] [Nonempty ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (m : OperationalClockSegment F rho g edges)
+    (hF : 0 < F) (hrho : 0 ≤ rho)
+    (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
+    (hel : ∀ S : ℝ, 0 < S → 2 ≤ responseElasticity g.impact S)
+    (hinit : ∀ i, m.prices m.a i = F)
+    (q : ι → ℝ) (hq : ∀ i, m.prices m.b i = F * Real.exp (q i))
+    (k : ℕ) :
+    systemicCrisis q k ≤ 0 := by
+  have hel1 : ∀ S : ℝ, 0 < S → 1 ≤ responseElasticity g.impact S := by
+    intro S hs
+    linarith [hel S hs]
+  have hstart :
+      0 ≤ potential (fun i => coordinate F g.impact (m.prices m.a i)) := by
+    have hz (i : ι) : coordinate F g.impact (m.prices m.a i) = 0 := by
+      rw [hinit i, coordinate_at_benchmark]
+    simp [potential, hz]
+  have hpotential :
+      0 ≤ potential (fun i => coordinate F g.impact (m.prices m.b i)) :=
+    m.potential_nonnegative F rho g edges hF hrho hdiff hel1 hstart
+  have hlog :
+      (∑ i, logCoordinate F g.impact (q i)) =
+        potential (fun i => coordinate F g.impact (m.prices m.b i)) := by
+    unfold potential
+    apply Finset.sum_congr rfl
+    intro i _
+    change coordinate F g.impact (F * Real.exp (q i)) =
+      coordinate F g.impact (m.prices m.b i)
+    rw [hq i]
+  apply no_positive_crisis_of_elasticity_ge_two_and_potential
+    F g hF hdiff hel q k
+  rw [hlog]
+  exact hpotential
+
 end MarketCrash
