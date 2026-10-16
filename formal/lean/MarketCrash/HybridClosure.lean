@@ -34,7 +34,7 @@ theorem hybrid_reachable_preserves_nonnegative_potential
     (hstart : 0 ≤ potential (fun i => coordinate F g.impact (S i))) :
     0 ≤ potential (fun i => coordinate F g.impact (T i)) := by
   induction path with
-  | refl _ => exact hstart
+  | refl => exact hstart
   | append previous nextStep ih =>
       exact hybrid_step_preserves_nonnegative_potential
         F rho g edges hF hrho hdiff hel nextStep ih
