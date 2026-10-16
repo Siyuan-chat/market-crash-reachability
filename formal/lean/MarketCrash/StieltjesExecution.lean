@@ -124,10 +124,7 @@ theorem StieltjesPairedExecution.intervalLedger_add
   rw [← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
   intro e _
-  change pairedMatrix edges i e * exec.intervalMass e a c =
-    pairedMatrix edges i e *
-      (exec.intervalMass e a b + exec.intervalMass e b c)
-  rw [exec.intervalMass_add e a b c hab hbc]
+  simp only [exec.intervalMass_add e a b c hab hbc, mul_add]
 
 /-- Terminal per-asset dollar closure is exactly an endpoint condition
 on the cumulative matched-dollar edge execution, and is strictly
