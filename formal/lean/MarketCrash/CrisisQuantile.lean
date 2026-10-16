@@ -285,4 +285,88 @@ theorem systemicCrisis_product_iff_of_common_decliner_log_close
   rw [hclose i hi]
   linarith
 
+
+/-- Proposition 7.1: the specified k streaking assets and the
+remaining arbitrary positive compensator prices. The product is over
+exactly the N-k complementary assets, not over a fictitious market. -/
+theorem proposition_7_1_terminal_product
+    (prices : ι → ℝ) (F : ℝ) (hF : 0 < F)
+    (hp : ∀ i, 0 < prices i)
+    (decliners : Finset ι) (k : ℕ)
+    (hcard : decliners.card = k) (hk : 0 < k)
+    (hkn : k ≤ Fintype.card ι)
+    (D lambda delta : ℝ)
+    (hthreshold : delta ≤ D * lambda)
+    (hclose : ∀ i ∈ decliners,
+      prices i / F = Real.exp (-(D * lambda))) :
+    delta ≤ systemicCrisis (logPriceFromBenchmark F prices) k ↔
+      (∏ i ∈ Finset.univ \ decliners, prices i / F) ≤
+        Real.exp ((k : ℝ) * (D * lambda) -
+          (Fintype.card ι : ℝ) * delta) := by
+  classical
+  let q : ι → ℝ := logPriceFromBenchmark F prices
+  have hq : ∀ i, Real.exp (q i) = prices i / F := by
+    intro i
+    exact Real.exp_log (div_pos (hp i) hF)
+  have hcloseq : ∀ i ∈ decliners, q i = -(D * lambda) := by
+    intro i hi
+    unfold q logPriceFromBenchmark
+    rw [hclose i hi, Real.log_exp]
+  have hbase :=
+    systemicCrisis_product_iff_of_common_decliner_log_close
+      q k hk hkn decliners hcard D lambda delta hthreshold hcloseq
+  rw [hbase]
+  have hsubset : decliners ⊆ (Finset.univ : Finset ι) :=
+    Finset.subset_univ _
+  have hsplit := Finset.prod_sdiff
+    (f := fun i => Real.exp (q i)) hsubset
+  have hdecl : (∏ i ∈ decliners, Real.exp (q i)) =
+      Real.exp (-(k : ℝ) * (D * lambda)) := by
+    rw [← Real.exp_sum]
+    have hsum : (∑ i ∈ decliners, q i) =
+        -(k : ℝ) * (D * lambda) := by
+      calc
+        (∑ i ∈ decliners, q i) =
+            ∑ _i ∈ decliners, -(D * lambda) := by
+              apply Finset.sum_congr rfl
+              intro i hi
+              exact hcloseq i hi
+        _ = -(k : ℝ) * (D * lambda) := by
+          simp [hcard]
+    rw [hsum]
+  have hrest : (∏ i ∈ Finset.univ \ decliners, Real.exp (q i)) =
+      (∏ i ∈ Finset.univ \ decliners, prices i / F) := by
+    apply Finset.prod_congr rfl
+    intro i _
+    exact hq i
+  have hfull : (∏ i, Real.exp (q i)) =
+      Real.exp (-(k : ℝ) * (D * lambda)) *
+        (∏ i ∈ Finset.univ \ decliners, prices i / F) := by
+    rw [← hsplit, hdecl, hrest, mul_comm]
+  rw [hfull]
+  let c : ℝ := (k : ℝ) * (D * lambda)
+  let n : ℝ := (Fintype.card ι : ℝ) * delta
+  change Real.exp (-c) *
+    (∏ i ∈ Finset.univ \ decliners, prices i / F) ≤
+    Real.exp (-n) ↔
+    (∏ i ∈ Finset.univ \ decliners, prices i / F) ≤
+    Real.exp (c - n)
+  constructor
+  · intro h
+    have hm := mul_le_mul_of_nonneg_left h (Real.exp_pos c).le
+    have hc : Real.exp c * Real.exp (-c) = 1 := by
+      rw [← Real.exp_add]
+      simp
+    rw [← mul_assoc, hc, one_mul] at hm
+    simpa [← Real.exp_add, sub_eq_add_neg] using hm
+  · intro h
+    have hm := mul_le_mul_of_nonneg_left h (Real.exp_pos (-c)).le
+    have hc : Real.exp (-c) * Real.exp c = 1 := by
+      rw [← Real.exp_add]
+      simp
+    rw [← mul_assoc, ← Real.exp_add] at hm
+    have he : -c + (c - n) = -n := by ring
+    rw [he] at hm
+    simpa [mul_assoc] using hm
+
 end MarketCrash
