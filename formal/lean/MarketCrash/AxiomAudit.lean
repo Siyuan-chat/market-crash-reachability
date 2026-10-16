@@ -128,3 +128,6 @@ import MarketCrash
 #print axioms MarketCrash.nonnegative_of_variable_clock_derivative_on_Icc
 #print axioms MarketCrash.OperationalClockSegment.potential_nonnegative
 #print axioms MarketCrash.OperationalClockSegment.potential_eq_of_frozen_time
+#print axioms MarketCrash.OperationalClockSegment.radial_price_attained
+#print axioms MarketCrash.OperationalClockSegment.potential_nonnegative_of_attained_elasticity
+#print axioms MarketCrash.OperationalClockSegment.no_all_asset_decline_of_attained_elasticity
