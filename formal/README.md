@@ -7,6 +7,7 @@ This project verifies coordinate, finite-dimensional conservation and response-f
 foundations. It does **not** formalize the whole paper, the complete barrier
 theorems, admissible controlled paths, or the interval certificate of Proposition 7.6.
 Follow the [whole-paper proof tracker](https://github.com/Siyuan-chat/market-crash-reachability/issues/5).
+Phase 2's [bounded-variation proof gates](PHASE2_BV_GATES.md) distinguish proven accounting and crisis-parameter bridges from the unproved full BV price dynamics.
 See the [M1–M5 fidelity audit](MODEL_FIDELITY.md), [complete theorem map](THEOREM_MAP.md) and
 [the precise status and hypotheses](FORMALIZATION_STATUS.md).
 
