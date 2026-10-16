@@ -222,10 +222,10 @@ theorem systemicCrisis_product_threshold_iff
   constructor
   · rintro ⟨hm, hc⟩
     constructor
-    · have hmul := (le_div_iff₀ hn).mp hm
+    · have hm' : delta ≤ -(∑ i, q i) / (Fintype.card ι : ℝ) := hm
+      have hmul := (le_div_iff₀ hn).mp hm'
       have hsum : (∑ i, q i) ≤
           -(Fintype.card ι : ℝ) * delta := by
-        dsimp [meanLogLoss] at hmul
         nlinarith
       simpa only [Real.exp_sum] using (Real.exp_le_exp.mpr hsum)
     · exact hc
