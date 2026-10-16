@@ -240,4 +240,28 @@ theorem systemicCrisis_product_threshold_iff
       nlinarith
     · exact hc
 
+
+/-- Proposition 7.1 coverage specialization: once k specified assets
+all lose at least delta, the exact systemic-crisis threshold is
+equivalent to the single terminal price-product bound. -/
+theorem systemicCrisis_product_iff_of_prescribed_decliners
+    (q : ι → ℝ) (k : ℕ)
+    (hk : 0 < k) (hkn : k ≤ Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (delta : ℝ)
+    (hloss : ∀ i ∈ decliners, delta ≤ -q i) :
+    delta ≤ systemicCrisis q k ↔
+      (∏ i, Real.exp (q i)) ≤
+        Real.exp (-(Fintype.card ι : ℝ) * delta) := by
+  rw [systemicCrisis_product_threshold_iff q k hk hkn delta]
+  have hsubset : decliners ⊆
+      Finset.univ.filter (fun i : ι => delta ≤ -q i) := by
+    intro i hi
+    exact Finset.mem_filter.mpr ⟨Finset.mem_univ i, hloss i hi⟩
+  have hcoverage : k ≤
+      (Finset.univ.filter (fun i : ι => delta ≤ -q i)).card := by
+    rw [← hcard]
+    exact Finset.card_le_card hsubset
+  simp [hcoverage]
+
 end MarketCrash
