@@ -40,3 +40,4 @@ import MarketCrash.RadialSystemicBarrier
 import MarketCrash.AEAttainableBarrier
 import MarketCrash.WeakBVPriceBarrier
 import MarketCrash.WeakBVFiniteExecution
+import MarketCrash.WeakBVOriginalCrisis
