@@ -35,6 +35,9 @@ import MarketCrash
 #print axioms MarketCrash.hybrid_step_preserves_nonnegative_potential
 #print axioms MarketCrash.hybrid_step_target_positive
 #print axioms MarketCrash.hybrid_reachable_target_positive
+#print axioms MarketCrash.PhysicalSmoothSegment.coordinate_ode
+#print axioms MarketCrash.PhysicalSmoothSegment.potential_ode
+#print axioms MarketCrash.PhysicalSmoothSegment.potential_nonnegative
 #print axioms MarketCrash.nonnegative_of_derivative_ge_linear_from
 #print axioms MarketCrash.nonnegative_potential_of_normal_form_from
 #print axioms MarketCrash.recovery_step_potential_lower_bound
