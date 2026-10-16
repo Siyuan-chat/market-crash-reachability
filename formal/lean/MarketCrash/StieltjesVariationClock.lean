@@ -102,4 +102,103 @@ theorem StieltjesPairedExecution.variationClock_monotone
   have hs : 0 ≤ t - s := sub_nonneg.mpr hst
   exact sub_nonneg.mp (hs.trans hbound)
 
+/-- The normalized variation clock is actually strictly increasing:
+physical elapsed time prevents flat portions even when no trade occurs. -/
+theorem StieltjesPairedExecution.variationClock_strictMono
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (scale : ℝ) (hscale : 0 ≤ scale) :
+    StrictMono (exec.variationClock scale) := by
+  intro s t hst
+  have hbound := exec.physicalTime_le_clock_increment scale s t hscale hst.le
+  apply sub_pos.mp
+  exact (sub_pos.mpr hst).trans_le hbound
+
+/-- Inverse clock defined only on its ACTUAL image. The missing values
+in gaps of this image are precisely why atoms still need separately
+ordered graph-completion arcs. -/
+def StieltjesPairedExecution.clockPreimage
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges) (scale : ℝ)
+    (u : Set.range (exec.variationClock scale)) : ℝ :=
+  Classical.choose u.property
+
+theorem StieltjesPairedExecution.clockPreimage_spec
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges) (scale : ℝ)
+    (u : Set.range (exec.variationClock scale)) :
+    exec.variationClock scale (exec.clockPreimage scale u) = u.val :=
+  Classical.choose_spec u.property
+
+/-- Strict monotonicity gives the unambiguous time coordinate at every
+clock-image point, without assuming continuity of the forward clock. -/
+theorem StieltjesPairedExecution.clockPreimage_left
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (scale : ℝ) (hscale : 0 ≤ scale) (t : ℝ) :
+    exec.clockPreimage scale
+      ⟨exec.variationClock scale t, ⟨t, rfl⟩⟩ = t := by
+  have h := exec.clockPreimage_spec scale
+    ⟨exec.variationClock scale t, ⟨t, rfl⟩⟩
+  exact (exec.variationClock_strictMono scale hscale).injective h
+
+/-- The inverse physical-time coordinate is monotone on the exact
+image of the Stieltjes variation clock. -/
+theorem StieltjesPairedExecution.clockPreimage_monotone
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (scale : ℝ) (hscale : 0 ≤ scale)
+    (u v : Set.range (exec.variationClock scale))
+    (huv : u.val ≤ v.val) :
+    exec.clockPreimage scale u ≤ exec.clockPreimage scale v := by
+  by_contra h
+  have hrev : exec.clockPreimage scale v < exec.clockPreimage scale u :=
+    lt_of_not_ge h
+  have hcl := (exec.variationClock_strictMono scale hscale) hrev
+  rw [exec.clockPreimage_spec scale v, exec.clockPreimage_spec scale u] at hcl
+  exact (not_lt_of_ge huv) hcl
+
+/-- On the image, the inverse physical-time coordinate is nonexpanding
+in forward increments; the gap interpolation still remains unbuilt. -/
+theorem StieltjesPairedExecution.clockPreimage_duration_bound
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (scale : ℝ) (hscale : 0 ≤ scale)
+    (u v : Set.range (exec.variationClock scale))
+    (huv : u.val ≤ v.val) :
+    exec.clockPreimage scale v - exec.clockPreimage scale u ≤
+      v.val - u.val := by
+  have hclock := exec.clockPreimage_monotone scale hscale u v huv
+  have hb := exec.physicalTime_le_clock_increment scale
+    (exec.clockPreimage scale u) (exec.clockPreimage scale v)
+    hscale hclock
+  rw [exec.clockPreimage_spec scale u, exec.clockPreimage_spec scale v] at hb
+  exact hb
+
+/-- Each scaled executed-dollar edge is also nonexpanding between
+ordered inverse-clock image points. Co-jumps require explicit internal
+execution-order semantics, not provided by this inequality. -/
+theorem StieltjesPairedExecution.clockPreimage_edgeMass_bound
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (scale : ℝ) (hscale : 0 ≤ scale)
+    (u v : Set.range (exec.variationClock scale))
+    (huv : u.val ≤ v.val) (e : κ) :
+    scale * exec.intervalMass e
+      (exec.clockPreimage scale u) (exec.clockPreimage scale v) ≤
+      v.val - u.val := by
+  have hclock := exec.clockPreimage_monotone scale hscale u v huv
+  have hb := exec.edgeMass_le_clock_increment scale
+    (exec.clockPreimage scale u) (exec.clockPreimage scale v)
+    hscale hclock e
+  rw [exec.clockPreimage_spec scale u, exec.clockPreimage_spec scale v] at hb
+  exact hb
+
 end MarketCrash
