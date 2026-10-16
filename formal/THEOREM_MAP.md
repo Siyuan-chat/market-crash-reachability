@@ -2,9 +2,11 @@
 
 状态日期：2026-10-15。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。所有整项 Theorem/Proposition 均未完成 Lean 形式化；7.6 的既有机器辅助依据是外部 Python 区间认证，其余依赖纸面证明。Theorem 1.1 为非正式概览。
 
-核心 Lean 模块已在本地构建通过（主 agent 验证）；这只覆盖本文件末尾列出的基础引理，不能视作以下任一整项的 Lean 验证。axiom 审计已通过：46 个项目 theorem（原版 34 项 + 新增 12 项辅助引理）均由 Lean 实际打印依赖，仅使用 propext、Classical.choice、Quot.sound；详见 FORMALIZATION_STATUS.md。
+核心 Lean 模块已在本地构建通过（主 agent 验证）；这只覆盖本文件末尾列出的基础引理，不能视作以下任一整项的 Lean 验证。axiom 审计已通过：76 个项目 theorem（包含从物理方程导出的正则路径不可达性）均由 Lean 实际打印依赖，仅使用 propext、Classical.choice、Quot.sound；详见 FORMALIZATION_STATUS.md。
 
 关于 3.1/3.2 的新增 Lean 结果必须注意：已由**全正价格域**的弹性下界导出两类坐标凹性，并在纯恢复离散步骤中证明了势函数非负保持；但**所有可容许路径**（连续交易与恢复同时发生、脉冲交易、终点账本）仍未形式化，因此不能将条件性端点引理升格为原定理的完整证明。全文验收标准见 [Issue #5](https://github.com/Siyuan-chat/market-crash-reachability/issues/5)；新增源文件见 `formal/lean/MarketCrash/CrisisFunctional.lean` 和 `formal/lean/MarketCrash/BarrierEndpoint.lean`。
+
+[M1–M5 model-fidelity audit](MODEL_FIDELITY.md) 记录正则路径证明 `admissible_regular_no_all_asset_decline`、`admissible_regular_no_systemic_crisis` 与原论文更大有限变差路径类的尚未解决的关系。故两项原文定理的整项 Lean 状态暂不升级。
 
 ## Theorem 1.1 — thm:informal
 

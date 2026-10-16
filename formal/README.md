@@ -7,7 +7,7 @@ This project verifies coordinate, finite-dimensional conservation and response-f
 foundations. It does **not** formalize the whole paper, the complete barrier
 theorems, admissible controlled paths, or the interval certificate of Proposition 7.6.
 Follow the [whole-paper proof tracker](https://github.com/Siyuan-chat/market-crash-reachability/issues/5).
-See [the complete theorem map](THEOREM_MAP.md) and
+See the [M1–M5 fidelity audit](MODEL_FIDELITY.md), [complete theorem map](THEOREM_MAP.md) and
 [the precise status and hypotheses](FORMALIZATION_STATUS.md).
 
 Install Lean through Elan. The toolchain file fixes Lean 4.19.0; the Lake
@@ -28,9 +28,9 @@ and `Quot.sound`. Logs and a machine-readable inventory are generated in
 `build/formal/`; they are CI artifacts, not mathematical assumptions.
 
 Original local validation on 2026-10-15 covered 34 foundational declarations.
-Stage-1 PR #6 adds 12 kernel-checked auxiliary declarations: 6 crisis/endpoint,
-3 elasticity/concavity, and 3 exact-recovery lemmas (46 in total).
-Theorems 3.1/3.2 remain incomplete as full formal statements. The stage-1
+Stage-1 PR #6 now has 76 kernel-checked declarations including regular physical execution,
+flow-completed pulse endpoint formulas, and 3.1/3.2 analogues for that regular subclass.
+Theorems 3.1/3.2 remain incomplete over the paper's full finite-variation admissible class. The stage-1
 source and axiom audit have passed a pinned-toolchain GitHub Actions run;
 check the latest branch CI status before merging. There are advisory
 tactic/unused-variable lint warnings.
@@ -45,5 +45,7 @@ equivalence. The exact recovery-step invariant is a genuine result about
 pure relaxation, but full resilient paths with concurrent paired executions,
 flow-completed pulses, positivity and dollar ledgers are not yet formalized.
 
-CI evidence for 46 declarations:
+CI evidence for the earlier 46-declaration checkpoint:
 [Lean kernel build + axiom audit, run 38835500287](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38835500287).
+
+Latest 76-declaration success: [run 38844596170](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38844596170).
