@@ -31,6 +31,8 @@ import MarketCrash
 #print axioms MarketCrash.hybrid_reachable_preserves_nonnegative_potential
 #print axioms MarketCrash.hybrid_not_all_below_benchmark
 #print axioms MarketCrash.hybrid_systemic_crisis_nonpositive
+#print axioms MarketCrash.hybrid_step_target_positive
+#print axioms MarketCrash.hybrid_reachable_target_positive
 #print axioms MarketCrash.smooth_segment_preserves_nonnegative_potential
 #print axioms MarketCrash.hybrid_step_preserves_nonnegative_potential
 #print axioms MarketCrash.nonnegative_of_derivative_ge_linear_from
