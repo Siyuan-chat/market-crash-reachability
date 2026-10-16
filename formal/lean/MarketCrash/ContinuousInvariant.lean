@@ -1,4 +1,5 @@
 import MarketCrash.RecoveryPotential
+import MarketCrash.Conservation
 import Mathlib.Analysis.Calculus.Deriv.MeanValue
 
 /-!
@@ -29,7 +30,7 @@ theorem nonnegative_of_derivative_ge_linear
     have hexp : HasDerivAt (fun v : ℝ => Real.exp (rho * v))
         (Real.exp (rho * u) * rho) u :=
       (Real.hasDerivAt_exp (rho * u)).comp u hlinear
-    convert (hexp.mul (hderiv u)) using 1 <;> simp only [J] <;> ring
+    convert (hexp.mul (hderiv u)) using 1 <;> ring
   have hnonneg : ∀ u : ℝ, 0 ≤ deriv J u := by
     intro u
     rw [(hJ u).deriv]
@@ -41,6 +42,7 @@ theorem nonnegative_of_derivative_ge_linear
     monotone_of_deriv_nonneg (fun u => (hJ u).differentiableAt) hnonneg
   have hJzero : 0 ≤ J 0 := by simpa [J] using hzero
   have hJt : 0 ≤ J t := hJzero.trans (hmono ht)
+  classical
   by_contra hfail
   have hneg : H t < 0 := lt_of_not_ge hfail
   have hJneg : J t < 0 :=
