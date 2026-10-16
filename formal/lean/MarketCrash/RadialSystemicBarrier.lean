@@ -117,9 +117,10 @@ theorem nonnegative_log_sum_of_radial_elasticity_ge_two
       2 ≤ responseElasticity g.impact (F * Real.exp x))
     (hPotential : 0 ≤ ∑ i, logCoordinate F g.impact (q i)) :
     0 ≤ ∑ i, q i := by
+  classical
   have hsum : (∑ i, logCoordinate F g.impact (q i)) ≤
       (F ^ 2 / g.impact F) * ∑ i, q i := by
-    rw [← Finset.mul_sum]
+    rw [Finset.mul_sum]
     apply Finset.sum_le_sum
     intro i _
     exact logCoordinate_le_benchmark_tangent_of_radial_elasticity
