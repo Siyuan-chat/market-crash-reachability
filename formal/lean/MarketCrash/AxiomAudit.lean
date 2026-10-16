@@ -196,3 +196,4 @@ import MarketCrash
 #print axioms MarketCrash.proposition_7_1_quantile_of_strict_majority
 #print axioms MarketCrash.proposition_7_1_exact_severity
 #print axioms MarketCrash.proposition_7_1_original_endpoint
+#print axioms MarketCrash.proposition_7_1_single_compensator
