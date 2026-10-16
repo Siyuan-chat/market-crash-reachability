@@ -498,4 +498,67 @@ theorem proposition_7_1_exact_severity
         rw [htotal]
         ring
 
+
+/-- Full conditional endpoint content of manuscript Proposition 7.1:
+the prescribed k = ceil(alpha*N) assets close at F*r^D with
+0 < r < 1, and every complementary close is arbitrary but positive.
+Both the trigger product and the exact severity under either of the
+paper's quantile side conditions are conclusions, not assumed laws. -/
+theorem proposition_7_1_original_endpoint
+    [DecidableEq ι]
+    (prices : ι → ℝ) (F : ℝ) (hF : 0 < F)
+    (hp : ∀ i, 0 < prices i)
+    (alpha : ℝ) (halpha : 0 < alpha) (hale : alpha ≤ 1)
+    (k : ℕ) (hkeq : k = requiredAssetCount (ι := ι) alpha)
+    (hklt : k < Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (r : ℝ) (hr : 0 < r) (hr1 : r < 1)
+    (D : ℕ) (delta : ℝ)
+    (hdelta : 0 < delta)
+    (hthreshold : delta ≤ (D : ℝ) * (-Real.log r))
+    (hclose : ∀ i ∈ decliners, prices i = F * r ^ D) :
+    (delta ≤ systemicCrisis (logPriceFromBenchmark F prices) k ↔
+      (∏ i ∈ Finset.univ \ decliners, prices i / F) ≤
+        Real.exp ((k : ℝ) * ((D : ℝ) * (-Real.log r)) -
+          (Fintype.card ι : ℝ) * delta)) ∧
+    (((∀ i ∉ decliners,
+        -logPriceFromBenchmark F prices i ≤ (D : ℝ) * (-Real.log r)) ∨
+        Fintype.card ι < 2 * k) →
+      systemicCrisis (logPriceFromBenchmark F prices) k =
+        min ((D : ℝ) * (-Real.log r))
+          (((k : ℝ) * ((D : ℝ) * (-Real.log r)) -
+            (∑ i ∈ Finset.univ \ decliners,
+              Real.log (prices i / F))) /
+            (Fintype.card ι : ℝ))) := by
+  classical
+  obtain ⟨hkpos, hkn⟩ :=
+    requiredAssetCount_valid (ι := ι) alpha halpha hale
+  have hk : 0 < k := by rw [hkeq]; exact hkpos
+  have hkle : k ≤ Fintype.card ι := hklt.le
+  let lambda : ℝ := -Real.log r
+  have he : Real.exp (-((D : ℝ) * lambda)) = r ^ D := by
+    change Real.exp (-((D : ℝ) * (-Real.log r))) = r ^ D
+    rw [show -((D : ℝ) * (-Real.log r)) =
+      (D : ℝ) * Real.log r by ring,
+      Real.exp_nat_mul, Real.exp_log hr]
+  have hratio : ∀ i ∈ decliners,
+      prices i / F = Real.exp (-((D : ℝ) * lambda)) := by
+    intro i hi
+    rw [hclose i hi, he]
+    field_simp [hF.ne']
+  have hqclose : ∀ i ∈ decliners,
+      logPriceFromBenchmark F prices i = -((D : ℝ) * lambda) := by
+    intro i hi
+    unfold logPriceFromBenchmark
+    rw [hratio i hi, Real.log_exp]
+  constructor
+  · exact proposition_7_1_terminal_product
+      prices F hF hp decliners k hcard hk hkle
+      (D : ℝ) lambda delta hthreshold hratio
+  · intro hcondition
+    have hseverity := proposition_7_1_exact_severity
+      (logPriceFromBenchmark F prices) k hk hkle
+      decliners hcard ((D : ℝ) * lambda) hqclose hcondition
+    simpa only [lambda, logPriceFromBenchmark] using hseverity
+
 end MarketCrash
