@@ -170,4 +170,68 @@ theorem StieltjesPairedExecution.gapClock_monotone
   have h := mul_le_mul_of_nonneg_right hrs hm
   linarith
 
+/-- The affine gap time-coordinate and all affine cumulative edge-dollar
+coordinates satisfy the SAME scaled clock normalization at every r. -/
+theorem StieltjesPairedExecution.gapClock_eq_edgeSum
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (scale t r : ℝ) :
+    exec.gapClock scale t r =
+      t + scale * ∑ e, exec.gapEdge e t r := by
+  have hsum :
+      (∑ e, exec.gapEdge e t r) =
+        (∑ e, Function.leftLim (exec.cumulative e) t) +
+          r * (∑ e, exec.atomicMass e t) := by
+    simp only [StieltjesPairedExecution.gapEdge, Finset.sum_add_distrib,
+      ← Finset.mul_sum]
+  rw [hsum]
+  unfold StieltjesPairedExecution.gapClock
+    StieltjesPairedExecution.leftClock
+  ring
+
+/-- Affine interpolation of each edge is monotone and its increment
+is proportional to its actual atomic dollar mass. -/
+theorem StieltjesPairedExecution.gapEdge_increment
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (e : κ) (t r s : ℝ) :
+    exec.gapEdge e t s - exec.gapEdge e t r =
+      (s - r) * exec.atomicMass e t := by
+  unfold StieltjesPairedExecution.gapEdge
+  ring
+
+theorem StieltjesPairedExecution.gapClock_increment
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (scale t r s : ℝ) :
+    exec.gapClock scale t s - exec.gapClock scale t r =
+      (s - r) * (scale * ∑ e, exec.atomicMass e t) := by
+  unfold StieltjesPairedExecution.gapClock
+  ring
+
+/-- No directed edge can execute more (after unit normalization)
+than elapsed operational time during this affine gap interpolation. -/
+theorem StieltjesPairedExecution.gapEdge_scaled_increment_le_clock
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (scale t r s : ℝ) (hscale : 0 ≤ scale) (hrs : r ≤ s)
+    (e : κ) :
+    scale * (exec.gapEdge e t s - exec.gapEdge e t r) ≤
+      exec.gapClock scale t s - exec.gapClock scale t r := by
+  classical
+  rw [exec.gapEdge_increment e t r s,
+      exec.gapClock_increment scale t r s]
+  have hsum :
+      exec.atomicMass e t ≤ ∑ e', exec.atomicMass e' t :=
+    Finset.single_le_sum (fun e' _ => exec.atomicMass_nonneg e' t)
+      (Finset.mem_univ e)
+  have hscale2 : 0 ≤ scale * (s - r) :=
+    mul_nonneg hscale (sub_nonneg.mpr hrs)
+  have hm := mul_le_mul_of_nonneg_left hsum hscale2
+  nlinarith
+
 end MarketCrash
