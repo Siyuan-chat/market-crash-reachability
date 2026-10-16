@@ -104,7 +104,7 @@ theorem hybrid_step_preserves_nonnegative_potential
     (hstart : 0 ≤ potential (fun i => coordinate F g.impact (S i))) :
     0 ≤ potential (fun i => coordinate F g.impact (T i)) := by
   cases step with
-  | recovery S T lam hS hlam0 hlam1 hT =>
+  | recovery lam hS hlam0 hlam1 hT =>
       have h := recovery_step_preserves_potential_of_elasticity_ge_one
         F g hF hdiff hel S hS lam hlam0 hlam1 hstart
       have heq : potential (fun i => coordinate F g.impact (T i)) =
@@ -115,7 +115,7 @@ theorem hybrid_step_preserves_nonnegative_potential
         rw [hT i]
       rw [heq]
       exact h
-  | pairedPulse S T dollars _ _ _ hCoord =>
+  | pairedPulse dollars _ _ _ hCoord =>
       have heq : potential (fun i => coordinate F g.impact (T i)) =
           potential (fun i => coordinate F g.impact (S i) +
             tradingInput (pairedMatrix edges) dollars i) := by
@@ -125,7 +125,7 @@ theorem hybrid_step_preserves_nonnegative_potential
         exact hCoord i
       rw [heq, pulse_preserves_potential]
       exact hstart
-  | smooth S T seg a b hab hStart hEnd =>
+  | smooth seg a b hab hStart hEnd =>
       have ha : 0 ≤ potential (seg.coordinates a) := by
         have heq : potential (seg.coordinates a) =
             potential (fun i => coordinate F g.impact (S i)) := by
