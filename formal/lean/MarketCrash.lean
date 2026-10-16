@@ -39,3 +39,4 @@ import MarketCrash.CountablePhysicalClosure
 import MarketCrash.RadialSystemicBarrier
 import MarketCrash.AEAttainableBarrier
 import MarketCrash.WeakBVPriceBarrier
+import MarketCrash.WeakBVFiniteExecution
