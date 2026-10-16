@@ -151,3 +151,5 @@ import MarketCrash
 #print axioms MarketCrash.AEOperationalClockSegment.potential_ode_ae
 #print axioms MarketCrash.AEOperationalClockSegment.integrating_factor_ode_ae
 #print axioms MarketCrash.AEOperationalClockSegment.integrating_factor_deriv_nonneg_ae
+#print axioms MarketCrash.nonnegative_of_ae_derivative_and_FTC
+#print axioms MarketCrash.AEOperationalClockSegment.potential_nonnegative_of_FTC
