@@ -194,7 +194,7 @@ theorem OrderedAtomicJumpTrace.physical_reachable
     (trace : OrderedAtomicJumpTrace F g edges exec atTime s t used) :
     PhysicalMarketReachable F rho g edges s t := by
   induction trace with
-  | refl s =>
+  | refl =>
       exact PhysicalMarketReachable.refl s
   | @append mid used previous p fresh match_time match_prices
       match_shares match_ledger ih =>
