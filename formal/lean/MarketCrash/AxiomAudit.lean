@@ -192,3 +192,6 @@ import MarketCrash
 #print axioms MarketCrash.systemicCrisis_product_iff_of_prescribed_decliners
 #print axioms MarketCrash.systemicCrisis_product_iff_of_common_decliner_log_close
 #print axioms MarketCrash.proposition_7_1_terminal_product
+#print axioms MarketCrash.proposition_7_1_quantile_of_compensator_losses
+#print axioms MarketCrash.proposition_7_1_quantile_of_strict_majority
+#print axioms MarketCrash.proposition_7_1_exact_severity
