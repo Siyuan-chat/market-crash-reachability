@@ -110,4 +110,31 @@ theorem RadiallyElasticWeakBVPriceReachable.no_systemic_crisis_at_breadth
     (fun i => (exp_logPrice_eq_price F t.prices hF hp i).symm)
     hel2 (requiredAssetCount (ι := ι) alpha)
 
+
+/-- Exact paper breadth for an arbitrary CONTINUOUS weak-Stieltjes-BV
+solution at any physical-time horizon, including singular-continuous
+nonatomic dollar execution. No standalone a.e. FTC premise is used.
+This is not the original all-M1--M5 representation theorem. -/
+theorem ContinuousWeakBVPriceSegment.no_systemic_crisis_at_breadth
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    [DecidableEq ι] [Nonempty ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (m : ContinuousWeakBVPriceSegment F rho g edges)
+    (hF : 0 < F) (hrho : 0 ≤ rho)
+    (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
+    (hinit : ∀ i, m.prices m.a i = F)
+    (hel : ∀ u ∈ Set.Icc m.a m.b, ∀ i,
+      2 ≤ responseElasticity g.impact (m.prices u i))
+    (t : ℝ) (ht : t ∈ Set.Icc m.a m.b)
+    (alpha : ℝ) (halpha : 0 < alpha) (hale : alpha ≤ 1) :
+    systemicCrisis
+      (logPriceFromBenchmark F (m.prices t))
+      (requiredAssetCount (ι := ι) alpha) ≤ 0 := by
+  have hp : ∀ i, 0 < m.prices t i := m.positive_prices t ht
+  exact m.no_systemic_crisis_of_visited_elasticity
+    F rho g edges hF hrho hdiff hinit hel t ht
+    (logPriceFromBenchmark F (m.prices t))
+    (fun i => (exp_logPrice_eq_price F (m.prices t) hF hp i).symm)
+    (requiredAssetCount (ι := ι) alpha)
+
 end MarketCrash
