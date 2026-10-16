@@ -17,7 +17,7 @@ namespace MarketCrash
 /-- Integrating-factor comparison: if H'(t) ≥ -ρ H(t) and H(0) ≥ 0,
 then H(t) ≥ 0 at all times t ≥ 0. -/
 theorem nonnegative_of_derivative_ge_linear
-    (H slope : ℝ → ℝ) (rho : ℝ) (hrho : 0 ≤ rho)
+    (H slope : ℝ → ℝ) (rho : ℝ)
     (hderiv : ∀ t, HasDerivAt H (slope t) t)
     (hbound : ∀ t, -rho * H t ≤ slope t)
     (hzero : 0 ≤ H 0) (t : ℝ) (ht : 0 ≤ t) :
@@ -73,6 +73,6 @@ theorem nonnegative_potential_of_normal_form
     nlinarith
   exact nonnegative_of_derivative_ge_linear
     (fun u => potential (y u)) (fun u => -rho * ∑ i, R (y u i))
-    rho hrho hd hb hzero t ht
+    rho hd hb hzero t ht
 
 end MarketCrash

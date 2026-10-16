@@ -31,12 +31,6 @@ import MarketCrash
 #print axioms MarketCrash.recovery_step_potential_lower_bound
 #print axioms MarketCrash.recovery_step_preserves_nonnegative_potential
 #print axioms MarketCrash.recovery_step_preserves_potential_of_elasticity_ge_one
-#print axioms MarketCrash.restoring_drain_le_coordinate
-#print axioms MarketCrash.restoring_drain_sum_le_potential
-#print axioms MarketCrash.restoring_drain_sum_le_potential_of_elasticity_ge_one
-#print axioms MarketCrash.smooth_potential_nonnegative
-#print axioms MarketCrash.smooth_not_all_prices_below
-#print axioms MarketCrash.smooth_systemic_crisis_nonpositive
 #print axioms MarketCrash.constantCoordinate_normalized
 #print axioms MarketCrash.linearCoordinate_normalized
 #print axioms MarketCrash.logarithmicCoordinate_normalized
@@ -54,3 +48,9 @@ import MarketCrash
 #print axioms MarketCrash.linearCoordinate_image
 #print axioms MarketCrash.logarithmicCoordinate_range
 #print axioms MarketCrash.logarithmicCoordinate_image
+#print axioms MarketCrash.restoring_drain_le_coordinate
+#print axioms MarketCrash.restoring_drain_sum_le_potential
+#print axioms MarketCrash.restoring_drain_sum_le_potential_of_elasticity_ge_one
+#print axioms MarketCrash.smooth_potential_nonnegative
+#print axioms MarketCrash.smooth_not_all_prices_below
+#print axioms MarketCrash.smooth_systemic_crisis_nonpositive
