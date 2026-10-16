@@ -45,7 +45,7 @@ These results are theoretical and **do not predict real market crashes**. For ex
 - **简体中文:** [complete manuscript and supplement sources, build and review status](translations/zh-CN/README.md).
 - **日本語:** [complete manuscript and supplement sources, build and review status](translations/ja/README.md).
 - [Trilingual glossary](translations/GLOSSARY.md) and [translation consistency and build instructions](translations/README.md).
-- [Lean formalization](formal/README.md): 34 foundational theorems checked locally with Lean 4.19.0 and pinned Mathlib. See the [complete theorem map](formal/THEOREM_MAP.md).
+- [Lean formalization](formal/README.md): 40 kernel-checked declarations (34 original foundations plus 6 crisis/barrier bridge lemmas) with Lean 4.19.0 and pinned Mathlib. **No complete numbered paper theorem is Lean-verified.** See the [theorem map](formal/THEOREM_MAP.md) and [whole-paper verification tracker](https://github.com/Siyuan-chat/market-crash-reachability/issues/5).
 
 The complete translation editions are publicly distributed with the author’s
 permission; their copyright statements remain unchanged. English remains the authoritative mathematical

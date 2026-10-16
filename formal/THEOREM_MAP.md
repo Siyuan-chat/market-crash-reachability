@@ -4,6 +4,8 @@
 
 核心 Lean 模块已在本地构建通过（主 agent 验证）；这只覆盖本文件末尾列出的基础引理，不能视作以下任一整项的 Lean 验证。axiom 审计已通过：34 个项目 theorem 均由 Lean 实际打印依赖，仅使用 propext、Classical.choice、Quot.sound；详见 FORMALIZATION_STATUS.md。
 
+关于 3.1/3.2 的新增 Lean 前提必须注意：势函数非负与对数坐标凹性在当前的端点引理中是显式假设，尚未从弹性条件和完整可容许路径导出。全文验收标准见 [Issue #5](https://github.com/Siyuan-chat/market-crash-reachability/issues/5)；新增源文件见 `formal/lean/MarketCrash/CrisisFunctional.lean` 和 `formal/lean/MarketCrash/BarrierEndpoint.lean`。
+
 ## Theorem 1.1 — thm:informal
 
 证据：paper/main.tex:62。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
