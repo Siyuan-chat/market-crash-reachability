@@ -262,7 +262,19 @@ theorem StieltjesPairedExecution.atomicTimes_countable
           {t : ℝ | Function.leftLim (exec.cumulative e) t ≠
             (exec.cumulative e) t} := by
       ext t
-      simp [StieltjesPairedExecution.atomicMass, sub_ne_zero, ne_comm]
+      change ((exec.cumulative e) t -
+        Function.leftLim (exec.cumulative e) t ≠ 0) ↔
+        (Function.leftLim (exec.cumulative e) t ≠
+          (exec.cumulative e) t)
+      constructor
+      · intro h hreverse
+        apply h
+        simp [hreverse]
+      · intro h hzero
+        have heq : (exec.cumulative e) t =
+            Function.leftLim (exec.cumulative e) t :=
+          sub_eq_zero.mp hzero
+        exact h heq.symm
     rw [hset]
     exact (exec.cumulative e).countable_leftLim_ne
   have h := Set.countable_iUnion he
