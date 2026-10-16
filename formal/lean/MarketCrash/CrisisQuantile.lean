@@ -353,7 +353,7 @@ theorem proposition_7_1_terminal_product
         Real.exp (-((k : ℝ) * (D * lambda))) = 1 := by
       rw [← Real.exp_add]
       simp
-    rw [hc, one_mul] at hm
+    rw [← mul_assoc, hc, one_mul] at hm
     rw [← Real.exp_add] at hm
     simpa only [sub_eq_add_neg] using hm
   · intro h
@@ -365,7 +365,7 @@ theorem proposition_7_1_terminal_product
           (Fintype.card ι : ℝ) * delta) =
         -((Fintype.card ι : ℝ) * delta) := by ring
     rw [he] at hm
-    exact hm
+    simpa only [neg_mul] using hm
 
 
 /-- Exact kth largest loss for the prescribed streak, when none of
