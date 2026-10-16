@@ -92,3 +92,8 @@ import MarketCrash
 #print axioms MarketCrash.smooth_potential_nonnegative
 #print axioms MarketCrash.smooth_not_all_prices_below
 #print axioms MarketCrash.smooth_systemic_crisis_nonpositive
+#print axioms MarketCrash.StieltjesPairedExecution.intervalMass_eq_delta
+#print axioms MarketCrash.StieltjesPairedExecution.intervalMass_nonnegative
+#print axioms MarketCrash.StieltjesPairedExecution.intervalMass_add
+#print axioms MarketCrash.StieltjesPairedExecution.intervalLedger_sum_zero
+#print axioms MarketCrash.StieltjesPairedExecution.intervalLedger_eq_cumulative
