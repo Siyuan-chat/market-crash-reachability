@@ -9,3 +9,4 @@ import MarketCrash.RecoveryPotential
 import MarketCrash.ContinuousInvariant
 import MarketCrash.RestoringTangent
 import MarketCrash.SmoothMarket
+import MarketCrash.PotentialFromTime
