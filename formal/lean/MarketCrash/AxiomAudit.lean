@@ -4,6 +4,8 @@ import MarketCrash
 #print axioms MarketCrash.logCoordinate_strictMono
 #print axioms MarketCrash.nonnegative_log_sum_of_concave_potential
 #print axioms MarketCrash.no_positive_crisis_of_concave_potential
+#print axioms MarketCrash.nonnegative_of_derivative_ge_linear
+#print axioms MarketCrash.nonnegative_potential_of_normal_form
 #print axioms MarketCrash.paired_column_sum
 #print axioms MarketCrash.ones_transpose_paired
 #print axioms MarketCrash.trading_sum_zero
