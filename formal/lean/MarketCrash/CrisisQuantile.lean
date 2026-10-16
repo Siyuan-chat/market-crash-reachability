@@ -290,6 +290,7 @@ theorem systemicCrisis_product_iff_of_common_decliner_log_close
 remaining arbitrary positive compensator prices. The product is over
 exactly the N-k complementary assets, not over a fictitious market. -/
 theorem proposition_7_1_terminal_product
+    [DecidableEq ι]
     (prices : ι → ℝ) (F : ℝ) (hF : 0 < F)
     (hp : ∀ i, 0 < prices i)
     (decliners : Finset ι) (k : ℕ)
