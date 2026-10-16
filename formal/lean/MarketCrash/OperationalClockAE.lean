@@ -24,6 +24,7 @@ endpoint comparison without absolute continuity / the corresponding FTC.
 noncomputable section
 namespace MarketCrash
 open MeasureTheory
+open scoped NNReal
 
 /-- An a.e. physical model in a common operational parameter.
 All Lipschitz functions are given on the whole real line; restricting
