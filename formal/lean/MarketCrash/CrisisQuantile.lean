@@ -350,9 +350,11 @@ theorem proposition_7_1_terminal_product
     have hm := mul_le_mul_of_nonneg_left h
       (Real.exp_pos ((k : ℝ) * (D * lambda))).le
     have hc : Real.exp ((k : ℝ) * (D * lambda)) *
-        Real.exp (-((k : ℝ) * (D * lambda))) = 1 := by
+        Real.exp (-(k : ℝ) * (D * lambda)) = 1 := by
       rw [← Real.exp_add]
-      simp
+      have he : (k : ℝ) * (D * lambda) +
+          -(k : ℝ) * (D * lambda) = 0 := by ring
+      rw [he, Real.exp_zero]
     rw [← mul_assoc, hc, one_mul] at hm
     rw [← Real.exp_add] at hm
     simpa only [sub_eq_add_neg] using hm
