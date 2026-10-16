@@ -357,7 +357,7 @@ theorem proposition_7_1_terminal_product
       rw [he, Real.exp_zero]
     rw [← mul_assoc, hc, one_mul] at hm
     rw [← Real.exp_add] at hm
-    simpa only [sub_eq_add_neg] using hm
+    simpa only [sub_eq_add_neg, neg_mul] using hm
   · intro h
     have hm := mul_le_mul_of_nonneg_left h
       (Real.exp_pos (-((k : ℝ) * (D * lambda)))).le
