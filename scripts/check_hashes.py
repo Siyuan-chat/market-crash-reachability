@@ -7,6 +7,7 @@ for line in (ROOT/'release/SHA256SUMS').read_text().splitlines():
     digest,name=line.split('  ',1)
     path=(ROOT/name).resolve()
     assert path.is_relative_to(ROOT),name
-    assert hashlib.sha256(path.read_bytes()).hexdigest()==digest,name
+    actual = hashlib.sha256(path.read_bytes()).hexdigest()
+    assert actual == digest, f'{name}: manifest={digest}, actual={actual}'
     count+=1
 print('PASS',count,'SHA-256 entries')
