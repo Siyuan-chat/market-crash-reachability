@@ -137,4 +137,53 @@ theorem ContinuousWeakBVPriceSegment.no_systemic_crisis_at_breadth
     (fun i => (exp_logPrice_eq_price F (m.prices t) hF hp i).symm)
     (requiredAssetCount (ι := ι) alpha)
 
+
+/-- Radially localized endpoint version for positive limits of genuine
+finite physical executions. The prefix potential barrier still uses
+global elasticity >= 1; the stronger elasticity >= 2 is required ONLY
+between benchmark and the observed positive limiting prices, rather than
+on all positive prices. This does not assume a BV approximation exists. -/
+theorem physical_reachable_prefix_limit_no_systemic_crisis_radial
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    [DecidableEq ι] [Nonempty ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (hF : 0 < F) (hrho : 0 ≤ rho)
+    (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
+    (hel1 : ∀ S : ℝ, 0 < S → 1 ≤ responseElasticity g.impact S)
+    (initial : PhysicalMarketState ι)
+    (prefixStates : ℕ → PhysicalMarketState ι)
+    (hpath : ∀ n, PhysicalMarketReachable F rho g edges
+      initial (prefixStates n))
+    (hstart : 0 ≤ potential
+      (fun i => coordinate F g.impact (initial.prices i)))
+    (S : ι → ℝ) (hS : ∀ i, 0 < S i)
+    (hlim : ∀ i, Filter.Tendsto (fun n => (prefixStates n).prices i)
+      Filter.atTop (nhds (S i)))
+    (q : ι → ℝ) (hq : ∀ i, S i = F * Real.exp (q i))
+    (hel2 : ∀ i x, x ∈ Set.Icc (min 0 (q i)) (max 0 (q i)) →
+      2 ≤ responseElasticity g.impact (F * Real.exp x))
+    (k : ℕ) :
+    systemicCrisis q k ≤ 0 := by
+  have hpotential : 0 ≤
+      potential (fun i => coordinate F g.impact (S i)) :=
+    physical_reachable_prefix_limit_potential_nonnegative
+      F rho g edges hF hrho hdiff hel1 initial prefixStates hpath
+      hstart S hS hlim
+  have hlog :
+      (∑ i, logCoordinate F g.impact (q i)) =
+        potential (fun i => coordinate F g.impact (S i)) := by
+    unfold potential
+    apply Finset.sum_congr rfl
+    intro i _
+    change coordinate F g.impact (F * Real.exp (q i)) =
+      coordinate F g.impact (S i)
+    rw [hq i]
+  apply no_positive_crisis_of_radial_elasticity_ge_two_and_potential
+    F g hF q k
+  · intro i x hx
+    exact hdiff _ (mul_pos hF (Real.exp_pos x))
+  · exact hel2
+  · rw [hlog]
+    exact hpotential
+
 end MarketCrash
