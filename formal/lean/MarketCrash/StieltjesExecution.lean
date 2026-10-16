@@ -148,4 +148,20 @@ theorem StieltjesPairedExecution.terminalClosure_iff
     rw [exec.intervalLedger_eq_cumulative a b hab i]
     exact h i
 
+/-- M5-style per-asset closure is stable under chronological concatenation
+of two adjacent closed trading intervals. This works for arbitrary Stieltjes
+edge measures, including their atomic and singular-continuous parts. -/
+theorem StieltjesPairedExecution.terminalClosure_concat
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (a b c : ℝ) (hab : a ≤ b) (hbc : b ≤ c)
+    (habClosed : ∀ i, exec.intervalLedger a b i = 0)
+    (hbcClosed : ∀ i, exec.intervalLedger b c i = 0) :
+    ∀ i, exec.intervalLedger a c i = 0 := by
+  intro i
+  rw [exec.intervalLedger_add a b c hab hbc i,
+      habClosed i, hbcClosed i]
+  ring
+
 end MarketCrash
