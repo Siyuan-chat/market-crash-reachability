@@ -1,5 +1,9 @@
 import MarketCrash
 
+#print axioms MarketCrash.not_all_below_benchmark
+#print axioms MarketCrash.logCoordinate_strictMono
+#print axioms MarketCrash.nonnegative_log_sum_of_concave_potential
+#print axioms MarketCrash.no_positive_crisis_of_concave_potential
 #print axioms MarketCrash.paired_column_sum
 #print axioms MarketCrash.ones_transpose_paired
 #print axioms MarketCrash.trading_sum_zero
@@ -13,6 +17,8 @@ import MarketCrash
 #print axioms MarketCrash.coordinate_unique
 #print axioms MarketCrash.inverseOnImage_spec
 #print axioms MarketCrash.inverseOnImage_left
+#print axioms MarketCrash.systemicCrisis_le_meanLogLoss
+#print axioms MarketCrash.no_positive_crisis_of_nonnegative_log_sum
 #print axioms MarketCrash.coordinate_slope_hasDerivAt
 #print axioms MarketCrash.coordinate_slope_elasticity
 #print axioms MarketCrash.logCoordinate_hasDerivAt
