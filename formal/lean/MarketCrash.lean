@@ -10,3 +10,4 @@ import MarketCrash.ContinuousInvariant
 import MarketCrash.RestoringTangent
 import MarketCrash.SmoothMarket
 import MarketCrash.PotentialFromTime
+import MarketCrash.HybridPath

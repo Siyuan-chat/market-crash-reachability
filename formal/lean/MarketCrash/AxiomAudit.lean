@@ -30,6 +30,8 @@ import MarketCrash
 #print axioms MarketCrash.no_positive_crisis_of_elasticity_ge_two_and_potential
 #print axioms MarketCrash.nonnegative_of_derivative_ge_linear_from
 #print axioms MarketCrash.nonnegative_potential_of_normal_form_from
+#print axioms MarketCrash.smooth_segment_preserves_nonnegative_potential
+#print axioms MarketCrash.hybrid_step_preserves_nonnegative_potential
 #print axioms MarketCrash.recovery_step_potential_lower_bound
 #print axioms MarketCrash.recovery_step_preserves_nonnegative_potential
 #print axioms MarketCrash.recovery_step_preserves_potential_of_elasticity_ge_one
