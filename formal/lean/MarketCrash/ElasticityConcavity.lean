@@ -18,24 +18,32 @@ theorem coordinate_concaveOn_of_elasticity_ge_one
     (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
     (hElasticity : ∀ S : ℝ, 0 < S → 1 ≤ responseElasticity g.impact S) :
     ConcaveOn ℝ positivePrices (coordinate F g.impact) := by
-  apply concaveOn_of_hasDerivWithinAt2_nonpos
-    (D := positivePrices)
-    (f' := fun S => S / g.impact S)
-    (f'' := fun S => (1 - responseElasticity g.impact S) / g.impact S)
-  · exact convex_Ioi 0
-  · intro S hS
-    exact (coordinate_hasDerivAt F g hF hS).continuousAt.continuousWithinAt
-  · intro S hS
+  have hcont : ContinuousOn (coordinate F g.impact) positivePrices := by
+    intro S hS
+    have hs : 0 < S := by simpa [positivePrices] using hS
+    exact (coordinate_hasDerivAt F g hF hs).continuousAt.continuousWithinAt
+  have hfirst : ∀ S ∈ interior positivePrices,
+      HasDerivWithinAt (coordinate F g.impact) (S / g.impact S)
+        (interior positivePrices) S := by
+    intro S hS
     have hs : 0 < S := by simpa [positivePrices] using hS
     exact (coordinate_hasDerivAt F g hF hs).hasDerivWithinAt
-  · intro S hS
+  have hsecond : ∀ S ∈ interior positivePrices,
+      HasDerivWithinAt (fun u : ℝ => u / g.impact u)
+        ((1 - responseElasticity g.impact S) / g.impact S)
+        (interior positivePrices) S := by
+    intro S hS
     have hs : 0 < S := by simpa [positivePrices] using hS
     exact (coordinate_slope_elasticity g.impact S
       (hdiff S hs) (g.positive S hs).ne').hasDerivWithinAt
-  · intro S hS
+  have hsign : ∀ S ∈ interior positivePrices,
+      (1 - responseElasticity g.impact S) / g.impact S ≤ 0 := by
+    intro S hS
     have hs : 0 < S := by simpa [positivePrices] using hS
     exact div_nonpos_of_nonpos_of_nonneg
       (sub_nonpos.mpr (hElasticity S hs)) (g.positive S hs).le
+  exact concaveOn_of_hasDerivWithinAt2_nonpos (convex_Ioi (0 : ℝ))
+    hcont hfirst hsecond hsign
 
 /-- Elasticity at least two implies global concavity of the generalized
     coordinate G(x) = Φ(F exp x) in log-price space. -/
@@ -44,28 +52,36 @@ theorem logCoordinate_concaveOn_of_elasticity_ge_two
     (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
     (hElasticity : ∀ S : ℝ, 0 < S → 2 ≤ responseElasticity g.impact S) :
     ConcaveOn ℝ Set.univ (logCoordinate F g.impact) := by
-  apply concaveOn_of_hasDerivWithinAt2_nonpos
-    (D := Set.univ)
-    (f' := fun x => (F * Real.exp x) ^ 2 / g.impact (F * Real.exp x))
-    (f'' := fun x => ((F * Real.exp x) ^ 2 / g.impact (F * Real.exp x)) *
-      (2 - responseElasticity g.impact (F * Real.exp x)))
-  · exact convex_univ
-  · intro x _
+  let d : ℝ → ℝ := fun x =>
+    (F * Real.exp x) ^ 2 / g.impact (F * Real.exp x)
+  let dd : ℝ → ℝ := fun x =>
+    d x * (2 - responseElasticity g.impact (F * Real.exp x))
+  have hcont : ContinuousOn (logCoordinate F g.impact) Set.univ := by
+    intro x _
     exact (logCoordinate_hasDerivAt F g hF x).continuousAt.continuousWithinAt
-  · intro x _
+  have hfirst : ∀ x ∈ interior (Set.univ : Set ℝ),
+      HasDerivWithinAt (logCoordinate F g.impact) (d x)
+        (interior (Set.univ : Set ℝ)) x := by
+    intro x _
     exact (logCoordinate_hasDerivAt F g hF x).hasDerivWithinAt
-  · intro x _
+  have hsecond : ∀ x ∈ interior (Set.univ : Set ℝ),
+      HasDerivWithinAt d (dd x) (interior (Set.univ : Set ℝ)) x := by
+    intro x _
     have hs : 0 < F * Real.exp x := mul_pos hF (Real.exp_pos x)
-    simpa only [responseElasticity] using
+    simpa only [d, dd, responseElasticity] using
       ((log_slope_hasDerivAt F x (deriv g.impact (F * Real.exp x))
         g.impact (hdiff (F * Real.exp x) hs).hasDerivAt
         (g.positive (F * Real.exp x) hs).ne').hasDerivWithinAt)
-  · intro x _
+  have hsign : ∀ x ∈ interior (Set.univ : Set ℝ), dd x ≤ 0 := by
+    intro x _
     have hs : 0 < F * Real.exp x := mul_pos hF (Real.exp_pos x)
-    have hp : 0 ≤ (F * Real.exp x) ^ 2 / g.impact (F * Real.exp x) :=
+    have hp : 0 ≤ d x :=
       div_nonneg (sq_nonneg _) (g.positive (F * Real.exp x) hs).le
     exact mul_nonpos_of_nonneg_of_nonpos hp
       (sub_nonpos.mpr (hElasticity (F * Real.exp x) hs))
+  exact concaveOn_of_hasDerivWithinAt2_nonpos
+    (convex_univ : Convex ℝ (Set.univ : Set ℝ))
+    hcont hfirst hsecond hsign
 
 /-- The elasticity-2 hypothesis no longer needs an assumed concavity
     theorem here: it yields an endpoint crisis bound from H ≥ 0. The
