@@ -12,9 +12,11 @@ PhysicalSmoothMarket.lean. The market-state ledger and inventory fields
 are carried through every concatenation, and terminal dollar closure is
 a recorded path requirement.
 
-The result is NOT YET an exact Lean rendering of full Theorems 3.1/3.2:
-the regular segment derivative assumptions and global elasticity domain
-are stronger than the paper's general finite-variation admissibility.
+The result now includes physically derived joint multi-edge operational-clock
+segments in addition to smooth physical-time paths and one-edge pulses.
+It is NOT YET the whole BV Theorems 3.1/3.2: operational-time a.e.
+regularity and faithful M1--M5 BV path inclusion are not established,
+and the trace-level elasticity hypothesis remains global.
 -/
 noncomputable section
 namespace MarketCrash
@@ -58,6 +60,10 @@ theorem physical_step_preserves_potential
                   simp [paired_column_sum]
       rw [heq]
       exact hstart
+  | clocked seg =>
+      change 0 ≤ potential (fun i => coordinate F g.impact (seg.prices seg.a i)) at hstart
+      change 0 ≤ potential (fun i => coordinate F g.impact (seg.prices seg.b i))
+      exact seg.potential_nonnegative F rho g edges hF hrho hdiff hel hstart
 
 /-- Physical execution steps have strictly positive terminal prices.
 Pulse positivity is a condition along the entire internal execution,
@@ -74,6 +80,8 @@ theorem physical_step_terminal_positive
   | pulse atTime p =>
       exact p.positive_prices p.mass
         ⟨p.nonnegative_mass, le_rfl⟩
+  | clocked seg =>
+      exact seg.positive_prices seg.b ⟨seg.order, le_rfl⟩
 
 /-- Potential preservation by induction over finite physical execution
 traces, including every physically flow-completed pulse. -/
