@@ -109,4 +109,40 @@ theorem StieltjesPairedExecution.intervalLedger_eq_cumulative
       ((exec.cumulative e) b - (exec.cumulative e) a)
   rw [exec.intervalMass_eq_delta e a b hab]
 
+
+/-- Signed per-asset Stieltjes ledger increments add exactly over
+adjacent execution intervals. This is true for atomic and singular-
+continuous dollar execution, not only ordinary trading rates. -/
+theorem StieltjesPairedExecution.intervalLedger_add
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (a b c : ℝ) (hab : a ≤ b) (hbc : b ≤ c) (i : ι) :
+    exec.intervalLedger a c i =
+      exec.intervalLedger a b i + exec.intervalLedger b c i := by
+  unfold StieltjesPairedExecution.intervalLedger tradingInput
+  rw [← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro e _
+  rw [← mul_add, exec.intervalMass_add e a b c hab hbc]
+
+/-- Terminal per-asset dollar closure is exactly an endpoint condition
+on the cumulative matched-dollar edge execution, and is strictly
+stronger than the aggregate cancellation theorem. -/
+theorem StieltjesPairedExecution.terminalClosure_iff
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (a b : ℝ) (hab : a ≤ b) :
+    (∀ i, exec.intervalLedger a b i = 0) ↔
+      (∀ i, tradingInput (pairedMatrix edges)
+        (fun e => (exec.cumulative e) b - (exec.cumulative e) a) i = 0) := by
+  constructor
+  · intro h i
+    rw [← exec.intervalLedger_eq_cumulative a b hab i]
+    exact h i
+  · intro h i
+    rw [exec.intervalLedger_eq_cumulative a b hab i]
+    exact h i
+
 end MarketCrash

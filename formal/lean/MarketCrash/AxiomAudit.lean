@@ -108,3 +108,5 @@ import MarketCrash
 #print axioms MarketCrash.StieltjesPairedExecution.intervalMass_add
 #print axioms MarketCrash.StieltjesPairedExecution.intervalLedger_sum_zero
 #print axioms MarketCrash.StieltjesPairedExecution.intervalLedger_eq_cumulative
+#print axioms MarketCrash.StieltjesPairedExecution.intervalLedger_add
+#print axioms MarketCrash.StieltjesPairedExecution.terminalClosure_iff
