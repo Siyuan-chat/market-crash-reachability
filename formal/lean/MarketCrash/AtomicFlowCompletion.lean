@@ -44,10 +44,16 @@ theorem AtomicEdgeCompletion.coordinate_endpoint_atom
       coordinate F g.impact (p.pulse.prices 0 i) +
         ((exec.cumulative p.edge).measure {atTime}).toReal *
           pairedMatrix edges i p.edge := by
-  have h := p.pulse.coordinate_endpoint F g edges hF i
-  rw [p.matching_edge, p.matching_mass,
-    exec.atomicMass_eq_measure p.edge atTime] at h
-  exact h
+  calc
+    coordinate F g.impact (p.pulse.prices p.pulse.mass i) =
+        coordinate F g.impact (p.pulse.prices 0 i) +
+          p.pulse.mass * pairedMatrix edges i p.pulse.edge :=
+      p.pulse.coordinate_endpoint F g edges hF i
+    _ = coordinate F g.impact (p.pulse.prices 0 i) +
+        ((exec.cumulative p.edge).measure {atTime}).toReal *
+          pairedMatrix edges i p.edge := by
+      rw [p.matching_edge, p.matching_mass,
+        exec.atomicMass_eq_measure p.edge atTime]
 
 /-- The SAME singleton dollar mass drives the asset's physical signed
 executed-dollar ledger, not just its transformed price state. -/
@@ -60,10 +66,16 @@ theorem AtomicEdgeCompletion.ledger_endpoint_atom
       p.pulse.dollarLedger 0 i +
         ((exec.cumulative p.edge).measure {atTime}).toReal *
           pairedMatrix edges i p.edge := by
-  have h := p.pulse.ledger_endpoint F g edges i
-  rw [p.matching_edge, p.matching_mass,
-    exec.atomicMass_eq_measure p.edge atTime] at h
-  exact h
+  calc
+    p.pulse.dollarLedger p.pulse.mass i =
+        p.pulse.dollarLedger 0 i +
+          p.pulse.mass * pairedMatrix edges i p.pulse.edge :=
+      p.pulse.ledger_endpoint F g edges i
+    _ = p.pulse.dollarLedger 0 i +
+        ((exec.cumulative p.edge).measure {atTime}).toReal *
+          pairedMatrix edges i p.edge := by
+      rw [p.matching_edge, p.matching_mass,
+        exec.atomicMass_eq_measure p.edge atTime]
 
 /-- Every intermediate operational point of the atom's marginal flow
 has a positive physical price and feasible nonnegative share inventory. -/
