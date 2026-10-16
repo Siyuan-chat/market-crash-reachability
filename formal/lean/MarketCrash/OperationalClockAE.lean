@@ -76,6 +76,30 @@ structure AEOperationalClockSegment
       HasDerivAt (fun v => dollarLedger v i)
         (tradingInput (pairedMatrix edges) (edgeRates u) i) u
 
+/-- The Lipschitz completed-graph holdings have finite total variation
+on the actual operational interval, as required by the M5 resource rule. -/
+theorem AEOperationalClockSegment.shares_bounded_variation
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {F rho : ℝ} {g : Response} {edges : κ → PairedEdge ι}
+    (m : AEOperationalClockSegment F rho g edges) (i : ι) :
+    BoundedVariationOn (fun u => m.shares u i) (Set.Icc m.a m.b) := by
+  obtain ⟨C, hC⟩ := m.shares_lipschitz i
+  have hlocal := hC.locallyBoundedVariationOn (Set.Icc m.a m.b)
+  simpa only [Set.inter_self] using
+    hlocal m.a m.b ⟨le_rfl, m.time_order⟩ ⟨m.time_order, le_rfl⟩
+
+/-- Each directed cumulative executed-dollar flow has finite total
+variation on its operational window. -/
+theorem AEOperationalClockSegment.edge_bounded_variation
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {F rho : ℝ} {g : Response} {edges : κ → PairedEdge ι}
+    (m : AEOperationalClockSegment F rho g edges) (e : κ) :
+    BoundedVariationOn (fun u => m.edgeDollars u e) (Set.Icc m.a m.b) := by
+  obtain ⟨C, hC⟩ := m.edge_dollars_lipschitz e
+  have hlocal := hC.locallyBoundedVariationOn (Set.Icc m.a m.b)
+  simpa only [Set.inter_self] using
+    hlocal m.a m.b ⟨le_rfl, m.time_order⟩ ⟨m.time_order, le_rfl⟩
+
 /-- Rademacher differentiability of each physical price follows from
 its Lipschitz regularity independently of the ODE validity assumption. -/
 theorem AEOperationalClockSegment.price_differentiable_ae
