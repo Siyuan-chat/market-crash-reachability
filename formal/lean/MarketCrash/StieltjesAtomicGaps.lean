@@ -69,8 +69,14 @@ theorem StieltjesPairedExecution.atomic_clock_gap
   unfold StieltjesPairedExecution.variationClock
     StieltjesPairedExecution.leftClock
     StieltjesPairedExecution.atomicMass
-  rw [← Finset.sum_sub_distrib]
-  ring
+  calc
+    t + scale * (∑ e, (exec.cumulative e) t) -
+        (t + scale * (∑ e, Function.leftLim (exec.cumulative e) t)) =
+      scale * ((∑ e, (exec.cumulative e) t) -
+        (∑ e, Function.leftLim (exec.cumulative e) t)) := by ring
+    _ = scale * ∑ e, ((exec.cumulative e) t -
+          Function.leftLim (exec.cumulative e) t) := by
+      rw [Finset.sum_sub_distrib]
 
 theorem StieltjesPairedExecution.leftClock_le_clock
     {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
