@@ -75,7 +75,8 @@ theorem FlowCompletedPulse.coordinate_endpoint
       (f := fun a => coordinate F g.impact (p.prices a i))
       (f' := fun _ : ℝ => pairedMatrix edges i p.edge)
       (a := (0 : ℝ)) (b := p.mass)
-      (fun a ha => p.coordinate_hasDerivAt F g edges hF a ha i)
+      (fun a ha => p.coordinate_hasDerivAt F g edges hF a
+        (by simpa only [Set.uIcc_of_le p.nonnegative_mass] using ha) i)
       intervalIntegrable_const
   have hc :
       (∫ a in (0 : ℝ)..p.mass, pairedMatrix edges i p.edge) =
@@ -99,7 +100,8 @@ theorem FlowCompletedPulse.ledger_endpoint
       (f := fun a => p.dollarLedger a i)
       (f' := fun _ : ℝ => pairedMatrix edges i p.edge)
       (a := (0 : ℝ)) (b := p.mass)
-      (fun a ha => p.ledger_flow a ha i)
+      (fun a ha => p.ledger_flow a
+        (by simpa only [Set.uIcc_of_le p.nonnegative_mass] using ha) i)
       intervalIntegrable_const
   have hc :
       (∫ a in (0 : ℝ)..p.mass, pairedMatrix edges i p.edge) =
