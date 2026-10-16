@@ -58,9 +58,7 @@ theorem PhysicalSmoothSegment.coordinate_ode
     (g.positive (m.prices t i) (m.positive_prices t i)).ne'
   have h := (coordinate_hasDerivAt F g hF (m.positive_prices t i)).comp
     t (m.price_ode t i)
-  convert h using 1
-  · simp only [Function.comp_def]
-  · field_simp [hp, hg] <;> ring
+  convert h using 1 <;> dsimp [Function.comp] <;> field_simp [hp, hg] <;> ring
 
 /-- Summing the physically derived coordinate equations cancels each
     paired-dollar trade, leaving only the genuine resilience drift. -/
