@@ -44,6 +44,8 @@ import MarketCrash
 #print axioms MarketCrash.coverageQuantile_eq_max_candidate
 #print axioms MarketCrash.coverageQuantile_threshold_iff
 #print axioms MarketCrash.coverageQuantile_is_kth_largest
+#print axioms MarketCrash.systemicCrisis_threshold_iff
+#print axioms MarketCrash.actual_systemic_crisis_threshold_iff
 #print axioms MarketCrash.coordinate_slope_hasDerivAt
 #print axioms MarketCrash.coordinate_slope_elasticity
 #print axioms MarketCrash.logCoordinate_hasDerivAt
