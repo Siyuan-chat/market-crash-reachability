@@ -20,6 +20,7 @@ noncomputable section
 namespace MarketCrash
 
 open Filter
+open scoped Topology
 
 /-- Aggregate transformed price potential converges when every asset's
 terminal price converges to a strictly POSITIVE limit. This uses the
@@ -42,7 +43,7 @@ theorem physical_potential_tendsto_of_positive_price_limits
   exact ((coordinate_hasDerivAt F g hF (hS i)).continuousAt.tendsto).comp (hlim i)
 
 /-- A NONNEGATIVE potential is preserved when passing from a sequence
-of physically feasible finite-prefix terminal prices to a strictly
+of physically feasible finite-prefixStates terminal prices to a strictly
 positive pointwise limit. This is the closed-cone step for arbitrary
 countable concatenation, CONDITIONAL on convergence/positive limits. -/
 theorem physical_potential_nonnegative_of_positive_prefix_limits
@@ -65,10 +66,10 @@ theorem physical_potential_nonnegative_of_positive_prefix_limits
 
 /-- Extension of the previously kernel-checked genuine PHYSICAL
 finite-reachability potential barrier to the positive pointwise limit
-of an arbitrary countable family of finite-prefix endpoints.
+of an arbitrary countable family of finite-prefixStates endpoints.
 
 The statement quantifies over ACTUAL physical reachable traces at
-every finite prefix: their trade and recovery equations and all
+every finite prefixStates: their trade and recovery equations and all
 intermediate matching conditions were proved in Phase 1--4. -/
 theorem physical_reachable_prefix_limit_potential_nonnegative
     {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
@@ -77,21 +78,21 @@ theorem physical_reachable_prefix_limit_potential_nonnegative
     (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
     (hel : ∀ S : ℝ, 0 < S → 1 ≤ responseElasticity g.impact S)
     (initial : PhysicalMarketState ι)
-    (prefix : ℕ → PhysicalMarketState ι)
+    (prefixStates : ℕ → PhysicalMarketState ι)
     (hpath : ∀ n, PhysicalMarketReachable F rho g edges
-      initial (prefix n))
+      initial (prefixStates n))
     (hstart : 0 ≤ potential
       (fun i => coordinate F g.impact (initial.prices i)))
     (S : ι → ℝ) (hS : ∀ i, 0 < S i)
-    (hlim : ∀ i, Tendsto (fun n => (prefix n).prices i) atTop (𝓝 (S i))) :
+    (hlim : ∀ i, Tendsto (fun n => (prefixStates n).prices i) atTop (𝓝 (S i))) :
     0 ≤ potential (fun i => coordinate F g.impact (S i)) := by
   apply physical_potential_nonnegative_of_positive_prefix_limits
-    F g hF (fun n i => (prefix n).prices i) S hS hlim
+    F g hF (fun n i => (prefixStates n).prices i) S hS hlim
   intro n
   exact physical_reachable_preserves_potential
     F rho g edges hF hrho hdiff hel (hpath n) hstart
 
-/-- A positive countable prefix limit of genuine finite physical market
+/-- A positive countable prefixStates limit of genuine finite physical market
 executions cannot have EVERY asset strictly below the benchmark
 under the global elasticity-1 barrier hypothesis. -/
 theorem physical_reachable_prefix_limit_no_all_decline
@@ -102,21 +103,21 @@ theorem physical_reachable_prefix_limit_no_all_decline
     (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
     (hel : ∀ S : ℝ, 0 < S → 1 ≤ responseElasticity g.impact S)
     (initial : PhysicalMarketState ι)
-    (prefix : ℕ → PhysicalMarketState ι)
+    (prefixStates : ℕ → PhysicalMarketState ι)
     (hpath : ∀ n, PhysicalMarketReachable F rho g edges
-      initial (prefix n))
+      initial (prefixStates n))
     (hstart : 0 ≤ potential
       (fun i => coordinate F g.impact (initial.prices i)))
     (S : ι → ℝ) (hS : ∀ i, 0 < S i)
-    (hlim : ∀ i, Tendsto (fun n => (prefix n).prices i) atTop (𝓝 (S i))) :
+    (hlim : ∀ i, Tendsto (fun n => (prefixStates n).prices i) atTop (𝓝 (S i))) :
     ¬ ∀ i, S i < F := by
   exact not_all_below_benchmark F g hF S hS
     (physical_reachable_prefix_limit_potential_nonnegative
-      F rho g edges hF hrho hdiff hel initial prefix hpath
+      F rho g edges hF hrho hdiff hel initial prefixStates hpath
       hstart S hS hlim)
 
 /-- The systemic-crisis exclusion extends from every genuine finite
-physical execution prefix to any strictly-positive terminal price vector
+physical execution prefixStates to any strictly-positive terminal price vector
 that is a pointwise limit of those prefixes. This result still requires
 the stronger GLOBAL elasticity-2 condition and DOES NOT construct a BV
 solution or its approximating physical execution traces. -/
@@ -128,13 +129,13 @@ theorem physical_reachable_prefix_limit_no_systemic_crisis
     (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
     (hel : ∀ S : ℝ, 0 < S → 2 ≤ responseElasticity g.impact S)
     (initial : PhysicalMarketState ι)
-    (prefix : ℕ → PhysicalMarketState ι)
+    (prefixStates : ℕ → PhysicalMarketState ι)
     (hpath : ∀ n, PhysicalMarketReachable F rho g edges
-      initial (prefix n))
+      initial (prefixStates n))
     (hstart : 0 ≤ potential
       (fun i => coordinate F g.impact (initial.prices i)))
     (S : ι → ℝ) (hS : ∀ i, 0 < S i)
-    (hlim : ∀ i, Tendsto (fun n => (prefix n).prices i) atTop (𝓝 (S i)))
+    (hlim : ∀ i, Tendsto (fun n => (prefixStates n).prices i) atTop (𝓝 (S i)))
     (q : ι → ℝ) (hq : ∀ i, S i = F * Real.exp (q i))
     (k : ℕ) :
     systemicCrisis q k ≤ 0 := by
@@ -144,7 +145,7 @@ theorem physical_reachable_prefix_limit_no_systemic_crisis
   have hpotential : 0 ≤
       potential (fun i => coordinate F g.impact (S i)) :=
     physical_reachable_prefix_limit_potential_nonnegative
-      F rho g edges hF hrho hdiff hel1 initial prefix hpath
+      F rho g edges hF hrho hdiff hel1 initial prefixStates hpath
       hstart S hS hlim
   have hlog :
       (∑ i, logCoordinate F g.impact (q i)) =
