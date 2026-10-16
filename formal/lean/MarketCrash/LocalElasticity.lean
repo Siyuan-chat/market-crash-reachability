@@ -33,7 +33,7 @@ theorem coordinate_concaveOn_Icc_of_local_elasticity
       HasDerivWithinAt (coordinate F g.impact) (S / g.impact S)
         (interior (Set.Icc a b)) S := by
     intro S hS
-    have hmem : S ∈ Set.Icc a b := Set.interior_subset hS
+    have hmem : S ∈ Set.Icc a b := interior_subset hS
     have hs : 0 < S := ha.trans_le hmem.1
     exact (coordinate_hasDerivAt F g hF hs).hasDerivWithinAt
   have hsecond : ∀ S ∈ interior (Set.Icc a b),
@@ -41,14 +41,14 @@ theorem coordinate_concaveOn_Icc_of_local_elasticity
         ((1 - responseElasticity g.impact S) / g.impact S)
         (interior (Set.Icc a b)) S := by
     intro S hS
-    have hmem : S ∈ Set.Icc a b := Set.interior_subset hS
+    have hmem : S ∈ Set.Icc a b := interior_subset hS
     have hs : 0 < S := ha.trans_le hmem.1
     exact (coordinate_slope_elasticity g.impact S
       (hdiff S hmem) (g.positive S hs).ne').hasDerivWithinAt
   have hsign : ∀ S ∈ interior (Set.Icc a b),
       (1 - responseElasticity g.impact S) / g.impact S ≤ 0 := by
     intro S hS
-    have hmem : S ∈ Set.Icc a b := Set.interior_subset hS
+    have hmem : S ∈ Set.Icc a b := interior_subset hS
     have hs : 0 < S := ha.trans_le hmem.1
     exact div_nonpos_of_nonpos_of_nonneg
       (sub_nonpos.mpr (hel S hmem)) (g.positive S hs).le
