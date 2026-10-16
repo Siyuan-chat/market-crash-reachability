@@ -8,3 +8,4 @@ import MarketCrash.ElasticityConcavity
 import MarketCrash.RecoveryPotential
 import MarketCrash.ContinuousInvariant
 import MarketCrash.RestoringTangent
+import MarketCrash.SmoothMarket
