@@ -112,7 +112,7 @@ theorem hybrid_step_preserves_nonnegative_potential
         unfold potential
         apply Finset.sum_congr rfl
         intro i _
-        rw [hT i]
+        exact congrArg (coordinate F g.impact) (hT i)
       rw [heq]
       exact h
   | pairedPulse dollars _ _ _ hCoord =>
@@ -132,6 +132,7 @@ theorem hybrid_step_preserves_nonnegative_potential
           unfold potential
           apply Finset.sum_congr rfl
           intro i _
+          change seg.coordinates a i = coordinate F g.impact (S i)
           rw [seg.coordinate_eq a i, hStart i]
         rw [heq]
         exact hstart
