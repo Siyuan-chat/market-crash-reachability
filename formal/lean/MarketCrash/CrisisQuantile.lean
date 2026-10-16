@@ -264,4 +264,25 @@ theorem systemicCrisis_product_iff_of_prescribed_decliners
     exact Finset.card_le_card hsubset
   simp [hcoverage]
 
+
+/-- Proposition 7.1's prescribed common-loss specialization.
+For k specified assets closing at log price -D*lambda, a threshold
+delta <= D*lambda automatically satisfies the exact breadth requirement.
+The remaining price-product identity can then be checked independently. -/
+theorem systemicCrisis_product_iff_of_common_decliner_log_close
+    (q : ι → ℝ) (k : ℕ)
+    (hk : 0 < k) (hkn : k ≤ Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (D lambda delta : ℝ)
+    (hthreshold : delta ≤ D * lambda)
+    (hclose : ∀ i ∈ decliners, q i = -(D * lambda)) :
+    delta ≤ systemicCrisis q k ↔
+      (∏ i, Real.exp (q i)) ≤
+        Real.exp (-(Fintype.card ι : ℝ) * delta) := by
+  apply systemicCrisis_product_iff_of_prescribed_decliners
+    q k hk hkn decliners hcard delta
+  intro i hi
+  rw [hclose i hi]
+  linarith
+
 end MarketCrash
