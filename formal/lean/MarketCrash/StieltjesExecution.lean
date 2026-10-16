@@ -104,6 +104,9 @@ theorem StieltjesPairedExecution.intervalLedger_eq_cumulative
   unfold StieltjesPairedExecution.intervalLedger tradingInput
   apply Finset.sum_congr rfl
   intro e _
+  change pairedMatrix edges i e * exec.intervalMass e a b =
+    pairedMatrix edges i e *
+      ((exec.cumulative e) b - (exec.cumulative e) a)
   rw [exec.intervalMass_eq_delta e a b hab]
 
 end MarketCrash
