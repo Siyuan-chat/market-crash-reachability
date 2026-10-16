@@ -562,4 +562,28 @@ theorem proposition_7_1_original_endpoint
       decliners hcard ((D : ℝ) * lambda) hqclose hcondition
     simpa only [lambda, logPriceFromBenchmark] using hseverity
 
+
+/-- Proposition 7.1's single-compensator corollary: when k=N-1,
+the complementary product reduces to the one receiver's closing price. -/
+theorem proposition_7_1_single_compensator
+    [DecidableEq ι]
+    (prices : ι → ℝ) (F : ℝ) (hF : 0 < F)
+    (hp : ∀ i, 0 < prices i)
+    (decliners : Finset ι) (k : ℕ)
+    (hcard : decliners.card = k) (hk : 0 < k)
+    (hkn : k ≤ Fintype.card ι)
+    (j : ι) (hcomp : (Finset.univ \ decliners) = {j})
+    (D lambda delta : ℝ)
+    (hthreshold : delta ≤ D * lambda)
+    (hclose : ∀ i ∈ decliners,
+      prices i / F = Real.exp (-(D * lambda))) :
+    delta ≤ systemicCrisis (logPriceFromBenchmark F prices) k ↔
+      prices j / F ≤
+        Real.exp ((k : ℝ) * (D * lambda) -
+          (Fintype.card ι : ℝ) * delta) := by
+  have h := proposition_7_1_terminal_product
+    prices F hF hp decliners k hcard hk hkn
+    D lambda delta hthreshold hclose
+  simpa only [hcomp, Finset.prod_singleton] using h
+
 end MarketCrash
