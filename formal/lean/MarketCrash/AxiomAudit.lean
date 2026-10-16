@@ -189,3 +189,4 @@ import MarketCrash
 #print axioms MarketCrash.physical_potential_nonnegative_of_positive_prefix_limits
 #print axioms MarketCrash.physical_reachable_prefix_limit_potential_nonnegative
 #print axioms MarketCrash.physical_reachable_prefix_limit_no_all_decline
+#print axioms MarketCrash.physical_reachable_prefix_limit_no_systemic_crisis
