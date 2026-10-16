@@ -205,4 +205,39 @@ theorem actual_systemic_crisis_threshold_iff
       (requiredAssetCount (ι := ι) alpha) hk hkn delta,
     meanLogLoss_eq_actual F prices hF hS, hfilter]
 
+
+/-- Product-form terminal-crisis threshold criterion, with the exact
+kth-largest coverage count. This is the finite-dimensional algebraic
+core of Proposition 7.1, before specializing its prescribed closes. -/
+theorem systemicCrisis_product_threshold_iff
+    (q : ι → ℝ) (k : ℕ)
+    (hk : 0 < k) (hkn : k ≤ Fintype.card ι) (delta : ℝ) :
+    delta ≤ systemicCrisis q k ↔
+      (∏ i, Real.exp (q i)) ≤
+        Real.exp (-(Fintype.card ι : ℝ) * delta) ∧
+      k ≤ (Finset.univ.filter (fun i : ι => delta ≤ -q i)).card := by
+  rw [systemicCrisis_threshold_iff q k hk hkn delta]
+  have hn : (0 : ℝ) < (Fintype.card ι : ℝ) := by
+    exact_mod_cast (Fintype.card_pos : 0 < Fintype.card ι)
+  constructor
+  · rintro ⟨hm, hc⟩
+    constructor
+    · have hmul := (le_div_iff₀ hn).mp hm
+      have hsum : (∑ i, q i) ≤
+          -(Fintype.card ι : ℝ) * delta := by
+        dsimp [meanLogLoss] at hmul
+        nlinarith
+      simpa only [Real.exp_sum] using (Real.exp_le_exp.mpr hsum)
+    · exact hc
+  · rintro ⟨hp, hc⟩
+    constructor
+    · have hsum : (∑ i, q i) ≤
+          -(Fintype.card ι : ℝ) * delta := by
+        apply (Real.exp_le_exp).mp
+        simpa only [Real.exp_sum] using hp
+      unfold meanLogLoss
+      apply (le_div_iff₀ hn).mpr
+      nlinarith
+    · exact hc
+
 end MarketCrash
