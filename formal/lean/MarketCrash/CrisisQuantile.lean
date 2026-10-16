@@ -365,4 +365,135 @@ theorem proposition_7_1_terminal_product
     rw [he] at hm
     simpa [mul_assoc] using hm
 
+
+/-- Exact kth largest loss for the prescribed streak, when none of
+the compensating assets loses more than the common streak amount. -/
+theorem proposition_7_1_quantile_of_compensator_losses
+    (q : ι → ℝ) (k : ℕ) (hk : 0 < k)
+    (hkn : k ≤ Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (c : ℝ) (hclose : ∀ i ∈ decliners, q i = -c)
+    (hother : ∀ i ∉ decliners, -q i ≤ c) :
+    coverageQuantile q k = c := by
+  classical
+  have hsubset : decliners ⊆
+      Finset.univ.filter (fun i : ι => c ≤ -q i) := by
+    intro i hi
+    exact Finset.mem_filter.mpr
+      ⟨Finset.mem_univ i, by rw [hclose i hi]; exact le_rfl⟩
+  have hcount : k ≤
+      (Finset.univ.filter (fun i : ι => c ≤ -q i)).card := by
+    rw [← hcard]
+    exact Finset.card_le_card hsubset
+  have hlow : c ≤ coverageQuantile q k :=
+    (coverageQuantile_threshold_iff q k hk hkn c).mpr hcount
+  obtain ⟨i, _, heq, _⟩ := coverageQuantile_eq_max_candidate q k hk hkn
+  have hhigh : coverageQuantile q k ≤ c := by
+    rw [heq]
+    by_cases hi : i ∈ decliners
+    · rw [hclose i hi]
+    · exact hother i hi
+  exact le_antisymm hhigh hlow
+
+/-- The same kth-largest identity when the k streaking assets form
+a strict majority: fewer than k compensators can exceed their loss. -/
+theorem proposition_7_1_quantile_of_strict_majority
+    [DecidableEq ι]
+    (q : ι → ℝ) (k : ℕ) (hk : 0 < k)
+    (hkn : k ≤ Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (c : ℝ) (hclose : ∀ i ∈ decliners, q i = -c)
+    (hmajor : Fintype.card ι < 2 * k) :
+    coverageQuantile q k = c := by
+  classical
+  have hcover : decliners ⊆
+      Finset.univ.filter (fun i : ι => c ≤ -q i) := by
+    intro i hi
+    exact Finset.mem_filter.mpr
+      ⟨Finset.mem_univ i, by rw [hclose i hi]; exact le_rfl⟩
+  have hcount : k ≤
+      (Finset.univ.filter (fun i : ι => c ≤ -q i)).card := by
+    rw [← hcard]
+    exact Finset.card_le_card hcover
+  have hlow : c ≤ coverageQuantile q k :=
+    (coverageQuantile_threshold_iff q k hk hkn c).mpr hcount
+  obtain ⟨i, hi, heq, _⟩ := coverageQuantile_eq_max_candidate q k hk hkn
+  have hhigh : coverageQuantile q k ≤ c := by
+    by_contra hbad
+    have hgt : c < -q i := by
+      rw [heq] at hbad
+      exact lt_of_not_ge hbad
+    have hsubset : (Finset.univ.filter
+        (fun j : ι => -q i ≤ -q j)) ⊆
+        (Finset.univ \ decliners) := by
+      intro j hj
+      apply Finset.mem_sdiff.mpr
+      refine ⟨Finset.mem_univ j, ?_⟩
+      intro hjdecl
+      have hjloss := (Finset.mem_filter.mp hj).2
+      rw [hclose j hjdecl] at hjloss
+      linarith
+    have he : k ≤ (Finset.univ.filter
+        (fun j : ι => -q i ≤ -q j)).card :=
+      (Finset.mem_filter.mp hi).2
+    have hcomp : (Finset.univ \ decliners).card =
+        Fintype.card ι - k := by
+      simp [Finset.card_sdiff (Finset.subset_univ decliners), hcard]
+    have hb := Finset.card_le_card hsubset
+    rw [hcomp] at hb
+    omega
+  exact le_antisymm hhigh hlow
+
+/-- The exact severity expression in Proposition 7.1 under either of
+the paper's two alternative hypotheses for the kth-largest loss. -/
+theorem proposition_7_1_exact_severity
+    [DecidableEq ι]
+    (q : ι → ℝ) (k : ℕ) (hk : 0 < k)
+    (hkn : k ≤ Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (c : ℝ) (hclose : ∀ i ∈ decliners, q i = -c)
+    (hcondition : (∀ i ∉ decliners, -q i ≤ c) ∨
+      Fintype.card ι < 2 * k) :
+    systemicCrisis q k =
+      min c (((k : ℝ) * c -
+        (∑ i ∈ Finset.univ \ decliners, q i)) /
+        (Fintype.card ι : ℝ)) := by
+  classical
+  have hquantile : coverageQuantile q k = c := by
+    rcases hcondition with hother | hmajor
+    · exact proposition_7_1_quantile_of_compensator_losses
+        q k hk hkn decliners hcard c hclose hother
+    · exact proposition_7_1_quantile_of_strict_majority
+        q k hk hkn decliners hcard c hclose hmajor
+  have hd : (∑ i ∈ decliners, q i) = -((k : ℝ) * c) := by
+    calc
+      (∑ i ∈ decliners, q i) =
+          ∑ _i ∈ decliners, -c := by
+            apply Finset.sum_congr rfl
+            intro i hi
+            exact hclose i hi
+      _ = -((k : ℝ) * c) := by simp [hcard]
+  have hsplit := Finset.sum_sdiff
+    (f := q) (Finset.subset_univ decliners)
+  have htotal : (∑ i, q i) =
+      (∑ i ∈ Finset.univ \ decliners, q i) -
+        (k : ℝ) * c := by
+    calc
+      (∑ i, q i) =
+          (∑ i ∈ Finset.univ \ decliners, q i) +
+            (∑ i ∈ decliners, q i) := hsplit.symm
+      _ = (∑ i ∈ Finset.univ \ decliners, q i) -
+          (k : ℝ) * c := by rw [hd]; ring
+  calc
+    systemicCrisis q k = min (meanLogLoss q) c := by
+      rw [systemicCrisis, hquantile]
+    _ = min c (meanLogLoss q) := min_comm _ _
+    _ = min c (((k : ℝ) * c -
+      (∑ i ∈ Finset.univ \ decliners, q i)) /
+      (Fintype.card ι : ℝ)) := by
+        congr 1
+        unfold meanLogLoss
+        rw [htotal]
+        ring
+
 end MarketCrash
