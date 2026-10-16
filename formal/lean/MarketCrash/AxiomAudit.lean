@@ -39,6 +39,11 @@ import MarketCrash
 #print axioms MarketCrash.exp_logPrice_eq_price
 #print axioms MarketCrash.meanLogLoss_eq_actual
 #print axioms MarketCrash.admissible_regular_crisis_with_breadth
+#print axioms MarketCrash.coverage_threshold_below_candidate
+#print axioms MarketCrash.coverage_candidates_nonempty
+#print axioms MarketCrash.coverageQuantile_eq_max_candidate
+#print axioms MarketCrash.coverageQuantile_threshold_iff
+#print axioms MarketCrash.coverageQuantile_is_kth_largest
 #print axioms MarketCrash.coordinate_slope_hasDerivAt
 #print axioms MarketCrash.coordinate_slope_elasticity
 #print axioms MarketCrash.logCoordinate_hasDerivAt

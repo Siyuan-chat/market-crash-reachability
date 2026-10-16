@@ -19,3 +19,4 @@ import MarketCrash.AdmissibleMarketPath
 import MarketCrash.AdmissiblePathBarrier
 import MarketCrash.BoundedVariationLedger
 import MarketCrash.CrisisParameters
+import MarketCrash.CrisisQuantile
