@@ -4,14 +4,14 @@ import MarketCrash
 #print axioms MarketCrash.logCoordinate_strictMono
 #print axioms MarketCrash.nonnegative_log_sum_of_concave_potential
 #print axioms MarketCrash.no_positive_crisis_of_concave_potential
-#print axioms MarketCrash.nonnegative_of_derivative_ge_linear
-#print axioms MarketCrash.nonnegative_potential_of_normal_form
 #print axioms MarketCrash.paired_column_sum
 #print axioms MarketCrash.ones_transpose_paired
 #print axioms MarketCrash.trading_sum_zero
 #print axioms MarketCrash.paired_trading_sum_zero
 #print axioms MarketCrash.pulse_preserves_potential
 #print axioms MarketCrash.normal_form_sum_derivative
+#print axioms MarketCrash.nonnegative_of_derivative_ge_linear
+#print axioms MarketCrash.nonnegative_potential_of_normal_form
 #print axioms MarketCrash.coordinate_at_benchmark
 #print axioms MarketCrash.coordinate_hasDerivAt
 #print axioms MarketCrash.coordinate_strictMonoOn
