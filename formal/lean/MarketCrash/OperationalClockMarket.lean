@@ -163,7 +163,8 @@ theorem nonnegative_of_variable_clock_derivative_on_Icc
       (hdt u hu).const_mul rho
     have hexp : HasDerivAt (fun v => Real.exp (rho * tau v))
         (Real.exp (rho * tau u) * (rho * speed u)) u :=
-      (Real.hasDerivAt_exp (rho * tau u)).comp u hinner
+      by
+        convert (Real.hasDerivAt_exp (rho * tau u)).comp u hinner using 1 <;> ring
     convert (hexp.mul (hdH u hu)) using 1 <;> ring
   have hc : ContinuousOn J (Set.Icc a b) := by
     intro u hu
@@ -185,6 +186,7 @@ theorem nonnegative_of_variable_clock_derivative_on_Icc
     exact mul_nonneg (Real.exp_pos _).le hstart
   have hJb : 0 ≤ J b := hJa.trans
     (hmono ⟨le_rfl, hab⟩ ⟨hab, le_rfl⟩ hab)
+  classical
   by_contra hbad
   have hneg : H b < 0 := lt_of_not_ge hbad
   have hJneg : J b < 0 :=
