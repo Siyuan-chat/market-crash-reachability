@@ -14,3 +14,4 @@ import MarketCrash.HybridPath
 import MarketCrash.HybridClosure
 import MarketCrash.HybridPositivity
 import MarketCrash.PhysicalSmoothMarket
+import MarketCrash.PhysicalPulse

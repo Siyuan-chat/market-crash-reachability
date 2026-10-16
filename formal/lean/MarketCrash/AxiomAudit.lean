@@ -28,6 +28,9 @@ import MarketCrash
 #print axioms MarketCrash.coordinate_concaveOn_of_elasticity_ge_one
 #print axioms MarketCrash.logCoordinate_concaveOn_of_elasticity_ge_two
 #print axioms MarketCrash.no_positive_crisis_of_elasticity_ge_two_and_potential
+#print axioms MarketCrash.FlowCompletedPulse.coordinate_hasDerivAt
+#print axioms MarketCrash.FlowCompletedPulse.coordinate_endpoint
+#print axioms MarketCrash.FlowCompletedPulse.ledger_endpoint
 #print axioms MarketCrash.hybrid_reachable_preserves_nonnegative_potential
 #print axioms MarketCrash.hybrid_not_all_below_benchmark
 #print axioms MarketCrash.hybrid_systemic_crisis_nonpositive
