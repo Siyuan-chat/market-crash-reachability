@@ -31,7 +31,7 @@ for path in sorted((project / 'MarketCrash').rglob('*.lean')):
     source = re.sub(r'--[^\n]*', '', source)
     if re.search(r'\b(sorry|admit|axiom)\b', source):
         raise SystemExit('Unproved declaration in ' + str(path))
-    names.extend(re.findall(r'^(?:(?:private|protected|noncomputable)\s+)*(?:theorem|lemma)\s+(\w+)', source, flags=re.M))
+    names.extend(re.findall(r'^(?:(?:private|protected|noncomputable)\s+)*(?:theorem|lemma)\s+([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*)', source, flags=re.M))
 audit = 'import MarketCrash\n\n' + ''.join(
     '#print axioms MarketCrash.' + name + '\n' for name in names)
 audit_path = project / 'MarketCrash/AxiomAudit.lean'
@@ -44,7 +44,7 @@ out.mkdir(parents=True, exist_ok=True)
 (out / 'axioms.log').write_text(result.stdout + result.stderr, encoding='utf-8')
 if result.returncode:
     raise SystemExit('Lean axiom audit failed; see build/formal/axioms.log')
-rows = re.findall(r"'MarketCrash\.(\w+)' depends on axioms: \[([^]]*)\]", result.stdout)
+rows = re.findall(r"'MarketCrash\.([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*)' depends on axioms: \[([^]]*)\]", result.stdout)
 if len(rows) != len(names):
     raise SystemExit('Incomplete axiom audit output')
 allowed = {'propext', 'Classical.choice', 'Quot.sound'}
