@@ -240,4 +240,45 @@ theorem StieltjesPairedExecution.gapEdge_scaled_increment_le_clock
   have hm := mul_le_mul_of_nonneg_left hsum hscale2
   nlinarith
 
+/-- Physical timestamps where at least one directed Stieltjes edge
+has a genuine nonzero executed-dollar atom. -/
+def StieltjesPairedExecution.atomicTimes
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges) : Set ℝ :=
+  {t | ∃ e : κ, exec.atomicMass e t ≠ 0}
+
+/-- There are at most COUNTABLY MANY actual jump timestamps in a finite
+Stieltjes paired-dollar network, even without bounded support. -/
+theorem StieltjesPairedExecution.atomicTimes_countable
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges) :
+    exec.atomicTimes.Countable := by
+  have he (e : κ) :
+      Set.Countable {t : ℝ | exec.atomicMass e t ≠ 0} := by
+    have hset :
+        {t : ℝ | exec.atomicMass e t ≠ 0} =
+          {t : ℝ | Function.leftLim (exec.cumulative e) t ≠
+            (exec.cumulative e) t} := by
+      ext t
+      simp [StieltjesPairedExecution.atomicMass, sub_ne_zero, ne_comm]
+    rw [hset]
+    exact (exec.cumulative e).countable_leftLim_ne
+  have h := Set.countable_iUnion he
+  convert h using 1
+  ext t
+  simp [StieltjesPairedExecution.atomicTimes, Set.mem_iUnion]
+
+/-- At a physical time outside the countable atomic set, no directed
+edge has a Stieltjes jump. It still may have singular-continuous flow. -/
+theorem StieltjesPairedExecution.atomicMass_zero_of_not_atomic
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {edges : κ → PairedEdge ι}
+    (exec : StieltjesPairedExecution edges)
+    (t : ℝ) (ht : t ∉ exec.atomicTimes) (e : κ) :
+    exec.atomicMass e t = 0 := by
+  by_contra h
+  exact ht (show t ∈ exec.atomicTimes from ⟨e, h⟩)
+
 end MarketCrash
