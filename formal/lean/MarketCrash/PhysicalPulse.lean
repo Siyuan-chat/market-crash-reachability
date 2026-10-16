@@ -52,7 +52,7 @@ theorem FlowCompletedPulse.coordinate_hasDerivAt
   have hp : p.prices a i ≠ 0 := hs.ne'
   have hg : g.impact (p.prices a i) ≠ 0 :=
     (g.positive (p.prices a i) hs).ne'
-  have h := (coordinate_hasDerivAt F g hF hs).comp a
+  have h := (MarketCrash.coordinate_hasDerivAt F g hF hs).comp a
     (p.price_flow a ha i)
   convert h using 1 <;> dsimp [Function.comp] <;> field_simp [hp, hg] <;> ring
 
@@ -71,10 +71,12 @@ theorem FlowCompletedPulse.coordinate_endpoint
       (∫ a in (0 : ℝ)..p.mass, pairedMatrix edges i p.edge) =
         coordinate F g.impact (p.prices p.mass i) -
           coordinate F g.impact (p.prices 0 i) := by
-    apply intervalIntegral.integral_eq_sub_of_hasDerivAt
-    · intro a ha
-      exact p.coordinate_hasDerivAt F g edges hF a ha i
-    · exact intervalIntegrable_const
+    exact intervalIntegral.integral_eq_sub_of_hasDerivAt
+      (f := fun a => coordinate F g.impact (p.prices a i))
+      (f' := fun _ : ℝ => pairedMatrix edges i p.edge)
+      (a := (0 : ℝ)) (b := p.mass)
+      (fun a ha => p.coordinate_hasDerivAt F g edges hF a ha i)
+      intervalIntegrable_const
   have hc :
       (∫ a in (0 : ℝ)..p.mass, pairedMatrix edges i p.edge) =
         p.mass * pairedMatrix edges i p.edge := by
@@ -93,10 +95,12 @@ theorem FlowCompletedPulse.ledger_endpoint
   have hFTC :
       (∫ a in (0 : ℝ)..p.mass, pairedMatrix edges i p.edge) =
         p.dollarLedger p.mass i - p.dollarLedger 0 i := by
-    apply intervalIntegral.integral_eq_sub_of_hasDerivAt
-    · intro a ha
-      exact p.ledger_flow a ha i
-    · exact intervalIntegrable_const
+    exact intervalIntegral.integral_eq_sub_of_hasDerivAt
+      (f := fun a => p.dollarLedger a i)
+      (f' := fun _ : ℝ => pairedMatrix edges i p.edge)
+      (a := (0 : ℝ)) (b := p.mass)
+      (fun a ha => p.ledger_flow a ha i)
+      intervalIntegrable_const
   have hc :
       (∫ a in (0 : ℝ)..p.mass, pairedMatrix edges i p.edge) =
         p.mass * pairedMatrix edges i p.edge := by
