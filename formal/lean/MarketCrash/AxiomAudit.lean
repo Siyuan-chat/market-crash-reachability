@@ -185,3 +185,7 @@ import MarketCrash
 #print axioms MarketCrash.StieltjesPairedExecution.atomicTimes_countable
 #print axioms MarketCrash.StieltjesPairedExecution.atomicMass_zero_of_not_atomic
 #print axioms MarketCrash.OrderedAtomicJumpTrace.physical_reachable
+#print axioms MarketCrash.physical_potential_tendsto_of_positive_price_limits
+#print axioms MarketCrash.physical_potential_nonnegative_of_positive_prefix_limits
+#print axioms MarketCrash.physical_reachable_prefix_limit_potential_nonnegative
+#print axioms MarketCrash.physical_reachable_prefix_limit_no_all_decline
