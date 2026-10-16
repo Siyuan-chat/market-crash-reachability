@@ -210,6 +210,7 @@ theorem ContinuousWeakBVPriceSegment.potential_nonnegative_of_radial_elasticity
     dsimp [slope]
     nlinarith
   have hstartH : 0 ≤ H m.a := by
+    change 0 ≤ m.potentialPrimitive m.a
     rw [m.potentialPrimitive_at_start]
     exact hstart
   have hbarrier : 0 ≤ H t :=
