@@ -15,11 +15,13 @@ Phase 2's [bounded-variation proof gates](PHASE2_BV_GATES.md) distinguish proven
 Phase 3's [a.e. operational-clock proof gates](PHASE3_AE_GATES.md) record the
 Lipschitz/a.e. physical response chain rule, the actual Stieltjes variation
 clock estimates, and the distinct absolute-continuity FTC and full-BV
-completed-graph inclusion obligations. The first Phase 3 checkpoint at
-`38bac5381ffece9664f3cf8d1c7e6f9cc5f54267` passed
-[151/151 Lean kernel and axiom audits](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38859956202),
-still for the typed restricted classes. No entire-original-BV theorem is
-claimed from that checkpoint.
+completed-graph inclusion obligations. The latest mathematically tested Phase 3 source commit
+`c619ba26805facb0cf5d5cf2a87383fdd0d517a4` passed
+[159/159 Lean kernel and axiom audits](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38861075606).
+The 159 declarations include the inverse-variation-clock inequalities
+on its actual image and conditional a.e.-FTC comparison, still for
+**typed restricted classes**. No entire-original-BV theorem is
+claimed from these checkpoints.
 See the [M1–M5 fidelity audit](MODEL_FIDELITY.md), [complete theorem map](THEOREM_MAP.md) and
 [the precise status and hypotheses](FORMALIZATION_STATUS.md).
 
