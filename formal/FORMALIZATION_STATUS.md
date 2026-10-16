@@ -1,13 +1,29 @@
 # Lean 形式化当前状态
 
-状态日期：2026-10-15。本文件是 formal 子项目的当前状态入口。目标是逐步形式化论文基础并准确记录覆盖边界；当前获准范围为局部基础和逐项结果映射。论文全部 17 项 Theorem/Proposition 的原文、编号和整项状态见 THEOREM_MAP.md。没有任何整项论文定理被声明为已经完成 Lean 证明。
+状态日期：2026-10-16（Stage-1 PR #6）。本文件是 formal 子项目的当前状态入口。目标是逐步形式化论文基础并准确记录覆盖边界；当前获准范围为局部基础和逐项结果映射。论文全部 17 项 Theorem/Proposition 的原文、编号和整项状态见 THEOREM_MAP.md。没有任何整项论文定理被声明为已经完成 Lean 证明。
+
+## 本期新增：从原始价格 ODE 到有限正则路径的完整证明链
+
+[MODEL_FIDELITY.md](MODEL_FIDELITY.md) 列出 M1–M5 与代码的逐项对应，以及仍需解决的范围差异。新增 `PhysicalSmoothMarket.lean`、`PhysicalPulse.lean`、`AdmissibleMarketPath.lean` 和 `AdmissiblePathBarrier.lean`，已在 GitHub Actions #38844596170 完成 76 项声明的 kernel 构建、公理审计。**这验证了一个明确的正则路径子类，不是全文定理的原始全部量词。**
+
+## 全文形式化工程与阶段一边界
+
+[GitHub #5 全文验证总任务](https://github.com/Siyuan-chat/market-crash-reachability/issues/5)明确了 16 项实质性编号结果（另有非正式综述 Theorem 1.1）的逐项验收条件。[PR #6](https://github.com/Siyuan-chat/market-crash-reachability/pull/6)目前已扩展为 76 项经过 kernel/axiom 审计的声明（含有限正则物理路径的不可达性定理），但尚不能替代原文 3.1/3.2 对全部有限变差路径的结论：
+
+- `CrisisFunctional.lean`：固定基准的平均对数损失、覆盖率分位阈值及其最小值定义；验证由非负对数价格和推出危机函数非正。仍需补齐 `k=ceil(αN)` 的有效取值与排序分位数等价证明，并连接真实价格 `log(S/F)`。
+- `BarrierEndpoint.lean`：在已知势函数非负的前提下排除所有资产低于基准；证明响应坐标在对数价格下严格单调；在额外假设 `G` 为全域凹且严格增、`G(0)=0` 时，用有限 Jensen 不等式推出平均对数损失不正。
+- `ElasticityConcavity.lean`：已从对**全正价格域**的 e(S)≥1 与 e(S)≥2 假设，分别导出原价格坐标与对数价格坐标凹性，且给出**仍依赖势函数非负**的条件性危机上界。原论文仅要求“可容许路径能到达的价格范围”，对应关系仍需证明，不能视为原定理已完结。
+- `RecoveryPotential.lean`：已在 Lean 中证明离散**纯恢复步骤** $S'=(1-lam)F+lam S$、$0≤lam≤1$ 保持势函数非负。证明不适用于未经建模的连续交易/恢复并发过程。
+- **尚未在 Lean 中导出**：原模型完整动力学势函数比较、flow-completed 脉冲中间价格正性和不变量、逐资产终点美元账本与所有可容许路径的形式化。因此 3.1、3.2 仍为“未完成整项证明”。
+
+原始论文与 Python 区间认证保持不变；Lean 的 kernel 构建成功不意味着 7.6 的区间证书已通过 Lean 审核。
 
 ## 可复现身份与实际验证
 
 - Lean：`leanprover/lean4:v4.19.0`，证据 `lean/lean-toolchain:1`。
 - mathlib：`c44e0c8ee63ca166450922a373c7409c5d26b00b`，证据 `lean/lake-manifest.json` 的 mathlib `rev` 与 `inputRev`。
 - 本地构建：**passed**，由主 agent 实际执行并确认；本次文档作者未另行重跑。
-- axiom 审计：**passed**，实际审查全部 34 个项目 theorem；仅依赖标准基础公理 propext、Classical.choice、Quot.sound。证据为 `../build/formal/axioms.log` 和 `../build/formal/integrity.json`，可由 `python formal/check_proof_integrity.py` 重现。
+- axiom 审计：**passed**，原版 34 项基础声明，加上 12 项 Stage-1 辅助引理，合计 76 项项目 theorem（包括后续物理路径结果）；已通过 GitHub Actions #38844596170 的 kernel 编译和全量 axiom 审计；仅依赖标准基础公理 propext、Classical.choice、Quot.sound。证据为 `../build/formal/axioms.log` 和 `../build/formal/integrity.json`，可由 `python formal/check_proof_integrity.py` 重现。
 - 静态审查未检出 `sorry`、`admit` 或自定义 `axiom`。使用 Mathlib 和经典选择不意味着无基础公理依赖。
 - 英文论文、数学内容及外部认证算法保持基线不变。
 
@@ -46,4 +62,4 @@ Proposition 7.6 的整项状态为外部 Python 严格区间计算机辅助存�
 4. 单独处理一般 p 的坐标范围、局部 Taylor 展开与余项、有限资源构造、变差账本和滚动价格带；现有三个响应特例不能代替这些步骤。
 5. 对 7.6 另行设计可信的有理数及区间 ODE 验证接口。外部证书成功不等于 Lean 核已检查证书。
 
-本阶段最低目标已达到：项目可构建，34 个局部基础 theorem 通过 kernel 与 axiom 审计；完整动力学定理留待后续工作。
+本阶段 76 项 Lean 声明通过 kernel 与 axiom 审计；有限正则物理模型已证明 3.1/3.2 对应结论。原论文完整有限变差 admissibility 的等价和整项定理仍待形式化。
