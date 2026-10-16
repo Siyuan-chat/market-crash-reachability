@@ -57,7 +57,7 @@ theorem OrderedAtomicJumpTrace.potential_preserved
       potential (fun i => coordinate F g.impact (s.prices i)) := by
   induction trace with
   | refl => rfl
-  | @append s mid used previous p fresh match_time match_prices
+  | @append mid used previous p fresh match_time match_prices
       match_shares match_ledger ih =>
       change potential (fun i => coordinate F g.impact
         (p.pulse.prices p.pulse.mass i)) =
@@ -129,7 +129,7 @@ theorem OrderedAtomicJumpTrace.ledger_increment
   induction trace with
   | refl =>
       simp [StieltjesPairedExecution.usedAtomicLedger, tradingInput]
-  | @append s mid used previous p fresh match_time match_prices
+  | @append mid used previous p fresh match_time match_prices
       match_shares match_ledger ih =>
       change p.pulse.dollarLedger p.pulse.mass i - s.dollars i =
         exec.usedAtomicLedger atTime (insert p.edge used) i
@@ -176,6 +176,8 @@ theorem OrderedAtomicJumpTrace.full_atom_ledger
   unfold tradingInput
   apply Finset.sum_congr rfl
   intro e _
+  change pairedMatrix edges i e * exec.atomicMass e atTime =
+    pairedMatrix edges i e * ((exec.cumulative e).measure {atTime}).toReal
   rw [exec.atomicMass_eq_measure e atTime]
 
 end MarketCrash
