@@ -382,7 +382,7 @@ theorem proposition_7_1_quantile_of_compensator_losses
       Finset.univ.filter (fun i : ι => c ≤ -q i) := by
     intro i hi
     exact Finset.mem_filter.mpr
-      ⟨Finset.mem_univ i, by rw [hclose i hi]; exact le_rfl⟩
+      ⟨Finset.mem_univ i, by simpa [hclose i hi]⟩
   have hcount : k ≤
       (Finset.univ.filter (fun i : ι => c ≤ -q i)).card := by
     rw [← hcard]
@@ -393,7 +393,7 @@ theorem proposition_7_1_quantile_of_compensator_losses
   have hhigh : coverageQuantile q k ≤ c := by
     rw [heq]
     by_cases hi : i ∈ decliners
-    · rw [hclose i hi]
+    · simp [hclose i hi]
     · exact hother i hi
   exact le_antisymm hhigh hlow
 
@@ -412,7 +412,7 @@ theorem proposition_7_1_quantile_of_strict_majority
       Finset.univ.filter (fun i : ι => c ≤ -q i) := by
     intro i hi
     exact Finset.mem_filter.mpr
-      ⟨Finset.mem_univ i, by rw [hclose i hi]; exact le_rfl⟩
+      ⟨Finset.mem_univ i, by simpa [hclose i hi]⟩
   have hcount : k ≤
       (Finset.univ.filter (fun i : ι => c ≤ -q i)).card := by
     rw [← hcard]
@@ -421,10 +421,9 @@ theorem proposition_7_1_quantile_of_strict_majority
     (coverageQuantile_threshold_iff q k hk hkn c).mpr hcount
   obtain ⟨i, hi, heq, _⟩ := coverageQuantile_eq_max_candidate q k hk hkn
   have hhigh : coverageQuantile q k ≤ c := by
+    rw [heq]
     by_contra hbad
-    have hgt : c < -q i := by
-      rw [heq] at hbad
-      exact lt_of_not_ge hbad
+    have hgt : c < -q i := lt_of_not_ge hbad
     have hsubset : (Finset.univ.filter
         (fun j : ι => -q i ≤ -q j)) ⊆
         (Finset.univ \ decliners) := by
