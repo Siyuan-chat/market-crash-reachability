@@ -83,7 +83,9 @@ theorem StieltjesPairedExecution.edgeMass_le_clock_increment
   have hsum :
       (exec.cumulative e) t - (exec.cumulative e) s ≤
         ∑ e', ((exec.cumulative e') t - (exec.cumulative e') s) := by
-    exact Finset.single_le_sum (fun e' _ hne => he e') (Finset.mem_univ e)
+    exact Finset.single_le_sum
+      (f := fun e' : κ => (exec.cumulative e') t - (exec.cumulative e') s)
+      (s := Finset.univ) (fun e' _ => he e') (Finset.mem_univ e)
   have hscaled := mul_le_mul_of_nonneg_left hsum hscale
   linarith
 
