@@ -121,3 +121,10 @@ import MarketCrash
 #print axioms MarketCrash.StieltjesClockPulse.coordinate_increment
 #print axioms MarketCrash.StieltjesClockPulse.ledger_increment
 #print axioms MarketCrash.StieltjesClockPulse.potential_preserved
+#print axioms MarketCrash.OperationalClockSegment.time_monotoneOn
+#print axioms MarketCrash.OperationalClockSegment.edgeDollars_monotoneOn
+#print axioms MarketCrash.OperationalClockSegment.coordinate_ode
+#print axioms MarketCrash.OperationalClockSegment.potential_ode
+#print axioms MarketCrash.nonnegative_of_variable_clock_derivative_on_Icc
+#print axioms MarketCrash.OperationalClockSegment.potential_nonnegative
+#print axioms MarketCrash.OperationalClockSegment.potential_eq_of_frozen_time
