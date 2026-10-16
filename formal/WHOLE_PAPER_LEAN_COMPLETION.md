@@ -12,7 +12,7 @@
 
 - PR #9 合入 `main`：**159** 项辅助与受限模型 Lean 定理通过完整审计。
 - Draft PR #10，数学源码 SHA `7eeea5902707711413416eee13ef7830021d2df5`：**185/185** 项通过固定工具链与公理审计；[成功 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38865912687)。包括严格的有序原子执行、各资产 Stieltjes 结算恒等式及可数原子时刻。
-- 后续新增 `CountablePhysicalClosure.lean`：有限可行物理前缀的**严格正价格极限**保持势函数屏障和危机排除的候选证明；最新 CI 请到 [Draft PR #10](https://github.com/Siyuan-chat/market-crash-reachability/pull/10) 核实，**尚未单独宣布验收通过**。
+- 新增 `CountablePhysicalClosure.lean`，数学提交 `5b182d74b35e525af108091510a7efc6edfc5103`：**190/190** 条声明通过 Lean kernel 和完整公理审计；[成功 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38867686935)。从真实可行的有限物理执行前缀、逐资产正价格收敛，严格推出极限势函数保持、全资产下降排除及系统危机排除；**仍需额外证明每条原始 M1–M5 BV 路径存在这种忠实物理前缀逼近**。
 - **按原论文完整定理验收：目前 0/16**。其中 3.1 和 3.2 的大部分有限维势函数/弹性/危机分位数推理已完成，但全 BV admissibility 不可省略。
 
 ## 逐项结果矩阵
