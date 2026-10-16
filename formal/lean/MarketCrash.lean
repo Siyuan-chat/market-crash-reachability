@@ -27,3 +27,7 @@ import MarketCrash.OperationalClockAttainable
 import MarketCrash.OperationalClockLedger
 import MarketCrash.LocalElasticity
 import MarketCrash.AttainableElasticity
+
+import MarketCrash.StieltjesVariationClock
+import MarketCrash.OperationalClockAE
+import MarketCrash.OperationalClockAEComparison
