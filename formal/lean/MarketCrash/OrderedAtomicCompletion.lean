@@ -180,4 +180,37 @@ theorem OrderedAtomicJumpTrace.full_atom_ledger
     pairedMatrix edges i e * ((exec.cumulative e).measure {atTime}).toReal
   rw [exec.atomicMass_eq_measure e atTime]
 
+/-- An explicitly ordered Stieltjes co-jump, whose internal physical
+pulses are feasible and state-matched, is a genuine finite
+`PhysicalMarketReachable` execution trace. It can therefore be composed
+with the verified regular continuous physical-market paths, without
+assuming an additional transformed-coordinate conservation axiom. -/
+theorem OrderedAtomicJumpTrace.physical_reachable
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    [DecidableEq ι] [DecidableEq κ]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (exec : StieltjesPairedExecution edges) (atTime : ℝ)
+    {s t : PhysicalMarketState ι} {used : Finset κ}
+    (trace : OrderedAtomicJumpTrace F g edges exec atTime s t used) :
+    PhysicalMarketReachable F rho g edges s t := by
+  induction trace with
+  | refl s =>
+      exact PhysicalMarketReachable.refl s
+  | @append mid used previous p fresh match_time match_prices
+      match_shares match_ledger ih =>
+      have hmid :
+          mid = ⟨atTime, p.pulse.prices 0,
+            p.pulse.shares 0, p.pulse.dollarLedger 0⟩ := by
+        cases mid with
+        | mk time prices shares dollars =>
+            dsimp at match_time match_prices match_shares match_ledger ⊢
+            rw [match_time, match_prices, match_shares, match_ledger]
+      have hstep : PhysicalMarketStep F rho g edges mid
+          ⟨atTime, p.pulse.prices p.pulse.mass,
+            p.pulse.shares p.pulse.mass,
+            p.pulse.dollarLedger p.pulse.mass⟩ := by
+        rw [hmid]
+        exact PhysicalMarketStep.pulse atTime p.pulse
+      exact PhysicalMarketReachable.append ih hstep
+
 end MarketCrash
