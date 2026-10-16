@@ -1,5 +1,9 @@
 import MarketCrash
 
+#print axioms MarketCrash.nonnegative_of_derivative_ge_linear_on_Icc
+#print axioms MarketCrash.PhysicalSmoothSegment.radial_price_attained
+#print axioms MarketCrash.PhysicalSmoothSegment.potential_nonnegative_of_attained_elasticity
+#print axioms MarketCrash.PhysicalSmoothSegment.no_all_asset_decline_of_attained_elasticity
 #print axioms MarketCrash.physical_step_preserves_potential
 #print axioms MarketCrash.physical_step_terminal_positive
 #print axioms MarketCrash.physical_reachable_preserves_potential

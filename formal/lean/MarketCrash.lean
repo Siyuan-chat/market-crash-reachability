@@ -22,3 +22,4 @@ import MarketCrash.CrisisParameters
 import MarketCrash.CrisisQuantile
 import MarketCrash.StieltjesExecution
 import MarketCrash.LocalElasticity
+import MarketCrash.AttainableElasticity
