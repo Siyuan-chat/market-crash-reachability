@@ -153,3 +153,9 @@ import MarketCrash
 #print axioms MarketCrash.AEOperationalClockSegment.integrating_factor_deriv_nonneg_ae
 #print axioms MarketCrash.nonnegative_of_ae_derivative_and_FTC
 #print axioms MarketCrash.AEOperationalClockSegment.potential_nonnegative_of_FTC
+#print axioms MarketCrash.StieltjesPairedExecution.variationClock_strictMono
+#print axioms MarketCrash.StieltjesPairedExecution.clockPreimage_spec
+#print axioms MarketCrash.StieltjesPairedExecution.clockPreimage_left
+#print axioms MarketCrash.StieltjesPairedExecution.clockPreimage_monotone
+#print axioms MarketCrash.StieltjesPairedExecution.clockPreimage_duration_bound
+#print axioms MarketCrash.StieltjesPairedExecution.clockPreimage_edgeMass_bound
