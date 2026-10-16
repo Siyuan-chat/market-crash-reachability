@@ -347,11 +347,6 @@ theorem proposition_7_1_terminal_product
   rw [hfull]
   let c : ℝ := (k : ℝ) * (D * lambda)
   let n : ℝ := (Fintype.card ι : ℝ) * delta
-  change Real.exp (-c) *
-    (∏ i ∈ Finset.univ \ decliners, prices i / F) ≤
-    Real.exp (-n) ↔
-    (∏ i ∈ Finset.univ \ decliners, prices i / F) ≤
-    Real.exp (c - n)
   constructor
   · intro h
     have hm := mul_le_mul_of_nonneg_left h (Real.exp_pos c).le
