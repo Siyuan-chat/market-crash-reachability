@@ -133,13 +133,17 @@ theorem OrderedAtomicJumpTrace.ledger_increment
       match_shares match_ledger ih =>
       change p.pulse.dollarLedger p.pulse.mass i - s.dollars i =
         exec.usedAtomicLedger atTime (insert p.edge used) i
-      have hp := p.pulse.ledger_endpoint F g edges i
-      rw [p.matching_edge, p.matching_mass] at hp
       have hstep : p.pulse.dollarLedger p.pulse.mass i =
           mid.dollars i +
             exec.atomicMass p.edge atTime * pairedMatrix edges i p.edge := by
-        rw [match_ledger]
-        exact hp
+        calc
+          p.pulse.dollarLedger p.pulse.mass i =
+              p.pulse.dollarLedger 0 i +
+                p.pulse.mass * pairedMatrix edges i p.pulse.edge :=
+            p.pulse.ledger_endpoint F g edges i
+          _ = mid.dollars i +
+                exec.atomicMass p.edge atTime * pairedMatrix edges i p.edge := by
+            rw [match_ledger, p.matching_mass, p.matching_edge]
       calc
         p.pulse.dollarLedger p.pulse.mass i - s.dollars i =
             (mid.dollars i - s.dollars i) +
