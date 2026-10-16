@@ -1,4 +1,4 @@
-import MarketCrash.CountablePhysicalClosure
+import MarketCrash.AdmissiblePathBarrier
 import Mathlib.Analysis.Convex.Deriv
 
 /-!
