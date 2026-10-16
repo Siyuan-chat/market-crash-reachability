@@ -66,6 +66,8 @@ import MarketCrash
 #print axioms MarketCrash.coordinate_concaveOn_Icc_of_local_elasticity
 #print axioms MarketCrash.restoring_drain_le_coordinate_of_radial_elasticity
 #print axioms MarketCrash.restoring_drain_sum_le_potential_of_radial_elasticity
+#print axioms MarketCrash.PhysicalSmoothSegment.potential_nonnegative_of_radial_elasticity
+#print axioms MarketCrash.PhysicalSmoothSegment.no_all_asset_decline_of_radial_elasticity
 #print axioms MarketCrash.PhysicalSmoothSegment.coordinate_ode
 #print axioms MarketCrash.PhysicalSmoothSegment.potential_ode
 #print axioms MarketCrash.PhysicalSmoothSegment.potential_nonnegative
