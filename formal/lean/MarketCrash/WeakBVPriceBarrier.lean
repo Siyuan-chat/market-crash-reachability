@@ -218,4 +218,163 @@ theorem ContinuousWeakBVPriceSegment.potential_nonnegative_of_radial_elasticity
   rw [m.potential_eq_primitive F rho g edges t ht]
   exact hbarrier
 
+/-- Every intermediate radial price lies on the same continuous
+physical-time price trajectory, even when the trading control driving
+the trajectory has a singular-continuous Stieltjes component. -/
+theorem ContinuousWeakBVPriceSegment.radial_price_attained
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (m : ContinuousWeakBVPriceSegment F rho g edges)
+    (i : ι) (hinit : m.prices m.a i = F)
+    (t : ℝ) (ht : t ∈ Set.Icc m.a m.b)
+    (x : ℝ) (hx : x ∈ Set.Icc (min F (m.prices t i))
+      (max F (m.prices t i))) :
+    ∃ u ∈ Set.Icc m.a t, m.prices u i = x := by
+  have hc : ContinuousOn (fun u : ℝ => m.prices u i)
+      (Set.uIcc m.a t) := by
+    apply (m.prices_continuous i).mono
+    intro u hu
+    have hui : u ∈ Set.Icc m.a t := by
+      simpa only [Set.uIcc_of_le ht.1] using hu
+    exact ⟨hui.1, hui.2.trans ht.2⟩
+  have hbetween : x ∈ Set.uIcc (m.prices m.a i) (m.prices t i) := by
+    simpa only [Set.uIcc, hinit] using hx
+  obtain ⟨u, hu, heq⟩ := (intermediate_value_uIcc hc) hbetween
+  refine ⟨u, ?_, heq⟩
+  simpa only [Set.uIcc_of_le ht.1] using hu
+
+/-- A continuous genuine Stieltjes-BV weak price response path starting
+from benchmark prices has H(t)>=0 at EVERY physical time, provided
+elasticity e>=1 only at ACTUALLY VISITED prices of that path. -/
+theorem ContinuousWeakBVPriceSegment.potential_nonnegative_of_visited_elasticity
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (m : ContinuousWeakBVPriceSegment F rho g edges)
+    (hF : 0 < F) (hrho : 0 ≤ rho)
+    (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
+    (hinit : ∀ i, m.prices m.a i = F)
+    (hel : ∀ u ∈ Set.Icc m.a m.b, ∀ i,
+      1 ≤ responseElasticity g.impact (m.prices u i))
+    (t : ℝ) (ht : t ∈ Set.Icc m.a m.b) :
+    0 ≤ potential (fun i => coordinate F g.impact (m.prices t i)) := by
+  have hrad : ∀ u ∈ Set.Icc m.a m.b, ∀ i x,
+      x ∈ Set.Icc (min F (m.prices u i))
+        (max F (m.prices u i)) →
+      1 ≤ responseElasticity g.impact x := by
+    intro u hu i x hx
+    obtain ⟨v, hv, heq⟩ :=
+      m.radial_price_attained F rho g edges i (hinit i) u hu x hx
+    rw [← heq]
+    exact hel v ⟨hv.1, hv.2.trans hu.2⟩ i
+  have hstart : 0 ≤ potential (fun i =>
+      coordinate F g.impact (m.prices m.a i)) := by
+    simp [potential, hinit, coordinate_at_benchmark]
+  exact m.potential_nonnegative_of_radial_elasticity
+    F rho g edges hF hrho hdiff hrad hstart t ht
+
+/-- The paper's 3.1 type of barrier, for ALL continuous singular-BV
+Stieltjes weak-normal-form price solutions satisfying the original
+attained-price elasticity condition, at an ARBITRARY horizon t. -/
+theorem ContinuousWeakBVPriceSegment.no_all_asset_decline_of_visited_elasticity
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    [DecidableEq ι] [Nonempty ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (m : ContinuousWeakBVPriceSegment F rho g edges)
+    (hF : 0 < F) (hrho : 0 ≤ rho)
+    (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
+    (hinit : ∀ i, m.prices m.a i = F)
+    (hel : ∀ u ∈ Set.Icc m.a m.b, ∀ i,
+      1 ≤ responseElasticity g.impact (m.prices u i))
+    (t : ℝ) (ht : t ∈ Set.Icc m.a m.b) :
+    ¬ ∀ i, m.prices t i < F := by
+  exact not_all_below_benchmark F g hF (m.prices t)
+    (m.positive_prices t ht)
+    (m.potential_nonnegative_of_visited_elasticity
+      F rho g edges hF hrho hdiff hinit hel t ht)
+
+/-- Every log-price between benchmark and a chosen physical-time price
+is attained by the physical weak Stieltjes price trajectory. -/
+theorem ContinuousWeakBVPriceSegment.radial_log_price_attained
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (m : ContinuousWeakBVPriceSegment F rho g edges)
+    (hF : 0 < F) (i : ι)
+    (hinit : m.prices m.a i = F)
+    (t : ℝ) (ht : t ∈ Set.Icc m.a m.b)
+    (q : ℝ) (hfinal : m.prices t i = F * Real.exp q)
+    (x : ℝ) (hx : x ∈ Set.Icc (min 0 q) (max 0 q)) :
+    ∃ u ∈ Set.Icc m.a t, m.prices u i = F * Real.exp x := by
+  have hmono : Monotone (fun z : ℝ => F * Real.exp z) :=
+    fun a b hab => mul_le_mul_of_nonneg_left (Real.exp_monotone hab) hF.le
+  have hbetween : F * Real.exp x ∈
+      Set.Icc (min F (m.prices t i)) (max F (m.prices t i)) := by
+    rw [hfinal]
+    have hradial : F * Real.exp x ∈
+        Set.uIcc (F * Real.exp (0 : ℝ)) (F * Real.exp q) := by
+      rcases le_total (0 : ℝ) q with hq | hq
+      · have hx' : (0 : ℝ) ≤ x ∧ x ≤ q := by
+          simpa [min_eq_left hq, max_eq_right hq] using hx
+        rw [Set.uIcc_of_le (hmono hq)]
+        exact ⟨hmono hx'.1, hmono hx'.2⟩
+      · have hx' : q ≤ x ∧ x ≤ (0 : ℝ) := by
+          simpa [min_eq_right hq, max_eq_left hq] using hx
+        rw [Set.uIcc_of_ge (hmono hq)]
+        exact ⟨hmono hx'.1, hmono hx'.2⟩
+    simpa only [Real.exp_zero, mul_one, Set.uIcc] using hradial
+  exact m.radial_price_attained F rho g edges i hinit t ht
+    (F * Real.exp x) hbetween
+
+/-- The paper's 3.2-type crisis exclusion for continuous BV physical
+price paths with singular-continuous Stieltjes trading, and the EXACT
+attained-price elasticity-2 premise. No a.e.-FTC assumption, since
+paired trading cancels in the potential law and recovery is classically
+differentiable in physical time by ordinary FTC-1.
+
+The remaining physical M2-to-weak-normal-form BV chain-rule equivalence
+is independent and NOT established by this statement. -/
+theorem ContinuousWeakBVPriceSegment.no_systemic_crisis_of_visited_elasticity
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    [DecidableEq ι] [Nonempty ι]
+    (F rho : ℝ) (g : Response) (edges : κ → PairedEdge ι)
+    (m : ContinuousWeakBVPriceSegment F rho g edges)
+    (hF : 0 < F) (hrho : 0 ≤ rho)
+    (hdiff : ∀ S : ℝ, 0 < S → DifferentiableAt ℝ g.impact S)
+    (hinit : ∀ i, m.prices m.a i = F)
+    (hel : ∀ u ∈ Set.Icc m.a m.b, ∀ i,
+      2 ≤ responseElasticity g.impact (m.prices u i))
+    (t : ℝ) (ht : t ∈ Set.Icc m.a m.b)
+    (q : ι → ℝ) (hq : ∀ i, m.prices t i = F * Real.exp (q i))
+    (k : ℕ) :
+    systemicCrisis q k ≤ 0 := by
+  have hel1 : ∀ u ∈ Set.Icc m.a m.b, ∀ i,
+      1 ≤ responseElasticity g.impact (m.prices u i) := by
+    intro u hu i
+    linarith [hel u hu i]
+  have hpotential : 0 ≤ potential
+      (fun i => coordinate F g.impact (m.prices t i)) :=
+    m.potential_nonnegative_of_visited_elasticity
+      F rho g edges hF hrho hdiff hinit hel1 t ht
+  have hlog :
+      (∑ i, logCoordinate F g.impact (q i)) =
+        potential (fun i => coordinate F g.impact (m.prices t i)) := by
+    unfold potential
+    apply Finset.sum_congr rfl
+    intro i _
+    change coordinate F g.impact (F * Real.exp (q i)) =
+      coordinate F g.impact (m.prices t i)
+    rw [hq i]
+  apply no_positive_crisis_of_radial_elasticity_ge_two_and_potential
+    F g hF q k
+  · intro i x hx
+    have hxpos : 0 < F * Real.exp x := mul_pos hF (Real.exp_pos x)
+    exact hdiff (F * Real.exp x) hxpos
+  · intro i x hx
+    obtain ⟨u, hu, heq⟩ := m.radial_log_price_attained
+      F rho g edges hF i (hinit i) t ht
+      (q i) (hq i) x hx
+    rw [← heq]
+    exact hel u ⟨hu.1, hu.2.trans ht.2⟩ i
+  · rw [hlog]
+    exact hpotential
+
 end MarketCrash
