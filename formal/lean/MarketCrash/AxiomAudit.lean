@@ -218,5 +218,4 @@ import MarketCrash
 #print axioms MarketCrash.positive_full_coverage_crisis_forces_all_below
 #print axioms MarketCrash.RadiallyElasticWeakBVPriceReachable.no_positive_full_coverage_crisis
 #print axioms MarketCrash.RadiallyElasticWeakBVPriceReachable.no_systemic_crisis_at_breadth
-
 #print axioms MarketCrash.ContinuousWeakBVPriceSegment.no_systemic_crisis_at_breadth
