@@ -11,3 +11,4 @@ import MarketCrash.RestoringTangent
 import MarketCrash.SmoothMarket
 import MarketCrash.PotentialFromTime
 import MarketCrash.HybridPath
+import MarketCrash.HybridClosure
