@@ -1,5 +1,12 @@
 import MarketCrash
 
+#print axioms MarketCrash.physical_step_preserves_potential
+#print axioms MarketCrash.physical_step_terminal_positive
+#print axioms MarketCrash.physical_reachable_preserves_potential
+#print axioms MarketCrash.physical_reachable_terminal_positive
+#print axioms MarketCrash.AdmissibleMarketPath.potential_nonnegative
+#print axioms MarketCrash.admissible_regular_no_all_asset_decline
+#print axioms MarketCrash.admissible_regular_no_systemic_crisis
 #print axioms MarketCrash.not_all_below_benchmark
 #print axioms MarketCrash.logCoordinate_strictMono
 #print axioms MarketCrash.nonnegative_log_sum_of_concave_potential

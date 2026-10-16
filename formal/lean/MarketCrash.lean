@@ -16,3 +16,4 @@ import MarketCrash.HybridPositivity
 import MarketCrash.PhysicalSmoothMarket
 import MarketCrash.PhysicalPulse
 import MarketCrash.AdmissibleMarketPath
+import MarketCrash.AdmissiblePathBarrier
