@@ -1,20 +1,21 @@
-import MarketCrash.PhysicalPulse
+import MarketCrash.OperationalClockLedger
 
 /-!
 A traceable admissible market-path **regular subclass** of manuscript M1-M5.
 
 States include prices, actual executed-share holdings, per-asset signed-dollar
-ledgers and physical time. Steps are either price-space smooth segments or
-one directed flow-completed pulse with its own internal execution parameter.
+ledgers and physical time. Steps include price-space smooth segments, one-edge flow-completed
+pulses, and joint multi-edge/resilience segments with a common physical
+operational clock that can pause physical time.
 Concatenation matches ALL state fields and enforces chronological ordering.
 
 Finite execution variation is recorded per step; the inductive reachability
 derivation has finitely many steps. A path starts at benchmark prices and
 zero executed-dollar ledgers and ends with every dollar ledger closed.
 
-LIMITATION: smooth segments currently require derivatives on all ℝ and pulses
-require full endpoint derivatives. Hence this is NOT YET equivalent to the
-manuscript's arbitrary piecewise continuous / BV admissible controls.
+LIMITATION: clocked segments and pulses still require differentiability in
+operational dollars; arbitrary a.e. differentiable BV graph completions and
+faithful inclusion of every manuscript-admissible path are NOT yet proved.
 -/
 noncomputable section
 namespace MarketCrash
@@ -39,6 +40,12 @@ inductive PhysicalMarketStep
       PhysicalMarketStep F rho g edges
         ⟨atTime, p.prices 0, p.shares 0, p.dollarLedger 0⟩
         ⟨atTime, p.prices p.mass, p.shares p.mass, p.dollarLedger p.mass⟩
+  | clocked (seg : OperationalClockSegment F rho g edges) :
+      PhysicalMarketStep F rho g edges
+        ⟨seg.physicalTime seg.a, seg.prices seg.a,
+          seg.shares seg.a, seg.dollarLedger seg.a⟩
+        ⟨seg.physicalTime seg.b, seg.prices seg.b,
+          seg.shares seg.b, seg.dollarLedger seg.b⟩
 
 /-- Finite execution trace with exact state continuity at every join. -/
 inductive PhysicalMarketReachable
