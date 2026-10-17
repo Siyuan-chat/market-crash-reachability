@@ -42,4 +42,53 @@ theorem normal_form_sum_derivative (edges : κ → PairedEdge ι)
     simp [Finset.mul_sum]
   simpa [potential, heq] using h
 
+
+/-- Proposition 7.5, instantaneous market cut: for any subset of assets,
+dollar conservation and individual gross-dollar capacity bound the
+absolute net flow across the cut by capacity on EITHER side.
+This does not postulate any market-wide flow inequality. -/
+theorem market_cut_instantaneous_bound
+    (B : ι → κ → ℝ) (hB : ∀ e, (∑ i, B i e) = 0)
+    (rates : κ → ℝ) (J : Finset ι)
+    (S gross : ι → ℝ) (v : ℝ)
+    (hv : 0 ≤ v) (hS : ∀ i, 0 ≤ S i)
+    (hgross : ∀ i, 0 ≤ gross i ∧ gross i ≤ v)
+    (hlocal : ∀ i,
+      |tradingInput B rates i| ≤ S i * gross i) :
+    |∑ i ∈ J, tradingInput B rates i| ≤
+      v * min (∑ i ∈ J, S i)
+        (∑ i ∈ Finset.univ \ J, S i) := by
+  classical
+  have hbound (K : Finset ι) :
+      |∑ i ∈ K, tradingInput B rates i| ≤ v * ∑ i ∈ K, S i := by
+    calc
+      |∑ i ∈ K, tradingInput B rates i| ≤
+          ∑ i ∈ K, |tradingInput B rates i| :=
+        Finset.abs_sum_le_sum_abs _ _
+      _ ≤ ∑ i ∈ K, S i * gross i := by
+        apply Finset.sum_le_sum
+        intro i hi
+        exact hlocal i
+      _ ≤ ∑ i ∈ K, S i * v := by
+        apply Finset.sum_le_sum
+        intro i hi
+        exact mul_le_mul_of_nonneg_left (hgross i).2 (hS i)
+      _ = v * ∑ i ∈ K, S i := by
+        rw [← Finset.sum_mul]
+        simp only [mul_comm]
+  have hzero : (∑ i, tradingInput B rates i) = 0 :=
+    trading_sum_zero B hB rates
+  have hcut : (∑ i ∈ J, tradingInput B rates i) =
+      -(∑ i ∈ Finset.univ \ J, tradingInput B rates i) := by
+    have hs := Finset.sum_sdiff
+      (f := fun i => tradingInput B rates i) (Finset.subset_univ J)
+    rw [← hs] at hzero
+    linarith
+  have hleft := hbound J
+  have hright := hbound (Finset.univ \ J)
+  rw [hcut, abs_neg] at hleft ⊢
+  apply le_min
+  · exact hleft
+  · exact hright
+
 end MarketCrash
