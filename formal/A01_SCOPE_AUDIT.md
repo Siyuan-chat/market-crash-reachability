@@ -51,3 +51,5 @@ read-only scope review found no missing formula, sign error or strengthened
 economic hypothesis. Full axiom audit, release hashes and same-SHA CI are
 separate acceptance gates, recorded in `WHOLE_PAPER_LEAN_COMPLETION.md`.
 This document is scope evidence, not a competing task-status ledger.
+
+Acceptance: PAPER_ACCEPTED at proof commit `772d72d6c3b819814ce39a165a1bb56ad6729ee6`. All four same-SHA workflows succeeded: [lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704394)；[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704369)；[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704465)；[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704392)。Local full build, 228-declaration permitted-axiom audit and 226-entry release hash check passed. This exact proof revision is the second accepted numbered result.

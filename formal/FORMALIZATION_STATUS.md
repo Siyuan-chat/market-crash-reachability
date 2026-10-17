@@ -1,6 +1,6 @@
 # Lean 形式化当前状态
 
-状态日期：2026-10-17。唯一当前状态入口为 [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md)；本文件其余 Stage-1/Phase 历史材料保留作证据，不覆盖当前终态。原始编号验收为 1/16（Proposition 7.1）；A01 Proposition 7.5 完整证明已 LEAN_PASS，等待公理审计、SHA-256 及同提交四项 CI，范围见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)。用户批准的边界修正有明确修订来源记录；其余15项未被提前算作完成。
+状态日期：2026-10-17。唯一当前状态入口为 [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md)。原始编号验收 **2/16**：Proposition 7.1、7.5；A01 完整证明 SHA `772d72d6c3b819814ce39a165a1bb56ad6729ee6` 四项 CI 全绿，范围见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)。A02 本地构建和245项公理审计通过，待同提交 CI。用户批准的边界修正有明确来源记录；下列 Stage-1/Phase 历史材料不覆盖当前终态。
 
 ## 本期新增：从原始价格 ODE 到有限正则路径的完整证明链
 
@@ -50,7 +50,7 @@
 
 上表三个响应族的名称完整展开为：`constantCoordinate_normalized`, `linearCoordinate_normalized`, `logarithmicCoordinate_normalized`, `constantCoordinate_hasDerivAt`, `linearCoordinate_hasDerivAt`, `logarithmicCoordinate_hasDerivAt`。这些声明的名称与作用均直接来自对应 Lean 源码。
 
-`docs/MATHEMATICAL_RESULTS.md` 中的符号检查、普通 ODE、离散抽样或精确有理数一致性检查，均不自动成为 Lean 证明。Theorem 1.1、3.1、3.2、4.1、Proposition 4.2、4.3、Theorem 4.4、5.1、Proposition 6.1、Theorem 6.2、6.3、Proposition 7.1、7.2、Theorem 7.3、Proposition 7.4、7.5 的整项状态均为纸面证明或概览，未完成 Lean 形式化。
+`docs/MATHEMATICAL_RESULTS.md` 中的符号检查、普通 ODE、离散抽样或精确有理数一致性检查，均不自动成为 Lean 证明。Stage-1 历史快照当时尚无整项 Lean 验收；当前已完成 7.1、7.5，其余状态以唯一当前入口为准。
 
 Proposition 7.6 的整项状态为外部 Python 严格区间计算机辅助存在性证明，未在 Lean 中重建或核验。它限于指定十资产、九目标、两日固定路径；不证明最优控制、一般异质市场可行性或真实市场概率。当前 Lean 不包含区间 ODE 证书检查器。`AxiomAudit.lean` 的打印命令只检查所列基础声明的依赖，不检查外部证书。
 

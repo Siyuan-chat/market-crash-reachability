@@ -1,6 +1,6 @@
 # 论文结果与 Lean 基础映射
 
-状态日期：2026-10-17。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。**Proposition 7.1 已完成原文条件性终端结论的 Lean 形式化，全文严格进度 1/16；其余 15 项尚未完整验收。** 7.6 的既有机器辅助依据仍是外部 Python 区间认证，不等于 Lean 形式化。Theorem 1.1 为非正式概览。
+状态日期：2026-10-17。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。**Proposition 7.1 与 Proposition 7.5 已验收，全文严格进度 2/16；其余14项未完成同 SHA 验收。A01 有用户明确批准的空集边界修正，未擅自改动其他主张。** 7.6 的既有机器辅助依据仍是外部 Python 区间认证，不等于 Lean 形式化。Theorem 1.1 为非正式概览。
 
 固定 Lean/Mathlib 下最新已审计的数学源码含 **197/197 个 kernel-checked 定理声明**；其中 `proposition_7_1_original_endpoint` 和 `proposition_7_1_single_compensator` 覆盖原文 Proposition 7.1 的完整条件性终端结论。[核审计 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。其余编号结果须按原文全量词单独验收，不能以辅助声明数量替代。
 
@@ -127,7 +127,7 @@ These inequalities are necessary, not sufficient, and need not be sharp.
 
 ## Proposition 6.1 — prop:rate-band
 
-证据：paper/main.tex:365。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:365。整项 Lean 状态：**LEAN_PASS，待同 SHA CI**。完整定理族：`proposition_6_1_rate_only`、`proposition_6_1_rate_band`、`proposition_6_1_hypothetical_reset`；全量本地构建和245项公理审计通过，量词/假设映射见 [A02_SCOPE_AUDIT.md](A02_SCOPE_AUDIT.md)。
 
 ```latex
 \begin{proposition}[Rate and price-band exclusion certificates]\label{prop:rate-band}
@@ -191,7 +191,7 @@ The attained loss can be arbitrarily small. This does \emph{not} assert that a p
 
 ## Proposition 7.1 — prop:multiday-crisis-trigger
 
-证据：paper/main.tex:526。**整项 Lean 状态：已完成（1/16）**。Lean 定理：`proposition_7_1_original_endpoint`、`proposition_7_1_single_compensator`，连同 `proposition_7_1_exact_severity` 及两种分位数情形；197/197 核心定理和公理审计通过。证明严格是原文的**条件性终端等价式**，不声称任意给定收盘配置可以动态实现。
+证据：paper/main.tex:526。**整项 Lean 状态：PAPER_ACCEPTED（首项验收结果）**。Lean 定理：`proposition_7_1_original_endpoint`、`proposition_7_1_single_compensator`，连同 `proposition_7_1_exact_severity` 及两种分位数情形；197/197 核心定理和公理审计通过。证明严格是原文的**条件性终端等价式**，不声称任意给定收盘配置可以动态实现。
 
 ```latex
 \begin{proposition}[A conditional systemic-crisis trigger test]\label{prop:multiday-crisis-trigger}
@@ -275,7 +275,7 @@ This bound is specific to terminal dollar closure and the absence of above-funda
 
 ## Proposition 7.5 — prop:market-cut
 
-证据：paper/main.tex:626。整项 Lean 状态：**LEAN_PASS，等待公理/哈希及同 SHA 四项 CI**。完整定理族为 `proposition_7_5_market_cut`、`proposition_7_5_ledger_derivative_bound`、`proposition_7_5_empty_complement`、`proposition_7_5_rolling_constant_impact`。原始价格积分方程到响应坐标积分由已证明的 Lipschitz FTC 导出，不预设端点式。用户明确批准非空 J 与零容量分支边界修正；逐项量词核对见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)。尚未增加验收分子。
+证据：paper/main.tex:626。整项 Lean 状态：**PAPER_ACCEPTED，证明 SHA `772d72d6c3b819814ce39a165a1bb56ad6729ee6`，四项同 SHA CI 成功**。完整定理族为 `proposition_7_5_market_cut`、`proposition_7_5_ledger_derivative_bound`、`proposition_7_5_empty_complement`、`proposition_7_5_rolling_constant_impact`。原始价格积分方程到响应坐标积分由已证明的 Lipschitz FTC 导出，不预设端点式。用户明确批准非空 J 与零容量分支边界修正；逐项量词核对见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)。验收分子已从1提高到2；[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704394)；[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704369)；[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704465)；[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704392)。
 
 ```latex
 \begin{proposition}[A market-cut capacity and consecutive-limit lower bound]\label{prop:market-cut}
