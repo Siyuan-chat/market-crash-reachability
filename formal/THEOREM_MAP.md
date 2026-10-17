@@ -1,6 +1,6 @@
 # 论文结果与 Lean 基础映射
 
-状态日期：2026-10-17。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。**Propositions 7.1、7.5、6.1、7.2及Theorems 3.1、3.2、5.1 已验收，全文严格进度 7/16；其余9项未完成同 SHA 验收。A01 有用户明确批准的空集边界修正，未擅自改动其他主张。** 7.6 的既有机器辅助依据仍是外部 Python 区间认证，不等于 Lean 形式化。Theorem 1.1 为非正式概览。
+状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **8/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
 
 固定 Lean/Mathlib 下最新已审计的数学源码含 **197/197 个 kernel-checked 定理声明**；其中 `proposition_7_1_original_endpoint` 和 `proposition_7_1_single_compensator` 覆盖原文 Proposition 7.1 的完整条件性终端结论。[核审计 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。其余编号结果须按原文全量词单独验收，不能以辅助声明数量替代。
 
@@ -235,7 +235,7 @@ The bound is understood only for $\eta\bar v<\rho F$; with a larger rate cap it 
 
 ## Theorem 7.3 — thm:no-second-global
 
-证据：paper/main.tex:577。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:577。整项 Lean 状态：**LEAN_PASS，待同SHA CI**；完整 theorem_7_3_original、436项公理审计及255项哈希PASS；见 B06_SCOPE_AUDIT.md。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
 
 ```latex
 \begin{theorem}[An obstruction to a second all-asset limit-down close]\label{thm:no-second-global}
@@ -249,7 +249,7 @@ Then it is impossible for \emph{every} asset to close the second session strictl
 
 ## Proposition 7.4 — prop:streak-precondition
 
-证据：paper/main.tex:600。整项 Lean 状态：**LEAN_PASS，待同SHA CI**；完整 proposition_7_4_original、433项公理审计及253项哈希PASS；见 B05_SCOPE_AUDIT.md。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:600。整项 Lean 状态：**PAPER_ACCEPTED**。B05 Proposition 7.4 PAPER_ACCEPTED；证明 SHA `131256911c0d21ff837a477cc63c8241ebcb27c7`；本地全量构建、433项公理审计和253项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405730)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405801)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405755)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405739)。 canonical `proposition_7_4_original`，见 B05_SCOPE_AUDIT.md。
 
 ```latex
 \begin{proposition}[Preconditioning needed for a dollar-closed limit-down streak]\label{prop:streak-precondition}

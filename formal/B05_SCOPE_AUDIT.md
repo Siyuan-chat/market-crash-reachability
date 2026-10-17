@@ -21,4 +21,4 @@ The recovery normal form is proved, not a premise. No above-F time is inferred
 from an isolated pulse; fixed-time pulses contribute no dt measure. No
 sufficiency, rate cap, global curvature, or reset of the benchmark is assumed.
 
-Status: full formal-module Lean 4.19.0 build PASS; complete 433-declaration permitted-axiom audit PASS; 253 release SHA-256 entries PASS. Exact-SHA four-CI remains pending. Not accepted.
+Status: full formal-module Lean 4.19.0 build PASS; complete 433-declaration permitted-axiom audit PASS; 253 release SHA-256 entries PASS. B05 Proposition 7.4 PAPER_ACCEPTED；证明 SHA `131256911c0d21ff837a477cc63c8241ebcb27c7`；本地全量构建、433项公理审计和253项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405730)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405801)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405755)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405739)。

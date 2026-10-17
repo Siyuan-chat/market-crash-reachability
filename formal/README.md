@@ -1,6 +1,6 @@
 # Partial Lean formalization — whole-paper project
 
-2026-10-17: Original-paper acceptance is **7/16**: Propositions 7.1, 7.5, 6.1, 7.2 and Theorems 3.1, 3.2, 5.1. B04 proof SHA `a1415e9745b65581a3c3053cc45be56c3763181c` passed all four exact-SHA CI workflows, the full local build, 413-declaration audit and 251 hashes. B05 is locally complete, awaiting CI; B06 awaits integration. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
+2026-10-17: Original-paper acceptance is **8/16**. Proposition 7.4 proof SHA `131256911c0d21ff837a477cc63c8241ebcb27c7` passed all four exact-SHA CI workflows, the full local build, 433-declaration audit and 253 hashes. B06 is under audit; C01/C02 full candidates await integration. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
 
 Canonical mathematics: English V12 Final at commit
 `e5339a47f29ccb669d1f228ca930a1c1146200bf`.
@@ -13,7 +13,7 @@ clock. The latter now participates in the finite admissible trace and its proved
 quantifiers over all M1–M5 BV execution paths or the interval certificate
 of Proposition 7.6.
 Follow the [whole-paper proof tracker](https://github.com/Siyuan-chat/market-crash-reachability/issues/5).
-**Original-paper acceptance: 7/16 (Propositions 7.1, 7.5, 6.1, 7.2 and Theorems 3.1, 3.2, 5.1).** Proposition 7.1's exact terminal product criterion, quantile cases, severity and single-compensator consequence are now Lean kernel-verified as a complete original conditional endpoint result; [197/197 proof audit](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426). The other 9 original numbered statements remain unaccepted. Consult the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md); older 190-declaration Phase 4 snapshots are historical only, and the optional countable-atom modules have been pruned.
+**Original-paper acceptance: 8/16.** The accepted original results and their exact proof SHAs, manuscript scope and CI evidence are recorded in the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md). Historical helper counts are not whole-paper acceptance.
 
 Phase 2's [bounded-variation proof gates](PHASE2_BV_GATES.md) distinguish proven accounting and crisis-parameter bridges from the unproved full BV price dynamics.
 Phase 3's [a.e. operational-clock proof gates](PHASE3_AE_GATES.md) record the

@@ -433,3 +433,6 @@ import MarketCrash
 #print axioms MarketCrash.OriginalPhysicalReachable.aboveTimes_subset
 #print axioms MarketCrash.OriginalPhysicalReachable.aboveTimes_volume
 #print axioms MarketCrash.proposition_7_4_original
+#print axioms MarketCrash.PhysicalContinuousBVPiece.sum_coordinate_nondecreasing_below
+#print axioms MarketCrash.OriginalPhysicalReachable.sum_coordinate_nondecreasing_below
+#print axioms MarketCrash.theorem_7_3_original

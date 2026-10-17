@@ -50,3 +50,5 @@ import MarketCrash.OriginalSystemicBarrier
 import MarketCrash.OriginalDollarTurnover
 
 import MarketCrash.OriginalPreconditioning
+
+import MarketCrash.OriginalSecondSession
