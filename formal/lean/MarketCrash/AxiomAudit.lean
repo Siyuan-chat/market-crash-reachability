@@ -245,3 +245,14 @@ import MarketCrash
 #print axioms MarketCrash.proposition_6_1_rate_band
 #print axioms MarketCrash.proposition_6_1_rate_only
 #print axioms MarketCrash.proposition_6_1_hypothetical_reset
+#print axioms MarketCrash.rollingRate_single_session_algebra
+#print axioms MarketCrash.rollingRate_scalar_floor_from
+#print axioms MarketCrash.ACPhysicalSession.rolling_rate_floor
+#print axioms MarketCrash.proposition_7_2_single_session
+#print axioms MarketCrash.rollingRate_streak_algebra
+#print axioms MarketCrash.rollingRate_streak_max
+#print axioms MarketCrash.ACPhysicalSession.perpetual_rate_floor
+#print axioms MarketCrash.rollingRate_integer_streak_bound
+#print axioms MarketCrash.proposition_7_2_rolling_streak
+#print axioms MarketCrash.ACPhysicalSession.perpetual_rate_floor_at
+#print axioms MarketCrash.proposition_7_2_perpetual_and_integer

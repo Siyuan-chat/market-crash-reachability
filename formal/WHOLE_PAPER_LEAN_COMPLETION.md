@@ -1,6 +1,6 @@
 # Lean 全文验收清单与剩余工作（2026-10-17）
 
-当前验收 **2/16**，目标 **16/16**。A01 Proposition 7.5 **PAPER_ACCEPTED**，完整证明提交 `772d72d6c3b819814ce39a165a1bb56ad6729ee6` 的四项 CI 全部 SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704394)；[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704369)；[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704465)；[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704392)。本地全量构建、228项公理审计、226项发布哈希、六项数值回归与译本/SIAM检查通过。A02 Proposition 6.1 **LEAN_PASS**（全量本地构建及245项公理审计通过，待同最新提交 CI）；A03 完整证明候选已编译，待串行整合；B01 正推进原始物理 BV 换元投影，不计编号结果。用户明确批准的 A01 非空 J、非空接收侧分母及 m>0 边界修正见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)，其余数学主张未改。运行目录 `phase4-execution`，指定分支、Lean 4.19.0；本入口单写入记录当前状态。
+当前验收 **3/16**，目标 **16/16**。Propositions 7.1、7.5、6.1 已 PAPER_ACCEPTED。A02 完整证明提交 `de95f967b533794677012281432b401aab4517b3` 四项 CI 全部 SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011197787)；[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011197718)；[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011197705)；[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011197714)；本地全量构建、245项公理审计与228项发布哈希 PASS。A01 精确验收提交和范围见下表与 A01_SCOPE_AUDIT.md。A03 Proposition 7.2 **LEAN_PASS**（全量本地构建及独立范围审查通过，256项公理审计 PASS，230项哈希通过；未计接受）；B01 正闭合原始物理 BV 换元投影及有限经济 trace，未计编号结果。除用户明确批准的 A01 非空 J/零容量边界外，未改数学主张。运行目录 `phase4-execution`，指定分支、Lean 4.19.0；本入口单写入记录当前状态。
 
 **权威原文**：English V12 Final，见 `paper/main.tex`；具体原文映射见 [THEOREM_MAP.md](THEOREM_MAP.md)。**源代码证明范围以 Lean 定理的精确量词与假设为准，不能以声明总数量代替全文完成度。**
 
@@ -17,7 +17,7 @@
 - PR #9 合入 `main`：**159** 项辅助与受限模型 Lean 定理通过完整审计。
 - Draft PR #10，数学源码 SHA `7eeea5902707711413416eee13ef7830021d2df5`：**185/185** 项通过固定工具链与公理审计；[成功 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38865912687)。包括严格的有序原子执行、各资产 Stieltjes 结算恒等式及可数原子时刻。
 - 新增 `CountablePhysicalClosure.lean`，数学提交 `5b182d74b35e525af108091510a7efc6edfc5103`：**190/190** 条声明通过 Lean kernel 和完整公理审计；[成功 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38867686935)。从真实可行的有限物理执行前缀、逐资产正价格收敛，严格推出极限势函数保持、全资产下降排除及系统危机排除；**仍需额外证明每条原始 M1–M5 BV 路径存在这种忠实物理前缀逼近**。
-- **按原论文完整定理验收：目前 2/16（Proposition 7.1、7.5）**。原文的 k=⌈αN⌉<N、0<r<1、D∈ℕ、δ>0、正终端价格、精确补偿资产价格乘积充要条件、两种精确 Qα 条件和单补偿资产推论均由 Lean 证实。核心全量词定理 `proposition_7_1_original_endpoint`，附 `proposition_7_1_single_compensator`；[197/197 核心 Lean 与公理审计](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。此为条件性终端恒等式，不主张所指定价格配置存在物理可行交易路径。其余14项尚未验收。
+- **按原论文完整定理验收：目前 3/16（Proposition 7.1、7.5、6.1）**。原文的 k=⌈αN⌉<N、0<r<1、D∈ℕ、δ>0、正终端价格、精确补偿资产价格乘积充要条件、两种精确 Qα 条件和单补偿资产推论均由 Lean 证实。核心全量词定理 `proposition_7_1_original_endpoint`，附 `proposition_7_1_single_compensator`；[197/197 核心 Lean 与公理审计](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。此为条件性终端恒等式，不主张所指定价格配置存在物理可行交易路径。其余13项尚未验收。
 
 ## 逐项结果矩阵
 
@@ -30,11 +30,11 @@
 | Proposition 4.3 | e(F)<2 的双脉冲部分覆盖与二阶系数 | 未完成 | 双脉冲和终端闭合、渐近/危机覆盖 |
 | Theorem 4.4 | 常数冲击下全覆盖的尖锐时间界及不取得的上确界 | 未完成 | 普适上界 + 任意低于临界值的构造序列 |
 | Theorem 5.1 | 正一般 g 下交易美元/出售股份/库存的必要下界 | 未完成 | BV 价格与份额微分的积分资源证明 |
-| Proposition 6.1 | 速率+价格带下界及必要交易速度 | **LEAN_PASS，待同最新提交完整 CI** | 三个 canonical 分支均覆盖，见 A02_SCOPE_AUDIT.md；尚未计入接受数 |
+| Proposition 6.1 | 速率+价格带下界及必要交易速度 | **PAPER_ACCEPTED** | `de95f967b533794677012281432b401aab4517b3`；三个 canonical 分支及四项同 SHA CI 全绿，见 A02_SCOPE_AUDIT.md |
 | Theorem 6.2 | 常数冲击下全宽度二次小速率上界 | 未完成 | 统一小速率估计、常数严格性 |
 | Theorem 6.3 | 有连续速率及股数、价格带约束的实际下跌构造 | 未完成 | 连续正则控制的构造、零终端账本与预算 |
 | Proposition 7.1 | 多日条件式终端危机触发、两种精确分位数情形及单补偿资产推论 | **已完成；197声明核审计通过** | 原文条件性终端命题已完整覆盖；不等同于动态交易路径存在性 |
-| Proposition 7.2 | 逐日涨跌停与速度的必需条件 | 未完成 | 滚动边界与速率比较 |
+| Proposition 7.2 | 逐日涨跌停与速度的必需条件 | **LEAN_PASS，待同 SHA CI** | 完整三分支、原文范围审查通过；见 A03_SCOPE_AUDIT.md |
 | Theorem 7.3 | 第二交易日全资产再次共同跌停的阻碍 | 未完成 | 跨日物理势函数/结算约束 |
 | Proposition 7.4 | 连续跌停需要的预处理量 | 未完成 | 路径资源及跨日价位不等式 |
 | Proposition 7.5 | 市场割集成交能力/速率限制 | **PAPER_ACCEPTED** | `772d72d6c3b819814ce39a165a1bb56ad6729ee6`；四项同 SHA CI 成功，完整定理族及量词映射见 A01_SCOPE_AUDIT.md |

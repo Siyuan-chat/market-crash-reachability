@@ -35,3 +35,5 @@ passed; independent read-only scope review confirmed all original clauses
 after removing future-session premises from the reset branch. Project
 audit, hashes and same-SHA CI remain distinct gates in the authoritative
 completion matrix.
+
+PAPER_ACCEPTED at exact proof commit `de95f967b533794677012281432b401aab4517b3`: [lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011197787)；[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011197718)；[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011197705)；[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011197714)。Full local build, 245-declaration permitted-axiom audit and 228 release hashes passed; this is the third accepted numbered result.

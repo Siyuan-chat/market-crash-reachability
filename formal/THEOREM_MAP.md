@@ -1,6 +1,6 @@
 # 论文结果与 Lean 基础映射
 
-状态日期：2026-10-17。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。**Proposition 7.1 与 Proposition 7.5 已验收，全文严格进度 2/16；其余14项未完成同 SHA 验收。A01 有用户明确批准的空集边界修正，未擅自改动其他主张。** 7.6 的既有机器辅助依据仍是外部 Python 区间认证，不等于 Lean 形式化。Theorem 1.1 为非正式概览。
+状态日期：2026-10-17。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。**Propositions 7.1、7.5、6.1 已验收，全文严格进度 3/16；其余13项未完成同 SHA 验收。A01 有用户明确批准的空集边界修正，未擅自改动其他主张。** 7.6 的既有机器辅助依据仍是外部 Python 区间认证，不等于 Lean 形式化。Theorem 1.1 为非正式概览。
 
 固定 Lean/Mathlib 下最新已审计的数学源码含 **197/197 个 kernel-checked 定理声明**；其中 `proposition_7_1_original_endpoint` 和 `proposition_7_1_single_compensator` 覆盖原文 Proposition 7.1 的完整条件性终端结论。[核审计 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。其余编号结果须按原文全量词单独验收，不能以辅助声明数量替代。
 
@@ -127,7 +127,7 @@ These inequalities are necessary, not sufficient, and need not be sharp.
 
 ## Proposition 6.1 — prop:rate-band
 
-证据：paper/main.tex:365。整项 Lean 状态：**LEAN_PASS，待同 SHA CI**。完整定理族：`proposition_6_1_rate_only`、`proposition_6_1_rate_band`、`proposition_6_1_hypothetical_reset`；全量本地构建和245项公理审计通过，量词/假设映射见 [A02_SCOPE_AUDIT.md](A02_SCOPE_AUDIT.md)。
+证据：paper/main.tex:365。整项 Lean 状态：**PAPER_ACCEPTED，`de95f967b533794677012281432b401aab4517b3` 四项同 SHA CI 全绿**。完整定理族：`proposition_6_1_rate_only`、`proposition_6_1_rate_band`、`proposition_6_1_hypothetical_reset`；全量本地构建和245项公理审计通过，量词/假设映射见 [A02_SCOPE_AUDIT.md](A02_SCOPE_AUDIT.md)。
 
 ```latex
 \begin{proposition}[Rate and price-band exclusion certificates]\label{prop:rate-band}
@@ -211,7 +211,7 @@ In particular, with a single compensator ($k=N-1$), its terminal price must obey
 
 ## Proposition 7.2 — prop:rolling-rate
 
-证据：paper/main.tex:551。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:551。整项 Lean 状态：**LEAN_PASS，待同 SHA CI**。`proposition_7_2_single_session`、`proposition_7_2_rolling_streak`、`proposition_7_2_perpetual_and_integer` 完整覆盖三分支；见 [A03_SCOPE_AUDIT.md](A03_SCOPE_AUDIT.md)。
 
 ```latex
 \begin{proposition}[Rolling-limit shock-rate certificates]\label{prop:rolling-rate}
