@@ -275,11 +275,11 @@ This bound is specific to terminal dollar closure and the absence of above-funda
 
 ## Proposition 7.5 — prop:market-cut
 
-证据：paper/main.tex:626。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:626。整项 Lean 状态：**LEAN_PASS，等待公理/哈希及同 SHA 四项 CI**。完整定理族为 `proposition_7_5_market_cut`、`proposition_7_5_ledger_derivative_bound`、`proposition_7_5_empty_complement`、`proposition_7_5_rolling_constant_impact`。原始价格积分方程到响应坐标积分由已证明的 Lipschitz FTC 导出，不预设端点式。用户明确批准非空 J 与零容量分支边界修正；逐项量词核对见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)。尚未增加验收分子。
 
 ```latex
 \begin{proposition}[A market-cut capacity and consecutive-limit lower bound]\label{prop:market-cut}
-Fix a subset $J$ of assets and write $J^c$ for its complement. Under paired-dollar execution and the per-asset gross share-rate cap $\bar v$, every admissible absolutely continuous path satisfies, for almost every $t$,
+Fix a nonempty subset $J$ of assets and write $J^c$ for its complement. Under paired-dollar execution and the per-asset gross share-rate cap $\bar v$, every admissible absolutely continuous path satisfies, for almost every $t$,
 \begin{equation}\label{eq:market-cut-instant}
 \boxed{\left|\sum_{i\in J}\dot X_i(t)\right|\le
 \bar v\min\left\{\sum_{i\in J} S_i(t),\sum_{j\in J^c}S_j(t)\right\}.}
@@ -288,7 +288,7 @@ Suppose that throughout a session $[T_{d-1},T_d]$ of length $\tau_d$, each $i\in
 \begin{equation}\label{eq:cut-required}
 K_{J,d}:=\sum_{i\in J}\big[\Phi_i(s_{i,d-1})-\Phi_i(s_{i,d})\big]>0.
 \end{equation}
-If all compensating assets satisfy $S_j(t)\le U_{j,d}$ during that session, then the session's paired executed-dollar turnover $M_d$ and the required gross-share-rate cap satisfy
+If $J^c\ne\varnothing$ and all compensating assets satisfy $S_j(t)\le U_{j,d}$ during that session, then the session's paired executed-dollar turnover $M_d$ and the required gross-share-rate cap satisfy
 \begin{equation}\label{eq:cut-necessary}
 \boxed{M_d\ge K_{J,d},\qquad
 \bar v\ge\frac{K_{J,d}}{\tau_d\sum_{j\in J^c}U_{j,d}}.}

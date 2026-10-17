@@ -1,5 +1,13 @@
 # Partial Lean formalization — whole-paper project
 
+2026-10-17 execution: A01 Proposition 7.5's complete integral/turnover/rate,
+empty-complement and rolling k/m proof family is locally LEAN_PASS; its
+same-SHA acceptance gates are pending. See [scope audit](A01_SCOPE_AUDIT.md)
+and the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
+The user explicitly approved its nonempty-J and zero-capacity boundary
+clarification; the historical canonical source identity below is retained
+with the amended digest and provenance in `docs/PHASE2_BASELINE.json`.
+
 Canonical mathematics: English V12 Final at commit
 `e5339a47f29ccb669d1f228ca930a1c1146200bf`.
 

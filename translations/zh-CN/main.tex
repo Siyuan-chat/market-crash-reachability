@@ -625,7 +625,7 @@ $\rho\tau_1\ge(1-q^{2D})/[2\beta_+(1+\beta_+)]$。
 \subsection{多资产执行的必要接收容量界}\label{subsec:multiday-cut}
 上述检验分别约束下跌股票或整个市场。二者都未刻画系统性危机中至关重要的中间情形：\emph{大多数}资产下跌，而仅剩少数补集资产结算反向美元。这正是 A/B/C 构造背后的 $k<N$ 情形。结构可达性说明补偿资产可以存在；执行可行性则问\emph{其获准的毛成交股数速率和价格区间能够吸收多少}。我们将资产划分为下跌子集 $J$ 及补集 $J^c$。守恒与逐资产毛成交速率直接限制能够跨越此划分的成交美元数量。这是在节点级毛成交速率上限、没有单独边容量的完全交易图上的\emph{必要子集容量不等式}。该不等式将结构上允许的部分覆盖损失与非下跌资产接收所需成交美元的能力联系起来。
 \begin{proposition}[市场割集容量与连续跌停下界]\label{prop:market-cut}
-固定资产子集 $J$，以 $J^c$ 表示其补集。在成交金额配对执行及逐资产毛成交股数速率上限 $\bar v$ 下，每条容许绝对连续路径对几乎处处 $t$ 满足
+固定非空资产子集 $J$，以 $J^c$ 表示其补集。在成交金额配对执行及逐资产毛成交股数速率上限 $\bar v$ 下，每条容许绝对连续路径对几乎处处 $t$ 满足
 \begin{equation}\label{eq:market-cut-instant}
 \boxed{\left|\sum_{i\in J}\dot X_i(t)\right|\le
 \bar v\min\left\{\sum_{i\in J} S_i(t),\sum_{j\in J^c}S_j(t)\right\}.}
@@ -634,7 +634,7 @@ $\rho\tau_1\ge(1-q^{2D})/[2\beta_+(1+\beta_+)]$。
 \begin{equation}\label{eq:cut-required}
 K_{J,d}:=\sum_{i\in J}\big[\Phi_i(s_{i,d-1})-\Phi_i(s_{i,d})\big]>0.
 \end{equation}
-若所有补偿资产在该时段满足 $S_j(t)\le U_{j,d}$，则该时段成对成交美元换手 $M_d$ 与所需毛成交股数速率上限满足
+若 $J^c\ne\varnothing$ 且所有补偿资产在该时段满足 $S_j(t)\le U_{j,d}$，则该时段成对成交美元换手 $M_d$ 与所需毛成交股数速率上限满足
 \begin{equation}\label{eq:cut-necessary}
 \boxed{M_d\ge K_{J,d},\qquad
 \bar v\ge\frac{K_{J,d}}{\tau_d\sum_{j\in J^c}U_{j,d}}.}
@@ -649,7 +649,7 @@ $\Delta X_i=\Phi_i(s_{i,d})-\Phi_i(s_{i,d-1})+
 \end{proof}
 由此可以看出结构与执行论证如何汇合。若 $J^c$ 为空，割集没有接收侧，呼应全资产阻碍。若 $J^c$ 非空，路径虽在结构上允许，仍可能要求超过补集可用容量的速率。这些剩余资产对危机泛函还有第二种相反作用：它们的价格升值可能抵消下跌多数的平均对数损失，正如命题~\ref{prop:multiday-crisis-trigger} 所衡量。因此，可行性\emph{同时}要求充足资金吸收能力及足够的未被抵消平均损失。
 
-对于恒定每股冲击 $g_i\equiv\eta$、$k=|J|$ 项相同跌停资产、初始基准 $F$、共同跌停比例 $q\in(0,1)$，以及 $m=N-k$ 项补偿资产（其共同涨幅上限比例为 $\beta_{c,+}$），第 $d$ 日的特殊形式为
+对于恒定每股冲击 $g_i\equiv\eta$、$k=|J|$ 项相同跌停资产、初始基准 $F$、共同跌停比例 $q\in(0,1)$，以及 $m=N-k>0$ 项补偿资产（其共同涨幅上限比例为 $\beta_{c,+}$），第 $d$ 日的特殊形式为
 \begin{equation}\label{eq:cut-special}
 \boxed{\bar v\ge \frac{k}{m}\,
 \frac{F\,\big(q^{2(d-1)}-q^{2d}\big)}{2\eta\tau_d(1+\beta_{c,+})^{d}}\quad(d\ge2),}

@@ -1,6 +1,6 @@
 # Lean 形式化当前状态
 
-状态日期：2026-10-16（Stage-1 PR #6）。本文件是 formal 子项目的当前状态入口。目标是逐步形式化论文基础并准确记录覆盖边界；当前获准范围为局部基础和逐项结果映射。论文全部 17 项 Theorem/Proposition 的原文、编号和整项状态见 THEOREM_MAP.md。没有任何整项论文定理被声明为已经完成 Lean 证明。
+状态日期：2026-10-17。唯一当前状态入口为 [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md)；本文件其余 Stage-1/Phase 历史材料保留作证据，不覆盖当前终态。原始编号验收为 1/16（Proposition 7.1）；A01 Proposition 7.5 完整证明已 LEAN_PASS，等待公理审计、SHA-256 及同提交四项 CI，范围见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)。用户批准的边界修正有明确修订来源记录；其余15项未被提前算作完成。
 
 ## 本期新增：从原始价格 ODE 到有限正则路径的完整证明链
 

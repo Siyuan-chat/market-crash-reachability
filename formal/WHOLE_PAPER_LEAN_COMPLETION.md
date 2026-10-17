@@ -1,5 +1,7 @@
 # Lean 全文验收清单与剩余工作（2026-10-17）
 
+当前执行：A01 Proposition 7.5 **LEAN_PASS（全量本地构建、228项公理审计、226项发布哈希、六项数值回归及译本/SIAM源码检查 PASS，等待同 SHA 四项 CI）**；A02 完整证明候选已本地编译，暂存待串行整合；A03 与必要的 B01 分析环节正在独立实现。原始编号验收仍为 **1/16**，目标 **16/16**。A01 全部公式、积分、真实账本、交易额、空补集及滚动 k/m 特例已实现，范围证据见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)。用户于本次会话明确批准非空 J、非空接收侧分母及 m>0 的边界修正；除此未改论文主张。运行位置 `phase4-execution`，分支 `formal/phase4-absolute-continuity-and-ordered-jump-graphs`，固定本地 Lean 4.19.0。当前状态以本入口为准，历史记录仅作证据。
+
 **权威原文**：English V12 Final，见 `paper/main.tex`；具体原文映射见 [THEOREM_MAP.md](THEOREM_MAP.md)。**源代码证明范围以 Lean 定理的精确量词与假设为准，不能以声明总数量代替全文完成度。**
 
 > **2026-10-16 direct-proof priority update:** [DIRECT_PAPER_PROOF_ROUTE.md](DIRECT_PAPER_PROOF_ROUTE.md) replaces the previously suggested requirement to solve arbitrary countably-atomic completed graphs as a prerequisite to Theorems 3.1/3.2. The original paper M5 allows only finitely many instantaneous flow-completed pulses. The **remaining genuine bridge** is primitive M2 physical marginal settlement → integrated weak-normal-form law for every admissible continuous finite-variation execution piece, followed by finite physical concatenation. The wider general-BV extensions remain optional. The exact endpoint Proposition 7.1 has now passed the matching Lean kernel and axiom audit; the other fifteen statements remain open.
@@ -35,7 +37,7 @@
 | Proposition 7.2 | 逐日涨跌停与速度的必需条件 | 未完成 | 滚动边界与速率比较 |
 | Theorem 7.3 | 第二交易日全资产再次共同跌停的阻碍 | 未完成 | 跨日物理势函数/结算约束 |
 | Proposition 7.4 | 连续跌停需要的预处理量 | 未完成 | 路径资源及跨日价位不等式 |
-| Proposition 7.5 | 市场割集成交能力/速率限制 | 未完成 | 子集 incidence 流守恒与积分执行上限 |
+| Proposition 7.5 | 市场割集成交能力/速率限制 | **LEAN_PASS，等待同 SHA 完整 CI** | 完整范围已闭合；见 A01_SCOPE_AUDIT.md；最终验收不得先于公理/哈希/四项 CI |
 | Proposition 7.6 | N=10、两日严格区间证书的有界连续控制存在性 | 未完成；仅存在**外部 Python 区间认证** | 将实际证书、计算闭包及所有区间判定纳入 Lean 或验证型 checker |
 
 ## 核心逻辑关键路径（先完成 3.1/3.2）
