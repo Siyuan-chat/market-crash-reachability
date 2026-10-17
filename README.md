@@ -23,6 +23,9 @@ and a rigorously feasible two-session consecutive-limit-down construction.
 The computer-assisted existence certificate concerns one specified ten-asset
 path; analytical theorems rely on the proofs in the manuscript.
 
+- **Zenodo preprint and supplement:** [Published record](https://zenodo.org/records/23427880) · [DOI: 10.5281/zenodo.23427880](https://doi.org/10.5281/zenodo.23427880)
+- **Archived code and reproducibility package:** [Zenodo software record](https://zenodo.org/records/23428183) · [DOI: 10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183), version `1.0.0rc1+git.d6e2606`, fixed at [commit d6e2606](https://github.com/Siyuan-chat/market-crash-reachability/tree/d6e2606590f955a6287c6945488a080e5acab004). Includes the source ZIP, provenance and SHA-256 checksum; later README DOI updates are outside this immutable snapshot.
+- **SSRN preprint:** [Published paper — Abstract ID 7622079](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079).
 - **SIFIN submission edition:** [Manuscript PDF](submission/siam/manuscript.pdf) · [LaTeX](submission/siam/main.tex)
 - **SIFIN supplementary material:** [Supplement PDF](submission/siam/supplementary.pdf) · [LaTeX](submission/siam/supplementary.tex)
 - [SIFIN build instructions and author items pending](submission/siam/README.md)
@@ -88,7 +91,14 @@ Cite Siyuan Ye, *When Can Markets Crash Without News?*, V12 Final (2026),
 and identify the software version and commit used. Machine-readable metadata
 is in [CITATION.cff](CITATION.cff). The public repository is
 [Siyuan-chat/market-crash-reachability](https://github.com/Siyuan-chat/market-crash-reachability).
-No arXiv identifier, DOI, ORCID or acceptance information is asserted.
+The paper is available on [Zenodo](https://doi.org/10.5281/zenodo.23427880)
+and [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079).
+These are preprint records; no journal acceptance is asserted. The
+[CITATION.cff](CITATION.cff) metadata describes the reproducibility software.
+For the archived software snapshot, cite [DOI: 10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183)
+and commit `d6e2606590f955a6287c6945488a080e5acab004`; the paper DOI above identifies
+the manuscript and supplement, not the software archive. The archive preserves
+the mixed license scope in [NOTICE.md](NOTICE.md).
 
 The code is licensed under [MIT](LICENSE). The paper, figures and research
 outputs have separate rights; no CC BY license has been applied. See

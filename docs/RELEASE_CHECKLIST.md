@@ -1,5 +1,25 @@
 # Publication gate and release preview
 
+## Current publication status — 2026-10-17
+
+The paper and supplement are public at [DOI 10.5281/zenodo.23427880](https://doi.org/10.5281/zenodo.23427880);
+the preprint is also public on [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079).
+The separately authorized code archive is public at
+[DOI 10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183),
+version `1.0.0rc1+git.d6e2606`, fixed commit
+`d6e2606590f955a6287c6945488a080e5acab004`.
+No final `1.0.0` promotion or GitHub tag/Release was created. Any future such
+release remains a separate action; Zenodo archival is already complete.
+See [current project status](STATUS.md) and [citation metadata](../CITATION.cff).
+
+## Historical release-preview plan — 2026-10-15
+
+All sections below preserve the original pre-publication authorization snapshot
+and proposed sequence. Statements that Zenodo was unapproved or that a DOI had
+not been issued describe that date only and are superseded by the current status
+above. The historical v1.0.0 plan was not executed as written: archival instead
+used the fixed `1.0.0rc1+git.d6e2606` snapshot without a GitHub release/tag.
+
 Status: version 1.0.0rc1 is authorized for public repository publication at
 https://github.com/Siyuan-chat/market-crash-reachability. MIT was selected for
 software on 2026-10-15. No formal v1.0.0 Tag/Release or Zenodo deposit is authorized.

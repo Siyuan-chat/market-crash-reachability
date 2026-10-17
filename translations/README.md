@@ -44,6 +44,10 @@ phrases inside protected mathematical units are retained and disclosed there.
 LuaTeX-ja editions omit microtype because of its local font-patch incompatibility.
 
 The workflow `.github/workflows/translations.yml` builds and uploads PDFs and
-evidence in a clean runner. It is configured but has not run remotely for this
-unpublished Phase 2 branch. No whole-paper formal-proof claim follows from
-translation or consistency checks.
+evidence in a clean runner. The initial 2026-10-15 local review recorded remote
+CI as pending; that is a historical checkpoint, not the present branch status.
+The translations were subsequently merged into public main. See the
+[workflow runs](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/translations.yml)
+for commit-specific remote results and [project status](../docs/STATUS.md) for
+current publication and archival links. No whole-paper formal-proof claim follows
+from translation or consistency checks.

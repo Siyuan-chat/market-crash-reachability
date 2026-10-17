@@ -2,12 +2,14 @@
 
 Review date: 2026-10-15. Canonical mathematical baseline: English V12 Final,
 commit `e5339a47f29ccb669d1f228ca930a1c1146200bf`.
-This document records the initial local review checkpoint, not a Release.
-The author has subsequently authorized publication of the Chinese/Japanese
-editions without reader-facing hashes, retaining existing copyright statements,
-and has authorized a public Phase 2 PR and CI. Main merge and Release remain
-explicitly deferred. Statements below about remote publication describe the
-initial checkpoint; current remote status is available in the PR checks.
+This is a **historical local review checkpoint**, not the current publication
+status. All pending CI/approval/merge items and statements of no public PR,
+merge or Zenodo deposit below apply to the 2026-10-15 checkpoint only.
+Phase 2 was subsequently merged into public main; the paper and fixed code
+snapshot now have separate Zenodo DOIs, and SSRN is public. See
+[current project status](STATUS.md) for links and the archive commit boundary.
+The local results and original acceptance checklist below are retained unchanged
+as historical evidence, not reclassified as newly performed checks.
 
 ## Delivered scope
 

@@ -27,6 +27,7 @@ logic or parameters were changed during repository organization.
 The full suite also runs `verification/audit_sensitivity.py` with
 `scripts/sensitivity_probe.py`: fixed-path 24.7%/24% band conclusions use the
 existing outward enclosures, whereas alternative k<9 cases are ordinary ODE
-diagnostics. They are not additional certified feasibility results. Review the
-paper's availability paragraph after the public URL exists. No unapproved
-manuscript wording was changed.
+diagnostics. They are not additional certified feasibility results. Current
+paper, supplement and fixed software archive links are in [project status](STATUS.md).
+The original publication-preparation availability review is historical; this
+documentation update does not change manuscript wording or verification scope.

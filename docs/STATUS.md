@@ -1,5 +1,31 @@
 # Current project status
 
+Publication status updated 2026-10-17:
+
+- Paper and supplement are public on [Zenodo](https://doi.org/10.5281/zenodo.23427880)
+  and the paper is public on [SSRN, abstract 7622079](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079).
+  SSRN public availability was confirmed by the author; this is not journal acceptance.
+- The complete fixed source snapshot is archived as software on
+  [Zenodo, DOI 10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183),
+  version `1.0.0rc1+git.d6e2606`, commit
+  `d6e2606590f955a6287c6945488a080e5acab004`. Later documentation changes
+  are outside that immutable archive. All 215 archived Git blobs, 214 manifest
+  hashes and six quick checks passed; the full certificate was not regenerated
+  for this deposit.
+- [CITATION.cff](../CITATION.cff) distinguishes paper and software DOIs.
+  Software MIT and the research-artifact/third-party exclusions remain unchanged.
+- No GitHub release/tag, promotion to final `1.0.0`, or journal acceptance
+  is asserted. Those are separate from preprint publication and Zenodo archival.
+- This documentation cleanup does not rerun scientific proofs or modify papers,
+  code, data, archived snapshots or historical validation logs. No background
+  process or scheduled continuation is running for it.
+
+## Historical source-publication acceptance — 2026-10-15
+
+The remaining text records that earlier checkpoint. Its authorization gates,
+commit identity, counts and next steps apply to that checkpoint, not the current
+publication status above; they are retained as historical evidence.
+
 Scope: publish the curated V12 Final repository with its original mathematical
 content and final artifacts, preserving the completed reproducibility evidence.
 
