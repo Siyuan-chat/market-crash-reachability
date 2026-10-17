@@ -28,4 +28,4 @@ quantifier or hidden rate/closure premise.
 
 Status: formal-module full pinned Lean 4.19.0 project build PASS; complete
 436-declaration permitted-axiom audit PASS; 255 release SHA-256 entries PASS.
-Exact-SHA four-CI remains pending. Not accepted.
+B06 Theorem 7.3 PAPER_ACCEPTED；证明 SHA `d538dd345c33a1ad970463b23aa6a34d1b69be5a`；本地全量构建、436项公理审计和255项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014980258)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014980348)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014980253)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014980257)。

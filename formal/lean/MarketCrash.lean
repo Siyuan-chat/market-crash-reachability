@@ -52,3 +52,5 @@ import MarketCrash.OriginalDollarTurnover
 import MarketCrash.OriginalPreconditioning
 
 import MarketCrash.OriginalSecondSession
+
+import MarketCrash.ThreePulseUniform
