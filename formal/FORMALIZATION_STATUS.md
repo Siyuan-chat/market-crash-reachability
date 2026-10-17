@@ -1,6 +1,6 @@
 # Lean 形式化当前状态
 
-状态日期：2026-10-17。唯一当前状态入口为 [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md)。原始编号验收 **3/16**：Propositions 7.1、7.5、6.1；A02 `de95f967b533794677012281432b401aab4517b3` 四项 CI 全绿。A03 完整原文证明已本地构建/范围审查通过，待全量审计和同 SHA CI。B01 必要物理 BV 投影推进中，不计编号结果。用户批准的 A01 边界修正有明确记录；下列 Stage-1/Phase 历史材料不覆盖当前终态。
+状态日期：2026-10-17。唯一当前状态入口为 [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md)。原始编号验收 **4/16**：Propositions 7.1、7.5、6.1、7.2。A03 Proposition 7.2 PAPER_ACCEPTED，证明 SHA `5c84995094b736c0231df6d804c8daad638bbfc7`；本地全量构建、256项公理审计、230项发布哈希 PASS；四项同 SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011779671)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011779650)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011781951)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011779633)。 B02/B03及B06完整候选本地通过，不计接受；B04继续推进。下列历史材料不覆盖当前终态。
 
 ## 本期新增：从原始价格 ODE 到有限正则路径的完整证明链
 

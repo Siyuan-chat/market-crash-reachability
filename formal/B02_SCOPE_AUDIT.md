@@ -1,0 +1,20 @@
+# B02: Theorem 3.1 original-scope audit
+
+Source: `paper/main.tex`, `thm:barrier1`, M1–M5, physical level dynamics and finite pulse flow. Canonical result: `MarketCrash.theorem_3_1_original` in `MarketCrash/OriginalBarrier.lean`.
+
+| Original obligation | Proof and representation |
+| --- | --- |
+| N≥2, F>0, rho>0, positive locally C² response | Arbitrary finite asset type of cardinality at least two; positive benchmark and resilience; `Response` continuity/positivity and differentiability on positive prices. This is weaker regularity than local C². |
+| Genuine continuous finite execution variation, including singular continuous controls | `PhysicalContinuousBVPiece` uses the original price/share marginal Stieltjes primitives and actual paired-dollar ledger. It assumes neither a Phi primitive nor an operational ODE. |
+| Physical M2 to nonlinear coordinate chain rule | `PhysicalBVClock.coordinate_endpoint` and `PhysicalContinuousBVPiece.normal_form` are derived using the inverse variation clock, Stieltjes measure change of variables, derived Lipschitz state trajectories and proved Lipschitz FTC. The recovery term is returned to physical dt. |
+| No extra recovery-force extension premise | `recoveryExtension` is constructed by interval projection; its continuity and equality on the physical interval are proved. |
+| Finitely many original flow-completed pulses | `OriginalFlowCompletedPulse` assumes only integral physical price/share/cash equations on the internal parameter. Coordinate and ledger endpoints and every internal-parameter potential are proved. Single-edge ordered pulses are included in the larger finite-vector pulse class. |
+| Full economic path, inventory, chronology and closure | `OriginalPhysicalReachable` joins all time, price, share and dollar state fields. `OriginalAdmissiblePhysicalPath` records initial benchmark/holdings/cash and terminal per-asset cash closure; every step retains no short sales and finite share variation. No terminal closure is used to manufacture a potential premise. |
+| Elasticity at admissible attained prices only | `Visited` contains every continuous-piece price and every pulse-interior price in the same actual trace. Its intermediate-value theorem yields the radial condition from initial F. No full-positive-domain elasticity or reset of a later segment to F is required. |
+| Every physical time and within-pulse state | The conclusion holds at every `Observes` state. `observes_at_time` supplies an observation at every physical time between initial and terminal; pulse observations additionally retain internal execution states. |
+| H≥0 and no simultaneous strict decline | Trace induction propagates the actual potential from its initial value zero. Each continuous piece uses the derived weak projection and arbitrary nonnegative incoming potential; pulses preserve it. Strict monotonicity of Phi excludes all prices below F. |
+| Positive full-coverage crisis impossible | The conclusion uses actual log prices and k=ceil(alpha*N). It covers every alpha in (0,1] with k=N, proves C≤0, and excludes every positive delta threshold. |
+
+The original complete bidirectional edge network is a specialization of the arbitrary finite paired network proved here. `OriginalInputPackaging` constructs the constant global Stieltjes extension of a finite-interval continuous monotone cumulative and proves agreement on the interval. It also starts from the literal single-edge physical ODE on [0,z], derives the normalized integral pulse by chain rule and FTC, proves normalized share bounded variation, and supplies `toOriginalStep` with unchanged economic endpoints. No coordinate premise is used by these adapters. Finite pulses remain finite; no countably atomic completion is introduced.
+
+Local result status: complete pinned Lean 4.19.0 project build PASS; all 360 declarations registered exactly once and permitted-axiom audit PASS; 245 release SHA-256 entries PASS. The exact-SHA four-CI gate remains pending. This document does not itself mark the original result accepted.

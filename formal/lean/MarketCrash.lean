@@ -40,3 +40,7 @@ import MarketCrash.WeakBVOriginalCrisis
 import MarketCrash.MarketCut
 import MarketCrash.RateBand
 import MarketCrash.RollingRate
+
+import MarketCrash.OriginalBarrier
+
+import MarketCrash.OriginalInputPackaging

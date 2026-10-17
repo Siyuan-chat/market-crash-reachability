@@ -1,6 +1,6 @@
 # 论文结果与 Lean 基础映射
 
-状态日期：2026-10-17。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。**Propositions 7.1、7.5、6.1 已验收，全文严格进度 3/16；其余13项未完成同 SHA 验收。A01 有用户明确批准的空集边界修正，未擅自改动其他主张。** 7.6 的既有机器辅助依据仍是外部 Python 区间认证，不等于 Lean 形式化。Theorem 1.1 为非正式概览。
+状态日期：2026-10-17。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。**Propositions 7.1、7.5、6.1、7.2 已验收，全文严格进度 4/16；其余12项未完成同 SHA 验收。A01 有用户明确批准的空集边界修正，未擅自改动其他主张。** 7.6 的既有机器辅助依据仍是外部 Python 区间认证，不等于 Lean 形式化。Theorem 1.1 为非正式概览。
 
 固定 Lean/Mathlib 下最新已审计的数学源码含 **197/197 个 kernel-checked 定理声明**；其中 `proposition_7_1_original_endpoint` 和 `proposition_7_1_single_compensator` 覆盖原文 Proposition 7.1 的完整条件性终端结论。[核审计 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。其余编号结果须按原文全量词单独验收，不能以辅助声明数量替代。
 
@@ -26,7 +26,7 @@ Under the paired-dollar, resilient market defined in Section~\ref{sec:model}, th
 
 ## Theorem 3.1 — thm:barrier1
 
-证据：paper/main.tex:193。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:193。整项 Lean 状态：**LEAN_PASS，待同 SHA CI**；完整 theorem_3_1_original、360项公理审计和245项哈希PASS，见 B02_SCOPE_AUDIT.md。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
 
 ```latex
 \begin{theorem}[Barrier to a decline of every asset]\label{thm:barrier1}
@@ -211,7 +211,7 @@ In particular, with a single compensator ($k=N-1$), its terminal price must obey
 
 ## Proposition 7.2 — prop:rolling-rate
 
-证据：paper/main.tex:551。整项 Lean 状态：**LEAN_PASS，待同 SHA CI**。`proposition_7_2_single_session`、`proposition_7_2_rolling_streak`、`proposition_7_2_perpetual_and_integer` 完整覆盖三分支；见 [A03_SCOPE_AUDIT.md](A03_SCOPE_AUDIT.md)。
+证据：paper/main.tex:551。整项 Lean 状态：**PAPER_ACCEPTED，证明 SHA `5c84995094b736c0231df6d804c8daad638bbfc7`，四项同 SHA CI SUCCESS**。`proposition_7_2_single_session`、`proposition_7_2_rolling_streak`、`proposition_7_2_perpetual_and_integer` 完整覆盖三分支；见 [A03_SCOPE_AUDIT.md](A03_SCOPE_AUDIT.md)。
 
 ```latex
 \begin{proposition}[Rolling-limit shock-rate certificates]\label{prop:rolling-rate}
