@@ -1,8 +1,8 @@
-# Lean 全文验收清单与剩余工作（2026-10-16）
+# Lean 全文验收清单与剩余工作（2026-10-17）
 
 **权威原文**：English V12 Final，见 `paper/main.tex`；具体原文映射见 [THEOREM_MAP.md](THEOREM_MAP.md)。**源代码证明范围以 Lean 定理的精确量词与假设为准，不能以声明总数量代替全文完成度。**
 
-> **2026-10-16 direct-proof priority update:** [DIRECT_PAPER_PROOF_ROUTE.md](DIRECT_PAPER_PROOF_ROUTE.md) replaces the previously suggested requirement to solve arbitrary countably-atomic completed graphs as a prerequisite to Theorems 3.1/3.2. The original paper M5 allows only finitely many instantaneous flow-completed pulses. The **remaining genuine bridge** is primitive M2 physical marginal settlement → integrated weak-normal-form law for every admissible continuous finite-variation execution piece, followed by finite physical concatenation. The wider general-BV extensions remain optional. All 16 original-result statuses below remain unchanged until matching Lean statements pass CI.
+> **2026-10-16 direct-proof priority update:** [DIRECT_PAPER_PROOF_ROUTE.md](DIRECT_PAPER_PROOF_ROUTE.md) replaces the previously suggested requirement to solve arbitrary countably-atomic completed graphs as a prerequisite to Theorems 3.1/3.2. The original paper M5 allows only finitely many instantaneous flow-completed pulses. The **remaining genuine bridge** is primitive M2 physical marginal settlement → integrated weak-normal-form law for every admissible continuous finite-variation execution piece, followed by finite physical concatenation. The wider general-BV extensions remain optional. The exact endpoint Proposition 7.1 has now passed the matching Lean kernel and axiom audit; the other fifteen statements remain open.
 
 ## 严格完成定义
 
@@ -15,7 +15,7 @@
 - PR #9 合入 `main`：**159** 项辅助与受限模型 Lean 定理通过完整审计。
 - Draft PR #10，数学源码 SHA `7eeea5902707711413416eee13ef7830021d2df5`：**185/185** 项通过固定工具链与公理审计；[成功 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38865912687)。包括严格的有序原子执行、各资产 Stieltjes 结算恒等式及可数原子时刻。
 - 新增 `CountablePhysicalClosure.lean`，数学提交 `5b182d74b35e525af108091510a7efc6edfc5103`：**190/190** 条声明通过 Lean kernel 和完整公理审计；[成功 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38867686935)。从真实可行的有限物理执行前缀、逐资产正价格收敛，严格推出极限势函数保持、全资产下降排除及系统危机排除；**仍需额外证明每条原始 M1–M5 BV 路径存在这种忠实物理前缀逼近**。
-- **按原论文完整定理验收：目前 0/16**。其中 3.1 和 3.2 的大部分有限维势函数/弹性/危机分位数推理已完成，但全 BV admissibility 不可省略。
+- **按原论文完整定理验收：目前 1/16（Proposition 7.1）**。原文的 k=⌈αN⌉<N、0<r<1、D∈ℕ、δ>0、正终端价格、精确补偿资产价格乘积充要条件、两种精确 Qα 条件和单补偿资产推论均由 Lean 证实。核心全量词定理 `proposition_7_1_original_endpoint`，附 `proposition_7_1_single_compensator`；[197/197 核心 Lean 与公理审计](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。此为条件性终端恒等式，不主张所指定价格配置存在物理可行交易路径。其余15项尚未验收。
 
 ## 逐项结果矩阵
 
@@ -31,7 +31,7 @@
 | Proposition 6.1 | 速率+价格带下界及必要交易速度 | 未完成 | 速率驱动 ODE 比较与带宽推导 |
 | Theorem 6.2 | 常数冲击下全宽度二次小速率上界 | 未完成 | 统一小速率估计、常数严格性 |
 | Theorem 6.3 | 有连续速率及股数、价格带约束的实际下跌构造 | 未完成 | 连续正则控制的构造、零终端账本与预算 |
-| Proposition 7.1 | 多日条件式终端危机触发与补偿价格乘积 | 未完成；分位数门槛已证明 | 对指定多日价格配置的有限维对数/乘积等价 |
+| Proposition 7.1 | 多日条件式终端危机触发、两种精确分位数情形及单补偿资产推论 | **已完成；197声明核审计通过** | 原文条件性终端命题已完整覆盖；不等同于动态交易路径存在性 |
 | Proposition 7.2 | 逐日涨跌停与速度的必需条件 | 未完成 | 滚动边界与速率比较 |
 | Theorem 7.3 | 第二交易日全资产再次共同跌停的阻碍 | 未完成 | 跨日物理势函数/结算约束 |
 | Proposition 7.4 | 连续跌停需要的预处理量 | 未完成 | 路径资源及跨日价位不等式 |
@@ -46,6 +46,6 @@
 4. **完整可达价格局部化**：沿任意完成图验证区间价位实际可达（含内部跳跃点），并将 3.1 的 `e≥1`、3.2 的 `e≥2` 限定在论文原本的 admissible price range。
 5. **原始全量词升级验收**：完整 M1–M5 约束、任意时间、任意参数下逐项证明 3.1/3.2；之后把 14 项独立结果分组成构造性证明（§4、§6.3）、资源上界（§5–6）、多日限制与严格计算证书（§7）逐项完成。
 
-**结论**：验证的数学基础已积累，但按 *full original theorem* 的严格验收，目前不可给出可信的完成百分比，也不应仅由 185 项辅助证明推断剩余工作量较小。下一次推进应优先解决上述关键路径，而非仅增加容易的外围引理。
+**结论**：验证的数学基础已积累，但按 *full original theorem* 的严格验收，目前不可给出可信的完成百分比，也不应仅由 185 项辅助证明推断剩余工作量较小。已首次完成一项原始编号结果；下一步应按逐项原文验收路径推进其余 15 项，而非增加外围引理。
 
 **工程纪律**：不改 English V12 Final 的数学主张；不暗中增加模型定理所需假设；所有结论必须标注 exact-SHA CI；独立严格区间证书不得因 Python 测试通过而标成 Lean-checked；PR #10 维持 Draft，除非经过专门审查。
