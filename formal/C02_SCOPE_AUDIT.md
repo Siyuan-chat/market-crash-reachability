@@ -34,6 +34,4 @@ Independent review checked the arbitrary-u quantifier, the degenerate
 three-vector specialization, complete-network embedding, exact dollar
 closure, no-short constraints and real crisis semantics. No omissions found.
 
-Status: LEAN_PASS. Full pinned Lean 4.19.0 project build PASS; complete
-502-declaration permitted-axiom audit PASS; 266 release SHA-256 entries PASS.
-Exact proof-SHA four-CI remains pending; not yet PAPER_ACCEPTED.
+C02 Proposition 4.3 PAPER_ACCEPTED；证明 SHA `e28dc8bb9eb415be3974a947aae7e4bc6361c7d3`；本地全量构建、502项公理审计和266项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534598)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534620)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534597)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534616)。
