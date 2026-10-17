@@ -2,6 +2,13 @@
 
 **Siyuan Ye · V12 Final · reproducibility companion (1.0.0rc1)**
 
+> **V13 review-response candidate (unmerged source draft):**
+> [Read the revised LaTeX](submission/v13-review-response/main.tex) ·
+> [Reviewer-response matrix](docs/V13_REVIEW_RESPONSE_MATRIX.md) ·
+> [Draft PR #11](https://github.com/Siyuan-chat/market-crash-reachability/pull/11).
+> Existing public English/V12 PDFs and all archived formal proofs remain unchanged; a
+> separately built V13 PDF must pass review before any public update.
+
 **Research areas:** endogenous (news-free) market crashes, systemic risk, nonlinear price impact, resilient market microstructure, and mathematical reachability.
 
 

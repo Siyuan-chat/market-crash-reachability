@@ -6,10 +6,6 @@ ROOT = Path(__file__).resolve().parents[1]
 OLD = ROOT / "submission/siam-language-revision"
 NEW = ROOT / "submission/v13-review-response"
 
-def numbered_results(src):
-    pattern = r"\\begin\{(assumption|definition|theorem|proposition|lemma)\}(?:\[[^\]]*\])?[\s\S]*?\\end\{\1\}"
-    return re.findall(pattern.replace("(assumption|definition|theorem|proposition|lemma)", "(?:assumption|definition|theorem|proposition|lemma)"), src)
-
 def environment_bodies(src):
     result = []
     for name in ("assumption", "definition", "theorem", "proposition", "lemma"):

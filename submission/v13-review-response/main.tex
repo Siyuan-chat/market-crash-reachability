@@ -745,7 +745,12 @@ As a direct bound for the ten-asset certificate, $E(S)=(S-1)^2/2$ and the certif
 \mathcal K(\gamma)\ \ge\ \sum_i E(S_i(40))
 >\frac92(1-0.9409)^2+\frac12(1.4047874-1)^2>0.0976.
 \]
-The inequality uses the existing rigorous terminal interval and does \emph{not} claim the full recovery integral was newly interval-certified. A natural extension is the minimum benchmark-valued inventory cost $\mathcal K_{\min}(\alpha,\delta)=\inf\{\mathcal K(\gamma):\gamma\text{ satisfies the terminal crisis, pairing, closure and execution restrictions}\}$. Optimizing this functional, or the rate jointly with cost, is a different problem from our nonsharp necessary turnover bounds.
+The inequality uses the existing rigorous terminal interval and does \emph{not} claim that the full recovery integral was newly interval-certified. Let $\Gamma_{\alpha,\delta}$ denote the admissible paths satisfying the terminal crisis, pairing, closure, and execution restrictions. A natural extension is to optimize
+\[
+\mathcal K_{\min}(\alpha,\delta)
+=\inf_{\gamma\in\Gamma_{\alpha,\delta}}\mathcal K(\gamma).
+\]
+Determining this infimum, or jointly minimizing cost and the gross rate, is a separate optimal-control problem; our necessary turnover bounds need not be sharp.
 
 \subsection{Dependence on resilience, impact, and the loss metric}
 Our global elasticity conditions rely jointly on the local response $g$ and linear \emph{price-level} restoration toward $F$. Under volume displacement recovery as described in Section~\ref{sec:model}, $\dot\Phi|_{\mathrm{vol}}=-\rho S V(S)$ replaces the specific drift used in the tangent comparison; the $e\ge1$ and $e\ge2$ theorems are therefore not asserted for that alternative model. A more general theory would classify which restoring fields preserve analogous barrier regions. Neither the order-book square-root metaorder law nor the exponent of cumulative price impact can be directly identified with our $e(S)=Sg'(S)/g(S)$: observed cumulative impact depends on order size, execution history, and replenishment, whereas $e$ differentiates an assumed \emph{local per-share} response with respect to the price state \citep{AlfonsiFruthSchied2010,BucciEtAl2019,CuratoGatheralLillo2017}.
