@@ -1,6 +1,6 @@
 # Partial Lean formalization — whole-paper project
 
-2026-10-17: Original-paper acceptance is **9/16**. Theorem 7.3 proof SHA `d538dd345c33a1ad970463b23aa6a34d1b69be5a` passed all four exact-SHA workflows, full local build, 436-declaration audit and 255 hashes. C01 full build passed and its audit is running; C02 full candidate awaits integration. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
+2026-10-17: Original-paper acceptance is **10/16**. Proposition 4.2 proof SHA `c58a3287c94d3bcc56386a7715657fad489ec8be` passed all four exact-SHA workflows, full local build, 500-declaration audit and 264 hashes. C02 full build passed and its audit is running. The exact C04 universal upper bound is locally proved, but the full result still requires attained order. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
 
 Canonical mathematics: English V12 Final at commit
 `e5339a47f29ccb669d1f228ca930a1c1146200bf`.
@@ -13,7 +13,7 @@ clock. The latter now participates in the finite admissible trace and its proved
 quantifiers over all M1–M5 BV execution paths or the interval certificate
 of Proposition 7.6.
 Follow the [whole-paper proof tracker](https://github.com/Siyuan-chat/market-crash-reachability/issues/5).
-**Original-paper acceptance: 9/16.** The accepted original results and their exact proof SHAs, manuscript scope and CI evidence are recorded in the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md). Historical helper counts are not whole-paper acceptance.
+**Original-paper acceptance: 10/16.** The accepted original results and their exact proof SHAs, manuscript scope and CI evidence are recorded in the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md). Historical helper counts are not whole-paper acceptance.
 
 Phase 2's [bounded-variation proof gates](PHASE2_BV_GATES.md) distinguish proven accounting and crisis-parameter bridges from the unproved full BV price dynamics.
 Phase 3's [a.e. operational-clock proof gates](PHASE3_AE_GATES.md) record the

@@ -500,3 +500,5 @@ import MarketCrash
 #print axioms MarketCrash.partialCoveragePulseVector_zero_sum
 #print axioms MarketCrash.partialCoveragePulseVector_hub_negative
 #print axioms MarketCrash.twoPulse_scalar_crisis_positive_of_direction
+#print axioms MarketCrash.two_pulse_original_path
+#print axioms MarketCrash.proposition_4_3_original

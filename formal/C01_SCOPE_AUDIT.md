@@ -21,7 +21,4 @@ the physical inventory, time, complete-network and closure constraints were
 reviewed independently by the main agent. Shared two-pulse scalar helpers do
 not count as Proposition 4.3 acceptance.
 
-Status: LEAN_PASS. Full pinned Lean 4.19.0 project build PASS; complete
-500-declaration audit PASS with only propext, Classical.choice and Quot.sound;
-264 release SHA-256 entries PASS. Exact proof-SHA four-CI remains pending.
-Not yet counted as PAPER_ACCEPTED.
+C01 Proposition 4.2 PAPER_ACCEPTED；证明 SHA `c58a3287c94d3bcc56386a7715657fad489ec8be`；本地全量构建、500项公理审计和264项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39015791535)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39015791496)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39015791519)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39015791505)。
