@@ -1,8 +1,8 @@
 # 论文结果与 Lean 基础映射
 
-状态日期：2026-10-15。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。所有整项 Theorem/Proposition 均未完成 Lean 形式化；7.6 的既有机器辅助依据是外部 Python 区间认证，其余依赖纸面证明。Theorem 1.1 为非正式概览。
+状态日期：2026-10-17。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。**Proposition 7.1 已完成原文条件性终端结论的 Lean 形式化，全文严格进度 1/16；其余 15 项尚未完整验收。** 7.6 的既有机器辅助依据仍是外部 Python 区间认证，不等于 Lean 形式化。Theorem 1.1 为非正式概览。
 
-核心 Lean 模块已在本地构建通过（主 agent 验证）；这只覆盖本文件末尾列出的基础引理，不能视作以下任一整项的 Lean 验证。axiom 审计已通过：76 个项目 theorem（包含从物理方程导出的正则路径不可达性）均由 Lean 实际打印依赖，仅使用 propext、Classical.choice、Quot.sound；详见 FORMALIZATION_STATUS.md。
+固定 Lean/Mathlib 下最新已审计的数学源码含 **197/197 个 kernel-checked 定理声明**；其中 `proposition_7_1_original_endpoint` 和 `proposition_7_1_single_compensator` 覆盖原文 Proposition 7.1 的完整条件性终端结论。[核审计 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。其余编号结果须按原文全量词单独验收，不能以辅助声明数量替代。
 
 关于 3.1/3.2 的新增 Lean 结果必须注意：已由**全正价格域**的弹性下界导出两类坐标凹性，并在纯恢复离散步骤中证明了势函数非负保持；但**所有可容许路径**（连续交易与恢复同时发生、脉冲交易、终点账本）仍未形式化，因此不能将条件性端点引理升格为原定理的完整证明。全文验收标准见 [Issue #5](https://github.com/Siyuan-chat/market-crash-reachability/issues/5)；新增源文件见 `formal/lean/MarketCrash/CrisisFunctional.lean` 和 `formal/lean/MarketCrash/BarrierEndpoint.lean`。
 
@@ -191,7 +191,7 @@ The attained loss can be arbitrarily small. This does \emph{not} assert that a p
 
 ## Proposition 7.1 — prop:multiday-crisis-trigger
 
-证据：paper/main.tex:526。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:526。**整项 Lean 状态：已完成（1/16）**。Lean 定理：`proposition_7_1_original_endpoint`、`proposition_7_1_single_compensator`，连同 `proposition_7_1_exact_severity` 及两种分位数情形；197/197 核心定理和公理审计通过。证明严格是原文的**条件性终端等价式**，不声称任意给定收盘配置可以动态实现。
 
 ```latex
 \begin{proposition}[A conditional systemic-crisis trigger test]\label{prop:multiday-crisis-trigger}
