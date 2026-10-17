@@ -1,6 +1,6 @@
 # 论文结果与 Lean 基础映射
 
-状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **14/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
+状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **15/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
 
 ## 历史基线说明（197声明阶段；不代表当前验收）
 
@@ -52,7 +52,7 @@ Thus no strictly positive systemic terminal-crisis threshold can be reached.
 
 ## Theorem 4.1 — thm:ABC
 
-证据：paper/main.tex:241。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:241。整项 Lean 状态：**PAPER_ACCEPTED**。C06 Theorem 4.1 PAPER_ACCEPTED；证明 SHA `37e9c89c106cd85735ff2a500a922f32802f8d15`；本地完整构建、787项公理审计及291项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946468)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946511)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946465)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946461)。 canonical `theorem_4_1_original`，见 C06_SCOPE_AUDIT.md。
 
 ```latex
 \begin{theorem}[A/B/C reachability regimes]\label{thm:ABC}
@@ -303,7 +303,7 @@ When $J^c=\varnothing$, the hypothesized simultaneous strict decrease of all ass
 
 ## Proposition 7.6 — prop:certified-v7
 
-证据：paper/main.tex:660。整项 Lean 状态：未形式化。外部严格区间证书只证明固定 N=10、k=9 的指定路径；不是 Lean 证明或全局最优性证明。
+证据：paper/main.tex:660。整项Lean状态：**LEAN_PASS**。完整 `proposition_7_6_original`、同轨迹物理资源和附加固定市场AC接口bracket已通过正式全量构建与1224条公理审计；四项同SHA CI尚待验证。范围见D01_SCOPE_AUDIT.md。
 
 ```latex
 \begin{proposition}[A computer-assisted two-day rate certificate]\label{prop:certified-v7}
@@ -317,4 +317,4 @@ Every executed price remains inside its rolling session band. Here $M$ counts pa
 
 ## 已编译的局部基础对应
 
-参见 FORMALIZATION_STATUS.md 的逐项 Lean 名称、论文对应和限制。These are local foundations only; no complete paper theorem is claimed formalized.
+参见 FORMALIZATION_STATUS.md 的历史局部基础名称、论文对应和限制；当前完整编号结果验收以本文件逐项状态及 WHOLE_PAPER_LEAN_COMPLETION.md 为准。

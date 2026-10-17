@@ -1,5 +1,7 @@
 # Codex execution plan: complete the remaining 15 Lean results
 
+> Latest user instruction (2026-10-17): remove the separate SHA-256 acceptance gate. The original numbered-result scope, Lean kernel/axiom audit and four exact-commit workflows remain required. Existing workflow/release maintenance continues under the repository protocol. The earlier standalone-hash instructions below are historical for this run.
+
 **Repository:** Siyuan-chat/market-crash-reachability  
 **Work branch:** formal/phase4-absolute-continuity-and-ordered-jump-graphs (Draft PR #10)  
 **As-of baseline:** 2026-10-17; last fully green commit b0b042265c2ae41b1ea70e686c420fd8d3c97771.  

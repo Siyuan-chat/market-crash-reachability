@@ -1,13 +1,13 @@
 # Partial Lean formalization — whole-paper project
 
-2026-10-17: Original-paper acceptance is **14/16**. Theorem 4.4 proof SHA `74f023fc5d129cebeb9874f5fe7c35b663029d3d` passed all four exact-SHA workflows, full local build, 695-declaration audit and 281 hashes. C06 and D01 remain unaccepted and under implementation. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
+2026-10-17: Original-paper acceptance is **15/16**. Theorem 4.1 proof SHA `37e9c89c106cd85735ff2a500a922f32802f8d15` passed all four exact-SHA workflows, the full local build, 787-declaration audit and 291 hashes. Only D01 Proposition 7.6 remains unaccepted. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
 
 Historical manuscript baseline before the explicitly authorized A01 boundary amendment: English V12 Final at commit
 `e5339a47f29ccb669d1f228ca930a1c1146200bf`.
 
 Historical regular-path checkpoint: the earlier proofs covered finite regular paths and operational-clock analogues. They did not establish the entire original BV quantifiers or Proposition 7.6. Subsequent original-scope proofs and their exact acceptance are recorded in the current matrix above; the historical checkpoints below are retained as provenance.
 Follow the [whole-paper proof tracker](https://github.com/Siyuan-chat/market-crash-reachability/issues/5).
-**Original-paper acceptance: 14/16.** The accepted original results and their exact proof SHAs, manuscript scope and CI evidence are recorded in the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md). Historical helper counts are not whole-paper acceptance.
+**Original-paper acceptance: 15/16.** The accepted original results and their exact proof SHAs, manuscript scope and CI evidence are recorded in the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md). Historical helper counts are not whole-paper acceptance.
 
 Phase 2's [bounded-variation proof gates](PHASE2_BV_GATES.md) distinguish proven accounting and crisis-parameter bridges from the unproved full BV price dynamics.
 Phase 3's [a.e. operational-clock proof gates](PHASE3_AE_GATES.md) record the

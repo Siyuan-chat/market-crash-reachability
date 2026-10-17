@@ -29,10 +29,4 @@ certification of the particular displayed appendix budget formulas.
 Independent manuscript-versus-canonical review found no missing numbered
 theorem clause or quantifier.
 
-Status: LEAN_PASS. The complete official Lean 4.19.0 build passed
-(`build/formal/c06-full-build/result.json`, exit 0). The all-declaration
-audit passed for all 787 registered theorems with only propext,
-Classical.choice and Quot.sound (`build/formal/c06-integrity/result.json`
-and `build/formal/integrity.json`). The 291-entry release SHA-256 manifest
-is checked after this scope/status update. Four workflows on the exact
-candidate proof SHA remain required before PAPER_ACCEPTED.
+C06 Theorem 4.1 PAPER_ACCEPTED；证明 SHA `37e9c89c106cd85735ff2a500a922f32802f8d15`；本地完整构建、787项公理审计及291项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946468)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946511)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946465)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946461)。
