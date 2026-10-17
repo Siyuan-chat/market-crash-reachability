@@ -56,3 +56,5 @@ import MarketCrash.OriginalSecondSession
 import MarketCrash.ThreePulseUniform
 import MarketCrash.OriginalTwoPulse
 import MarketCrash.FiniteRateConstruction
+
+import MarketCrash.QuadraticRateAttainment

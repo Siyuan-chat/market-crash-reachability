@@ -1,6 +1,6 @@
 # Lean 形式化当前状态
 
-状态日期：2026-10-17。唯一当前入口 [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md)。原始编号验收 **11/16**。C02 Proposition 4.3 PAPER_ACCEPTED；证明 SHA `e28dc8bb9eb415be3974a947aae7e4bc6361c7d3`；本地全量构建、502项公理审计和266项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534598)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534620)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534597)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534616)。 剩余5项继续实现，尚未全文完成；历史材料不覆盖当前终态。
+状态日期：2026-10-17。唯一当前入口 [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md)。原始编号验收 **12/16**。C03 Theorem 6.3 PAPER_ACCEPTED；证明 SHA `937f8d2e1bb5a2556abeb793ab6aaca723b5ddf5`；本地完整构建、593项公理审计及269项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658676)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658720)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658705)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658632)。 剩余4项继续实现，尚未全文完成；历史材料不覆盖当前终态。
 
 ## 本期新增：从原始价格 ODE 到有限正则路径的完整证明链
 

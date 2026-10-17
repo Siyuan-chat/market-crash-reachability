@@ -1,6 +1,6 @@
 # 论文结果与 Lean 基础映射
 
-状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **11/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
+状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **12/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
 
 固定 Lean/Mathlib 下最新已审计的数学源码含 **197/197 个 kernel-checked 定理声明**；其中 `proposition_7_1_original_endpoint` 和 `proposition_7_1_single_compensator` 覆盖原文 Proposition 7.1 的完整条件性终端结论。[核审计 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。其余编号结果须按原文全量词单独验收，不能以辅助声明数量替代。
 
@@ -179,7 +179,7 @@ In particular, the maximum possible positive crisis severity is $O(\bar v^2)$ as
 
 ## Theorem 6.3 — thm:finite-rate-construct
 
-证据：paper/main.tex:441。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:441。整项 Lean 状态：**PAPER_ACCEPTED**。C03 Theorem 6.3 PAPER_ACCEPTED；证明 SHA `937f8d2e1bb5a2556abeb793ab6aaca723b5ddf5`；本地完整构建、593项公理审计及269项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658676)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658720)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658705)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658632)。 canonical `theorem_6_3_original`与统一参数族，见 C03_SCOPE_AUDIT.md。
 
 ```latex
 \begin{theorem}[Positive all-asset decline with bounded continuous execution]\label{thm:finite-rate-construct}

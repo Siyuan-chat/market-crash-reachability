@@ -21,10 +21,4 @@ before the amplitude; they support the subsequent attained-order theorem.
 The main agent checked the complete manuscript statement and the explicit
 physical-realization relation before integration.
 
-Status: LEAN_PASS, pending exact proof-SHA four-CI. Full pinned Lean 4.19.0
-integration build PASS; all 593 registered declarations pass the complete
-permitted-axiom audit (only propext, Classical.choice, Quot.sound).
-Evidence: build/formal/c03-full-build/result.json and
-build/formal/c03-integrity/result.json (audit stdout SHA-256
-bab1953254773d71fb89053b9d5e42c1818aec2882cec215606de2b79f68cb29).
-Release SHA-256 verification covers 269 artifacts. Not yet paper-accepted.
+C03 Theorem 6.3 PAPER_ACCEPTED；证明 SHA `937f8d2e1bb5a2556abeb793ab6aaca723b5ddf5`；本地完整构建、593项公理审计及269项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658676)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658720)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658705)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658632)。
