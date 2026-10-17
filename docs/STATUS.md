@@ -1,3 +1,18 @@
+## Revised English preprint — 18 October 2026
+
+The approved 33-page manuscript and its LaTeX sources are in
+`submission/siam-language-revision/`; the root README opens this edition.
+Zenodo v2 is public at https://zenodo.org/records/23438609
+(DOI 10.5281/zenodo.23438609; concept DOI 10.5281/zenodo.23427879),
+with the unchanged supplementary PDF. Main PDF SHA-256:
+`c4f870b05c31f839da3c4e503b25f9efe3cc2ab6f8f5b38110aa3472a325b0ff`.
+SSRN revision synchronization is being performed under abstract 7622079;
+the public record may retain the preceding version until SSRN processes it.
+The fixed software archive DOI 10.5281/zenodo.23428183 remains the historical
+snapshot described below. Existing Lean work on main is preserved.
+
+### Earlier publication records
+
 # Current project status
 
 Publication status updated 2026-10-17:

@@ -23,10 +23,11 @@ and a rigorously feasible two-session consecutive-limit-down construction.
 The computer-assisted existence certificate concerns one specified ten-asset
 path; analytical theorems rely on the proofs in the manuscript.
 
-- **Zenodo preprint and supplement:** [Published record](https://zenodo.org/records/23427880) · [DOI: 10.5281/zenodo.23427880](https://doi.org/10.5281/zenodo.23427880)
+- **Zenodo preprint and supplement (v2):** [Published record](https://zenodo.org/records/23438609) · [DOI: 10.5281/zenodo.23438609](https://doi.org/10.5281/zenodo.23438609) · [All versions](https://doi.org/10.5281/zenodo.23427879)
 - **Archived code and reproducibility package:** [Zenodo software record](https://zenodo.org/records/23428183) · [DOI: 10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183), version `1.0.0rc1+git.d6e2606`, fixed at [commit d6e2606](https://github.com/Siyuan-chat/market-crash-reachability/tree/d6e2606590f955a6287c6945488a080e5acab004). Includes the source ZIP, provenance and SHA-256 checksum; later README DOI updates are outside this immutable snapshot.
 - **SSRN preprint:** [Published paper — Abstract ID 7622079](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079).
-- **SIFIN submission edition:** [Manuscript PDF](submission/siam/manuscript.pdf) · [LaTeX](submission/siam/main.tex)
+- **Latest revised English preprint (33 pages, 18 October 2026):** [Manuscript PDF](submission/siam-language-revision/manuscript.pdf) · [LaTeX](submission/siam-language-revision/main.tex) · [Build and validation](submission/siam-language-revision/README.md)
+- **Earlier SIFIN edition:** [Manuscript PDF](submission/siam/manuscript.pdf) · [LaTeX](submission/siam/main.tex)
 - **SIFIN supplementary material:** [Supplement PDF](submission/siam/supplementary.pdf) · [LaTeX](submission/siam/supplementary.tex)
 - [SIFIN build instructions and author items pending](submission/siam/README.md)
 - [Mathematical results and code](docs/MATHEMATICAL_RESULTS.md)
