@@ -1,8 +1,10 @@
 # 论文结果与 Lean 基础映射
 
-状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **13/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
+状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **14/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
 
-固定 Lean/Mathlib 下最新已审计的数学源码含 **197/197 个 kernel-checked 定理声明**；其中 `proposition_7_1_original_endpoint` 和 `proposition_7_1_single_compensator` 覆盖原文 Proposition 7.1 的完整条件性终端结论。[核审计 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。其余编号结果须按原文全量词单独验收，不能以辅助声明数量替代。
+## 历史基线说明（197声明阶段；不代表当前验收）
+
+该历史阶段固定 Lean/Mathlib 下已审计的数学源码含 **197/197 个 kernel-checked 定理声明**；其中 `proposition_7_1_original_endpoint` 和 `proposition_7_1_single_compensator` 覆盖原文 Proposition 7.1 的完整条件性终端结论。[核审计 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。其余编号结果须按原文全量词单独验收，不能以辅助声明数量替代。
 
 关于 3.1/3.2 的新增 Lean 结果必须注意：已由**全正价格域**的弹性下界导出两类坐标凹性，并在纯恢复离散步骤中证明了势函数非负保持；但**所有可容许路径**（连续交易与恢复同时发生、脉冲交易、终点账本）仍未形式化，因此不能将条件性端点引理升格为原定理的完整证明。全文验收标准见 [Issue #5](https://github.com/Siyuan-chat/market-crash-reachability/issues/5)；新增源文件见 `formal/lean/MarketCrash/CrisisFunctional.lean` 和 `formal/lean/MarketCrash/BarrierEndpoint.lean`。
 
@@ -95,7 +97,7 @@ Let $k<N$, $e_0=e(F)<2$, and $r=e^{-\rho T}<2-e_0$. Select a zero-sum dollar dir
 
 ## Theorem 4.4 — thm:critical
 
-证据：paper/main.tex:297。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:296。整项 Lean 状态：**PAPER_ACCEPTED**。C05 Theorem 4.4 PAPER_ACCEPTED；证明 SHA `74f023fc5d129cebeb9874f5fe7c35b663029d3d`；本地完整构建、695项公理审计及281项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411221)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411126)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411114)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411156)。 canonical `theorem_4_4_original`及finite-resource sibling，见 C05_SCOPE_AUDIT.md。
 
 ```latex
 \begin{theorem}[Sharp all-asset horizon threshold]\label{thm:critical}

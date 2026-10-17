@@ -22,11 +22,4 @@ Additional zero-time isotropic transport stops simplify full-state joins;
 they are finitely many legal original pulses and preserve every recovery
 integral. No extra restriction is imposed on the universal path class.
 
-Status: LEAN_PASS, pending exact proof-SHA four-CI. Full pinned Lean 4.19.0
-integration build PASS (build/formal/c05-full-build/result.json, stdout
-SHA-256 f5c699cf62a814355f3d7185762c3e9f0d94de55e0e0bfc3782edc76f403fbd3).
-All 695 registered declarations pass the complete permitted-axiom audit:
-build/formal/c05-integrity/result.json, stdout SHA-256
-1b53245991d028a503769f5e2b8479162906058d9a380e054a169ea3e555ace2.
-Only propext, Classical.choice and Quot.sound occur. Release hashes cover
-281 artifacts. Full original-scope review completed. Not yet paper-accepted.
+C05 Theorem 4.4 PAPER_ACCEPTED；证明 SHA `74f023fc5d129cebeb9874f5fe7c35b663029d3d`；本地完整构建、695项公理审计及281项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411221)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411126)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411114)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411156)。
