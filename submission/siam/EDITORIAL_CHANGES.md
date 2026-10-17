@@ -4,12 +4,18 @@ The canonical V12 Final manuscript, bibliography, supplement, original figures,
 data, verification algorithms and model parameters remain unchanged. The
 SIFIN edition is generated with `scripts/build_siam_submission.py`.
 
+This records the editorial scope of the 2026-10-16 SIFIN revision. Its no-DOI
+wording below describes what that revision inserted, not current publication
+status. Paper and software DOIs are now listed in
+[project status](../../docs/STATUS.md). The manuscript sources, generated PDFs
+and editorial checker are not changed by this documentation update.
+
 ## Explicit changes and checks
 
 - `scripts/siam_editorial.py` maps journal names, adds 5 main and 18 supplement
   figure callouts, and replaces the exact code/data availability paragraph with
   the public repository and computational baseline commit `ea831c4` (full SHA
-  in the link). It does not claim a Release or DOI exists.
+  in the link). That historical revision did not insert a Release or DOI claim.
 - `check_siam_submission.py` reverses only these named prose edits and the
   existing layout changes, then compares the entire original body. Equations,
   theorem statements, proofs, captions and all remaining prose must match.

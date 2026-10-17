@@ -2,6 +2,12 @@
 
 Acceptance date: 2026-10-15 (Asia/Tokyo).
 
+**Historical validation report:** results, counts and publication gates below
+refer to that acceptance checkpoint. In particular, the no-DOI statement is
+historical; paper and software DOIs have since been issued. See
+[current project status](STATUS.md) for current publication and archive links.
+This report's scientific results and raw evidence are retained unchanged.
+
 ## Passed
 
 - A separate clean source directory and fresh virtual environment installed the

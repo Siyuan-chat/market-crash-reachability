@@ -2,7 +2,9 @@
 
 Date: 2026-10-15 (Asia/Tokyo). Historical scope of this acceptance run: local
 builds and comparison only; no publication, upload, tag or release was performed
-as part of that run. Later publication authorization is recorded in STATUS.md.
+as part of that run. This is historical evidence, not a current publication gate.
+The paper and software archive are now public; current links and fixed-version
+boundaries are recorded in [project status](STATUS.md).
 
 ## Result
 

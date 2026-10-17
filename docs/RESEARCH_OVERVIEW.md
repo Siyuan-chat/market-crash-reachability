@@ -66,7 +66,7 @@ No. It is an idealized structural reachability study. It does not supply backtes
 
 ### How do I reproduce and cite the results?
 
-Follow [reproducibility instructions](REPRODUCIBILITY.md) to run quick checks and the full certificate regeneration on Python 3.11. Cite Siyuan Ye, *When Can Markets Crash Without News?*, V12 Final (2026), for mathematical results and specify the software version **1.0.0rc1** and exact commit for computations. [CITATION.cff](../CITATION.cff) gives machine-readable details. No DOI, arXiv number, journal acceptance or ORCID has been asserted.
+Follow [reproducibility instructions](REPRODUCIBILITY.md) to run quick checks and the full certificate regeneration on Python 3.11. Cite Siyuan Ye, *When Can Markets Crash Without News?* (2026), [paper DOI 10.5281/zenodo.23427880](https://doi.org/10.5281/zenodo.23427880), for mathematical results; the preprint is also public on [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079). For computations using the archived snapshot, cite [software DOI 10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183), version **1.0.0rc1+git.d6e2606**, commit `d6e2606590f955a6287c6945488a080e5acab004`. Later repository documentation updates are outside that fixed archive. [CITATION.cff](../CITATION.cff) gives machine-readable details. Preprint availability does not assert journal acceptance.
 
 ## 中文和日文 / Japanese and Chinese editions
 
