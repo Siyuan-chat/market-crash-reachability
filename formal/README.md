@@ -1,6 +1,6 @@
 # Partial Lean formalization — whole-paper project
 
-2026-10-17: Original-paper acceptance is **5/16**: Propositions 7.1, 7.5, 6.1, 7.2 and Theorem 3.1. B02 proof commit `dbb5c784b07b6f8fc5ec3738410346fffc7cc47c` passed the full local build, 360-declaration permitted-axiom audit, 245 release hashes and all four exact-SHA CI workflows. B03/B04/B05/B06 remain candidates pending their own complete gates. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
+2026-10-17: Original-paper acceptance is **6/16**: Propositions 7.1, 7.5, 6.1, 7.2 and Theorems 3.1, 3.2. B03 proof SHA `e80b03c0431ab0a8de444931f96ffa037e2b68f2` passed the full pinned build, 362-declaration permitted-axiom audit, 247 release hashes and all four same-SHA workflows. B04 is locally complete, pending CI; B05/B06 remain candidates. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
 
 Canonical mathematics: English V12 Final at commit
 `e5339a47f29ccb669d1f228ca930a1c1146200bf`.
@@ -13,7 +13,7 @@ clock. The latter now participates in the finite admissible trace and its proved
 quantifiers over all M1–M5 BV execution paths or the interval certificate
 of Proposition 7.6.
 Follow the [whole-paper proof tracker](https://github.com/Siyuan-chat/market-crash-reachability/issues/5).
-**Original-paper acceptance: 5/16 (Propositions 7.1, 7.5, 6.1, 7.2 and Theorem 3.1).** Proposition 7.1's exact terminal product criterion, quantile cases, severity and single-compensator consequence are now Lean kernel-verified as a complete original conditional endpoint result; [197/197 proof audit](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426). The other 11 original numbered statements remain unaccepted. Consult the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md); older 190-declaration Phase 4 snapshots are historical only, and the optional countable-atom modules have been pruned.
+**Original-paper acceptance: 6/16 (Propositions 7.1, 7.5, 6.1, 7.2 and Theorems 3.1, 3.2).** Proposition 7.1's exact terminal product criterion, quantile cases, severity and single-compensator consequence are now Lean kernel-verified as a complete original conditional endpoint result; [197/197 proof audit](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426). The other 10 original numbered statements remain unaccepted. Consult the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md); older 190-declaration Phase 4 snapshots are historical only, and the optional countable-atom modules have been pruned.
 
 Phase 2's [bounded-variation proof gates](PHASE2_BV_GATES.md) distinguish proven accounting and crisis-parameter bridges from the unproved full BV price dynamics.
 Phase 3's [a.e. operational-clock proof gates](PHASE3_AE_GATES.md) record the

@@ -28,4 +28,4 @@ extra inventory premise is introduced. The original terminal dollar closure
 is retained in the admissible economic path; the stronger barrier does not
 need to use it.
 
-Status: formal integration and full Lean 4.19.0 project build PASS; complete 362-declaration permitted-axiom audit PASS; 247 release hashes PASS. Exact-SHA four-CI remains pending. Not accepted.
+Status: formal integration and full Lean 4.19.0 project build PASS; complete 362-declaration permitted-axiom audit PASS; 247 release hashes PASS. B03 Theorem 3.2 PAPER_ACCEPTED；证明 SHA `e80b03c0431ab0a8de444931f96ffa037e2b68f2`；本地全量构建、362项公理审计及247项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013188459)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013188372)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013188404)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013188355)。

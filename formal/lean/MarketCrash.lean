@@ -46,3 +46,5 @@ import MarketCrash.OriginalBarrier
 import MarketCrash.OriginalInputPackaging
 
 import MarketCrash.OriginalSystemicBarrier
+
+import MarketCrash.OriginalDollarTurnover
