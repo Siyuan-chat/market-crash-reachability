@@ -58,3 +58,5 @@ import MarketCrash.OriginalTwoPulse
 import MarketCrash.FiniteRateConstruction
 
 import MarketCrash.QuadraticRateAttainment
+
+import MarketCrash.SharpAssembly

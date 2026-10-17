@@ -1,6 +1,6 @@
 # Partial Lean formalization — whole-paper project
 
-2026-10-17: Original-paper acceptance is **12/16**. Theorem 6.3 proof SHA `937f8d2e1bb5a2556abeb793ab6aaca723b5ddf5` passed all four exact-SHA workflows, full local build, 593-declaration audit and 269 hashes. C04, C05, C06 and D01 remain unaccepted and under implementation. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
+2026-10-17: Original-paper acceptance is **13/16**. Theorem 6.2 proof SHA `e0196b317f0fb752d715fdfadfe9c9ba9faae698` passed all four exact-SHA workflows, full local build, 615-declaration audit and 272 hashes. C05, C06 and D01 remain unaccepted and under implementation. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
 
 Canonical mathematics: English V12 Final at commit
 `e5339a47f29ccb669d1f228ca930a1c1146200bf`.
@@ -13,7 +13,7 @@ clock. The latter now participates in the finite admissible trace and its proved
 quantifiers over all M1–M5 BV execution paths or the interval certificate
 of Proposition 7.6.
 Follow the [whole-paper proof tracker](https://github.com/Siyuan-chat/market-crash-reachability/issues/5).
-**Original-paper acceptance: 12/16.** The accepted original results and their exact proof SHAs, manuscript scope and CI evidence are recorded in the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md). Historical helper counts are not whole-paper acceptance.
+**Original-paper acceptance: 13/16.** The accepted original results and their exact proof SHAs, manuscript scope and CI evidence are recorded in the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md). Historical helper counts are not whole-paper acceptance.
 
 Phase 2's [bounded-variation proof gates](PHASE2_BV_GATES.md) distinguish proven accounting and crisis-parameter bridges from the unproved full BV price dynamics.
 Phase 3's [a.e. operational-clock proof gates](PHASE3_AE_GATES.md) record the

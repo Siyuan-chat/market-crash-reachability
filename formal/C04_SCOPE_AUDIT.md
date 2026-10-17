@@ -21,14 +21,4 @@ the same AC execution. The infimum is never used without nonemptiness and
 a proved lower bound. No additional regularity assumption on an arbitrary
 upper-bound path is introduced.
 
-Status: LEAN_PASS, pending exact proof-SHA four-CI. Full pinned Lean 4.19.0
-integration build PASS (formal/lean/build/formal/c04-full-build/result.json,
-stdout SHA-256 aa0fa561f2c7fcd03e6a4782537258f94bdf07a656316d62ba0d2bd3915208a8).
-All 615 registered declarations pass the complete permitted-axiom audit:
-build/formal/c04-integrity/result.json, stdout SHA-256
-506b6407d2a4d235dc04da469b28c42a0534263a56530b125af2c78938797081.
-Only propext, Classical.choice and Quot.sound occur. Release hashes cover
-272 artifacts. Independent original-quantifier review found no omission.
-The real-valued sInf definition is used only after nonemptiness is proved;
-it is not claimed to assign +infinity to an empty feasible set.
-Not yet paper-accepted.
+C04 Theorem 6.2 PAPER_ACCEPTED；证明 SHA `e0196b317f0fb752d715fdfadfe9c9ba9faae698`；本地完整构建、615项公理审计及272项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39019425830)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39019425896)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39019425973)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39019425883)。
