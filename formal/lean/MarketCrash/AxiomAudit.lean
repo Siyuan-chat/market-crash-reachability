@@ -360,3 +360,5 @@ import MarketCrash
 #print axioms MarketCrash.stieltjes_primitive_hasDerivAt_local
 #print axioms MarketCrash.stieltjes_primitive_hasDerivAt
 #print axioms MarketCrash.stieltjes_primitive_hasDerivAt_on_interval
+#print axioms MarketCrash.OriginalPhysicalReachable.actual_crisis_nonpositive_observed
+#print axioms MarketCrash.theorem_3_2_original

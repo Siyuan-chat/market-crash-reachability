@@ -21,8 +21,8 @@ terminal per-asset dollar closure. `OriginalVisitedPrices` proves actual-path
 radial attainment and observations at every physical time. Elasticity conditions
 are confined to this path's attained prices.
 
-Theorem 3.1's original candidate is compiled in `OriginalBarrier`; full audit,
-release hashes and exact-SHA CI acceptance remain pending. The bridge itself is
+Theorem 3.1 is PAPER_ACCEPTED via `theorem_3_1_original` in `OriginalBarrier`,
+with full audit, release hashes and all four CI at proof SHA `dbb5c784b07b6f8fc5ec3738410346fffc7cc47c`. The bridge itself is
 not a numbered result. No countably atomic framework is required or added.
 
 ## Historical regular-subclass audit

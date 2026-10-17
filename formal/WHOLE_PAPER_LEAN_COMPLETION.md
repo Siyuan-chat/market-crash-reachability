@@ -1,6 +1,6 @@
 # Lean 全文验收清单与剩余工作（2026-10-17）
 
-当前验收 **4/16**，目标 **16/16**。A03 Proposition 7.2 PAPER_ACCEPTED，证明 SHA `5c84995094b736c0231df6d804c8daad638bbfc7`；本地全量构建、256项公理审计、230项发布哈希 PASS；四项同 SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011779671)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011779650)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011781951)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39011779633)。 B02 完整候选已正式模块全量本地编译通过；模型包含性、公理/哈希和同 SHA CI 尚待验收。B03 完整候选定向编译通过；B04 资源证明继续推进；B06 完整候选本地编译通过。运行目录 `phase4-execution`；本入口单写入当前状态。
+当前验收 **5/16**，目标 **16/16**。Propositions 7.1、7.5、6.1、7.2及Theorem 3.1已接受。B02 Theorem 3.1 PAPER_ACCEPTED；证明 SHA `dbb5c784b07b6f8fc5ec3738410346fffc7cc47c`；本地完整构建、360项公理审计及245项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617907)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617901)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617894)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617891)。 B03完整候选全量构建、362项公理审计及247项哈希PASS，待同SHA CI；B04、B05、B06完整候选本地编译通过，未计接受。C01/C02构造与D01正式checker并行推进。运行目录 `phase4-execution`；本入口单写入。
 
 **权威原文**：English V12 Final，见 `paper/main.tex`；具体原文映射见 [THEOREM_MAP.md](THEOREM_MAP.md)。**源代码证明范围以 Lean 定理的精确量词与假设为准，不能以声明总数量代替全文完成度。**
 
@@ -17,14 +17,14 @@
 - PR #9 合入 `main`：**159** 项辅助与受限模型 Lean 定理通过完整审计。
 - Draft PR #10，数学源码 SHA `7eeea5902707711413416eee13ef7830021d2df5`：**185/185** 项通过固定工具链与公理审计；[成功 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38865912687)。包括严格的有序原子执行、各资产 Stieltjes 结算恒等式及可数原子时刻。
 - 新增 `CountablePhysicalClosure.lean`，数学提交 `5b182d74b35e525af108091510a7efc6edfc5103`：**190/190** 条声明通过 Lean kernel 和完整公理审计；[成功 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38867686935)。从真实可行的有限物理执行前缀、逐资产正价格收敛，严格推出极限势函数保持、全资产下降排除及系统危机排除；**仍需额外证明每条原始 M1–M5 BV 路径存在这种忠实物理前缀逼近**。
-- **按原论文完整定理验收：目前 4/16（Proposition 7.1、7.5、6.1）**。原文的 k=⌈αN⌉<N、0<r<1、D∈ℕ、δ>0、正终端价格、精确补偿资产价格乘积充要条件、两种精确 Qα 条件和单补偿资产推论均由 Lean 证实。核心全量词定理 `proposition_7_1_original_endpoint`，附 `proposition_7_1_single_compensator`；[197/197 核心 Lean 与公理审计](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。此为条件性终端恒等式，不主张所指定价格配置存在物理可行交易路径。其余12项尚未验收。
+- **按原论文完整定理验收：目前 5/16（Proposition 7.1、7.5、6.1）**。原文的 k=⌈αN⌉<N、0<r<1、D∈ℕ、δ>0、正终端价格、精确补偿资产价格乘积充要条件、两种精确 Qα 条件和单补偿资产推论均由 Lean 证实。核心全量词定理 `proposition_7_1_original_endpoint`，附 `proposition_7_1_single_compensator`；[197/197 核心 Lean 与公理审计](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。此为条件性终端恒等式，不主张所指定价格配置存在物理可行交易路径。其余11项尚未验收。
 
 ## 逐项结果矩阵
 
 | 原文编号 | 关键数学对象或目标 | 当前整项 Lean 状态 | 下一关键义务 |
 |---|---|---|---|
-| Theorem 3.1 | 所有 M1–M5 路径的全资产共同下跌屏障，弹性仅限可达价格 | **LEAN_PASS，待同 SHA CI** | 原始 BV/有限脉冲、FTC和真实可达价格均已证明；360项公理审计及245项哈希PASS，待同 SHA CI，见 B02_SCOPE_AUDIT.md |
-| Theorem 3.2 | 任意市场宽度、任意时刻的系统危机排除 | 未完成；危机分位数与正则物理路径已证明 | 同上，尤其全路径对数坐标凹性与原价域一致 |
+| Theorem 3.1 | 所有M1–M5路径、真实可达价格及任意时刻的全资产下降屏障 | **PAPER_ACCEPTED** | `dbb5c784b07b6f8fc5ec3738410346fffc7cc47c`；完整定理 `theorem_3_1_original`及四项同SHA CI通过，见 B02_SCOPE_AUDIT.md |
+| Theorem 3.2 | 任意市场宽度、任意时刻的系统危机排除 | **LEAN_PASS，待同 SHA CI** | 完整 theorem_3_2_original、362项公理审计及247项哈希PASS；见 B03_SCOPE_AUDIT.md |
 | Theorem 4.1 | p=2/1/0 的 A/B/C 不可达、有限库存界与任意严重性可达 | 未完成 | B、C 的具体物理控制存在性、库存、预算独立界 |
 | Proposition 4.2 | e(F)<1 的三脉冲共同下跌及精确渐近 | 未完成 | 三脉冲构造、Taylor 控制、全物理条件 |
 | Proposition 4.3 | e(F)<2 的双脉冲部分覆盖与二阶系数 | 未完成 | 双脉冲和终端闭合、渐近/危机覆盖 |
@@ -43,7 +43,7 @@
 ## 当前执行状态
 
 1. B01 非编号桥接：真实连续 BV 物理价格/份额/美元 primitive → operational ODE → nonlinear normal form 全部本地编译通过，包含 singular-continuous 控制。原始单边 [0,z] 脉冲归一化及有限区间 Stieltjes 延拓也已 kernel 验证。
-2. B02 Theorem 3.1：完整原文候选及正式模块全量构建 PASS；360项公理审计与245项发布哈希PASS，待同 SHA CI，尚未计入接受。
+2. B02 Theorem 3.1：B02 Theorem 3.1 PAPER_ACCEPTED；证明 SHA `dbb5c784b07b6f8fc5ec3738410346fffc7cc47c`；本地完整构建、360项公理审计及245项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617907)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617901)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617894)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617891)。
 3. B03 Theorem 3.2：完整原文候选已定向编译，等待 B02 串行完成验收后集成。
 4. B04 Theorem 5.1：库存条件分支已在完整原始经济 trace 上证明；美元及真实净份额负变差资源分支继续闭合，未计完成。
 5. B05 Proposition 7.4：独立实现中。B06 Theorem 7.3：异质资产完整候选本地编译及独立审阅通过，待串行集成与验收。

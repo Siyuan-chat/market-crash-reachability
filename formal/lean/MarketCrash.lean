@@ -44,3 +44,5 @@ import MarketCrash.RollingRate
 import MarketCrash.OriginalBarrier
 
 import MarketCrash.OriginalInputPackaging
+
+import MarketCrash.OriginalSystemicBarrier
