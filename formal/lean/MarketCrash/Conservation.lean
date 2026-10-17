@@ -88,7 +88,7 @@ theorem market_cut_instantaneous_bound
   have hright := hbound (Finset.univ \ J)
   have hmin : |∑ i ∈ J, tradingInput B rates i| ≤
       min (v * ∑ i ∈ J, S i)
-        (v * ∑ i ∈ Finset.univ \\ J, S i) := by
+        (v * ∑ i ∈ Finset.univ \ J, S i) := by
     apply le_min
     · exact hleft
     · rw [hcut, abs_neg]
