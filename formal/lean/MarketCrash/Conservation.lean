@@ -86,9 +86,13 @@ theorem market_cut_instantaneous_bound
     linarith
   have hleft := hbound J
   have hright := hbound (Finset.univ \ J)
-  apply le_min
-  · exact hleft
-  · rw [hcut, abs_neg]
-    exact hright
+  have hmin : |∑ i ∈ J, tradingInput B rates i| ≤
+      min (v * ∑ i ∈ J, S i)
+        (v * ∑ i ∈ Finset.univ \\ J, S i) := by
+    apply le_min
+    · exact hleft
+    · rw [hcut, abs_neg]
+      exact hright
+  simpa only [mul_min_of_nonneg hv] using hmin
 
 end MarketCrash
