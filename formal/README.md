@@ -11,7 +11,7 @@ clock. The latter now participates in the finite admissible trace and its proved
 quantifiers over all M1–M5 BV execution paths or the interval certificate
 of Proposition 7.6.
 Follow the [whole-paper proof tracker](https://github.com/Siyuan-chat/market-crash-reachability/issues/5).
-For an exact result-by-result answer to **how much Lean formalization remains**, see the [16-result whole-paper completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md). It separately tracks original manuscript statements and the [190-declaration Phase 4 kernel-verified checkpoint](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38867686935), including countable physical prefix-limit closure.
+**Original-paper acceptance: 1/16.** Proposition 7.1's exact terminal product criterion, quantile cases, severity and single-compensator consequence are now Lean kernel-verified as a complete original conditional endpoint result; [197/197 proof audit](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426). The other 15 original numbered statements remain open. Consult the [16-result completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md); older 190-declaration Phase 4 snapshots are historical only, and the optional countable-atom modules have been pruned.
 
 Phase 2's [bounded-variation proof gates](PHASE2_BV_GATES.md) distinguish proven accounting and crisis-parameter bridges from the unproved full BV price dynamics.
 Phase 3's [a.e. operational-clock proof gates](PHASE3_AE_GATES.md) record the
@@ -24,12 +24,7 @@ The 159 declarations include the inverse-variation-clock inequalities
 on its actual image and conditional a.e.-FTC comparison, still for
 **typed restricted classes**. No entire-original-BV theorem is
 claimed from these checkpoints.
-Phase 4's [Stieltjes atomic gap and ordered-jump proof gates](PHASE4_ATOMIC_GATES.md)
-distinguish measure-level gap accounting, genuine marginal-settled physical
-pulse sequences, and the still-unproved existence/absolute-continuity
-bridges for all original BV controls. These new declarations live in
-[Draft PR #10](https://github.com/Siyuan-chat/market-crash-reachability/pull/10);
-consult its exact-head CI before counting them as verified.
+Phase 4's [historical atomic-gap notes](PHASE4_ATOMIC_GATES.md) document optional extensions removed from the direct-paper Lean branch. The current [Draft PR #10](https://github.com/Siyuan-chat/market-crash-reachability/pull/10) prioritizes exactly the 16 original numbered results, and the finite physical pulse proofs required by the manuscript are retained.
 See the [M1–M5 fidelity audit](MODEL_FIDELITY.md), [complete theorem map](THEOREM_MAP.md) and
 [the precise status and hypotheses](FORMALIZATION_STATUS.md).
 
