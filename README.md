@@ -45,13 +45,14 @@ These results are theoretical and **do not predict real market crashes**. For ex
 - **简体中文:** [complete manuscript and supplement sources, build and review status](translations/zh-CN/README.md).
 - **日本語:** [complete manuscript and supplement sources, build and review status](translations/ja/README.md).
 - [Trilingual glossary](translations/GLOSSARY.md) and [translation consistency and build instructions](translations/README.md).
-- [Lean formalization](formal/README.md): 76 kernel-checked declarations, including regular physical price-space execution paths and their no-crash barriers with Lean 4.19.0 and pinned Mathlib. **No complete numbered paper theorem is Lean-verified.** See the [theorem map](formal/THEOREM_MAP.md) and [whole-paper verification tracker](https://github.com/Siyuan-chat/market-crash-reachability/issues/5).
+- [Lean formalization](formal/README.md): **16/16 original numbered results accepted**, with Lean 4.19.0, pinned Mathlib and a full 1,224-declaration axiom audit. See the [exact-scope result manifest](formal/ORIGINAL_RESULT_MANIFEST.md), [acceptance evidence](formal/WHOLE_PAPER_LEAN_COMPLETION.md) and [certificate provenance](formal/D01_CERTIFICATE_PROVENANCE.md). PR #10 remains Draft.
 
 The complete translation editions are publicly distributed with the author’s
 permission; their copyright statements remain unchanged. English remains the authoritative mathematical
-source. The Lean project proves coordinate, conservation and selected
-response-family foundations; it does not formalize the complete paper or the
-interval certificate. Phase 2 CI runs on pull requests; consult the PR checks for current results.
+source. The Lean project covers the sixteen original numbered results and the
+concrete interval-certificate witness at the scopes recorded in the manifest.
+The user-authorized Proposition 7.5 boundary correction and the additional
+AC-session minimum-rate bracket are explicitly documented there.
 Generated translation PDFs are review/build artifacts rather than duplicated
 committed binaries. Paper and translation copyrights are separate from software MIT.
 

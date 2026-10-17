@@ -1,6 +1,6 @@
 # Lean 形式化当前状态
 
-状态日期：2026-10-17。唯一当前入口 [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md)。原始编号验收 **15/16**。C06 Theorem 4.1 PAPER_ACCEPTED；证明 SHA `37e9c89c106cd85735ff2a500a922f32802f8d15`；本地完整构建、787项公理审计及291项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946468)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946511)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946465)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946461)。 D01本地完整构建与1224条公理审计已通过，待同SHA CI验收，尚未全文验收；历史材料不覆盖当前终态。
+状态日期：2026-10-17。唯一当前入口 [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md)。原始编号验收 **16/16**。D01 Proposition 7.6 PAPER_ACCEPTED；证明 SHA `15bec0e04613c040489b71a93595861ae5c82343`；本地完整构建、1224项公理审计PASS；四项同SHA CI SUCCESS：[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033132044)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033082716)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828360)、[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828458)。本次不另列SHA-256验收门（用户最新决定）。 历史材料不覆盖当前终态；PR #10保持Draft。
 
 > 以下阶段记录保留历史语境，不代表当前证明边界；当前验收仅以上方状态与 WHOLE_PAPER_LEAN_COMPLETION.md 为准。
 
@@ -52,9 +52,9 @@
 
 上表三个响应族的名称完整展开为：`constantCoordinate_normalized`, `linearCoordinate_normalized`, `logarithmicCoordinate_normalized`, `constantCoordinate_hasDerivAt`, `linearCoordinate_hasDerivAt`, `logarithmicCoordinate_hasDerivAt`。这些声明的名称与作用均直接来自对应 Lean 源码。
 
-`docs/MATHEMATICAL_RESULTS.md` 中的符号检查、普通 ODE、离散抽样或精确有理数一致性检查，均不自动成为 Lean 证明。Stage-1 历史快照当时尚无整项 Lean 验收；当前已完成 7.1、7.5、6.1，其余状态以唯一当前入口为准。
+`docs/MATHEMATICAL_RESULTS.md` 中的符号检查、普通 ODE、离散抽样或精确有理数一致性检查，均不自动成为 Lean 证明。Stage-1 历史快照当时尚无整项 Lean 验收；随后曾完成 7.1、7.5、6.1；最终16/16状态以唯一当前入口为准。
 
-Proposition 7.6 的整项状态为外部 Python 严格区间计算机辅助存在性证明，未在 Lean 中重建或核验。它限于指定十资产、九目标、两日固定路径；不证明最优控制、一般异质市场可行性或真实市场概率。当前 Lean 不包含区间 ODE 证书检查器。`AxiomAudit.lean` 的打印命令只检查所列基础声明的依赖，不检查外部证书。
+Stage-1 历史快照当时：Proposition 7.6 的整项状态为外部 Python 严格区间计算机辅助存在性证明，未在 Lean 中重建或核验。它限于指定十资产、九目标、两日固定路径；不证明最优控制、一般异质市场可行性或真实市场概率。当时 Lean 不包含区间 ODE 证书检查器；此限制已由D01正式检查器及其健全性证明解除。`AxiomAudit.lean` 的打印命令只检查所列基础声明的依赖，不检查外部证书。
 
 ## 历史记录：Stage-1 后续障碍与下一步
 

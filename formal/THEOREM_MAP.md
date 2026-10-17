@@ -1,6 +1,6 @@
 # 论文结果与 Lean 基础映射
 
-状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **15/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
+状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **16/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
 
 ## 历史基线说明（197声明阶段；不代表当前验收）
 
@@ -303,7 +303,7 @@ When $J^c=\varnothing$, the hypothesized simultaneous strict decrease of all ass
 
 ## Proposition 7.6 — prop:certified-v7
 
-证据：paper/main.tex:660。整项Lean状态：**LEAN_PASS**。完整 `proposition_7_6_original`、同轨迹物理资源和附加固定市场AC接口bracket已通过正式全量构建与1224条公理审计；四项同SHA CI尚待验证。范围见D01_SCOPE_AUDIT.md。
+证据：paper/main.tex:660。整项Lean状态：**PAPER_ACCEPTED**。D01 Proposition 7.6 PAPER_ACCEPTED；证明 SHA `15bec0e04613c040489b71a93595861ae5c82343`；本地完整构建、1224项公理审计PASS；四项同SHA CI SUCCESS：[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033132044)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033082716)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828360)、[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828458)。本次不另列SHA-256验收门（用户最新决定）。 canonical `proposition_7_6_original`，完整范围见D01_SCOPE_AUDIT.md；固定市场附加bracket采用任意有限网络实际AC会话接口。
 
 ```latex
 \begin{proposition}[A computer-assisted two-day rate certificate]\label{prop:certified-v7}

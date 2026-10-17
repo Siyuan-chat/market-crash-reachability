@@ -34,7 +34,7 @@ The input reproduction tool is provenance, not an axiom or proof oracle.
 All concrete constants used in the theorem are checked by the Lean kernel;
 no generated JSON validity predicate is assumed by the public theorem.
 
-Status: final reproduction tool and official full-build/audit/hash/CI evidence
+Status: final reproduction tool and official full-build/axiom-audit/CI evidence
 are recorded after the source freeze in `WHOLE_PAPER_LEAN_COMPLETION.md`.
 
 From the repository root, reproduce the exact committed Lean input tables with
@@ -50,3 +50,6 @@ under `formal/lean/MarketCrash`; it does not require any Working source.
 The original regression command is `python scripts/run_checks.py full` in the
 project's scientific Python environment. Exact output digests and full theorem
 acceptance are recorded in the single completion matrix.
+
+A separate SHA-256 acceptance gate was cancelled by the latest user instruction;
+the historical input digests above identify the original certificate sources.

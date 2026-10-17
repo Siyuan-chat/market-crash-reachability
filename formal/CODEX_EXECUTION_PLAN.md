@@ -1,5 +1,7 @@
 # Codex execution plan: complete the remaining 15 Lean results
 
+> Execution completed on 2026-10-17: all 16 original numbered results are accepted. This queue is retained as the historical execution contract; current evidence is in WHOLE_PAPER_LEAN_COMPLETION.md.
+
 > Latest user instruction (2026-10-17): remove the separate SHA-256 acceptance gate. The original numbered-result scope, Lean kernel/axiom audit and four exact-commit workflows remain required. Existing workflow/release maintenance continues under the repository protocol. The earlier standalone-hash instructions below are historical for this run.
 
 **Repository:** Siyuan-chat/market-crash-reachability  

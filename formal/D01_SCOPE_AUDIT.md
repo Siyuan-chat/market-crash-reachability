@@ -24,7 +24,9 @@ hold on one absolutely continuous original physical execution.
 | Strict crisis and rate bracket | Exact endpoint log bounds and a universal physical lower-rate certificate have local proofs. The actual full-witness conclusion has been assembled. The additional infimum bracket uses the arbitrary finite-network AC session interface; local canonical compilation and its two-declaration standard-axiom audit passed (`build/formal/d01-resource-rows/resume-canonical.exit=0`), and no equivalence with a separately defined BV-path feasible set is claimed. |
 | Original numerical regressions | `scripts/run_checks.py full` passed all eight original commands and regenerated-certificate byte identity (`build/formal/d01-original-full-tests/result.json`, exit 0; `build/logs/full_summary.json`). No numerical assertion has been relaxed. The exact JSON SHA-256 is `354c7797c1e25ebee143d04d11e23ec92cb93214b7333eed7fcd91dd0493c18f`. |
 
-Status: LEAN_PASS. Official full build and all-1,224-declaration standard-axiom audit passed. Four exact-SHA workflows are required before original-result acceptance. A separate SHA-256 acceptance gate was removed by the latest user instruction.
+Status: PAPER_ACCEPTED. Official full build, all-declaration axiom audit,
+and all four exact proof-SHA workflows passed; see the evidence below.
+A separate SHA-256 acceptance gate was removed by the latest explicit user instruction.
 The manuscript's more precise displayed enclosure bounds must be
 distinguished from the weaker thresholds in the numbered proposition:
 for example a pointwise bound by 0.284481 alone does not establish a
@@ -44,3 +46,7 @@ All names below are in `MarketCrash.OriginalCertificate` unless qualified otherw
 | Exact ledger closure and fixed-market conditions | `CertificateActualData.fixed_conditions` and the actual path factory |
 | Entire numbered result | `MarketCrash.proposition_7_6_original` in `lean/MarketCrash/OriginalCertificateAssembly.lean:1579` |
 | Additional strict minimum-rate bracket | `certificate_minimum_rate_bracket`, for the arbitrary finite-network AC-session fixed-market feasible set, with lower margin 0.0441 and the same upper witness |
+
+## Official verification and acceptance
+
+D01 Proposition 7.6 PAPER_ACCEPTED；证明 SHA `15bec0e04613c040489b71a93595861ae5c82343`；本地完整构建、1224项公理审计PASS；四项同SHA CI SUCCESS：[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033132044)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033082716)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828360)、[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828458)。本次不另列SHA-256验收门（用户最新决定）。
