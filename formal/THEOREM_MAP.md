@@ -1,8 +1,10 @@
 # 论文结果与 Lean 基础映射
 
-状态日期：2026-10-15。权威文本：paper/main.tex；编号遵循共享 section theorem counter。下列 17 项原文由该源码逐项摘录，不含证明。所有整项 Theorem/Proposition 均未完成 Lean 形式化；7.6 的既有机器辅助依据是外部 Python 区间认证，其余依赖纸面证明。Theorem 1.1 为非正式概览。
+状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **16/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
 
-核心 Lean 模块已在本地构建通过（主 agent 验证）；这只覆盖本文件末尾列出的基础引理，不能视作以下任一整项的 Lean 验证。axiom 审计已通过：76 个项目 theorem（包含从物理方程导出的正则路径不可达性）均由 Lean 实际打印依赖，仅使用 propext、Classical.choice、Quot.sound；详见 FORMALIZATION_STATUS.md。
+## 历史基线说明（197声明阶段；不代表当前验收）
+
+该历史阶段固定 Lean/Mathlib 下已审计的数学源码含 **197/197 个 kernel-checked 定理声明**；其中 `proposition_7_1_original_endpoint` 和 `proposition_7_1_single_compensator` 覆盖原文 Proposition 7.1 的完整条件性终端结论。[核审计 CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38983955426)。其余编号结果须按原文全量词单独验收，不能以辅助声明数量替代。
 
 关于 3.1/3.2 的新增 Lean 结果必须注意：已由**全正价格域**的弹性下界导出两类坐标凹性，并在纯恢复离散步骤中证明了势函数非负保持；但**所有可容许路径**（连续交易与恢复同时发生、脉冲交易、终点账本）仍未形式化，因此不能将条件性端点引理升格为原定理的完整证明。全文验收标准见 [Issue #5](https://github.com/Siyuan-chat/market-crash-reachability/issues/5)；新增源文件见 `formal/lean/MarketCrash/CrisisFunctional.lean` 和 `formal/lean/MarketCrash/BarrierEndpoint.lean`。
 
@@ -26,7 +28,7 @@ Under the paired-dollar, resilient market defined in Section~\ref{sec:model}, th
 
 ## Theorem 3.1 — thm:barrier1
 
-证据：paper/main.tex:193。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:193。整项 Lean 状态：**PAPER_ACCEPTED**；B02 Theorem 3.1 PAPER_ACCEPTED；证明 SHA `dbb5c784b07b6f8fc5ec3738410346fffc7cc47c`；本地完整构建、360项公理审计及245项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617907)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617901)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617894)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39012617891)。 canonical `theorem_3_1_original`；见 B02_SCOPE_AUDIT.md。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
 
 ```latex
 \begin{theorem}[Barrier to a decline of every asset]\label{thm:barrier1}
@@ -36,7 +38,7 @@ If $e(S)\ge1$ at all prices attainable by admissible paths, then $S_i(t)<F$ for 
 
 ## Theorem 3.2 — thm:barrier2
 
-证据：paper/main.tex:200。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:200。整项 Lean 状态：**PAPER_ACCEPTED**。B03 Theorem 3.2 PAPER_ACCEPTED；证明 SHA `e80b03c0431ab0a8de444931f96ffa037e2b68f2`；本地全量构建、362项公理审计及247项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013188459)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013188372)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013188404)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013188355)。 canonical `theorem_3_2_original`，详见 B03_SCOPE_AUDIT.md。
 
 ```latex
 \begin{theorem}[Barrier to a systemic crisis of any breadth]\label{thm:barrier2}
@@ -50,7 +52,7 @@ Thus no strictly positive systemic terminal-crisis threshold can be reached.
 
 ## Theorem 4.1 — thm:ABC
 
-证据：paper/main.tex:241。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:241。整项 Lean 状态：**PAPER_ACCEPTED**。C06 Theorem 4.1 PAPER_ACCEPTED；证明 SHA `37e9c89c106cd85735ff2a500a922f32802f8d15`；本地完整构建、787项公理审计及291项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946468)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946511)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946465)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39021946461)。 canonical `theorem_4_1_original`，见 C06_SCOPE_AUDIT.md。
 
 ```latex
 \begin{theorem}[A/B/C reachability regimes]\label{thm:ABC}
@@ -66,7 +68,7 @@ The constants in (C) may depend on $N,T,F,\rho,\eta$, but not on $\delta$. They 
 
 ## Proposition 4.2 — prop:three-pulse
 
-证据：paper/main.tex:262。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:262。整项 Lean 状态：**PAPER_ACCEPTED**，完整三脉冲与公共余项已验收，精确SHA/CI如下。
 
 ```latex
 \begin{proposition}[Local all-asset decline]\label{prop:three-pulse}
@@ -78,9 +80,11 @@ for sufficiently small $h>0$.
 \end{proposition}
 ```
 
+C01 Proposition 4.2 PAPER_ACCEPTED；证明 SHA `c58a3287c94d3bcc56386a7715657fad489ec8be`；本地全量构建、500项公理审计和264项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39015791535)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39015791496)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39015791519)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39015791505)。 canonical `proposition_4_2_original_uniform`，见 C01_SCOPE_AUDIT.md。
+
 ## Proposition 4.3 — prop:two-pulse
 
-证据：paper/main.tex:273。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:273。整项 Lean 状态：**PAPER_ACCEPTED**。C02 Proposition 4.3 PAPER_ACCEPTED；证明 SHA `e28dc8bb9eb415be3974a947aae7e4bc6361c7d3`；本地全量构建、502项公理审计和266项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534598)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534620)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534597)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39016534616)。 canonical `proposition_4_3_original`，见 C02_SCOPE_AUDIT.md。
 
 ```latex
 \begin{proposition}[Local partial-coverage decline]\label{prop:two-pulse}
@@ -93,7 +97,7 @@ Let $k<N$, $e_0=e(F)<2$, and $r=e^{-\rho T}<2-e_0$. Select a zero-sum dollar dir
 
 ## Theorem 4.4 — thm:critical
 
-证据：paper/main.tex:297。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:296。整项 Lean 状态：**PAPER_ACCEPTED**。C05 Theorem 4.4 PAPER_ACCEPTED；证明 SHA `74f023fc5d129cebeb9874f5fe7c35b663029d3d`；本地完整构建、695项公理审计及281项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411221)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411126)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411114)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39020411156)。 canonical `theorem_4_4_original`及finite-resource sibling，见 C05_SCOPE_AUDIT.md。
 
 ```latex
 \begin{theorem}[Sharp all-asset horizon threshold]\label{thm:critical}
@@ -108,7 +112,7 @@ For every $\delta\in(0,\delta_{\mathrm{crit}}(N,T))$, some admissible terminally
 
 ## Theorem 5.1 — thm:resource
 
-证据：paper/main.tex:317。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:317。整项 Lean 状态：**PAPER_ACCEPTED**。B04 Theorem 5.1 PAPER_ACCEPTED；证明 SHA `a1415e9745b65581a3c3053cc45be56c3763181c`；本地全量构建、413项公理审计及251项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013767964)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013767913)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013768014)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013768057)。 canonical `theorem_5_1_original`；见 B04_SCOPE_AUDIT.md。
 
 ```latex
 \begin{theorem}[Execution-resource lower bounds]\label{thm:resource}
@@ -127,7 +131,7 @@ These inequalities are necessary, not sufficient, and need not be sharp.
 
 ## Proposition 6.1 — prop:rate-band
 
-证据：paper/main.tex:365。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:365。整项 Lean 状态：**PAPER_ACCEPTED，`de95f967b533794677012281432b401aab4517b3` 四项同 SHA CI 全绿**。完整定理族：`proposition_6_1_rate_only`、`proposition_6_1_rate_band`、`proposition_6_1_hypothetical_reset`；全量本地构建和245项公理审计通过，量词/假设映射见 [A02_SCOPE_AUDIT.md](A02_SCOPE_AUDIT.md)。
 
 ```latex
 \begin{proposition}[Rate and price-band exclusion certificates]\label{prop:rate-band}
@@ -156,7 +160,7 @@ Thus a daily band cannot be interpreted as a permanent, fixed-baseline ban on a 
 
 ## Theorem 6.2 — thm:quadratic-rate
 
-证据：paper/main.tex:411。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:411。整项 Lean 状态：**PAPER_ACCEPTED**。C04 Theorem 6.2 PAPER_ACCEPTED；证明 SHA `e0196b317f0fb752d715fdfadfe9c9ba9faae698`；本地完整构建、615项公理审计及272项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39019425830)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39019425896)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39019425973)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39019425883)。 canonical `theorem_6_2_original`，见 C04_SCOPE_AUDIT.md。
 
 ```latex
 \begin{theorem}[A quadratic small-rate crisis barrier for constant impact]\label{thm:quadratic-rate}
@@ -177,7 +181,7 @@ In particular, the maximum possible positive crisis severity is $O(\bar v^2)$ as
 
 ## Theorem 6.3 — thm:finite-rate-construct
 
-证据：paper/main.tex:441。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:441。整项 Lean 状态：**PAPER_ACCEPTED**。C03 Theorem 6.3 PAPER_ACCEPTED；证明 SHA `937f8d2e1bb5a2556abeb793ab6aaca723b5ddf5`；本地完整构建、593项公理审计及269项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658676)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658720)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658705)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658632)。 canonical `theorem_6_3_original`与统一参数族，见 C03_SCOPE_AUDIT.md。
 
 ```latex
 \begin{theorem}[Positive all-asset decline with bounded continuous execution]\label{thm:finite-rate-construct}
@@ -191,7 +195,7 @@ The attained loss can be arbitrarily small. This does \emph{not} assert that a p
 
 ## Proposition 7.1 — prop:multiday-crisis-trigger
 
-证据：paper/main.tex:526。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:526。**整项 Lean 状态：PAPER_ACCEPTED（首项验收结果）**。Lean 定理：`proposition_7_1_original_endpoint`、`proposition_7_1_single_compensator`，连同 `proposition_7_1_exact_severity` 及两种分位数情形；197/197 核心定理和公理审计通过。证明严格是原文的**条件性终端等价式**，不声称任意给定收盘配置可以动态实现。
 
 ```latex
 \begin{proposition}[A conditional systemic-crisis trigger test]\label{prop:multiday-crisis-trigger}
@@ -211,7 +215,7 @@ In particular, with a single compensator ($k=N-1$), its terminal price must obey
 
 ## Proposition 7.2 — prop:rolling-rate
 
-证据：paper/main.tex:551。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:551。整项 Lean 状态：**PAPER_ACCEPTED，证明 SHA `5c84995094b736c0231df6d804c8daad638bbfc7`，四项同 SHA CI SUCCESS**。`proposition_7_2_single_session`、`proposition_7_2_rolling_streak`、`proposition_7_2_perpetual_and_integer` 完整覆盖三分支；见 [A03_SCOPE_AUDIT.md](A03_SCOPE_AUDIT.md)。
 
 ```latex
 \begin{proposition}[Rolling-limit shock-rate certificates]\label{prop:rolling-rate}
@@ -235,7 +239,7 @@ The bound is understood only for $\eta\bar v<\rho F$; with a larger rate cap it 
 
 ## Theorem 7.3 — thm:no-second-global
 
-证据：paper/main.tex:577。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:577。整项 Lean 状态：**PAPER_ACCEPTED**。B06 Theorem 7.3 PAPER_ACCEPTED；证明 SHA `d538dd345c33a1ad970463b23aa6a34d1b69be5a`；本地全量构建、436项公理审计和255项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014980258)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014980348)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014980253)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014980257)。 canonical `theorem_7_3_original`，见 B06_SCOPE_AUDIT.md。
 
 ```latex
 \begin{theorem}[An obstruction to a second all-asset limit-down close]\label{thm:no-second-global}
@@ -249,7 +253,7 @@ Then it is impossible for \emph{every} asset to close the second session strictl
 
 ## Proposition 7.4 — prop:streak-precondition
 
-证据：paper/main.tex:600。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:600。整项 Lean 状态：**PAPER_ACCEPTED**。B05 Proposition 7.4 PAPER_ACCEPTED；证明 SHA `131256911c0d21ff837a477cc63c8241ebcb27c7`；本地全量构建、433项公理审计和253项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405730)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405801)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405755)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39014405739)。 canonical `proposition_7_4_original`，见 B05_SCOPE_AUDIT.md。
 
 ```latex
 \begin{proposition}[Preconditioning needed for a dollar-closed limit-down streak]\label{prop:streak-precondition}
@@ -275,11 +279,11 @@ This bound is specific to terminal dollar closure and the absence of above-funda
 
 ## Proposition 7.5 — prop:market-cut
 
-证据：paper/main.tex:626。整项 Lean 状态：未形式化。数学证明状态：原文纸面证明（1.1 仅为概览）；已有符号/数值检查不替代整项形式化。
+证据：paper/main.tex:626。整项 Lean 状态：**PAPER_ACCEPTED，证明 SHA `772d72d6c3b819814ce39a165a1bb56ad6729ee6`，四项同 SHA CI 成功**。完整定理族为 `proposition_7_5_market_cut`、`proposition_7_5_ledger_derivative_bound`、`proposition_7_5_empty_complement`、`proposition_7_5_rolling_constant_impact`。原始价格积分方程到响应坐标积分由已证明的 Lipschitz FTC 导出，不预设端点式。用户明确批准非空 J 与零容量分支边界修正；逐项量词核对见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)。验收分子已从1提高到2；[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704394)；[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704369)；[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704465)；[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704392)。
 
 ```latex
 \begin{proposition}[A market-cut capacity and consecutive-limit lower bound]\label{prop:market-cut}
-Fix a subset $J$ of assets and write $J^c$ for its complement. Under paired-dollar execution and the per-asset gross share-rate cap $\bar v$, every admissible absolutely continuous path satisfies, for almost every $t$,
+Fix a nonempty subset $J$ of assets and write $J^c$ for its complement. Under paired-dollar execution and the per-asset gross share-rate cap $\bar v$, every admissible absolutely continuous path satisfies, for almost every $t$,
 \begin{equation}\label{eq:market-cut-instant}
 \boxed{\left|\sum_{i\in J}\dot X_i(t)\right|\le
 \bar v\min\left\{\sum_{i\in J} S_i(t),\sum_{j\in J^c}S_j(t)\right\}.}
@@ -288,7 +292,7 @@ Suppose that throughout a session $[T_{d-1},T_d]$ of length $\tau_d$, each $i\in
 \begin{equation}\label{eq:cut-required}
 K_{J,d}:=\sum_{i\in J}\big[\Phi_i(s_{i,d-1})-\Phi_i(s_{i,d})\big]>0.
 \end{equation}
-If all compensating assets satisfy $S_j(t)\le U_{j,d}$ during that session, then the session's paired executed-dollar turnover $M_d$ and the required gross-share-rate cap satisfy
+If $J^c\ne\varnothing$ and all compensating assets satisfy $S_j(t)\le U_{j,d}$ during that session, then the session's paired executed-dollar turnover $M_d$ and the required gross-share-rate cap satisfy
 \begin{equation}\label{eq:cut-necessary}
 \boxed{M_d\ge K_{J,d},\qquad
 \bar v\ge\frac{K_{J,d}}{\tau_d\sum_{j\in J^c}U_{j,d}}.}
@@ -299,7 +303,7 @@ When $J^c=\varnothing$, the hypothesized simultaneous strict decrease of all ass
 
 ## Proposition 7.6 — prop:certified-v7
 
-证据：paper/main.tex:660。整项 Lean 状态：未形式化。外部严格区间证书只证明固定 N=10、k=9 的指定路径；不是 Lean 证明或全局最优性证明。
+证据：paper/main.tex:660。整项Lean状态：**PAPER_ACCEPTED**。D01 Proposition 7.6 PAPER_ACCEPTED；证明 SHA `15bec0e04613c040489b71a93595861ae5c82343`；本地完整构建、1224项公理审计PASS；四项同SHA CI SUCCESS：[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033132044)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033082716)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828360)、[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828458)。本次不另列SHA-256验收门（用户最新决定）。 canonical `proposition_7_6_original`，完整范围见D01_SCOPE_AUDIT.md；固定市场附加bracket采用任意有限网络实际AC会话接口。
 
 ```latex
 \begin{proposition}[A computer-assisted two-day rate certificate]\label{prop:certified-v7}
@@ -313,4 +317,4 @@ Every executed price remains inside its rolling session band. Here $M$ counts pa
 
 ## 已编译的局部基础对应
 
-参见 FORMALIZATION_STATUS.md 的逐项 Lean 名称、论文对应和限制。These are local foundations only; no complete paper theorem is claimed formalized.
+参见 FORMALIZATION_STATUS.md 的历史局部基础名称、论文对应和限制；当前完整编号结果验收以本文件逐项状态及 WHOLE_PAPER_LEAN_COMPLETION.md 为准。

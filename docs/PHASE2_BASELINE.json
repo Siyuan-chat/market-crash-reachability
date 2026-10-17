@@ -6,12 +6,22 @@
   "author": "Siyuan Ye",
   "date": "2026-10-15",
   "sha256": {
-    "paper/main.tex": "2e1c739947ef521a82d52830c2abc613cba75d1dbcdcbd02967d2fa75eceecac",
+    "paper/main.tex": "806fcda97e9a2e632255e0a0cb04fb195616523ecbc2495f00ffe21b44297f3e",
     "paper/manuscript.pdf": "1b8dc974190ccda1b19d6fb7aab254feda7f5a38abe0c54cadd6a55ee4abe44c",
     "paper/main.bbl": "27c1ccb48b35027824e8a6f610a780b05683c05a560ad5ecc60c53f78e6fa82b",
     "paper/references.bib": "f9038e15566541be95bf984c46ff6709ad3c34d54a40a026bd60f7e55339710b",
     "supplementary/supplementary.tex": "15959cac27a4c9cbe825c9fd94f004e9a4c08420b6aa2ba2e145b6f93669953e",
     "supplementary/supplementary.pdf": "7b974fd350b86b7fa25ccf680fb81363039a66ded3677b98db0e5fcce0e057da",
     "data/certificates/final_interval_certificate.json": "354c7797c1e25ebee143d04d11e23ec92cb93214b7333eed7fcd91dd0493c18f"
-  }
+  },
+  "source_amendments": [
+    {
+      "date": "2026-10-17",
+      "path": "paper/main.tex",
+      "authorization": "User explicitly approved the A01 nonempty-J and zero-capacity boundary correction in the active Codex session.",
+      "original_sha256": "2e1c739947ef521a82d52830c2abc613cba75d1dbcdcbd02967d2fa75eceecac",
+      "amended_sha256": "806fcda97e9a2e632255e0a0cb04fb195616523ecbc2495f00ffe21b44297f3e",
+      "scope": "Proposition 7.5 only: nonempty J; rate denominator branch requires nonempty complement; k/m specialization m>0. Historical publication commit and PDFs remain archived; CI renders the amended source."
+    }
+  ]
 }

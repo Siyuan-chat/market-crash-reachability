@@ -205,4 +205,385 @@ theorem actual_systemic_crisis_threshold_iff
       (requiredAssetCount (ι := ι) alpha) hk hkn delta,
     meanLogLoss_eq_actual F prices hF hS, hfilter]
 
+
+/-- Product-form terminal-crisis threshold criterion, with the exact
+kth-largest coverage count. This is the finite-dimensional algebraic
+core of Proposition 7.1, before specializing its prescribed closes. -/
+theorem systemicCrisis_product_threshold_iff
+    (q : ι → ℝ) (k : ℕ)
+    (hk : 0 < k) (hkn : k ≤ Fintype.card ι) (delta : ℝ) :
+    delta ≤ systemicCrisis q k ↔
+      (∏ i, Real.exp (q i)) ≤
+        Real.exp (-(Fintype.card ι : ℝ) * delta) ∧
+      k ≤ (Finset.univ.filter (fun i : ι => delta ≤ -q i)).card := by
+  rw [systemicCrisis_threshold_iff q k hk hkn delta]
+  have hn : (0 : ℝ) < (Fintype.card ι : ℝ) := by
+    exact_mod_cast (Fintype.card_pos : 0 < Fintype.card ι)
+  constructor
+  · rintro ⟨hm, hc⟩
+    constructor
+    · have hm' : delta ≤ -(∑ i, q i) / (Fintype.card ι : ℝ) := hm
+      have hmul := (le_div_iff₀ hn).mp hm'
+      have hsum : (∑ i, q i) ≤
+          -(Fintype.card ι : ℝ) * delta := by
+        nlinarith
+      simpa only [Real.exp_sum] using (Real.exp_le_exp.mpr hsum)
+    · exact hc
+  · rintro ⟨hp, hc⟩
+    constructor
+    · have hsum : (∑ i, q i) ≤
+          -(Fintype.card ι : ℝ) * delta := by
+        apply (Real.exp_le_exp).mp
+        simpa only [Real.exp_sum] using hp
+      unfold meanLogLoss
+      apply (le_div_iff₀ hn).mpr
+      nlinarith
+    · exact hc
+
+
+/-- Proposition 7.1 coverage specialization: once k specified assets
+all lose at least delta, the exact systemic-crisis threshold is
+equivalent to the single terminal price-product bound. -/
+theorem systemicCrisis_product_iff_of_prescribed_decliners
+    (q : ι → ℝ) (k : ℕ)
+    (hk : 0 < k) (hkn : k ≤ Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (delta : ℝ)
+    (hloss : ∀ i ∈ decliners, delta ≤ -q i) :
+    delta ≤ systemicCrisis q k ↔
+      (∏ i, Real.exp (q i)) ≤
+        Real.exp (-(Fintype.card ι : ℝ) * delta) := by
+  rw [systemicCrisis_product_threshold_iff q k hk hkn delta]
+  have hsubset : decliners ⊆
+      Finset.univ.filter (fun i : ι => delta ≤ -q i) := by
+    intro i hi
+    exact Finset.mem_filter.mpr ⟨Finset.mem_univ i, hloss i hi⟩
+  have hcoverage : k ≤
+      (Finset.univ.filter (fun i : ι => delta ≤ -q i)).card := by
+    rw [← hcard]
+    exact Finset.card_le_card hsubset
+  simp [hcoverage]
+
+
+/-- Proposition 7.1's prescribed common-loss specialization.
+For k specified assets closing at log price -D*lambda, a threshold
+delta <= D*lambda automatically satisfies the exact breadth requirement.
+The remaining price-product identity can then be checked independently. -/
+theorem systemicCrisis_product_iff_of_common_decliner_log_close
+    (q : ι → ℝ) (k : ℕ)
+    (hk : 0 < k) (hkn : k ≤ Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (D lambda delta : ℝ)
+    (hthreshold : delta ≤ D * lambda)
+    (hclose : ∀ i ∈ decliners, q i = -(D * lambda)) :
+    delta ≤ systemicCrisis q k ↔
+      (∏ i, Real.exp (q i)) ≤
+        Real.exp (-(Fintype.card ι : ℝ) * delta) := by
+  apply systemicCrisis_product_iff_of_prescribed_decliners
+    q k hk hkn decliners hcard delta
+  intro i hi
+  rw [hclose i hi]
+  linarith
+
+
+/-- Proposition 7.1: the specified k streaking assets and the
+remaining arbitrary positive compensator prices. The product is over
+exactly the N-k complementary assets, not over a fictitious market. -/
+theorem proposition_7_1_terminal_product
+    [DecidableEq ι]
+    (prices : ι → ℝ) (F : ℝ) (hF : 0 < F)
+    (hp : ∀ i, 0 < prices i)
+    (decliners : Finset ι) (k : ℕ)
+    (hcard : decliners.card = k) (hk : 0 < k)
+    (hkn : k ≤ Fintype.card ι)
+    (D lambda delta : ℝ)
+    (hthreshold : delta ≤ D * lambda)
+    (hclose : ∀ i ∈ decliners,
+      prices i / F = Real.exp (-(D * lambda))) :
+    delta ≤ systemicCrisis (logPriceFromBenchmark F prices) k ↔
+      (∏ i ∈ Finset.univ \ decliners, prices i / F) ≤
+        Real.exp ((k : ℝ) * (D * lambda) -
+          (Fintype.card ι : ℝ) * delta) := by
+  classical
+  let q : ι → ℝ := logPriceFromBenchmark F prices
+  have hq : ∀ i, Real.exp (q i) = prices i / F := by
+    intro i
+    exact Real.exp_log (div_pos (hp i) hF)
+  have hcloseq : ∀ i ∈ decliners, q i = -(D * lambda) := by
+    intro i hi
+    unfold q logPriceFromBenchmark
+    rw [hclose i hi, Real.log_exp]
+  have hbase :=
+    systemicCrisis_product_iff_of_common_decliner_log_close
+      q k hk hkn decliners hcard D lambda delta hthreshold hcloseq
+  rw [hbase]
+  have hsubset : decliners ⊆ (Finset.univ : Finset ι) :=
+    Finset.subset_univ _
+  have hsplit := Finset.prod_sdiff
+    (f := fun i => Real.exp (q i)) hsubset
+  have hdecl : (∏ i ∈ decliners, Real.exp (q i)) =
+      Real.exp (-(k : ℝ) * (D * lambda)) := by
+    rw [← Real.exp_sum]
+    have hsum : (∑ i ∈ decliners, q i) =
+        -(k : ℝ) * (D * lambda) := by
+      calc
+        (∑ i ∈ decliners, q i) =
+            ∑ _i ∈ decliners, -(D * lambda) := by
+              apply Finset.sum_congr rfl
+              intro i hi
+              exact hcloseq i hi
+        _ = -(k : ℝ) * (D * lambda) := by
+          simp [hcard]
+    rw [hsum]
+  have hrest : (∏ i ∈ Finset.univ \ decliners, Real.exp (q i)) =
+      (∏ i ∈ Finset.univ \ decliners, prices i / F) := by
+    apply Finset.prod_congr rfl
+    intro i _
+    exact hq i
+  have hfull : (∏ i, Real.exp (q i)) =
+      Real.exp (-(k : ℝ) * (D * lambda)) *
+        (∏ i ∈ Finset.univ \ decliners, prices i / F) := by
+    rw [← hsplit, hdecl, hrest, mul_comm]
+  rw [hfull]
+  constructor
+  · intro h
+    have hm := mul_le_mul_of_nonneg_left h
+      (Real.exp_pos ((k : ℝ) * (D * lambda))).le
+    have hc : Real.exp ((k : ℝ) * (D * lambda)) *
+        Real.exp (-(k : ℝ) * (D * lambda)) = 1 := by
+      rw [← Real.exp_add]
+      have he : (k : ℝ) * (D * lambda) +
+          -(k : ℝ) * (D * lambda) = 0 := by ring
+      rw [he, Real.exp_zero]
+    rw [← mul_assoc, hc, one_mul] at hm
+    rw [← Real.exp_add] at hm
+    simpa only [sub_eq_add_neg, neg_mul] using hm
+  · intro h
+    have hm := mul_le_mul_of_nonneg_left h
+      (Real.exp_pos (-((k : ℝ) * (D * lambda)))).le
+    rw [← Real.exp_add] at hm
+    have he : -((k : ℝ) * (D * lambda)) +
+        ((k : ℝ) * (D * lambda) -
+          (Fintype.card ι : ℝ) * delta) =
+        -((Fintype.card ι : ℝ) * delta) := by ring
+    rw [he] at hm
+    simpa only [neg_mul] using hm
+
+
+/-- Exact kth largest loss for the prescribed streak, when none of
+the compensating assets loses more than the common streak amount. -/
+theorem proposition_7_1_quantile_of_compensator_losses
+    (q : ι → ℝ) (k : ℕ) (hk : 0 < k)
+    (hkn : k ≤ Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (c : ℝ) (hclose : ∀ i ∈ decliners, q i = -c)
+    (hother : ∀ i ∉ decliners, -q i ≤ c) :
+    coverageQuantile q k = c := by
+  classical
+  have hsubset : decliners ⊆
+      Finset.univ.filter (fun i : ι => c ≤ -q i) := by
+    intro i hi
+    exact Finset.mem_filter.mpr
+      ⟨Finset.mem_univ i, by simpa [hclose i hi]⟩
+  have hcount : k ≤
+      (Finset.univ.filter (fun i : ι => c ≤ -q i)).card := by
+    rw [← hcard]
+    exact Finset.card_le_card hsubset
+  have hlow : c ≤ coverageQuantile q k :=
+    (coverageQuantile_threshold_iff q k hk hkn c).mpr hcount
+  obtain ⟨i, _, heq, _⟩ := coverageQuantile_eq_max_candidate q k hk hkn
+  have hhigh : coverageQuantile q k ≤ c := by
+    rw [heq]
+    by_cases hi : i ∈ decliners
+    · simp [hclose i hi]
+    · exact hother i hi
+  exact le_antisymm hhigh hlow
+
+/-- The same kth-largest identity when the k streaking assets form
+a strict majority: fewer than k compensators can exceed their loss. -/
+theorem proposition_7_1_quantile_of_strict_majority
+    [DecidableEq ι]
+    (q : ι → ℝ) (k : ℕ) (hk : 0 < k)
+    (hkn : k ≤ Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (c : ℝ) (hclose : ∀ i ∈ decliners, q i = -c)
+    (hmajor : Fintype.card ι < 2 * k) :
+    coverageQuantile q k = c := by
+  classical
+  have hcover : decliners ⊆
+      Finset.univ.filter (fun i : ι => c ≤ -q i) := by
+    intro i hi
+    exact Finset.mem_filter.mpr
+      ⟨Finset.mem_univ i, by simpa [hclose i hi]⟩
+  have hcount : k ≤
+      (Finset.univ.filter (fun i : ι => c ≤ -q i)).card := by
+    rw [← hcard]
+    exact Finset.card_le_card hcover
+  have hlow : c ≤ coverageQuantile q k :=
+    (coverageQuantile_threshold_iff q k hk hkn c).mpr hcount
+  obtain ⟨i, hi, heq, _⟩ := coverageQuantile_eq_max_candidate q k hk hkn
+  have hhigh : coverageQuantile q k ≤ c := by
+    rw [heq]
+    by_contra hbad
+    have hgt : c < -q i := lt_of_not_ge hbad
+    have hsubset : (Finset.univ.filter
+        (fun j : ι => -q i ≤ -q j)) ⊆
+        (Finset.univ \ decliners) := by
+      intro j hj
+      apply Finset.mem_sdiff.mpr
+      refine ⟨Finset.mem_univ j, ?_⟩
+      intro hjdecl
+      have hjloss := (Finset.mem_filter.mp hj).2
+      rw [hclose j hjdecl] at hjloss
+      linarith
+    have he : k ≤ (Finset.univ.filter
+        (fun j : ι => -q i ≤ -q j)).card :=
+      (Finset.mem_filter.mp hi).2
+    have hcomp : (Finset.univ \ decliners).card =
+        Fintype.card ι - k := by
+      simp [Finset.card_sdiff (Finset.subset_univ decliners), hcard]
+    have hb := Finset.card_le_card hsubset
+    rw [hcomp] at hb
+    omega
+  exact le_antisymm hhigh hlow
+
+/-- The exact severity expression in Proposition 7.1 under either of
+the paper's two alternative hypotheses for the kth-largest loss. -/
+theorem proposition_7_1_exact_severity
+    [DecidableEq ι]
+    (q : ι → ℝ) (k : ℕ) (hk : 0 < k)
+    (hkn : k ≤ Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (c : ℝ) (hclose : ∀ i ∈ decliners, q i = -c)
+    (hcondition : (∀ i ∉ decliners, -q i ≤ c) ∨
+      Fintype.card ι < 2 * k) :
+    systemicCrisis q k =
+      min c (((k : ℝ) * c -
+        (∑ i ∈ Finset.univ \ decliners, q i)) /
+        (Fintype.card ι : ℝ)) := by
+  classical
+  have hquantile : coverageQuantile q k = c := by
+    rcases hcondition with hother | hmajor
+    · exact proposition_7_1_quantile_of_compensator_losses
+        q k hk hkn decliners hcard c hclose hother
+    · exact proposition_7_1_quantile_of_strict_majority
+        q k hk hkn decliners hcard c hclose hmajor
+  have hd : (∑ i ∈ decliners, q i) = -((k : ℝ) * c) := by
+    calc
+      (∑ i ∈ decliners, q i) =
+          ∑ _i ∈ decliners, -c := by
+            apply Finset.sum_congr rfl
+            intro i hi
+            exact hclose i hi
+      _ = -((k : ℝ) * c) := by simp [hcard]
+  have hsplit := Finset.sum_sdiff
+    (f := q) (Finset.subset_univ decliners)
+  have htotal : (∑ i, q i) =
+      (∑ i ∈ Finset.univ \ decliners, q i) -
+        (k : ℝ) * c := by
+    calc
+      (∑ i, q i) =
+          (∑ i ∈ Finset.univ \ decliners, q i) +
+            (∑ i ∈ decliners, q i) := hsplit.symm
+      _ = (∑ i ∈ Finset.univ \ decliners, q i) -
+          (k : ℝ) * c := by rw [hd]; ring
+  calc
+    systemicCrisis q k = min (meanLogLoss q) c := by
+      rw [systemicCrisis, hquantile]
+    _ = min c (meanLogLoss q) := min_comm _ _
+    _ = min c (((k : ℝ) * c -
+      (∑ i ∈ Finset.univ \ decliners, q i)) /
+      (Fintype.card ι : ℝ)) := by
+        congr 1
+        unfold meanLogLoss
+        rw [htotal]
+        ring
+
+
+/-- Full conditional endpoint content of manuscript Proposition 7.1:
+the prescribed k = ceil(alpha*N) assets close at F*r^D with
+0 < r < 1, and every complementary close is arbitrary but positive.
+Both the trigger product and the exact severity under either of the
+paper's quantile side conditions are conclusions, not assumed laws. -/
+theorem proposition_7_1_original_endpoint
+    [DecidableEq ι]
+    (prices : ι → ℝ) (F : ℝ) (hF : 0 < F)
+    (hp : ∀ i, 0 < prices i)
+    (alpha : ℝ) (halpha : 0 < alpha) (hale : alpha ≤ 1)
+    (k : ℕ) (hkeq : k = requiredAssetCount (ι := ι) alpha)
+    (hklt : k < Fintype.card ι)
+    (decliners : Finset ι) (hcard : decliners.card = k)
+    (r : ℝ) (hr : 0 < r) (hr1 : r < 1)
+    (D : ℕ) (delta : ℝ)
+    (hdelta : 0 < delta)
+    (hthreshold : delta ≤ (D : ℝ) * (-Real.log r))
+    (hclose : ∀ i ∈ decliners, prices i = F * r ^ D) :
+    (delta ≤ systemicCrisis (logPriceFromBenchmark F prices) k ↔
+      (∏ i ∈ Finset.univ \ decliners, prices i / F) ≤
+        Real.exp ((k : ℝ) * ((D : ℝ) * (-Real.log r)) -
+          (Fintype.card ι : ℝ) * delta)) ∧
+    (((∀ i ∉ decliners,
+        -logPriceFromBenchmark F prices i ≤ (D : ℝ) * (-Real.log r)) ∨
+        Fintype.card ι < 2 * k) →
+      systemicCrisis (logPriceFromBenchmark F prices) k =
+        min ((D : ℝ) * (-Real.log r))
+          (((k : ℝ) * ((D : ℝ) * (-Real.log r)) -
+            (∑ i ∈ Finset.univ \ decliners,
+              Real.log (prices i / F))) /
+            (Fintype.card ι : ℝ))) := by
+  classical
+  obtain ⟨hkpos, hkn⟩ :=
+    requiredAssetCount_valid (ι := ι) alpha halpha hale
+  have hk : 0 < k := by rw [hkeq]; exact hkpos
+  have hkle : k ≤ Fintype.card ι := hklt.le
+  let lambda : ℝ := -Real.log r
+  have he : Real.exp (-((D : ℝ) * lambda)) = r ^ D := by
+    change Real.exp (-((D : ℝ) * (-Real.log r))) = r ^ D
+    rw [show -((D : ℝ) * (-Real.log r)) =
+      (D : ℝ) * Real.log r by ring,
+      Real.exp_nat_mul, Real.exp_log hr]
+  have hratio : ∀ i ∈ decliners,
+      prices i / F = Real.exp (-((D : ℝ) * lambda)) := by
+    intro i hi
+    rw [hclose i hi, he]
+    field_simp [hF.ne']
+  have hqclose : ∀ i ∈ decliners,
+      logPriceFromBenchmark F prices i = -((D : ℝ) * lambda) := by
+    intro i hi
+    unfold logPriceFromBenchmark
+    rw [hratio i hi, Real.log_exp]
+  constructor
+  · exact proposition_7_1_terminal_product
+      prices F hF hp decliners k hcard hk hkle
+      (D : ℝ) lambda delta hthreshold hratio
+  · intro hcondition
+    have hseverity := proposition_7_1_exact_severity
+      (logPriceFromBenchmark F prices) k hk hkle
+      decliners hcard ((D : ℝ) * lambda) hqclose hcondition
+    simpa only [lambda, logPriceFromBenchmark] using hseverity
+
+
+/-- Proposition 7.1's single-compensator corollary: when k=N-1,
+the complementary product reduces to the one receiver's closing price. -/
+theorem proposition_7_1_single_compensator
+    [DecidableEq ι]
+    (prices : ι → ℝ) (F : ℝ) (hF : 0 < F)
+    (hp : ∀ i, 0 < prices i)
+    (decliners : Finset ι) (k : ℕ)
+    (hcard : decliners.card = k) (hk : 0 < k)
+    (hkn : k ≤ Fintype.card ι)
+    (j : ι) (hcomp : (Finset.univ \ decliners) = {j})
+    (D lambda delta : ℝ)
+    (hthreshold : delta ≤ D * lambda)
+    (hclose : ∀ i ∈ decliners,
+      prices i / F = Real.exp (-(D * lambda))) :
+    delta ≤ systemicCrisis (logPriceFromBenchmark F prices) k ↔
+      prices j / F ≤
+        Real.exp ((k : ℝ) * (D * lambda) -
+          (Fintype.card ι : ℝ) * delta) := by
+  have h := proposition_7_1_terminal_product
+    prices F hF hp decliners k hcard hk hkn
+    D lambda delta hthreshold hclose
+  simpa only [hcomp, Finset.prod_singleton] using h
+
 end MarketCrash

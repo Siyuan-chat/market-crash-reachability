@@ -592,7 +592,7 @@ Integrate the identity $\dd\Phi(S_i)=\dd X_i-\rho S_i(S_i-F)\dd t/g(S_i)$ over t
 \subsection{A necessary receiving-capacity bound for multiasset execution}\label{subsec:multiday-cut}
 The preceding tests constrain the falling stocks individually or the entire market collectively. Neither captures an intermediate case central to systemic crises: \emph{most} assets fall, while a small complement remains to settle the opposite dollars. This is precisely the $k<N$ case behind the A/B/C construction. Structural reachability says a compensator can exist; execution feasibility asks \emph{how much its allowed gross share rate and price band can absorb}. We partition the assets into a falling subset $J$ and its complement $J^c$. Conservation and per-asset gross rates directly bound how many executed dollars can cross this partition. This is a \emph{necessary subset-capacity inequality} for a complete trading graph with node-level gross-rate caps and no separate edge capacities. The inequality connects a structurally permitted partial-coverage loss to the ability of the non-falling assets to receive the required executed dollars.
 \begin{proposition}[A market-cut capacity and consecutive-limit lower bound]\label{prop:market-cut}
-Fix a subset $J$ of assets and write $J^c$ for its complement. Under paired-dollar execution and the per-asset gross share-rate cap $\bar v$, every admissible absolutely continuous path satisfies, for almost every $t$,
+Fix a nonempty subset $J$ of assets and write $J^c$ for its complement. Under paired-dollar execution and the per-asset gross share-rate cap $\bar v$, every admissible absolutely continuous path satisfies, for almost every $t$,
 \begin{equation}\label{eq:market-cut-instant}
 \boxed{\left|\sum_{i\in J}\dot X_i(t)\right|\le
 \bar v\min\left\{\sum_{i\in J} S_i(t),\sum_{j\in J^c}S_j(t)\right\}.}
@@ -601,7 +601,7 @@ Suppose that throughout a session $[T_{d-1},T_d]$ of length $\tau_d$, each $i\in
 \begin{equation}\label{eq:cut-required}
 K_{J,d}:=\sum_{i\in J}\big[\Phi_i(s_{i,d-1})-\Phi_i(s_{i,d})\big]>0.
 \end{equation}
-If all compensating assets satisfy $S_j(t)\le U_{j,d}$ during that session, then the session's paired executed-dollar turnover $M_d$ and the required gross-share-rate cap satisfy
+If $J^c\ne\varnothing$ and all compensating assets satisfy $S_j(t)\le U_{j,d}$ during that session, then the session's paired executed-dollar turnover $M_d$ and the required gross-share-rate cap satisfy
 \begin{equation}\label{eq:cut-necessary}
 \boxed{M_d\ge K_{J,d},\qquad
 \bar v\ge\frac{K_{J,d}}{\tau_d\sum_{j\in J^c}U_{j,d}}.}
@@ -616,7 +616,7 @@ The integral is nonpositive for $i\in J$, hence $\sum_{i\in J}\Delta X_i\le-K_{J
 \end{proof}
 Notice how the structural and execution arguments now meet. If $J^c$ is empty, the cut has no receiving side, echoing the all-asset obstruction. If $J^c$ is nonempty, a path may be structurally permitted but still require a rate above the complement's available capacity. The same remaining assets have a second, opposing effect on the crisis functional: their price appreciation can offset the falling majority's average log loss, as measured by Proposition~\ref{prop:multiday-crisis-trigger}. Feasibility therefore requires \emph{both} sufficient funding absorption and sufficient uncompensated average loss.
 
-For constant per-share impact $g_i\equiv\eta$, $k=|J|$ identical lower-limit assets, initial benchmark $F$, common lower-limit ratio $q\in(0,1)$, and $m=N-k$ compensators with common upper-band fraction $\beta_{c,+}$, the $d$th-day specialization is
+For constant per-share impact $g_i\equiv\eta$, $k=|J|$ identical lower-limit assets, initial benchmark $F$, common lower-limit ratio $q\in(0,1)$, and $m=N-k>0$ compensators with common upper-band fraction $\beta_{c,+}$, the $d$th-day specialization is
 \begin{equation}\label{eq:cut-special}
 \boxed{\bar v\ge \frac{k}{m}\,
 \frac{F\,\big(q^{2(d-1)}-q^{2d}\big)}{2\eta\tau_d(1+\beta_{c,+})^{d}}\quad(d\ge2),}
