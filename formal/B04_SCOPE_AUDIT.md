@@ -23,5 +23,4 @@ price band, sufficiency, or closure of shares is added.
 
 Status: all three clauses combined in one canonical theorem; formal integration
 and full Lean 4.19.0 project build PASS; all 413 project declarations audited
-with standard axioms only; 251 release SHA-256 entries PASS. Exact-SHA four-CI
-remains pending. Not accepted.
+with standard axioms only; 251 release SHA-256 entries PASS. B04 Theorem 5.1 PAPER_ACCEPTED；证明 SHA `a1415e9745b65581a3c3053cc45be56c3763181c`；本地全量构建、413项公理审计及251项哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013767964)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013767913)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013768014)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39013768057)。
