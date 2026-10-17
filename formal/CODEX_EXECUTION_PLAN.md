@@ -70,7 +70,7 @@ All statuses below refer to original-paper **full acceptance**, not helper proof
 | C06 | Theorem 4.1 | TODO | B03, B04, C02, C05; p-family | All A/B/C regimes, fixed resource bounds and p=0 δ-independent budgets |
 | D01 | Proposition 7.6 | TODO | certificate assets; B/C financial fidelity | Actual N=10 two-day rational interval witness verified and linked to a Lean theorem |
 
-**Total:** 15 rows for 15 remaining numbered results. B01 is a shared non-counted prerequisite, not a 16th deliverable. At any time accepted = 1 + number of PAPER_ACCEPTED rows.
+**Total:** 16 work items: 15 rows corresponding to the 15 remaining original numbered results, plus the non-counted shared physical-model bridge B01. At any time accepted = 1 + number of PAPER_ACCEPTED **numbered-result** rows.
 
 ## Detailed execution orders and acceptance
 
