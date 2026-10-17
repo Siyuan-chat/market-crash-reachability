@@ -92,7 +92,7 @@ Cite Siyuan Ye, *When Can Markets Crash Without News?*, V12 Final (2026),
 and identify the software version and commit used. Machine-readable metadata
 is in [CITATION.cff](CITATION.cff). The public repository is
 [Siyuan-chat/market-crash-reachability](https://github.com/Siyuan-chat/market-crash-reachability).
-The paper is available on [Zenodo](https://doi.org/10.5281/zenodo.23427880)
+The paper is available on [Zenodo](https://doi.org/10.5281/zenodo.23438609)
 and [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079).
 These are preprint records; no journal acceptance is asserted. The
 [CITATION.cff](CITATION.cff) metadata describes the reproducibility software.
