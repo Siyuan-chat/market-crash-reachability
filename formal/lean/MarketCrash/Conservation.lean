@@ -86,9 +86,9 @@ theorem market_cut_instantaneous_bound
     linarith
   have hleft := hbound J
   have hright := hbound (Finset.univ \ J)
-  rw [hcut, abs_neg] at hleft ⊢
   apply le_min
   · exact hleft
-  · exact hright
+  · rw [hcut, abs_neg]
+    exact hright
 
 end MarketCrash
