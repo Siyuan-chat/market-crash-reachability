@@ -1,5 +1,9 @@
 cff-version: 1.2.0
-message: "Please cite the manuscript for mathematical results and this software version and commit for computations."
+message: >-
+  Please cite the manuscript for mathematical results and the fixed software
+  archive DOI, version and commit for computations. Later citation and README
+  updates are outside this immutable snapshot. MIT applies to software only;
+  research artifacts and third-party materials retain the terms in NOTICE.md.
 type: software
 abstract: >-
   Reproducibility software for a theoretical study of endogenous systemic
@@ -21,16 +25,23 @@ title: "When Can Markets Crash Without News? — Reproducibility Software"
 authors:
   - family-names: Ye
     given-names: Siyuan
-version: 1.0.0rc1
+version: 1.0.0rc1+git.d6e2606
+date-released: 2026-10-17
+commit: d6e2606590f955a6287c6945488a080e5acab004
+doi: 10.5281/zenodo.23428183
 license: MIT
 repository-code: "https://github.com/Siyuan-chat/market-crash-reachability"
-url: "https://github.com/Siyuan-chat/market-crash-reachability"
+url: "https://zenodo.org/records/23428183"
 preferred-citation:
-  type: unpublished
+  type: article
   title: "When Can Markets Crash Without News?"
   authors:
     - family-names: Ye
       given-names: Siyuan
   year: 2026
-  url: "https://github.com/Siyuan-chat/market-crash-reachability/blob/main/paper/manuscript.pdf"
-  notes: "V12 Final manuscript; no arXiv identifier or archival DOI has been issued."
+  doi: 10.5281/zenodo.23427880
+  url: "https://zenodo.org/records/23427880"
+  notes: >-
+    Public preprint with supplementary material, also available on SSRN:
+    https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079.
+    This is a preprint citation, not a claim of journal acceptance.
