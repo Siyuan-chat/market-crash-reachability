@@ -268,6 +268,72 @@ The common trading experiment across the three response regimes is illustrated i
 \end{figure}
 
 \FloatBarrier
+
+\paragraph{The continuous power-law spectrum}
+The three canonical markets in Theorem~\ref{thm:ABC} are part of a
+continuous family: retain the expression for $g_p$ in
+\eqref{eq:power}, now allowing $0\le p\le2$. Since $e(S)=p$,
+the elasticity barriers and the local constructions distinguish
+two critical exponents. In geometric terms,
+$\Phi_p''(S)=(1-p)/g_p(S)$, while
+$G_p''(q)=F^2(2-p)e^{(2-p)q}/\eta$ for
+$G_p(q)=\Phi_p(Fe^q)$: the two curvatures reach their
+respective thresholds at $p=1$ and $p=2$.
+For $0\le p<2$, the dollar-coordinate
+distance to zero is finite, whereas the share-coordinate distance
+changes character at $p=1$:
+\[
+-\Phi_p(0^+)=\frac{F^2}{\eta(2-p)},\qquad
+-\Psi_p(0^+)=
+\begin{cases}
+\displaystyle\frac{F}{\eta(1-p)},&0\le p<1,\\[3pt]
++\infty,&1\le p<2.
+\end{cases}
+\]
+The inventory potential in~\eqref{eq:E}, evaluated at
+$S=Fe^{-L}$, is for $p\ne1,2$
+\[
+E_p(Fe^{-L})=\frac{F^2}{\eta}
+\left[\frac{e^{(p-1)L}-1}{p-1}
+-\frac{1-e^{-(2-p)L}}{2-p}\right].
+\]
+For $0\le p<1$, its zero-price limit is
+$E_p(0^+)=F^2/[\eta(1-p)(2-p)]<\infty$.
+Proposition~\ref{prop:three-pulse} also makes a small, simultaneous
+decline of every asset locally reachable in this regime.
+Finiteness of the coordinate distances and inventory potential,
+however, does not by itself extend the \emph{uniform-budget,
+arbitrarily severe} construction in Theorem~\ref{thm:ABC}(C)
+beyond the proven $p=0$ case.
+
+At $p=1$, Theorem~\ref{thm:barrier1} excludes simultaneous declines,
+while Proposition~\ref{prop:two-pulse} gives local partial-coverage
+losses at every positive horizon. The potential~\eqref{eq:inventoryb}
+then grows linearly with $L$. For $1<p<2$, simultaneous declines
+remain excluded, but local partial-coverage losses are reachable
+under the sufficient horizon condition
+$e^{-\rho T}<2-p$, or $T>-\log(2-p)/\rho$.
+Here the dollar distance is still finite while
+$E_p(Fe^{-L})\sim F^2e^{(p-1)L}/[\eta(p-1)]$ as $L\to\infty$.
+Indeed, if terminal executed-dollar flows vanish, short sales
+are prohibited, and the initial inventory of a qualifying asset
+is at most $H_0$,~\eqref{eq:share-bound} implies
+\[
+L\le\frac{1}{p-1}\log\!\left[
+1+(p-1)\left(\frac{\eta H_0}{F}+\frac{1}{2-p}\right)
+\right],\qquad 1<p<2.
+\]
+Thus, for fixed $p\in(1,2)$, the inventory-based severity
+ceiling scales at most logarithmically in large $H_0$, rather than
+linearly as for $p=1$. At the second threshold $p=2$,
+$-\Phi_2(0^+)$ diverges and Theorem~\ref{thm:barrier2}
+excludes every positive systemic crisis measure. These
+thresholds distinguish local reachability, boundary resource
+behavior, and the separate global severe-loss theorem;
+they are not claims of uniform attainability under fixed
+execution constraints.
+
+
 \subsection{A sharp boundary when every asset must fall}\label{sec:allcoverage}
 Market C relies on $k<N$. To see why the breadth condition matters beyond a technical assumption, keep \emph{the same constant-impact response} but change the target to $k=N$. There is then no nonqualifying asset available to compensate the other $N-1$ terminal losses. Rather than an arbitrary-severity construction, the model now yields an exact horizon-dependent ceiling, even before a fixed execution budget is imposed.
 

@@ -81,6 +81,54 @@ def main():
     getcontext().prec=35
     Mmin=Decimal(99)/Decimal(500)*Decimal(1).exp()
     assert Decimal("0.5382")<Mmin<Decimal("0.5383")<Decimal(3)
+
+    # Continuous-exponent discussion is unnumbered and does not revise V13/V14 theorems.
+    assert new.count(r"\paragraph{The continuous power-law spectrum}") == 1
+    spectrum=new.split(r"\paragraph{The continuous power-law spectrum}",1)[1].split(
+        r"\subsection{A sharp boundary when every asset must fall}",1)[0]
+    for text in (
+        r"0\le p\le2",
+        r"\Phi_p''(S)=(1-p)/g_p(S)",
+        r"G_p''(q)=F^2(2-p)e^{(2-p)q}/\eta",
+        r"E_p(0^+)=F^2/[\eta(1-p)(2-p)]",
+        r"e^{-\rho T}<2-p",
+        r"T>-\log(2-p)/\rho",
+        r"\frac{\eta H_0}{F}",
+        "beyond the proven $p=0$ case",
+        r"\ref{thm:barrier1}",
+        r"\ref{thm:barrier2}",
+        r"\ref{prop:three-pulse}",
+        r"\ref{prop:two-pulse}",
+    ):
+        assert text in spectrum, ("Missing exponent regime qualification",text)
+
+    # Independent numerical quadrature sanity checks of the elementary potential.
+    import math
+    for p in (0.0, 0.25, 0.75, 1.0, 1.25, 1.75, 1.95):
+        L=1.2
+        if p == 1.0:
+            analytic=L+math.exp(-L)-1.0
+        else:
+            analytic=math.expm1((p-1.0)*L)/(p-1.0) + math.expm1(-(2.0-p)*L)/(2.0-p)
+        low=math.exp(-L)
+        step=(1-low)/600.0
+        def integrand(x):
+            return (1.0-x)*x**(-p)
+        quadrature=(step/3.0)*(integrand(low)+integrand(1.0)+
+            sum((4.0 if j%2 else 2.0)*integrand(low+j*step) for j in range(1,600)))
+        assert math.isclose(analytic,quadrature,rel_tol=5e-9,abs_tol=5e-10), (p,analytic,quadrature)
+    for p in (0.0,0.5,0.75):
+        finite=1/((1-p)*(2-p))
+        assert finite>0
+        L=60.0
+        value=math.expm1((p-1)*L)/(p-1)+math.expm1(-(2-p)*L)/(2-p)
+        assert 0 < value <= finite and abs(value-finite)/finite < 1e-5
+    for p in (1.25,1.75):
+        L=2.0
+        E=math.expm1((p-1)*L)/(p-1)+math.expm1(-(2-p)*L)/(2-p)
+        bound=math.log1p((p-1)*(E+1/(2-p)))/(p-1)
+        assert L <= bound + 1e-12
+    print("PASS continuous exponent potentials, finite boundary limits and inventory cap")
     print("PASS V13 theorem/equation/label preservation, citations, exact endpoint arithmetic")
     print("PASS all-asset necessary M>=",Mmin,"(original budget remains inconclusive)")
 if __name__=="__main__":
