@@ -19,6 +19,8 @@ and its formal proof appear in Section 5 of [main.tex](main.tex), with
 a time-kernel interpretation and three distinct sharpening directions in
 the Discussion. [Detailed proof audit](../../docs/V14_TURNOVER_DISSIPATION_AUDIT.md).
 
+The sublinear uniform-resource theorem now follows the continuous-spectrum discussion and precedes the sharp all-asset horizon subsection. Its mathematical statement is unchanged; the printed theorem numbering updates automatically. The polynomial-root bracket in Section 7 is already correct and independently checked.
+
 The published V13 manuscript, PDF, Lean proofs, and archived numeric certificates
 are unchanged. This draft does not claim any new numerical witness, optimal control,
 or impossibility result, and is not deposited on Zenodo/SSRN. The new Proposition 5.2 and sublinear-impact severe-loss theorem have
