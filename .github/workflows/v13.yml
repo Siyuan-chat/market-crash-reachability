@@ -1,0 +1,33 @@
+name: V13 draft manuscript
+on:
+  pull_request:
+    paths: ['submission/v13-review-response/**', 'scripts/*v13*', '.github/workflows/v13.yml']
+  push:
+    paths: ['submission/v13-review-response/**', 'scripts/*v13*', '.github/workflows/v13.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/check_v13_revision.py
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-science
+      - run: python scripts/build_v13_revision.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v13-draft-manuscript
+          path: |
+            build/v13-review-response/main.pdf
+            build/v13-review-response/main.log
+            build/v13-review-response/main.bbl
+            build/v13-review-response/build_summary.json
+            build/v13-review-response/pdflatex-*.txt
+            build/v13-review-response/bibtex.txt
