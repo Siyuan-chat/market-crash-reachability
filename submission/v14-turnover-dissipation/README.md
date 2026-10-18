@@ -8,8 +8,11 @@ The PDF is built by GitHub Actions and committed to this directory after a succe
 This **complete English manuscript source** extends the published V13 preprint.
 Section 4 now includes a [continuous power-law exponent analysis](../../docs/V14_CONTINUOUS_EXPONENT_SPECTRUM.md)
 covering the two thresholds at p=1 and p=2, with explicit inventory-growth
-comparisons and careful separation of local reachability from the p=0
-global severe-loss construction.
+comparisons. A new **uniform-resource severe-loss theorem** extends the
+partial-coverage global construction from p=0 to every fixed 0<=p<1,
+with a complete generalized-radius appendix proof. No bounds uniform
+as p approaches 1 or finite gross-rate feasibility are claimed.
+See [new theorem proof audit](../../docs/V14_SUBLINEAR_SEVERE_PROOF_AUDIT.md).
 
 The new **Proposition 5.2 (Turnover--dissipation bound under constant impact)**
 and its formal proof appear in Section 5 of [main.tex](main.tex), with
@@ -18,9 +21,9 @@ the Discussion. [Detailed proof audit](../../docs/V14_TURNOVER_DISSIPATION_AUDIT
 
 The published V13 manuscript, PDF, Lean proofs, and archived numeric certificates
 are unchanged. This draft does not claim any new numerical witness, optimal control,
-or impossibility result, and is not deposited on Zenodo/SSRN. The new
-Proposition 5.2 has not been Lean-formalized and is not counted in the
-original 16/16 Lean acceptance report.
+or impossibility result, and is not deposited on Zenodo/SSRN. The new Proposition 5.2 and sublinear-impact severe-loss theorem have
+not been Lean-formalized and are not counted in the original 16/16
+Lean acceptance report.
 
 For constant per-share impact and absolutely continuous paired-dollar controls,
 if prices are bounded below by a>0 and |S_i-F|<=b, writing
@@ -42,3 +45,7 @@ Rebuild with:
 
 The build takes unchanged figure PDFs from the earlier English source directory and
 writes its new output to build/v14-turnover-dissipation.
+
+Independent dollar-ledger reconstruction tests (not a mathematical proof):
+
+    python scripts/check_sublinear_severe_extension.py

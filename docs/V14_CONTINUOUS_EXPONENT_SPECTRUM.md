@@ -5,10 +5,11 @@
 The V14 working manuscript now discusses the continuation
 `g_p(S)=eta*(S/F)^p` from the three representative cases p=0,1,2
 to all real p in [0,2]. Theorem 4.1 retains its original three-point
-statement and proof. This is an **analytical consequence** of previously
-proved local reachability propositions, global elasticity barriers,
-and the general resource integrals, **not a new theorem claiming
-global unbounded severity for every p<1**.
+statement and proof. This now includes an additional **constructive V14 theorem** extending
+uniform finite-resource arbitrarily severe partial-coverage reachability
+to every fixed exponent in [0,1). The proof constructs paired-dollar
+flows and uniform inventory and turnover bounds; the finite resource
+integrals alone are not a proof of reachability.
 
 ## Exact formulas
 
@@ -45,11 +46,13 @@ These are necessary severity ceilings, not optimized maxima.
 
 ## Reachability classification and logical boundary
 
-- p in [0,1): Proposition 4.2 (three-pulse, e(F)<1) proves a
-  **small** terminally dollar-closed simultaneous decline of all assets.
-  Resource integrals to zero are finite, but **finiteness alone
-  does not establish uniform-budget arbitrarily severe losses**.
-  Theorem 4.1(C)'s global severe-loss construction is proven for p=0.
+- p in [0,1): Proposition 4.2 proves a small simultaneous decline of
+  all assets. New Theorem thm:sublinear-severe proves that for every
+  fixed p and every k<N, arbitrarily severe partial-coverage loss
+  is reachable with the same finite horizon, dollar-turnover cap,
+  per-asset inventory cap, positive prices and terminal dollar closure.
+  The l^(2-p)-radial constructive proof appears in Appendix
+  app:sublinear-severe. These resources need not be uniform as p tends to 1.
 - p=1: Theorem 3.1 globally excludes simultaneous declines;
   Proposition 4.3 allows a small partial-coverage crisis for any T>0.
   Inventory potential diverges linearly in log severity.
@@ -70,10 +73,13 @@ phase transitions or as finite-rate feasibility statements.
 ## Verification gates
 
 `scripts/check_v14_resource_bound.py` preserves original V13
-19 mathematical statements and 81 numbered equations, plus only
-the previously-added V14 Proposition 5.2 and two numbered equations.
+19 mathematical statements and 81 numbered equations, plus the V14
+Proposition 5.2 and the new severe-loss theorem, with five additional
+numbered equations in total.
 It also checks the new discussion's local-horizon condition and
 performs independent Simpson numerical quadrature against the
 closed-form inventory-potential formulas for representative
-exponents. These checks complement—but do not replace—formal
-mathematical proof and journal review.
+exponents. Independent numerical consistency checks of the new radial construction
+are run through scripts/check_sublinear_severe_extension.py. The new
+appendix supplies the analytic proof; numerical checks are not a proof,
+and the theorem is not part of the historical Lean 16/16 acceptance.

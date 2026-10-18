@@ -25,20 +25,24 @@ def main():
     extras=[item for item in new_results if item not in old_results]
     missing=[item for item in old_results if item not in new_results]
     assert not missing, ("Historical statements changed",missing)
-    assert len(extras)==1 and extras[0][0]=="proposition", ("Unexpected new results", extras)
-    assert r"\label{prop:turnover-dissipation}" in extras[0][1]
+    assert len(extras)==2, ("Expected one new proposition and one new theorem",extras)
+    assert sorted(item[0] for item in extras)==["proposition","theorem"],extras
+    assert any(r"\label{prop:turnover-dissipation}" in item[1] for item in extras)
+    assert any(r"\label{thm:sublinear-severe}" in item[1] for item in extras)
     old_eq=numbered_equations(old)
     new_eq=numbered_equations(new)
     assert all(eq in new_eq for eq in old_eq), "Historical numbered equations changed"
     extra_eq=[eq for eq in new_eq if eq not in old_eq]
-    assert len(extra_eq)==2, ("Unexpected added numbered equations",len(extra_eq))
+    assert len(extra_eq)==5, ("Unexpected added numbered equations",len(extra_eq))
     assert any(r"\label{eq:V2-identity}" in eq for eq in extra_eq)
     assert any(r"\label{eq:V2-turnover}" in eq for eq in extra_eq)
-    assert len(new_results)==len(old_results)+1
-    assert len(new_eq)==len(old_eq)+2
+    for label in ("eq:sublinear-ledger","eq:sublinear-stage","eq:sublinear-inventory"):
+        assert any(r"\label{"+label+"}" in eq for eq in extra_eq), label
+    assert len(new_results)==len(old_results)+2
+    assert len(new_eq)==len(old_eq)+5
     assert set(re.findall(r"\\label\{([^}]+)\}",old)) <= set(re.findall(r"\\label\{([^}]+)\}",new))
-    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+1
-    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+1
+    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+2
+    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+2
     for term in ("Turnover--dissipation bound under constant impact",
                  "Two-session rolling-band example",
                  r"\sum_i|\dot X_i|\le2\sum_e\dot z_e",
@@ -94,7 +98,7 @@ def main():
         r"e^{-\rho T}<2-p",
         r"T>-\log(2-p)/\rho",
         r"\frac{\eta H_0}{F}",
-        "beyond the proven $p=0$ case",
+        r"\ref{thm:sublinear-severe}",
         r"\ref{thm:barrier1}",
         r"\ref{thm:barrier2}",
         r"\ref{prop:three-pulse}",
@@ -129,7 +133,14 @@ def main():
         bound=math.log1p((p-1)*(E+1/(2-p)))/(p-1)
         assert L <= bound + 1e-12
     print("PASS continuous exponent potentials, finite boundary limits and inventory cap")
-    print("PASS V13 theorem/equation/label preservation, citations, exact endpoint arithmetic")
+    assert r"\section{Sublinear power-law extension of uniform-budget severity}" in new
+    assert r"\label{app:sublinear-severe}" in new
+    assert r"\nu=2-p\in(1,2]" in new
+    assert r"\Cris_\alpha(T)>\delta" in new
+    assert r"b_\varepsilon\in(b_-,\bar b)" in new
+    import subprocess,sys
+    subprocess.run([sys.executable,str(ROOT/"scripts/check_sublinear_severe_extension.py")],cwd=ROOT,check=True)
+    print("PASS V13 original math, V14 new proposition plus sublinear severity theorem")
     print("PASS all-asset necessary M>=",Mmin,"(original budget remains inconclusive)")
 if __name__=="__main__":
     main()
