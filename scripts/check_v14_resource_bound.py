@@ -68,7 +68,7 @@ def main():
     bib=(NEW.parent/"references.bib").read_text()
     for title in ("Crossover from linear to square-root market impact",
                   "Fire sales, indirect contagion and systemic stress testing",
-                  "The flash crash: high-frequency trading in an electronic market"):
+                  "The Flash Crash: High-frequency trading in an electronic market"):
         assert title in bib, ("Bibliography case",title)
     keys=re.findall(r"@\w+\s*\{\s*([^,\s]+)\s*,",bib)
     assert len(set(keys))==len(keys)
@@ -140,6 +140,30 @@ def main():
     assert r"b_\varepsilon\in(b_-,\bar b)" in new
     import subprocess,sys
     subprocess.run([sys.executable,str(ROOT/"scripts/check_sublinear_severe_extension.py")],cwd=ROOT,check=True)
+    # Editorial ordering, title-case, and root-endpoint regression gates.
+    p_spectrum=new.index(r"\paragraph{The continuous power-law spectrum}")
+    p_sublinear=new.index(r"\label{thm:sublinear-severe}")
+    p_kN=new.index(r"\subsection{A sharp boundary when every asset must fall}")
+    p_critical=new.index(r"\label{thm:critical}")
+    assert 0 <= p_spectrum < p_sublinear < p_kN < p_critical
+    assert "The Flash Crash: High-frequency trading in an electronic market" in bib
+    assert "The flash crash: high-frequency trading in an electronic market" not in bib
+    for phrase in (
+        "Accordingly, the elasticity thresholds proved below characterize stability",
+        "volume-recovery specifications with drift",
+        "providing an intrinsic model scale",
+        "multi-session setting under a proportional-reset price-band protocol",
+        "measures benchmark-valued inventory consumption arising from terminal price displacement",
+        "Together, these results clarify the structural and resource boundaries",
+    ):
+        assert phrase in new, ("Missing editorial correction",phrase)
+    for stale in (
+        "not a Tokyo Stock Exchange case study",
+        "We do not claim the corresponding thresholds are invariant",
+        "not as an empirically representative market crash",
+    ):
+        assert stale not in new, ("Old prose restored",stale)
+    print("PASS corrected theorem ordering, bibliography proper noun and prose scope")
     print("PASS V13 original math, V14 new proposition plus sublinear severity theorem")
     print("PASS all-asset necessary M>=",Mmin,"(original budget remains inconclusive)")
 if __name__=="__main__":
