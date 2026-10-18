@@ -4,7 +4,7 @@ import hashlib, json, re, shutil, subprocess, tempfile, zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
 SRC=ROOT/"submission/v14-turnover-dissipation"
-PREV=ROOT/"submission/v13-review-response"
+PREV=ROOT/"submission/siam-language-revision"
 OUT=ROOT/"build/v14-turnover-dissipation"
 ZIP=ROOT/"third_party/siam/siamonline_250211_complete.zip"
 ALLOWED={
