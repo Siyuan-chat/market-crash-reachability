@@ -342,9 +342,9 @@ The preceding coordinate-distance conditions can be complemented by an
 \emph{aggregate} necessary bound for the constant-response law
 $g(S)\equiv\eta>0$. Consider absolutely continuous paired-dollar controls
 started from $S_i(0)=F$ and assume, along their entire paths,
-$S_i(t)\ge a>0$ and $|S_i(t)-F|\le b$. Let
-$q_i(t)=\dot X_i(t)$ and $\dot M(t)=\sum_e\dot z_e(t)$, so that
-$\sum_i q_i=0$ and, crucially, $\sum_i|q_i(t)|\le2\dot M(t)$:
+$S_i(t)\ge a>0$ and $|S_i(t)-F|\le b$. Let $\dot M(t)=\sum_e\dot z_e(t)$ denote the gross paired-dollar
+turnover rate. Dollar pairing implies $\sum_i\dot X_i(t)=0$ and
+$\sum_i|\dot X_i(t)|\le2\dot M(t)$:
 simultaneous inflows and outflows at the same asset may cancel in its
 \emph{net} dollar flow but still count toward gross turnover.
 Define the quadratic price potential
@@ -375,20 +375,19 @@ inequality}
 \end{aligned}
 \]
 To establish the bound, variation of constants in
-$\dot S_i=-\rho(S_i-F)+\eta q_i/S_i$ gives
+$\dot S_i=-\rho(S_i-F)+\eta\dot X_i/S_i$ gives
 \[
 \sum_i|S_i(t)-F|
 \le\frac{\eta}{a}\int_0^t e^{-\rho(t-u)}
-\sum_i|q_i(u)|\dd u
+\sum_i|\dot X_i(u)|\dd u
 \le\frac{2\eta}{a}\int_0^t
 e^{-\rho(t-u)}\dot M(u)\dd u.
 \]
 Use $\sum_i(S_i-F)^2\le b\sum_i|S_i-F|$ in the dissipation
 identity, interchange the nonnegative integrals, and apply
 $\sup_{s\ge0}\rho s e^{-\rho s}=\mathrm e^{-1}$.
-No terminal dollar-ledger closure or optimizing-control hypothesis is
-needed; the bound is necessary, not sufficient, and its constant is
-generally nonsharp.
+The inequality holds without terminal dollar closure and gives a
+generally nonsharp necessary condition.
 
 \paragraph{Illustration for a uniform two-session rolling band}
 For the \emph{separate hypothetical experiment} in which every asset
@@ -412,8 +411,7 @@ insufficient to exclude a budget of $M\le3$. For $k<N$,
 compensating assets may appreciate and offset the negative terminal
 quadratic potential of falling assets. Consequently this aggregate
 bound alone yields no additional positive $k$-only turnover lower bound
-without information on their endpoints. These calculations are
-\emph{analytical screening results}, not new certified crash paths.
+without information on their endpoints.
 
 
 \section{Finite trading rates and abstract price bands}\label{sec:rateband}
@@ -851,13 +849,13 @@ Several natural extensions are outside the scope of the present reachability cla
 \]
 and on the compatible sign of its restoring drift. Matrix symmetry alone is not sufficient. Cross-impact no-dynamic-arbitrage restrictions \citep{AlfonsiKlockSchied2016,SchneiderLillo2019} and empirical multivariate impact \citep{BenzaquenEtAl2017} provide separate benchmarks.
 
-Third, optimizing $\mathcal K_{\min}$, executed-dollar turnover, and the globally minimal constrained gross rate would connect structural reachability with optimal control and intermediary incentives, including strategic predation \citep{BrunnermeierPedersen2005}. The aggregate turnover--dissipation inequality in Section~\ref{sec:budget} does not exploit individual terminal dollar closure and is too weak to rule out the hypothetical original-budget targets of $70\%$ coverage with $20\%$ ordinary losses, $90\%$ coverage with $10\%$ losses, or $100\%$ coverage with $2\%$ losses. Stronger closure-aware and session-aware bounds remain open problems; failure to find a control by numerical optimization is not an impossibility proof. Fourth, empirical implementation would require identifying local impact $g$, price versus volume recovery, trade direction, accessible inventories, and counterparties from order-book and transaction data. A static book snapshot or daily OHLCV sequence does not identify these quantities. The market-microstructure-invariance approach \citep{KyleObizhaeva2023} provides a scaling comparator, not a calibration already performed here. Extensions to stochastic flow or equilibrium selection could address probabilities of no-news crashes, which deterministic existence and exclusion results alone do not determine.
+Third, optimizing $\mathcal K_{\min}$, executed-dollar turnover, and the globally minimal constrained gross rate would connect structural reachability with optimal control and intermediary incentives, including strategic predation \citep{BrunnermeierPedersen2005}. Because the aggregate turnover--dissipation inequality in Section~\ref{sec:budget} does not incorporate per-asset terminal dollar closure or session-by-session band resets, it remains a coarse necessary condition for partial-coverage or moderate drawdown targets under a fixed turnover budget. Deriving tighter closure- and session-aware bounds to connect analytical constraints with numerical control search remains an open problem. Fourth, empirical implementation would require identifying local impact $g$, price versus volume recovery, trade direction, accessible inventories, and counterparties from order-book and transaction data. A static book snapshot or daily OHLCV sequence does not identify these quantities. The market-microstructure-invariance approach \citep{KyleObizhaeva2023} provides a scaling comparator, not a calibration already performed here. Extensions to stochastic flow or equilibrium selection could address probabilities of no-news crashes, which deterministic existence and exclusion results alone do not determine.
 
 \section{Conclusion}\label{sec:conclusion}
-For a specified price-level resilience and paired-dollar execution protocol, the response-adapted coordinate identifies global barriers, feasible partial-coverage regimes, and a sharp full-coverage ceiling. Necessary dollar turnover and inventory are conveniently expressed in the generalized price coordinate and in units of local benchmark impact. For constant impact on a bounded positive-price region, the aggregate quadratic price-potential deficit satisfies an additional turnover-dependent necessary inequality that does not, by itself, settle larger-loss feasibility at fixed resources. A finite gross-rate cap changes the scale of attainable small systemic losses, and one independently interval-certified two-session witness satisfies the simultaneous rate, band, and dollar-ledger requirements. The economic accounting identity makes explicit the benchmark-valued inventory consumed by dollar-closed price pressure. These are structural and resource statements about an idealized market, not a probability, incentive mechanism, or empirical prediction of an exchange-wide crash. Alternative resilience laws, heterogeneous cross-impact and minimum-cost controls offer distinct mathematical directions for future work.
+For a specified price-level resilience and paired-dollar execution protocol, the response-adapted coordinate identifies global barriers, feasible partial-coverage regimes, and a sharp full-coverage ceiling. Necessary dollar turnover and inventory are conveniently expressed in the generalized price coordinate and in units of local benchmark impact. For constant impact on a bounded positive-price region, executed-dollar turnover also bounds the terminal quadratic price-potential deficit. A finite gross-rate cap changes the scale of attainable small systemic losses, and one independently interval-certified two-session witness satisfies the simultaneous rate, band, and dollar-ledger requirements. The economic accounting identity makes explicit the benchmark-valued inventory consumed by dollar-closed price pressure. These are structural and resource statements about an idealized market, not a probability, incentive mechanism, or empirical prediction of an exchange-wide crash. Alternative resilience laws, heterogeneous cross-impact and minimum-cost controls offer distinct mathematical directions for future work.
 
 \section*{Code and numerical data availability}
-The research code, numerical data, certificates, and reproduction instructions are publicly available at \url{https://github.com/Siyuan-chat/market-crash-reachability}. This unpublished research draft is available in \path{submission/v14-turnover-dissipation}, while the deposited V13 manuscript remains a separate, unchanged historical version. The unchanged original computational baseline is associated with \href{https://github.com/Siyuan-chat/market-crash-reachability/tree/ea831c44f5b77b7039dd6644f6f0a791bb74d176}{commit \texttt{ea831c4}}; the frozen software archive is separately identified by \href{https://doi.org/10.5281/zenodo.23428183}{DOI 10.5281/zenodo.23428183}. Appendix~\ref{app:v7certificate} describes the interval certificate and identifies its implementation. Reproduction commands and software requirements are in \path{REPRODUCE.md}; the checksum manifest is \path{release/SHA256SUMS}. The underlying certificate was previously regenerated from source, with independent floating-point ODE and exact-rational consistency checks.
+The research code, numerical data, certificates, and reproduction instructions are publicly available at \url{https://github.com/Siyuan-chat/market-crash-reachability}. The unchanged original computational baseline is associated with \href{https://github.com/Siyuan-chat/market-crash-reachability/tree/ea831c44f5b77b7039dd6644f6f0a791bb74d176}{commit \texttt{ea831c4}}; the frozen software archive is separately identified by \href{https://doi.org/10.5281/zenodo.23428183}{DOI 10.5281/zenodo.23428183}. Appendix~\ref{app:v7certificate} describes the interval certificate and identifies its implementation. Reproduction commands and software requirements are in \path{REPRODUCE.md}; the checksum manifest is \path{release/SHA256SUMS}. The underlying certificate was previously regenerated from source, with independent floating-point ODE and exact-rational consistency checks.
 
 \section*{Declaration on AI-assisted tools}
 AI-assisted tools were used for language editing, manuscript organization, and assisting with verification and figure-generation scripts. The author takes full responsibility for all mathematical proofs, numerical certificates, and scientific content.

@@ -23,10 +23,24 @@ def main():
     assert set(re.findall(r"\\label\{([^}]+)\}",old)) <= set(re.findall(r"\\label\{([^}]+)\}",new))
     for term in ("Turnover--dissipation screening under bounded prices",
                  "Illustration for a uniform two-session rolling band",
-                 r"\sum_i|q_i(t)|\le2\dot M(t)",r"\mathrm e=\exp(1)",
+                 r"\sum_i|\dot X_i(t)|\le2\dot M(t)",r"\mathrm e=\exp(1)",
                  r"M(T)\ge0.5382"):
         assert term in new,("Missing scope/proof",term)
-    assert r"\sum_i|q_i(t)|=2\dot M(t)" not in new
+    assert r"\sum_i|\dot X_i(t)|=2\dot M(t)" not in new
+    block = new.split(r"\paragraph{Turnover--dissipation screening under bounded prices}", 1)[1].split(r"\section{Finite trading rates and abstract price bands}", 1)[0]
+    assert r"q_i(t)=\dot X_i(t)" not in block, "Collision with log-price variable q_i"
+    assert r"1.02020225507905<h<1.02020225507908" in new, "Correct interval missing"
+    assert "1.020225507905" not in new, "Incorrect left endpoint reappeared"
+    f = lambda z: 101600000000*z*z - 97138000000*z - 6646157699
+    getcontext().prec=60
+    assert f(Decimal("1.02020225507905")) < 0 < f(Decimal("1.02020225507908"))
+    assert "the hypothetical original-budget targets" not in new
+    assert "failure to find a control by numerical optimization" not in new
+    assert "This unpublished research draft" not in new
+    for title in ("Crossover from linear to square-root market impact",
+                  "Fire sales, indirect contagion and systemic stress testing",
+                  "The flash crash: high-frequency trading in an electronic market"):
+        assert title in bib, ("Bibliography case",title)
     bib=(NEW.parent/"references.bib").read_text()
     keys=re.findall(r"@\w+\s*\{\s*([^,\s]+)\s*,",bib)
     assert len(set(keys))==len(keys)
