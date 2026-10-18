@@ -31,3 +31,56 @@ jobs:
             build/v14-turnover-dissipation/build_summary.json
             build/v14-turnover-dissipation/pdflatex-*.txt
             build/v14-turnover-dissipation/bibtex.txt
+
+  publish-pdf:
+    name: Commit validated V14 PDF to main
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: v14-turnover-dissipation-pdf
+          path: build/v14-turnover-dissipation
+      - name: Verify PDF identity against successful build
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, os
+
+          output = Path("build/v14-turnover-dissipation")
+          pdf = output / "main.pdf"
+          summary = json.loads((output / "build_summary.json").read_text())
+          content = pdf.read_bytes()
+          assert len(content) > 50000 and content.startswith(b"%PDF-")
+          actual = hashlib.sha256(content).hexdigest()
+          assert not summary["problems"], summary["problems"]
+          assert actual == summary["pdf_sha256"], (actual, summary["pdf_sha256"])
+
+          destination = Path("submission/v14-turnover-dissipation")
+          (destination / "manuscript.pdf").write_bytes(content)
+          summary["source_commit"] = os.environ["GITHUB_SHA"]
+          summary["workflow_run"] = (
+              f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/"
+              f"actions/runs/{os.environ['GITHUB_RUN_ID']}"
+          )
+          (destination / "manuscript-build.json").write_text(
+              json.dumps(summary, indent=2) + "\n"
+          )
+          print("Validated V14 PDF:", actual)
+          PY
+      - name: Commit compiled PDF and provenance
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- submission/v14-turnover-dissipation/manuscript.pdf submission/v14-turnover-dissipation/manuscript-build.json
+          if git diff --cached --quiet; then
+            echo 'V14 PDF already matches current build'
+          else
+            git commit -m "Store V14 compiled PDF and source provenance"
+            git push origin HEAD:main
+          fi
+
