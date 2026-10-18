@@ -912,6 +912,96 @@ Figure~\ref{fig:v7rates} displays the corresponding gross execution rates.
 \end{figure}
 \FloatBarrier
 
+\subsection{Additional loss--breadth witnesses under uniform rolling bands}
+The two-session certificate above uses $3\%$ target bands and a
+$25\%$ receiving-asset band. We also consider a separate hypothetical
+ten-asset model with the same constant impact $g(S)=1$,
+$F=1$, $\rho=0.4$, two sessions of length $20$, and a
+\emph{uniform} symmetric $\pm25\%$ rolling band for every asset.
+All paths in Table~\ref{tab:loss-breadth} are continuous, pair their
+executed dollars, close every asset's terminal dollar ledger, and
+satisfy $\bar v_{\mathrm{used}}<0.285$ and $H_i^-<2$.
+The target-drop and geometric-index-drop columns give
+\emph{strict certified lower bounds} on ordinary price declines;
+the displayed turnover values are rounded from exact rationals.
+
+\begin{table}[t]\centering\footnotesize
+\caption{\textbf{Certified loss--breadth comparisons under finite
+execution.} The original $k=9$ row uses the mixed $3\%/25\%$
+bands of Proposition~\ref{prop:certified-v7}; all other
+rows use uniform $\pm25\%$ bands. The table records feasible
+controls, without claiming that the reported severity or resource
+use is optimal. Rows marked by a larger $M$ budget belong to
+separate, explicitly relaxed-resource experiments.}
+\label{tab:loss-breadth}
+\begin{tabular}{@{}lcrrrr@{}}\toprule
+Witness & $k/N$ & \shortstack{Target\\drop (\%)} &
+\shortstack{Geometric index\\drop (\%)} &
+\shortstack{Paired-dollar\\turnover $M$} &
+\shortstack{Gross share\\rate $< $}\\\midrule
+Original mixed band & $9/10$ & $5.91$ & $>1.98$ & $<3$ & $0.285$\\
+\multicolumn{6}{@{}l}{\emph{Uniform $\pm25\%$ bands: original $M<3$ budget}}\\
+P50-20 & $5/10$ & $>22.29$ & $>4.00$ & $2.600$ & $0.217$\\
+P60-20 & $6/10$ & $>20.90$ & $>5.00$ & $2.880$ & $0.258$\\
+P70-10 & $7/10$ & $>12.60$ & $>3.00$ & $2.660$ & $0.165$\\
+R70-15.5 & $7/10$ & $>15.50$ & $>4.00$ & $2.939$ & $0.278$\\
+R70-16.4 & $7/10$ & $>16.40$ & $>4.00$ & $2.970$ & $0.283$\\
+R80-10 & $8/10$ & $>10.80$ & $>3.00$ & $2.850$ & $0.273$\\
+R90-8 & $9/10$ & $>8.00$ & $>3.00$ & $2.970$ & $0.283$\\
+F100-0.65 & $10/10$ & $>0.65$ & $>0.65$ & $2.853$ & $0.260$\\
+F100-0.75 & $10/10$ & $>0.75$ & $>0.75$ & $2.970$ & $0.283$\\
+\multicolumn{6}{@{}l}{\emph{Uniform $\pm25\%$ bands: larger turnover budgets}}\\
+R70-20 (M4) & $7/10$ & $>20.00$ & $>6.00$ & $3.960$ & $0.283$\\
+R70-20 (M5) & $7/10$ & $>20.20$ & $>6.00$ & $4.599$ & $0.263$\\
+F100-2 (M7) & $10/10$ & $>2.00$ & $>2.00$ & $6.732$ & $0.283$\\
+\bottomrule\end{tabular}
+\end{table}
+
+\begin{proposition}[An 80-percent breadth witness with uniform rolling bands]
+\label{prop:uniform-band-breadth}
+Under the uniform-band model above, there exists an absolutely
+continuous paired-dollar path with eight designated assets
+satisfying $S_i(40)<0.892$, and an equal-weight geometric
+price index below $0.97$. Every executed-dollar ledger
+closes exactly, the whole trajectory obeys both rolling bands,
+and
+\[
+M<3,\qquad
+\max_i r_i^{\mathrm{gross}}<0.285,\qquad
+\max_iH_i^-<2.
+\]
+Consequently $\Cris_{0.8}(40)>0.03$.
+\end{proposition}
+\begin{proof}[Computer-assisted verification]
+The exact rational piecewise-constant dollar rates are given
+in Appendix~\ref{app:loss-breadth}; the eight target assets
+receive the same signed dollar rate, while two compensators
+receive the opposite aggregate flow in equal shares.
+The schedules integrate to zero for each asset.
+The interval verifier propagates outward-rounded price
+enclosures on each constant-rate segment, checks their
+whole-segment extrema, rolling reference prices,
+gross per-share rates, sales, and turnover, and verifies
+the strict rational terminal inequalities
+$S_i(40)<0.892$ for the targets and
+$\prod_i S_i(40)<0.97^{10}$. The latter implies
+$\overline L(40)>-\log(0.97)>0.03$, while
+$Q_{0.8}(40)>-\log(0.892)>0.03$.
+Thus the prescribed continuous control satisfies the stated
+crisis condition. The certificate algorithm and its exact
+inputs are available in the repository; the computation is
+subject to independent code audit.
+\end{proof}
+
+The fixed-budget examples provide constructive lower bounds on
+feasible breadth and severity rather than a calibrated
+maximal-drawdown frontier. The $M<4$, $M<5$, and $M<7$
+rows are excluded from comparisons that hold $M<3$ fixed.
+Appendix~\ref{app:loss-breadth} specifies the verification
+method and the separate input files used for all twelve
+new continuous-control certificates.
+\FloatBarrier
+
 \section{Discussion and model extensions}\label{sec:discussion}
 \subsection{Economic accounting and execution burden}
 Recovery has two roles: for the price-level dynamics in Assumption~\ref{asmp:model}, it enters the curvature-based exclusion argument, but it also makes nontrivial terminal displacement possible under dollar closure. If $\rho=0$, $\dd\Phi(S_i)=\dd X_i$ and $X_i(T)=0$ implies $S_i(T)=F$ (Appendix~\ref{app:accounting}). For $\rho>0$, the identity \eqref{eq:cost} shows that the nonnegative terminal potential and cumulative recovery dissipation are financed by a reduction of net share inventory, valued at the fixed benchmark. For any terminally dollar-closed path $\gamma$, define this benchmark-valued inventory consumption by
@@ -969,7 +1059,7 @@ $\dot M\le NU_{\max}\bar v/2$. For fixed positive turnover, this prevents concen
 For a specified price-level resilience and paired-dollar execution protocol, the response-adapted coordinate identifies global barriers, feasible partial-coverage regimes, and a sharp full-coverage ceiling. Necessary dollar turnover and inventory are conveniently expressed in the generalized price coordinate and in units of local benchmark impact. The uniform finite-resource severe partial-coverage construction extends from constant impact to every fixed exponent $0\le p<1$ in the power-law family, with resource constants that may deteriorate as $p\uparrow1$. For constant impact on a bounded positive-price region, executed-dollar turnover also bounds the terminal quadratic price-potential deficit. A finite gross-rate cap changes the scale of attainable small systemic losses, and one independently interval-certified two-session witness satisfies the simultaneous rate, band, and dollar-ledger requirements. The economic accounting identity makes explicit the benchmark-valued inventory consumed by dollar-closed price pressure. Together, these results clarify the structural and resource boundaries of liquidity-driven drawdowns within a deterministic execution framework. Alternative resilience laws, heterogeneous cross-impact and minimum-cost controls offer distinct mathematical directions for future work.
 
 \section*{Code and numerical data availability}
-The research code, numerical data, certificates, and reproduction instructions are publicly available at \url{https://github.com/Siyuan-chat/market-crash-reachability}. The unchanged original computational baseline is associated with \href{https://github.com/Siyuan-chat/market-crash-reachability/tree/ea831c44f5b77b7039dd6644f6f0a791bb74d176}{commit \texttt{ea831c4}}; the frozen software archive is separately identified by \href{https://doi.org/10.5281/zenodo.23428183}{DOI 10.5281/zenodo.23428183}. Appendix~\ref{app:v7certificate} describes the interval certificate and identifies its implementation. Reproduction commands and software requirements are in \path{REPRODUCE.md}; the checksum manifest is \path{release/SHA256SUMS}. The underlying certificate was previously regenerated from source, with independent floating-point ODE and exact-rational consistency checks.
+The research code, numerical data, certificates, and reproduction instructions are publicly available at \url{https://github.com/Siyuan-chat/market-crash-reachability}. The unchanged original computational baseline is associated with \href{https://github.com/Siyuan-chat/market-crash-reachability/tree/ea831c44f5b77b7039dd6644f6f0a791bb74d176}{commit \texttt{ea831c4}}; the frozen software archive is separately identified by \href{https://doi.org/10.5281/zenodo.23428183}{DOI 10.5281/zenodo.23428183}. Appendix~\ref{app:v7certificate} describes the interval certificate and identifies its implementation. Appendix~\ref{app:loss-breadth} documents the newer uniform-band controls and the separate reproduction scripts in \path{verification/loss_breadth}. Reproduction commands and software requirements are in \path{REPRODUCE.md}; the checksum manifest is \path{release/SHA256SUMS}. The underlying certificate was previously regenerated from source, with independent floating-point ODE and exact-rational consistency checks.
 
 \section*{Declaration on AI-assisted tools}
 AI-assisted tools were used for language editing, manuscript organization, and assisting with verification and figure-generation scripts. The author takes full responsibility for all mathematical proofs, numerical certificates, and scientific content.
@@ -1407,6 +1497,112 @@ $\delta>0$ with the same $T,M_0,H_0$.
 The blow-up of $\Psi_p(0^+)$ as $p\uparrow1$
 precludes a corresponding claim of resource
 constants uniform up to $p=1$.
+
+\section{Uniform-band loss--breadth interval certificates}\label{app:loss-breadth}
+For the new witnesses in Table~\ref{tab:loss-breadth},
+fix $N=10$, $F=g(F)=1$, $\rho=2/5$, $T=40$, and
+session boundary $20$. The two groups have
+$k$ equal target prices $x(t)$ and $m=10-k$
+equal receiving prices $y(t)$. Given a
+piecewise-constant signed executed-dollar rate $q(t)$ per
+target asset, each receiving asset is assigned rate
+$-kq(t)/m$. Then
+\[
+\dot x=-\frac25(x-1)+\frac{q(t)}{x},\qquad
+\dot y=-\frac25(y-1)-\frac{kq(t)}{my},\qquad
+x(0)=y(0)=1.
+\]
+Trading is implementable through the complete bidirectional
+paired-dollar network. Gross share execution is computed
+before netting. Both groups' dollar ledgers vanish at
+$T$ when $\int_0^{40}q(t)\dd t=0$.
+
+\paragraph{The eight-target control}
+For the witness R80-10 of
+Proposition~\ref{prop:uniform-band-breadth}, put
+\[
+\begin{gathered}
+a_1=0.020005576338,\quad
+a_3=0.158140461748,\quad
+w_1=0.401289730597,\\
+w_2=11.552628595060,\quad
+w_3=2.358357669804,\quad
+g_1=0.004457191867.
+\end{gathered}
+\]
+These are exact finite-decimal rationals. The targets' signed
+dollar rates are
+\[
+q(t)=\begin{cases}
+-a_1/w_1,&20-w_1\le t<20,\\
+(a_1+a_3)/w_2,&20+g_1\le t<20+g_1+w_2,\\
+-a_3/w_3,&40-w_3\le t\le40,\\
+0,&\text{otherwise}.
+\end{cases}
+\]
+Thus $\int_0^{40}q(t)\dd t=0$ exactly. Each of the
+two receiving assets has dollar rate $-4q(t)$.
+The paired-dollar turnover is the exact rational number
+\[
+M=8\cdot2(a_1+a_3)=2.850336609376.
+\]
+
+\paragraph{Interval enclosure and resource checks}
+On every interval of constant dollar rate, both group prices
+solve an autonomous scalar equation
+$f_q(S)=-\frac25(S-1)+q/S$.
+The verifier uses exact rational time breaks, a
+fixed-point scale $Q=10^{25}$, outward integer
+floor/ceiling operations and substeps no longer
+than $1/4000$. It inductively checks the positive-price
+strip $3/5\le S\le8/5$ and encloses each one-step
+Taylor remainder by $B h^2/2$, with a rational bound
+$B>|f_q'(S)f_q(S)|$ over that strip.
+The one-dimensional autonomous dynamics are monotone
+on each constant-control segment, so the hull of its
+endpoint intervals contains all intermediate prices.
+Day-two rolling references use the interval-enclosed
+day-one terminal prices.
+
+For R80-10, the resulting intervals certify the
+conservative terminal envelopes
+\[
+0.89090<x(40)<0.89161,\qquad
+1.33067<y(40)<1.33116.
+\]
+The whole-path check gives gross share rate below
+$0.273$, cumulative shares sold below $0.874$ per
+asset, and a positive rolling-band margin exceeding
+$0.007$. Exact rational multiplication proves
+$x(40)^8y(40)^2<0.97^{10}$. All strict inequalities
+are checked with outward-rounded arithmetic, and the
+dollar-ledger closure is algebraic.
+
+\paragraph{Other coverage and resource regimes}
+The eleven further schedules are specified with exact
+rational segment data or exact dollar rates in
+\path{verification/loss_breadth/}. Every row in
+Table~\ref{tab:loss-breadth} except the original mixed-band
+witness is reproduced by
+\path{verification/loss_breadth/certify_loss_breadth.py}.
+The Phase 4 longer schedules are stored without loss
+of precision in a compressed source file that the
+verifier expands into readable JSON.
+The checks retain separate total-turnover ceilings
+of $3$, $4$, $5$, or $7$ as shown in the table.
+The verification records include full-path bootstrap
+and band bounds, exact zero ledgers, interval-enclosed
+terminal prices, and conservative resource maxima.
+Independent DOP853/Radau integrations supply a separate
+floating-point consistency comparison; they do not
+replace the directed-rounding certificate.
+
+The interval programs are new research software requiring
+independent external audit. Their role is to verify the
+feasibility of specified finite controls, rather than to
+establish sharp turnover minima or unattainability of
+the remaining loss--breadth cells.
+
 
 \bibliographystyle{siamplain}
 \enlargethispage{2\baselineskip}
