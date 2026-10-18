@@ -25,5 +25,5 @@ Rebuild with:
     python scripts/check_v14_resource_bound.py
     python scripts/build_v14_resource_bound.py
 
-The build takes unchanged figure PDFs from the published V13 directory and
+The build takes unchanged figure PDFs from the earlier English source directory and
 writes its new output to build/v14-turnover-dissipation.
