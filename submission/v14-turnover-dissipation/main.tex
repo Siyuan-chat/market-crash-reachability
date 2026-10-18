@@ -337,81 +337,91 @@ In the ten-asset, two-session constant-impact certificate, $F=g_F=1$, $\rho=0.4$
 
 
 
-\paragraph{Turnover--dissipation screening under bounded prices}
-The preceding coordinate-distance conditions can be complemented by an
-\emph{aggregate} necessary bound for the constant-response law
-$g(S)\equiv\eta>0$. Consider absolutely continuous paired-dollar controls
-started from $S_i(0)=F$ and assume, along their entire paths,
-$S_i(t)\ge a>0$ and $|S_i(t)-F|\le b$. Let $\dot M(t)=\sum_e\dot z_e(t)$ denote the gross paired-dollar
-turnover rate. Dollar pairing implies $\sum_i\dot X_i(t)=0$ and
-$\sum_i|\dot X_i(t)|\le2\dot M(t)$:
-simultaneous inflows and outflows at the same asset may cancel in its
-\emph{net} dollar flow but still count toward gross turnover.
-Define the quadratic price potential
+\paragraph{Turnover and quadratic dissipation}
+The coordinate-distance bounds of Theorem~\ref{thm:resource} can be complemented
+by an aggregate estimate for constant per-share impact. Define
 \[
 \mathcal V_2(t)=\frac12\sum_{i=1}^N\bigl(S_i(t)^2-F^2\bigr).
 \]
-Differentiation of the level-price equation and dollar pairing yield
+
+\begin{proposition}[Turnover--dissipation bound under constant impact]\label{prop:turnover-dissipation}
+Suppose $g(S)\equiv\eta>0$ and $S_i(0)=F$. Let the paired-dollar controls
+be absolutely continuous and assume that the entire price path satisfies
+$S_i(t)\ge a>0$ and $|S_i(t)-F|\le b$ for all $i$ and $t\in[0,T]$.
+With $\dot M(t)=\sum_e\dot z_e(t)$ and $\mathrm e=\exp(1)$, the quadratic
+potential obeys the exact identity
+\begin{equation}\label{eq:V2-identity}
+-\mathcal V_2(T)=\frac{\rho}{2}\int_0^T
+e^{-\rho(T-t)}\sum_{i=1}^N(S_i(t)-F)^2\dd t\ge0
+\end{equation}
+and the turnover inequality
+\begin{equation}\label{eq:V2-turnover}
+-\mathcal V_2(T)\le
+\frac{\rho\eta b}{a}\int_0^T
+(T-u)e^{-\rho(T-u)}\dot M(u)\dd u
+\le\frac{\eta b}{a\,\mathrm e}M(T).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Set $x_i=S_i-F$. The price equation
+$\dot S_i=-\rho x_i+\eta\dot X_i/S_i$ and dollar pairing
+$\sum_i\dot X_i=0$ give
 \[
 \dot{\mathcal V}_2
-=-\rho\mathcal V_2-\frac{\rho}{2}
-\sum_i(S_i-F)^2,\qquad \mathcal V_2(0)=0.
+=-\rho\mathcal V_2-\frac{\rho}{2}\sum_i x_i^2,
+\qquad \mathcal V_2(0)=0.
 \]
-Consequently the exact aggregate dissipation identity is
-\[
--\mathcal V_2(T)
-=\frac{\rho}{2}\int_0^T e^{-\rho(T-t)}
-\sum_i\bigl(S_i(t)-F\bigr)^2\dd t\ge0.
-\]
-Moreover, every such path obeys the \emph{turnover-dependent necessary
-inequality}
+Variation of constants proves~\eqref{eq:V2-identity}. Applying it to
+the level-price equation and using $S_i\ge a$ yields
 \[
 \begin{aligned}
--\mathcal V_2(T)
-&\le\frac{\rho\eta b}{a}\int_0^T
-(T-u)e^{-\rho(T-u)}\dot M(u)\dd u\\
-&\le\frac{\eta b}{a\,\mathrm e}\,M(T),
-\qquad \mathrm e=\exp(1).
+\sum_i|x_i(t)|
+&\le\frac{\eta}{a}\int_0^t e^{-\rho(t-u)}
+\sum_i|\dot X_i(u)|\dd u\\
+&\le\frac{2\eta}{a}\int_0^t e^{-\rho(t-u)}
+\dot M(u)\dd u.
 \end{aligned}
 \]
-To establish the bound, variation of constants in
-$\dot S_i=-\rho(S_i-F)+\eta\dot X_i/S_i$ gives
-\[
-\sum_i|S_i(t)-F|
-\le\frac{\eta}{a}\int_0^t e^{-\rho(t-u)}
-\sum_i|\dot X_i(u)|\dd u
-\le\frac{2\eta}{a}\int_0^t
-e^{-\rho(t-u)}\dot M(u)\dd u.
-\]
-Use $\sum_i(S_i-F)^2\le b\sum_i|S_i-F|$ in the dissipation
-identity, interchange the nonnegative integrals, and apply
+The second inequality follows from
+$\sum_i|\dot X_i|\le2\sum_e\dot z_e=2\dot M$;
+oppositely directed flows at an asset can cancel in the net dollar
+rate. Since $\sum_i x_i^2\le b\sum_i|x_i|$, substitution into
+\eqref{eq:V2-identity} and interchange of the nonnegative integrals give
+the first inequality in~\eqref{eq:V2-turnover}. The second follows from
 $\sup_{s\ge0}\rho s e^{-\rho s}=\mathrm e^{-1}$.
-The inequality holds without terminal dollar closure and gives a
-generally nonsharp necessary condition.
+\end{proof}
 
-\paragraph{Illustration for a uniform two-session rolling band}
-For the \emph{separate hypothetical experiment} in which every asset
-has a symmetric $\pm25\%$ price band in each of two sessions,
-with the second band's reference equal to the previous session close,
-the entire price path lies within
-$9F/16\le S_i(t)\le25F/16$. Thus one may take
-$a=b=9F/16$, obtaining
+The time weight $\rho(T-u)e^{-\rho(T-u)}$ in
+\eqref{eq:V2-turnover} vanishes at $u=T$ and reaches its unique
+maximum at $T-u=1/\rho$; it also decays for trades made far
+before the terminal date. This describes the contribution of a
+dollar of turnover to the \emph{upper-bound estimate}: late trades
+allow little time for recovery dissipation, while earlier disturbances
+decay before $T$. It does not identify an optimal trading schedule.
+
+\paragraph{Two-session rolling-band example}
+Consider a uniform symmetric $\pm25\%$ price band during each of two
+sessions, with the second session referenced to the preceding close.
+Then every price lies in
+$[9F/16,25F/16]$, so $a=b=9F/16$ is admissible and
 \[
 -\mathcal V_2(T)\le\frac{\eta}{\mathrm e}M(T).
 \]
-If all $N$ assets finish at or below $(1-d)F$ for $0<d<1$,
-then $-\mathcal V_2(T)\ge NF^2(2d-d^2)/2$ and hence
+If all $N$ assets close at or below $(1-d)F$, $0<d<1$, then
+$-\mathcal V_2(T)\ge NF^2(2d-d^2)/2$, implying
 \[
 M(T)\ge\frac{\mathrm e\,NF^2}{2\eta}(2d-d^2).
 \]
-For $N=10$, $F=\eta=1$ and $d=0.02$, this gives
-$M(T)\ge0.5382$, stronger than the corresponding elementary
-coordinate-distance requirement $M(T)\ge0.198$ but still
-insufficient to exclude a budget of $M\le3$. For $k<N$,
-compensating assets may appreciate and offset the negative terminal
-quadratic potential of falling assets. Consequently this aggregate
-bound alone yields no additional positive $k$-only turnover lower bound
-without information on their endpoints.
+At $N=10$, $F=\eta=1$ and $d=0.02$, this becomes
+$M(T)\ge0.5382$, compared with $M(T)\ge0.198$ from
+Theorem~\ref{thm:resource}. Both bounds remain below $M=3$.
+
+For partial coverage, appreciation of the compensating assets can
+offset part of the falling subset's potential deficit. The aggregate
+potential itself cannot become positive by~\eqref{eq:V2-identity};
+without further constraints on compensating prices, it need not
+provide a useful positive lower bound on turnover for a specified
+falling subset alone.
 
 
 \section{Finite trading rates and abstract price bands}\label{sec:rateband}
@@ -849,7 +859,16 @@ Several natural extensions are outside the scope of the present reachability cla
 \]
 and on the compatible sign of its restoring drift. Matrix symmetry alone is not sufficient. Cross-impact no-dynamic-arbitrage restrictions \citep{AlfonsiKlockSchied2016,SchneiderLillo2019} and empirical multivariate impact \citep{BenzaquenEtAl2017} provide separate benchmarks.
 
-Third, optimizing $\mathcal K_{\min}$, executed-dollar turnover, and the globally minimal constrained gross rate would connect structural reachability with optimal control and intermediary incentives, including strategic predation \citep{BrunnermeierPedersen2005}. Because the aggregate turnover--dissipation inequality in Section~\ref{sec:budget} does not incorporate per-asset terminal dollar closure or session-by-session band resets, it remains a coarse necessary condition for partial-coverage or moderate drawdown targets under a fixed turnover budget. Deriving tighter closure- and session-aware bounds to connect analytical constraints with numerical control search remains an open problem. Fourth, empirical implementation would require identifying local impact $g$, price versus volume recovery, trade direction, accessible inventories, and counterparties from order-book and transaction data. A static book snapshot or daily OHLCV sequence does not identify these quantities. The market-microstructure-invariance approach \citep{KyleObizhaeva2023} provides a scaling comparator, not a calibration already performed here. Extensions to stochastic flow or equilibrium selection could address probabilities of no-news crashes, which deterministic existence and exclusion results alone do not determine.
+Third, optimizing $\mathcal K_{\min}$, executed-dollar turnover, and the globally minimal constrained gross rate would connect structural reachability with optimal control and intermediary incentives, including strategic predation \citep{BrunnermeierPedersen2005}. Proposition~\ref{prop:turnover-dissipation} aggregates across assets and does not use per-asset terminal dollar closure. When $X_i(T)=0$, the constant-impact dynamics also give the subset-level identity
+\[
+\frac{F^2-S_i(T)^2}{2}
+=\rho\int_0^T S_i(t)(S_i(t)-F)\dd t
+\qquad\text{for every }i.
+\]
+Unlike the aggregate potential, this identity isolates each falling asset, but further work is needed to turn it into a sharper turnover lower bound. The squared-price dynamics,
+$\dd(S_i^2)=-2\rho S_i(S_i-F)\dd t+2\eta\dd X_i$,
+also have a trade term without the denominator $1/S_i$; their restoring drift remains nonlinear. Finally, an upper price bound $S_i\le U_{\max}$ together with the gross share-rate cap gives
+$\dot M\le NU_{\max}\bar v/2$. For fixed positive turnover, this prevents concentration at the single peak of the time kernel in~\eqref{eq:V2-turnover} and permits a tighter weighted-turnover estimate. Combining these constraints into sharp subset-level and session-dependent bounds remains open. Fourth, empirical implementation would require identifying local impact $g$, price versus volume recovery, trade direction, accessible inventories, and counterparties from order-book and transaction data. A static book snapshot or daily OHLCV sequence does not identify these quantities. The market-microstructure-invariance approach \citep{KyleObizhaeva2023} provides a scaling comparator, not a calibration already performed here. Extensions to stochastic flow or equilibrium selection could address probabilities of no-news crashes, which deterministic existence and exclusion results alone do not determine.
 
 \section{Conclusion}\label{sec:conclusion}
 For a specified price-level resilience and paired-dollar execution protocol, the response-adapted coordinate identifies global barriers, feasible partial-coverage regimes, and a sharp full-coverage ceiling. Necessary dollar turnover and inventory are conveniently expressed in the generalized price coordinate and in units of local benchmark impact. For constant impact on a bounded positive-price region, executed-dollar turnover also bounds the terminal quadratic price-potential deficit. A finite gross-rate cap changes the scale of attainable small systemic losses, and one independently interval-certified two-session witness satisfies the simultaneous rate, band, and dollar-ledger requirements. The economic accounting identity makes explicit the benchmark-valued inventory consumed by dollar-closed price pressure. These are structural and resource statements about an idealized market, not a probability, incentive mechanism, or empirical prediction of an exchange-wide crash. Alternative resilience laws, heterogeneous cross-impact and minimum-cost controls offer distinct mathematical directions for future work.

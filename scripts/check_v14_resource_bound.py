@@ -14,21 +14,45 @@ def result_blocks(src):
             rf"\\begin\{{{env}\}}(?:\[[^\]]*\])?[\s\S]*?\\end\{{{env}\}}",src))
     return sorted(out)
 
+def numbered_equations(src):
+    return re.findall(r"\\begin\{equation\}[\s\S]*?\\end\{equation\}",src)
+
 def main():
     old=OLD.read_text(encoding="utf-8")
     new=NEW.read_text(encoding="utf-8")
-    assert result_blocks(old)==result_blocks(new),"V13 numbered statements changed"
-    pat=r"\\begin\{equation\}[\s\S]*?\\end\{equation\}"
-    assert re.findall(pat,old)==re.findall(pat,new),"V13 numbered equations changed"
+    old_results=result_blocks(old)
+    new_results=result_blocks(new)
+    extras=[item for item in new_results if item not in old_results]
+    missing=[item for item in old_results if item not in new_results]
+    assert not missing, ("Historical statements changed",missing)
+    assert len(extras)==1 and extras[0][0]=="proposition", ("Unexpected new results", extras)
+    assert r"\label{prop:turnover-dissipation}" in extras[0][1]
+    old_eq=numbered_equations(old)
+    new_eq=numbered_equations(new)
+    assert all(eq in new_eq for eq in old_eq), "Historical numbered equations changed"
+    extra_eq=[eq for eq in new_eq if eq not in old_eq]
+    assert len(extra_eq)==2, ("Unexpected added numbered equations",len(extra_eq))
+    assert any(r"\label{eq:V2-identity}" in eq for eq in extra_eq)
+    assert any(r"\label{eq:V2-turnover}" in eq for eq in extra_eq)
+    assert len(new_results)==len(old_results)+1
+    assert len(new_eq)==len(old_eq)+2
     assert set(re.findall(r"\\label\{([^}]+)\}",old)) <= set(re.findall(r"\\label\{([^}]+)\}",new))
-    for term in ("Turnover--dissipation screening under bounded prices",
-                 "Illustration for a uniform two-session rolling band",
-                 r"\sum_i|\dot X_i(t)|\le2\dot M(t)",r"\mathrm e=\exp(1)",
-                 r"M(T)\ge0.5382"):
-        assert term in new,("Missing scope/proof",term)
-    assert r"\sum_i|\dot X_i(t)|=2\dot M(t)" not in new
-    block = new.split(r"\paragraph{Turnover--dissipation screening under bounded prices}", 1)[1].split(r"\section{Finite trading rates and abstract price bands}", 1)[0]
-    assert r"q_i(t)=\dot X_i(t)" not in block, "Collision with log-price variable q_i"
+    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+1
+    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+1
+    for term in ("Turnover--dissipation bound under constant impact",
+                 "Two-session rolling-band example",
+                 r"\sum_i|\dot X_i|\le2\sum_e\dot z_e",
+                 r"\mathrm e=\exp(1)",
+                 r"M(T)\ge0.5382",
+                 "cannot become positive",
+                 r"\dot M\le NU_{\max}\bar v/2"):
+        assert term in new, ("Missing proof/result",term)
+    assert r"\sum_i|\dot X_i|=2\sum_e\dot z_e" not in new
+    block=new.split(r"\paragraph{Turnover and quadratic dissipation}",1)[1].split(
+        r"\section{Finite trading rates and abstract price bands}",1)[0]
+    assert r"q_i(t)=\dot X_i(t)" not in block
+    assert "compensating assets can make" not in block
+
     assert r"1.02020225507905<h<1.02020225507908" in new, "Correct interval missing"
     assert "1.020225507905" not in new, "Incorrect left endpoint reappeared"
     f = lambda z: 101600000000*z*z - 97138000000*z - 6646157699
