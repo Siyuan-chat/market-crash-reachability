@@ -85,7 +85,7 @@ def main():
     # Continuous-exponent discussion is unnumbered and does not revise V13/V14 theorems.
     assert new.count(r"\paragraph{The continuous power-law spectrum}") == 1
     spectrum=new.split(r"\paragraph{The continuous power-law spectrum}",1)[1].split(
-        r"\paragraph{A concrete common-budget comparison}",1)[0]
+        r"\subsection{A sharp boundary when every asset must fall}",1)[0]
     for text in (
         r"0\le p\le2",
         r"\Phi_p''(S)=(1-p)/g_p(S)",
