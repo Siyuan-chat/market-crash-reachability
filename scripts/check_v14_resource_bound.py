@@ -37,11 +37,11 @@ def main():
     assert "the hypothetical original-budget targets" not in new
     assert "failure to find a control by numerical optimization" not in new
     assert "This unpublished research draft" not in new
+    bib=(NEW.parent/"references.bib").read_text()
     for title in ("Crossover from linear to square-root market impact",
                   "Fire sales, indirect contagion and systemic stress testing",
                   "The flash crash: high-frequency trading in an electronic market"):
         assert title in bib, ("Bibliography case",title)
-    bib=(NEW.parent/"references.bib").read_text()
     keys=re.findall(r"@\w+\s*\{\s*([^,\s]+)\s*,",bib)
     assert len(set(keys))==len(keys)
     cited=set()
