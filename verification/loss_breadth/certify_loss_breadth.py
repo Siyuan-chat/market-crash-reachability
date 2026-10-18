@@ -164,6 +164,8 @@ def run_all(encoded,output_dir):
     root=Path(output_dir);root.mkdir(parents=True,exist_ok=True)
     (root/'certificates.json').write_text(json.dumps(results,indent=2)+'\n')
     (root/'summaries.json').write_text(json.dumps([{k:v for k,v in row.items() if k!='history'} for row in results],indent=2)+'\n')
+    decoded=json.loads(zlib.decompress(base64.b64decode(encoded)).decode())
+    (root/'decoded_phase4_schedules.json').write_text(json.dumps(decoded,indent=2)+'\n')
     assert len(results)==12
     print('PASS ALL',len(results),'strict rational interval checks')
     return results
