@@ -6,6 +6,11 @@ The PDF is built by GitHub Actions and committed to this directory after a succe
 
 
 This **complete English manuscript source** extends the published V13 preprint.
+Section 4 now includes a [continuous power-law exponent analysis](../../docs/V14_CONTINUOUS_EXPONENT_SPECTRUM.md)
+covering the two thresholds at p=1 and p=2, with explicit inventory-growth
+comparisons and careful separation of local reachability from the p=0
+global severe-loss construction.
+
 The new **Proposition 5.2 (Turnover--dissipation bound under constant impact)**
 and its formal proof appear in Section 5 of [main.tex](main.tex), with
 a time-kernel interpretation and three distinct sharpening directions in
