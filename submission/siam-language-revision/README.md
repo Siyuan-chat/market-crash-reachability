@@ -1,4 +1,7 @@
-# Revised English preprint — 18 October 2026
+# Historical edition — revised English preprint, 18 October 2026
+
+Superseded by the [reviewed V13 preprint](../v13-review-response/README.md);
+this 33-page PDF and its source are preserved unchanged as Zenodo v2.
 
 [Manuscript (33 pages)](manuscript.pdf) · [LaTeX](main.tex) · [Bibliography](references.bib)
 

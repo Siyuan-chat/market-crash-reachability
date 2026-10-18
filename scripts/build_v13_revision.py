@@ -48,7 +48,7 @@ def main():
                 break
         else:
             raise SystemExit("V13 references did not converge")
-        problems=re.findall(r"Overfull \\hbox[^\n]*|Overfull \\vbox[^\n]*|Missing character:[^\n]*|LaTeX Warning: (?:Citation|Reference) [^\n]*undefined",log)
+        problems=re.findall(r"Overfull \\hbox[^\n]*|Overfull \\vbox[^\n]*|Package natbib Warning: Author undefined[^\n]*|Missing character:[^\n]*|LaTeX Warning: (?:Citation|Reference) [^\n]*undefined",log)
         for suffix in (".pdf",".log",".aux",".bbl"):
             file=work/("main"+suffix)
             if file.is_file():

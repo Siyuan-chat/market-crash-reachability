@@ -39,9 +39,11 @@ preferred-citation:
     - family-names: Ye
       given-names: Siyuan
   year: 2026
-  doi: 10.5281/zenodo.23438609
-  url: "https://zenodo.org/records/23438609"
+  doi: 10.5281/zenodo.23444647
+  url: "https://zenodo.org/records/23444647"
   notes: >-
-    Public preprint with supplementary material, also available on SSRN:
+    V13 public preprint (37 pages, 18 October 2026) with supplementary material.
+    SSRN record (revision synchronization status is tracked in
+    docs/V13_VALIDATION_STATUS.md):
     https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079.
     This is a preprint citation, not a claim of journal acceptance.

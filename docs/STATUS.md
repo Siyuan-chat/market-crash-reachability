@@ -1,7 +1,24 @@
+# Current project status — V13 synchronization, 18 October 2026
+
+The author authorized all-page writing review followed by public synchronization.
+The reviewed 37-page V13 PDF is public on [Zenodo](https://doi.org/10.5281/zenodo.23444647).
+The root README and preferred paper citation now identify V13; earlier PDFs are
+preserved. See [page review](V13_PDF_REVIEW.md) and
+[validation details](V13_VALIDATION_STATUS.md).
+
+SSRN requires author reauthentication before the V13 revision can be submitted;
+its existing public page still shows the earlier 33-page version. No completed
+V13 SSRN submission is claimed at this checkpoint. No local background job or
+automatic continuation has been started. The immutable software archive remains
+DOI 10.5281/zenodo.23428183 (d6e2606); this editorial update does not rerun the
+certificate or create a new code archive.
+
+## Historical publication checkpoints
+
 ## Revised English preprint — 18 October 2026
 
 The approved 33-page manuscript and its LaTeX sources are in
-`submission/siam-language-revision/`; the root README opens this edition.
+`submission/siam-language-revision/`; the root README opened this edition at that historical checkpoint.
 Zenodo v2 is public at https://zenodo.org/records/23438609
 (DOI 10.5281/zenodo.23438609; concept DOI 10.5281/zenodo.23427879),
 with the unchanged supplementary PDF. Main PDF SHA-256:

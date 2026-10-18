@@ -33,7 +33,10 @@ Historical V12 `paper/`, Lean `formal/`, numerical `verification/` and
    independently regenerated it.
 5. The historical `manuscript.pdf` in the previous source directory is
    **not** the V13 PDF. Do not modify its SHA and claim it corresponds to V13.
-6. Author review and explicit merge/publishing decisions remain outstanding.
+6. Superseded on 18 October 2026: PR #11 is merged, and the author authorized
+   the completed PDF review followed by publication. See
+   [current validation/publication status](V13_VALIDATION_STATUS.md) and
+   [all-page review](V13_PDF_REVIEW.md).
 
 Not in scope: numerical optimal control for a tight rate bracket, calibrated
 market-depth/ADV evidence, fully heterogeneous or matrix cross-impact theorems,

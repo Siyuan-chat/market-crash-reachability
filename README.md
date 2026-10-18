@@ -1,6 +1,6 @@
 # When Can Markets Crash Without News?
 
-**Siyuan Ye · V12 Final · reproducibility companion (1.0.0rc1)**
+**Siyuan Ye · V13 preprint · reproducibility companion (1.0.0rc1)**
 
 **Research areas:** endogenous (news-free) market crashes, systemic risk, nonlinear price impact, resilient market microstructure, and mathematical reachability.
 
@@ -23,10 +23,11 @@ and a rigorously feasible two-session consecutive-limit-down construction.
 The computer-assisted existence certificate concerns one specified ten-asset
 path; analytical theorems rely on the proofs in the manuscript.
 
-- **Zenodo preprint and supplement (v2):** [Published record](https://zenodo.org/records/23438609) · [DOI: 10.5281/zenodo.23438609](https://doi.org/10.5281/zenodo.23438609) · [All versions](https://doi.org/10.5281/zenodo.23427879)
+- **Zenodo preprint and supplement (V13):** [Published record](https://zenodo.org/records/23444647) · [DOI: 10.5281/zenodo.23444647](https://doi.org/10.5281/zenodo.23444647) · [All versions](https://doi.org/10.5281/zenodo.23427879)
 - **Archived code and reproducibility package:** [Zenodo software record](https://zenodo.org/records/23428183) · [DOI: 10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183), version `1.0.0rc1+git.d6e2606`, fixed at [commit d6e2606](https://github.com/Siyuan-chat/market-crash-reachability/tree/d6e2606590f955a6287c6945488a080e5acab004). Includes the source ZIP, provenance and SHA-256 checksum; later README DOI updates are outside this immutable snapshot.
 - **SSRN preprint:** [Published paper — Abstract ID 7622079](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079).
-- **Latest revised English preprint (33 pages, 18 October 2026):** [Manuscript PDF](submission/siam-language-revision/manuscript.pdf) · [LaTeX](submission/siam-language-revision/main.tex) · [Build and validation](submission/siam-language-revision/README.md)
+- **Latest English preprint (V13, 37 pages, 18 October 2026):** [Manuscript PDF](submission/v13-review-response/manuscript.pdf) · [LaTeX](submission/v13-review-response/main.tex) · [Build and validation](submission/v13-review-response/README.md)
+- **Historical 33-page English edition (Zenodo v2):** [Manuscript PDF](submission/siam-language-revision/manuscript.pdf) · [DOI](https://doi.org/10.5281/zenodo.23438609). Superseded by V13; preserved unchanged.
 - **Earlier SIFIN edition:** [Manuscript PDF](submission/siam/manuscript.pdf) · [LaTeX](submission/siam/main.tex)
 - **SIFIN supplementary material:** [Supplement PDF](submission/siam/supplementary.pdf) · [LaTeX](submission/siam/supplementary.tex)
 - [SIFIN build instructions and author items pending](submission/siam/README.md)
@@ -45,7 +46,7 @@ These results are theoretical and **do not predict real market crashes**. For ex
 
 ## Research editions and Lean foundations
 
-- **V12 Final 原始研究版 (original research edition):** [Manuscript PDF](paper/manuscript.pdf) · [LaTeX](paper/main.tex) · [Supplement PDF](supplementary/supplementary.pdf) · [Supplement LaTeX](supplementary/supplementary.tex). This remains the canonical mathematical baseline; the main links above open the SIFIN submission edition.
+- **V12 Final 原始研究版 (original research edition):** [Manuscript PDF](paper/manuscript.pdf) · [LaTeX](paper/main.tex) · [Supplement PDF](supplementary/supplementary.pdf) · [Supplement LaTeX](supplementary/supplementary.tex). This remains the canonical mathematical baseline; the main links above open the V13 English preprint.
 - **简体中文:** [complete manuscript and supplement sources, build and review status](translations/zh-CN/README.md).
 - **日本語:** [complete manuscript and supplement sources, build and review status](translations/ja/README.md).
 - [Trilingual glossary](translations/GLOSSARY.md) and [translation consistency and build instructions](translations/README.md).
@@ -92,7 +93,7 @@ Cite Siyuan Ye, *When Can Markets Crash Without News?*, V12 Final (2026),
 and identify the software version and commit used. Machine-readable metadata
 is in [CITATION.cff](CITATION.cff). The public repository is
 [Siyuan-chat/market-crash-reachability](https://github.com/Siyuan-chat/market-crash-reachability).
-The paper is available on [Zenodo](https://doi.org/10.5281/zenodo.23438609)
+The paper is available on [Zenodo](https://doi.org/10.5281/zenodo.23444647)
 and [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079).
 These are preprint records; no journal acceptance is asserted. The
 [CITATION.cff](CITATION.cff) metadata describes the reproducibility software.

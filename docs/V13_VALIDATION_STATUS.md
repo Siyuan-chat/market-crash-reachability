@@ -1,16 +1,24 @@
 # V13 validation and claim ledger
 
-**Working draft only.** V13 exposition was prepared against the already
+**Current public English preprint: V13, 37 pages.** Published on Zenodo on
+18 October 2026: [10.5281/zenodo.23444647](https://doi.org/10.5281/zenodo.23444647).
+SSRN synchronization currently requires author reauthentication; the public
+SSRN record still contains the earlier 33-page edition.
+
+[Page-by-page review and corrections](V13_PDF_REVIEW.md). V13 exposition was prepared against the already
 published 18 October English edition. Statements and numeric results retain
 their earlier meaning; no independent new certificate or Lean proof is claimed.
 
 ## Automated gates
 
-- `scripts/check_v13_revision.py`: to be run and reported by the PR CI.
+- `scripts/check_v13_revision.py`: PASS locally after editorial corrections.
   Compares original numbered theorem/assumption/proposition/definition bodies
   with the frozen English source, verifies old numbered equations unchanged,
   and checks that cited bibliography keys exist.
-- `scripts/build_v13_revision.py`: to be run by PR CI in an isolated workspace.
+- Four pdfLaTeX passes and BibTeX: PASS in an isolated fixed review directory.
+  The default builder encountered a Windows temporary-directory permission
+  error; no successful local run of that wrapper is claimed. Its log checker
+  now also rejects natbib undefined-author warnings.
   Outputs PDF and logs, checks TeX/BibTeX convergence, undefined citations,
   missing glyphs and overfull boxes.
 - Standard repository Reproducibility, SIAM, translation and Lean CI are
@@ -27,12 +35,16 @@ their earlier meaning; no independent new certificate or Lean proof is claimed.
   of the elasticity theorems.
 - The certified upper witness and strict coarse lower gross-rate bound remain
   distinct; no claim of a numerically optimized critical rate.
-- The existing V12 research software record and public manuscript DOIs
-  identify earlier published artifacts, not this unmerged V13 draft.
+- The immutable software DOI 10.5281/zenodo.23428183 identifies the earlier
+  d6e2606 software snapshot. The new manuscript DOI identifies V13, not new code
+  or newly executed certificate verification.
 
-## Required human acceptance before a new public preprint
+## Acceptance and publication history
 
-Review the final PDF page by page; confirm bibliography metadata, full
-equation labels, the small illustrative calculations, and author wording.
-Then publish and update public metadata only through separate author-approved
-steps. Do not overwrite the historical English PDF or archive.
+The author explicitly authorized page-by-page writing review followed by SSRN,
+Zenodo and GitHub synchronization if satisfactory. Review and the listed
+editorial fixes are complete; no blocking writing issue remained. Zenodo V13
+is public. Earlier English PDFs and the code archive remain unchanged.
+
+Historical: the initial PR #11 draft required compilation and author acceptance;
+those pending-draft instructions are superseded by this review and authorization.
