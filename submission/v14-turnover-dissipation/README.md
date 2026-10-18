@@ -25,6 +25,8 @@ Under two hypothetical 25% rolling bands a=b=9F/16, so with eta=1,
 2% ordinary-loss example, M>=0.5382, **not** an exclusion at M<=3.
 
 The gross-versus-net trade relation is a <= bound; see the proof audit.
+In the paper, executed-dollar flow rates are written as dot X_i; q_i remains
+reserved for log prices in Section 2.
 
 Rebuild with:
     python scripts/check_v14_resource_bound.py
