@@ -118,7 +118,7 @@ def main():
     for p in (0.0,0.5,0.75):
         finite=1/((1-p)*(2-p))
         assert finite>0
-        L=40.0
+        L=60.0
         value=math.expm1((p-1)*L)/(p-1)+math.expm1(-(2-p)*L)/(2-p)
         assert 0 < value <= finite and abs(value-finite)/finite < 1e-5
     for p in (1.25,1.75):
