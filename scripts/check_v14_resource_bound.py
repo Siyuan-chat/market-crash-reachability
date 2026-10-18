@@ -88,6 +88,8 @@ def main():
         r"\paragraph{A concrete common-budget comparison}",1)[0]
     for text in (
         r"0\le p\le2",
+        r"\Phi_p''(S)=(1-p)/g_p(S)",
+        r"G_p''(q)=F^2(2-p)e^{(2-p)q}/\eta",
         r"E_p(0^+)=F^2/[\eta(1-p)(2-p)]",
         r"e^{-\rho T}<2-p",
         r"T>-\log(2-p)/\rho",
