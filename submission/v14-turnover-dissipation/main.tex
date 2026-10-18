@@ -4,7 +4,7 @@
 \raggedbottom
 \maketitle
 \begin{abstract}
-We characterize structural barriers, attainable losses, and execution requirements for terminal systemic drawdowns in a deterministic multiasset market with fixed fundamentals, paired-dollar trades, and zero terminal executed-dollar flow in each asset. Under the explicitly specified price-level recovery law, a response-adapted coordinate gives sufficient elasticity thresholds: $e(S)=Sg'(S)/g(S)\ge 2$ excludes positive drawdowns under our mean-log-loss and breadth criterion, while $e(S)\ge1$ excludes a simultaneous decline of all prices. Quadratic, linear, and constant per-share responses yield distinct exclusion, inventory-bounded, and severe partial-coverage reachability regimes. The constant-response severe-loss construction relies on positive prices approaching zero and permitted instantaneous pulses; it is not an empirically calibrated crash mechanism. We derive turnover and inventory requirements, a sharp full-coverage horizon ceiling, and matching quadratic upper and lower bounds for small execution rates under finite gross execution rates. Under constant impact and bounded positive prices, an additional turnover--dissipation inequality bounds the aggregate quadratic price-potential deficit. A two-session interval-certified witness places nine of ten assets at consecutive lower closing limits and attains systemic log loss above $0.020$ under specified rate and rolling-band constraints. Dimensionless resource comparisons and a nonnegative execution-cost identity clarify the economic scope of these mathematical reachability results.
+We characterize structural barriers, attainable losses, and execution requirements for terminal systemic drawdowns in a deterministic multiasset market with fixed fundamentals, paired-dollar trades, and zero terminal executed-dollar flow in each asset. Under the explicitly specified price-level recovery law, a response-adapted coordinate gives sufficient elasticity thresholds: $e(S)=Sg'(S)/g(S)\ge 2$ excludes positive drawdowns under our mean-log-loss and breadth criterion, while $e(S)\ge1$ excludes a simultaneous decline of all prices. Quadratic, linear, and constant per-share responses yield distinct exclusion, inventory-bounded, and severe partial-coverage reachability regimes. The uniform-resource severe-loss construction extends from constant impact to every fixed sublinear power response $0\le p<1$; it permits instantaneous pulses and approaches the zero-price boundary, rather than describing an empirically calibrated crash mechanism. We derive turnover and inventory requirements, a sharp full-coverage horizon ceiling, and matching quadratic upper and lower bounds for small execution rates under finite gross execution rates. Under constant impact and bounded positive prices, an additional turnover--dissipation inequality bounds the aggregate quadratic price-potential deficit. A two-session interval-certified witness places nine of ten assets at consecutive lower closing limits and attains systemic log loss above $0.020$ under specified rate and rolling-band constraints. Dimensionless resource comparisons and a nonnegative execution-cost identity clarify the economic scope of these mathematical reachability results.
 \end{abstract}
 
 \begin{keywords}market crashes; price impact; market resilience; systemic drawdown; reachability; execution constraints.\end{keywords}
@@ -29,7 +29,7 @@ Beyond the elasticity barriers, the main analytical results for constant impact 
 Under the paired-dollar, resilient market defined in Section~\ref{sec:model}, the following conclusions hold.
 \begin{enumerate}[label=\textup{(\roman*)},leftmargin=2em,itemsep=0.12em]
 \item \emph{Structural exclusion.} If $e(S)=Sg'(S)/g(S)\ge2$ at all admissible prices, then $\Cris_\alpha(t)\le0$ for every breadth and time. The weaker condition $e(S)\ge1$ excludes a simultaneous decline of all assets.
-\item \emph{Reachability regimes.} With $g_p(S)=\eta(S/F)^p$, $p=2,1,0$ respectively produce exclusion, inventory-bounded partial-coverage drawdowns, and, for $k=\lceil\alpha N\rceil<N$ and sufficiently long finite horizons, arbitrarily severe partial-coverage losses under fixed finite turnover and inventory caps when pulses are allowed. For constant impact and $k=N$, a sharp horizon-dependent bound replaces unrestricted severity.
+\item \emph{Reachability regimes.} With $g_p(S)=\eta(S/F)^p$, $p=2,1,0$ respectively produce exclusion, inventory-bounded partial-coverage drawdowns, and, for $k=\lceil\alpha N\rceil<N$ and sufficiently long finite horizons, arbitrarily severe partial-coverage losses under fixed finite turnover and inventory caps when pulses are allowed. For every fixed $0\le p<1$, the severe partial-coverage construction can be implemented within a finite horizon with dollar-turnover and share-inventory caps independent of loss severity. For constant impact and $k=N$, a sharp horizon-dependent bound replaces unrestricted severity.
 \item \emph{Execution resources.} General positive $g$ yields explicit necessary dollar-turnover and share-inventory bounds. With constant per-share impact and bounded gross executed-share rates, the small-rate crisis bound is quadratic and this order is attained by a continuous dollar-closed construction.
 \item \emph{Multiday execution.} Rolling price bands restrict per-session losses, while rate limits and the receiving assets' capacity restrict consecutive lower-limit closes. A computer-assisted two-day ten-asset path satisfies these controls, has nine repeated lower-limit closes, and yields $\Cris_{0.9}(T)>0.020$; for that instance, $0.044<\bar v_*<0.285$.
 \end{enumerate}
@@ -226,7 +226,7 @@ The constants in (C) may depend on $N,T,F,\rho,\eta$, but not on $\delta$. They 
 \caption{\textbf{A single response family, three price sensitivities.} The plot shows the model-implied instantaneous \emph{log-price change per executed dollar}, normalized by its common initial value. All curves coincide at $S=F$.}\label{fig:response}
 \end{figure}
 
-Under the same executed-dollar and recovery protocol, the three response functions produce distinct attainable-state geometries. Market A supplies a global invariant-region barrier; Market B shows that nonzero partial-coverage losses need not permit arbitrarily large ones when stock inventory is finite; and Market C supplies an explicit trajectory with a severe loss. The condition $k<N$ in (C) is essential: at least one asset must be available to carry the compensating flow. Finite gross share rates further constrain the compensating asset's \emph{capacity}.
+Under the same executed-dollar and recovery protocol, the three response functions produce distinct attainable-state geometries. Market A supplies a global invariant-region barrier; Market B shows that nonzero partial-coverage losses need not permit arbitrarily large ones when stock inventory is finite; and Market C supplies an explicit trajectory with a severe loss. The global severity construction now extends to every fixed sublinear power-law exponent in Theorem~\ref{thm:sublinear-severe}. The condition $k<N$ in (C) is essential: at least one asset must be available to carry the compensating flow. Finite gross share rates further constrain the compensating asset's \emph{capacity}.
 
 For $p=1$, the inventory potential from \eqref{eq:E} is
 \begin{equation}\label{eq:inventoryb}
@@ -301,10 +301,10 @@ For $0\le p<1$, its zero-price limit is
 $E_p(0^+)=F^2/[\eta(1-p)(2-p)]<\infty$.
 Proposition~\ref{prop:three-pulse} also makes a small, simultaneous
 decline of every asset locally reachable in this regime.
-Finiteness of the coordinate distances and inventory potential,
-however, does not by itself extend the \emph{uniform-budget,
-arbitrarily severe} construction in Theorem~\ref{thm:ABC}(C)
-beyond the proven $p=0$ case.
+Finiteness of the coordinate distances and inventory potential
+alone does not establish global reachability. Theorem~\ref{thm:sublinear-severe}
+below supplies the required constructive extension of uniform-budget
+severe partial-coverage losses to every fixed $0\le p<1$.
 
 At $p=1$, Theorem~\ref{thm:barrier1} excludes simultaneous declines,
 while Proposition~\ref{prop:two-pulse} gives local partial-coverage
@@ -328,10 +328,10 @@ ceiling scales at most logarithmically in large $H_0$, rather than
 linearly as for $p=1$. At the second threshold $p=2$,
 $-\Phi_2(0^+)$ diverges and Theorem~\ref{thm:barrier2}
 excludes every positive systemic crisis measure. These
-thresholds distinguish local reachability, boundary resource
-behavior, and the separate global severe-loss theorem;
-they are not claims of uniform attainability under fixed
-execution constraints.
+thresholds distinguish local and global reachability as well
+as the boundary resource singularities. Uniform severity bounds
+in the sublinear regime allow constants that depend on the fixed
+exponent and horizon; they do not impose a finite execution-rate cap.
 
 
 \subsection{A sharp boundary when every asset must fall}\label{sec:allcoverage}
@@ -353,6 +353,36 @@ Set $R(t)^2=\sum_iS_i(t)^2$. Under constant response, any paired-dollar trade sa
 For positive prices, $\sum_iS_i/R>1$, whence $R(T)>F\{1+(\sqrt N-1)e^{-\rho T}\}$. If each asset ends below $Fe^{-\delta}$, then $R(T)\le F\sqrt Ne^{-\delta}$, proving necessity. For sufficiency, rotate the price vector through $N$ positive spherical directions with one high coordinate, allotting each asset equal recovery weight. Each reorientation is a zero-sum paired-dollar pulse, and paired controls during recovery keep the direction fixed. Equal terminal prices and equal recovery integrals, together with $\sum_iX_i(T)=0$, give $X_i(T)=0$ for every $i$. Moving the positive low coordinates toward zero approaches the bound continuously. A full constructive proof is in Appendix~\ref{app:sharp}.
 \end{proof}
 
+
+\begin{theorem}[Uniform-resource severe partial-coverage losses for sublinear impact]\label{thm:sublinear-severe}
+Fix $N\ge2$, $k=\lceil\alpha N\rceil<N$, positive $F,\eta,\rho$,
+and an exponent $0\le p<1$ in
+$g_p(S)=\eta(S/F)^p$. There exist a finite horizon $T>0$
+and finite constants $M_0,H_0$, depending on these fixed
+market parameters but not on the loss threshold, such that for
+every $\delta>0$ an admissible positive-price,
+terminally dollar-closed path, using finitely many
+flow-completed pulses and absolutely continuous controls
+between them, satisfies
+\[
+\Cris_\alpha(T)>\delta,\qquad
+M(\gamma)\le M_0,\qquad
+H_i^-(\gamma)\le H_0\quad(1\le i\le N).
+\]
+No constants uniform as $p\uparrow1$ and no prescribed
+finite gross execution-rate cap are asserted.
+\end{theorem}
+\begin{proof}
+Put $\nu=2-p>1$. Paired-dollar pulses preserve
+$\sum_iS_i^\nu$, so their positive-price orbits are
+$\ell^\nu$ spheres. The constructive $\ell^\nu$-radial
+extension of Appendix~\ref{app:severe} is given in
+Appendix~\ref{app:sublinear-severe}, including per-asset
+terminal dollar closure and bounds on pulse turnover,
+continuous turnover, and total share sales that are
+independent of the terminal target price
+$\varepsilon\downarrow0$.
+\end{proof}
 
 \section{Necessary execution resources}\label{sec:budget}
 The response regimes determine whether a loss state is reachable. We next quantify the dollar turnover and share sales required to attain a specified breadth and severity. The following bounds apply to general positive response functions.
@@ -937,7 +967,7 @@ also have a trade term without the denominator $1/S_i$; their restoring drift re
 $\dot M\le NU_{\max}\bar v/2$. For fixed positive turnover, this prevents concentration at the single peak of the time kernel in~\eqref{eq:V2-turnover} and permits a tighter weighted-turnover estimate. Combining these constraints into sharp subset-level and session-dependent bounds remains open. Fourth, empirical implementation would require identifying local impact $g$, price versus volume recovery, trade direction, accessible inventories, and counterparties from order-book and transaction data. A static book snapshot or daily OHLCV sequence does not identify these quantities. The market-microstructure-invariance approach \citep{KyleObizhaeva2023} provides a scaling comparator, not a calibration already performed here. Extensions to stochastic flow or equilibrium selection could address probabilities of no-news crashes, which deterministic existence and exclusion results alone do not determine.
 
 \section{Conclusion}\label{sec:conclusion}
-For a specified price-level resilience and paired-dollar execution protocol, the response-adapted coordinate identifies global barriers, feasible partial-coverage regimes, and a sharp full-coverage ceiling. Necessary dollar turnover and inventory are conveniently expressed in the generalized price coordinate and in units of local benchmark impact. For constant impact on a bounded positive-price region, executed-dollar turnover also bounds the terminal quadratic price-potential deficit. A finite gross-rate cap changes the scale of attainable small systemic losses, and one independently interval-certified two-session witness satisfies the simultaneous rate, band, and dollar-ledger requirements. The economic accounting identity makes explicit the benchmark-valued inventory consumed by dollar-closed price pressure. These are structural and resource statements about an idealized market, not a probability, incentive mechanism, or empirical prediction of an exchange-wide crash. Alternative resilience laws, heterogeneous cross-impact and minimum-cost controls offer distinct mathematical directions for future work.
+For a specified price-level resilience and paired-dollar execution protocol, the response-adapted coordinate identifies global barriers, feasible partial-coverage regimes, and a sharp full-coverage ceiling. Necessary dollar turnover and inventory are conveniently expressed in the generalized price coordinate and in units of local benchmark impact. The uniform finite-resource severe partial-coverage construction extends from constant impact to every fixed exponent $0\le p<1$ in the power-law family, with resource constants that may deteriorate as $p\uparrow1$. For constant impact on a bounded positive-price region, executed-dollar turnover also bounds the terminal quadratic price-potential deficit. A finite gross-rate cap changes the scale of attainable small systemic losses, and one independently interval-certified two-session witness satisfies the simultaneous rate, band, and dollar-ledger requirements. The economic accounting identity makes explicit the benchmark-valued inventory consumed by dollar-closed price pressure. These are structural and resource statements about an idealized market, not a probability, incentive mechanism, or empirical prediction of an exchange-wide crash. Alternative resilience laws, heterogeneous cross-impact and minimum-cost controls offer distinct mathematical directions for future work.
 
 \section*{Code and numerical data availability}
 The research code, numerical data, certificates, and reproduction instructions are publicly available at \url{https://github.com/Siyuan-chat/market-crash-reachability}. The unchanged original computational baseline is associated with \href{https://github.com/Siyuan-chat/market-crash-reachability/tree/ea831c44f5b77b7039dd6644f6f0a791bb74d176}{commit \texttt{ea831c4}}; the frozen software archive is separately identified by \href{https://doi.org/10.5281/zenodo.23428183}{DOI 10.5281/zenodo.23428183}. Appendix~\ref{app:v7certificate} describes the interval certificate and identifies its implementation. Reproduction commands and software requirements are in \path{REPRODUCE.md}; the checksum manifest is \path{release/SHA256SUMS}. The underlying certificate was previously regenerated from source, with independent floating-point ODE and exact-rational consistency checks.
@@ -1181,6 +1211,203 @@ There are exactly $80,000$ certified grid steps. For the path in Proposition~\re
 $1.4047874<y(40)<1.4055543$, establishing the moving 25\% second-session limits and a terminal interval containing the high-precision reference value $1.405160822$. For the nine target assets, the target coordinates follow exact line segments, with their daily lows attained at the prescribed closes and their daily highs below the permitted ceilings. Within-step interval ratios enclose both $|u|/x$ and $9|u|/y$ and give the gross-rate bound in~\eqref{eq:v7-bounds}. The same enclosures, with outward-rounded time sums, bound individual gross share sales and executed-dollar turnover, as claimed.
 
 Finally, the terminal mean loss is $-\log[(0.9409)^9 y(40)]/10$. The assertion that it exceeds $0.020$ is checked \emph{without} relying on a floating-point logarithm: finite rational Taylor series provide lower and upper bounds on $e^{0.2}$ and verify $e^{0.2}(0.9409)^9\sup y(40)<1$. A second rational check at $e^{0.21}$ confirms the mean loss remains below $0.021$. These assertions certify feasibility of the stated piecewise-linear path and its compensator ODE.
+
+
+\section{Sublinear power-law extension of uniform-budget severity}\label{app:sublinear-severe}
+We prove Theorem~\ref{thm:sublinear-severe} for fixed $0\le p<1$.
+Write $\nu=2-p\in(1,2]$ and $m=N-1$. The proof generalizes
+the radial construction of Appendix~\ref{app:severe}; in
+particular, all resource bounds must remain uniform as the
+target price $\varepsilon$ tends to zero.
+
+\paragraph{Generalized radial trajectories}
+For $g_p(S)=\eta(S/F)^p$, the executed-dollar ledger is
+\begin{equation}\label{eq:sublinear-ledger}
+X_i(T)=\frac{F^p}{\eta\nu}
+\bigl(S_i(T)^\nu-F^\nu\bigr)
++\frac{\rho F^p}{\eta}\int_0^T
+S_i(t)^{\nu-1}\bigl(S_i(t)-F\bigr)\dd t.
+\end{equation}
+Each flow-completed paired-dollar pulse conserves
+$\sum_iS_i^\nu$. Define the generalized radius by
+$R^\nu=\sum_iS_i^\nu$. For any positive direction
+$\bm u=(u_1,\ldots,u_N)$ satisfying $\sum_i u_i^\nu=1$,
+set $H=\sum_i u_i^{\nu-1}$ and $S_i(t)=u_iR(t)$.
+The aggregate price equation is solved by
+\begin{equation}\label{eq:sublinear-stage}
+\begin{aligned}
+R(t)&=F\bigl[H+(N^{1/\nu}-H)e^{-\rho t}\bigr],\\
+\dot X_i(t)&=
+\frac{\rho F^{p+1}}{\eta}
+R(t)^{\nu-1}u_i^{\nu-1}(Hu_i-1).
+\end{aligned}
+\end{equation}
+Indeed, $\sum_i\dot X_i=0$ because
+$H\sum_i u_i^\nu=\sum_i u_i^{\nu-1}$.
+H\"older's inequality gives $1\le H\le N^{1/\nu}$;
+hence $F\le R(t)\le FN^{1/\nu}$. All stage flows
+are admissible paired transfers through the complete
+bidirectional graph in Assumption~\ref{asmp:model}.
+
+\paragraph{A uniformly positive compensating direction}
+Fix $\bar b=1/5$. Choose $c\in(0,1/10)$ sufficiently
+small that $(m-1)c^{\nu-1}<1/4$ and
+$(m-1)c^\nu<1/4$. For $b\in[0,\bar b]$, define
+\[
+a=(1-b^\nu-(m-1)c^\nu)^{1/\nu},\quad
+H_b=a^{\nu-1}+(m-1)c^{\nu-1}+b^{\nu-1}.
+\]
+Then $a>\max\{b,c\}$ and $H_b<9/4$,
+so $bH_b<1$ and $cH_b<1$. Use the $m$
+directions
+$\bm u_j=(c,\ldots,\underset{j}{a},\ldots,c,b)$:
+the compensator has weight $b$ throughout, while
+each of the $m$ targets has weight $a$ during
+exactly one stage. Every direction has the same $H_b$
+and therefore the same radius $R_b(t)$ in
+\eqref{eq:sublinear-stage}.
+
+At time $0$, a fixed-radius positive-price pulse
+takes $F\one$ to $R_b(0)\bm u_1$. Between stages
+we switch directions by fixed-radius pulses.
+At $T$, a final such pulse sets
+\[
+S_1(T)=\cdots=S_m(T)=\varepsilon,\qquad
+S_N(T)=\bigl(R_b(T)^\nu-m\varepsilon^\nu\bigr)^{1/\nu}.
+\]
+All pulse endpoints and within-pulse prices are
+positive when $\varepsilon>0$ is sufficiently small.
+Monotone interpolation in the coordinates $S_i^\nu$
+and the complete paired-dollar graph implement
+these pulses with nonnegative edge masses.
+
+By~\eqref{eq:sublinear-ledger}, the compensator's
+terminal executed-dollar balance equals
+\[
+\begin{aligned}
+\mathscr F_\varepsilon(b)
+={}&\frac{F^p}{\eta\nu}
+\bigl(R_b(T)^\nu-m\varepsilon^\nu-F^\nu\bigr)\\
+&+\frac{\rho F^p}{\eta}\int_0^T
+(bR_b(t))^{\nu-1}(bR_b(t)-F)\dd t.
+\end{aligned}
+\]
+For $b=0$ use only the continuous extension:
+the integrand tends to zero, because $\nu-1>0$,
+and $\mathscr F_0(0)>0$, since
+$R_0(T)>F$ for every finite $T$. In contrast,
+at $b=\bar b$ the stage compensator price
+converges as $t\to\infty$ to
+$F\bar bH_{\bar b}<F$.
+Its negative recovery contribution therefore
+grows linearly in $T$, while the endpoint
+term remains bounded. Choose a finite $T$
+large enough that $\mathscr F_0(\bar b)<0$.
+By continuity, choose $b_->0$ with
+$\mathscr F_0(b_-)>0$.
+The formula
+\[
+\mathscr F_\varepsilon(b)
+=\mathscr F_0(b)-\frac{mF^p}{\eta\nu}\varepsilon^\nu
+\]
+shows that, for every sufficiently small
+$\varepsilon>0$, some
+$b_\varepsilon\in(b_-,\bar b)$ gives
+$\mathscr F_\varepsilon(b_\varepsilon)=0$.
+The horizon $T$, the direction parameter $c$,
+and the positive lower bound $b_-$ are fixed
+independently of $\varepsilon$.
+
+\paragraph{Simultaneous closure of the target ledgers}
+For $b=b_\varepsilon$, the difference between
+a target's high-state and low-state recovery
+integrands is
+\[
+W(t)=R_b(t)^{\nu-1}
+\Big[(a^\nu-c^\nu)R_b(t)
+-F(a^{\nu-1}-c^{\nu-1})\Big].
+\]
+This is strictly positive: $R_b(t)\ge FH_b$,
+$cH_b<1$, and
+\[
+aH_b-1=(m-1)c^{\nu-1}(a-c)
++b^{\nu-1}(a-b)>0.
+\]
+Indeed,
+$H_b(a^\nu-c^\nu)-(a^{\nu-1}-c^{\nu-1})
+=a^{\nu-1}(aH_b-1)+c^{\nu-1}(1-cH_b)>0$.
+Partition $[0,T]$ into $m$ consecutive intervals,
+each having the same positive integral of $W$.
+Let target $j$ have high direction weight $a$
+on interval $j$ and low weight $c$ elsewhere.
+All target recovery integrals in
+\eqref{eq:sublinear-ledger} are then equal.
+Their initial and terminal prices are also equal,
+so $X_1(T)=\cdots=X_m(T)$. Paired-dollar
+conservation gives $\sum_iX_i(T)=0$, and
+the compensator has $X_N(T)=0$; hence
+$X_i(T)=0$ for every asset.
+
+\paragraph{Turnover and share inventory bounds}
+There are $m+1=N$ fixed-radius pulses.
+During each pulse the coordinates $S_i^\nu$
+vary monotonically, and
+$\dd X_i=(F^p/(\eta\nu))\dd(S_i^\nu)$.
+Since $0<S_i\le FN^{1/\nu}$ throughout
+the constructed path, each pulse costs at most
+$N^2F^2/(2\eta\nu)$ in paired-dollar turnover.
+During controlled stages,~\eqref{eq:sublinear-stage}
+and $\sum_i u_i^\nu=1$ give
+\[
+\frac12\sum_i|\dot X_i|
+\le\frac{\rho F^{p+1}}{\eta}R^{\nu-1}H_b
+\le\frac{\rho NF^2}{\eta}.
+\]
+The complete graph realizes this turnover by
+routing negative dollar flows to positive ones.
+Thus a uniform admissible bound is
+\[
+M(\gamma)\le M_0:=
+\frac{N^3F^2}{2\eta\nu}
++\frac{\rho NF^2T}{\eta}.
+\]
+For a pulse, the share increment satisfies
+$\dd\theta_i=(F^p/\eta)S_i^{-p}\dd S_i$.
+Because $\nu-1=1-p>0$, its cumulative share
+sale is at most
+$FN^{(\nu-1)/\nu}/[\eta(\nu-1)]$ per asset.
+Put $d_*=\min\{c,b_-\}>0$.
+On every controlled stage, $u_i\ge d_*$ and
+\[
+|\dot\theta_i|=
+\frac{\rho F^{p+1}}{\eta}
+R^{-p}u_i^{-p}|Hu_i-1|
+\le\frac{\rho F}{\eta}
+d_*^{-p}(1+N^{1/\nu}).
+\]
+Consequently the total share sales of each
+asset satisfy
+\begin{equation}\label{eq:sublinear-inventory}
+H_i^-(\gamma)\le H_0:=
+\frac{NF}{\eta(\nu-1)}N^{(\nu-1)/\nu}
++\frac{\rho FT}{\eta}
+d_*^{-p}(1+N^{1/\nu}).
+\end{equation}
+These finite constants do not depend on
+$\varepsilon$. Initial inventory of $H_0$
+shares per asset therefore prevents short sales.
+
+Finally, the $m$ targets have log loss
+$\log(F/\varepsilon)\to\infty$, while the
+compensator's positive terminal price is bounded
+above by $FN^{1/\nu}$. The average log loss
+and the $k$th-largest loss both diverge for
+$k\le m$. This proves
+$\Cris_\alpha(T)>\delta$ for every finite
+$\delta>0$ with the same $T,M_0,H_0$.
+The blow-up of $\Psi_p(0^+)$ as $p\uparrow1$
+precludes a corresponding claim of resource
+constants uniform up to $p=1$.
 
 \bibliographystyle{siamplain}
 \enlargethispage{2\baselineskip}
