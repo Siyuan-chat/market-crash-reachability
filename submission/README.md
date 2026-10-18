@@ -1,6 +1,6 @@
 # English manuscript editions
 
-- [V14 working research manuscript](v14-turnover-dissipation/main.tex):
+- [V14 working research manuscript](v14-turnover-dissipation/main.tex) · [Compiled PDF](v14-turnover-dissipation/manuscript.pdf):
   adds the turnover--dissipation necessary bound in the paper body;
   [proof and scope audit](../docs/V14_TURNOVER_DISSIPATION_AUDIT.md).
   **Unpublished draft; not the preferred citable preprint.**

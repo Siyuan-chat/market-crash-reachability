@@ -1,5 +1,10 @@
 # V14 turnover--dissipation research draft
 
+**[Open the compiled V14 manuscript PDF](manuscript.pdf)** · [Build provenance](manuscript-build.json).
+
+The PDF is built by GitHub Actions and committed to this directory after a successful source/build check. V14 is still an unpublished research draft; the public citable preprint remains V13.
+
+
 This **complete English manuscript source** extends the published V13 preprint.
 The new analytical turnover--dissipation necessary inequality appears in
 Section 5 of [main.tex](main.tex), with supporting scope limitations in the
