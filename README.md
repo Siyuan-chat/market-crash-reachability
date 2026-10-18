@@ -25,7 +25,7 @@ path; analytical theorems rely on the proofs in the manuscript.
 
 - **Zenodo preprint and supplement (V13):** [Published record](https://zenodo.org/records/23444647) · [DOI: 10.5281/zenodo.23444647](https://doi.org/10.5281/zenodo.23444647) · [All versions](https://doi.org/10.5281/zenodo.23427879)
 - **Archived code and reproducibility package:** [Zenodo software record](https://zenodo.org/records/23428183) · [DOI: 10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183), version `1.0.0rc1+git.d6e2606`, fixed at [commit d6e2606](https://github.com/Siyuan-chat/market-crash-reachability/tree/d6e2606590f955a6287c6945488a080e5acab004). Includes the source ZIP, provenance and SHA-256 checksum; later README DOI updates are outside this immutable snapshot.
-- **SSRN preprint:** [Published paper — Abstract ID 7622079](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079).
+- **SSRN preprint:** [Published paper — Abstract ID 7622079](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079). V13 synchronization currently requires author reauthentication; see [current status](docs/STATUS.md).
 - **Latest English preprint (V13, 37 pages, 18 October 2026):** [Manuscript PDF](submission/v13-review-response/manuscript.pdf) · [LaTeX](submission/v13-review-response/main.tex) · [Build and validation](submission/v13-review-response/README.md)
 - **Historical 33-page English edition (Zenodo v2):** [Manuscript PDF](submission/siam-language-revision/manuscript.pdf) · [DOI](https://doi.org/10.5281/zenodo.23438609). Superseded by V13; preserved unchanged.
 - **Earlier SIFIN edition:** [Manuscript PDF](submission/siam/manuscript.pdf) · [LaTeX](submission/siam/main.tex)
@@ -89,7 +89,7 @@ rational checks and an independent floating-point ODE comparison. See
 
 ## Citation and rights
 
-Cite Siyuan Ye, *When Can Markets Crash Without News?*, V12 Final (2026),
+Cite Siyuan Ye, *When Can Markets Crash Without News?*, V13 (2026),
 and identify the software version and commit used. Machine-readable metadata
 is in [CITATION.cff](CITATION.cff). The public repository is
 [Siyuan-chat/market-crash-reachability](https://github.com/Siyuan-chat/market-crash-reachability).
