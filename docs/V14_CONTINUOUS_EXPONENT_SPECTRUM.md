@@ -12,6 +12,12 @@ global unbounded severity for every p<1**.
 
 ## Exact formulas
 
+The two geometric thresholds are visible from
+`Phi_p''(S)=(1-p)/g_p(S)` and
+`G_p''(q)=[F^2/eta]*(2-p)*exp[(2-p)q]`, where
+`G_p(q)=Phi_p(F*exp(q))`: price-coordinate curvature changes sign
+at p=1 and log-coordinate curvature vanishes at p=2.
+
 For 0<=p<2,
 `-Phi_p(0+) = F^2/[eta*(2-p)]`. At p=2 the value diverges.
 For 0<=p<1, `-Psi_p(0+) = F/[eta*(1-p)]`; at p>=1
