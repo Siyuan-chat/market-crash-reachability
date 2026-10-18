@@ -6,9 +6,12 @@ The root README and preferred paper citation now identify V13; earlier PDFs are
 preserved. See [page review](V13_PDF_REVIEW.md) and
 [validation details](V13_VALIDATION_STATUS.md).
 
-SSRN requires author reauthentication before the V13 revision can be submitted;
-its existing public page still shows the earlier 33-page version. No completed
-V13 SSRN submission is claimed at this checkpoint. No local background job or
+SSRN V13 revision succeeded on 18 October 2026. The public
+[record, abstract 7622079](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079),
+was verified to show 37 pages, the V13 abstract and revision date 18 October 2026.
+The previous temporary reauthentication blocker is resolved.
+V13 manuscript build CI passed (run 39086681193); Reproducibility CI passed
+on da70760 (run 39086734505). No local background job or
 automatic continuation has been started. The immutable software archive remains
 DOI 10.5281/zenodo.23428183 (d6e2606); this editorial update does not rerun the
 certificate or create a new code archive.

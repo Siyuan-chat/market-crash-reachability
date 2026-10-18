@@ -2,8 +2,8 @@
 
 **Current public English preprint: V13, 37 pages.** Published on Zenodo on
 18 October 2026: [10.5281/zenodo.23444647](https://doi.org/10.5281/zenodo.23444647).
-SSRN synchronization currently requires author reauthentication; the public
-SSRN record still contains the earlier 33-page edition.
+SSRN revision succeeded on 18 October 2026. Its public record, abstract 7622079,
+was verified to show 37 pages, the V13 abstract and revision date 18 October 2026.
 
 [Page-by-page review and corrections](V13_PDF_REVIEW.md). V13 exposition was prepared against the already
 published 18 October English edition. Statements and numeric results retain
@@ -44,7 +44,7 @@ their earlier meaning; no independent new certificate or Lean proof is claimed.
 The author explicitly authorized page-by-page writing review followed by SSRN,
 Zenodo and GitHub synchronization if satisfactory. Review and the listed
 editorial fixes are complete; no blocking writing issue remained. Zenodo V13
-is public. Earlier English PDFs and the code archive remain unchanged.
+and SSRN V13 are public. Earlier English PDFs and the code archive remain unchanged.
 
 Historical: the initial PR #11 draft required compilation and author acceptance;
 those pending-draft instructions are superseded by this review and authorization.
