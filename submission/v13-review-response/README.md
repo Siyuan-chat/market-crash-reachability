@@ -18,6 +18,15 @@ requiring new proofs are described as future work, not included as results.
 The main figure PDFs are reused from the previous English edition rather than
 copied into this source directory. They remain unchanged.
 
+## Exchange-agnostic rolling bands
+
+The multiday example in Section 7 is now explicitly an **abstract
+proportional-reset price-band model**, not a TSE simulation. Theorems and the
+original computer-assisted certificate are unchanged: the 3% target and 25%
+compensator bands remain parameters of the original synthetic witness.
+Japanese exchange rules appear only in the Discussion as a contrast. No new
+25%-uniform-band construction or larger-loss scenario has yet been claimed.
+
 ## Reproduce the V13 candidate
 
 From the repository root (Python 3.11 plus pdfLaTeX/BibTeX and TeX packages):

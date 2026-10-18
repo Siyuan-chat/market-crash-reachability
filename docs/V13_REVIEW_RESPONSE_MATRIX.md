@@ -16,6 +16,7 @@ Historical V12 `paper/`, Lean `formal/`, numerical `verification/` and
 | M4 Weak real-world crash evidence | Clearly label path as specified feasibility witness; report arithmetic/geometric differences | Abstract, Secs 7,8 | Original certified values and qualification preserved |
 | M5 Definition sensitivity | p=1 arithmetic conservation and distinction from geometric mean | Secs 2,8 | Direct algebraic consequence; weighted-target global classification deferred |
 | M6 Heterogeneity | Explicit scope and differential-form obstacle for cross-impact | Sec 8 | Future work; no extension theorem claimed |
+| TSE attribution / Section 7 scope | Recast as exchange-agnostic rolling price-band analysis; retain venue-specific details only as institutional contrast | Secs 6,7,8 | Narrative-only; synthetic 3%/25% certificate untouched |
 | M7 Certificate and rate bracket | Preserve published interval certificate and distinguish rate bounds/optimization | Secs 7,8, availability | New 80,000-step audit and global rate optimum **not claimed** |
 | Minor terminology and framing | Clean up discussion, bibliography, source/reproduction provenance | Secs 1,8,9 and docs | Remaining layout validation tracked separately |
 

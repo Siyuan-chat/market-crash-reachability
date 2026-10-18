@@ -336,7 +336,7 @@ For the power family $g_p(S)=\eta(S/F)^p$, the necessary dollar-turnover bound i
 In the ten-asset, two-session constant-impact certificate, $F=g_F=1$, $\rho=0.4$, $M<3$, $\max_iH_i^-<2$, and $\bar v_{\mathrm{used}}<0.285$ imply $\widehat M<3$, $\max_i\widehat H_i^-<2$, and $\widehat v_{\mathrm{used}}<0.7125$. These are \emph{within-model} resources. Comparing them with observed market depth, accessible inventory, and traded volume would require asset-specific empirical calibration rather than equating $D_F$ with a quoted order-book or ADV statistic.
 
 
-\section{Finite trading rates and daily price limits}\label{sec:rateband}
+\section{Finite trading rates and abstract price bands}\label{sec:rateband}
 A structurally reachable loss may require trades that cannot be completed at finite speed. We therefore restrict the control set by gross executed-share rates and single-session price bands. These restrictions preserve the barrier theorems, while positive reachability requires a new continuous construction rather than the pulse controls used in Market C.
 
 The imposition of finite execution speed builds on rate-constrained trading models such as Yang~\citep{Yang2019}, while our goal remains the reachability of a collective loss threshold rather than the optimum of an agent's execution objective.
@@ -349,12 +349,12 @@ For absolutely continuous nonnegative paired-dollar edge rates $\dot z_e(t)$, de
 \end{equation}
 This bound counts buy and sell executions \emph{before} netting. In particular $|\dot\theta_i|\le r_i^{\mathrm{gross}}\le\bar v$ and instantaneous pulses are inadmissible. Bounding only the signed net share rate would allow simultaneous offsetting gross transactions of arbitrary size and would not constrain executed turnover.
 
-Independently, a stylized \emph{one-session price-limit rule} restricts every executed price to
+Independently, an abstract \emph{one-session price-band constraint} restricts every executed price to
 \begin{equation}\label{eq:band}
  F(1-\beta_-)\le S_i(t)\le F(1+\beta_+),\qquad
  0<\beta_-<1,\quad\beta_+>0.
 \end{equation}
-The control must keep its price path inside this interval; an attempted trade that would cross the limit is \emph{inadmissible}, not reflected mechanically back into the band. Equation~\eqref{eq:band} is an abstraction: TSE price limits are predominantly absolute yen intervals based on the prior close or base price, vary with the price level, and may be widened across sessions \citep{JPX2026}. We do not model queued unfilled orders, special quotes, limit-hit auction allocation, or next-day reopening.
+The control must keep its executed-price path inside this interval; a control that would leave the band is \emph{inadmissible}, not reflected back into the band. This is a prescribed mathematical state constraint, not a reconstruction of any named exchange's trading rules. In particular, it has no exchange-specific tick sizes, price-tier tables, order queues, auction mechanisms, or conditional band enlargement; actual exchange rules are discussed only as external context in Section~\ref{sec:discussion}.
 
 \begin{proposition}[Rate and price-band exclusion certificates]\label{prop:rate-band}
 Suppose the common impact function is positive and $g(S)\le G$ on the whole admissible price region. Under the cap~\eqref{eq:grossrate}, every asset obeys
@@ -493,10 +493,10 @@ Figure~\ref{fig:localrate} compares the numerical small-rate loss with its leadi
 
 
 \FloatBarrier
-\section{Consecutive limit-down closes across sessions}\label{sec:multiday}
-Rolling price floors allow losses to accumulate over successive sessions. The multiday analysis tracks the assets that repeatedly reach their lower limits, their contribution to the crisis functional, and the capacity of the remaining assets to absorb the paired dollar flow. Feasibility requires sufficient breadth and average loss, adequate selling speed, and receiving capacity within the applicable rate caps and price bands.
+\section{Systemic drawdowns under rolling price-band constraints}\label{sec:multiday}
+This section studies a \emph{hypothetical proportional-reset price-band protocol}, not a Tokyo Stock Exchange case study or an attempt to replicate any other venue. A price band restricts \emph{executed} prices during each modeled session and resets from the previous modeled closing price. The multiday analysis tracks the assets repeatedly closing at the lower band, their contribution to the crisis functional, and the capacity of the remaining assets to absorb paired dollar flow. Feasibility requires sufficient breadth and average loss, selling speed, and receiving capacity within the prescribed rate caps and bands.
 
-A \emph{lower-limit close} is a last executed price equal to the session's floor. A \emph{locked limit-down order book} additionally involves unfilled sell queues, which would require queue dynamics beyond the present execution state. This distinction is relevant to the interpretation of price-limit evidence \citep{KimRhee1997,Chen2019}.
+A \emph{lower-band close} (called a \emph{lower-limit close} in some theorem statements) means only that the last executed price equals the \emph{modeled} session floor. Neither such a closing print nor repeated floor hits imply a real-exchange limit-down event, a locked order book, an unfilled sell queue, or a market halt; those would require additional institutional rules and state variables. This mathematical convention applies equally to the numerical certificate below. Empirical exchange price-limit evidence is discussed separately in Section~\ref{sec:discussion}.
 
 \subsection{Rolling bands and the exact cumulative accounting}\label{subsec:multiday-protocol}
 Partition trading time into $D$ sessions $[T_{d-1},T_d]$, each of duration $\tau_d>0$. Overnight calendar time does not contribute to the model clock; prices carry over continuously from the preceding close. In the stylized \emph{proportional-reset} version, set $R_{i,d}=S_i(T_{d-1})$ and require
@@ -515,10 +515,10 @@ $S_i(T_D)=Fq^D$ and loss $L_i(T_D)=D\lambda$ with $\lambda=-\log q$. Conversely,
 for a common band and initial equal benchmark price. For heterogeneous bands the right side can be replaced by
 $\max_i\sum_{d=1}^D[-\log(1-\beta_{i,d,-})]$. These are \emph{geometric ceilings}, not sufficient conditions for a dollar-paired trajectory to hit the floor.
 
-Under a price-tiered yen rule, consecutive lower-limit closes would obey $R_{i,d+1}=R_{i,d}-\Delta_-(R_{i,d})$, provided the next base reference equals the preceding close and no widening rule applies \citep{JPX2026}. We retain the proportional-reset model~\eqref{eq:rolling-band} throughout.
+All subsequent multiday statements and the computer-assisted example use only the proportional-reset constraint~\eqref{eq:rolling-band}. No price-tiered yen rule, exchange-specific closing auction, or conditional enlargement event is imposed.
 
 
-\subsection{Cross-sectional crisis threshold under a closing-limit streak}\label{subsec:multiday-breadth}
+\subsection{Cross-sectional crisis threshold under repeated lower-band closes}\label{subsec:multiday-breadth}
 Consecutive lower-limit closes by $k$ stocks satisfy the breadth requirement, but do not automatically satisfy the mean-loss requirement: the remaining assets may appreciate as they receive matched dollars. This is the same $k<N$ compensation mechanism that permits Market C's partial-coverage outcomes, now seen from the opposite direction. The following exact endpoint identity shows when the falling majority becomes a crisis under the \emph{unchanged} functional, without yet constructing the trades.
 \begin{proposition}[A conditional systemic-crisis trigger test]\label{prop:multiday-crisis-trigger}
 Suppose the same $k=\lceil\alpha N\rceil<N$ assets close at $Fq^D$ after $D$ identical proportional-reset sessions, with $q\in(0,1)$. Let the remaining $N-k$ assets close at $Y_j>0$, and write $\lambda=-\log q$. For any $0<\delta\le D\lambda$, the \emph{terminal} crisis threshold $\Cris_\alpha(T_D)\ge\delta$ holds if and only if
@@ -545,7 +545,7 @@ Figure~\ref{fig:multiday-crisis-trigger} illustrates the distinction between rep
  \caption{\textbf{Systemic loss and the compensating asset's terminal price.} Conditional terminal severity for $N=10$, nine assets closing twice at a 3\% daily lower limit, versus the remaining asset's terminal price. The dotted marker denotes the constructed dollar-closed path; the reference lines show the log-loss thresholds $\delta=0.015$ and $\delta=0.020$. The curve gives the conditional algebraic relation between the terminal price and systemic loss.}\label{fig:multiday-crisis-trigger}
 \end{figure}
 
-\subsection{A minimum speed for a consecutive closing streak}\label{subsec:multiday-rate}
+\subsection{A minimum speed for consecutive lower-band closes}\label{subsec:multiday-rate}
 A closing price at the lower limit must be reached in finite time despite recovery toward $F$. For $g(S)\equiv\eta$, start a session at price $s$ and suppose its length is $\tau$ and its lower floor is $(1-\beta)s$. Even before asking who purchases the matched dollars, the gross share-rate cap bounds the fastest decline through $\dot z=-\rho(z-F)-\eta\bar v$, $z(0)=s$. This yields a necessary threshold but leaves the market-wide matching problem unresolved.
 \begin{proposition}[Rolling-limit shock-rate certificates]\label{prop:rolling-rate}
 In the constant per-share impact model, a lower-limit close in a session starting at $s>0$ requires
@@ -571,7 +571,7 @@ Requiring $S_i(\tau)\le(1-\beta)s$ yields \eqref{eq:single-session-streak-rate};
 \end{proof}
 
 
-\subsection{Obstruction to universal consecutive limit-down closes}\label{subsec:multiday-full}
+\subsection{Obstruction to universal consecutive lower-band closes}\label{subsec:multiday-full}
 The all-asset case is especially restrictive: there is no complement capable of absorbing a net dollar flow. The same potential that gave the original exclusion barriers now rules out a second simultaneous decline under a simple below-benchmark band condition. This obstruction extends the breadth distinction in the A/B/C regimes to the entire market.
 \begin{theorem}[An obstruction to a second all-asset limit-down close]\label{thm:no-second-global}
 Assume $g_i(S)>0$, $\rho_i>0$, unchanged fundamental benchmarks $F_i>0$, and instantaneous interasset executed-dollar balance $\sum_i\dd X_i=0$. Suppose every asset closes the first session at $S_i(T_1)=q_iF_i<F_i$, and the \emph{entire second-session admissible band} lies at or below its own benchmark,
@@ -762,7 +762,7 @@ The definition $\Cris_\alpha=\min\{\overline L,Q_\alpha\}$ uses the equal-weight
 \subsection{What the two-session certificate establishes}
 The construction in Proposition~\ref{prop:certified-v7} is a constrained \emph{existence witness} for one specified ten-asset market. Nine equal target prices lose $5.91\%$ over two sessions, while the receiving asset has a high-precision reconstructed final price near $1.40516 F$. The equal-weight geometric-index decline is approximately $2.06\%$ (the mean log loss is approximately $0.02081$), whereas the arithmetic mean price decreases by only about $1.27\%$. These different percentages measure different objects. The receiving asset must support unusually large temporary price excursions and a broad rolling band in this selected path. Table~\ref{tab:sensitivity} varies the composition \emph{holding the control fixed}; its non-$k=9$ rows do not prove infeasibility of optimized alternative controls.
 
-The bracket $0.044<\bar v_*<0.285$ combines a universal necessary inequality for the fixed model parameters with a certified feasible upper witness. Its width reflects the difference between an intentionally nonsharp barrier and one hand-designed construction, not a numerically established near-optimum. The interval certificate proves the stated pathwise constraints and ledger closure; it does not certify an optimal policy, an order queue, an empirically likely event, or a realized exchange-wide crash. The rolling percentage bands are a stylized rule, rather than the tiered yen limits and conditional enlargement provisions of the Tokyo Stock Exchange \citep{JPX2026}.
+The bracket $0.044<\bar v_*<0.285$ combines a universal necessary inequality for the fixed model parameters with a certified feasible upper witness. Its width reflects the difference between an intentionally nonsharp barrier and one hand-designed construction, not a numerically established near-optimum. The interval certificate proves the stated pathwise constraints and ledger closure; it does not certify an optimal policy, an order queue, an empirically likely event, or a realized exchange-wide crash. The price-band protocol is deliberately \emph{exchange-agnostic}; its $3\%$ target bands and $25\%$ compensator bands are chosen model parameters, not calibrated Tokyo Stock Exchange limits. For institutional contrast, TSE sets daily limits as tiered \emph{absolute yen} amounts based on reference prices and conditionally widens limits after specified sequences of limit-bound trading with little or no execution \citep{JPX2026}. Empirical studies of actual price-limit regimes \citep{KimRhee1997,Chen2019} therefore do not validate the proportional-reset mechanics or the feasibility of this particular synthetic path. A genuine TSE application would require a separate venue-specific execution model.
 
 \subsection{Extensions and empirical tests}
 Several natural extensions are outside the scope of the present reachability classification. First, alternative resilience coordinates and nonlinear recovery operators could be analyzed for preservation or failure of the $\Phi$-based barriers; this requires new comparison results, not a relabeling of $\rho$. Second, heterogeneous $(g_i,\rho_i,F_i)$, varying network topology and nonseparable cross-impact replace the simple common-potential argument. For invertible matrix impact $\dd\bm S=\mathsf G(\bm S)\dd\bm\theta$, an additive transaction potential would depend on exactness of the one-form
