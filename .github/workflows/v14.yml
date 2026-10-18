@@ -1,0 +1,33 @@
+name: V14 analytical manuscript
+on:
+  push:
+    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','.github/workflows/v14.yml']
+  pull_request:
+    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','.github/workflows/v14.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/check_v14_resource_bound.py
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-science
+      - run: python scripts/build_v14_resource_bound.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v14-turnover-dissipation-pdf
+          path: |
+            build/v14-turnover-dissipation/main.pdf
+            build/v14-turnover-dissipation/main.log
+            build/v14-turnover-dissipation/main.bbl
+            build/v14-turnover-dissipation/build_summary.json
+            build/v14-turnover-dissipation/pdflatex-*.txt
+            build/v14-turnover-dissipation/bibtex.txt
