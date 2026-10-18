@@ -257,6 +257,18 @@ The individual losses satisfy $L_i(T)=c(1-r)hu_i+O(h^2)$, while the first-order 
 
 The preceding two propositions describe local reachability within this classification. A two-pulse path can generate a partial-coverage loss under a less restrictive elasticity threshold; a three-pulse path with an additional cancellation step can generate a small decline of \emph{every} asset when $e(F)<1$. The global severe-loss construction for Market C is established separately.
 
+\paragraph{A concrete common-budget comparison} For $N=3$, $k=2$, $F=\eta=\rho=1$, $T=3$, common turnover cap $M_0=3$, and per-asset initial inventory cap $H_0=8.2$, the $p=2$ market cannot reach any positive crisis; the $p=1$ market can reach a small positive crisis but not the threshold $\delta=10$ (it would require over $9$ shares of selling by any qualifying asset); a constructive $p=0$ path reaches $\Cris_{2/3}(T)\approx13.32$ with turnover approximately $2.62$ and a maximum per-asset cumulative share sale below $3.94$. Here the large threshold $\delta=10$ serves as a theoretical stress test to separate bounded from unbounded logarithmic losses, not as an empirically representative market crash. In Market C, $E_0(Fe^{-\delta})=\frac{F^2}{2\eta}(1-e^{-\delta})^2$ stays finite as $\delta\to\infty$, whereas $\log(F/S)\to\infty$ as $S\downarrow0$. This difference is central to the extreme-severity conclusion: all constructed paths retain strictly positive prices, but the limiting argument approaches a boundary at which a constant additive per-share response should not be read as a calibrated market-depth model. The choices $F=\eta=1$ normalize units and do not assert that the observed market permits these flows relative to daily volume. Validation code accompanies the source files.
+
+
+The common trading experiment across the three response regimes is illustrated in Figure~\ref{fig:abcnum}.
+
+\begin{figure}[tbp]
+\centering\includegraphics[width=0.98\linewidth]{figures/abc_control_comparison.pdf}
+\caption{\textbf{An identical trading experiment across A/B/C response functions.} Two terminally offsetting executed-dollar pulses act on $N=3$ assets with $k=2$, $F=\eta=\rho=1$, and $T=3$. Left: the measured \emph{terminal} crisis functional as paired-dollar turnover increases; right: terminal prices under the same total turnover $M=0.8$. The dotted horizontal line marks the reference log-loss threshold 0.05.}\label{fig:abcnum}
+\end{figure}
+
+\FloatBarrier
+
 \paragraph{The continuous power-law spectrum}
 The three canonical markets in Theorem~\ref{thm:ABC} are part of a
 continuous family: retain the expression for $g_p$ in
@@ -321,18 +333,7 @@ behavior, and the separate global severe-loss theorem;
 they are not claims of uniform attainability under fixed
 execution constraints.
 
-\FloatBarrier
-\paragraph{A concrete common-budget comparison} For $N=3$, $k=2$, $F=\eta=\rho=1$, $T=3$, common turnover cap $M_0=3$, and per-asset initial inventory cap $H_0=8.2$, the $p=2$ market cannot reach any positive crisis; the $p=1$ market can reach a small positive crisis but not the threshold $\delta=10$ (it would require over $9$ shares of selling by any qualifying asset); a constructive $p=0$ path reaches $\Cris_{2/3}(T)\approx13.32$ with turnover approximately $2.62$ and a maximum per-asset cumulative share sale below $3.94$. Here the large threshold $\delta=10$ serves as a theoretical stress test to separate bounded from unbounded logarithmic losses, not as an empirically representative market crash. In Market C, $E_0(Fe^{-\delta})=\frac{F^2}{2\eta}(1-e^{-\delta})^2$ stays finite as $\delta\to\infty$, whereas $\log(F/S)\to\infty$ as $S\downarrow0$. This difference is central to the extreme-severity conclusion: all constructed paths retain strictly positive prices, but the limiting argument approaches a boundary at which a constant additive per-share response should not be read as a calibrated market-depth model. The choices $F=\eta=1$ normalize units and do not assert that the observed market permits these flows relative to daily volume. Validation code accompanies the source files.
 
-
-The common trading experiment across the three response regimes is illustrated in Figure~\ref{fig:abcnum}.
-
-\begin{figure}[tbp]
-\centering\includegraphics[width=0.98\linewidth]{figures/abc_control_comparison.pdf}
-\caption{\textbf{An identical trading experiment across A/B/C response functions.} Two terminally offsetting executed-dollar pulses act on $N=3$ assets with $k=2$, $F=\eta=\rho=1$, and $T=3$. Left: the measured \emph{terminal} crisis functional as paired-dollar turnover increases; right: terminal prices under the same total turnover $M=0.8$. The dotted horizontal line marks the reference log-loss threshold 0.05.}\label{fig:abcnum}
-\end{figure}
-
-\FloatBarrier
 \subsection{A sharp boundary when every asset must fall}\label{sec:allcoverage}
 Market C relies on $k<N$. To see why the breadth condition matters beyond a technical assumption, keep \emph{the same constant-impact response} but change the target to $k=N$. There is then no nonqualifying asset available to compensate the other $N-1$ terminal losses. Rather than an arbitrary-severity construction, the model now yields an exact horizon-dependent ceiling, even before a fixed execution budget is imposed.
 
