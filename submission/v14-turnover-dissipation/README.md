@@ -6,13 +6,16 @@ The PDF is built by GitHub Actions and committed to this directory after a succe
 
 
 This **complete English manuscript source** extends the published V13 preprint.
-The new analytical turnover--dissipation necessary inequality appears in
-Section 5 of [main.tex](main.tex), with supporting scope limitations in the
-Discussion. [Detailed proof audit](../../docs/V14_TURNOVER_DISSIPATION_AUDIT.md).
+The new **Proposition 5.2 (Turnover--dissipation bound under constant impact)**
+and its formal proof appear in Section 5 of [main.tex](main.tex), with
+a time-kernel interpretation and three distinct sharpening directions in
+the Discussion. [Detailed proof audit](../../docs/V14_TURNOVER_DISSIPATION_AUDIT.md).
 
 The published V13 manuscript, PDF, Lean proofs, and archived numeric certificates
-are unchanged. This draft **does not** claim any new numerical witness, optimal
-control, or impossibility result, and is not deposited on Zenodo/SSRN.
+are unchanged. This draft does not claim any new numerical witness, optimal control,
+or impossibility result, and is not deposited on Zenodo/SSRN. The new
+Proposition 5.2 has not been Lean-formalized and is not counted in the
+original 16/16 Lean acceptance report.
 
 For constant per-share impact and absolutely continuous paired-dollar controls,
 if prices are bounded below by a>0 and |S_i-F|<=b, writing
