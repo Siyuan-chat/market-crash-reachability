@@ -51,3 +51,25 @@ writes its new output to build/v14-turnover-dissipation.
 Independent dollar-ledger reconstruction tests (not a mathematical proof):
 
     python scripts/check_sublinear_severe_extension.py
+
+## Additional uniform-band loss--breadth certificates (Section 7)
+
+The manuscript now includes a new computer-assisted Proposition for eight of
+ten target assets losing more than 10.8% under two uniform +/-25% rolling
+sessions, M<3, per-asset gross rates <0.285, all terminal dollar ledgers
+closed, and a geometric market index drop >3%. The result is additional
+to the published nine-target mixed-band existence certificate.
+
+A comparison table reports 12 new controls covering breadth 50--100% and
+strictly separates original M<3 resources from explicitly relaxed M<4,
+M<5 and M<7 experiments. These are pathwise existence certificates, not a
+global loss--breadth optimum.
+
+- [Comparison and proof scope](../../docs/V14_LOSS_BREADTH_CERTIFICATES.md)
+- [Verifiable controls, source, and reproduction](../../verification/loss_breadth/README.md)
+- [Paper appendix with the exact eight-target dollar-rate schedule](main.tex)
+- [GitHub Actions proof checks](../../.github/workflows/loss-breadth.yml)
+
+The new computer-assisted result has not been externally code-audited or
+Lean-formalized. The immutable historic V13 original interval certificate
+and its publicly deposited PDF are unchanged.
