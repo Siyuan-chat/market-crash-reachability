@@ -225,7 +225,7 @@ def main():
         r"e^{-\rho(t-s)}[-\omega(s)]_+",
         r"Q_{1/2}(T)=(1-r)\kappa_1a+O(a^2)>0",
         r"$X_i(T)=0$",
-        "without an instantaneous",
+        "does not impose a",
         r"Theorem~\ref{thm:barrier2}",
     ):
         if required == r"$X_i(T)=0$":
