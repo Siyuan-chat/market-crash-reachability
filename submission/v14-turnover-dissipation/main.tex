@@ -462,6 +462,18 @@ exponent and horizon; they do not impose a finite execution-rate cap.
 
 
 \Needspace{14\baselineskip}
+\paragraph{Construction of the severe-loss path}
+The proof proceeds in four steps: identify the generalized
+radial invariant preserved by paired-dollar pulses; rotate
+strictly positive price directions to make each terminal
+target price arbitrarily small; choose stage durations and
+directions so that each asset's executed-dollar ledger closes;
+and bound the total turnover and share sales independently
+of the target loss severity. These bounds are uniform in the
+terminal target price, with the asset number, exponent,
+and market parameters held fixed. The detailed radial
+and ledger calculations appear in Appendix~\ref{app:sublinear-severe}.
+
 \begin{theorem}[Uniform-resource severe partial-coverage losses for sublinear impact]\label{thm:sublinear-severe}
 Fix $N\ge2$, $k=\lceil\alpha N\rceil<N$, positive $F,\eta,\rho$,
 and an exponent $0\le p<1$ in
@@ -806,6 +818,8 @@ Figure~\ref{fig:localrate} compares the numerical small-rate loss with its leadi
 
 \FloatBarrier
 \section{Rolling Price Limits: Constrained Realizations}\label{sec:multiday}
+The application proceeds from rolling-band accounting and full-coverage obstructions to dollar-closure preconditioning and the receiving assets' capacity. We then certify a two-session path satisfying these constraints. Additional uniform-band constructions form a supplementary loss--breadth comparison, with exact controls retained in Appendix~\ref{app:loss-breadth}.
+
 We now extend the reachability analysis to a multi-session proportional-reset price-band protocol. In each session, permitted execution prices are referenced to the preceding close. Trading interruptions can shift orders forward in time and redirect pressure across markets, as the circuit-breaker analysis of Subrahmanyam~\citep{Subrahmanyam1994} illustrates. Here repeated lower-band closes couple the crisis functional to the capacity of the remaining assets to absorb paired-dollar flow. Feasibility depends jointly on breadth, mean loss, selling speed, and receiving capacity within the prescribed rate caps and bands.
 
 Throughout, a \emph{lower-band close} (also called a \emph{lower-limit close} in some theorem statements) means that the terminal executed price attains the modeled session floor. Institutional features such as resting order queues or trading halts lie outside the executed-price state space (see Section~\ref{sec:discussion}).
