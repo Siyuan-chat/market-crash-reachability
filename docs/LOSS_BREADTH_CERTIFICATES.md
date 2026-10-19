@@ -30,8 +30,18 @@ certificate**, which uses 3% target bands and a 25% compensator band.
 | R70-15.5 | 7/10 | 15.50% | 4.0% | 2.939070 | 0.277592 | 3 |
 | R70-20-M5 | 7/10 | 20.20% | 6.0% | 4.599448 | 0.262743 | **5** |
 
+The **P** cases use two active piecewise-constant trading windows;
+the **R** cases use three. Digits denote coverage percentage and
+nominal target ordinary loss, while suffix **M5** denotes the
+relaxed turnover budget. In the manuscript table, reported dollar
+turnover and gross share-rate values are conservative certified
+upper bounds (not fitted optimum values). For the original k=9
+certificate, the established bounds are **M < 2.984** and
+**maximum gross rate < 0.2845**; its mixed 3%/25% bands differ
+from the new witnesses.
+
 The geometric-index price decline is
-1-exp(-mean-log-loss); it is **not** target-asset ordinary price loss.
+1-exp(-mean-log-loss); it is distinct from target-asset ordinary price loss.
 The original published k=9 certificate additionally establishes
 a mean log loss >0.020 with target ordinary drop 5.91%.
 Its bands and controls differ from those of this table.
