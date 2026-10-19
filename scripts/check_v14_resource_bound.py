@@ -228,6 +228,30 @@ def main():
     assert p_barriers < p_robustness < p_regimes < p_spectrum
     abstract=new.split(r"\begin{abstract}",1)[1].split(r"\end{abstract}",1)[0]
     assert "$" not in abstract and chr(92) not in abstract
+    for phrase in (
+        "price-level recovery toward a fixed fundamental benchmark",
+        "bounded below by two throughout the admissible price range",
+        "an elasticity bounded below by one throughout that range",
+        "Under constant per-share impact, finite gross execution-rate",
+    ):
+        assert phrase in abstract, ("Missing precise abstract assumption",phrase)
+    assert "Unless explicitly stated otherwise, the results below" in new
+    assert "All subsequent theorems use the same market definition" not in new
+    regime=new.split(r"\section{Reachability Regimes under Power-Law Impact}",1)[1].split(
+        r"\section{Execution Resources and Turnover Bounds}",1)[0]
+    assert r"\paragraph{Main results of this section}" in regime
+    assert r"Theorem~\ref{thm:sublinear-severe}" in regime
+    assert r"Theorem~\ref{thm:critical}" in regime
+    assert "not merely the market-wide sum" in regime
+    # Figure 6 belongs to Appendix G. The fixed placement and barrier
+    # prevent it from moving across the start of the Appendix H proof.
+    appendix_g=new.split(
+        r"\section{A reproducible interval certificate for the two-day construction}",1
+    )[1].split(r"\section{Sublinear power-law extension of uniform-budget severity}",1)[0]
+    assert appendix_g.count("figures/multiday_crisis_trigger.pdf")==1
+    assert r"\begin{figure}[H]\centering" in appendix_g
+    assert appendix_g.rstrip().endswith(r"\FloatBarrier")
+    assert r"\label{fig:multiday-crisis-trigger}" in appendix_g
     for heading in (
         "Model and Systemic Drawdown Criterion",
         "Execution Resources and Turnover Bounds",

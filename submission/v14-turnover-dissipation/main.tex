@@ -4,7 +4,7 @@
 \raggedbottom
 \maketitle
 \begin{abstract}
-We study systemic drawdown reachability in a deterministic multiasset market with fixed fundamentals, state-dependent price impact, and paired-dollar execution. Each asset's terminal executed-dollar ledger closes, although its share inventory may change. A response-adapted coordinate yields two structural barriers: a price-impact elasticity of at least two excludes positive systemic losses under our average-log-loss and breadth criterion, while an elasticity of at least one precludes a simultaneous decline in all prices. Power-law impact distinguishes excluded, inventory-bounded, and severely reachable partial-coverage regimes. For every fixed sublinear exponent, arbitrarily severe partial-coverage logarithmic losses are attainable over a fixed finite horizon with turnover and inventory bounds independent of severity, using flow-completed instantaneous trades. Under constant per-share impact, full-coverage drawdowns obey a sharp, unattained horizon-dependent ceiling. A bounded gross execution rate produces a quadratic small-loss scaling with matching constructive order. Perturbation bounds quantify deviations from exact dollar pairing and homogeneous impact. These results separate structural barriers to market-wide drawdowns from the execution resources required to realize them.
+We study systemic drawdown reachability in a deterministic multiasset market with state-dependent price impact, price-level recovery toward a fixed fundamental benchmark, and paired-dollar execution. Each asset's terminal executed-dollar ledger closes, although its share inventory may change. A response-adapted coordinate yields two structural barriers: a price-impact elasticity bounded below by two throughout the admissible price range excludes positive systemic losses under our average-log-loss and breadth criterion, while an elasticity bounded below by one throughout that range precludes a simultaneous decline in all prices. Power-law impact distinguishes excluded, inventory-bounded, and severely reachable partial-coverage regimes. For every fixed sublinear exponent, arbitrarily severe partial-coverage logarithmic losses are attainable over a fixed finite horizon with turnover and inventory bounds independent of severity, using flow-completed instantaneous trades. Under constant per-share impact, full-coverage drawdowns obey a sharp, unattained horizon-dependent ceiling. Under constant per-share impact, finite gross execution-rate constraints yield matching quadratic upper and constructive lower orders for small attainable systemic losses. Perturbation bounds quantify deviations from exact dollar pairing and homogeneous impact. These results separate structural barriers to market-wide drawdowns from the execution resources required to realize them.
 \end{abstract}
 
 \begin{keywords}market crashes; price impact; market resilience; systemic drawdown; reachability; execution constraints.\end{keywords}
@@ -30,7 +30,7 @@ The principal coordinate, normalized to vanish at the reference price, is
 It makes each marginal executed dollar an additive coordinate increment and separates paired trading from restorative drift. We prove structural barriers by tangent and Jensen inequalities, develop severe-loss paths through generalized radial geometry and per-asset ledger closure, and derive resource bounds by comparison inequalities. Outward-rounded interval calculations certify the finite-rate examples \citep{Tucker2011}. Section~\ref{sec:model} sets up the model; Sections~\ref{sec:barriers}--\ref{sec:regimes} examine barriers and reachability; Sections~\ref{sec:budget}--\ref{sec:rateband} bound execution resources; Section~\ref{sec:multiday} applies rolling bands, followed by discussion and conclusion. Full constructions and numerical certificates appear in the appendices.
 
 \section{Model and Systemic Drawdown Criterion}\label{sec:micro}\label{sec:model}
-We specify a risky-asset reallocation submarket in which every executed sale is matched by an equal-dollar purchase. Settlement and price response are distinct assumptions: the former constrains flows, while the latter determines the induced price motion. All subsequent theorems use the same market definition.
+We specify a risky-asset reallocation submarket in which every executed sale is matched by an equal-dollar purchase. Settlement and price response are distinct assumptions: the former constrains flows, while the latter determines the induced price motion. Unless explicitly stated otherwise, the results below are established under this market specification. Selected extensions relax individual assumptions, with their modified conditions stated separately.
 
 \begin{assumption}[The resilient paired-dollar market]\label{asmp:model}
 Fix $N\ge2$ assets and a finite horizon $[0,T]$. The following jointly define the admissible market.
@@ -317,6 +317,18 @@ time-varying fundamentals, heterogeneous restoration, and
 nonseparable cross-impact require separate analysis.
 
 \section{Reachability Regimes under Power-Law Impact}\label{sec:regimes}
+\paragraph{Main results of this section}
+The power-law family reveals two distinct thresholds: the first separates finite
+from divergent inventory requirements near the zero-price boundary, and the
+second establishes a global barrier to positive systemic loss.
+Theorem~\ref{thm:ABC} classifies the canonical responses.
+For every fixed sublinear exponent, Theorem~\ref{thm:sublinear-severe}
+constructs arbitrarily severe partial-coverage losses with a fixed finite
+horizon and turnover and inventory bounds independent of loss severity,
+provided flow-completed pulses are permitted. By contrast,
+Theorem~\ref{thm:critical} gives a sharp, unattained horizon ceiling
+when every asset must decline.
+
 To compare exclusion and reachability under matched assumptions, we vary only the response shape in the family
 \begin{equation}\label{eq:power}
  g_p(S)=\eta\left(\frac SF\right)^p,\qquad p\in\{2,1,0\},\quad \eta>0.
@@ -463,16 +475,19 @@ exponent and horizon; they do not impose a finite execution-rate cap.
 
 \Needspace{14\baselineskip}
 \paragraph{Construction of the severe-loss path}
-The proof proceeds in four steps: identify the generalized
-radial invariant preserved by paired-dollar pulses; rotate
-strictly positive price directions to make each terminal
-target price arbitrarily small; choose stage durations and
-directions so that each asset's executed-dollar ledger closes;
-and bound the total turnover and share sales independently
-of the target loss severity. These bounds are uniform in the
-terminal target price, with the asset number, exponent,
-and market parameters held fixed. The detailed radial
-and ledger calculations appear in Appendix~\ref{app:sublinear-severe}.
+The proof has four steps. First, the generalized radial quantity
+$\sum_i S_i^{2-p}$ is invariant under paired-dollar pulses.
+Second, strictly positive price directions are rotated to drive
+the qualifying target prices arbitrarily close to zero, with
+a compensating asset receiving the offsetting dollar flow.
+Third, a continuity argument and a partition of the recovery
+interval close the executed-dollar ledger of \emph{each} asset,
+not merely the market-wide sum. Finally, exact coordinate and
+share-variation estimates bound turnover and gross share sales
+independently of the terminal loss severity. The horizon and
+resource constants may depend on the fixed asset number,
+impact exponent, and market parameters. Appendix~\ref{app:sublinear-severe}
+gives the full positive-price construction and closure argument.
 
 \begin{theorem}[Uniform-resource severe partial-coverage losses for sublinear impact]\label{thm:sublinear-severe}
 Fix $N\ge2$, $k=\lceil\alpha N\rceil<N$, positive $F,\eta,\rho$,
@@ -818,9 +833,18 @@ Figure~\ref{fig:localrate} compares the numerical small-rate loss with its leadi
 
 \FloatBarrier
 \section{Rolling Price Limits: Constrained Realizations}\label{sec:multiday}
-The application proceeds from rolling-band accounting and full-coverage obstructions to dollar-closure preconditioning and the receiving assets' capacity. We then certify a two-session path satisfying these constraints. Additional uniform-band constructions form a supplementary loss--breadth comparison, with exact controls retained in Appendix~\ref{app:loss-breadth}.
-
-We now extend the reachability analysis to a multi-session proportional-reset price-band protocol. In each session, permitted execution prices are referenced to the preceding close. Trading interruptions can shift orders forward in time and redirect pressure across markets, as the circuit-breaker analysis of Subrahmanyam~\citep{Subrahmanyam1994} illustrates. Here repeated lower-band closes couple the crisis functional to the capacity of the remaining assets to absorb paired-dollar flow. Feasibility depends jointly on breadth, mean loss, selling speed, and receiving capacity within the prescribed rate caps and bands.
+We apply a multi-session proportional-reset price-band protocol in which
+each session's admissible executed-price interval is referenced to the
+preceding close. The analysis links the obstruction to a second
+all-asset lower-limit close with dollar-closure preconditioning and
+the capacity of the remaining assets to receive paired-dollar flow.
+The resulting two-session interval-certified constructions jointly
+test breadth, mean loss, gross rates, inventory, and rolling bands;
+further uniform-band comparisons and exact controls are retained
+in Appendix~\ref{app:loss-breadth}. Trading interruptions can also
+redirect order pressure through time and across markets, as the
+circuit-breaker analysis of Subrahmanyam~\citep{Subrahmanyam1994}
+illustrates.
 
 Throughout, a \emph{lower-band close} (also called a \emph{lower-limit close} in some theorem statements) means that the terminal executed price attains the modeled session floor. Institutional features such as resting order queues or trading halts lie outside the executed-price state space (see Section~\ref{sec:discussion}).
 
@@ -1430,11 +1454,12 @@ For the interval-certified $N=10$, $k=9$, $q=0.97$, $D=2$ construction of Propos
 
 Figure~\ref{fig:multiday-crisis-trigger} illustrates the distinction between repeated closing-limit losses and the systemic crisis criterion.
 
-\begin{figure}[tbp]\centering
+\begin{figure}[H]\centering
  \includegraphics[width=0.85\linewidth]{figures/multiday_crisis_trigger.pdf}
  \caption{\textbf{Systemic loss and the compensating asset's terminal price.} Conditional terminal severity for $N=10$, nine assets closing twice at a 3\% daily lower limit, versus the remaining asset's terminal price. The dotted marker denotes the constructed dollar-closed path; the reference lines show the log-loss thresholds $\delta=0.015$ and $\delta=0.020$. The curve gives the conditional algebraic relation between the terminal price and systemic loss.}\label{fig:multiday-crisis-trigger}
 \end{figure}
 
+\FloatBarrier
 \section{Sublinear power-law extension of uniform-budget severity}\label{app:sublinear-severe}
 We prove Theorem~\ref{thm:sublinear-severe} for fixed $0\le p<1$.
 Write $\nu=2-p\in(1,2]$ and $m=N-1$. The proof generalizes
