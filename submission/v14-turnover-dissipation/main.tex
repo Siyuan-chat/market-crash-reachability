@@ -558,7 +558,7 @@ In particular, a necessary finite-speed condition to reach threshold $\delta>0$ 
 \begin{equation}\label{eq:min-speed}
 \boxed{\ \bar v\ge\frac{\rho F(1-e^{-\delta})}{G(1-e^{-\rho T})}.\ }
 \end{equation}
-A one-session lower price limit independently excludes any $\delta> -\log(1-\beta_-)$. These constraints bound admissible paths; a sharp reachability threshold requires the full execution system. For comparison, if a \emph{hypothetical} multi-session regime resets a proportional lower band to each preceding close, then over $D$ sessions the elementary bound is only
+A one-session lower price limit independently excludes any $\delta> -\log(1-\beta_-)$. These are \emph{necessary} constraints, generally not sharp reachability thresholds. For comparison, if a \emph{hypothetical} multi-session regime resets a proportional lower band to each preceding close, then over $D$ sessions the elementary bound is only
 $S_i(T_D)\ge F\prod_{d=1}^D(1-\beta_{-,d})$ and
 $\mathcal C_\alpha(T_D)\le-\sum_{d=1}^D\log(1-\beta_{-,d})$.
 The cumulative ceiling depends on the successive closing-price resets.
@@ -714,7 +714,7 @@ If all other assets have individual log losses at most $D\lambda$ (or if $k>N/2$
 \boxed{\quad\Cris_\alpha(T_D)=\min\!\left\{D\lambda,
  \frac{kD\lambda-\sum_{j=1}^{N-k}\log(Y_j/F)}{N}\right\}.\quad}
 \end{equation}
-In particular, with a single compensator ($k=N-1$), its terminal price must obey $Y/F\le\exp(kD\lambda-N\delta)$ if a crisis of threshold $\delta$ is to occur. These identities depend only on the stipulated terminal prices.
+In particular, with a single compensator ($k=N-1$), its terminal price must obey $Y/F\le\exp(kD\lambda-N\delta)$ if a crisis of threshold $\delta$ is to occur. These are exact \emph{conditional endpoint identities}, not sufficient conditions for a trade path realizing the stipulated closing prices.
 \end{proposition}
 \begin{proof}
 The $k$ streaking assets have loss $D\lambda$, hence $Q_\alpha\ge D\lambda$. For $\delta\le D\lambda$, the coverage part of the crisis criterion is therefore automatic, and the remaining requirement is $\overline L(T_D)\ge\delta$. Substituting the terminal prices into $\overline L(T_D)=N^{-1}\sum_i\log[F/S_i(T_D)]$ gives \eqref{eq:multiday-trigger-product}. If every other loss is at most $D\lambda$, or if $N-k<k$, the $k$th-largest loss is exactly $D\lambda$, proving \eqref{eq:multiday-trigger-exact}.
@@ -745,7 +745,7 @@ Moreover, when $\eta\bar v<\rho F$, all prices starting at $F$ obey the perpetua
 \begin{equation}\label{eq:streak-D-bound}
 \boxed{\quad D\le\frac{\log(1-\eta\bar v/(\rho F))}{\log q}.\quad}
 \end{equation}
-The bound applies for $\eta\bar v<\rho F$; for larger rate caps it supplies no finite-day obstruction.
+The bound is understood only for $\eta\bar v<\rho F$; with a larger rate cap it supplies no finite-day obstruction. None of these scalar inequalities is sufficient for multi-asset price-band feasibility or terminal dollar closure.
 \end{proposition}
 \begin{proof}
 Variation of constants and $\dot\theta_i\ge-\bar v$ imply
@@ -796,7 +796,7 @@ Writing $H_+=\rho\tau_1\beta_+(1+\beta_+)$, whenever $2H_+<1$ this imposes the a
 \begin{equation}\label{eq:multiday-preconditioning-D}
 \boxed{\quad D\le \frac{\log(1-2H_+)}{2\log q}.\quad}
 \end{equation}
-This bound uses terminal dollar closure and the restriction on above-fundamental excursions in later sessions.
+This bound is specific to terminal dollar closure and the absence of above-fundamental excursions in later sessions. It is not sufficient to produce a consecutive limit-down path.
 \end{proposition}
 \begin{proof}
 Integrate the identity $\dd\Phi(S_i)=\dd X_i-\rho S_i(S_i-F)\dd t/g(S_i)$ over the full horizon. Since $X_i(T_D)=0$ and $\Phi(F)=0$, the integral must equal $-\Phi(s_D)>0$. Any portion of the trajectory at $S_i\le F$ contributes a nonpositive integrand, so the positive part must arise above $F$. If later sessions cannot rise above $F$, all positive contribution must be earned in session~1, whose supremum is bounded by the left side of \eqref{eq:streak-precondition}.
