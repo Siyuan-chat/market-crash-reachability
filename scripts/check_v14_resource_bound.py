@@ -221,7 +221,7 @@ def main():
     p_regimes=new.index(r"\section{Reachability Regimes under Power-Law Impact}")
     assert p_barriers < p_robustness < p_regimes < p_spectrum
     abstract=new.split(r"\begin{abstract}",1)[1].split(r"\end{abstract}",1)[0]
-    assert "$" not in abstract and r"\" not in abstract
+    assert "$" not in abstract and chr(92) not in abstract
     for heading in (
         "Model and Systemic Drawdown Criterion",
         "Execution Resources and Turnover Bounds",
