@@ -992,6 +992,12 @@ the verified geometric-index floors in
 Table~\ref{tab:lossbreadth-fixed} independently bound
 the market-average component of $\Cris_\alpha$, while
 the target ordinary-loss floors bound $Q_\alpha$.
+For case \texttt{R80-10}, an independent high-accuracy
+ODE reconstruction estimates a $10.87\%$ ordinary
+target-asset drop and mean log loss near $0.03493$
+(a $3.43\%$ geometric-index decline). These
+numerical estimates are kept separate from the
+strict interval-certified lower bounds in the table.
 
 \begin{table}[H]\centering\small
 \caption{Resource sensitivity with only the executed-dollar
@@ -1608,7 +1614,7 @@ source code, output certificates, numerical
 cross-checks and hash manifest are available
 in \path{verification/loss_breadth/}.
 From the repository root run
-\path{python verification/loss_breadth/verify_all.py}
+\texttt{python} \path{verification/loss_breadth/verify_all.py}
 with Python 3.11 or later; proof-critical tests
 require only the standard library. Separate
 high-accuracy ODE reconstructions are available
