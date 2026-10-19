@@ -1,9 +1,9 @@
 name: V14 analytical manuscript
 on:
   push:
-    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','.github/workflows/v14.yml']
+    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','verification/loss_breadth/**','docs/V14_LOSS_BREADTH_CERTIFICATE_SCOPE.md','.github/workflows/v14.yml']
   pull_request:
-    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','.github/workflows/v14.yml']
+    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','verification/loss_breadth/**','docs/V14_LOSS_BREADTH_CERTIFICATE_SCOPE.md','.github/workflows/v14.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -16,6 +16,8 @@ jobs:
         with:
           python-version: '3.11'
       - run: python scripts/check_v14_resource_bound.py
+      - name: Verify twelve rational loss-breadth schedules
+        run: python verification/loss_breadth/verify_all.py
       - run: |
           sudo apt-get update
           sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-science
@@ -31,6 +33,13 @@ jobs:
             build/v14-turnover-dissipation/build_summary.json
             build/v14-turnover-dissipation/pdflatex-*.txt
             build/v14-turnover-dissipation/bibtex.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v14-loss-breadth-interval-results
+          path: |
+            verification/loss_breadth/phase3_certification_suite_results.json
+            verification/loss_breadth/phase4_certificate_*.json
 
   publish-pdf:
     name: Commit validated V14 PDF to main
@@ -45,6 +54,10 @@ jobs:
         with:
           name: v14-turnover-dissipation-pdf
           path: build/v14-turnover-dissipation
+      - uses: actions/download-artifact@v4
+        with:
+          name: v14-loss-breadth-interval-results
+          path: verification/loss_breadth
       - name: Verify PDF identity against successful build
         run: |
           python - <<'PY'
@@ -76,7 +89,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- submission/v14-turnover-dissipation/manuscript.pdf submission/v14-turnover-dissipation/manuscript-build.json
+          git add -- submission/v14-turnover-dissipation/manuscript.pdf submission/v14-turnover-dissipation/manuscript-build.json verification/loss_breadth/phase3_certification_suite_results.json verification/loss_breadth/phase4_certificate_*.json
           if git diff --cached --quiet; then
             echo 'V14 PDF already matches current build'
           else
