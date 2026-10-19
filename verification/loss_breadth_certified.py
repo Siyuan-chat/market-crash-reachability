@@ -39,7 +39,7 @@ def step(v,h,q):
 def flow(v,duration,q):
     assert abs(q)<=QBOUND
     count=ceil(duration/DT)
-    if not count:return v,0
+    if not count or (q==0 and v==(Q,Q)):return v,0
     h=duration/count
     margin=hi(FB*h)
     lower=hi(MINP)+margin
