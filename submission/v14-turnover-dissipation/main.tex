@@ -4,38 +4,32 @@
 \raggedbottom
 \maketitle
 \begin{abstract}
-We characterize structural barriers, attainable losses, and execution requirements for terminal systemic drawdowns in a deterministic multiasset market with fixed fundamentals, paired-dollar trades, and zero terminal executed-dollar flow in each asset. Under the explicitly specified price-level recovery law, a response-adapted coordinate gives sufficient elasticity thresholds: $e(S)=Sg'(S)/g(S)\ge 2$ excludes positive drawdowns under our mean-log-loss and breadth criterion, while $e(S)\ge1$ excludes a simultaneous decline of all prices. Quadratic, linear, and constant per-share responses yield distinct exclusion, inventory-bounded, and severe partial-coverage reachability regimes. The uniform-resource severe-loss construction extends from constant impact to every fixed sublinear power response $0\le p<1$, using flow-completed pulses and terminal prices approaching zero. We derive turnover and inventory requirements, a sharp full-coverage horizon ceiling, and matching quadratic upper and lower bounds for small execution rates under finite gross execution rates. Under constant impact and bounded positive prices, an additional turnover--dissipation inequality bounds the aggregate quadratic price-potential deficit. A two-session interval-certified witness places nine of ten assets at consecutive lower closing limits and attains systemic log loss above $0.020$ under specified rate and rolling-band constraints. Dimensionless resource bounds and a nonnegative execution-cost identity quantify the initial inventory consumed by these paths. Two perturbation bounds describe how unmatched dollar flow and heterogeneous quadratic impact modify the elasticity barrier.
+We study systemic drawdown reachability in a deterministic multiasset market with fixed fundamentals, state-dependent price impact, and paired-dollar execution. Each asset's terminal executed-dollar ledger closes, although its share inventory may change. A response-adapted coordinate yields two structural barriers: a price-impact elasticity of at least two excludes positive systemic losses under our average-log-loss and breadth criterion, while an elasticity of at least one precludes a simultaneous decline in all prices. Power-law impact distinguishes excluded, inventory-bounded, and severely reachable partial-coverage regimes. For every fixed sublinear exponent, arbitrarily severe partial-coverage logarithmic losses are attainable over a fixed finite horizon with turnover and inventory bounds independent of severity, using flow-completed instantaneous trades. Under constant per-share impact, full-coverage drawdowns obey a sharp, unattained horizon-dependent ceiling. A bounded gross execution rate produces a quadratic small-loss scaling with matching constructive order. Perturbation bounds quantify deviations from exact dollar pairing and homogeneous impact. These results separate structural barriers to market-wide drawdowns from the execution resources required to realize them.
 \end{abstract}
 
 \begin{keywords}market crashes; price impact; market resilience; systemic drawdown; reachability; execution constraints.\end{keywords}
 \begin{MSCcodes}91G15, 91G45, 93B03, 65G30, 91G80.\end{MSCcodes}
 
 \section{Introduction}\label{sec:intro}
-Sharp market declines can occur without fundamental news. Order execution shifts marginal prices, and market resilience governs the decay of those displacements. We ask whether a market with fixed fundamentals can be driven into a broad systemic drawdown solely by trades that obey its settlement and recovery rules, and which trading resources are required to reach such a state.
+Market prices can change even when a fundamental benchmark remains fixed. Trading moves marginal prices, while liquidity recovery changes their subsequent paths. We ask which terminal patterns of market-wide loss are reachable through trading alone, which structures rule them out, and what resources are required. This is a deterministic reachability question, distinct from equilibrium selection or a crash probability.
 
-Existing work approaches price movements without fundamental news through informational, liquidity, and strategic mechanisms. Dynamic hedging and inference can amplify selling pressure \citep{GennotteLeland1990}, and trading can reveal information without external news \citep{Romer1993}. Nonsynchronous liquidity demand generates endogenous imbalances \citep{HuangWang2009}, while cross-asset liquidity feedback, distressed sales, and balance-sheet contagion transmit losses \citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017}. Predatory trading supplies a strategic channel \citep{BrunnermeierPedersen2005}. Transaction-level research on the 2010 Flash Crash examines intermediary trading during acute selling pressure \citep{KirilenkoEtAl2017}. Here the central question is one of reachability: which terminal prices can arise under prescribed trading and recovery rules?
+We specify a finite risky-asset reallocation pool with fixed fundamentals, state-dependent price impact, and price-level recovery. An executed sale is paired with an equal-dollar purchase of another asset. At the horizon each asset's net executed-dollar flow closes, although its share inventory need not return to its initial position. Closing both dollar and share ledgers would force the nonnegative terminal-displacement and recovery-dissipation terms in the accounting identity to vanish. Dollar closure alone allows residual displacements financed by initial inventory.
 
-Price-impact models provide the execution mechanisms needed to formulate this question. Kyle's price-formation benchmark \citep{Kyle1985}, the optimal-execution formulation of Almgren and Chriss~\citep{AlmgrenChriss2001}, and resilient order-book models \citep{ObizhaevaWang2013,AlfonsiSchied2010} connect trading, price impact, and liquidity replenishment. General-shaped order books distinguish recovery of displaced volume from recovery of price displacement \citep{AlfonsiFruthSchied2010}; nonlinear transient propagator models analyze impact and optimal execution \citep{CuratoGatheralLillo2017}. Trading-cost and manipulation restrictions constrain admissible impact specifications \citep{Gatheral2010,AlfonsiSchiedSlynko2012,HubermanStanzl2004}. Multivariate transient impact, cross-impact restrictions, and empirical cross-impact research address interasset transmission \citep{AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017}, alongside strategic multiasset impact games \citep{CordoniLillo2024}. Metaorder evidence for a linear-to-square-root crossover describes cumulative impact as order size grows \citep{BucciEtAl2019}, and the analysis of large bets by Kyle and Obizhaeva~\citep{KyleObizhaeva2023} relates execution intensity to market dislocations. We retain a diagonal, state-dependent local impact law and connect assets through dollar-paired execution; its local price elasticity is the object of the exclusion theorems.
+Classical work connects trading and price formation through Kyle's auction model \citep{Kyle1985}, Almgren--Chriss optimal execution \citep{AlmgrenChriss2001}, and resilient order books \citep{ObizhaevaWang2013,AlfonsiSchied2010,AlfonsiFruthSchied2010}. Transient impact and price-manipulation restrictions constrain admissible execution models \citep{CuratoGatheralLillo2017,Gatheral2010,AlfonsiSchiedSlynko2012,HubermanStanzl2004}; large-trader and supply-curve formulations supply other state-dependent responses \citep{BankBaum2004,CetinJarrowProtter2004}. Our object is the attainable terminal price set under prescribed rules, rather than an agent's cost-minimizing execution schedule.
 
-We consider a cashless reallocation system of risky assets in which every executed sale is paired with an equal-dollar purchase. At the horizon, each asset's net executed-dollar flow vanishes, although its final share inventory may differ from its initial inventory. Imposing both dollar and share closure would force the nonnegative terminal displacement and recovery-dissipation terms in~\eqref{eq:cost} to vanish; dollar closure alone permits residual displacements financed by initial share inventory. Prices recover toward a fixed benchmark $F$, while executed shares shift marginal prices through a positive response function $g(S)$. Our central analytical tool is the response-adapted generalized price coordinate
+Price movements without contemporaneous public news arise through hedging and inference \citep{GennotteLeland1990}, information revealed by trading \citep{Romer1993}, and endogenous liquidity imbalances \citep{HuangWang2009}. Fire sales, inventory constraints, and portfolio-linked contagion transmit stress through intermediaries and securities \citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017,KirilenkoEtAl2017}. Predatory trading and cross-impact supply further mechanisms \citep{BrunnermeierPedersen2005,AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017,CordoniLillo2024}. These studies motivate the question without implying that all earlier market-crash mechanisms require fundamental news.
+
+The share-flat execution-cost identity in our model is nonnegative because price displacement and recovery dissipate trading resources. This is a conditional statement under the specified settlement and recovery laws, not a universal no-arbitrage theorem. In particular, recovering a displaced price and recovering order-book volume are different specifications \citep{AlfonsiFruthSchied2010,RochSoner2013}. Cumulative metaorder scaling and large-bet market effects provide useful comparisons with the local price-state elasticity studied here \citep{BucciEtAl2019,KyleObizhaeva2023}.
+
+Our contributions fall into three groups. \emph{Structural barriers and robustness:} a response-adapted scalar coordinate and curvature comparisons yield global exclusion conditions and quantitative perturbation bounds for departures from paired, homogeneous impact. \emph{Reachability and sharp boundaries:} power-law responses generate distinct feasible regimes; a generalized radial construction establishes uniform resource bounds for any fixed sublinear exponent, while full coverage has a sharp, unattained horizon ceiling. \emph{Execution resources and constrained realizations:} inventory and turnover bounds quantify necessary inputs, a continuous strategy matches the quadratic small-rate upper bound in order, and validated rolling-band examples show simultaneous feasibility of additional constraints.
+
+The principal coordinate, normalized to vanish at the reference price, is
 \begin{equation}\label{eq:phi-intro}
 \Phi(S)=\int_F^S\frac{u}{g(u)}\dd u.
 \end{equation}
-In this coordinate, each executed dollar produces one unit of coordinate displacement. Paired trading therefore conserves the sum of these coordinates, while price resilience drives that sum between trades. The curvature of $\Phi$ yields global exclusion barriers and separates three response regimes under common constraints.
+It makes each marginal executed dollar an additive coordinate increment and separates paired trading from restorative drift. We prove structural barriers by tangent and Jensen inequalities, develop severe-loss paths through generalized radial geometry and per-asset ledger closure, and derive resource bounds by comparison inequalities. Outward-rounded interval calculations certify the finite-rate examples \citep{Tucker2011}. Section~\ref{sec:model} sets up the model; Sections~\ref{sec:barriers}--\ref{sec:regimes} examine barriers and reachability; Sections~\ref{sec:budget}--\ref{sec:rateband} bound execution resources; Section~\ref{sec:multiday} applies rolling bands, followed by discussion and conclusion. Full constructions and numerical certificates appear in the appendices.
 
-Beyond the elasticity barriers, the main analytical results for constant impact are severe partial-coverage reachability under uniform finite resources, the sharp full-coverage horizon ceiling, and the quadratic small-rate law. Section~\ref{sec:budget} additionally relates terminal quadratic price-potential dissipation to gross executed-dollar turnover in a bounded price region. The multiday analysis then examines simultaneous feasibility under execution constraints: receiving assets must absorb paired-dollar inflows within their own rate caps and price bands, while their appreciation reduces mean log loss.
-
-\paragraph{Overview of main results}
-Under the paired-dollar, resilient market defined in Section~\ref{sec:model}, the following conclusions hold.
-\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2em,itemsep=0.12em]
-\item \emph{Structural exclusion.} If $e(S)=Sg'(S)/g(S)\ge2$ at all admissible prices, then $\Cris_\alpha(t)\le0$ for every breadth and time. The weaker condition $e(S)\ge1$ excludes a simultaneous decline of all assets.
-\item \emph{Reachability regimes.} With $g_p(S)=\eta(S/F)^p$, $p=2,1,0$ respectively produce exclusion, inventory-bounded partial-coverage drawdowns, and, for $k=\lceil\alpha N\rceil<N$ and sufficiently long finite horizons, arbitrarily severe partial-coverage losses under fixed finite turnover and inventory caps when pulses are allowed. For every fixed $0\le p<1$, the severe partial-coverage construction can be implemented within a finite horizon with dollar-turnover and share-inventory caps independent of loss severity. For constant impact and $k=N$, a sharp horizon-dependent bound replaces unrestricted severity.
-\item \emph{Execution resources.} General positive $g$ yields explicit necessary dollar-turnover and share-inventory bounds. With constant per-share impact and bounded gross executed-share rates, the small-rate crisis bound is quadratic and this order is attained by a continuous dollar-closed construction.
-\item \emph{Multiday execution.} Rolling price bands restrict per-session losses, while rate limits and the receiving assets' capacity restrict consecutive lower-limit closes. Terminal dollar closure additionally requires targets closing below $F$ to spend positive time above that benchmark. A computer-assisted two-day ten-asset path satisfies these controls, has nine repeated lower-limit closes, and yields $\Cris_{0.9}(T)>0.020$; for that instance, $0.044<\bar v_*<0.285$.
-\end{enumerate}
-
-
-\section{The market: assumptions, execution, and price dynamics}\label{sec:micro}\label{sec:model}
+\section{Model and Systemic Drawdown Criterion}\label{sec:micro}\label{sec:model}
 We specify a risky-asset reallocation submarket in which every executed sale is matched by an equal-dollar purchase. Settlement and price response are distinct assumptions: the former constrains flows, while the latter determines the induced price motion. All subsequent theorems use the same market definition.
 
 \begin{assumption}[The resilient paired-dollar market]\label{asmp:model}
@@ -145,7 +139,7 @@ Thus a \emph{share-flat} round trip has nonnegative executed cost under (M2)--(M
 \paragraph{Comparison with share-flat trading}
 The terminal dollar condition and the standard share-flat condition are not interchangeable. For example, with $g\equiv\eta$, a single asset purchased by a sufficiently small $a>0$ shares at time $0$ and sold by $a$ shares at time $T$ has $\theta(T)=\theta(0)$ but terminal price $S(T)=F-\eta a(1-e^{-\rho T})<F$; its net executed dollars are not zero and the positive cost in \eqref{eq:cost} is paid through the cash account. Conversely, under (M4), requiring every asset to be share-flat \emph{as well as} terminally dollar-flat would force $\sum_i[E(S_i(T))+\rho\int_0^T(S_i-F)^2/g(S_i)\,\dd t]=0$. Thus there can be no positive-time dissipative price excursion under both closures together. The dollar-flat protocol deliberately isolates an economic question distinct from standard share-round-trip execution.
 
-\section{Structural barriers to market crashes}\label{sec:barriers}
+\section{Structural Barriers and Robustness}\label{sec:barriers}
 The normal form~\eqref{eq:normal-form} supplies a conserved scalar during trading. Write $H(\bm S)=\one^\top\bm y=\sum_i\Phi(S_i)$. Summing over assets cancels every matched dollar transfer and leaves only recovery:
 \begin{equation}\label{eq:potential-law}
 \boxed{\dd H=-\rho\sum_{i=1}^N\mathcal R(y_i)\dd t
@@ -189,7 +183,140 @@ As $G(0)=0$ and $G$ is strictly increasing, $\sum_iq_i(t)\ge0$. Hence the mean l
 
 The barriers hold for the entire admissible path without requiring terminal dollar closure. When the elasticity bound holds only near $F$, the argument applies while prices stay in that region; execution resources and network constraints may impose further restrictions. Section~\ref{sec:regimes} compares how the attainable set changes across response functions. Under volume-recovery specifications with drift $-\rho S V(S)$, the tangent comparison instead depends on the curvature of that restoring field.
 
-\section{Three market regimes under common constraints}\label{sec:regimes}
+\subsection{Robustness to unmatched dollar flow and impact heterogeneity}
+\label{subsec:barrier-robustness}
+The exclusion in Theorem~\ref{thm:barrier2} uses both a common
+price-response function and exact dollar pairing. The local logarithmic
+price response per executed dollar is
+$\lambda(S)=g(S)/S^2$, with elasticity
+\[
+\frac{\dd\log\lambda(S)}{\dd\log S}=e(S)-2.
+\]
+Thus the threshold $e\ge2$ states that this model's local
+per-dollar log-impact does not increase as the price falls.
+We quantify two departures from the hypotheses of the exclusion theorem
+while retaining fixed fundamentals and common price-level recovery.
+
+\begin{proposition}[Stability under unmatched dollar flow]
+\label{prop:unbalanced-stability}
+Suppose $S_i(0)=F$, all prices remain positive, and the homogeneous
+response $g>0$ and common recovery rate $\rho>0$ satisfy
+$e(S)\ge2$ on an interval containing $F$ and every attained price.
+For absolutely continuous executed-dollar flows, relax exact pairing
+to $\sum_i\dot X_i(t)=\varepsilon(t)$ with
+$\varepsilon\in L^1([0,T])$. Then, for all $t\in[0,T]$ and
+$\alpha\in(0,1]$,
+\[
+\begin{aligned}
+\Cris_\alpha(t)\le\overline L(t)
+&\le-\frac{g(F)}{NF^2}
+ \int_0^t e^{-\rho(t-s)}\varepsilon(s)\,\dd s\\
+&\le\frac{g(F)}{NF^2}
+ \int_0^t e^{-\rho(t-s)}[-\varepsilon(s)]_+\,\dd s.
+\end{aligned}
+\]
+\end{proposition}
+\begin{proof}
+Let $H(t)=\sum_i\Phi(S_i(t))$, where $\Phi(F)=0$
+and $\Phi'(S)=S/g(S)$. Concavity of $\Phi$, implied by
+$e\ge2$, gives $(S-F)\Phi'(S)\le\Phi(S)$. Hence
+\[
+\dot H=\varepsilon-\rho\sum_i(S_i-F)\Phi'(S_i)
+\ge\varepsilon-\rho H,
+\]
+and $H(0)=0$ implies
+$H(t)\ge\int_0^t e^{-\rho(t-s)}\varepsilon(s)\,\dd s$.
+Moreover, $G(q)=\Phi(Fe^q)$ is concave and
+$G'(0)=F^2/g(F)$, so its tangent inequality yields
+\[
+H(t)=\sum_iG(q_i(t))
+\le\frac{F^2}{g(F)}\sum_iq_i(t)
+=-\frac{NF^2}{g(F)}\overline L(t).
+\]
+Combining these bounds and discarding the nonnegative part of
+$\varepsilon$ in the weighted integral proves the claim.
+\end{proof}
+
+Here $\varepsilon$ measures the unmatched executed-dollar rate
+\emph{within the selected asset set}; it need not represent a net
+cash flow into the wider market. Exact pairing recovers
+Theorem~\ref{thm:barrier2}. The estimate does not require
+terminal dollar-ledger closure.
+
+\begin{proposition}[Weighted-flow bound for heterogeneous quadratic impact]
+\label{prop:heterogeneous-quadratic}
+Suppose $S_i(0)=F$ and
+$g_i(S)=\eta_i(S/F)^2$, where $\eta_i>0$, with common
+$F>0$ and $\rho>0$. For positive absolutely continuous
+trajectories set $\kappa_i=\eta_i/F^2$ and
+$\omega(t)=\sum_i\kappa_i\dot X_i(t)$.
+Then, for all $t\in[0,T]$ and $\alpha\in(0,1]$,
+\[
+\begin{aligned}
+\Cris_\alpha(t)\le\overline L(t)
+&\le-\frac1N\int_0^t e^{-\rho(t-s)}\omega(s)\,\dd s\\
+&\le\frac1N\int_0^t e^{-\rho(t-s)}[-\omega(s)]_+\,\dd s.
+\end{aligned}
+\]
+Writing $\bar\kappa=N^{-1}\sum_i\kappa_i$ and
+$\varepsilon=\sum_i\dot X_i$, the weighted imbalance decomposes as
+\[
+\omega=\bar\kappa\,\varepsilon+
+\sum_i(\kappa_i-\bar\kappa)\dot X_i.
+\]
+Consequently exact dollar pairing alone need not eliminate the
+weighted flow when the impact strengths differ.
+\end{proposition}
+\begin{proof}
+With $q_i=\log(S_i/F)$, the impact law becomes
+$\dot q_i=-\rho(1-e^{-q_i})+\kappa_i\dot X_i$.
+Jensen's inequality and $e^x\ge1+x$ imply
+\[
+\begin{aligned}
+\frac{\dd}{\dd t}\overline L(t)
+&=\rho\left(1-\frac1N\sum_i e^{-q_i}\right)
+-\frac{\omega}{N}\\
+&\le\rho(1-e^{\overline L})-\frac{\omega}{N}
+\le-\rho\overline L-\frac{\omega}{N}.
+\end{aligned}
+\]
+The result follows by comparison from $\overline L(0)=0$.
+\end{proof}
+
+\paragraph{A terminally dollar-closed counterexample}
+The loss of the homogeneous barrier is possible even with
+exact dollar pairing \emph{and} terminal closure. Take $N=2$,
+$\kappa_1>\kappa_2>0$, and two matched executed-dollar pulses:
+$(\dd X_1,\dd X_2)=(a,-a)$ at time $0$, followed by
+$(-a,a)$ at time $T>0$. Both asset ledgers close exactly,
+and total paired-dollar turnover is $2a$.
+Writing $r=e^{-\rho T}\in(0,1)$, the terminal log prices are
+\[
+\begin{aligned}
+q_1(T)&=\log\bigl(1+r(e^{\kappa_1a}-1)\bigr)-\kappa_1a,\\
+q_2(T)&=\log\bigl(1+r(e^{-\kappa_2a}-1)\bigr)+\kappa_2a.
+\end{aligned}
+\]
+For sufficiently small $a>0$, Taylor expansion gives
+\[
+\overline L(T)=
+\frac{(1-r)(\kappa_1-\kappa_2)}2\,a+O(a^2)>0,
+\qquad
+Q_{1/2}(T)=(1-r)\kappa_1a+O(a^2)>0.
+\]
+Therefore $\Cris_{1/2}(T)>0$, although each response has
+elasticity $e_i=2$. Prices remain strictly positive, and a
+sufficient initial share inventory covers the finite sales.
+This is a pulse-admitting construction, without an instantaneous
+gross-rate cap. The common-impact hypothesis of Theorem~\ref{thm:barrier2}
+fails in this example.
+
+The two perturbation estimates isolate departures from matching
+and homogeneous impact strength. They keep $F$ and $\rho$ fixed;
+time-varying fundamentals, heterogeneous restoration, and
+nonseparable cross-impact require separate analysis.
+
+\section{Reachability Regimes under Power-Law Impact}\label{sec:regimes}
 To compare exclusion and reachability under matched assumptions, we vary only the response shape in the family
 \begin{equation}\label{eq:power}
  g_p(S)=\eta\left(\frac SF\right)^p,\qquad p\in\{2,1,0\},\quad \eta>0.
@@ -385,7 +512,7 @@ For positive prices, $\sum_iS_i/R>1$, whence $R(T)>F\{1+(\sqrt N-1)e^{-\rho T}\}
 \end{proof}
 
 
-\section{Necessary execution resources}\label{sec:budget}
+\section{Execution Resources and Turnover Bounds}\label{sec:budget}
 The response regimes determine whether a loss state is reachable. We next quantify the dollar turnover and share sales required to attain a specified breadth and severity. The following bounds apply to general positive response functions.
 
 \begin{theorem}[Execution-resource lower bounds]\label{thm:resource}
@@ -521,7 +648,7 @@ provide a useful positive lower bound on turnover for a specified
 falling subset alone.
 
 
-\section{Finite trading rates and abstract price bands}\label{sec:rateband}
+\section{Reachability under Bounded Execution Rates}\label{sec:rateband}
 A structurally reachable loss may require trades that cannot be completed at finite speed. We therefore restrict the control set by gross executed-share rates and single-session price bands. These restrictions preserve the barrier theorems, while positive reachability requires a new continuous construction rather than the pulse controls used in Market C.
 
 Finite-speed controls connect the execution setting to optimal trading and bounded-rate strategies \citep{AlmgrenChriss2001,Yang2019}. Here the rate limit constrains which aggregate loss states can be reached.
@@ -678,7 +805,7 @@ Figure~\ref{fig:localrate} compares the numerical small-rate loss with its leadi
 
 
 \FloatBarrier
-\section{Systemic drawdowns under rolling price-band constraints}\label{sec:multiday}
+\section{Rolling Price Limits: Constrained Realizations}\label{sec:multiday}
 We now extend the reachability analysis to a multi-session proportional-reset price-band protocol. In each session, permitted execution prices are referenced to the preceding close. Trading interruptions can shift orders forward in time and redirect pressure across markets, as the circuit-breaker analysis of Subrahmanyam~\citep{Subrahmanyam1994} illustrates. Here repeated lower-band closes couple the crisis functional to the capacity of the remaining assets to absorb paired-dollar flow. Feasibility depends jointly on breadth, mean loss, selling speed, and receiving capacity within the prescribed rate caps and bands.
 
 Throughout, a \emph{lower-band close} (also called a \emph{lower-limit close} in some theorem statements) means that the terminal executed price attains the modeled session floor. Institutional features such as resting order queues or trading halts lie outside the executed-price state space (see Section~\ref{sec:discussion}).
@@ -996,7 +1123,7 @@ $M\le3$ remains open.
 
 \FloatBarrier
 
-\section{Discussion and model extensions}\label{sec:discussion}
+\section{Discussion}\label{sec:discussion}
 \subsection{Economic accounting and execution burden}
 Recovery has two roles: for the price-level dynamics in Assumption~\ref{asmp:model}, it enters the curvature-based exclusion argument, but it also makes nontrivial terminal displacement possible under dollar closure. If $\rho=0$, $\dd\Phi(S_i)=\dd X_i$ and $X_i(T)=0$ implies $S_i(T)=F$ (Appendix~\ref{app:accounting}). For $\rho>0$, the identity \eqref{eq:cost} shows that the nonnegative terminal potential and cumulative recovery dissipation are financed by a reduction of net share inventory, valued at the fixed benchmark. For any terminally dollar-closed path $\gamma$, define this benchmark-valued inventory consumption by
 \[
@@ -1048,139 +1175,6 @@ This identity isolates each falling asset and may yield tighter subset-level tur
 $\dd(S_i^2)=-2\rho S_i(S_i-F)\dd t+2\eta\dd X_i$,
 also have a trade term without the denominator $1/S_i$; their restoring drift remains nonlinear. An upper price bound $S_i\le U_{\max}$ together with the gross share-rate cap gives
 $\dot M\le NU_{\max}\bar v/2$. For fixed positive turnover, this prevents concentration at the single peak of the time kernel in~\eqref{eq:V2-turnover} and permits a tighter weighted-turnover estimate. These constraints suggest time-dependent resource bounds sensitive to the composition of selling and receiving assets. Empirical identification of local impact $g$, recovery, trade direction, and accessible inventories would require time-resolved transaction and order-book observations; market-microstructure invariance~\citep{KyleObizhaeva2023} provides a scaling benchmark. A stochastic flow or equilibrium-selection model could then place probabilities alongside the present deterministic reachability results.
-
-\subsection{Robustness to unmatched dollar flow and impact heterogeneity}
-\label{subsec:barrier-robustness}
-The exclusion in Theorem~\ref{thm:barrier2} uses both a common
-price-response function and exact dollar pairing. The local logarithmic
-price response per executed dollar is
-$\lambda(S)=g(S)/S^2$, with elasticity
-\[
-\frac{\dd\log\lambda(S)}{\dd\log S}=e(S)-2.
-\]
-Thus the threshold $e\ge2$ states that this model's local
-per-dollar log-impact does not increase as the price falls.
-We quantify two departures from the hypotheses of the exclusion theorem
-while retaining fixed fundamentals and common price-level recovery.
-
-\begin{proposition}[Stability under unmatched dollar flow]
-\label{prop:unbalanced-stability}
-Suppose $S_i(0)=F$, all prices remain positive, and the homogeneous
-response $g>0$ and common recovery rate $\rho>0$ satisfy
-$e(S)\ge2$ on an interval containing $F$ and every attained price.
-For absolutely continuous executed-dollar flows, relax exact pairing
-to $\sum_i\dot X_i(t)=\varepsilon(t)$ with
-$\varepsilon\in L^1([0,T])$. Then, for all $t\in[0,T]$ and
-$\alpha\in(0,1]$,
-\[
-\begin{aligned}
-\Cris_\alpha(t)\le\overline L(t)
-&\le-\frac{g(F)}{NF^2}
- \int_0^t e^{-\rho(t-s)}\varepsilon(s)\,\dd s\\
-&\le\frac{g(F)}{NF^2}
- \int_0^t e^{-\rho(t-s)}[-\varepsilon(s)]_+\,\dd s.
-\end{aligned}
-\]
-\end{proposition}
-\begin{proof}
-Let $H(t)=\sum_i\Phi(S_i(t))$, where $\Phi(F)=0$
-and $\Phi'(S)=S/g(S)$. Concavity of $\Phi$, implied by
-$e\ge2$, gives $(S-F)\Phi'(S)\le\Phi(S)$. Hence
-\[
-\dot H=\varepsilon-\rho\sum_i(S_i-F)\Phi'(S_i)
-\ge\varepsilon-\rho H,
-\]
-and $H(0)=0$ implies
-$H(t)\ge\int_0^t e^{-\rho(t-s)}\varepsilon(s)\,\dd s$.
-Moreover, $G(q)=\Phi(Fe^q)$ is concave and
-$G'(0)=F^2/g(F)$, so its tangent inequality yields
-\[
-H(t)=\sum_iG(q_i(t))
-\le\frac{F^2}{g(F)}\sum_iq_i(t)
-=-\frac{NF^2}{g(F)}\overline L(t).
-\]
-Combining these bounds and discarding the nonnegative part of
-$\varepsilon$ in the weighted integral proves the claim.
-\end{proof}
-
-Here $\varepsilon$ measures the unmatched executed-dollar rate
-\emph{within the selected asset set}; it need not represent a net
-cash flow into the wider market. Exact pairing recovers
-Theorem~\ref{thm:barrier2}. The estimate does not require
-terminal dollar-ledger closure.
-
-\begin{proposition}[Weighted-flow bound for heterogeneous quadratic impact]
-\label{prop:heterogeneous-quadratic}
-Suppose $S_i(0)=F$ and
-$g_i(S)=\eta_i(S/F)^2$, where $\eta_i>0$, with common
-$F>0$ and $\rho>0$. For positive absolutely continuous
-trajectories set $\kappa_i=\eta_i/F^2$ and
-$\omega(t)=\sum_i\kappa_i\dot X_i(t)$.
-Then, for all $t\in[0,T]$ and $\alpha\in(0,1]$,
-\[
-\begin{aligned}
-\Cris_\alpha(t)\le\overline L(t)
-&\le-\frac1N\int_0^t e^{-\rho(t-s)}\omega(s)\,\dd s\\
-&\le\frac1N\int_0^t e^{-\rho(t-s)}[-\omega(s)]_+\,\dd s.
-\end{aligned}
-\]
-Writing $\bar\kappa=N^{-1}\sum_i\kappa_i$ and
-$\varepsilon=\sum_i\dot X_i$, the weighted imbalance decomposes as
-\[
-\omega=\bar\kappa\,\varepsilon+
-\sum_i(\kappa_i-\bar\kappa)\dot X_i.
-\]
-Consequently exact dollar pairing alone need not eliminate the
-weighted flow when the impact strengths differ.
-\end{proposition}
-\begin{proof}
-With $q_i=\log(S_i/F)$, the impact law becomes
-$\dot q_i=-\rho(1-e^{-q_i})+\kappa_i\dot X_i$.
-Jensen's inequality and $e^x\ge1+x$ imply
-\[
-\begin{aligned}
-\frac{\dd}{\dd t}\overline L(t)
-&=\rho\left(1-\frac1N\sum_i e^{-q_i}\right)
--\frac{\omega}{N}\\
-&\le\rho(1-e^{\overline L})-\frac{\omega}{N}
-\le-\rho\overline L-\frac{\omega}{N}.
-\end{aligned}
-\]
-The result follows by comparison from $\overline L(0)=0$.
-\end{proof}
-
-\paragraph{A terminally dollar-closed counterexample}
-The loss of the homogeneous barrier is possible even with
-exact dollar pairing \emph{and} terminal closure. Take $N=2$,
-$\kappa_1>\kappa_2>0$, and two matched executed-dollar pulses:
-$(\dd X_1,\dd X_2)=(a,-a)$ at time $0$, followed by
-$(-a,a)$ at time $T>0$. Both asset ledgers close exactly,
-and total paired-dollar turnover is $2a$.
-Writing $r=e^{-\rho T}\in(0,1)$, the terminal log prices are
-\[
-\begin{aligned}
-q_1(T)&=\log\bigl(1+r(e^{\kappa_1a}-1)\bigr)-\kappa_1a,\\
-q_2(T)&=\log\bigl(1+r(e^{-\kappa_2a}-1)\bigr)+\kappa_2a.
-\end{aligned}
-\]
-For sufficiently small $a>0$, Taylor expansion gives
-\[
-\overline L(T)=
-\frac{(1-r)(\kappa_1-\kappa_2)}2\,a+O(a^2)>0,
-\qquad
-Q_{1/2}(T)=(1-r)\kappa_1a+O(a^2)>0.
-\]
-Therefore $\Cris_{1/2}(T)>0$, although each response has
-elasticity $e_i=2$. Prices remain strictly positive, and a
-sufficient initial share inventory covers the finite sales.
-This is a pulse-admitting construction, without an instantaneous
-gross-rate cap. The common-impact hypothesis of Theorem~\ref{thm:barrier2}
-fails in this example.
-
-The two perturbation estimates isolate departures from matching
-and homogeneous impact strength. They keep $F$ and $\rho$ fixed;
-time-varying fundamentals, heterogeneous restoration, and
-nonseparable cross-impact require separate analysis.
 
 \section{Conclusion}\label{sec:conclusion}
 For a specified price-level resilience and paired-dollar execution protocol, the response-adapted coordinate identifies global barriers, feasible partial-coverage regimes, and a sharp full-coverage ceiling. Necessary dollar turnover and inventory are conveniently expressed in the generalized price coordinate and in units of local benchmark impact. The uniform finite-resource severe partial-coverage construction extends from constant impact to every fixed exponent $0\le p<1$ in the power-law family, with resource constants that may deteriorate as $p\uparrow1$. For constant impact on a bounded positive-price region, executed-dollar turnover also bounds the terminal quadratic price-potential deficit. A finite gross-rate cap changes the scale of attainable small systemic losses, and one independently interval-certified two-session witness satisfies the simultaneous rate, band, and dollar-ledger requirements. The economic accounting identity makes explicit the benchmark-valued inventory consumed by dollar-closed price pressure. Perturbation bounds identify the effects of unmatched dollar flows and heterogeneous quadratic impact on the elasticity barrier. Together, these results clarify the structural and resource boundaries of liquidity-driven drawdowns within a deterministic execution framework. Alternative resilience laws, heterogeneous cross-impact and minimum-cost controls offer distinct mathematical directions for future work.
