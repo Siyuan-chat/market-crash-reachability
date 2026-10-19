@@ -274,10 +274,10 @@ def main():
         "price-level recovery toward a fixed fundamental benchmark",
         "bounded below by two throughout the admissible price range",
         "an elasticity bounded below by one throughout that range",
-        "Under constant per-share impact, finite gross execution-rate",
+        "whereas finite gross execution-rate constraints yield",
     ):
         assert phrase in abstract, ("Missing precise abstract assumption",phrase)
-    assert "Unless explicitly stated otherwise, the results below" in new
+    assert r"All subsequent results use Assumption~\ref{asmp:model} unless stated otherwise." in new
     assert "All subsequent theorems use the same market definition" not in new
     regime=new.split(r"\section{Reachability Regimes under Power-Law Impact}",1)[1].split(
         r"\section{Execution Resources and Turnover Bounds}",1)[0]
