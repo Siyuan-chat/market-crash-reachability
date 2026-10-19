@@ -1,9 +1,9 @@
 name: V14 analytical manuscript
 on:
   push:
-    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','verification/loss_breadth/**','.github/workflows/v14.yml']
+    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','scripts/*sifin*','verification/loss_breadth/**','.github/workflows/v14.yml']
   pull_request:
-    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','verification/loss_breadth/**','.github/workflows/v14.yml']
+    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','scripts/*sifin*','verification/loss_breadth/**','.github/workflows/v14.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -12,10 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - run: python scripts/check_v14_resource_bound.py
+      - run: python scripts/check_sifin_v11_integrity.py
       - run: |
           sudo apt-get update
           sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-science
