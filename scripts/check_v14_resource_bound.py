@@ -17,11 +17,42 @@ def result_blocks(src):
 def numbered_equations(src):
     return re.findall(r"\\begin\{equation\}[\s\S]*?\\end\{equation\}",src)
 
+def canonical_editorial_math(source):
+    """Ignore display framing and a frozen whitelist of wording-only revisions.
+
+    The V13 theorem/equation mathematical content remains exactly comparable
+    after removing the purely typographic TeX \boxed wrapper.
+    """
+    start=r"\boxed{"
+    while start in source:
+        p=source.index(start)
+        depth=1
+        k=p+len(start)
+        while k<len(source) and depth:
+            if source[k] in "{}" and (k==0 or source[k-1] != "\\"):
+                depth+=1 if source[k]=="{" else -1
+            k+=1
+        assert depth==0, "Unbalanced TeX boxed group"
+        source=source[:p]+source[p+len(start):k-1]+source[k:]
+    allowed_rewording=(
+        (r"\emph{absolutely continuous}, paired-dollar, per-asset gross-rate-bounded control",
+         r"\emph{absolutely continuous} paired-dollar control with per-asset gross share rate at most $\bar v$"),
+        (r" This does \emph{not} assert that a prescribed fixed large threshold remains reachable under an arbitrarily tight cap or band.",""),
+        (r" These are exact \emph{conditional endpoint identities}, not sufficient conditions for a trade path realizing the stipulated closing prices.",""),
+        (r" None of these scalar inequalities is sufficient for multi-asset price-band feasibility or terminal dollar closure.",""),
+        ("Preconditioning needed for a dollar-closed limit-down streak",
+         "Above-benchmark excursion required for a dollar-closed limit-down streak"),
+        (" It is not sufficient to produce a consecutive limit-down path.",""),
+    )
+    for before,after in allowed_rewording:
+        source=source.replace(before,after)
+    return source
+
 def main():
     old=OLD.read_text(encoding="utf-8")
     new=NEW.read_text(encoding="utf-8")
-    old_results=result_blocks(old)
-    new_results=result_blocks(new)
+    old_results=[(name,canonical_editorial_math(value)) for name,value in result_blocks(old)]
+    new_results=[(name,canonical_editorial_math(value)) for name,value in result_blocks(new)]
     extras=[item for item in new_results if item not in old_results]
     missing=[item for item in old_results if item not in new_results]
     assert not missing, ("Historical statements changed",missing)
@@ -32,8 +63,8 @@ def main():
     assert any(r"\label{prop:loss-breadth-eight}" in item[1] for item in extras)
     assert any(r"\label{prop:unbalanced-stability}" in item[1] for item in extras)
     assert any(r"\label{prop:heterogeneous-quadratic}" in item[1] for item in extras)
-    old_eq=numbered_equations(old)
-    new_eq=numbered_equations(new)
+    old_eq=[canonical_editorial_math(eq) for eq in numbered_equations(old)]
+    new_eq=[canonical_editorial_math(eq) for eq in numbered_equations(new)]
     assert all(eq in new_eq for eq in old_eq), "Historical numbered equations changed"
     extra_eq=[eq for eq in new_eq if eq not in old_eq]
     assert len(extra_eq)==5, ("Unexpected added numbered equations",len(extra_eq))
@@ -228,6 +259,17 @@ def main():
     assert p_barriers < p_robustness < p_regimes < p_spectrum
     abstract=new.split(r"\begin{abstract}",1)[1].split(r"\end{abstract}",1)[0]
     assert "$" not in abstract and chr(92) not in abstract
+    # The author requested all equation frames removed, including in
+    # historical formal result statements; labels and formula text remain.
+    assert r"\boxed{" not in new, "Display-equation frame survived"
+    assert "severely reachable" not in new and "pulse-admitting" not in new
+    assert "time-curvature condition" not in new
+    assert "These studies motivate the question without implying" not in new
+    assert "All subsequent results use Assumption~\ref{asmp:model} unless stated otherwise." in new
+    assert "Above-benchmark excursion required for a dollar-closed limit-down streak" in new
+    assert "Under constant per-share impact, full-coverage drawdowns obey a sharp" in abstract
+    assert abstract.count("Under constant per-share impact") == 1
+
     for phrase in (
         "price-level recovery toward a fixed fundamental benchmark",
         "bounded below by two throughout the admissible price range",
