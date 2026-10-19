@@ -56,7 +56,7 @@ def main():
         assert term in new, ("Missing proof/result",term)
     assert r"\sum_i|\dot X_i|=2\sum_e\dot z_e" not in new
     block=new.split(r"\paragraph{Turnover and quadratic dissipation}",1)[1].split(
-        r"\section{Finite trading rates and abstract price bands}",1)[0]
+        r"\section{Reachability under Bounded Execution Rates}",1)[0]
     assert r"q_i(t)=\dot X_i(t)" not in block
     assert "compensating assets can make" not in block
 
@@ -149,18 +149,24 @@ def main():
     subprocess.run([sys.executable,str(ROOT/"verification/loss_breadth_certified.py")],cwd=ROOT,check=True)
     assert r"\label{tab:loss-breadth}" in new
     assert r"\label{app:loss-breadth}" in new
-    block=new.split(r"\subsection{Certified loss--breadth comparisons under uniform rolling bands}",1)[1].split(
-        r"\section{Discussion and model extensions}",1)[0]
-    assert "No row claims an optimal frontier" not in block
-    assert "exactly rational input" not in block
-    assert "directed-integer interval verifier" not in block
-    assert r"\texttt{P}" in block and r"\texttt{R}" in block and r"\texttt{M5}" in block
-    assert r"0.284500" in block and r"2.984" in block
+    block=new.split(r"\subsection{A complementary uniform-band existence result}",1)[1].split(
+        r"\section{Discussion}",1)[0]
+    appendix=new.split(r"\section{Reproducing the uniform-band loss--breadth witnesses}",1)[1].split(
+        r"\bibliographystyle{siamplain}",1)[0]
+    table=appendix.split(r"\begin{table}[tbp]\centering\small",1)[1].split(r"\end{table}",1)[0]
+    assert "No row claims an optimal frontier" not in appendix
+    assert "exactly rational input" not in appendix
+    assert "directed-integer interval verifier" not in appendix
+    assert r"\texttt{P}" in table and r"\texttt{R}" in table and r"\texttt{M5}" in table
+    assert r"0.284500" in table and r"2.984" in table
     assert r"\sup_t9|u(t)|/y(t)<0.284481" in new
     assert r"9\int_0^{40}|u(t)|\dd t<2.984" in new
     assert "Outward-rounded fixed-point interval arithmetic" in block
     assert r"x(40)^8y(40)^2<0.97^{10}" in block
-    assert r"M<4.600<5" in block
+    assert r"M<4.600<5" in appendix
+    assert r"\label{tab:loss-breadth-additional}" in appendix
+    assert r"\label{tab:sensitivity}" in new and r"\label{fig:v7rates}" in new
+    assert r"\label{fig:multiday-crisis-trigger}" in new
     appendix=new.split(r"\section{Reproducing the uniform-band loss--breadth witnesses}",1)[1].split(
         r"\bibliographystyle{siamplain}",1)[0]
     assert "External code audit and independent mathematical review remain outstanding" not in appendix
