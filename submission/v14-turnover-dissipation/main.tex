@@ -4,7 +4,7 @@
 \raggedbottom
 \maketitle
 \begin{abstract}
-We characterize structural barriers, attainable losses, and execution requirements for terminal systemic drawdowns in a deterministic multiasset market with fixed fundamentals, paired-dollar trades, and zero terminal executed-dollar flow in each asset. Under the explicitly specified price-level recovery law, a response-adapted coordinate gives sufficient elasticity thresholds: $e(S)=Sg'(S)/g(S)\ge 2$ excludes positive drawdowns under our mean-log-loss and breadth criterion, while $e(S)\ge1$ excludes a simultaneous decline of all prices. Quadratic, linear, and constant per-share responses yield distinct exclusion, inventory-bounded, and severe partial-coverage reachability regimes. The uniform-resource severe-loss construction extends from constant impact to every fixed sublinear power response $0\le p<1$; it permits instantaneous pulses and approaches the zero-price boundary, rather than describing an empirically calibrated crash mechanism. We derive turnover and inventory requirements, a sharp full-coverage horizon ceiling, and matching quadratic upper and lower bounds for small execution rates under finite gross execution rates. Under constant impact and bounded positive prices, an additional turnover--dissipation inequality bounds the aggregate quadratic price-potential deficit. A two-session interval-certified witness places nine of ten assets at consecutive lower closing limits and attains systemic log loss above $0.020$ under specified rate and rolling-band constraints. Dimensionless resource comparisons and a nonnegative execution-cost identity clarify the economic scope of these mathematical reachability results.
+We characterize structural barriers, attainable losses, and execution requirements for terminal systemic drawdowns in a deterministic multiasset market with fixed fundamentals, paired-dollar trades, and zero terminal executed-dollar flow in each asset. Under the explicitly specified price-level recovery law, a response-adapted coordinate gives sufficient elasticity thresholds: $e(S)=Sg'(S)/g(S)\ge 2$ excludes positive drawdowns under our mean-log-loss and breadth criterion, while $e(S)\ge1$ excludes a simultaneous decline of all prices. Quadratic, linear, and constant per-share responses yield distinct exclusion, inventory-bounded, and severe partial-coverage reachability regimes. The uniform-resource severe-loss construction extends from constant impact to every fixed sublinear power response $0\le p<1$; it permits instantaneous pulses and approaches the zero-price boundary, rather than describing an empirically calibrated crash mechanism. We derive turnover and inventory requirements, a sharp full-coverage horizon ceiling, and matching quadratic upper and lower bounds for small execution rates under finite gross execution rates. Under constant impact and bounded positive prices, an additional turnover--dissipation inequality bounds the aggregate quadratic price-potential deficit. A two-session interval-certified witness places nine of ten assets at consecutive lower closing limits and attains systemic log loss above $0.020$ under specified rate and rolling-band constraints. Additional internally interval-checked uniform-band controls establish distinct loss--breadth witnesses, including eight of ten assets each losing more than $10.8\%$ of their ordinary prices under the original resource caps. Dimensionless resource comparisons and a nonnegative execution-cost identity clarify the economic scope of these mathematical reachability results.
 \end{abstract}
 
 \begin{keywords}market crashes; price impact; market resilience; systemic drawdown; reachability; execution constraints.\end{keywords}
@@ -31,7 +31,7 @@ Under the paired-dollar, resilient market defined in Section~\ref{sec:model}, th
 \item \emph{Structural exclusion.} If $e(S)=Sg'(S)/g(S)\ge2$ at all admissible prices, then $\Cris_\alpha(t)\le0$ for every breadth and time. The weaker condition $e(S)\ge1$ excludes a simultaneous decline of all assets.
 \item \emph{Reachability regimes.} With $g_p(S)=\eta(S/F)^p$, $p=2,1,0$ respectively produce exclusion, inventory-bounded partial-coverage drawdowns, and, for $k=\lceil\alpha N\rceil<N$ and sufficiently long finite horizons, arbitrarily severe partial-coverage losses under fixed finite turnover and inventory caps when pulses are allowed. For every fixed $0\le p<1$, the severe partial-coverage construction can be implemented within a finite horizon with dollar-turnover and share-inventory caps independent of loss severity. For constant impact and $k=N$, a sharp horizon-dependent bound replaces unrestricted severity.
 \item \emph{Execution resources.} General positive $g$ yields explicit necessary dollar-turnover and share-inventory bounds. With constant per-share impact and bounded gross executed-share rates, the small-rate crisis bound is quadratic and this order is attained by a continuous dollar-closed construction.
-\item \emph{Multiday execution.} Rolling price bands restrict per-session losses, while rate limits and the receiving assets' capacity restrict consecutive lower-limit closes. A computer-assisted two-day ten-asset path satisfies these controls, has nine repeated lower-limit closes, and yields $\Cris_{0.9}(T)>0.020$; for that instance, $0.044<\bar v_*<0.285$.
+\item \emph{Multiday execution.} Rolling price bands restrict per-session losses, while rate limits and the receiving assets' capacity restrict consecutive lower-limit closes. A computer-assisted two-day ten-asset path satisfies these controls, has nine repeated lower-limit closes, and yields $\Cris_{0.9}(T)>0.020$; for that instance, $0.044<\bar v_*<0.285$. Additional uniform-band witnesses give a verified loss--breadth comparison under the same execution resource caps.
 \end{enumerate}
 
 
@@ -949,8 +949,8 @@ with $r_i^{\rm gross}(t)<0.285$ and $H_i^-<2$.
 Choose the piecewise-constant, exact-rational target-dollar
 rates of case \texttt{R80-10} in the reproducibility package
 \path{verification/loss_breadth}. The eight target assets
-share dollar rate $q(t)$ and the two receivers have rate
-$-4q(t)$; the exact net integral of each rate is zero.
+share dollar rate $u(t)$ and the two receivers have rate
+$-4u(t)$; the exact net integral of each rate is zero.
 A directed-rounded integer interval check encloses the
 resulting positive solutions and verifies the rolling bands,
 gross rates, cumulative share sales, and matched-dollar
@@ -1090,7 +1090,7 @@ also have a trade term without the denominator $1/S_i$; their restoring drift re
 $\dot M\le NU_{\max}\bar v/2$. For fixed positive turnover, this prevents concentration at the single peak of the time kernel in~\eqref{eq:V2-turnover} and permits a tighter weighted-turnover estimate. Combining these constraints into sharp subset-level and session-dependent bounds remains open. Fourth, empirical implementation would require identifying local impact $g$, price versus volume recovery, trade direction, accessible inventories, and counterparties from order-book and transaction data. A static book snapshot or daily OHLCV sequence does not identify these quantities. The market-microstructure-invariance approach \citep{KyleObizhaeva2023} provides a scaling comparator, not a calibration already performed here. Extensions to stochastic flow or equilibrium selection could address probabilities of no-news crashes, which deterministic existence and exclusion results alone do not determine.
 
 \section{Conclusion}\label{sec:conclusion}
-For a specified price-level resilience and paired-dollar execution protocol, the response-adapted coordinate identifies global barriers, feasible partial-coverage regimes, and a sharp full-coverage ceiling. Necessary dollar turnover and inventory are conveniently expressed in the generalized price coordinate and in units of local benchmark impact. The uniform finite-resource severe partial-coverage construction extends from constant impact to every fixed exponent $0\le p<1$ in the power-law family, with resource constants that may deteriorate as $p\uparrow1$. For constant impact on a bounded positive-price region, executed-dollar turnover also bounds the terminal quadratic price-potential deficit. A finite gross-rate cap changes the scale of attainable small systemic losses, and one independently interval-certified two-session witness satisfies the simultaneous rate, band, and dollar-ledger requirements. The economic accounting identity makes explicit the benchmark-valued inventory consumed by dollar-closed price pressure. Together, these results clarify the structural and resource boundaries of liquidity-driven drawdowns within a deterministic execution framework. Alternative resilience laws, heterogeneous cross-impact and minimum-cost controls offer distinct mathematical directions for future work.
+For a specified price-level resilience and paired-dollar execution protocol, the response-adapted coordinate identifies global barriers, feasible partial-coverage regimes, and a sharp full-coverage ceiling. Necessary dollar turnover and inventory are conveniently expressed in the generalized price coordinate and in units of local benchmark impact. The uniform finite-resource severe partial-coverage construction extends from constant impact to every fixed exponent $0\le p<1$ in the power-law family, with resource constants that may deteriorate as $p\uparrow1$. For constant impact on a bounded positive-price region, executed-dollar turnover also bounds the terminal quadratic price-potential deficit. A finite gross-rate cap changes the scale of attainable small systemic losses. The original interval-certified two-session witness and the additional internally checked uniform-band controls together establish distinct constrained loss--breadth outcomes. The economic accounting identity makes explicit the benchmark-valued inventory consumed by dollar-closed price pressure. Together, these results clarify the structural and resource boundaries of liquidity-driven drawdowns within a deterministic execution framework. Alternative resilience laws, heterogeneous cross-impact and minimum-cost controls offer distinct mathematical directions for future work.
 
 \section*{Code and numerical data availability}
 The research code, numerical data, certificates, and reproduction instructions are publicly available at \url{https://github.com/Siyuan-chat/market-crash-reachability}. The unchanged original computational baseline is associated with \href{https://github.com/Siyuan-chat/market-crash-reachability/tree/ea831c44f5b77b7039dd6644f6f0a791bb74d176}{commit \texttt{ea831c4}}; the frozen software archive is separately identified by \href{https://doi.org/10.5281/zenodo.23428183}{DOI 10.5281/zenodo.23428183}. Appendix~\ref{app:v7certificate} describes the interval certificate and identifies its implementation. Reproduction commands and software requirements are in \path{REPRODUCE.md}; the checksum manifest is \path{release/SHA256SUMS}. The underlying certificate was previously regenerated from source, with independent floating-point ODE and exact-rational consistency checks.
@@ -1531,6 +1531,96 @@ $\delta>0$ with the same $T,M_0,H_0$.
 The blow-up of $\Psi_p(0^+)$ as $p\uparrow1$
 precludes a corresponding claim of resource
 constants uniform up to $p=1$.
+
+
+\section{Interval verification of the additional loss--breadth paths}\label{app:lossbreadth}
+For the uniform-band cases in
+Tables~\ref{tab:lossbreadth-fixed} and
+\ref{tab:lossbreadth-relaxed}, each chosen control is
+absolutely continuous and piecewise constant in
+\emph{executed-dollar} rate. With $k$ identical targets
+and $m=10-k$ identical receivers, put
+$\dot X_i=u(t)$ on every target and
+$\dot X_j=-ku(t)/m$ on every receiver.
+For the full-coverage controls the two five-asset
+groups use opposite rates and both end below their
+respective loss thresholds. Every input schedule has
+exact rational rates and satisfies
+$\int_0^{40}u(t)\dd t=0$.
+Thus dollar ledgers close exactly for every asset,
+and each instantaneous pair of group flows balances
+executed dollars.
+
+With constant impact $g(S)=1$ and $\rho=2/5$,
+each group price solves, on a constant-dollar-rate
+segment,
+\[
+\dot s=f_u(s)=-\frac25(s-1)+\frac{u}{s}.
+\]
+The two verifiers use the bootstrap strip
+$3/5\le s\le8/5$, explicit rational bounds on
+$|f_u|$, $|f'_u|$ and $|s''|$, and time steps no
+larger than $1/4000$. If the exact initial scalar
+price lies in an enclosure $[L,U]$, a Taylor
+comparison for the scalar ODE encloses the next
+step between
+\[
+L+h f_u(L)-Bh^2/2,\qquad
+U+h f_u(U)+Bh^2/2,
+\]
+with the lower endpoint rounded down and the
+upper endpoint rounded up. The bootstrap check
+encloses each intervening step as well. The
+P3 checker uses integer working scale $10^{24}$
+and a uniform second-derivative bound $B=1$;
+P4 uses $10^{25}$ and explicit rational
+bounds adapted to each control.
+
+For a constant dollar rate, a positive scalar
+solution is monotone (unless it is stationary);
+hence a segment's entire price range is contained
+in the hull of its two certified endpoint
+enclosures. This permits whole-segment
+verification of both resetting price bands and
+gross share-rate limits. The verifier also bounds
+every asset's gross share sales using each sell
+segment's dollar mass divided by the certified
+minimum price and computes matched-dollar
+turnover from the \emph{exact} input rates.
+
+The terminal upper enclosures $(x_{\rm up},y_{\rm up})$
+satisfy exact rational inequalities
+\[
+x_{\rm up}^{k}y_{\rm up}^{m}
+<(1-d_G)^{10}.
+\]
+This directly certifies an ordinary geometric-index
+decline greater than $d_G$. Combined with the
+separate target-price upper bound, it establishes
+a positive systemic crisis measure
+$\Cris_\alpha(T)$ with
+$\alpha=k/10$; in the full-coverage case both
+five-asset groups are required to finish below
+the stated price floor.
+
+All input controls, strict result thresholds,
+source code, output certificates, numerical
+cross-checks and hash manifest are available
+in \path{verification/loss_breadth/}.
+From the repository root run
+\path{python verification/loss_breadth/verify_all.py}
+with Python 3.11 or later; proof-critical tests
+require only the standard library. Separate
+high-accuracy ODE reconstructions are available
+through its optional \path{--audit} switch with
+NumPy and SciPy. The distinction between a
+reproducible internally implemented interval
+certificate and an independently formalized
+verification remains important: these checks
+establish the stated explicit witnesses
+conditional on the documented scalar comparison
+and rounding logic, and do not certify global
+optimality or exclusion of other loss levels.
 
 \bibliographystyle{siamplain}
 \enlargethispage{2\baselineskip}
