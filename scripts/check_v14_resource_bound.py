@@ -265,7 +265,7 @@ def main():
     assert "severely reachable" not in new and "pulse-admitting" not in new
     assert "time-curvature condition" not in new
     assert "These studies motivate the question without implying" not in new
-    assert "All subsequent results use Assumption~\ref{asmp:model} unless stated otherwise." in new
+    assert r"All subsequent results use Assumption~\ref{asmp:model} unless stated otherwise." in new
     assert "Above-benchmark excursion required for a dollar-closed limit-down streak" in new
     assert "Under constant per-share impact, full-coverage drawdowns obey a sharp" in abstract
     assert abstract.count("Under constant per-share impact") == 1
