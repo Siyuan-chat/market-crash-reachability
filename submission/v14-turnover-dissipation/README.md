@@ -21,9 +21,10 @@ the Discussion. [Detailed proof audit](../../docs/V14_TURNOVER_DISSIPATION_AUDIT
 
 The sublinear uniform-resource theorem now follows the continuous-spectrum discussion and precedes the sharp all-asset horizon subsection. Its mathematical statement is unchanged; the printed theorem numbering updates automatically. The polynomial-root bracket in Section 7 is already correct and independently checked.
 
+Section 7 now includes an independently rerunnable **80% coverage / over 10.8% target-price decline** interval witness under uniform +/-25% rolling bands, a comparison table of six new internally certified paths, and a reproduction appendix. See [loss-breadth certificate methodology](../../docs/LOSS_BREADTH_CERTIFICATES.md), [rational verifier](../../verification/loss_breadth_certified.py), [per-case summary](../../verification/loss_breadth_witness_summary.csv), and [independent SciPy ODE audit](../../verification/loss_breadth_ode_crosscheck.py). The relaxed M<5 row is visibly distinguished from the original M<3 budget. This **new proposition** is not covered by the original Lean formalization.
+
 The published V13 manuscript, PDF, Lean proofs, and archived numeric certificates
-are unchanged. This draft does not claim any new numerical witness, optimal control,
-or impossibility result, and is not deposited on Zenodo/SSRN. The new Proposition 5.2 and sublinear-impact severe-loss theorem have
+are unchanged. This GitHub research draft now includes new internally verified numerical witnesses, but does not claim optimal controls or impossibility results, and has not yet been deposited on Zenodo/SSRN. The new Proposition 5.2 and sublinear-impact severe-loss theorem have
 not been Lean-formalized and are not counted in the original 16/16
 Lean acceptance report.
 
