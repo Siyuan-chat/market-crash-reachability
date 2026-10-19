@@ -1137,6 +1137,20 @@ $M\le3$ remains open.
 \FloatBarrier
 
 \section{Discussion}\label{sec:discussion}
+\subsection{Deterministic reachability and market mechanisms}
+The results characterize attainable terminal price states for an
+explicitly specified deterministic control system. Price impact,
+restoration, and executed-dollar matching are rules governing the
+admissible paths, rather than equilibrium trading decisions. A market
+mechanism selecting one of these paths would require additional
+assumptions about trading motives, cash positions, intermediary
+inventories, and information. In particular, holding the fundamental
+benchmark fixed isolates an endogenous execution mechanism; it does
+not identify news-free intervals in observed markets or assign a
+probability to a crisis. The construction and resource bounds instead
+separate two mathematical questions: whether a loss state belongs to
+the attainable set, and which execution resources would support it.
+
 \subsection{Economic accounting and execution burden}
 Recovery has two roles: for the price-level dynamics in Assumption~\ref{asmp:model}, it enters the curvature-based exclusion argument, but it also makes nontrivial terminal displacement possible under dollar closure. If $\rho=0$, $\dd\Phi(S_i)=\dd X_i$ and $X_i(T)=0$ implies $S_i(T)=F$ (Appendix~\ref{app:accounting}). For $\rho>0$, the identity \eqref{eq:cost} shows that the nonnegative terminal potential and cumulative recovery dissipation are financed by a reduction of net share inventory, valued at the fixed benchmark. For any terminally dollar-closed path $\gamma$, define this benchmark-valued inventory consumption by
 \[
@@ -1159,19 +1173,14 @@ The certified terminal interval supplies this bound; enclosing the recovery inte
 \]
 Jointly minimizing this inventory cost, executed-dollar turnover, and the gross rate gives a constrained optimal-control problem.
 
-\subsection{Dependence on resilience, impact, and the loss metric}
+\subsection{Restoring laws and the choice of loss metric}
 Our global elasticity conditions rely jointly on the local response $g$ and linear \emph{price-level} restoration toward $F$. Under volume displacement recovery as described in Section~\ref{sec:model}, $\dot\Phi|_{\mathrm{vol}}=-\rho S V(S)$ replaces the specific drift used in the tangent comparison; establishing elasticity barriers for that alternative model requires a separate curvature analysis. A more general theory would classify which restoring fields preserve analogous barrier regions. The elasticity $e(S)=Sg'(S)/g(S)$ differentiates local per-share impact with respect to the price state; cumulative metaorder impact instead depends on order size, execution history, and replenishment \citep{AlfonsiFruthSchied2010,BucciEtAl2019,CuratoGatheralLillo2017}.
 
 The severity of Market C is also a boundary result: logarithmic loss diverges as a positive price tends to zero, while constant $g$ yields finite coordinate distance and finite inventory potential at that boundary. Fixed strictly positive price floors, realistic depth deterioration, rate caps, and trade halts can all limit its quantitative significance without invalidating the mathematical existence theorem. Accordingly, the attainable-loss bounds in Section~\ref{sec:rateband} describe the quadratic small-rate regime; reaching a fixed large threshold requires adequate execution capacity.
 
 The definition $\Cris_\alpha=\min\{\overline L,Q_\alpha\}$ uses the equal-weight geometric price index as well as coverage. Metric choice matters: in the $p=1$ market, paired-dollar trades give $\dd\sum_i S_i|_{\rm trade}=(\eta/F)\sum_i\dd X_i=0$, and the common price-level recovery preserves the initial sum $NF$. Thus the arithmetic mean remains $F$ even when a partial-coverage geometric-index crisis is reachable. Market-capitalization-weighted indices, arithmetically aggregated prices, rolling-peak losses, and different coverage criteria define different target sets. Changing the weighting or loss baseline changes the corresponding target set for reachability.
 
-\subsection{What the two-session certificate establishes}
-The construction in Proposition~\ref{prop:certified-v7} is a constrained \emph{existence witness} for one specified ten-asset market. Nine equal target prices lose $5.91\%$ over two sessions, while the receiving asset has a high-precision reconstructed final price near $1.40516 F$. The equal-weight geometric-index decline is approximately $2.06\%$ (the mean log loss is approximately $0.02081$), whereas the arithmetic mean price decreases by only about $1.27\%$. The receiving asset supports large temporary price excursions within its wider rolling band. Table~\ref{tab:sensitivity} varies composition \emph{holding the control fixed}, rather than optimizing a new control for each $k$.
-
-The gap in the bracket $0.044<\bar v_*<0.285$ reflects the distance between a general analytical lower bound for the fixed model parameters and a specific feasible trajectory. The certificate rigorously verifies pathwise constraints and ledger closure, establishing that the admissible trajectory set is nonempty under stylized $3\%$ target bands and $25\%$ compensator bands. The Tokyo Stock Exchange sets daily limits as tiered \emph{absolute yen} amounts based on reference prices and conditionally widens them after specified limit-bound sessions with little or no execution \citep{JPX2026}. Research on actual price-limit regimes provides an institutional comparison to the proportional-reset protocol used here \citep{KimRhee1997,Chen2019}.
-
-\subsection{Further directions}
+\subsection{Extensions to recovery and endogenous trading}
 Nonlinear recovery operators raise the question of which restoring fields preserve the $\Phi$-based invariant regions. General heterogeneous $(g_i,\rho_i,F_i)$, changing network topology, and nonseparable cross-impact alter the scalar potential argument; Subsection~\ref{subsec:barrier-robustness} establishes one diagonal extension with common $F$ and $\rho$. For invertible matrix impact $\dd\bm S=\mathsf G(\bm S)\dd\bm\theta$, an additive transaction potential would depend on exactness of the one-form
 \[
 \omega=\one^\top\operatorname{diag}(\bm S)\mathsf G(\bm S)^{-1}\dd\bm S
@@ -1768,6 +1777,12 @@ Targets $k$ & Compensators & $y(40)$ & Mean log loss & \shortstack{Computed band
 9 & 1 & 1.40516 & 0.02081 & 24.55\%\\
 \bottomrule\end{tabular}
 \end{table}
+
+
+\paragraph{Interpretation of the original two-session witness}
+The construction in Proposition~\ref{prop:certified-v7} is a constrained \emph{existence witness} for one specified ten-asset market. Nine equal target prices lose $5.91\%$ over two sessions, while the receiving asset has a high-precision reconstructed final price near $1.40516 F$. The equal-weight geometric-index decline is approximately $2.06\%$ (the mean log loss is approximately $0.02081$), whereas the arithmetic mean price decreases by only about $1.27\%$. The receiving asset supports large temporary price excursions within its wider rolling band. Table~\ref{tab:sensitivity} varies composition \emph{holding the control fixed}, rather than optimizing a new control for each $k$.
+
+The gap in the bracket $0.044<\bar v_*<0.285$ reflects the distance between a general analytical lower bound for the fixed model parameters and a specific feasible trajectory. The certificate rigorously verifies pathwise constraints and ledger closure, establishing that the admissible trajectory set is nonempty under stylized $3\%$ target bands and $25\%$ compensator bands. The Tokyo Stock Exchange sets daily limits as tiered \emph{absolute yen} amounts based on reference prices and conditionally widens them after specified limit-bound sessions with little or no execution \citep{JPX2026}. Research on actual price-limit regimes provides an institutional comparison to the proportional-reset protocol used here \citep{KimRhee1997,Chen2019}.
 
 
 \bibliographystyle{siamplain}
