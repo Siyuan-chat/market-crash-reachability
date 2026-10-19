@@ -13,11 +13,11 @@ We characterize structural barriers, attainable losses, and execution requiremen
 \section{Introduction}\label{sec:intro}
 Sharp market declines can occur without fundamental news. Order execution shifts marginal prices, and market resilience governs the decay of those displacements. We ask whether a market with fixed fundamentals can be driven into a broad systemic drawdown solely by trades that obey its settlement and recovery rules, and which trading resources are required to reach such a state.
 
-News-free price fluctuations have been explained through several equilibrium and informational mechanisms. Dynamic hedging and inference can amplify selling pressure \citep{GennotteLeland1990}, while trading itself can reveal information without external news \citep{Romer1993}. Nonsynchronous liquidity demand generates endogenous imbalances \citep{HuangWang2009}, while cross-asset liquidity feedback, distressed sales, and balance-sheet contagion can transmit losses \citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017}. Strategic predatory trading is another mechanism \citep{BrunnermeierPedersen2005}. Transaction-level evidence on the 2010 Flash Crash documents a different, empirical object: intermediation during acute selling pressure \citep{KirilenkoEtAl2017}. We do not model strategic incentives, intermediary balance sheets, or an equilibrium probability of a crash; we instead characterize feasible terminal price states of a specified control system.
+Existing work approaches price movements without fundamental news through informational, liquidity, and strategic mechanisms. Dynamic hedging and inference can amplify selling pressure \citep{GennotteLeland1990}, and trading can reveal information without external news \citep{Romer1993}. Nonsynchronous liquidity demand generates endogenous imbalances \citep{HuangWang2009}, while cross-asset liquidity feedback, distressed sales, and balance-sheet contagion transmit losses \citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017}. Predatory trading supplies a strategic channel \citep{BrunnermeierPedersen2005}. Transaction-level research on the 2010 Flash Crash examines intermediary trading during acute selling pressure \citep{KirilenkoEtAl2017}. Here the central question is one of reachability: which terminal prices can arise under prescribed trading and recovery rules?
 
-Quantitative price-impact models provide a framework for the execution side of this problem. Starting from Kyle's price-formation benchmark \citep{Kyle1985}, resilient-liquidity models characterize execution costs and replenishment \citep{ObizhaevaWang2013,AlfonsiSchied2010}. General-shaped order books distinguish recovery of displaced volume from recovery of price displacement \citep{AlfonsiFruthSchied2010}; nonlinear transient propagator models study a further, distinct specification of impact and optimal execution \citep{CuratoGatheralLillo2017}. Trading-cost and manipulation restrictions constrain these specifications \citep{Gatheral2010,AlfonsiSchiedSlynko2012,HubermanStanzl2004}. Across assets, multivariate transient impact, cross-impact arbitrage restrictions, and empirical cross-impact measurement address interactions absent from our diagonal price-response model \citep{AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017}; strategic multiasset impact games provide another comparison \citep{CordoniLillo2024}. Metaorder evidence for a linear-to-square-root impact crossover concerns cumulative impact versus order size, not directly the local state elasticity in our model \citep{BucciEtAl2019}. Kyle and Obizhaeva~\citep{KyleObizhaeva2023} relate large bets and execution rates to crash-scale observations. Here we hold the execution law fixed and ask a different question: which terminal loss states does it permit?
+Price-impact models provide the execution mechanisms needed to formulate this question. Kyle's price-formation benchmark \citep{Kyle1985} and resilient-liquidity models \citep{ObizhaevaWang2013,AlfonsiSchied2010} connect trading, prices, and replenishment. General-shaped order books distinguish recovery of displaced volume from recovery of price displacement \citep{AlfonsiFruthSchied2010}; nonlinear transient propagator models analyze impact and optimal execution \citep{CuratoGatheralLillo2017}. Trading-cost and manipulation restrictions constrain admissible impact specifications \citep{Gatheral2010,AlfonsiSchiedSlynko2012,HubermanStanzl2004}. Multivariate transient impact, cross-impact restrictions, and empirical cross-impact research address interasset transmission \citep{AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017}, alongside strategic multiasset impact games \citep{CordoniLillo2024}. Metaorder evidence for a linear-to-square-root crossover describes cumulative impact as order size grows \citep{BucciEtAl2019}, and the analysis of large bets by Kyle and Obizhaeva~\citep{KyleObizhaeva2023} relates execution intensity to market dislocations. We retain a diagonal, state-dependent local impact law and connect assets through dollar-paired execution; its local price elasticity is the object of the exclusion theorems.
 
-We consider a cashless reallocation system of risky assets in which every executed sale is paired with an equal-dollar purchase, and each asset has zero net executed dollar flow at the horizon. Prices recover toward a fixed benchmark $F$, while executed shares shift marginal prices through a positive response function $g(S)$. Our central analytical tool is the response-adapted generalized price coordinate
+We consider a cashless reallocation system of risky assets in which every executed sale is paired with an equal-dollar purchase, and each asset has zero net executed dollar flow at the horizon. This closes each asset's executed-dollar ledger, while allowing its final share inventory to differ from its initial inventory. Imposing both dollar and share closure would force the nonnegative terminal displacement and recovery-dissipation terms in~\eqref{eq:cost} to vanish; dollar closure alone permits residual displacements financed by initial share inventory. Prices recover toward a fixed benchmark $F$, while executed shares shift marginal prices through a positive response function $g(S)$. Our central analytical tool is the response-adapted generalized price coordinate
 \begin{equation}\label{eq:phi-intro}
 \Phi(S)=\int_F^S\frac{u}{g(u)}\dd u.
 \end{equation}
@@ -31,7 +31,7 @@ Under the paired-dollar, resilient market defined in Section~\ref{sec:model}, th
 \item \emph{Structural exclusion.} If $e(S)=Sg'(S)/g(S)\ge2$ at all admissible prices, then $\Cris_\alpha(t)\le0$ for every breadth and time. The weaker condition $e(S)\ge1$ excludes a simultaneous decline of all assets.
 \item \emph{Reachability regimes.} With $g_p(S)=\eta(S/F)^p$, $p=2,1,0$ respectively produce exclusion, inventory-bounded partial-coverage drawdowns, and, for $k=\lceil\alpha N\rceil<N$ and sufficiently long finite horizons, arbitrarily severe partial-coverage losses under fixed finite turnover and inventory caps when pulses are allowed. For every fixed $0\le p<1$, the severe partial-coverage construction can be implemented within a finite horizon with dollar-turnover and share-inventory caps independent of loss severity. For constant impact and $k=N$, a sharp horizon-dependent bound replaces unrestricted severity.
 \item \emph{Execution resources.} General positive $g$ yields explicit necessary dollar-turnover and share-inventory bounds. With constant per-share impact and bounded gross executed-share rates, the small-rate crisis bound is quadratic and this order is attained by a continuous dollar-closed construction.
-\item \emph{Multiday execution.} Rolling price bands restrict per-session losses, while rate limits and the receiving assets' capacity restrict consecutive lower-limit closes. A computer-assisted two-day ten-asset path satisfies these controls, has nine repeated lower-limit closes, and yields $\Cris_{0.9}(T)>0.020$; for that instance, $0.044<\bar v_*<0.285$.
+\item \emph{Multiday execution.} Rolling price bands restrict per-session losses, while rate limits and the receiving assets' capacity restrict consecutive lower-limit closes. Terminal dollar closure additionally requires targets closing below $F$ to spend positive time above that benchmark. A computer-assisted two-day ten-asset path satisfies these controls, has nine repeated lower-limit closes, and yields $\Cris_{0.9}(T)>0.020$; for that instance, $0.044<\bar v_*<0.285$.
 \end{enumerate}
 
 
@@ -366,7 +366,7 @@ $\varepsilon\downarrow0$.
 \end{proof}
 
 \subsection{A sharp boundary when every asset must fall}\label{sec:allcoverage}
-Market C relies on $k<N$. To see why the breadth condition matters beyond a technical assumption, keep \emph{the same constant-impact response} but change the target to $k=N$. There is then no nonqualifying asset available to compensate the other $N-1$ terminal losses. Rather than an arbitrary-severity construction, the model now yields an exact horizon-dependent ceiling, even before a fixed execution budget is imposed.
+Market C relies on $k<N$. To see why the breadth condition matters beyond a technical assumption, keep \emph{the same constant-impact response} but change the target to $k=N$. There is then no nonqualifying asset available to compensate the other $N-1$ terminal losses. In the sharp construction, the high-price role rotates among assets during recovery; finite recovery time limits how far their common terminal price can fall. The model therefore yields an exact horizon-dependent ceiling, even before a fixed execution budget is imposed.
 
 \begin{theorem}[Sharp all-asset horizon threshold]\label{thm:critical}
 Under Assumption~\ref{asmp:model} with $g(S)=\eta$ and $k=N$, define
@@ -494,7 +494,7 @@ maximum at $T-u=1/\rho$; it also decays for trades made far
 before the terminal date. This describes the contribution of a
 dollar of turnover to the \emph{upper-bound estimate}: late trades
 allow little time for recovery dissipation, while earlier disturbances
-decay before $T$. It does not identify an optimal trading schedule.
+decay before $T$. 
 
 \paragraph{Two-session rolling-band example}
 Consider a uniform symmetric $\pm25\%$ price band during each of two
@@ -558,7 +558,7 @@ In particular, a necessary finite-speed condition to reach threshold $\delta>0$ 
 \begin{equation}\label{eq:min-speed}
 \boxed{\ \bar v\ge\frac{\rho F(1-e^{-\delta})}{G(1-e^{-\rho T})}.\ }
 \end{equation}
-A one-session lower price limit independently excludes any $\delta> -\log(1-\beta_-)$. These are \emph{necessary} constraints, generally not sharp reachability thresholds. For comparison, if a \emph{hypothetical} multi-session regime resets a proportional lower band to each preceding close, then over $D$ sessions the elementary bound is only
+A one-session lower price limit independently excludes any $\delta> -\log(1-\beta_-)$. These constraints bound admissible paths; a sharp reachability threshold requires the full execution system. For comparison, if a \emph{hypothetical} multi-session regime resets a proportional lower band to each preceding close, then over $D$ sessions the elementary bound is only
 $S_i(T_D)\ge F\prod_{d=1}^D(1-\beta_{-,d})$ and
 $\mathcal C_\alpha(T_D)\le-\sum_{d=1}^D\log(1-\beta_{-,d})$.
 The cumulative ceiling depends on the successive closing-price resets.
@@ -583,7 +583,7 @@ For a closed executed-dollar ledger, the nonnegative cost identity~\eqref{eq:cos
  \bar v\ge \frac{E(Fe^{-\delta})}{FT}
  \quad \hbox{for every qualifying asset.}
 \end{equation}
-Bounds~\eqref{eq:min-speed}, \eqref{eq:rate-budget-lower}, and \eqref{eq:rate-energy} are distinct necessary tests; satisfying them does not construct a crisis path.
+Bounds~\eqref{eq:min-speed}, \eqref{eq:rate-budget-lower}, and \eqref{eq:rate-energy} impose complementary restrictions on execution rates.
 
 A per-asset rate estimate gives a first-order $O(\bar v)$ bound on systemic losses. Under dollar pairing, the leading-order price movements cancel in the market mean, yielding the quadratic small-rate bound below for constant impact.
 
@@ -698,7 +698,7 @@ $S_i(T_D)=Fq^D$ and loss $L_i(T_D)=D\lambda$ with $\lambda=-\log q$. Conversely,
   \Cris_\alpha(T_D)\le D\lambda
 \end{equation}
 for a common band and initial equal benchmark price. For heterogeneous bands the right side can be replaced by
-$\max_i\sum_{d=1}^D[-\log(1-\beta_{i,d,-})]$. These are \emph{geometric ceilings}, not sufficient conditions for a dollar-paired trajectory to hit the floor.
+$\max_i\sum_{d=1}^D[-\log(1-\beta_{i,d,-})]$. These geometric ceilings precede the execution constraints examined below.
 
 
 \subsection{Cross-sectional crisis threshold under repeated lower-band closes}\label{subsec:multiday-breadth}
@@ -714,7 +714,7 @@ If all other assets have individual log losses at most $D\lambda$ (or if $k>N/2$
 \boxed{\quad\Cris_\alpha(T_D)=\min\!\left\{D\lambda,
  \frac{kD\lambda-\sum_{j=1}^{N-k}\log(Y_j/F)}{N}\right\}.\quad}
 \end{equation}
-In particular, with a single compensator ($k=N-1$), its terminal price must obey $Y/F\le\exp(kD\lambda-N\delta)$ if a crisis of threshold $\delta$ is to occur. These are exact \emph{conditional endpoint identities}, not sufficient conditions for a trade path realizing the stipulated closing prices.
+In particular, with a single compensator ($k=N-1$), its terminal price must obey $Y/F\le\exp(kD\lambda-N\delta)$ if a crisis of threshold $\delta$ is to occur. These identities depend only on the stipulated terminal prices.
 \end{proposition}
 \begin{proof}
 The $k$ streaking assets have loss $D\lambda$, hence $Q_\alpha\ge D\lambda$. For $\delta\le D\lambda$, the coverage part of the crisis criterion is therefore automatic, and the remaining requirement is $\overline L(T_D)\ge\delta$. Substituting the terminal prices into $\overline L(T_D)=N^{-1}\sum_i\log[F/S_i(T_D)]$ gives \eqref{eq:multiday-trigger-product}. If every other loss is at most $D\lambda$, or if $N-k<k$, the $k$th-largest loss is exactly $D\lambda$, proving \eqref{eq:multiday-trigger-exact}.
@@ -745,7 +745,7 @@ Moreover, when $\eta\bar v<\rho F$, all prices starting at $F$ obey the perpetua
 \begin{equation}\label{eq:streak-D-bound}
 \boxed{\quad D\le\frac{\log(1-\eta\bar v/(\rho F))}{\log q}.\quad}
 \end{equation}
-The bound is understood only for $\eta\bar v<\rho F$; with a larger rate cap it supplies no finite-day obstruction. None of these scalar inequalities is sufficient for multi-asset price-band feasibility or terminal dollar closure.
+The bound applies for $\eta\bar v<\rho F$; for larger rate caps it supplies no finite-day obstruction.
 \end{proposition}
 \begin{proof}
 Variation of constants and $\dot\theta_i\ge-\bar v$ imply
@@ -796,7 +796,7 @@ Writing $H_+=\rho\tau_1\beta_+(1+\beta_+)$, whenever $2H_+<1$ this imposes the a
 \begin{equation}\label{eq:multiday-preconditioning-D}
 \boxed{\quad D\le \frac{\log(1-2H_+)}{2\log q}.\quad}
 \end{equation}
-This bound is specific to terminal dollar closure and the absence of above-fundamental excursions in later sessions. It is not sufficient to produce a consecutive limit-down path.
+This bound uses terminal dollar closure and the restriction on above-fundamental excursions in later sessions.
 \end{proposition}
 \begin{proof}
 Integrate the identity $\dd\Phi(S_i)=\dd X_i-\rho S_i(S_i-F)\dd t/g(S_i)$ over the full horizon. Since $X_i(T_D)=0$ and $\Phi(F)=0$, the integral must equal $-\Phi(s_D)>0$. Any portion of the trajectory at $S_i\le F$ contributes a nonpositive integrand, so the positive part must arise above $F$. If later sessions cannot rise above $F$, all positive contribution must be earned in session~1, whose supremum is bounded by the left side of \eqref{eq:streak-precondition}.
@@ -1178,8 +1178,8 @@ Therefore $\Cris_{1/2}(T)>0$, although each response has
 elasticity $e_i=2$. Prices remain strictly positive, and a
 sufficient initial share inventory covers the finite sales.
 This is a pulse-admitting construction, without an instantaneous
-gross-rate cap. It does not contradict Theorem~\ref{thm:barrier2},
-whose common-impact hypothesis is absent here.
+gross-rate cap. The common-impact hypothesis of Theorem~\ref{thm:barrier2}
+fails in this example.
 
 The two perturbation estimates isolate departures from matching
 and homogeneous impact strength. They keep $F$ and $\rho$ fixed;
