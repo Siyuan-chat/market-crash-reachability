@@ -8,7 +8,6 @@ import MarketCrash.ElasticityConcavity
 import MarketCrash.RecoveryPotential
 import MarketCrash.ContinuousInvariant
 import MarketCrash.RestoringTangent
-import MarketCrash.SmoothMarket
 import MarketCrash.PotentialFromTime
 import MarketCrash.HybridPath
 import MarketCrash.HybridClosure
@@ -35,8 +34,6 @@ import MarketCrash.OperationalClockAEComparison
 import MarketCrash.RadialSystemicBarrier
 import MarketCrash.AEAttainableBarrier
 import MarketCrash.WeakBVPriceBarrier
-import MarketCrash.WeakBVFiniteExecution
-import MarketCrash.WeakBVOriginalCrisis
 import MarketCrash.MarketCut
 import MarketCrash.RateBand
 import MarketCrash.RollingRate
