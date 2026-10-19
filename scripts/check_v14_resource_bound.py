@@ -60,6 +60,9 @@ def main():
 
     assert r"1.02020225507905<h<1.02020225507908" in new, "Correct interval missing"
     assert "1.020225507905" not in new, "Incorrect left endpoint reappeared"
+    assert r"1.2219388<y(20)<1.2225356" in new, "Certified y(20) endpoint changed"
+    assert "1.225356" not in new, "Incorrect y(20) upper endpoint reappeared"
+
     f = lambda z: 101600000000*z*z - 97138000000*z - 6646157699
     getcontext().prec=60
     assert f(Decimal("1.02020225507905")) < 0 < f(Decimal("1.02020225507908"))
@@ -144,6 +147,29 @@ def main():
     subprocess.run([sys.executable,str(ROOT/"verification/loss_breadth_certified.py")],cwd=ROOT,check=True)
     assert r"\label{tab:loss-breadth}" in new
     assert r"\label{app:loss-breadth}" in new
+    block=new.split(r"\subsection{Certified loss--breadth comparisons under uniform rolling bands}",1)[1].split(
+        r"\section{Discussion and model extensions}",1)[0]
+    assert "No row claims an optimal frontier" not in block
+    assert "exactly rational input" not in block
+    assert "directed-integer interval verifier" not in block
+    assert r"\texttt{P}" in block and r"\texttt{R}" in block and r"\texttt{M5}" in block
+    assert r"0.284500" in block and r"2.984" in block
+    assert r"\sup_t9|u(t)|/y(t)<0.284481" in new
+    assert r"9\int_0^{40}|u(t)|\dd t<2.984" in new
+    assert "Outward-rounded fixed-point interval arithmetic" in block
+    assert r"x(40)^8y(40)^2<0.97^{10}" in block
+    assert r"M<4.600<5" in block
+    appendix=new.split(r"\section{Reproducing the uniform-band loss--breadth witnesses}",1)[1].split(
+        r"\bibliographystyle{siamplain}",1)[0]
+    assert "External code audit and independent mathematical review remain outstanding" not in appendix
+    availability=new.split(r"\section*{Code and numerical data availability}",1)[1].split(
+        r"\section*{Declaration on AI-assisted tools}",1)[0]
+    for label in ("app:v7certificate","app:loss-breadth","app:sublinear-severe"):
+        assert r"\ref{"+label+"}" in availability, ("Missing code availability reference",label)
+    assert "establishing elasticity barriers for that alternative model requires a separate curvature analysis" in new
+    assert "requires adequate execution capacity" in new
+    assert "time-resolved transaction and order-book observations" in new
+
     # Editorial ordering, title-case, and root-endpoint regression gates.
     p_spectrum=new.index(r"\paragraph{The continuous power-law spectrum}")
     p_sublinear=new.index(r"\label{thm:sublinear-severe}")
