@@ -1,57 +1,61 @@
-# SIFIN V1.1 editorial migration and verification baseline
+# SIFIN V1.1 manuscript editorial migration
 
-This file tracks the working V14 restructuring in PR #26. The published V13, archived software release, and existing interval certificate input files are unchanged.
+The V14 source is being revised in PR #26. This is an **editorial manuscript reorganization**, not a new mathematical result or an independent mathematical peer review. The public historical V13 archive and all fixed numerical certificate inputs remain untouched.
 
-## Approved manuscript architecture
+## Approved mathematical narrative
 
-1. Introduction: seven research-focused paragraphs and a symbol-free Abstract.
-2. Model and Systemic Drawdown Criterion (old Section 2): settlement, positive prices, restoration, terminal loss.
-3. Structural Barriers and Robustness (old Section 3 plus former Section 8 robustness propositions).
-4. Reachability Regimes under Power-Law Impact (old Section 4): includes the full-coverage sharp horizon theorem and the fixed-exponent severe-loss construction.
-5. Execution Resources and Turnover Bounds (old Section 5).
-6. Reachability under Bounded Execution Rates (old Section 6).
-7. Rolling Price Limits: Constrained Realizations (old Section 7): retains above-benchmark preconditioning and original certified witness.
-8. Discussion (old Section 8 without the robustness propositions).
-9. Conclusion (old Section 9).
+1. Introduction — seven substantive paragraphs and a symbol-free abstract
+2. Model and Systemic Drawdown Criterion — fixed assumptions, settlement and terminal loss
+3. Structural Barriers and Robustness — two global barriers followed by two robustness propositions
+4. Reachability Regimes under Power-Law Impact — all original power-law results, including the sharp full-coverage horizon bound
+5. Execution Resources and Turnover Bounds — necessary turnover, inventory and dissipation estimates
+6. Reachability under Bounded Execution Rates — rate-limited upper and constructive lower quadratic orders
+7. Rolling Price Limits: Constrained Realizations — obstruction, preconditioning, market-cut capacity, and two certified existence propositions
+8. Discussion — economic accounting, metric choice, deterministic interpretation and extensions
+9. Conclusion — the three connected contribution groups
 
-All labels in the LaTeX source remain stable; printed theorem numbers change according to the new order.
+## Section 7 compression and figure provenance
 
-## Result tracking
+The main rolling-band text has been shortened while **preserving the original formal propositions and their proofs in Section 7**, including the above-benchmark preconditioning statement and both certified two-session propositions.
 
-| Source result label | Kind | Statement (short title) | New chapter | Evidence / proof status |
+- Appendix G (\`app:v7certificate\`): original mixed-band certificate, whole-path interval enclosure, terminal-threshold illustration, fixed-control sensitivity table, and adjacent price-path / gross-share-rate figures (\`fig:v7path\` and \`fig:v7rates\`)
+- Appendix I (\`app:loss-breadth\`): the original six-witness comparison table (\`tab:loss-breadth\`), six additional uniform-band cases (\`tab:loss-breadth-additional\`), and both rational-certificate provenance descriptions
+- The \`verification/loss_breadth/\` 12-witness inputs, exact rational schedules, hash records, and 24-cell research matrix remain unmodified
+- Figure and table numbering in the output PDF is dynamic. **Use labels**, never hardcoded old table numbers
+
+## Old-to-new result location map
+
+| Stable LaTeX label | Previous location | SIFIN V1.1 location | Proof display | Status |
 | --- | --- | --- | --- | --- |
-| `thm:barrier1` | theorem | Barrier to a decline of every asset | Structural Barriers and Robustness | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `thm:barrier2` | theorem | Barrier to a systemic crisis of any breadth | Structural Barriers and Robustness | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `thm:ABC` | theorem | A/B/C reachability regimes | Reachability Regimes under Power-Law Impact | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `prop:three-pulse` | proposition | Local all-asset decline | Reachability Regimes under Power-Law Impact | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `prop:two-pulse` | proposition | Local partial-coverage decline | Reachability Regimes under Power-Law Impact | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `thm:sublinear-severe` | theorem | Uniform-resource severe partial-coverage losses for sublinear impact | Reachability Regimes under Power-Law Impact | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `thm:critical` | theorem | Sharp all-asset horizon threshold | Reachability Regimes under Power-Law Impact | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `thm:resource` | theorem | Execution-resource lower bounds | Execution Resources and Turnover Bounds | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `prop:turnover-dissipation` | proposition | Turnover--dissipation bound under constant impact | Execution Resources and Turnover Bounds | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `prop:rate-band` | proposition | Rate and price-band exclusion certificates | Reachability under Bounded Execution Rates | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `thm:quadratic-rate` | theorem | A quadratic small-rate crisis barrier for constant impact | Reachability under Bounded Execution Rates | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `thm:finite-rate-construct` | theorem | Positive all-asset decline with bounded continuous execution | Reachability under Bounded Execution Rates | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `prop:multiday-crisis-trigger` | proposition | A conditional systemic-crisis trigger test | Rolling Price Limits: Constrained Realizations | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `prop:rolling-rate` | proposition | Rolling-limit shock-rate certificates | Rolling Price Limits: Constrained Realizations | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `thm:no-second-global` | theorem | An obstruction to a second all-asset limit-down close | Rolling Price Limits: Constrained Realizations | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `prop:streak-precondition` | proposition | Preconditioning needed for a dollar-closed limit-down streak | Rolling Price Limits: Constrained Realizations | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `prop:market-cut` | proposition | A market-cut capacity and consecutive-limit lower bound | Rolling Price Limits: Constrained Realizations | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
-| `prop:certified-v7` | proposition | A computer-assisted two-day rate certificate | Rolling Price Limits: Constrained Realizations | Original formal statement retained verbatim; existing proof and/or appendix reference preserved |
+| `asmp:model` | The market: assumptions, execution, and price dynamics | Model and Systemic Drawdown Criterion | Main text | Unchanged mathematical statement |
+| `def:crash` | The market: assumptions, execution, and price dynamics | Model and Systemic Drawdown Criterion | Main text | Unchanged mathematical statement |
+| `def:budget` | The market: assumptions, execution, and price dynamics | Model and Systemic Drawdown Criterion | Main text | Unchanged mathematical statement |
+| `thm:barrier1` | Structural barriers to market crashes | Structural Barriers and Robustness | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `thm:barrier2` | Structural barriers to market crashes | Structural Barriers and Robustness | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:unbalanced-stability` | Discussion and model extensions | Structural Barriers and Robustness | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:heterogeneous-quadratic` | Discussion and model extensions | Structural Barriers and Robustness | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `thm:ABC` | Three market regimes under common constraints | Reachability Regimes under Power-Law Impact | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:three-pulse` | Three market regimes under common constraints | Reachability Regimes under Power-Law Impact | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:two-pulse` | Three market regimes under common constraints | Reachability Regimes under Power-Law Impact | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `thm:sublinear-severe` | Three market regimes under common constraints | Reachability Regimes under Power-Law Impact | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `thm:critical` | Three market regimes under common constraints | Reachability Regimes under Power-Law Impact | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `thm:resource` | Necessary execution resources | Execution Resources and Turnover Bounds | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:turnover-dissipation` | Necessary execution resources | Execution Resources and Turnover Bounds | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:rate-band` | Finite trading rates and abstract price bands | Reachability under Bounded Execution Rates | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `thm:quadratic-rate` | Finite trading rates and abstract price bands | Reachability under Bounded Execution Rates | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `thm:finite-rate-construct` | Finite trading rates and abstract price bands | Reachability under Bounded Execution Rates | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:multiday-crisis-trigger` | Systemic drawdowns under rolling price-band constraints | Rolling Price Limits: Constrained Realizations | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:rolling-rate` | Systemic drawdowns under rolling price-band constraints | Rolling Price Limits: Constrained Realizations | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `thm:no-second-global` | Systemic drawdowns under rolling price-band constraints | Rolling Price Limits: Constrained Realizations | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:streak-precondition` | Systemic drawdowns under rolling price-band constraints | Rolling Price Limits: Constrained Realizations | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:market-cut` | Systemic drawdowns under rolling price-band constraints | Rolling Price Limits: Constrained Realizations | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:certified-v7` | Systemic drawdowns under rolling price-band constraints | Rolling Price Limits: Constrained Realizations | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
+| `prop:loss-breadth-eight` | Systemic drawdowns under rolling price-band constraints | Rolling Price Limits: Constrained Realizations | Main text (possibly supplemented by Appendix) | Unchanged mathematical statement |
 
-## Certificate provenance and boundaries
+## Acceptance boundaries
 
-- Original mixed-band two-session path: `verification/certify_streak_interval.py`, Appendix G (`app:v7certificate`); Section 7 retains its existence proposition.
-- Uniform-band R80-10 and five neighboring cases: `verification/loss_breadth_certified.py`, Appendix I (`app:loss-breadth`).
-- Six additional controls and twenty-four-cell research matrix: `verification/loss_breadth/` with exact-control input manifest and hash checks; Appendix I supplementary table.
-- The original historical Lean acceptance scope is unchanged. New V14 propositions and numerical witnesses are not represented as fully Lean-formalized results.
-- Verification requires full source/build CI plus independent mathematical review; a green PDF build alone does not establish the mathematics.
-
-## Further editorial acceptance work
-
-- Recheck theorem references after moving robustness results before the power-law classification.
-- Preserve the full mathematical statement of every existing theorem and proposition during further proof exposition edits.
-- Evaluate whether Section 7 can be compressed without removing hypotheses or the distinction between mixed-band and uniform-band witnesses.
-- Ensure the general sublinear proof treats fixed exponent, fixed horizon and fixed market size correctly; rate-constrained matching-order claims are restricted to the common constant-impact subclass.
-- Verify numerical certificate provenance, LaTeX references and PDF rendering after any further structural moves.
-
+- Formal result statements, existing numbered equations and all LaTeX labels are preserved byte-for-byte.
+- Theorem and figure *printed numbers* may change after relocation, but all stable \`\\label\` identifiers remain unchanged.
+- Existing certified path and resource figures are not converted into empirical results.
+- CI checks evaluate stable mathematical statements, bibliography, source validity and LaTeX build.
+- **Independent mathematical proof review is deferred at the user's request.** A completed editorial merge must not be presented as completion of the independent proof audit.
