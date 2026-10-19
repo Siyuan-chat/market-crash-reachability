@@ -247,7 +247,7 @@ def main():
         "providing an intrinsic model scale",
         "multi-session proportional-reset price-band protocol",
         "records the benchmark value of inventory consumed",
-        "Together, these results clarify the structural and resource boundaries",
+        "The separation between structural exclusion, constructive reachability",
     ):
         assert phrase in new, ("Missing scientific/editorial content",phrase)
     citation_locations={
