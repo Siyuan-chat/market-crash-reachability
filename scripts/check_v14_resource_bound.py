@@ -218,15 +218,31 @@ def main():
     assert 0 <= p_spectrum < p_sublinear < p_kN < p_critical
     assert "The Flash Crash: High-frequency trading in an electronic market" in bib
     assert "The flash crash: high-frequency trading in an electronic market" not in bib
+    # Verify scholarly meaning and citation placement rather than pinning
+    # defensive or transitional English sentences verbatim.
     for phrase in (
-        "Accordingly, the elasticity thresholds proved below characterize stability",
+        "specifies price-level recovery",
         "volume-recovery specifications with drift",
         "providing an intrinsic model scale",
-        "multi-session setting under a proportional-reset price-band protocol",
-        "measures benchmark-valued inventory consumption arising from terminal price displacement",
+        "multi-session proportional-reset price-band protocol",
+        "records the benchmark value of inventory consumed",
         "Together, these results clarify the structural and resource boundaries",
     ):
-        assert phrase in new, ("Missing editorial correction",phrase)
+        assert phrase in new, ("Missing scientific/editorial content",phrase)
+    citation_locations={
+        "AlmgrenChriss2001": r"\section{Introduction}",
+        "BankBaum2004": r"\paragraph{From the conditional matching map to an effective response}",
+        "CetinJarrowProtter2004": r"\paragraph{From the conditional matching map to an effective response}",
+        "RochSoner2013": r"\paragraph{Price-level resilience as a modeling choice}",
+        "BressanRampazzo1988": r"\paragraph{Finite-variation paths and marginally settled pulses}",
+        "Subrahmanyam1994": r"\section{Systemic drawdowns under rolling price-band constraints}",
+        "Tucker2011": r"\section{A reproducible interval certificate for the two-day construction}",
+    }
+    for key, location in citation_locations.items():
+        assert key in keys, ("Missing BibTeX entry",key)
+        assert key in cited, ("Uncited foundational reference",key)
+        assert location in new, ("Missing citation context",location)
+    assert len(keys)==33, ("Expected seven added references",len(keys))
     for stale in (
         "not a Tokyo Stock Exchange case study",
         "We do not claim the corresponding thresholds are invariant",
