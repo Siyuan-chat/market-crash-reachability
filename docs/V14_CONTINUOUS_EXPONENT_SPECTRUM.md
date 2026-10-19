@@ -75,7 +75,9 @@ phase transitions or as finite-rate feasibility statements.
 `scripts/check_v14_resource_bound.py` preserves original V13
 19 mathematical statements and 81 numbered equations, plus the V14
 Proposition 5.2 and the new severe-loss theorem, with five additional
-numbered equations in total.
+numbered equations in total. The later V14 Section 7 adds a separate
+computer-assisted loss--breadth proposition, leaving the five added
+equation blocks unchanged.
 It also checks the new discussion's local-horizon condition and
 performs independent Simpson numerical quadrature against the
 closed-form inventory-potential formulas for representative

@@ -21,11 +21,21 @@ the Discussion. [Detailed proof audit](../../docs/V14_TURNOVER_DISSIPATION_AUDIT
 
 The sublinear uniform-resource theorem now follows the continuous-spectrum discussion and precedes the sharp all-asset horizon subsection. Its mathematical statement is unchanged; the printed theorem numbering updates automatically. The polynomial-root bracket in Section 7 is already correct and independently checked.
 
-The published V13 manuscript, PDF, Lean proofs, and archived numeric certificates
-are unchanged. This draft does not claim any new numerical witness, optimal control,
-or impossibility result, and is not deposited on Zenodo/SSRN. The new Proposition 5.2 and sublinear-impact severe-loss theorem have
-not been Lean-formalized and are not counted in the original 16/16
-Lean acceptance report.
+The published V13 manuscript, PDF, Lean proofs, and historical certificates
+remain unchanged. V14 Section 7 now includes a new **internally
+interval-checked uniform-band existence witness** (8/10 assets declining
+more than 10.8% ordinary price) and side-by-side breadth, market-index,
+and resource comparisons. These are computer-assisted paths backed by
+reproducible fixed rational controls, not externally audited certificates,
+numerical optima, or proof of infeasibility for unresolved matrix cells.
+V14 is not deposited on Zenodo/SSRN.
+
+[Loss--breadth certificate scope](../../docs/V14_LOSS_BREADTH_CERTIFICATE_SCOPE.md)
+and [source, exact controls and reproduction guide](../../verification/loss_breadth/README.md)
+describe the newer results. Neither the new Section 7 proposition nor
+Proposition 5.2 or the sublinear-impact severe-loss theorem has been
+Lean-formalized; historical 16/16 acceptance refers only to the
+unchanged original results.
 
 For constant per-share impact and absolutely continuous paired-dollar controls,
 if prices are bounded below by a>0 and |S_i-F|<=b, writing
@@ -41,9 +51,11 @@ The gross-versus-net trade relation is a <= bound; see the proof audit.
 In the paper, executed-dollar flow rates are written as dot X_i; q_i remains
 reserved for log prices in Section 2.
 
-Rebuild with:
+Rebuild/check with:
+    python verification/loss_breadth/verify_all.py
     python scripts/check_v14_resource_bound.py
     python scripts/build_v14_resource_bound.py
+
 
 The build takes unchanged figure PDFs from the earlier English source directory and
 writes its new output to build/v14-turnover-dissipation.

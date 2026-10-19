@@ -31,5 +31,4 @@ The Flash Crash while using sentence case after the colon.
 
 The version named V13-corrected was not independently available as a separate
 GitHub source file. The stated passages were revised using the supplied
-replacement wording; published V13 assets are unchanged. All 21 current
-numbered statement bodies and 86 numbered equation blocks are preserved.
+replacement wording; published V13 assets are unchanged. All 21 statement bodies present before the new Section 7 witness and all 86 numbered equation blocks are preserved. The later 80%-coverage witness adds one new proposition without changing the existing equations.
