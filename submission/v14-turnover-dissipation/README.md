@@ -21,21 +21,24 @@ the Discussion. [Detailed proof audit](../../docs/V14_TURNOVER_DISSIPATION_AUDIT
 
 The sublinear uniform-resource theorem now follows the continuous-spectrum discussion and precedes the sharp all-asset horizon subsection. Its mathematical statement is unchanged; the printed theorem numbering updates automatically. The polynomial-root bracket in Section 7 is already correct and independently checked.
 
-The published V13 manuscript, PDF, Lean proofs, and historical certificates
-remain unchanged. V14 Section 7 now includes a new **internally
-interval-checked uniform-band existence witness** (8/10 assets declining
-more than 10.8% ordinary price) and side-by-side breadth, market-index,
-and resource comparisons. These are computer-assisted paths backed by
-reproducible fixed rational controls, not externally audited certificates,
-numerical optima, or proof of infeasibility for unresolved matrix cells.
-V14 is not deposited on Zenodo/SSRN.
+Section 7 now includes an independently rerunnable **80% coverage / over 10.8% target-price decline** interval witness under uniform +/-25% rolling bands, a comparison table of six new internally certified paths, and a reproduction appendix. See [loss-breadth certificate methodology](../../docs/LOSS_BREADTH_CERTIFICATES.md), [rational verifier](../../verification/loss_breadth_certified.py), [per-case summary](../../verification/loss_breadth_witness_summary.csv), and [independent SciPy ODE audit](../../verification/loss_breadth_ode_crosscheck.py). The relaxed M<5 row is visibly distinguished from the original M<3 budget. This **new proposition** is not covered by the original Lean formalization.
 
-[Loss--breadth certificate scope](../../docs/V14_LOSS_BREADTH_CERTIFICATE_SCOPE.md)
-and [source, exact controls and reproduction guide](../../verification/loss_breadth/README.md)
-describe the newer results. Neither the new Section 7 proposition nor
-Proposition 5.2 or the sublinear-impact severe-loss theorem has been
-Lean-formalized; historical 16/16 acceptance refers only to the
-unchanged original results.
+Section 8 now also derives **two purely theoretical robustness bounds**:
+an exponentially recovery-weighted bound on the mean systemic loss when
+dollar flows in the modeled basket are not perfectly matched, and a
+weighted-flow bound for asset-specific quadratic impact strengths.
+An explicit two-asset, **terminally dollar-closed** matched-pulse
+counterexample shows that heterogeneous impact can invalidate the
+homogeneous elasticity barrier even when both per-asset exponents equal 2.
+These calculations leave the original barrier theorems, existing nine
+appendices, and all interval-witness inputs unchanged. They use no market
+observations or empirical calibration and are not included in the
+historical Lean formalization.
+
+The published V13 manuscript, PDF, Lean proofs, and archived numeric certificates
+are unchanged. This GitHub research draft now includes new internally verified numerical witnesses, but does not claim optimal controls or impossibility results, and has not yet been deposited on Zenodo/SSRN. The additional V14 propositions and sublinear-impact severe-loss theorem,
+including the two Section 8 robustness propositions, have not been
+Lean-formalized and are not counted in the original 16/16 Lean acceptance report.
 
 For constant per-share impact and absolutely continuous paired-dollar controls,
 if prices are bounded below by a>0 and |S_i-F|<=b, writing
@@ -51,11 +54,9 @@ The gross-versus-net trade relation is a <= bound; see the proof audit.
 In the paper, executed-dollar flow rates are written as dot X_i; q_i remains
 reserved for log prices in Section 2.
 
-Rebuild/check with:
-    python verification/loss_breadth/verify_all.py
+Rebuild with:
     python scripts/check_v14_resource_bound.py
     python scripts/build_v14_resource_bound.py
-
 
 The build takes unchanged figure PDFs from the earlier English source directory and
 writes its new output to build/v14-turnover-dissipation.
@@ -63,3 +64,19 @@ writes its new output to build/v14-turnover-dissipation.
 Independent dollar-ledger reconstruction tests (not a mathematical proof):
 
     python scripts/check_sublinear_severe_extension.py
+
+
+## Additional certified loss--breadth comparisons
+
+Appendix I now displays six further prescribed controls beyond the six main
+Table 3 interval witnesses, covering k=7, 9, and 10, with M<3 and separately
+relaxed M<4/M<7 turnover cases. All twelve exact rational schedules, their
+SHA-256 input/program manifest, and the 24-cell research matrix are retained
+in [`verification/loss_breadth/`](../../verification/loss_breadth/).
+
+Reproduce with `python verification/loss_breadth/verify_all.py` from the
+repository root. The runner refuses optimized Python because the underlying
+proof-critical modules use enabled assertions. New numerical comparisons
+remain internally certified existence statements, not optimum-frontier
+or negative reachability results. The original main theorem statements,
+Section 7 Table 3 and the published V13 snapshots are preserved.

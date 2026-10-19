@@ -25,11 +25,13 @@ def main():
     extras=[item for item in new_results if item not in old_results]
     missing=[item for item in old_results if item not in new_results]
     assert not missing, ("Historical statements changed",missing)
-    assert len(extras)==3, ("Expected two new propositions and one new theorem",extras)
-    assert sorted(item[0] for item in extras)==["proposition","proposition","theorem"],extras
+    assert len(extras)==5, ("Expected four V14 propositions and one theorem",extras)
+    assert sorted(item[0] for item in extras)==["proposition"]*4+["theorem"],extras
     assert any(r"\label{prop:turnover-dissipation}" in item[1] for item in extras)
-    assert any(r"\label{prop:uniform-band-80pct}" in item[1] for item in extras)
     assert any(r"\label{thm:sublinear-severe}" in item[1] for item in extras)
+    assert any(r"\label{prop:loss-breadth-eight}" in item[1] for item in extras)
+    assert any(r"\label{prop:unbalanced-stability}" in item[1] for item in extras)
+    assert any(r"\label{prop:heterogeneous-quadratic}" in item[1] for item in extras)
     old_eq=numbered_equations(old)
     new_eq=numbered_equations(new)
     assert all(eq in new_eq for eq in old_eq), "Historical numbered equations changed"
@@ -39,11 +41,11 @@ def main():
     assert any(r"\label{eq:V2-turnover}" in eq for eq in extra_eq)
     for label in ("eq:sublinear-ledger","eq:sublinear-stage","eq:sublinear-inventory"):
         assert any(r"\label{"+label+"}" in eq for eq in extra_eq), label
-    assert len(new_results)==len(old_results)+3
+    assert len(new_results)==len(old_results)+5
     assert len(new_eq)==len(old_eq)+5
     assert set(re.findall(r"\\label\{([^}]+)\}",old)) <= set(re.findall(r"\\label\{([^}]+)\}",new))
-    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+3
-    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+3
+    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+5
+    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+5
     for term in ("Turnover--dissipation bound under constant impact",
                  "Two-session rolling-band example",
                  r"\sum_i|\dot X_i|\le2\sum_e\dot z_e",
@@ -60,6 +62,9 @@ def main():
 
     assert r"1.02020225507905<h<1.02020225507908" in new, "Correct interval missing"
     assert "1.020225507905" not in new, "Incorrect left endpoint reappeared"
+    assert r"1.2219388<y(20)<1.2225356" in new, "Certified y(20) endpoint changed"
+    assert "1.225356" not in new, "Incorrect y(20) upper endpoint reappeared"
+
     f = lambda z: 101600000000*z*z - 97138000000*z - 6646157699
     getcontext().prec=60
     assert f(Decimal("1.02020225507905")) < 0 < f(Decimal("1.02020225507908"))
@@ -134,13 +139,6 @@ def main():
         bound=math.log1p((p-1)*(E+1/(2-p)))/(p-1)
         assert L <= bound + 1e-12
     print("PASS continuous exponent potentials, finite boundary limits and inventory cap")
-    assert r"\label{prop:uniform-band-80pct}" in new
-    assert r"\label{app:lossbreadth}" in new
-    for label in ("tab:lossbreadth-fixed","tab:lossbreadth-relaxed","tab:lossbreadth-matrix"):
-        assert r"\label{"+label+"}" in new, label
-    assert r"\Cris_{0.8}(40)>-\log(0.97)>0.0304" in new
-    assert "x(40)<0.891607" in new and "y(40)<1.331160" in new
-    assert "verification/loss_breadth/verify_all.py" in new
     assert r"\section{Sublinear power-law extension of uniform-budget severity}" in new
     assert r"\label{app:sublinear-severe}" in new
     assert r"\nu=2-p\in(1,2]" in new
@@ -148,6 +146,70 @@ def main():
     assert r"b_\varepsilon\in(b_-,\bar b)" in new
     import subprocess,sys
     subprocess.run([sys.executable,str(ROOT/"scripts/check_sublinear_severe_extension.py")],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/"verification/loss_breadth_certified.py")],cwd=ROOT,check=True)
+    assert r"\label{tab:loss-breadth}" in new
+    assert r"\label{app:loss-breadth}" in new
+    block=new.split(r"\subsection{Certified loss--breadth comparisons under uniform rolling bands}",1)[1].split(
+        r"\section{Discussion and model extensions}",1)[0]
+    assert "No row claims an optimal frontier" not in block
+    assert "exactly rational input" not in block
+    assert "directed-integer interval verifier" not in block
+    assert r"\texttt{P}" in block and r"\texttt{R}" in block and r"\texttt{M5}" in block
+    assert r"0.284500" in block and r"2.984" in block
+    assert r"\sup_t9|u(t)|/y(t)<0.284481" in new
+    assert r"9\int_0^{40}|u(t)|\dd t<2.984" in new
+    assert "Outward-rounded fixed-point interval arithmetic" in block
+    assert r"x(40)^8y(40)^2<0.97^{10}" in block
+    assert r"M<4.600<5" in block
+    appendix=new.split(r"\section{Reproducing the uniform-band loss--breadth witnesses}",1)[1].split(
+        r"\bibliographystyle{siamplain}",1)[0]
+    assert "External code audit and independent mathematical review remain outstanding" not in appendix
+    availability=new.split(r"\section*{Code and numerical data availability}",1)[1].split(
+        r"\section*{Declaration on AI-assisted tools}",1)[0]
+    for label in ("app:v7certificate","app:loss-breadth","app:sublinear-severe"):
+        assert r"\ref{"+label+"}" in availability, ("Missing code availability reference",label)
+    assert "establishing elasticity barriers for that alternative model requires a separate curvature analysis" in new
+    assert "requires adequate execution capacity" in new
+    assert "time-resolved transaction and order-book observations" in new
+
+    # Robustness theory is appended in Discussion, leaving established theorem
+    # numbering, Appendix G/I certificates, and original equations unchanged.
+    robustness=new.split(
+        r"\subsection{Robustness to unmatched dollar flow and impact heterogeneity}",1
+    )[1].split(r"\section{Conclusion}",1)[0]
+    for required in (
+        r"\label{prop:unbalanced-stability}",
+        r"\label{prop:heterogeneous-quadratic}",
+        r"\label{subsec:barrier-robustness}",
+        r"\frac{\dd\log\lambda(S)}{\dd\log S}=e(S)-2",
+        r"\sum_i\dot X_i(t)=\varepsilon(t)",
+        r"e^{-\rho(t-s)}[-\varepsilon(s)]_+",
+        r"\omega=\bar\kappa\,\varepsilon+",
+        r"e^{-\rho(t-s)}[-\omega(s)]_+",
+        r"Q_{1/2}(T)=(1-r)\kappa_1a+O(a^2)>0",
+        r"$X_i(T)=0$",
+        "without an instantaneous",
+        r"Theorem~\ref{thm:barrier2}",
+    ):
+        if required == r"$X_i(T)=0$":
+            assert "Both asset ledgers close exactly" in robustness
+        else:
+            assert required in robustness, ("Missing robustness condition",required)
+    # A small deterministic closed-pulse sanity check is not an empirical test
+    # or a substitute for the proposition proofs.
+    import math
+    for a in (0.001,0.02):
+        k1,k2,rho,T=1.4,0.8,0.4,3.0
+        r=math.exp(-rho*T)
+        q1=math.log1p(r*math.expm1(k1*a))-k1*a
+        q2=math.log1p(r*math.expm1(-k2*a))+k2*a
+        A=-(q1+q2)/2
+        Q=-q1
+        signed_weighted_bound=(1-r)*(k1-k2)*a/2
+        assert 0<A<=signed_weighted_bound+1e-12
+        assert Q>0 and min(A,Q)>0
+    print("PASS unmatched-flow/heterogeneous-impact theory and closed-pulse sanity")
+
     # Editorial ordering, title-case, and root-endpoint regression gates.
     p_spectrum=new.index(r"\paragraph{The continuous power-law spectrum}")
     p_sublinear=new.index(r"\label{thm:sublinear-severe}")
@@ -156,15 +218,31 @@ def main():
     assert 0 <= p_spectrum < p_sublinear < p_kN < p_critical
     assert "The Flash Crash: High-frequency trading in an electronic market" in bib
     assert "The flash crash: high-frequency trading in an electronic market" not in bib
+    # Verify scholarly meaning and citation placement rather than pinning
+    # defensive or transitional English sentences verbatim.
     for phrase in (
-        "Accordingly, the elasticity thresholds proved below characterize stability",
+        "specifies price-level recovery",
         "volume-recovery specifications with drift",
         "providing an intrinsic model scale",
-        "multi-session setting under a proportional-reset price-band protocol",
-        "measures benchmark-valued inventory consumption arising from terminal price displacement",
+        "multi-session proportional-reset price-band protocol",
+        "records the benchmark value of inventory consumed",
         "Together, these results clarify the structural and resource boundaries",
     ):
-        assert phrase in new, ("Missing editorial correction",phrase)
+        assert phrase in new, ("Missing scientific/editorial content",phrase)
+    citation_locations={
+        "AlmgrenChriss2001": r"\section{Introduction}",
+        "BankBaum2004": r"\paragraph{From the conditional matching map to an effective response}",
+        "CetinJarrowProtter2004": r"\paragraph{From the conditional matching map to an effective response}",
+        "RochSoner2013": r"\paragraph{Price-level resilience as a modeling choice}",
+        "BressanRampazzo1988": r"\paragraph{Finite-variation paths and marginally settled pulses}",
+        "Subrahmanyam1994": r"\section{Systemic drawdowns under rolling price-band constraints}",
+        "Tucker2011": r"\section{A reproducible interval certificate for the two-day construction}",
+    }
+    for key, location in citation_locations.items():
+        assert key in keys, ("Missing BibTeX entry",key)
+        assert key in cited, ("Uncited foundational reference",key)
+        assert location in new, ("Missing citation context",location)
+    assert len(keys)==33, ("Expected seven added references",len(keys))
     for stale in (
         "not a Tokyo Stock Exchange case study",
         "We do not claim the corresponding thresholds are invariant",

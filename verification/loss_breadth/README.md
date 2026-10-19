@@ -74,3 +74,5 @@ loads its exact rational controls and calls `verify()` directly.
 All candidate paths were rechecked in October 2026 against the source
 packages before inclusion. Their numerical endpoints in the comparison table
 are *illustrative*, not interval-certified point estimates.
+
+**Proof-critical execution:** invoke the documented `verify_all.py` runner with an unoptimized Python interpreter. The runner refuses `python -O` or `PYTHONOPTIMIZE` so that its interval-certifier modules' assertions cannot be bypassed by the normal reproduction workflow. The hashed original proof-critical modules and exact controls remain byte-for-byte unchanged.

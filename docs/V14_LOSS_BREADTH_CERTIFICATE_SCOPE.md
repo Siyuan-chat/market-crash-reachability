@@ -1,7 +1,7 @@
 # V14: additional rolling-band loss--breadth certificates
 
 **Repository source:** `verification/loss_breadth/`  
-**Manuscript locations:** V14 Section 7 and Appendix `app:lossbreadth`  
+**Manuscript locations:** V14 Section 7 and Appendix `app:loss-breadth`  
 **Evidence status:** Internally interval-checked, reproducible
 constructive witnesses; **external code audit and new Lean proofs pending**.
 
@@ -37,8 +37,7 @@ existence also implies existence in a uniform +/-25% model.
 | F100-0.65pct | 10/10 | >0.65% | >0.65% | 2.853113 | P3 |
 | full_0p75_under_M3 | 10/10 | >0.75% | >0.75% | 2.969999 | P4 |
 
-The main manuscript comparison table uses one stronger witness
-per coverage, not every intermediary result. For the 80%-coverage
+The existing manuscript comparison table is retained, and Appendix I reports the further six internally certified controls. This research inventory keeps all twelve schedules and the 24-cell matrix. For the 80%-coverage
 Proposition, the exact checked schedule gives target terminal
 price below 0.892 and terminal market price product below
 0.97^10, so the terminal systemic measure satisfies

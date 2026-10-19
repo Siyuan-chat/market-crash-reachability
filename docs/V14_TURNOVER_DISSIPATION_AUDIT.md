@@ -56,12 +56,8 @@ deficit. Per-asset terminal dollar closure supplies the exact identity
 (F^2-S_i(T)^2)/2 = rho*integral S_i(S_i-F)dt; it does not alone solve
 the optimization problem. The finite gross-rate cap yields
 Mdot <= N*Umax*vbar/2 when S_i<=Umax.
- The turnover--dissipation
-inequality itself is a necessary bound, not an optimality result.
-Subsequent V14 Section 7 separately reports internally interval-checked
-constructive controls with fixed rates and distinct rolling-band
-assumptions; those numerical witnesses are documented at
-docs/V14_LOSS_BREADTH_CERTIFICATE_SCOPE.md. The original 19 mathematical statement blocks and 81 numbered equations
+ No globally optimized control or
+new interval-certified numerical witness is asserted. The original 19 mathematical statement blocks and 81 numbered equations
 from V13 remain unchanged. The V14 manuscript now adds one named
 Proposition 5.2 with a formal proof and two numbered equations.
 The added statement is **not yet Lean-formalized**; the repository's

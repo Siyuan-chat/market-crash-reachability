@@ -3,6 +3,9 @@
 This is an internally authored computer-assisted proof checker, not independent
 formal certification. The optional --audit uses SciPy for numerical crosschecks.
 """
+if not __debug__:
+    raise RuntimeError("The certified workflow rejects optimized Python (-O): essential proof assertions are disabled.")
+
 from fractions import Fraction as Fr
 from pathlib import Path
 import hashlib,json,sys,argparse,time
