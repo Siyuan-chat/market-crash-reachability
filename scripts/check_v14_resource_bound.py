@@ -250,7 +250,7 @@ def main():
         "CetinJarrowProtter2004": r"\paragraph{From the conditional matching map to an effective response}",
         "RochSoner2013": r"\paragraph{Price-level resilience as a modeling choice}",
         "BressanRampazzo1988": r"\paragraph{Finite-variation paths and marginally settled pulses}",
-        "Subrahmanyam1994": r"\section{Systemic drawdowns under rolling price-band constraints}",
+        "Subrahmanyam1994": r"\section{Rolling Price Limits: Constrained Realizations}",
         "Tucker2011": r"\section{A reproducible interval certificate for the two-day construction}",
     }
     for key, location in citation_locations.items():
