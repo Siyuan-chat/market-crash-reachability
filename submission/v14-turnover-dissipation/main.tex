@@ -912,6 +912,88 @@ Figure~\ref{fig:v7rates} displays the corresponding gross execution rates.
 \end{figure}
 \FloatBarrier
 
+
+\subsection{Certified loss--breadth comparisons under uniform rolling bands}
+\label{subsec:loss-breadth}
+The preceding two-session witness fixes nine targets at
+consecutive $3\%$ lower-band closes, with a single compensator
+under a wider band. Here we compare additional feasible paths
+under a \emph{different} model protocol: every asset receives
+a symmetric $\pm25\%$ price band in each of two sessions, reset
+at the preceding close. All rows retain $N=10$, $F=\eta=1$,
+$\rho=0.4$, $T=40$ with two 20-unit sessions, a gross
+per-asset share-rate cap of $0.285$, available sale shares
+below $2$, and exact terminal dollar-ledger closure.
+
+In each new case $k$ target assets follow an identical piecewise
+constant executed-dollar rate $u(t)$, and the remaining $10-k$
+assets follow $-ku(t)/(10-k)$. The inputs are exact rational
+segments satisfying $\int_0^{40}u(t)\dd t=0$.
+Integer outward-rounded interval enclosures certify both
+group-price paths, entire rolling price bands, sale-rate and
+inventory constraints, turnover, and a terminal geometric-index
+loss bound. Details and complete inputs are in
+Appendix~\ref{app:loss-breadth} and
+\path{verification/loss_breadth_certified.py}.
+
+\begin{table}[tbp]\centering\small
+\caption{\textbf{Systemic loss--breadth comparison for specified
+positive-price dollar-closed controls.} All new cases use uniform
+two-session $\pm25\%$ rolling bands, unlike the original
+$3\%$-target/$25\%$-compensator witness. Target loss denotes an
+ordinary price decline in at least $k$ assets. Index loss is the
+decline of the equal-weight geometric price index; all strict
+lower thresholds are conservative. The last row allows a higher
+turnover budget $M<5$. No row claims an optimal frontier.}
+\label{tab:loss-breadth}
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+Witness & $k$ & Target loss & Index loss & $M$ &
+Rate upper & Budget\\\midrule
+Original & 9 & $5.91\%$ & $>1.98\%$ & $<3$ & $<0.285$ & $3$\\
+P50-20 & 5 & $>22.29\%$ & $>4.0\%$ & $2.600$ & $0.216130$ & $3$\\
+P60-20 & 6 & $>20.90\%$ & $>5.0\%$ & $2.880$ & $0.257224$ & $3$\\
+P70-10 & 7 & $>12.60\%$ & $>3.0\%$ & $2.660$ & $0.164249$ & $3$\\
+R80-10 & 8 & $>10.80\%$ & $>3.0\%$ & $2.851$ & $0.272696$ & $3$\\
+R70-15.5 & 7 & $>15.50\%$ & $>4.0\%$ & $2.940$ & $0.277592$ & $3$\\
+R70-20-M5 & 7 & $>20.20\%$ & $>6.0\%$ & $4.600$ & $0.262743$ & $5$\\
+\bottomrule\end{tabular}
+\end{table}
+
+\begin{proposition}[An eight-asset large drawdown under uniform rolling bands]
+\label{prop:loss-breadth-eight}
+Under the uniform $\pm25\%$ two-session protocol above, there exists
+a positive-price, absolutely continuous paired-dollar path satisfying
+$X_i(40)=0$ and $H_i^-<2$ for every asset, together with
+\[
+S_i(40)<0.892F\quad(1\le i\le8),\qquad
+\Cris_{0.8}(40)>-\log(0.97),\qquad
+M<3,\quad\bar v_{\rm used}<0.285.
+\]
+\end{proposition}
+\begin{proof}
+For the exactly rational input \texttt{R80-10}, set the target
+price to $x$ and compensator price to $y$. The governing
+scalar equations are
+$\dot x=-0.4(x-1)+u/x$ and
+$\dot y=-0.4(y-1)-4u/y$.
+The accompanying directed-integer interval verifier encloses
+the complete trajectories and checks their bands and
+execution constraints. In particular its target upper
+endpoint is below $0.892$ and its upper geometric-index
+price is below $0.97$. For each individual asset the
+integrated executed-dollar flow is exactly zero because
+$\int_0^{40}u(t)\dd t=0$. The certified target and
+geometric-index bounds together imply the displayed
+crisis inequality.
+\end{proof}
+
+The $70\%$-coverage witness with ordinary target losses
+above $20.2\%$ requires the separately reported
+relaxed budget $M<5$; it does not settle feasibility
+under $M<3$.
+
+\FloatBarrier
+
 \section{Discussion and model extensions}\label{sec:discussion}
 \subsection{Economic accounting and execution burden}
 Recovery has two roles: for the price-level dynamics in Assumption~\ref{asmp:model}, it enters the curvature-based exclusion argument, but it also makes nontrivial terminal displacement possible under dollar closure. If $\rho=0$, $\dd\Phi(S_i)=\dd X_i$ and $X_i(T)=0$ implies $S_i(T)=F$ (Appendix~\ref{app:accounting}). For $\rho>0$, the identity \eqref{eq:cost} shows that the nonnegative terminal potential and cumulative recovery dissipation are financed by a reduction of net share inventory, valued at the fixed benchmark. For any terminally dollar-closed path $\gamma$, define this benchmark-valued inventory consumption by
@@ -1407,6 +1489,42 @@ $\delta>0$ with the same $T,M_0,H_0$.
 The blow-up of $\Psi_p(0^+)$ as $p\uparrow1$
 precludes a corresponding claim of resource
 constants uniform up to $p=1$.
+
+
+\section{Reproducing the uniform-band loss--breadth witnesses}
+\label{app:loss-breadth}
+Table~\ref{tab:loss-breadth} compares six additional
+two-session constant-impact paths. Their exact rational
+piecewise-constant dollar-rate input is defined in
+\path{verification/loss_breadth_certified.py}; a separate
+discussion of assumptions, evidence levels and comparisons
+appears in \path{docs/LOSS_BREADTH_CERTIFICATES.md}.
+For $k$ identically traded target assets and $m=10-k$
+compensators, each representative pair solves
+\[
+\dot x=-\frac25(x-1)+\frac{u(t)}x,\qquad
+\dot y=-\frac25(y-1)-\frac{k}{m}\frac{u(t)}y.
+\]
+Dollar matching holds identically and each rational schedule
+has $\int_0^{40}u(t)\dd t=0$, giving zero terminal executed
+dollars per asset. The verification uses outward-rounded
+integer Taylor enclosures, scale $10^{24}$ and steps no
+larger than $1/4000$, bounded first and second derivatives
+on a verified positive-price strip, and the monotonicity
+of each scalar autonomous segment. It verifies every
+segment's price range and both rolling session bands,
+upper bounds on gross share sales and share rate, and
+paired-dollar turnover. A rational endpoint product
+test, $x_{\rm upper}^{k}y_{\rm upper}^{m}<q^{10}$,
+certifies the geometric-index price decline $>1-q$
+without a floating-point logarithm.
+
+The scripts are an internally reproducible computational
+existence certificate for these specified model paths.
+External code audit and independent mathematical review
+remain outstanding. Table~\ref{tab:loss-breadth}
+does not provide globally optimal resource thresholds
+or negative reachability results for unlisted cases.
 
 \bibliographystyle{siamplain}
 \enlargethispage{2\baselineskip}
