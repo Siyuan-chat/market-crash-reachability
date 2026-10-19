@@ -64,3 +64,19 @@ writes its new output to build/v14-turnover-dissipation.
 Independent dollar-ledger reconstruction tests (not a mathematical proof):
 
     python scripts/check_sublinear_severe_extension.py
+
+
+## Additional certified loss--breadth comparisons
+
+Appendix I now displays six further prescribed controls beyond the six main
+Table 3 interval witnesses, covering k=7, 9, and 10, with M<3 and separately
+relaxed M<4/M<7 turnover cases. All twelve exact rational schedules, their
+SHA-256 input/program manifest, and the 24-cell research matrix are retained
+in [`verification/loss_breadth/`](../../verification/loss_breadth/).
+
+Reproduce with `python verification/loss_breadth/verify_all.py` from the
+repository root. The runner refuses optimized Python because the underlying
+proof-critical modules use enabled assertions. New numerical comparisons
+remain internally certified existence statements, not optimum-frontier
+or negative reachability results. The original main theorem statements,
+Section 7 Table 3 and the published V13 snapshots are preserved.

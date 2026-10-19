@@ -1,9 +1,9 @@
 name: V14 analytical manuscript
 on:
   push:
-    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','.github/workflows/v14.yml']
+    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','verification/loss_breadth/**','.github/workflows/v14.yml']
   pull_request:
-    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','.github/workflows/v14.yml']
+    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','verification/loss_breadth/**','.github/workflows/v14.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -43,9 +43,34 @@ jobs:
       - run: python -m pip install 'numpy==2.1.3' 'scipy==1.14.1'
       - run: python verification/loss_breadth_ode_crosscheck.py
 
+  extended-loss-breadth:
+    name: Verify twelve rational loss-breadth controls
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check all fixed rational controls and SHA-256 provenance
+        run: python verification/loss_breadth/verify_all.py
+      - name: Require enabled Python assertions
+        run: |
+          if python -O verification/loss_breadth/verify_all.py > /tmp/loss-breadth-opt.log 2>&1; then
+            echo 'ERROR: optimized Python unexpectedly certified results'
+            exit 1
+          fi
+          grep -F 'rejects optimized Python' /tmp/loss-breadth-opt.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: twelve-loss-breadth-certificates
+          path: |
+            verification/loss_breadth/phase3_certification_suite_results.json
+            verification/loss_breadth/phase4_certificate_*.json
+
   publish-pdf:
     name: Commit validated V14 PDF to main
-    needs: [build, ode-audit]
+    needs: [build, ode-audit, extended-loss-breadth]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:

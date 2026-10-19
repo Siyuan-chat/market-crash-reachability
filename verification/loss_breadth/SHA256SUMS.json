@@ -1,0 +1,9 @@
+{
+  "fixed_budget_24_cell_matrix.csv": "f91adafd9556fb0d182d19f9aa1fb974a7767cb4f9cf03709f39eae1205e900f",
+  "phase3_certification_suite.py": "1575e752bead4aa47e273127d33dde35bff1bccdfece8ecca3a9abdde71494a5",
+  "phase3_independent_suite_audit.py": "07d4efc775c44103c366ab5c1ecce2797f408f5283ae5f98506d99fc7ab015db",
+  "phase4_controls.json": "c88e568f3825081ff88dc22345ba7b391b2812ee21499af133d0e93a681113e6",
+  "phase4_independent_audit_all.py": "472673d67167d393d30c497b1626d3397033433d5c972c9934fe9270274941c9",
+  "phase4_interval_cert.py": "d2a720df563773d1104b15ebcf7a375fddd01a3be0c1cdff647d4d8db7c2a38c",
+  "verified_results_manifest.json": "0b676e7e60e358c0798031a096d478ce80f687f21ad92acd10894abd3b3e1681"
+}

@@ -1661,6 +1661,47 @@ These interval computations establish feasibility of the
 specified controls at the budgets and rates reported
 in Table~\ref{tab:loss-breadth}.
 
+
+\paragraph{Additional loss--breadth witnesses}
+The exact-rational verification archive
+\path{verification/loss_breadth/} extends the six new controls
+in Table~\ref{tab:loss-breadth} to twelve. Table~\ref{tab:loss-breadth-additional}
+records the remaining six under the same uniform two-session
+$\pm25\%$ price bands, benchmark parameters and gross-rate
+and share-inventory restrictions. The controls are prescribed
+feasible schedules, with individual executed-dollar ledgers
+closing exactly.
+
+\begin{table}[H]\centering\scriptsize
+\caption{\textbf{Further specified loss--breadth controls.}
+Target and geometric-index losses are strict conservative ordinary
+percentage-decline thresholds; dollar turnover and gross share rate
+are reported as conservative upper bounds. Here $k$ counts the number
+of terminally qualifying assets: the full-coverage controls have two
+five-asset groups, both declining at the horizon. The final two rows
+use higher turnover caps, distinct from the $M<3$ comparisons.}
+\label{tab:loss-breadth-additional}
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+Witness & $k$ & Target loss & Index loss & $M$ upper &
+\shortstack{Max. gross\\rate} & $M$ cap\\\midrule
+R70-16.4 & 7 & $>16.40\%$ & $>4.0\%$ & $2.971$ & $0.282729$ & $3$\\
+R90-8 & 9 & $>8.00\%$ & $>3.0\%$ & $2.971$ & $0.282957$ & $3$\\
+F100-0.65 & 10 & $>0.65\%$ & $>0.65\%$ & $2.854$ & $0.259746$ & $3$\\
+F100-0.75 & 10 & $>0.75\%$ & $>0.75\%$ & $2.970$ & $0.281922$ & $3$\\
+R70-20-M4 & 7 & $>20.00\%$ & $>6.0\%$ & $3.961$ & $0.282743$ & $4$\\
+F100-2-M7 & 10 & $>2.00\%$ & $>2.0\%$ & $6.732$ & $0.281818$ & $7$\\
+\bottomrule\end{tabular}
+\end{table}
+
+The complete twenty-four-cell fixed-$M<3$ research matrix,
+strict interval bounds, and hashes of exact controls are
+available in \path{verification/loss_breadth/}.
+Its \texttt{OPEN} entries indicate unclassified cases under
+the available controls, while \texttt{OLD} marks thresholds
+already reached by the earlier, tighter target-band witness.
+These comparisons supplement the existence certificates
+without altering the analytical exclusion and resource bounds.
+
 \bibliographystyle{siamplain}
 \enlargethispage{2\baselineskip}
 \bibliography{references}
