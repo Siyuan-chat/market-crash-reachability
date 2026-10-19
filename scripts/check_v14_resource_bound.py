@@ -25,9 +25,10 @@ def main():
     extras=[item for item in new_results if item not in old_results]
     missing=[item for item in old_results if item not in new_results]
     assert not missing, ("Historical statements changed",missing)
-    assert len(extras)==2, ("Expected one new proposition and one new theorem",extras)
-    assert sorted(item[0] for item in extras)==["proposition","theorem"],extras
+    assert len(extras)==3, ("Expected two new propositions and one new theorem",extras)
+    assert sorted(item[0] for item in extras)==["proposition","proposition","theorem"],extras
     assert any(r"\label{prop:turnover-dissipation}" in item[1] for item in extras)
+    assert any(r"\label{prop:uniform-band-80pct}" in item[1] for item in extras)
     assert any(r"\label{thm:sublinear-severe}" in item[1] for item in extras)
     old_eq=numbered_equations(old)
     new_eq=numbered_equations(new)
@@ -38,11 +39,11 @@ def main():
     assert any(r"\label{eq:V2-turnover}" in eq for eq in extra_eq)
     for label in ("eq:sublinear-ledger","eq:sublinear-stage","eq:sublinear-inventory"):
         assert any(r"\label{"+label+"}" in eq for eq in extra_eq), label
-    assert len(new_results)==len(old_results)+2
+    assert len(new_results)==len(old_results)+3
     assert len(new_eq)==len(old_eq)+5
     assert set(re.findall(r"\\label\{([^}]+)\}",old)) <= set(re.findall(r"\\label\{([^}]+)\}",new))
-    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+2
-    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+2
+    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+3
+    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+3
     for term in ("Turnover--dissipation bound under constant impact",
                  "Two-session rolling-band example",
                  r"\sum_i|\dot X_i|\le2\sum_e\dot z_e",
@@ -133,6 +134,13 @@ def main():
         bound=math.log1p((p-1)*(E+1/(2-p)))/(p-1)
         assert L <= bound + 1e-12
     print("PASS continuous exponent potentials, finite boundary limits and inventory cap")
+    assert r"\label{prop:uniform-band-80pct}" in new
+    assert r"\label{app:lossbreadth}" in new
+    for label in ("tab:lossbreadth-fixed","tab:lossbreadth-relaxed","tab:lossbreadth-matrix"):
+        assert r"\label{"+label+"}" in new, label
+    assert r"\Cris_{0.8}(40)>-\log(0.97)>0.0304" in new
+    assert "x(40)<0.891607" in new and "y(40)<1.331160" in new
+    assert r"\path{verification/loss_breadth/verify_all.py}" in new
     assert r"\section{Sublinear power-law extension of uniform-budget severity}" in new
     assert r"\label{app:sublinear-severe}" in new
     assert r"\nu=2-p\in(1,2]" in new
