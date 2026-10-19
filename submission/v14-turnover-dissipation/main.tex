@@ -1490,6 +1490,42 @@ The blow-up of $\Psi_p(0^+)$ as $p\uparrow1$
 precludes a corresponding claim of resource
 constants uniform up to $p=1$.
 
+
+\section{Reproducing the uniform-band loss--breadth witnesses}
+\label{app:loss-breadth}
+Table~\ref{tab:loss-breadth} compares six additional
+two-session constant-impact paths. Their exact rational
+piecewise-constant dollar-rate input is defined in
+\path{verification/loss_breadth_certified.py}; a separate
+discussion of assumptions, evidence levels and comparisons
+appears in \path{docs/LOSS_BREADTH_CERTIFICATES.md}.
+For $k$ identically traded target assets and $m=10-k$
+compensators, each representative pair solves
+\[
+\dot x=-\frac25(x-1)+\frac{u(t)}x,\qquad
+\dot y=-\frac25(y-1)-\frac{k}{m}\frac{u(t)}y.
+\]
+Dollar matching holds identically and each rational schedule
+has $\int_0^{40}u(t)\dd t=0$, giving zero terminal executed
+dollars per asset. The verification uses outward-rounded
+integer Taylor enclosures, scale $10^{24}$ and steps no
+larger than $1/4000$, bounded first and second derivatives
+on a verified positive-price strip, and the monotonicity
+of each scalar autonomous segment. It verifies every
+segment's price range and both rolling session bands,
+upper bounds on gross share sales and share rate, and
+paired-dollar turnover. A rational endpoint product
+test, $x_{\rm upper}^{k}y_{\rm upper}^{m}<q^{10}$,
+certifies the geometric-index price decline $>1-q$
+without a floating-point logarithm.
+
+The scripts are an internally reproducible computational
+existence certificate for these specified model paths.
+External code audit and independent mathematical review
+remain outstanding. Table~\ref{tab:loss-breadth}
+does not provide globally optimal resource thresholds
+or negative reachability results for unlisted cases.
+
 \bibliographystyle{siamplain}
 \enlargethispage{2\baselineskip}
 \bibliography{references}
