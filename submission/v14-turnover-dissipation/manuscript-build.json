@@ -14,8 +14,8 @@
     }
   ],
   "problems": [],
-  "pdf_sha256": "64c2412ed50d1048ca9dca3e999a633f4d1edaf25d4f71f8f0d42f2345770682",
-  "pdf_size": 759151,
-  "source_commit": "4d629a9c835d70ccbf19d92d2f311bfe4e7934fb",
-  "workflow_run": "https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39272112916"
+  "pdf_sha256": "38ba594bee758707e4634dbf5d4d76a4d16ddb429e5d9dfb0b4736a4fe3002d1",
+  "pdf_size": 749774,
+  "source_commit": "3b6dc06bcdba4ec18764ace6adf1c0211be14006",
+  "workflow_run": "https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39276052260"
 }
