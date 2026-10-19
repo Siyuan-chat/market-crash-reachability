@@ -157,7 +157,7 @@ def main():
     assert "exactly rational input" not in block
     assert "directed-integer interval verifier" not in block
     assert r"\texttt{P}" in appendix_tables and r"\texttt{R}" in appendix_tables and r"\texttt{M5}" in appendix_tables
-    assert r"0.284500" in appendix_tables and r"2.984" in block
+    assert r"0.284500" in appendix_tables and r"2.984" in new
     assert r"\sup_t9|u(t)|/y(t)<0.284481" in new
     assert r"9\int_0^{40}|u(t)|\dd t<2.984" in new
     assert "Outward-rounded fixed-point interval arithmetic" in block
