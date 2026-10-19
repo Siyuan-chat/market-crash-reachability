@@ -25,11 +25,13 @@ def main():
     extras=[item for item in new_results if item not in old_results]
     missing=[item for item in old_results if item not in new_results]
     assert not missing, ("Historical statements changed",missing)
-    assert len(extras)==3, ("Expected two V14 propositions and one theorem",extras)
-    assert sorted(item[0] for item in extras)==["proposition","proposition","theorem"],extras
+    assert len(extras)==5, ("Expected four V14 propositions and one theorem",extras)
+    assert sorted(item[0] for item in extras)==["proposition"]*4+["theorem"],extras
     assert any(r"\label{prop:turnover-dissipation}" in item[1] for item in extras)
     assert any(r"\label{thm:sublinear-severe}" in item[1] for item in extras)
     assert any(r"\label{prop:loss-breadth-eight}" in item[1] for item in extras)
+    assert any(r"\label{prop:unbalanced-stability}" in item[1] for item in extras)
+    assert any(r"\label{prop:heterogeneous-quadratic}" in item[1] for item in extras)
     old_eq=numbered_equations(old)
     new_eq=numbered_equations(new)
     assert all(eq in new_eq for eq in old_eq), "Historical numbered equations changed"
@@ -39,11 +41,11 @@ def main():
     assert any(r"\label{eq:V2-turnover}" in eq for eq in extra_eq)
     for label in ("eq:sublinear-ledger","eq:sublinear-stage","eq:sublinear-inventory"):
         assert any(r"\label{"+label+"}" in eq for eq in extra_eq), label
-    assert len(new_results)==len(old_results)+3
+    assert len(new_results)==len(old_results)+5
     assert len(new_eq)==len(old_eq)+5
     assert set(re.findall(r"\\label\{([^}]+)\}",old)) <= set(re.findall(r"\\label\{([^}]+)\}",new))
-    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+3
-    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+3
+    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+5
+    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+5
     for term in ("Turnover--dissipation bound under constant impact",
                  "Two-session rolling-band example",
                  r"\sum_i|\dot X_i|\le2\sum_e\dot z_e",
@@ -169,6 +171,44 @@ def main():
     assert "establishing elasticity barriers for that alternative model requires a separate curvature analysis" in new
     assert "requires adequate execution capacity" in new
     assert "time-resolved transaction and order-book observations" in new
+
+    # Robustness theory is appended in Discussion, leaving established theorem
+    # numbering, Appendix G/I certificates, and original equations unchanged.
+    robustness=new.split(
+        r"\subsection{Robustness to unmatched dollar flow and impact heterogeneity}",1
+    )[1].split(r"\section{Conclusion}",1)[0]
+    for required in (
+        r"\label{prop:unbalanced-stability}",
+        r"\label{prop:heterogeneous-quadratic}",
+        r"\label{subsec:barrier-robustness}",
+        r"\frac{\dd\log\lambda(S)}{\dd\log S}=e(S)-2",
+        r"\sum_i\dot X_i(t)=\varepsilon(t)",
+        r"e^{-\rho(t-s)}[-\varepsilon(s)]_+",
+        r"\omega=\bar\kappa\,\varepsilon+",
+        r"e^{-\rho(t-s)}[-\omega(s)]_+",
+        r"Q_{1/2}(T)=(1-r)\kappa_1a+O(a^2)>0",
+        r"$X_i(T)=0$",
+        "without an instantaneous",
+        r"Theorem~\ref{thm:barrier2}",
+    ):
+        if required == r"$X_i(T)=0$":
+            assert "Both asset ledgers close exactly" in robustness
+        else:
+            assert required in robustness, ("Missing robustness condition",required)
+    # A small deterministic closed-pulse sanity check is not an empirical test
+    # or a substitute for the proposition proofs.
+    import math
+    for a in (0.001,0.02):
+        k1,k2,rho,T=1.4,0.8,0.4,3.0
+        r=math.exp(-rho*T)
+        q1=math.log1p(r*math.expm1(k1*a))-k1*a
+        q2=math.log1p(r*math.expm1(-k2*a))+k2*a
+        A=-(q1+q2)/2
+        Q=-q1
+        signed_weighted_bound=(1-r)*(k1-k2)*a/2
+        assert 0<A<=signed_weighted_bound+1e-12
+        assert Q>0 and min(A,Q)>0
+    print("PASS unmatched-flow/heterogeneous-impact theory and closed-pulse sanity")
 
     # Editorial ordering, title-case, and root-endpoint regression gates.
     p_spectrum=new.index(r"\paragraph{The continuous power-law spectrum}")
