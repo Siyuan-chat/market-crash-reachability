@@ -150,12 +150,14 @@ def main():
     assert r"\label{tab:loss-breadth}" in new
     assert r"\label{app:loss-breadth}" in new
     block=new.split(r"\subsection{Certified loss--breadth comparisons under uniform rolling bands}",1)[1].split(
-        r"\section{Discussion and model extensions}",1)[0]
+        r"\section{Discussion}\label{sec:discussion}",1)[0]
+    appendix_tables=new.split(r"\section{Reproducing the uniform-band loss--breadth witnesses}",1)[1].split(
+        r"\section{Supplementary Rolling-Band Diagnostics}",1)[0]
     assert "No row claims an optimal frontier" not in block
     assert "exactly rational input" not in block
     assert "directed-integer interval verifier" not in block
-    assert r"\texttt{P}" in block and r"\texttt{R}" in block and r"\texttt{M5}" in block
-    assert r"0.284500" in block and r"2.984" in block
+    assert r"\texttt{P}" in appendix_tables and r"\texttt{R}" in appendix_tables and r"\texttt{M5}" in appendix_tables
+    assert r"0.284500" in appendix_tables and r"2.984" in block
     assert r"\sup_t9|u(t)|/y(t)<0.284481" in new
     assert r"9\int_0^{40}|u(t)|\dd t<2.984" in new
     assert "Outward-rounded fixed-point interval arithmetic" in block
@@ -172,11 +174,10 @@ def main():
     assert "requires adequate execution capacity" in new
     assert "time-resolved transaction and order-book observations" in new
 
-    # Robustness theory is appended in Discussion, leaving established theorem
-    # numbering, Appendix G/I certificates, and original equations unchanged.
+    # Robustness propositions now accompany the structural barriers in Section 3.
     robustness=new.split(
         r"\subsection{Robustness to unmatched dollar flow and impact heterogeneity}",1
-    )[1].split(r"\section{Conclusion}",1)[0]
+    )[1].split(r"\section{Reachability Regimes under Power-Law Impact}",1)[0]
     for required in (
         r"\label{prop:unbalanced-stability}",
         r"\label{prop:heterogeneous-quadratic}",
@@ -210,6 +211,32 @@ def main():
         assert Q>0 and min(A,Q)>0
     print("PASS unmatched-flow/heterogeneous-impact theory and closed-pulse sanity")
 
+    # SIAM Financial Mathematics V1.1: prose and organization checks.
+    abstract=new.split(r"\begin{abstract}",1)[1].split(r"\end{abstract}",1)[0]
+    assert "$" not in abstract and r"\(" not in abstract and r"\[" not in abstract
+    assert r"\begin{equation}" not in abstract
+    section_order=[
+        r"\section{Introduction}",
+        r"\section{The market: assumptions, execution, and price dynamics}",
+        r"\section{Structural Barriers and Robustness}",
+        r"\section{Reachability Regimes under Power-Law Impact}",
+        r"\section{Execution Resources and Turnover Bounds}",
+        r"\section{Reachability under Bounded Execution Rates}",
+        r"\section{Rolling Price Limits: Constrained Realizations}",
+        r"\section{Discussion}",
+        r"\section{Conclusion}",
+    ]
+    positions=[new.index(section) for section in section_order]
+    assert positions==sorted(positions),("Wrong V1.1 section order",positions)
+    assert new.index(r"\label{sec:barriers}") < new.index(r"\label{subsec:barrier-robustness}") < new.index(r"\label{sec:regimes}")
+    assert new.index(r"\label{thm:sublinear-severe}") < new.index(r"\label{thm:critical}") < new.index(r"\label{sec:budget}")
+    assert new.index(r"\label{tab:loss-breadth}") > new.index(r"\label{app:loss-breadth}")
+    assert new.index(r"\label{tab:sensitivity}") > new.index(r"\label{app:rolling-support}")
+    assert new.count(r"\label{fig:v7path}") == 1 and new.count(r"\label{fig:v7rates}") == 1
+    assert r"\paragraph{Construction in four steps}" in new
+    assert r"\label{tab:loss-breadth-additional}" in new
+    print("PASS V1.1 structure, formula-free abstract, appendix moves and theorem traceability")
+
     # Editorial ordering, title-case, and root-endpoint regression gates.
     p_spectrum=new.index(r"\paragraph{The continuous power-law spectrum}")
     p_sublinear=new.index(r"\label{thm:sublinear-severe}")
@@ -235,7 +262,7 @@ def main():
         "CetinJarrowProtter2004": r"\paragraph{From the conditional matching map to an effective response}",
         "RochSoner2013": r"\paragraph{Price-level resilience as a modeling choice}",
         "BressanRampazzo1988": r"\paragraph{Finite-variation paths and marginally settled pulses}",
-        "Subrahmanyam1994": r"\section{Systemic drawdowns under rolling price-band constraints}",
+        "Subrahmanyam1994": r"\section{Rolling Price Limits: Constrained Realizations}",
         "Tucker2011": r"\section{A reproducible interval certificate for the two-day construction}",
     }
     for key, location in citation_locations.items():
