@@ -176,7 +176,7 @@ def main():
     # numbering, Appendix G/I certificates, and original equations unchanged.
     robustness=new.split(
         r"\subsection{Robustness to unmatched dollar flow and impact heterogeneity}",1
-    )[1].split(r"\section{Conclusion}",1)[0]
+    )[1].split(r"\section{Reachability Regimes under Power-Law Impact}",1)[0]
     for required in (
         r"\label{prop:unbalanced-stability}",
         r"\label{prop:heterogeneous-quadratic}",
@@ -216,6 +216,21 @@ def main():
     p_kN=new.index(r"\subsection{A sharp boundary when every asset must fall}")
     p_critical=new.index(r"\label{thm:critical}")
     assert 0 <= p_spectrum < p_sublinear < p_kN < p_critical
+    p_barriers=new.index(r"\section{Structural Barriers and Robustness}")
+    p_robustness=new.index(r"\label{subsec:barrier-robustness}")
+    p_regimes=new.index(r"\section{Reachability Regimes under Power-Law Impact}")
+    assert p_barriers < p_robustness < p_regimes < p_spectrum
+    abstract=new.split(r"\begin{abstract}",1)[1].split(r"\end{abstract}",1)[0]
+    assert "$" not in abstract and r"\" not in abstract
+    for heading in (
+        "Model and Systemic Drawdown Criterion",
+        "Execution Resources and Turnover Bounds",
+        "Reachability under Bounded Execution Rates",
+        "Rolling Price Limits: Constrained Realizations",
+    ):
+        assert heading in new
+    assert "Construction of the severe-loss path" in new
+
     assert "The Flash Crash: High-frequency trading in an electronic market" in bib
     assert "The flash crash: high-frequency trading in an electronic market" not in bib
     # Verify scholarly meaning and citation placement rather than pinning
