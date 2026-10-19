@@ -79,4 +79,18 @@ repository root. The runner refuses optimized Python because the underlying
 proof-critical modules use enabled assertions. New numerical comparisons
 remain internally certified existence statements, not optimum-frontier
 or negative reachability results. The original main theorem statements,
-Section 7 Table 3 and the published V13 snapshots are preserved.
+the original comparison table (now in Appendix I), and the published V13 snapshots are preserved.
+
+
+## SIFIN V1.1 editorial candidate
+
+The SIFIN V1.1 revision groups the manuscript around structural barriers,
+reachability regimes, and execution resources. Its Introduction is rewritten,
+the Abstract contains no mathematical notation, robustness propositions move
+to Section 3, and the sharp all-asset theorem remains in Section 4.
+Section 7 retains the principal constrained existence results, with extra
+numerical figures and comparison tables now in Appendices G and I.
+See [the editorial migration and result-location map](../../docs/V14_SIFIN_V11_MIGRATION.md).
+Formal statements, existing numbered equations, bibliography, and exact
+certificate inputs are unchanged. The independent proof audit is a
+separate future step; this editorial release does not claim it is complete.

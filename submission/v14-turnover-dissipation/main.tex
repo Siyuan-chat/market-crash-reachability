@@ -4,38 +4,32 @@
 \raggedbottom
 \maketitle
 \begin{abstract}
-We characterize structural barriers, attainable losses, and execution requirements for terminal systemic drawdowns in a deterministic multiasset market with fixed fundamentals, paired-dollar trades, and zero terminal executed-dollar flow in each asset. Under the explicitly specified price-level recovery law, a response-adapted coordinate gives sufficient elasticity thresholds: $e(S)=Sg'(S)/g(S)\ge 2$ excludes positive drawdowns under our mean-log-loss and breadth criterion, while $e(S)\ge1$ excludes a simultaneous decline of all prices. Quadratic, linear, and constant per-share responses yield distinct exclusion, inventory-bounded, and severe partial-coverage reachability regimes. The uniform-resource severe-loss construction extends from constant impact to every fixed sublinear power response $0\le p<1$, using flow-completed pulses and terminal prices approaching zero. We derive turnover and inventory requirements, a sharp full-coverage horizon ceiling, and matching quadratic upper and lower bounds for small execution rates under finite gross execution rates. Under constant impact and bounded positive prices, an additional turnover--dissipation inequality bounds the aggregate quadratic price-potential deficit. A two-session interval-certified witness places nine of ten assets at consecutive lower closing limits and attains systemic log loss above $0.020$ under specified rate and rolling-band constraints. Dimensionless resource bounds and a nonnegative execution-cost identity quantify the initial inventory consumed by these paths. Two perturbation bounds describe how unmatched dollar flow and heterogeneous quadratic impact modify the elasticity barrier.
+We study systemic drawdown reachability in a deterministic multiasset market with fixed fundamentals, state-dependent price impact, and paired-dollar execution. Each asset's terminal executed-dollar ledger closes, although its share inventory may change. A response-adapted coordinate yields two structural barriers: a price-impact elasticity of at least two excludes positive systemic losses under our average-log-loss and breadth criterion, while an elasticity of at least one precludes a simultaneous decline in all prices. Power-law impact distinguishes excluded, inventory-bounded, and severely reachable partial-coverage regimes. For every fixed sublinear exponent, arbitrarily severe partial-coverage logarithmic losses are attainable over a fixed finite horizon with turnover and inventory bounds independent of severity, using flow-completed instantaneous trades. Under constant per-share impact, full-coverage drawdowns obey a sharp, unattained horizon-dependent ceiling. A bounded gross execution rate produces a quadratic small-loss scaling with matching constructive order. Perturbation bounds quantify deviations from exact dollar pairing and homogeneous impact. These results separate structural barriers to market-wide drawdowns from the execution resources required to realize them.
 \end{abstract}
 
 \begin{keywords}market crashes; price impact; market resilience; systemic drawdown; reachability; execution constraints.\end{keywords}
 \begin{MSCcodes}91G15, 91G45, 93B03, 65G30, 91G80.\end{MSCcodes}
 
 \section{Introduction}\label{sec:intro}
-Sharp market declines can occur without fundamental news. Order execution shifts marginal prices, and market resilience governs the decay of those displacements. We ask whether a market with fixed fundamentals can be driven into a broad systemic drawdown solely by trades that obey its settlement and recovery rules, and which trading resources are required to reach such a state.
+Market prices can change even when a fundamental benchmark remains fixed. Trading moves marginal prices, while liquidity recovery changes their subsequent paths. We ask which terminal patterns of market-wide loss are reachable through trading alone, which structures rule them out, and what resources are required. This is a deterministic reachability question, distinct from equilibrium selection or a crash probability.
 
-Existing work approaches price movements without fundamental news through informational, liquidity, and strategic mechanisms. Dynamic hedging and inference can amplify selling pressure \citep{GennotteLeland1990}, and trading can reveal information without external news \citep{Romer1993}. Nonsynchronous liquidity demand generates endogenous imbalances \citep{HuangWang2009}, while cross-asset liquidity feedback, distressed sales, and balance-sheet contagion transmit losses \citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017}. Predatory trading supplies a strategic channel \citep{BrunnermeierPedersen2005}. Transaction-level research on the 2010 Flash Crash examines intermediary trading during acute selling pressure \citep{KirilenkoEtAl2017}. Here the central question is one of reachability: which terminal prices can arise under prescribed trading and recovery rules?
+We specify a finite risky-asset reallocation pool with fixed fundamentals, state-dependent price impact, and price-level recovery. An executed sale is paired with an equal-dollar purchase of another asset. At the horizon each asset's net executed-dollar flow closes, although its share inventory need not return to its initial position. Closing both dollar and share ledgers would force the nonnegative terminal-displacement and recovery-dissipation terms in the accounting identity to vanish. Dollar closure alone allows residual displacements financed by initial inventory.
 
-Price-impact models provide the execution mechanisms needed to formulate this question. Kyle's price-formation benchmark \citep{Kyle1985}, the optimal-execution formulation of Almgren and Chriss~\citep{AlmgrenChriss2001}, and resilient order-book models \citep{ObizhaevaWang2013,AlfonsiSchied2010} connect trading, price impact, and liquidity replenishment. General-shaped order books distinguish recovery of displaced volume from recovery of price displacement \citep{AlfonsiFruthSchied2010}; nonlinear transient propagator models analyze impact and optimal execution \citep{CuratoGatheralLillo2017}. Trading-cost and manipulation restrictions constrain admissible impact specifications \citep{Gatheral2010,AlfonsiSchiedSlynko2012,HubermanStanzl2004}. Multivariate transient impact, cross-impact restrictions, and empirical cross-impact research address interasset transmission \citep{AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017}, alongside strategic multiasset impact games \citep{CordoniLillo2024}. Metaorder evidence for a linear-to-square-root crossover describes cumulative impact as order size grows \citep{BucciEtAl2019}, and the analysis of large bets by Kyle and Obizhaeva~\citep{KyleObizhaeva2023} relates execution intensity to market dislocations. We retain a diagonal, state-dependent local impact law and connect assets through dollar-paired execution; its local price elasticity is the object of the exclusion theorems.
+Classical work connects trading and price formation through Kyle's auction model \citep{Kyle1985}, Almgren--Chriss optimal execution \citep{AlmgrenChriss2001}, and resilient order books \citep{ObizhaevaWang2013,AlfonsiSchied2010,AlfonsiFruthSchied2010}. Transient impact and price-manipulation restrictions constrain admissible execution models \citep{CuratoGatheralLillo2017,Gatheral2010,AlfonsiSchiedSlynko2012,HubermanStanzl2004}; large-trader and supply-curve formulations supply other state-dependent responses \citep{BankBaum2004,CetinJarrowProtter2004}. Our object is the attainable terminal price set under prescribed rules, rather than an agent's cost-minimizing execution schedule.
 
-We consider a cashless reallocation system of risky assets in which every executed sale is paired with an equal-dollar purchase. At the horizon, each asset's net executed-dollar flow vanishes, although its final share inventory may differ from its initial inventory. Imposing both dollar and share closure would force the nonnegative terminal displacement and recovery-dissipation terms in~\eqref{eq:cost} to vanish; dollar closure alone permits residual displacements financed by initial share inventory. Prices recover toward a fixed benchmark $F$, while executed shares shift marginal prices through a positive response function $g(S)$. Our central analytical tool is the response-adapted generalized price coordinate
+Price movements without contemporaneous public news arise through hedging and inference \citep{GennotteLeland1990}, information revealed by trading \citep{Romer1993}, and endogenous liquidity imbalances \citep{HuangWang2009}. Fire sales, inventory constraints, and portfolio-linked contagion transmit stress through intermediaries and securities \citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017,KirilenkoEtAl2017}. Predatory trading and cross-impact supply further mechanisms \citep{BrunnermeierPedersen2005,AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017,CordoniLillo2024}. These studies motivate the question without implying that all earlier market-crash mechanisms require fundamental news.
+
+The share-flat execution-cost identity in our model is nonnegative because price displacement and recovery dissipate trading resources. This is a conditional statement under the specified settlement and recovery laws, not a universal no-arbitrage theorem. In particular, recovering a displaced price and recovering order-book volume are different specifications \citep{AlfonsiFruthSchied2010,RochSoner2013}. Cumulative metaorder scaling and large-bet market effects provide useful comparisons with the local price-state elasticity studied here \citep{BucciEtAl2019,KyleObizhaeva2023}.
+
+Our contributions fall into three groups. \emph{Structural barriers and robustness:} a response-adapted scalar coordinate and curvature comparisons yield global exclusion conditions and quantitative perturbation bounds for departures from paired, homogeneous impact. \emph{Reachability and sharp boundaries:} power-law responses generate distinct feasible regimes; a generalized radial construction establishes uniform resource bounds for any fixed sublinear exponent, while full coverage has a sharp, unattained horizon ceiling. \emph{Execution resources and constrained realizations:} inventory and turnover bounds quantify necessary inputs, a continuous strategy matches the quadratic small-rate upper bound in order, and validated rolling-band examples show simultaneous feasibility of additional constraints.
+
+The principal coordinate, normalized to vanish at the reference price, is
 \begin{equation}\label{eq:phi-intro}
 \Phi(S)=\int_F^S\frac{u}{g(u)}\dd u.
 \end{equation}
-In this coordinate, each executed dollar produces one unit of coordinate displacement. Paired trading therefore conserves the sum of these coordinates, while price resilience drives that sum between trades. The curvature of $\Phi$ yields global exclusion barriers and separates three response regimes under common constraints.
+It makes each marginal executed dollar an additive coordinate increment and separates paired trading from restorative drift. We prove structural barriers by tangent and Jensen inequalities, develop severe-loss paths through generalized radial geometry and per-asset ledger closure, and derive resource bounds by comparison inequalities. Outward-rounded interval calculations certify the finite-rate examples \citep{Tucker2011}. Section~\ref{sec:model} sets up the model; Sections~\ref{sec:barriers}--\ref{sec:regimes} examine barriers and reachability; Sections~\ref{sec:budget}--\ref{sec:rateband} bound execution resources; Section~\ref{sec:multiday} applies rolling bands, followed by discussion and conclusion. Full constructions and numerical certificates appear in the appendices.
 
-Beyond the elasticity barriers, the main analytical results for constant impact are severe partial-coverage reachability under uniform finite resources, the sharp full-coverage horizon ceiling, and the quadratic small-rate law. Section~\ref{sec:budget} additionally relates terminal quadratic price-potential dissipation to gross executed-dollar turnover in a bounded price region. The multiday analysis then examines simultaneous feasibility under execution constraints: receiving assets must absorb paired-dollar inflows within their own rate caps and price bands, while their appreciation reduces mean log loss.
-
-\paragraph{Overview of main results}
-Under the paired-dollar, resilient market defined in Section~\ref{sec:model}, the following conclusions hold.
-\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2em,itemsep=0.12em]
-\item \emph{Structural exclusion.} If $e(S)=Sg'(S)/g(S)\ge2$ at all admissible prices, then $\Cris_\alpha(t)\le0$ for every breadth and time. The weaker condition $e(S)\ge1$ excludes a simultaneous decline of all assets.
-\item \emph{Reachability regimes.} With $g_p(S)=\eta(S/F)^p$, $p=2,1,0$ respectively produce exclusion, inventory-bounded partial-coverage drawdowns, and, for $k=\lceil\alpha N\rceil<N$ and sufficiently long finite horizons, arbitrarily severe partial-coverage losses under fixed finite turnover and inventory caps when pulses are allowed. For every fixed $0\le p<1$, the severe partial-coverage construction can be implemented within a finite horizon with dollar-turnover and share-inventory caps independent of loss severity. For constant impact and $k=N$, a sharp horizon-dependent bound replaces unrestricted severity.
-\item \emph{Execution resources.} General positive $g$ yields explicit necessary dollar-turnover and share-inventory bounds. With constant per-share impact and bounded gross executed-share rates, the small-rate crisis bound is quadratic and this order is attained by a continuous dollar-closed construction.
-\item \emph{Multiday execution.} Rolling price bands restrict per-session losses, while rate limits and the receiving assets' capacity restrict consecutive lower-limit closes. Terminal dollar closure additionally requires targets closing below $F$ to spend positive time above that benchmark. A computer-assisted two-day ten-asset path satisfies these controls, has nine repeated lower-limit closes, and yields $\Cris_{0.9}(T)>0.020$; for that instance, $0.044<\bar v_*<0.285$.
-\end{enumerate}
-
-
-\section{The market: assumptions, execution, and price dynamics}\label{sec:micro}\label{sec:model}
+\section{Model and Systemic Drawdown Criterion}\label{sec:micro}\label{sec:model}
 We specify a risky-asset reallocation submarket in which every executed sale is matched by an equal-dollar purchase. Settlement and price response are distinct assumptions: the former constrains flows, while the latter determines the induced price motion. All subsequent theorems use the same market definition.
 
 \begin{assumption}[The resilient paired-dollar market]\label{asmp:model}
@@ -145,7 +139,7 @@ Thus a \emph{share-flat} round trip has nonnegative executed cost under (M2)--(M
 \paragraph{Comparison with share-flat trading}
 The terminal dollar condition and the standard share-flat condition are not interchangeable. For example, with $g\equiv\eta$, a single asset purchased by a sufficiently small $a>0$ shares at time $0$ and sold by $a$ shares at time $T$ has $\theta(T)=\theta(0)$ but terminal price $S(T)=F-\eta a(1-e^{-\rho T})<F$; its net executed dollars are not zero and the positive cost in \eqref{eq:cost} is paid through the cash account. Conversely, under (M4), requiring every asset to be share-flat \emph{as well as} terminally dollar-flat would force $\sum_i[E(S_i(T))+\rho\int_0^T(S_i-F)^2/g(S_i)\,\dd t]=0$. Thus there can be no positive-time dissipative price excursion under both closures together. The dollar-flat protocol deliberately isolates an economic question distinct from standard share-round-trip execution.
 
-\section{Structural barriers to market crashes}\label{sec:barriers}
+\section{Structural Barriers and Robustness}\label{sec:barriers}
 The normal form~\eqref{eq:normal-form} supplies a conserved scalar during trading. Write $H(\bm S)=\one^\top\bm y=\sum_i\Phi(S_i)$. Summing over assets cancels every matched dollar transfer and leaves only recovery:
 \begin{equation}\label{eq:potential-law}
 \boxed{\dd H=-\rho\sum_{i=1}^N\mathcal R(y_i)\dd t
@@ -189,7 +183,140 @@ As $G(0)=0$ and $G$ is strictly increasing, $\sum_iq_i(t)\ge0$. Hence the mean l
 
 The barriers hold for the entire admissible path without requiring terminal dollar closure. When the elasticity bound holds only near $F$, the argument applies while prices stay in that region; execution resources and network constraints may impose further restrictions. Section~\ref{sec:regimes} compares how the attainable set changes across response functions. Under volume-recovery specifications with drift $-\rho S V(S)$, the tangent comparison instead depends on the curvature of that restoring field.
 
-\section{Three market regimes under common constraints}\label{sec:regimes}
+\subsection{Robustness to unmatched dollar flow and impact heterogeneity}
+\label{subsec:barrier-robustness}
+The exclusion in Theorem~\ref{thm:barrier2} uses both a common
+price-response function and exact dollar pairing. The local logarithmic
+price response per executed dollar is
+$\lambda(S)=g(S)/S^2$, with elasticity
+\[
+\frac{\dd\log\lambda(S)}{\dd\log S}=e(S)-2.
+\]
+Thus the threshold $e\ge2$ states that this model's local
+per-dollar log-impact does not increase as the price falls.
+We quantify two departures from the hypotheses of the exclusion theorem
+while retaining fixed fundamentals and common price-level recovery.
+
+\begin{proposition}[Stability under unmatched dollar flow]
+\label{prop:unbalanced-stability}
+Suppose $S_i(0)=F$, all prices remain positive, and the homogeneous
+response $g>0$ and common recovery rate $\rho>0$ satisfy
+$e(S)\ge2$ on an interval containing $F$ and every attained price.
+For absolutely continuous executed-dollar flows, relax exact pairing
+to $\sum_i\dot X_i(t)=\varepsilon(t)$ with
+$\varepsilon\in L^1([0,T])$. Then, for all $t\in[0,T]$ and
+$\alpha\in(0,1]$,
+\[
+\begin{aligned}
+\Cris_\alpha(t)\le\overline L(t)
+&\le-\frac{g(F)}{NF^2}
+ \int_0^t e^{-\rho(t-s)}\varepsilon(s)\,\dd s\\
+&\le\frac{g(F)}{NF^2}
+ \int_0^t e^{-\rho(t-s)}[-\varepsilon(s)]_+\,\dd s.
+\end{aligned}
+\]
+\end{proposition}
+\begin{proof}
+Let $H(t)=\sum_i\Phi(S_i(t))$, where $\Phi(F)=0$
+and $\Phi'(S)=S/g(S)$. Concavity of $\Phi$, implied by
+$e\ge2$, gives $(S-F)\Phi'(S)\le\Phi(S)$. Hence
+\[
+\dot H=\varepsilon-\rho\sum_i(S_i-F)\Phi'(S_i)
+\ge\varepsilon-\rho H,
+\]
+and $H(0)=0$ implies
+$H(t)\ge\int_0^t e^{-\rho(t-s)}\varepsilon(s)\,\dd s$.
+Moreover, $G(q)=\Phi(Fe^q)$ is concave and
+$G'(0)=F^2/g(F)$, so its tangent inequality yields
+\[
+H(t)=\sum_iG(q_i(t))
+\le\frac{F^2}{g(F)}\sum_iq_i(t)
+=-\frac{NF^2}{g(F)}\overline L(t).
+\]
+Combining these bounds and discarding the nonnegative part of
+$\varepsilon$ in the weighted integral proves the claim.
+\end{proof}
+
+Here $\varepsilon$ measures the unmatched executed-dollar rate
+\emph{within the selected asset set}; it need not represent a net
+cash flow into the wider market. Exact pairing recovers
+Theorem~\ref{thm:barrier2}. The estimate does not require
+terminal dollar-ledger closure.
+
+\begin{proposition}[Weighted-flow bound for heterogeneous quadratic impact]
+\label{prop:heterogeneous-quadratic}
+Suppose $S_i(0)=F$ and
+$g_i(S)=\eta_i(S/F)^2$, where $\eta_i>0$, with common
+$F>0$ and $\rho>0$. For positive absolutely continuous
+trajectories set $\kappa_i=\eta_i/F^2$ and
+$\omega(t)=\sum_i\kappa_i\dot X_i(t)$.
+Then, for all $t\in[0,T]$ and $\alpha\in(0,1]$,
+\[
+\begin{aligned}
+\Cris_\alpha(t)\le\overline L(t)
+&\le-\frac1N\int_0^t e^{-\rho(t-s)}\omega(s)\,\dd s\\
+&\le\frac1N\int_0^t e^{-\rho(t-s)}[-\omega(s)]_+\,\dd s.
+\end{aligned}
+\]
+Writing $\bar\kappa=N^{-1}\sum_i\kappa_i$ and
+$\varepsilon=\sum_i\dot X_i$, the weighted imbalance decomposes as
+\[
+\omega=\bar\kappa\,\varepsilon+
+\sum_i(\kappa_i-\bar\kappa)\dot X_i.
+\]
+Consequently exact dollar pairing alone need not eliminate the
+weighted flow when the impact strengths differ.
+\end{proposition}
+\begin{proof}
+With $q_i=\log(S_i/F)$, the impact law becomes
+$\dot q_i=-\rho(1-e^{-q_i})+\kappa_i\dot X_i$.
+Jensen's inequality and $e^x\ge1+x$ imply
+\[
+\begin{aligned}
+\frac{\dd}{\dd t}\overline L(t)
+&=\rho\left(1-\frac1N\sum_i e^{-q_i}\right)
+-\frac{\omega}{N}\\
+&\le\rho(1-e^{\overline L})-\frac{\omega}{N}
+\le-\rho\overline L-\frac{\omega}{N}.
+\end{aligned}
+\]
+The result follows by comparison from $\overline L(0)=0$.
+\end{proof}
+
+\paragraph{A terminally dollar-closed counterexample}
+The loss of the homogeneous barrier is possible even with
+exact dollar pairing \emph{and} terminal closure. Take $N=2$,
+$\kappa_1>\kappa_2>0$, and two matched executed-dollar pulses:
+$(\dd X_1,\dd X_2)=(a,-a)$ at time $0$, followed by
+$(-a,a)$ at time $T>0$. Both asset ledgers close exactly,
+and total paired-dollar turnover is $2a$.
+Writing $r=e^{-\rho T}\in(0,1)$, the terminal log prices are
+\[
+\begin{aligned}
+q_1(T)&=\log\bigl(1+r(e^{\kappa_1a}-1)\bigr)-\kappa_1a,\\
+q_2(T)&=\log\bigl(1+r(e^{-\kappa_2a}-1)\bigr)+\kappa_2a.
+\end{aligned}
+\]
+For sufficiently small $a>0$, Taylor expansion gives
+\[
+\overline L(T)=
+\frac{(1-r)(\kappa_1-\kappa_2)}2\,a+O(a^2)>0,
+\qquad
+Q_{1/2}(T)=(1-r)\kappa_1a+O(a^2)>0.
+\]
+Therefore $\Cris_{1/2}(T)>0$, although each response has
+elasticity $e_i=2$. Prices remain strictly positive, and a
+sufficient initial share inventory covers the finite sales.
+This is a pulse-admitting construction, without an instantaneous
+gross-rate cap. The common-impact hypothesis of Theorem~\ref{thm:barrier2}
+fails in this example.
+
+The two perturbation estimates isolate departures from matching
+and homogeneous impact strength. They keep $F$ and $\rho$ fixed;
+time-varying fundamentals, heterogeneous restoration, and
+nonseparable cross-impact require separate analysis.
+
+\section{Reachability Regimes under Power-Law Impact}\label{sec:regimes}
 To compare exclusion and reachability under matched assumptions, we vary only the response shape in the family
 \begin{equation}\label{eq:power}
  g_p(S)=\eta\left(\frac SF\right)^p,\qquad p\in\{2,1,0\},\quad \eta>0.
@@ -335,6 +462,18 @@ exponent and horizon; they do not impose a finite execution-rate cap.
 
 
 \Needspace{14\baselineskip}
+\paragraph{Construction of the severe-loss path}
+The proof proceeds in four steps: identify the generalized
+radial invariant preserved by paired-dollar pulses; rotate
+strictly positive price directions to make each terminal
+target price arbitrarily small; choose stage durations and
+directions so that each asset's executed-dollar ledger closes;
+and bound the total turnover and share sales independently
+of the target loss severity. These bounds are uniform in the
+terminal target price, with the asset number, exponent,
+and market parameters held fixed. The detailed radial
+and ledger calculations appear in Appendix~\ref{app:sublinear-severe}.
+
 \begin{theorem}[Uniform-resource severe partial-coverage losses for sublinear impact]\label{thm:sublinear-severe}
 Fix $N\ge2$, $k=\lceil\alpha N\rceil<N$, positive $F,\eta,\rho$,
 and an exponent $0\le p<1$ in
@@ -385,7 +524,7 @@ For positive prices, $\sum_iS_i/R>1$, whence $R(T)>F\{1+(\sqrt N-1)e^{-\rho T}\}
 \end{proof}
 
 
-\section{Necessary execution resources}\label{sec:budget}
+\section{Execution Resources and Turnover Bounds}\label{sec:budget}
 The response regimes determine whether a loss state is reachable. We next quantify the dollar turnover and share sales required to attain a specified breadth and severity. The following bounds apply to general positive response functions.
 
 \begin{theorem}[Execution-resource lower bounds]\label{thm:resource}
@@ -521,7 +660,7 @@ provide a useful positive lower bound on turnover for a specified
 falling subset alone.
 
 
-\section{Finite trading rates and abstract price bands}\label{sec:rateband}
+\section{Reachability under Bounded Execution Rates}\label{sec:rateband}
 A structurally reachable loss may require trades that cannot be completed at finite speed. We therefore restrict the control set by gross executed-share rates and single-session price bands. These restrictions preserve the barrier theorems, while positive reachability requires a new continuous construction rather than the pulse controls used in Market C.
 
 Finite-speed controls connect the execution setting to optimal trading and bounded-rate strategies \citep{AlmgrenChriss2001,Yang2019}. Here the rate limit constrains which aggregate loss states can be reached.
@@ -678,7 +817,9 @@ Figure~\ref{fig:localrate} compares the numerical small-rate loss with its leadi
 
 
 \FloatBarrier
-\section{Systemic drawdowns under rolling price-band constraints}\label{sec:multiday}
+\section{Rolling Price Limits: Constrained Realizations}\label{sec:multiday}
+The application proceeds from rolling-band accounting and full-coverage obstructions to dollar-closure preconditioning and the receiving assets' capacity. We then certify a two-session path satisfying these constraints. Additional uniform-band constructions form a supplementary loss--breadth comparison, with exact controls retained in Appendix~\ref{app:loss-breadth}.
+
 We now extend the reachability analysis to a multi-session proportional-reset price-band protocol. In each session, permitted execution prices are referenced to the preceding close. Trading interruptions can shift orders forward in time and redirect pressure across markets, as the circuit-breaker analysis of Subrahmanyam~\citep{Subrahmanyam1994} illustrates. Here repeated lower-band closes couple the crisis functional to the capacity of the remaining assets to absorb paired-dollar flow. Feasibility depends jointly on breadth, mean loss, selling speed, and receiving capacity within the prescribed rate caps and bands.
 
 Throughout, a \emph{lower-band close} (also called a \emph{lower-limit close} in some theorem statements) means that the terminal executed price attains the modeled session floor. Institutional features such as resting order queues or trading halts lie outside the executed-price state space (see Section~\ref{sec:discussion}).
@@ -719,14 +860,9 @@ In particular, with a single compensator ($k=N-1$), its terminal price must obey
 \begin{proof}
 The $k$ streaking assets have loss $D\lambda$, hence $Q_\alpha\ge D\lambda$. For $\delta\le D\lambda$, the coverage part of the crisis criterion is therefore automatic, and the remaining requirement is $\overline L(T_D)\ge\delta$. Substituting the terminal prices into $\overline L(T_D)=N^{-1}\sum_i\log[F/S_i(T_D)]$ gives \eqref{eq:multiday-trigger-product}. If every other loss is at most $D\lambda$, or if $N-k<k$, the $k$th-largest loss is exactly $D\lambda$, proving \eqref{eq:multiday-trigger-exact}.
 \end{proof}
-For the interval-certified $N=10$, $k=9$, $q=0.97$, $D=2$ construction of Proposition~\ref{prop:certified-v7}, $D\lambda\approx0.060918$. The compensator closes at $Y/F\approx1.405161$ in the high-accuracy reconstruction, yielding $\Cris_{0.9}\approx0.020811$. The outward-rounded certificate gives $1.4047874<Y/F<1.4055543$, which rigorously implies $\Cris_{0.9}>0.020$ for the specified trajectory. The threshold $\delta=0.020$ requires $Y/F\le\exp(9D\lambda-10(0.020))\approx1.416609$, which the certified path satisfies. Thus the receiving asset's terminal price determines whether the same broad lower-limit streak qualifies as a systemic loss event.
 
-Figure~\ref{fig:multiday-crisis-trigger} illustrates the distinction between repeated closing-limit losses and the systemic crisis criterion.
-
-\begin{figure}[tbp]\centering
- \includegraphics[width=0.85\linewidth]{figures/multiday_crisis_trigger.pdf}
- \caption{\textbf{Systemic loss and the compensating asset's terminal price.} Conditional terminal severity for $N=10$, nine assets closing twice at a 3\% daily lower limit, versus the remaining asset's terminal price. The dotted marker denotes the constructed dollar-closed path; the reference lines show the log-loss thresholds $\delta=0.015$ and $\delta=0.020$. The curve gives the conditional algebraic relation between the terminal price and systemic loss.}\label{fig:multiday-crisis-trigger}
-\end{figure}
+A terminal-price illustration for the ten-asset certificate is included
+with the interval evidence in Appendix~\ref{app:v7certificate}.
 
 \subsection{A minimum speed for consecutive lower-band closes}\label{subsec:multiday-rate}
 A closing price at the lower limit must be reached in finite time despite recovery toward $F$. For $g(S)\equiv\eta$, start a session at price $s$ and suppose its length is $\tau$ and its lower floor is $(1-\beta)s$. Even before asking who purchases the matched dollars, the gross share-rate cap bounds the fastest decline through $\dot z=-\rho(z-F)-\eta\bar v$, $z(0)=s$. This yields a necessary threshold but leaves the market-wide matching problem unresolved.
@@ -885,83 +1021,14 @@ Since the right-hand side of~\eqref{eq:quadratic-rate} is continuous in $\bar v$
 \boxed{\qquad 0.044<\bar v_*<0.285.\qquad}
 \end{equation}
 The certified trajectory supplies a feasible upper rate, while the quadratic barrier gives a strict lower bound for the same market instance. Determining the exact critical rate and whether it is attained remains a constrained multiday optimal-control problem.
-\paragraph{Sensitivity and the role of symmetry}
-The ten-asset certificate deliberately reduces nine identical target states to one trajectory. Holding that \emph{same} $x(t)$ and exact target-dollar closure fixed, a numerical sensitivity check repartitions ten assets into $k$ identical targets and $10-k$ identical compensators. Their common compensator price obeys $\dot y=-0.4(y-1)-[k/(10-k)]u(t)/y$. Table~\ref{tab:sensitivity} shows why the number of receiving assets matters: the specified control achieves the fixed $0.020$ mean-loss target only for $k=9$ among the cases tested. Changing $k$ also changes the coverage fraction $k/10$; it is not a test at fixed $\alpha=0.9$. For $k<9$, the rows are high-accuracy ODE diagnostics with the control held fixed. The $k=9$ witness depends on a wide compensator band and a receiving-capacity burden proportional to $k/(10-k)$. For $k=9$, the feasibility bounds of Proposition~\ref{prop:certified-v7} are interval-certified. Similarly, for the fixed $k=9$ path, the certificate proves compliance at a symmetric compensator band of $\pm24.7\%$ and proves violation at $\pm24\%$ (the price interval at $t=17.7$ lies strictly below $0.76$). Changing the band does not rerun or optimize the control.
-\begin{table}[H]\centering\small
-\caption{Fixed-control sensitivity to cross-sectional composition. The tabulated prices, mean log losses, and band widths are high-precision numerical reconstructions. For $k=9$, feasibility under the stated constraints is additionally established by the interval certificate; Section~\ref{subsec:v7-certified} gives the certified bounds. The reported band width refers to the fixed path, without optimizing the control.}\label{tab:sensitivity}
-\begin{tabular}{@{}rrrrr@{}}\toprule
-Targets $k$ & Compensators & $y(40)$ & Mean log loss & \shortstack{Computed band\\for fixed path} \\\midrule
-6 & 4 & 1.08112 & 0.00535 & 4.28\%\\
-7 & 3 & 1.12302 & 0.00784 & 6.55\%\\
-8 & 2 & 1.20141 & 0.01204 & 10.88\%\\
-9 & 1 & 1.40516 & 0.02081 & 24.55\%\\
-\bottomrule\end{tabular}
-\end{table}
-
-Figure~\ref{fig:v7path} displays the price paths of the certified construction.
-
-\begin{figure}[H]\centering
-\includegraphics[width=0.87\linewidth]{figures/v7_certified_multiday_prices.pdf}
-\caption{\textbf{An interval-certified two-session path.} Continuous target and compensator prices for the construction in Proposition~\ref{prop:certified-v7}. The nine targets close at the reset lower limits; the compensator stays inside its 25\% daily limits. Curves are illustrative numerical reconstructions; admissibility is independently certified by the outward-rounded arithmetic described in Appendix~\ref{app:v7certificate}.}\label{fig:v7path}
-\end{figure}
-Figure~\ref{fig:v7rates} displays the corresponding gross execution rates.
-
-\begin{figure}[H]\centering
-\includegraphics[width=0.87\linewidth]{figures/v7_certified_rate_path.pdf}
-\caption{\textbf{Gross execution rates in the certified path.} The largest computed gross share-rate is approximately $0.28422$; rigorous interval rounding certifies a bound strictly below $0.285$, without instantaneous pulses. The cap is per asset, before netting buys and sells.}\label{fig:v7rates}
-\end{figure}
-\FloatBarrier
-
-
-\subsection{Certified loss--breadth comparisons under uniform rolling bands}
+\subsection{A complementary uniform-band existence result}
 \label{subsec:loss-breadth}
-The preceding two-session witness fixes nine targets at
-consecutive $3\%$ lower-band closes, with a single compensator
-under a wider band. Here we compare additional feasible paths
-under a \emph{different} model protocol: every asset receives
-a symmetric $\pm25\%$ price band in each of two sessions, reset
-at the preceding close. All rows retain $N=10$, $F=\eta=1$,
-$\rho=0.4$, $T=40$ with two 20-unit sessions, a gross
-per-asset share-rate cap of $0.285$, available sale shares
-below $2$, and exact terminal dollar-ledger closure.
-
-In each new case $k$ target assets follow an identical piecewise
-constant executed-dollar rate $u(t)$, and the remaining $10-k$
-assets follow $-ku(t)/(10-k)$. The inputs are exact rational
-segments satisfying $\int_0^{40}u(t)\dd t=0$.
-Integer outward-rounded interval enclosures certify both
-group-price paths, entire rolling price bands, sale-rate and
-inventory constraints, turnover, and a terminal geometric-index
-loss bound. Details and complete inputs are in
-Appendix~\ref{app:loss-breadth} and
-\path{verification/loss_breadth_certified.py}.
-
-\begin{table}[tbp]\centering\small
-\caption{\textbf{Systemic loss--breadth comparison for specified
-positive-price dollar-closed controls.} All new cases use uniform
-two-session $\pm25\%$ rolling bands, unlike the original
-$3\%$-target/$25\%$-compensator witness. Target loss denotes an
-ordinary price decline in at least $k$ assets; index loss
-denotes the decline of the equal-weight geometric price index.
-Prefixes \texttt{P} and \texttt{R} identify, respectively,
-two-window and three-window piecewise-constant trading templates;
-the labels indicate coverage percentage and nominal target loss,
-and \texttt{M5} denotes the relaxed $M<5$ budget. Loss
-thresholds are conservative strict lower bounds, whereas the
-$M$ and gross-rate columns give certified upper bounds.}
-\label{tab:loss-breadth}
-\begin{tabular}{@{}lrrrrrr@{}}\toprule
-Witness & $k$ & Target loss & Index loss & $M$ upper &
-\shortstack{Max. gross\\rate} & $M$ cap\\\midrule
-Original & 9 & $5.91\%$ & $>1.98\%$ & $2.984$ & $0.284500$ & $3$\\
-P50-20 & 5 & $>22.29\%$ & $>4.0\%$ & $2.600$ & $0.216130$ & $3$\\
-P60-20 & 6 & $>20.90\%$ & $>5.0\%$ & $2.880$ & $0.257224$ & $3$\\
-P70-10 & 7 & $>12.60\%$ & $>3.0\%$ & $2.660$ & $0.164249$ & $3$\\
-R80-10 & 8 & $>10.80\%$ & $>3.0\%$ & $2.851$ & $0.272696$ & $3$\\
-R70-15.5 & 7 & $>15.50\%$ & $>4.0\%$ & $2.940$ & $0.277592$ & $3$\\
-R70-20-M5 & 7 & $>20.20\%$ & $>6.0\%$ & $4.600$ & $0.262743$ & $5$\\
-\bottomrule\end{tabular}
-\end{table}
+A second constructive case uses uniform $\pm25\%$ rolling bands
+for all ten assets, in contrast to the preceding path's narrower
+target-asset bands. The two sessions, response and recovery parameters,
+gross share-rate cap, inventory limits and per-asset dollar closure
+are unchanged. The full comparison matrix, including higher-turnover
+controls, appears in Appendix~\ref{app:loss-breadth}.
 
 \begin{proposition}[An eight-asset large drawdown under uniform rolling bands]
 \label{prop:loss-breadth-eight}
@@ -988,15 +1055,13 @@ Finally, $\int_0^{40}u(t)\dd t=0$ ensures
 $X_i(40)=0$ for every asset.
 \end{proof}
 
-As shown in the final row of Table~\ref{tab:loss-breadth},
-the $70\%$-coverage control reaching a target decline above
-$20.2\%$ uses paired-dollar turnover $M<4.600<5$.
-Whether a different control can reach the same target with
-$M\le3$ remains open.
+The additional strictly enclosed price paths establish further
+breadth--severity combinations. Their schedules, resource budgets
+and conservative loss thresholds are reported in
+Table~\ref{tab:loss-breadth} and the supplementary table
+\ref{tab:loss-breadth-additional}.
 
-\FloatBarrier
-
-\section{Discussion and model extensions}\label{sec:discussion}
+\section{Discussion}\label{sec:discussion}
 \subsection{Economic accounting and execution burden}
 Recovery has two roles: for the price-level dynamics in Assumption~\ref{asmp:model}, it enters the curvature-based exclusion argument, but it also makes nontrivial terminal displacement possible under dollar closure. If $\rho=0$, $\dd\Phi(S_i)=\dd X_i$ and $X_i(T)=0$ implies $S_i(T)=F$ (Appendix~\ref{app:accounting}). For $\rho>0$, the identity \eqref{eq:cost} shows that the nonnegative terminal potential and cumulative recovery dissipation are financed by a reduction of net share inventory, valued at the fixed benchmark. For any terminally dollar-closed path $\gamma$, define this benchmark-valued inventory consumption by
 \[
@@ -1026,10 +1091,26 @@ The severity of Market C is also a boundary result: logarithmic loss diverges as
 
 The definition $\Cris_\alpha=\min\{\overline L,Q_\alpha\}$ uses the equal-weight geometric price index as well as coverage. Metric choice matters: in the $p=1$ market, paired-dollar trades give $\dd\sum_i S_i|_{\rm trade}=(\eta/F)\sum_i\dd X_i=0$, and the common price-level recovery preserves the initial sum $NF$. Thus the arithmetic mean remains $F$ even when a partial-coverage geometric-index crisis is reachable. Market-capitalization-weighted indices, arithmetically aggregated prices, rolling-peak losses, and different coverage criteria define different target sets. Changing the weighting or loss baseline changes the corresponding target set for reachability.
 
-\subsection{What the two-session certificate establishes}
-The construction in Proposition~\ref{prop:certified-v7} is a constrained \emph{existence witness} for one specified ten-asset market. Nine equal target prices lose $5.91\%$ over two sessions, while the receiving asset has a high-precision reconstructed final price near $1.40516 F$. The equal-weight geometric-index decline is approximately $2.06\%$ (the mean log loss is approximately $0.02081$), whereas the arithmetic mean price decreases by only about $1.27\%$. The receiving asset supports large temporary price excursions within its wider rolling band. Table~\ref{tab:sensitivity} varies composition \emph{holding the control fixed}, rather than optimizing a new control for each $k$.
+\subsection{Deterministic reachability and institutional scope}
+The barrier theorems exclude terminal price states for every admissible
+control of the specified deterministic market, whereas the
+constructions establish feasibility of particular terminal losses.
+Neither statement selects a strategy through equilibrium incentives
+or attributes observed price moves to a single causal mechanism.
+Keeping fundamentals fixed also does not identify information-free
+episodes in transaction data.
 
-The gap in the bracket $0.044<\bar v_*<0.285$ reflects the distance between a general analytical lower bound for the fixed model parameters and a specific feasible trajectory. The certificate rigorously verifies pathwise constraints and ledger closure, establishing that the admissible trajectory set is nonempty under stylized $3\%$ target bands and $25\%$ compensator bands. The Tokyo Stock Exchange sets daily limits as tiered \emph{absolute yen} amounts based on reference prices and conditionally widens them after specified limit-bound sessions with little or no execution \citep{JPX2026}. Research on actual price-limit regimes provides an institutional comparison to the proportional-reset protocol used here \citep{KimRhee1997,Chen2019}.
+The certified two-session path illustrates a constrained realization:
+paired executed-dollar flows, inventory, gross rates and rolling
+bands hold along its full price trajectory. Its terminal mean log loss
+and breadth criterion describe a geometric-price index, rather than
+an arithmetic or capitalization-weighted market return. Appendix~
+\ref{app:v7certificate} records the certificate, graphical
+reconstructions and sensitivity comparisons. The Tokyo Stock
+Exchange instead uses tiered absolute-yen daily limits with
+conditional widening rules~\citep{JPX2026};
+institutional studies of price limits provide additional context
+\citep{KimRhee1997,Chen2019}.
 
 \subsection{Further directions}
 Nonlinear recovery operators raise the question of which restoring fields preserve the $\Phi$-based invariant regions. General heterogeneous $(g_i,\rho_i,F_i)$, changing network topology, and nonseparable cross-impact alter the scalar potential argument; Subsection~\ref{subsec:barrier-robustness} establishes one diagonal extension with common $F$ and $\rho$. For invertible matrix impact $\dd\bm S=\mathsf G(\bm S)\dd\bm\theta$, an additive transaction potential would depend on exactness of the one-form
@@ -1049,141 +1130,23 @@ $\dd(S_i^2)=-2\rho S_i(S_i-F)\dd t+2\eta\dd X_i$,
 also have a trade term without the denominator $1/S_i$; their restoring drift remains nonlinear. An upper price bound $S_i\le U_{\max}$ together with the gross share-rate cap gives
 $\dot M\le NU_{\max}\bar v/2$. For fixed positive turnover, this prevents concentration at the single peak of the time kernel in~\eqref{eq:V2-turnover} and permits a tighter weighted-turnover estimate. These constraints suggest time-dependent resource bounds sensitive to the composition of selling and receiving assets. Empirical identification of local impact $g$, recovery, trade direction, and accessible inventories would require time-resolved transaction and order-book observations; market-microstructure invariance~\citep{KyleObizhaeva2023} provides a scaling benchmark. A stochastic flow or equilibrium-selection model could then place probabilities alongside the present deterministic reachability results.
 
-\subsection{Robustness to unmatched dollar flow and impact heterogeneity}
-\label{subsec:barrier-robustness}
-The exclusion in Theorem~\ref{thm:barrier2} uses both a common
-price-response function and exact dollar pairing. The local logarithmic
-price response per executed dollar is
-$\lambda(S)=g(S)/S^2$, with elasticity
-\[
-\frac{\dd\log\lambda(S)}{\dd\log S}=e(S)-2.
-\]
-Thus the threshold $e\ge2$ states that this model's local
-per-dollar log-impact does not increase as the price falls.
-We quantify two departures from the hypotheses of the exclusion theorem
-while retaining fixed fundamentals and common price-level recovery.
-
-\begin{proposition}[Stability under unmatched dollar flow]
-\label{prop:unbalanced-stability}
-Suppose $S_i(0)=F$, all prices remain positive, and the homogeneous
-response $g>0$ and common recovery rate $\rho>0$ satisfy
-$e(S)\ge2$ on an interval containing $F$ and every attained price.
-For absolutely continuous executed-dollar flows, relax exact pairing
-to $\sum_i\dot X_i(t)=\varepsilon(t)$ with
-$\varepsilon\in L^1([0,T])$. Then, for all $t\in[0,T]$ and
-$\alpha\in(0,1]$,
-\[
-\begin{aligned}
-\Cris_\alpha(t)\le\overline L(t)
-&\le-\frac{g(F)}{NF^2}
- \int_0^t e^{-\rho(t-s)}\varepsilon(s)\,\dd s\\
-&\le\frac{g(F)}{NF^2}
- \int_0^t e^{-\rho(t-s)}[-\varepsilon(s)]_+\,\dd s.
-\end{aligned}
-\]
-\end{proposition}
-\begin{proof}
-Let $H(t)=\sum_i\Phi(S_i(t))$, where $\Phi(F)=0$
-and $\Phi'(S)=S/g(S)$. Concavity of $\Phi$, implied by
-$e\ge2$, gives $(S-F)\Phi'(S)\le\Phi(S)$. Hence
-\[
-\dot H=\varepsilon-\rho\sum_i(S_i-F)\Phi'(S_i)
-\ge\varepsilon-\rho H,
-\]
-and $H(0)=0$ implies
-$H(t)\ge\int_0^t e^{-\rho(t-s)}\varepsilon(s)\,\dd s$.
-Moreover, $G(q)=\Phi(Fe^q)$ is concave and
-$G'(0)=F^2/g(F)$, so its tangent inequality yields
-\[
-H(t)=\sum_iG(q_i(t))
-\le\frac{F^2}{g(F)}\sum_iq_i(t)
-=-\frac{NF^2}{g(F)}\overline L(t).
-\]
-Combining these bounds and discarding the nonnegative part of
-$\varepsilon$ in the weighted integral proves the claim.
-\end{proof}
-
-Here $\varepsilon$ measures the unmatched executed-dollar rate
-\emph{within the selected asset set}; it need not represent a net
-cash flow into the wider market. Exact pairing recovers
-Theorem~\ref{thm:barrier2}. The estimate does not require
-terminal dollar-ledger closure.
-
-\begin{proposition}[Weighted-flow bound for heterogeneous quadratic impact]
-\label{prop:heterogeneous-quadratic}
-Suppose $S_i(0)=F$ and
-$g_i(S)=\eta_i(S/F)^2$, where $\eta_i>0$, with common
-$F>0$ and $\rho>0$. For positive absolutely continuous
-trajectories set $\kappa_i=\eta_i/F^2$ and
-$\omega(t)=\sum_i\kappa_i\dot X_i(t)$.
-Then, for all $t\in[0,T]$ and $\alpha\in(0,1]$,
-\[
-\begin{aligned}
-\Cris_\alpha(t)\le\overline L(t)
-&\le-\frac1N\int_0^t e^{-\rho(t-s)}\omega(s)\,\dd s\\
-&\le\frac1N\int_0^t e^{-\rho(t-s)}[-\omega(s)]_+\,\dd s.
-\end{aligned}
-\]
-Writing $\bar\kappa=N^{-1}\sum_i\kappa_i$ and
-$\varepsilon=\sum_i\dot X_i$, the weighted imbalance decomposes as
-\[
-\omega=\bar\kappa\,\varepsilon+
-\sum_i(\kappa_i-\bar\kappa)\dot X_i.
-\]
-Consequently exact dollar pairing alone need not eliminate the
-weighted flow when the impact strengths differ.
-\end{proposition}
-\begin{proof}
-With $q_i=\log(S_i/F)$, the impact law becomes
-$\dot q_i=-\rho(1-e^{-q_i})+\kappa_i\dot X_i$.
-Jensen's inequality and $e^x\ge1+x$ imply
-\[
-\begin{aligned}
-\frac{\dd}{\dd t}\overline L(t)
-&=\rho\left(1-\frac1N\sum_i e^{-q_i}\right)
--\frac{\omega}{N}\\
-&\le\rho(1-e^{\overline L})-\frac{\omega}{N}
-\le-\rho\overline L-\frac{\omega}{N}.
-\end{aligned}
-\]
-The result follows by comparison from $\overline L(0)=0$.
-\end{proof}
-
-\paragraph{A terminally dollar-closed counterexample}
-The loss of the homogeneous barrier is possible even with
-exact dollar pairing \emph{and} terminal closure. Take $N=2$,
-$\kappa_1>\kappa_2>0$, and two matched executed-dollar pulses:
-$(\dd X_1,\dd X_2)=(a,-a)$ at time $0$, followed by
-$(-a,a)$ at time $T>0$. Both asset ledgers close exactly,
-and total paired-dollar turnover is $2a$.
-Writing $r=e^{-\rho T}\in(0,1)$, the terminal log prices are
-\[
-\begin{aligned}
-q_1(T)&=\log\bigl(1+r(e^{\kappa_1a}-1)\bigr)-\kappa_1a,\\
-q_2(T)&=\log\bigl(1+r(e^{-\kappa_2a}-1)\bigr)+\kappa_2a.
-\end{aligned}
-\]
-For sufficiently small $a>0$, Taylor expansion gives
-\[
-\overline L(T)=
-\frac{(1-r)(\kappa_1-\kappa_2)}2\,a+O(a^2)>0,
-\qquad
-Q_{1/2}(T)=(1-r)\kappa_1a+O(a^2)>0.
-\]
-Therefore $\Cris_{1/2}(T)>0$, although each response has
-elasticity $e_i=2$. Prices remain strictly positive, and a
-sufficient initial share inventory covers the finite sales.
-This is a pulse-admitting construction, without an instantaneous
-gross-rate cap. The common-impact hypothesis of Theorem~\ref{thm:barrier2}
-fails in this example.
-
-The two perturbation estimates isolate departures from matching
-and homogeneous impact strength. They keep $F$ and $\rho$ fixed;
-time-varying fundamentals, heterogeneous restoration, and
-nonseparable cross-impact require separate analysis.
-
 \section{Conclusion}\label{sec:conclusion}
-For a specified price-level resilience and paired-dollar execution protocol, the response-adapted coordinate identifies global barriers, feasible partial-coverage regimes, and a sharp full-coverage ceiling. Necessary dollar turnover and inventory are conveniently expressed in the generalized price coordinate and in units of local benchmark impact. The uniform finite-resource severe partial-coverage construction extends from constant impact to every fixed exponent $0\le p<1$ in the power-law family, with resource constants that may deteriorate as $p\uparrow1$. For constant impact on a bounded positive-price region, executed-dollar turnover also bounds the terminal quadratic price-potential deficit. A finite gross-rate cap changes the scale of attainable small systemic losses, and one independently interval-certified two-session witness satisfies the simultaneous rate, band, and dollar-ledger requirements. The economic accounting identity makes explicit the benchmark-valued inventory consumed by dollar-closed price pressure. Perturbation bounds identify the effects of unmatched dollar flows and heterogeneous quadratic impact on the elasticity barrier. Together, these results clarify the structural and resource boundaries of liquidity-driven drawdowns within a deterministic execution framework. Alternative resilience laws, heterogeneous cross-impact and minimum-cost controls offer distinct mathematical directions for future work.
+We have characterized systemic drawdown reachability in a deterministic
+market with paired-dollar execution, fixed fundamentals and price-level
+recovery. A response-adapted potential yields global elasticity barriers
+and quantitative bounds when dollar flows are unmatched or impact
+strengths differ. Power-law response functions generate distinct
+reachability regimes: severe partial-coverage losses admit fixed
+finite resource bounds at any fixed sublinear exponent, while
+full-coverage losses face an exact unattained horizon ceiling.
+Turnover and inventory inequalities quantify execution requirements,
+and continuous controls show that the quadratic small-rate loss
+upper bound has a matching attainable order under constant impact.
+Certified rolling-band paths demonstrate the consistency of these
+constraints in specified finite-dimensional markets.
+The separation between structural exclusion, constructive reachability
+and execution resources defines the scope of the results and the
+starting point for extensions to more general impact and recovery laws.
 
 \section*{Code and numerical data availability}
 The research code, numerical data, certificates, and reproduction instructions are publicly available at \url{https://github.com/Siyuan-chat/market-crash-reachability}. The unchanged original computational baseline is associated with \href{https://github.com/Siyuan-chat/market-crash-reachability/tree/ea831c44f5b77b7039dd6644f6f0a791bb74d176}{commit \texttt{ea831c4}}; the frozen software archive is separately identified by \href{https://doi.org/10.5281/zenodo.23428183}{DOI 10.5281/zenodo.23428183}. Appendices~\ref{app:v7certificate} and~\ref{app:loss-breadth}
@@ -1432,6 +1395,46 @@ $1.4047874<y(40)<1.4055543$, establishing the moving 25\% second-session limits 
 Finally, the terminal mean loss is $-\log[(0.9409)^9 y(40)]/10$. The assertion that it exceeds $0.020$ is checked \emph{without} relying on a floating-point logarithm: finite rational Taylor series provide lower and upper bounds on $e^{0.2}$ and verify $e^{0.2}(0.9409)^9\sup y(40)<1$. A second rational check at $e^{0.21}$ confirms the mean loss remains below $0.021$. These assertions certify feasibility of the stated piecewise-linear path and its compensator ODE.
 
 
+
+\paragraph{Price trajectories and gross executed-share rates}
+The following plots display the reconstructed price and executed-share-rate
+paths together with their certified envelope bounds.
+Figure~\ref{fig:v7path} displays the price paths of the certified construction.
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.87\linewidth]{figures/v7_certified_multiday_prices.pdf}
+\caption{\textbf{An interval-certified two-session path.} Continuous target and compensator prices for the construction in Proposition~\ref{prop:certified-v7}. The nine targets close at the reset lower limits; the compensator stays inside its 25\% daily limits. Curves are illustrative numerical reconstructions; admissibility is independently certified by the outward-rounded arithmetic described in Appendix~\ref{app:v7certificate}.}\label{fig:v7path}
+\end{figure}
+Figure~\ref{fig:v7rates} displays the corresponding gross execution rates.
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.87\linewidth]{figures/v7_certified_rate_path.pdf}
+\caption{\textbf{Gross execution rates in the certified path.} The largest computed gross share-rate is approximately $0.28422$; rigorous interval rounding certifies a bound strictly below $0.285$, without instantaneous pulses. The cap is per asset, before netting buys and sells.}\label{fig:v7rates}
+\end{figure}
+
+\paragraph{Sensitivity to cross-sectional composition}
+The ten-asset certificate deliberately reduces nine identical target states to one trajectory. Holding that \emph{same} $x(t)$ and exact target-dollar closure fixed, a numerical sensitivity check repartitions ten assets into $k$ identical targets and $10-k$ identical compensators. Their common compensator price obeys $\dot y=-0.4(y-1)-[k/(10-k)]u(t)/y$. Table~\ref{tab:sensitivity} shows why the number of receiving assets matters: the specified control achieves the fixed $0.020$ mean-loss target only for $k=9$ among the cases tested. Changing $k$ also changes the coverage fraction $k/10$; it is not a test at fixed $\alpha=0.9$. For $k<9$, the rows are high-accuracy ODE diagnostics with the control held fixed. The $k=9$ witness depends on a wide compensator band and a receiving-capacity burden proportional to $k/(10-k)$. For $k=9$, the feasibility bounds of Proposition~\ref{prop:certified-v7} are interval-certified. Similarly, for the fixed $k=9$ path, the certificate proves compliance at a symmetric compensator band of $\pm24.7\%$ and proves violation at $\pm24\%$ (the price interval at $t=17.7$ lies strictly below $0.76$). Changing the band does not rerun or optimize the control.
+\begin{table}[H]\centering\small
+\caption{Fixed-control sensitivity to cross-sectional composition. The tabulated prices, mean log losses, and band widths are high-precision numerical reconstructions. For $k=9$, feasibility under the stated constraints is additionally established by the interval certificate; Section~\ref{subsec:v7-certified} gives the certified bounds. The reported band width refers to the fixed path, without optimizing the control.}\label{tab:sensitivity}
+\begin{tabular}{@{}rrrrr@{}}\toprule
+Targets $k$ & Compensators & $y(40)$ & Mean log loss & \shortstack{Computed band\\for fixed path} \\\midrule
+6 & 4 & 1.08112 & 0.00535 & 4.28\%\\
+7 & 3 & 1.12302 & 0.00784 & 6.55\%\\
+8 & 2 & 1.20141 & 0.01204 & 10.88\%\\
+9 & 1 & 1.40516 & 0.02081 & 24.55\%\\
+\bottomrule\end{tabular}
+\end{table}
+
+\paragraph{Conditional terminal threshold in the ten-asset case}
+For the interval-certified $N=10$, $k=9$, $q=0.97$, $D=2$ construction of Proposition~\ref{prop:certified-v7}, $D\lambda\approx0.060918$. The compensator closes at $Y/F\approx1.405161$ in the high-accuracy reconstruction, yielding $\Cris_{0.9}\approx0.020811$. The outward-rounded certificate gives $1.4047874<Y/F<1.4055543$, which rigorously implies $\Cris_{0.9}>0.020$ for the specified trajectory. The threshold $\delta=0.020$ requires $Y/F\le\exp(9D\lambda-10(0.020))\approx1.416609$, which the certified path satisfies. Thus the receiving asset's terminal price determines whether the same broad lower-limit streak qualifies as a systemic loss event.
+
+Figure~\ref{fig:multiday-crisis-trigger} illustrates the distinction between repeated closing-limit losses and the systemic crisis criterion.
+
+\begin{figure}[tbp]\centering
+ \includegraphics[width=0.85\linewidth]{figures/multiday_crisis_trigger.pdf}
+ \caption{\textbf{Systemic loss and the compensating asset's terminal price.} Conditional terminal severity for $N=10$, nine assets closing twice at a 3\% daily lower limit, versus the remaining asset's terminal price. The dotted marker denotes the constructed dollar-closed path; the reference lines show the log-loss thresholds $\delta=0.015$ and $\delta=0.020$. The curve gives the conditional algebraic relation between the terminal price and systemic loss.}\label{fig:multiday-crisis-trigger}
+\end{figure}
+
 \section{Sublinear power-law extension of uniform-budget severity}\label{app:sublinear-severe}
 We prove Theorem~\ref{thm:sublinear-severe} for fixed $0\le p<1$.
 Write $\nu=2-p\in(1,2]$ and $m=N-1$. The proof generalizes
@@ -1660,6 +1663,46 @@ without a floating-point logarithm.
 These interval computations establish feasibility of the
 specified controls at the budgets and rates reported
 in Table~\ref{tab:loss-breadth}.
+
+\paragraph{Fixed-budget and relaxed-budget comparison}
+The primary loss--breadth certificate family is summarized below.
+Its target losses refer to ordinary individual price declines,
+while index losses refer to the equal-weight geometric price index.
+
+\begin{table}[tbp]\centering\small
+\caption{\textbf{Systemic loss--breadth comparison for specified
+positive-price dollar-closed controls.} All new cases use uniform
+two-session $\pm25\%$ rolling bands, unlike the original
+$3\%$-target/$25\%$-compensator witness. Target loss denotes an
+ordinary price decline in at least $k$ assets; index loss
+denotes the decline of the equal-weight geometric price index.
+Prefixes \texttt{P} and \texttt{R} identify, respectively,
+two-window and three-window piecewise-constant trading templates;
+the labels indicate coverage percentage and nominal target loss,
+and \texttt{M5} denotes the relaxed $M<5$ budget. Loss
+thresholds are conservative strict lower bounds, whereas the
+$M$ and gross-rate columns give certified upper bounds.}
+\label{tab:loss-breadth}
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+Witness & $k$ & Target loss & Index loss & $M$ upper &
+\shortstack{Max. gross\\rate} & $M$ cap\\\midrule
+Original & 9 & $5.91\%$ & $>1.98\%$ & $2.984$ & $0.284500$ & $3$\\
+P50-20 & 5 & $>22.29\%$ & $>4.0\%$ & $2.600$ & $0.216130$ & $3$\\
+P60-20 & 6 & $>20.90\%$ & $>5.0\%$ & $2.880$ & $0.257224$ & $3$\\
+P70-10 & 7 & $>12.60\%$ & $>3.0\%$ & $2.660$ & $0.164249$ & $3$\\
+R80-10 & 8 & $>10.80\%$ & $>3.0\%$ & $2.851$ & $0.272696$ & $3$\\
+R70-15.5 & 7 & $>15.50\%$ & $>4.0\%$ & $2.940$ & $0.277592$ & $3$\\
+R70-20-M5 & 7 & $>20.20\%$ & $>6.0\%$ & $4.600$ & $0.262743$ & $5$\\
+\bottomrule\end{tabular}
+\end{table}
+
+As shown in the final row of Table~\ref{tab:loss-breadth},
+the $70\%$-coverage control reaching a target decline above
+$20.2\%$ uses paired-dollar turnover $M<4.600<5$.
+Whether a different control can reach the same target with
+$M\le3$ remains open.
+
+
 
 
 \paragraph{Additional loss--breadth witnesses}

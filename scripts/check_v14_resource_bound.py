@@ -56,7 +56,7 @@ def main():
         assert term in new, ("Missing proof/result",term)
     assert r"\sum_i|\dot X_i|=2\sum_e\dot z_e" not in new
     block=new.split(r"\paragraph{Turnover and quadratic dissipation}",1)[1].split(
-        r"\section{Finite trading rates and abstract price bands}",1)[0]
+        r"\section{Reachability under Bounded Execution Rates}",1)[0]
     assert r"q_i(t)=\dot X_i(t)" not in block
     assert "compensating assets can make" not in block
 
@@ -149,18 +149,24 @@ def main():
     subprocess.run([sys.executable,str(ROOT/"verification/loss_breadth_certified.py")],cwd=ROOT,check=True)
     assert r"\label{tab:loss-breadth}" in new
     assert r"\label{app:loss-breadth}" in new
-    block=new.split(r"\subsection{Certified loss--breadth comparisons under uniform rolling bands}",1)[1].split(
-        r"\section{Discussion and model extensions}",1)[0]
-    assert "No row claims an optimal frontier" not in block
-    assert "exactly rational input" not in block
-    assert "directed-integer interval verifier" not in block
-    assert r"\texttt{P}" in block and r"\texttt{R}" in block and r"\texttt{M5}" in block
-    assert r"0.284500" in block and r"2.984" in block
+    block=new.split(r"\subsection{A complementary uniform-band existence result}",1)[1].split(
+        r"\section{Discussion}",1)[0]
+    appendix=new.split(r"\section{Reproducing the uniform-band loss--breadth witnesses}",1)[1].split(
+        r"\bibliographystyle{siamplain}",1)[0]
+    table=appendix.split(r"\begin{table}[tbp]\centering\small",1)[1].split(r"\end{table}",1)[0]
+    assert "No row claims an optimal frontier" not in appendix
+    assert "exactly rational input" not in appendix
+    assert "directed-integer interval verifier" not in appendix
+    assert r"\texttt{P}" in table and r"\texttt{R}" in table and r"\texttt{M5}" in table
+    assert r"0.284500" in table and r"2.984" in table
     assert r"\sup_t9|u(t)|/y(t)<0.284481" in new
     assert r"9\int_0^{40}|u(t)|\dd t<2.984" in new
     assert "Outward-rounded fixed-point interval arithmetic" in block
     assert r"x(40)^8y(40)^2<0.97^{10}" in block
-    assert r"M<4.600<5" in block
+    assert r"M<4.600<5" in appendix
+    assert r"\label{tab:loss-breadth-additional}" in appendix
+    assert r"\label{tab:sensitivity}" in new and r"\label{fig:v7rates}" in new
+    assert r"\label{fig:multiday-crisis-trigger}" in new
     appendix=new.split(r"\section{Reproducing the uniform-band loss--breadth witnesses}",1)[1].split(
         r"\bibliographystyle{siamplain}",1)[0]
     assert "External code audit and independent mathematical review remain outstanding" not in appendix
@@ -176,7 +182,7 @@ def main():
     # numbering, Appendix G/I certificates, and original equations unchanged.
     robustness=new.split(
         r"\subsection{Robustness to unmatched dollar flow and impact heterogeneity}",1
-    )[1].split(r"\section{Conclusion}",1)[0]
+    )[1].split(r"\section{Reachability Regimes under Power-Law Impact}",1)[0]
     for required in (
         r"\label{prop:unbalanced-stability}",
         r"\label{prop:heterogeneous-quadratic}",
@@ -216,6 +222,21 @@ def main():
     p_kN=new.index(r"\subsection{A sharp boundary when every asset must fall}")
     p_critical=new.index(r"\label{thm:critical}")
     assert 0 <= p_spectrum < p_sublinear < p_kN < p_critical
+    p_barriers=new.index(r"\section{Structural Barriers and Robustness}")
+    p_robustness=new.index(r"\label{subsec:barrier-robustness}")
+    p_regimes=new.index(r"\section{Reachability Regimes under Power-Law Impact}")
+    assert p_barriers < p_robustness < p_regimes < p_spectrum
+    abstract=new.split(r"\begin{abstract}",1)[1].split(r"\end{abstract}",1)[0]
+    assert "$" not in abstract and chr(92) not in abstract
+    for heading in (
+        "Model and Systemic Drawdown Criterion",
+        "Execution Resources and Turnover Bounds",
+        "Reachability under Bounded Execution Rates",
+        "Rolling Price Limits: Constrained Realizations",
+    ):
+        assert heading in new
+    assert "Construction of the severe-loss path" in new
+
     assert "The Flash Crash: High-frequency trading in an electronic market" in bib
     assert "The flash crash: high-frequency trading in an electronic market" not in bib
     # Verify scholarly meaning and citation placement rather than pinning
@@ -226,7 +247,7 @@ def main():
         "providing an intrinsic model scale",
         "multi-session proportional-reset price-band protocol",
         "records the benchmark value of inventory consumed",
-        "Together, these results clarify the structural and resource boundaries",
+        "The separation between structural exclusion, constructive reachability",
     ):
         assert phrase in new, ("Missing scientific/editorial content",phrase)
     citation_locations={
@@ -235,7 +256,7 @@ def main():
         "CetinJarrowProtter2004": r"\paragraph{From the conditional matching map to an effective response}",
         "RochSoner2013": r"\paragraph{Price-level resilience as a modeling choice}",
         "BressanRampazzo1988": r"\paragraph{Finite-variation paths and marginally settled pulses}",
-        "Subrahmanyam1994": r"\section{Systemic drawdowns under rolling price-band constraints}",
+        "Subrahmanyam1994": r"\section{Rolling Price Limits: Constrained Realizations}",
         "Tucker2011": r"\section{A reproducible interval certificate for the two-day construction}",
     }
     for key, location in citation_locations.items():
