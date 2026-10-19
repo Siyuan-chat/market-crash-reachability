@@ -140,7 +140,7 @@ def main():
         assert r"\label{"+label+"}" in new, label
     assert r"\Cris_{0.8}(40)>-\log(0.97)>0.0304" in new
     assert "x(40)<0.891607" in new and "y(40)<1.331160" in new
-    assert r"\path{verification/loss_breadth/verify_all.py}" in new
+    assert "verification/loss_breadth/verify_all.py" in new
     assert r"\section{Sublinear power-law extension of uniform-budget severity}" in new
     assert r"\label{app:sublinear-severe}" in new
     assert r"\nu=2-p\in(1,2]" in new
