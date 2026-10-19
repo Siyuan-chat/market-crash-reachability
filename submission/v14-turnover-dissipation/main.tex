@@ -912,6 +912,130 @@ Figure~\ref{fig:v7rates} displays the corresponding gross execution rates.
 \end{figure}
 \FloatBarrier
 
+
+\subsection{Further certified loss--breadth witnesses under rolling bands}\label{subsec:lossbreadth}
+The preceding certificate uses $3\%$ target bands and a $25\%$
+compensator band. We next compare it with a separate,
+\emph{uniform-band} model in which all ten assets have the same
+symmetric $\pm25\%$ proportional-reset band in each of two sessions.
+The other parameters remain $F=g(F)=1$, $\rho=0.4$,
+$T_1=20$, $T_2=40$, with terminal executed-dollar closure,
+per-asset gross share-rate cap $0.285$, and initial
+saleable inventory of two shares per asset.
+
+Let $d$ be the \emph{ordinary} terminal decline
+$1-S_i(T)/F$ of each qualifying asset, and put
+$d_G=1-\exp[-\overline L(T)]$ for the equally weighted
+geometric-index decline. A bound on $d$ alone does not imply
+that the market-average loss is of the same magnitude:
+the compensating assets may appreciate.
+
+\begin{proposition}[A uniform-band, fixed-budget loss--breadth witness]\label{prop:uniform-band-80pct}
+Under these uniform-band constraints with $N=10$ and
+$M<3$, an absolutely continuous paired-dollar control exists
+for which all per-asset terminal executed-dollar balances
+vanish, at least eight assets satisfy
+$S_i(40)<0.892F$, and
+\[
+\prod_{i=1}^{10}\frac{S_i(40)}{F}<(0.97)^{10}.
+\]
+Consequently $\Cris_{0.8}(40)>-\log(0.97)>0.0304$,
+while the eight qualifying assets each lose more than
+$10.8\%$ of their ordinary starting prices.
+All paths remain strictly inside the two resetting bands,
+with $r_i^{\rm gross}(t)<0.285$ and $H_i^-<2$.
+\end{proposition}
+\begin{proof}[Computer-assisted proof sketch]
+Choose the piecewise-constant, exact-rational target-dollar
+rates of case \texttt{R80-10} in the reproducibility package
+\path{verification/loss_breadth}. The eight target assets
+share dollar rate $q(t)$ and the two receivers have rate
+$-4q(t)$; the exact net integral of each rate is zero.
+A directed-rounded integer interval check encloses the
+resulting positive solutions and verifies the rolling bands,
+gross rates, cumulative share sales, and matched-dollar
+turnover, which equals $2.850336609376<3$. Its terminal
+upper enclosures give $x(40)<0.891607$ for each target and
+$y(40)<1.331160$ for each receiver, so
+$x(40)^8y(40)^2<(0.97)^{10}$ by a strict rational
+comparison. The implementation and comparison argument
+are specified in Appendix~\ref{app:lossbreadth}.
+\end{proof}
+
+\begin{table}[H]\centering\small
+\caption{Additional fixed-budget witnesses ($M<3$) under
+\emph{uniform} $\pm25\%$ two-session reset bands. Target
+and geometric-index declines are strict interval-checked
+lower bounds; turnover values are rounded displays of
+the exact executed-dollar masses. Each row is a separate
+control, and P3/P4 identify its verification-input group.
+These rows do not describe optimized frontiers.}
+\label{tab:lossbreadth-fixed}
+\begin{tabular}{@{}lrrrrr@{}}\toprule
+Coverage & Target $d$ & Geom.\ $d_G$ & Turnover $M$ & Rate upper & Source\\\midrule
+$5/10$   & $>22.29\%$ & $>4.00\%$ & $2.6000$ & $0.2162$ & P3\\
+$6/10$   & $>20.90\%$ & $>5.00\%$ & $2.8800$ & $0.2573$ & P3\\
+$7/10$   & $>16.40\%$ & $>4.00\%$ & $2.9700$ & $0.2828$ & P4\\
+$8/10$   & $>10.80\%$ & $>3.00\%$ & $2.8504$ & $0.2727$ & P3\\
+$9/10$   & $>8.00\%$  & $>3.00\%$ & $2.9701$ & $0.2830$ & P4\\
+$10/10$  & $>0.75\%$  & $>0.75\%$ & $2.9700$ & $0.2820$ & P4\\
+\bottomrule\end{tabular}
+\end{table}
+
+The original $9/10$ certificate in
+Proposition~\ref{prop:certified-v7} has $5.91\%$
+ordinary target losses and a rigorously established
+mean log loss above $0.020$; it imposes tighter $3\%$
+bands on the target assets and is therefore a different
+execution regime. In the uniform-band comparison,
+the verified geometric-index floors in
+Table~\ref{tab:lossbreadth-fixed} independently bound
+the market-average component of $\Cris_\alpha$, while
+the target ordinary-loss floors bound $Q_\alpha$.
+
+\begin{table}[H]\centering\small
+\caption{Resource sensitivity with only the executed-dollar
+turnover allowance changed; all price-band, rate,
+inventory, time, and dollar-closure constraints remain
+as above. These witnesses are outside the $M<3$
+comparison and establish feasible resource levels
+rather than minimum required turnover.}
+\label{tab:lossbreadth-relaxed}
+\begin{tabular}{@{}lrrrrr@{}}\toprule
+Coverage & Target $d$ & Geom.\ $d_G$ & Turnover $M$ & Budget & Source\\\midrule
+$7/10$  & $>20.00\%$ & $>6.00\%$ & $3.9601$ & $M<4$ & P4\\
+$7/10$  & $>20.20\%$ & $>6.00\%$ & $4.5995$ & $M<5$ & P3\\
+$10/10$ & $>2.00\%$ & $>2.00\%$ & $6.7320$ & $M<7$ & P4\\
+\bottomrule\end{tabular}
+\end{table}
+
+\begin{table}[H]\centering\small
+\caption{Fixed $M<3$ evidence matrix across target ordinary
+declines and minimum breadth. O denotes the previously
+certified original $9/10$ path, which also satisfies the
+looser uniform-band constraints; I denotes the new
+internally interval-checked controls; question marks
+indicate unresolved cells rather than impossibility.}
+\label{tab:lossbreadth-matrix}
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+Target $d$ & $50\%$ & $60\%$ & $70\%$ & $80\%$ & $90\%$ & $100\%$\\\midrule
+$2\%$ & O & O & O & O & O & ?\\
+$5\%$ & O & O & O & O & O & ?\\
+$10\%$ & I & I & I & I & ? & ?\\
+$20\%$ & I & I & ? & ? & ? & ?\\
+\bottomrule\end{tabular}
+\end{table}
+
+The new entries are internally interval-checked
+constructive witnesses in an exchange-agnostic market.
+They leave the unresolved cells open. The interval
+programs were separately cross-checked against
+high-accuracy ODE solvers; external interval-code
+audit and Lean formalization of these numerical cases
+remain distinct tasks.
+
+\FloatBarrier
+
 \section{Discussion and model extensions}\label{sec:discussion}
 \subsection{Economic accounting and execution burden}
 Recovery has two roles: for the price-level dynamics in Assumption~\ref{asmp:model}, it enters the curvature-based exclusion argument, but it also makes nontrivial terminal displacement possible under dollar closure. If $\rho=0$, $\dd\Phi(S_i)=\dd X_i$ and $X_i(T)=0$ implies $S_i(T)=F$ (Appendix~\ref{app:accounting}). For $\rho>0$, the identity \eqref{eq:cost} shows that the nonnegative terminal potential and cumulative recovery dissipation are financed by a reduction of net share inventory, valued at the fixed benchmark. For any terminally dollar-closed path $\gamma$, define this benchmark-valued inventory consumption by
