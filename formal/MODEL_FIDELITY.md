@@ -1,3 +1,5 @@
+> Original-baseline technical mapping with dated historical checkpoints. Current manuscript: [V14](../docs/VERSIONS.md); current formal scope: [manifest](ORIGINAL_RESULT_MANIFEST.md). Historical pending statements do not describe current acceptance.
+
 # M1–M5 formal-model fidelity audit
 
 ## Current original-model bridge (2026-10-17)

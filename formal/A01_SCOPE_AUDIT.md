@@ -46,7 +46,7 @@ instantaneous theorem also covers empty J, where its two sides are zero.
 
 Local fixed toolchain: Lean 4.19.0; Mathlib
 `c44e0c8ee63ca166450922a373c7409c5d26b00b`. Targeted compilation and full
-project build passed. Main agent inspected the proofs; an independent
+project build passed. Internal source inspection was recorded; an independent
 read-only scope review found no missing formula, sign error or strengthened
 economic hypothesis. Full axiom audit, release hashes and same-SHA CI are
 separate acceptance gates, recorded in `WHOLE_PAPER_LEAN_COMPLETION.md`.

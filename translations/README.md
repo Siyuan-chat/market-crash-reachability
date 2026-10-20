@@ -1,5 +1,7 @@
 # Complete research-edition drafts
 
+These translations follow the original V12 baseline, not the five V14 additions. For the current English manuscript and deposited versions, see [the version reference](../docs/VERSIONS.md).
+
 [简体中文](zh-CN/README.md) · [日本語](ja/README.md) · [Trilingual glossary](GLOSSARY.md)
 
 Both editions include the complete manuscript, proofs, appendices and supplement.

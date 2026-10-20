@@ -28,7 +28,7 @@ cash conditions are included in the larger class used for these necessary
 scalar inequalities. The reset-session terminology does not replace the
 unchanged fundamental benchmark F by each preceding close.
 
-Main agent read all source proofs and checked the three manuscript formulas,
+Internal review read all source proofs and checked the three manuscript formulas,
 positive part, maximum, integer quantifier and logarithm sign. Acceptance
 requires the separate full project/audit/hash/same-SHA CI gates in the single
 authoritative completion matrix.

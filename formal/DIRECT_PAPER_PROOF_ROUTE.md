@@ -1,24 +1,24 @@
+> Historical technical record. Applies to its named source revision; see [current versions](../docs/VERSIONS.md) and the current evidence matrix. Retained at this path for provenance and compatibility.
+
 # Direct Lean formalization route — 16 original numbered results
 
-**Objective:** prove the exact 16 numbered statements in `paper/main.tex`, with *minimum* extra mathematical abstraction. This supersedes the earlier strategy of solving the unrestricted countably atomic BV completed-graph problem before attempting 3.1/3.2.
+Historical route, 16 October 2026: the exact 16 numbered statements in `paper/main.tex` were the target. The route replaced the earlier proposed prerequisite of solving the unrestricted countably atomic BV completed-graph problem before 3.1/3.2. Final acceptance evidence is in [the completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md).
 
-## Scope discipline
+## Mathematical scope
 
-1. The **paper**, not an expanded mathematical model, is authoritative. M5 specifies piecewise-continuous finite-execution-variation paths with finitely many flow-completed instantaneous pulses. Do not demand a separate theorem for infinitely many atoms as a prerequisite. Do not quietly replace a continuous finite-variation piece by an absolutely-continuous piece; when needed, reuse `ContinuousWeakBVPriceSegment` and explicitly prove the primitive M2-to-weak-normal-form connection.
-2. Start from the existing audited Lean declarations. Avoid introducing a new engine/framework, full general-completed-graph existence, or ad hoc extra hypotheses just to make a theorem pass.
-3. **Measure delivery by 16 paper results with matching hypotheses**, not number of auxiliary lemmas. A theorem that assumes the key original physical price law as a new independent fact is only a restricted/conditional result.
-4. Only one canonical top-level Lean theorem per paper numbered result; add private/local helpers only when their proof is necessary. Reuse Mathlib FTC, convexity, integration, order-statistic, ODE comparison, interval and sum lemmas.
-5. Every delivered commit must have full same-SHA CI PASS (Lean build, complete axiom audit, hashes, other required workflows). Draft PR until exact-source scope audit.
+M5 specifies piecewise-continuous finite-execution-variation paths with finitely many flow-completed instantaneous pulses. A theorem for infinitely many atoms is therefore not a prerequisite. Continuous finite variation is broader than absolute continuity; the primitive M2-to-weak-normal-form connection is a separate proof obligation, represented by `ContinuousWeakBVPriceSegment`.
 
-## Immediate minimal bridge for 3.1/3.2
+Coverage concerns the 16 paper results with matching hypotheses, rather than auxiliary-lemma counts. A theorem assuming the original physical price law as an independent extra fact has only restricted or conditional scope. Exact-source scope audits, kernel builds and individual axiom audits supply the acceptance evidence linked in the completion matrix.
+
+## Historical bridge for 3.1/3.2
 
 Paper M2 + M3 + M4 imply on each continuous finite-variation execution piece
 
 `Φ(S_i(t)) - Φ(S_i(a)) = Σ_e B_ie (Z_e(t)-Z_e(a)) - ρ ∫_a^t [S_i(S_i-F)/g(S_i)] du`.
 
-This is exactly `ContinuousWeakBVPriceSegment.weak_physical_price_response`; do **not** assume it is a consequence of a generic BV path without proving the correct nonlinear Stieltjes/chain rule. At an instantaneous pulse, use the existing physically verified `FlowCompletedPulse.coordinate_endpoint`. For finitely many pieces, use the existing `RadiallyElasticWeakBVPriceReachable` induction; check that its price-only projection of M1–M5 is genuinely implied by all paper controls, preserving original positivity and admissibility (and the paper's attained-price elasticity condition).
+This is `ContinuousWeakBVPriceSegment.weak_physical_price_response`. Its derivation from a generic BV path requires the nonlinear Stieltjes/chain rule. At an instantaneous pulse, `FlowCompletedPulse.coordinate_endpoint` supplies the physical endpoint identity. For finitely many pieces, the `RadiallyElasticWeakBVPriceReachable` induction requires the price-only projection to follow from M1–M5 controls, preserving positivity, admissibility and attained-price elasticity.
 
-Then **re-use**, do not re-prove:
+Related audited ingredients at this checkpoint were:
 - `ContinuousWeakBVPriceSegment.potential_nonnegative_of_visited_elasticity`;
 - `RadiallyElasticWeakBVPriceReachable.no_all_asset_decline`;
 - `RadiallyElasticWeakBVPriceReachable.no_systemic_crisis_at_breadth`;
@@ -26,9 +26,9 @@ Then **re-use**, do not re-prove:
 
 No requirement for a universal countably-infinite atomic execution representation, a generic a.e.-FTC route, or arbitrary positive finite-prefix approximation. Those extensions are optional follow-up research rather than gates to the original 3.1/3.2.
 
-## Remaining paper-result closure order
+## Historical paper-result dependency outline
 
-| Paper result | Minimal proof ingredient; reuse before creating helpers |
+| Paper result | Proof ingredient |
 |---|---|
 | 3.1 / 3.2 | Above M2 continuous-BV chain rule + finite physical pulse joining; inherited radial elasticity and exact coverage statistic |
 | 7.1 | Finite-dimensional log-product and kth-largest loss identity, using existing `CrisisQuantile` |
@@ -43,4 +43,4 @@ No requirement for a universal countably-infinite atomic execution representatio
 | 4.1 | Assemble p=2/1/0 from proved components; prove finite caps and parameter uniformity in C |
 | 7.6 | Independently check the existing strict rational interval certificate via a small verified checker or Lean computation, *not* floating-point assertions |
 
-This is an **implementation order**, not a completion claim. Never add a theorem whose statement is a disguised rephrasing of the desired conclusion. Preserve original theorem quantifiers, all resource constraints and paper version.
+This outline records dependencies, not completion evidence. Original quantifiers, resource constraints and source versions determine each result's scope; the completion matrix records final acceptance.

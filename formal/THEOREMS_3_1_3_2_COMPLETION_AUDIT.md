@@ -1,3 +1,5 @@
+> Original-baseline technical mapping with dated historical checkpoints. Current manuscript: [V14](../docs/VERSIONS.md); current formal scope: [manifest](ORIGINAL_RESULT_MANIFEST.md). Historical pending statements do not describe current acceptance.
+
 # Theorems 3.1–3.2: proof-completion and adversarial Lean audit (2026-10-16)
 
 Status: **proof obligations specified; no new kernel-certified theorem in this document.** Canonical source is `paper/main.tex` (English V12 Final). Keep PR #10 Draft.

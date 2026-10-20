@@ -1,6 +1,6 @@
 # Original numbered-result verification manifest
 
-All 16 original substantive numbered results are accepted. The exact manuscript scopes, including the authorized Proposition 7.5 boundary correction, remain in the linked scope audits. This archival manifest accompanies the single current status entry [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md).
+All 16 original substantive numbered results are accepted. The exact manuscript scopes, including the documented Proposition 7.5 boundary correction, remain in the linked scope audits. This archival manifest accompanies the single current status entry [WHOLE_PAPER_LEAN_COMPLETION.md](WHOLE_PAPER_LEAN_COMPLETION.md).
 
 | Result | Canonical + official source | Scope / exact hypotheses | Accepted proof SHA | Kernel / axiom audit |
 |---|---|---|---|---|
@@ -14,7 +14,7 @@ All 16 original substantive numbered results are accepted. The exact manuscript 
 | Proposition 6.1 | [`MarketCrash.proposition_6_1_hypothetical_reset`](lean/MarketCrash/RateBand.lean#L359)<br>[`MarketCrash.proposition_6_1_rate_band`](lean/MarketCrash/RateBand.lean#L271)<br>[`MarketCrash.proposition_6_1_rate_only`](lean/MarketCrash/RateBand.lean#L327) | 速率+价格带下界及必要交易速度; [exact hypotheses and original-scope audit](A02_SCOPE_AUDIT.md) | `de95f967b533794677012281432b401aab4517b3` | [PASS](FINAL_AXIOM_AUDIT.json) |
 | Theorem 6.2 | [`MarketCrash.theorem_6_2_original`](lean/MarketCrash/QuadraticRateAttainment.lean#L191) | 常数冲击下全宽度精确二次小速率上界、可达阶与最小速率Theta; [exact hypotheses and original-scope audit](C04_SCOPE_AUDIT.md) | `e0196b317f0fb752d715fdfadfe9c9ba9faae698` | [PASS](FINAL_AXIOM_AUDIT.json) |
 | Theorem 6.3 | [`MarketCrash.theorem_6_3_original`](lean/MarketCrash/FiniteRateConstruction.lean#L1457) | 有连续速率及股数、价格带约束的实际下跌构造; [exact hypotheses and original-scope audit](C03_SCOPE_AUDIT.md) | `937f8d2e1bb5a2556abeb793ab6aaca723b5ddf5` | [PASS](FINAL_AXIOM_AUDIT.json) |
-| Proposition 7.1 | [`MarketCrash.proposition_7_1_original_endpoint`](lean/MarketCrash/CrisisQuantile.lean#L508)<br>[`MarketCrash.proposition_7_1_single_compensator`](lean/MarketCrash/CrisisQuantile.lean#L568) | 多日条件式终端危机触发、两种精确分位数情形及单补偿资产推论; [baseline conditional endpoint scope](WHOLE_PAPER_LEAN_COMPLETION.md#L38) | `772d72d6c3b819814ce39a165a1bb56ad6729ee6` | [PASS](FINAL_AXIOM_AUDIT.json) |
+| Proposition 7.1 | [`MarketCrash.proposition_7_1_original_endpoint`](lean/MarketCrash/CrisisQuantile.lean#L508)<br>[`MarketCrash.proposition_7_1_single_compensator`](lean/MarketCrash/CrisisQuantile.lean#L568) | 多日条件式终端危机触发、两种精确分位数情形及单补偿资产推论; [baseline conditional endpoint scope](WHOLE_PAPER_LEAN_COMPLETION.md#historical-result-acceptance-matrix) | `772d72d6c3b819814ce39a165a1bb56ad6729ee6` | [PASS](FINAL_AXIOM_AUDIT.json) |
 | Proposition 7.2 | [`MarketCrash.proposition_7_2_perpetual_and_integer`](lean/MarketCrash/RollingRate.lean#L219)<br>[`MarketCrash.proposition_7_2_rolling_streak`](lean/MarketCrash/RollingRate.lean#L158)<br>[`MarketCrash.proposition_7_2_single_session`](lean/MarketCrash/RollingRate.lean#L93) | 逐日涨跌停与速度的必需条件; [exact hypotheses and original-scope audit](A03_SCOPE_AUDIT.md) | `5c84995094b736c0231df6d804c8daad638bbfc7` | [PASS](FINAL_AXIOM_AUDIT.json) |
 | Theorem 7.3 | [`MarketCrash.theorem_7_3_original`](lean/MarketCrash/OriginalSecondSession.lean#L64) | 异质资产第二日全资产共同再下跌排除; [exact hypotheses and original-scope audit](B06_SCOPE_AUDIT.md) | `d538dd345c33a1ad970463b23aa6a34d1b69be5a` | [PASS](FINAL_AXIOM_AUDIT.json) |
 | Proposition 7.4 | [`MarketCrash.proposition_7_4_original`](lean/MarketCrash/OriginalPreconditioning.lean#L422) | 闭合美元账本下的多日预处理必要量; [exact hypotheses and original-scope audit](B05_SCOPE_AUDIT.md) | `131256911c0d21ff837a477cc63c8241ebcb27c7` | [PASS](FINAL_AXIOM_AUDIT.json) |
@@ -25,6 +25,6 @@ D01 provenance: [certificate identity, retained inputs and reproduction](D01_CER
 
 Scope cells link the authoritative exact hypotheses; descriptions are copied from the acceptance matrix, not inferred from theorem names.
 This is a same-source full-library audit snapshot (1224 audited declarations), not a competing project-status entry. Source names and canonical families were matched exactly to the actual integrity snapshot.
-It does not replace source-scope review or exact-commit CI (the separate SHA-256 gate was cancelled by the user). The authoritative acceptance status remains WHOLE_PAPER_LEAN_COMPLETION.md.
+It does not replace source-scope review or exact-commit CI . The authoritative acceptance status remains WHOLE_PAPER_LEAN_COMPLETION.md.
 
 The full-library audit was rerun after the 16/16 matrix update; the committed JSON is the actual checker output, with completion derived from the unique accepted matrix rows and audited canonical families. The proof-source acceptance commit is 15bec0e04613c040489b71a93595861ae5c82343; its four successful workflows are linked in the current status entry.

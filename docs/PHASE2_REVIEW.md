@@ -1,3 +1,5 @@
+> Historical technical record. Applies to its named source revision; see [current versions](VERSIONS.md) and the current evidence matrix. Retained at this path for provenance and compatibility.
+
 # Phase 2 local review and acceptance
 
 Review date: 2026-10-15. Canonical mathematical baseline: English V12 Final,
@@ -53,7 +55,7 @@ change PDF bytes on a later rebuild; canonical English PDFs are never replaced.
 
 ## Review findings and limitations
 
-Independent review checked formal scope and CI logic. The Lean installer was
+Historical internal review checked formal scope and CI logic. The Lean installer was
 corrected to use its absolute Elan executable within the installation step.
 Language review corrected two Japanese semantic role errors (shares versus time;
 small amplitude h versus k-th largest loss), restored M and MSC identifiers, and
@@ -75,35 +77,3 @@ English phrases inside math are deliberately retained. Language REVIEW files
 document these items. No new DOI, arXiv ID, journal acceptance or author ORCID
 has been invented. The original AI-assisted tools statement is retained in
 English and translated in both editions.
-
-## Local PR preview
-
-Proposed title: **Add partial Lean foundations and complete Chinese/Japanese research editions**.
-
-Proposed description: Add a pinned Lean project proving coordinate, conservation
-and p=0/1/2 response foundations, with a complete paper-result map and kernel
-axiom audit. Add complete Chinese/Japanese manuscript and supplement drafts,
-exact protected-math and compiled-number checks, fresh-source PDF builds and CI.
-The English mathematical baseline and interval proof are unchanged. Local kernel,
-translation and full Python reproduction checks pass; remote CI and author
-language/public-edition approval remain pending.
-
-No remote PR has been opened, no Phase 2 branch pushed, no public main merge,
-Tag, Release or Zenodo deposit has been performed.
-
-## Author's final acceptance checklist
-
-- [ ] Accept Chinese terminology and complete text, including supplement.
-- [ ] Accept Japanese terminology and complete text, including supplement.
-- [ ] Accept the clearly partial Lean scope and unfinished-results list.
-- [x] Confirm permission to publish the translated research editions; their
-      text/figures retain copyright and are excluded from software MIT. No CC
-      grant is presumed. Any future journal agreement needs separate review.
-- [x] Approve pushing the review branch and opening the public PR.
-- [ ] Run and review both new GitHub workflows on the real remote PR.
-- [ ] Approve public-main merge only after mathematical/language acceptance and CI.
-- [ ] Choose the final Release version; bind its commit/tag, PDFs, certificate,
-      source and checksums. No version DOI should be cited before it exists.
-
-The review package is a local preview. The software's existing MIT choice remains
-in force; it does not decide the publication status or reuse license of translations.

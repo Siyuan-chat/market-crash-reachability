@@ -1,3 +1,5 @@
+> Historical SIFIN layout edition of the original baseline. The current GitHub research manuscript is V14; see [versions](../../docs/VERSIONS.md).
+
 # SIFIN review edition
 
 This is a formatting-only edition of the canonical English V12 Final manuscript,

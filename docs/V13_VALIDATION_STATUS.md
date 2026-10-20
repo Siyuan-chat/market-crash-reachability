@@ -1,6 +1,6 @@
 # V13 validation and claim ledger
 
-**Current public English preprint: V13, 37 pages.** Published on Zenodo on
+**Historical V13 validation record; current GitHub manuscript: V14.** See [versions](VERSIONS.md). V13 has 37 pages. Published on Zenodo on
 18 October 2026: [10.5281/zenodo.23444647](https://doi.org/10.5281/zenodo.23444647).
 SSRN revision succeeded on 18 October 2026. Its public record, abstract 7622079,
 was verified to show 37 pages, the V13 abstract and revision date 18 October 2026.
@@ -39,12 +39,6 @@ their earlier meaning; no independent new certificate or Lean proof is claimed.
   d6e2606 software snapshot. The new manuscript DOI identifies V13, not new code
   or newly executed certificate verification.
 
-## Acceptance and publication history
+## Archival publication record
 
-The author explicitly authorized page-by-page writing review followed by SSRN,
-Zenodo and GitHub synchronization if satisfactory. Review and the listed
-editorial fixes are complete; no blocking writing issue remained. Zenodo V13
-and SSRN V13 are public. Earlier English PDFs and the code archive remain unchanged.
-
-Historical: the initial PR #11 draft required compilation and author acceptance;
-those pending-draft instructions are superseded by this review and authorization.
+V13 is recorded as public on Zenodo and SSRN. Earlier English PDFs and the fixed software archive remain unchanged. The checks above describe that editorial revision and do not certify V14 additions.

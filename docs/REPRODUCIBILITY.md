@@ -1,4 +1,4 @@
-# Reproducing V12 Final
+# Reproducibility: original baseline and V14
 
 Install Python 3.11 and run `python -m pip install .` in a fresh virtual
 environment. Dependencies are pinned in `pyproject.toml`. Python 3.10 is also
@@ -64,4 +64,29 @@ sequences, citations, equation numbers and SHA-256 identities. It reports
 differences; it does not automatically certify semantic equivalence. Inspect
 the difference ledger and rendered pages. Mathematical Unicode mappings may
 differ across TeX/font versions even when visible mathematics is unchanged.
-The completed local comparison is documented in PDFLATEX_ACCEPTANCE.md.
+The completed local comparison is documented in [PDFLATEX_ACCEPTANCE.md](PDFLATEX_ACCEPTANCE.md).
+
+## Separate reproduction targets
+
+| Target | Command from repository root | Scope and outputs |
+|---|---|---|
+| A. Original quick checks | `python scripts/run_checks.py quick` | Regression, symbolic identities and supplied original-certificate consistency; logs under `build/logs/` and generated reports under `data/`/`verification/` |
+| B. Original full certificate | `python scripts/run_checks.py full` | Adds the original 80,000-step outward-rounded certificate and byte comparison; not all V14 results |
+| C. V14 static checks | `python scripts/check_v14_resource_bound.py` | Compares retained theorem/equation content with V13, checks five additions and manuscript consistency; not a proof checker |
+| C. V14 build | `python scripts/build_v14_resource_bound.py` | Requires pdfLaTeX, BibTeX and packages in V14 source; uses retained SIAM template and earlier figure inputs; output `build/v14-turnover-dissipation/main.pdf` and build logs; preserves distributed PDFs |
+| D. V14 loss–breadth | `python verification/loss_breadth/verify_all.py` | Standard-library rational controls and integer outward rounding; input hashes and strict resource/band/ledger checks. Run without Python optimization. See certificate guide for per-case outputs |
+| E. Lean | Commands below | Pinned kernel build and full declaration axiom audit; original 16 result families only |
+
+```sh
+cd formal/lean
+lake exe cache get
+lake build
+cd ../..
+python formal/check_proof_integrity.py
+```
+
+Install Elan and the toolchain in `formal/lean/lean-toolchain` (Lean 4.19.0). `lake-manifest.json` pins Mathlib and transitive dependencies; use it rather than updating packages. Cache download requires network access. The integrity checker needs Python 3.11 and Lake on PATH, rejects unfinished proofs/custom axioms and writes `build/formal/` evidence. Only `propext`, `Classical.choice` and `Quot.sound` are permitted foundational axioms. Historical acceptance is not a fresh build of the current revision.
+
+Additional ordinary regression: `python scripts/check_sublinear_severe_extension.py`. Optional floating-point cross-check: `python verification/loss_breadth/verify_all.py --audit` (NumPy/SciPy required). Neither substitutes for analytical proof or an independent external audit. See [certificate methodology](../verification/loss_breadth/README.md), [evidence matrix](RESULTS_AND_EVIDENCE.md) and [versions](VERSIONS.md).
+
+Documentation QA: `python scripts/check_documentation.py`. Distributed-file integrity: `python scripts/check_hashes.py`. The current working-tree release manifest may track documentation changes; the immutable software archive and historical certificate input manifests retain their original identities. No blanket byte-identity requirement applies to PDFs rebuilt with different TeX environments.

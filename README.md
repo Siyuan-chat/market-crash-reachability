@@ -1,113 +1,61 @@
 # When Can Markets Crash Without News?
 
-**Siyuan Ye · V13 preprint · reproducibility companion (1.0.0rc1)**
+**Siyuan Ye · Mathematical finance and systemic risk · Latest GitHub manuscript: V14**
 
-**Research areas:** endogenous (news-free) market crashes, systemic risk, nonlinear price impact, resilient market microstructure, and mathematical reachability.
+Can trading generate systemic losses while fundamental values stay fixed? This research studies which losses are mathematically reachable in a resilient multi-asset market with nonlinear price impact, paired-dollar trading and terminal settlement. It studies structural feasibility under explicit assumptions, rather than forecasting actual crashes.
 
+**Read V14:** [Manuscript PDF](submission/v14-turnover-dissipation/manuscript.pdf) · [LaTeX source](submission/v14-turnover-dissipation/main.tex) · [Build provenance](submission/v14-turnover-dissipation/manuscript-build.json).
 
-In an idealized multi-asset market with fixed fundamentals and dollar-balanced
-trading, which systemic drawdowns are reachable without adverse fundamental
-news? This paper studies structural feasibility and execution constraints,
-rather than empirical crash prediction.
+V14 is publicly available on GitHub and now deposited on [Zenodo, DOI 10.5281/zenodo.23478787](https://doi.org/10.5281/zenodo.23478787) (46 pages, 20 October 2026). The deposited file checksum matches the repository PDF. V13 remains a preserved [Zenodo archival edition](https://doi.org/10.5281/zenodo.23444647). The live [SSRN record, abstract 7622079](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079), now reports 46 pages and a 19 October 2026 revision; its current PDF has not been matched to the GitHub source. No journal acceptance is asserted. [Version and archive reference](docs/VERSIONS.md).
 
-The mathematical approach uses **response-adapted generalized price coordinates**
-to express nonlinear price impact in the normal form
+## Model and research findings
+
+Positive prices start at a fixed fundamental benchmark F. Purchases and sales are dollar matched, each asset's signed executed-dollar ledger closes at the terminal time, and resilience pulls prices toward F. Response-adapted coordinates give the normal form
 
 ```math
-dy = B\,dz - \rho R(y)\,dt.
+dy=B\,dz-\rho R(y)\,dt.
 ```
 
-The results identify global elasticity barriers, an A/B/C reachability
-classification, execution-resource lower bounds, a finite-rate quadratic law,
-and a rigorously feasible two-session consecutive-limit-down construction.
-The computer-assisted existence certificate concerns one specified ten-asset
-path; analytical theorems rely on the proofs in the manuscript.
+For terminal log losses L_i=log(F/S_i), the systemic-loss statistic is C_alpha=min(mean(L), kth-largest(L)), with k=ceil(alpha N). A crisis at threshold delta requires both average loss and losses across at least k assets to reach delta. This is loss from a common benchmark, rather than rolling peak-to-trough drawdown.
 
-- **Zenodo preprint and supplement (V13):** [Published record](https://zenodo.org/records/23444647) · [DOI: 10.5281/zenodo.23444647](https://doi.org/10.5281/zenodo.23444647) · [All versions](https://doi.org/10.5281/zenodo.23427879)
-- **Archived code and reproducibility package:** [Zenodo software record](https://zenodo.org/records/23428183) · [DOI: 10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183), version `1.0.0rc1+git.d6e2606`, fixed at [commit d6e2606](https://github.com/Siyuan-chat/market-crash-reachability/tree/d6e2606590f955a6287c6945488a080e5acab004). Includes the source ZIP, provenance and SHA-256 checksum; later README DOI updates are outside this immutable snapshot.
-- **SSRN preprint:** [Published paper — Abstract ID 7622079](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079). V13 revision is public (37 pages, revised 18 October 2026); see [current status](docs/STATUS.md).
-- **Latest English preprint (V13, 37 pages, 18 October 2026):** [Manuscript PDF](submission/v13-review-response/manuscript.pdf) · [LaTeX](submission/v13-review-response/main.tex) · [Build and validation](submission/v13-review-response/README.md)
-- **Historical 33-page English edition (Zenodo v2):** [Manuscript PDF](submission/siam-language-revision/manuscript.pdf) · [DOI](https://doi.org/10.5281/zenodo.23438609). Superseded by V13; preserved unchanged.
-- **Earlier SIFIN edition:** [Manuscript PDF](submission/siam/manuscript.pdf) · [LaTeX](submission/siam/main.tex)
-- **SIFIN supplementary material:** [Supplement PDF](submission/siam/supplementary.pdf) · [LaTeX](submission/siam/supplementary.tex)
-- [SIFIN build instructions and author items pending](submission/siam/README.md)
-- [Mathematical results and code](docs/MATHEMATICAL_RESULTS.md)
-- [Verification scope](docs/VERIFICATION_SCOPE.md)
-- [Research overview and FAQ](docs/RESEARCH_OVERVIEW.md)
+- Response elasticity at least 1 excludes a decline in every asset; elasticity at least 2 excludes positive systemic losses under the barrier theorems' hypotheses.
+- The original A/B/C regimes distinguish exclusion, inventory-bounded severity and arbitrarily severe partial-coverage reachability. Execution resources, rates and price bands restrict these possibilities.
+- V14 extends severe partial-coverage reachability to each fixed power-law exponent 0<=p<1 with uniform finite resource bounds, and adds a turnover–dissipation bound and two robustness propositions. Bounds are not uniform as p approaches 1; the severe-loss theorem does not establish bounded gross-rate feasibility.
+- A specified original ten-asset two-session path is interval certified. V14 adds loss–breadth constructions under uniform rolling bands, with fixed and relaxed turnover budgets distinguished. Unfilled feasibility cells are open, not impossibility results.
 
-## Main findings at a glance
+## Proofs and computational evidence
 
-- **When are systemic drawdowns excluded?** Under the paper's paired-dollar, resilient model, response elasticity at least 2 excludes positive systemic drawdowns; elasticity at least 1 excludes a simultaneous decline of all assets.
-- **When can large losses be reached?** The A/B/C regimes differ across price-impact response functions. Partial-coverage severity is conditional on the impact law, execution horizon and permission for pulses.
-- **What do trading constraints change?** Dollar turnover, share inventory, bounded execution rates and daily price limits restrict feasible paths.
-- **What is rigorously constructed?** One specified ten-asset, two-session path with nine repeated lower-limit closes and a computer-certified systemic log-loss measure above 0.020.
+The manuscripts contain analytical proofs. The Lean source and historical acceptance manifest cover **16 original numbered results**, subject to their precise hypotheses and the recorded Proposition 7.5 boundary amendment. **The five V14 additions are not Lean-formalized.** The original interval certificate and newer internally checked loss–breadth certificates have different protocols and audit scope. Ordinary numerical regression is separate from rigorous interval verification; no independent external audit of the V14 additions is claimed.
 
-These results are theoretical and **do not predict real market crashes**. For exact hypotheses, the crisis definition and proof boundaries, read the [research overview and FAQ](docs/RESEARCH_OVERVIEW.md) and [theorem-to-code map](docs/MATHEMATICAL_RESULTS.md).
+Use the [result-to-evidence matrix](docs/RESULTS_AND_EVIDENCE.md) for stable labels, proof sources, commands and limitations, and the [Lean guide](formal/README.md) for pinned build instructions.
 
-## Research editions and Lean foundations
+## Reproduce
 
-- **V12 Final 原始研究版 (original research edition):** [Manuscript PDF](paper/manuscript.pdf) · [LaTeX](paper/main.tex) · [Supplement PDF](supplementary/supplementary.pdf) · [Supplement LaTeX](supplementary/supplementary.tex). This remains the canonical mathematical baseline; the main links above open the V13 English preprint.
-- **简体中文:** [complete manuscript and supplement sources, build and review status](translations/zh-CN/README.md).
-- **日本語:** [complete manuscript and supplement sources, build and review status](translations/ja/README.md).
-- [Trilingual glossary](translations/GLOSSARY.md) and [translation consistency and build instructions](translations/README.md).
-- [Lean formalization](formal/README.md): **16/16 original numbered results accepted**, with Lean 4.19.0, pinned Mathlib and a full 1,224-declaration axiom audit. See the [exact-scope result manifest](formal/ORIGINAL_RESULT_MANIFEST.md), [acceptance evidence](formal/WHOLE_PAPER_LEAN_COMPLETION.md) and [certificate provenance](formal/D01_CERTIFICATE_PROVENANCE.md). PR #10 remains Draft.
+Python 3.11 is the primary environment; dependencies are pinned in [pyproject.toml](pyproject.toml).
 
-The complete translation editions are publicly distributed with the author’s
-permission; their copyright statements remain unchanged. English remains the authoritative mathematical
-source. The Lean project covers the sixteen original numbered results and the
-concrete interval-certificate witness at the scopes recorded in the manifest.
-The user-authorized Proposition 7.5 boundary correction and the additional
-AC-session minimum-rate bracket are explicitly documented there.
-Generated translation PDFs are review/build artifacts rather than duplicated
-committed binaries. Paper and translation copyrights are separate from software MIT.
-
-## Quick start
-
-Python 3.11 is the primary CI environment. From the repository root:
-
-```bash
+```sh
 python -m venv .venv
-# Linux/macOS: source .venv/bin/activate
-# Windows PowerShell: .venv/Scripts/Activate.ps1
+# Activate .venv for your shell, then:
 python -m pip install .
 python scripts/run_checks.py quick
+python scripts/check_v14_resource_bound.py
+python verification/loss_breadth/verify_all.py
 ```
 
-## Full reproduction
+The original full 80,000-step certificate, V14 TeX build and Lean build have separate prerequisites and commands. Follow [REPRODUCE.md](REPRODUCE.md) and the [complete reproduction guide](docs/REPRODUCIBILITY.md). The original full suite does not reproduce every V14 extension.
 
-```bash
-python scripts/run_checks.py full
-python scripts/reproduce_figures.py
-python scripts/build_papers.py
-python scripts/check_hashes.py
-```
+## Scope, citation and rights
 
-The full suite regenerates the 80,000-step outward-rounded certificate and
-requires byte identity with the supplied final certificate. It also runs exact
-rational checks and an independent floating-point ODE comparison. See
-[reproduction instructions](docs/REPRODUCIBILITY.md) for requirements and outputs.
+The assets are hypothetical and normalized. The model does not estimate crash probabilities, explain a particular historical event or supply a trading strategy. Results depend on their response laws, settlement conventions, admissible controls and execution constraints.
 
-## Citation and rights
+Cite Siyuan Ye, *When Can Markets Crash Without News?*, V14 (2026), [10.5281/zenodo.23478787](https://doi.org/10.5281/zenodo.23478787), identifying the Git commit for repository computations. For the deposited V13 edition use [10.5281/zenodo.23444647](https://doi.org/10.5281/zenodo.23444647). The separate immutable software archive is [10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183), version `1.0.0rc1+git.d6e2606`, commit `d6e2606590f955a6287c6945488a080e5acab004`. [CITATION.cff](CITATION.cff) retains those fixed citation identities.
 
-Cite Siyuan Ye, *When Can Markets Crash Without News?*, V13 (2026),
-and identify the software version and commit used. Machine-readable metadata
-is in [CITATION.cff](CITATION.cff). The public repository is
-[Siyuan-chat/market-crash-reachability](https://github.com/Siyuan-chat/market-crash-reachability).
-The paper is available on [Zenodo](https://doi.org/10.5281/zenodo.23444647)
-and [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079).
-These are preprint records; no journal acceptance is asserted. The
-[CITATION.cff](CITATION.cff) metadata describes the reproducibility software.
-For the archived software snapshot, cite [DOI: 10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183)
-and commit `d6e2606590f955a6287c6945488a080e5acab004`; the paper DOI above identifies
-the manuscript and supplement, not the software archive. The archive preserves
-the mixed license scope in [NOTICE.md](NOTICE.md).
+Software is [MIT licensed](LICENSE); manuscripts, figures, translations and research artifacts retain the separate terms in [NOTICE.md](NOTICE.md). Academic AI-use declarations remain in the manuscripts.
 
-The code is licensed under [MIT](LICENSE). The paper, figures and research
-outputs have separate rights; no CC BY license has been applied. See
-[NOTICE.md](NOTICE.md) for the license scope and the
-[release checklist](docs/RELEASE_CHECKLIST.md).
+## Further reading
 
-The model uses idealized execution and hypothetical normalized assets.
-Feasibility under its assumptions is neither a claim about general financial
-markets nor a trading or forecasting result. Earlier exploratory displays in
-the supplement are numerical illustrations, not additional interval proofs.
+- [Research overview and FAQ](docs/RESEARCH_OVERVIEW.md)
+- [Results and evidence](docs/RESULTS_AND_EVIDENCE.md)
+- [Versions and archival records](docs/VERSIONS.md)
+- [Reproducibility](docs/REPRODUCIBILITY.md)
+- Original-baseline translations: [简体中文](translations/zh-CN/README.md) · [日本語](translations/ja/README.md) · [Translation guide](translations/README.md)

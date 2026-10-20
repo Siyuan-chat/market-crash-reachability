@@ -1,8 +1,10 @@
+> Historical technical record. Applies to its named source revision; see [current versions](../docs/VERSIONS.md) and the current evidence matrix. Retained at this path for provenance and compatibility.
+
 # Phase 4 — atomic BV completed-graph components and proof gates
 
 **Canonical baseline:** English V12 Final, manuscript M1–M5, Theorems 3.1–3.2.  
 **Merged base:** Phase 3 PR #9, main SHA `a591412e7cc0ad908014306b661ea4af5a6a3f4b`, 159 kernel/axiom-audited declarations.  
-**Work in progress:** [Draft PR #10](https://github.com/Siyuan-chat/market-crash-reachability/pull/10). Phase 4 candidate declarations are not to be counted as verified until the exact-head Lean CI and individual axiom audit pass.
+**Historical development:** [PR #10](https://github.com/Siyuan-chat/market-crash-reachability/pull/10). This record describes candidate Phase 4 declarations, rather than asserting their verification. Verification requires exact-source Lean CI and individual axiom evidence. Subsequent original-paper acceptance is recorded in the [completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md).
 
 ## Scope of the three new modules
 
@@ -43,7 +45,9 @@ The intended invariant is: at every partial trace and for every asset, its **act
 
 This is **not** a generic existence theorem for a trace of any simultaneous co-jump. If the ordered pulse sequence violates positivity or inventory at an internal step, it cannot inhabit the typed trace. Different feasible orders need not share the same intermediate prices and inventory profiles.
 
-## Remaining deep mathematical gates after atomic completion
+## Broader mathematical obligations at this checkpoint
+
+These obligations concern the historical general-BV route. The [direct-paper route](DIRECT_PAPER_PROOF_ROUTE.md) distinguishes the manuscript's finite-pulse scope from optional countably atomic extensions.
 
 1. **Full clock inverse/completed graph:** prove a globally defined Lipschitz time and edge-dollar graph over every clock gap, with order-preserving internal execution, connecting continuous time and all atoms. The current clock inverse is only defined on the actual (possibly discontinuous) clock image.
 2. **A.e. physical solution for the full BV class:** carry the non-atomic absolute-continuous and singular-continuous components in one common operational graph, and derive the physical price/share/ledger solution with positive prices/no-short inventory. A measure-level dollar ledger alone does not prove nonlinear price response.
@@ -51,10 +55,8 @@ This is **not** a generic existence theorem for a trace of any simultaneous co-j
 4. **Original-model inclusion:** verify every M1–M5-admissible finite-variation path has a faithful representation by the constructed graph with terminal per-asset ledger closure, and prove elasticity only on the attainable price set suffices, including the log/Jensen part of Theorem 3.2.
 5. **Separate research obligations:** other numbered paper results and the strict interval certificate of Proposition 7.6 remain outside these constructions.
 
-## Verification and publication discipline
+## Verification qualifications
 
-- Never install price-coordinate conservation as an independent physical-market assumption. Derive it from the marginal-price/share/dollar execution equations.
-- Do not equate a Lebesgue-a.e. derivative with an endpoint integral identity absent absolute continuity.
-- Keep original V12 Final mathematics, published documentation, and numerical certificates unchanged.
-- Audit each Lean theorem with the repository-wide no-sorry/no-axiom checker; preserve `release/SHA256SUMS`.
-- PR #10 remains Draft until exact tested SHA and verified scope have been recorded. No merge into main is implied by a draft implementation.
+- Price-coordinate conservation requires derivation from marginal-price/share/dollar execution equations; treating it as an independent assumption would change the proof scope.
+- A Lebesgue-a.e. derivative does not establish an endpoint integral identity without the necessary absolute-continuity argument.
+- Individual theorem axiom audits and exact-source identities distinguish verified results from candidate constructions. Historical committed-file identities are recorded in `release/SHA256SUMS`.

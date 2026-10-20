@@ -1,6 +1,6 @@
 # SIFIN V1.1 manuscript editorial migration
 
-The V14 source is being revised in PR #26. This is an **editorial manuscript reorganization**, not a new mathematical result or an independent mathematical peer review. The public historical V13 archive and all fixed numerical certificate inputs remain untouched.
+Historical editorial map for the current V14 source. See [versions](VERSIONS.md). This is an **editorial manuscript reorganization**, not a new mathematical result or an independent mathematical peer review. The public historical V13 archive and all fixed numerical certificate inputs remain untouched.
 
 ## Approved mathematical narrative
 
@@ -58,4 +58,4 @@ The main rolling-band text has been shortened while **preserving the original fo
 - Theorem and figure *printed numbers* may change after relocation, but all stable \`\\label\` identifiers remain unchanged.
 - Existing certified path and resource figures are not converted into empirical results.
 - CI checks evaluate stable mathematical statements, bibliography, source validity and LaTeX build.
-- **Independent mathematical proof review is deferred at the user's request.** A completed editorial merge must not be presented as completion of the independent proof audit.
+- **No completed independent mathematical proof review is claimed.** A completed editorial merge must not be presented as completion of the independent proof audit.

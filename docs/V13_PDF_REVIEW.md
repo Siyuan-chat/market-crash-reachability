@@ -1,3 +1,5 @@
+> Historical technical record. Applies to its named source revision; see [current versions](VERSIONS.md) and the current evidence matrix. Retained at this path for provenance and compatibility.
+
 # V13 page-by-page writing and PDF review — 18 October 2026
 
 Reviewed the complete rendered PDF and extracted text; the second-half prose

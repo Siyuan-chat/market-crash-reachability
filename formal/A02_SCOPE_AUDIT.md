@@ -30,7 +30,7 @@ needed for these mathematical conclusions.
 
 All three canonical branches (`proposition_6_1_rate_only`,
 `proposition_6_1_rate_band`, `proposition_6_1_hypothetical_reset`) are required
-for whole-result acceptance. Main-agent targeted Lean 4.19.0 compilation
+for whole-result acceptance. Recorded targeted Lean 4.19.0 compilation
 passed; independent read-only scope review confirmed all original clauses
 after removing future-session premises from the reset branch. Project
 audit, hashes and same-SHA CI remain distinct gates in the authoritative
