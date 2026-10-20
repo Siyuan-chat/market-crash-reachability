@@ -69,7 +69,7 @@ ARCHIVE below means historical material retained in place with an explicit scope
 
 The maintenance diff is measured from `5f34f4991640829cfa9b3585a4564d44cbc3f645` on the existing Lean cleanup branch. It changes documentation, a citation note, documentation QA/CI and the active working-tree release manifest only. No mathematical statement, hypothesis, analytical proof, Lean proof semantics, numerical algorithm/result, exact rational input, manuscript AI-use declaration, historical PDF, archive snapshot, tag or release was edited. The current release checksum file is maintained only for changed documentation paths; original numerical input manifests and archived software identities are preserved.
 
-This branch is based on `codex/lean-scope-cleanup`, one commit ahead of main at task start. Its existing module-removal commit is a separate dependency. A draft PR should target that branch so this PR contains no inherited scientific-source changes; main must not be merged automatically.
+This branch is based on `codex/lean-scope-cleanup`, one commit ahead of main at task start. Its existing module-removal commit is a separate dependency. Review base: `codex/lean-scope-cleanup`, isolating the documentation changes from those earlier scientific-source deletions. No merge is part of this maintenance delivery.
 
 ## Executed validation
 
@@ -82,14 +82,14 @@ The successful Python environment was 3.11.17 with NumPy 2.1.3, SciPy 1.14.1 and
 | `python scripts/check_sublinear_severe_extension.py` | PASS: ordinary numerical radial-control and ledger regression; not rigorous proof |
 | `python verification/loss_breadth/verify_all.py` | PASS: all twelve internally interval-checked retained controls and input/program hashes |
 | `lake build` in `formal/lean` | PASS with existing lint warnings after verified-identical project inputs allowed reuse of pinned local dependency/build cache. Initial uncached attempt failed cloning Mathlib through the unavailable proxy |
-| `python formal/check_proof_integrity.py` | See final result below; current full audit must complete before claiming PASS |
+| `python formal/check_proof_integrity.py` | PASS: 1,211 declarations audited; no unfinished proofs or extra axioms; all sixteen original canonical proof families present. This does not formalize the five V14 additions |
 | `python scripts/build_v14_resource_bound.py` | FAILED: Windows TemporaryDirectory ACL denied copying `main.tex`; preserved original builder unchanged |
 | Isolated fixed-directory pdfLaTeX/BibTeX build | PASS: same source/template/figure inputs, reference convergence, no unresolved citations, missing glyphs or overfull boxes. This is a separately identified fallback, not success of the original wrapper |
 | `python scripts/run_checks.py full` | Not rerun: heavy original certificate regeneration; original algorithms/inputs unchanged. Quick consistency and separate V14 interval checks executed |
 | `python scripts/check_documentation.py` | PASS: 69 Markdown files and 10 authoritative documents; local targets/anchors, version/scope markers, known DOI set, citation identities and program references |
 | Documentation checker regression fixtures | PASS: thirteen positive/negative fixtures covering broken assets/headings/line ranges, unknown DOIs, verified V14 DOI punctuation, current version, formal scope, script paths, citation DOI roles and legitimate disclosures/history |
 | CFF YAML parse and identity assertions | PASS: YAML syntax and fixed DOI/version/commit roles; a full CFF-schema validation was not rerun |
-| `python scripts/check_hashes.py` | Final result recorded below after active documentation manifest maintenance |
+| `python scripts/check_hashes.py` | PASS: 329 active manifest entries; changed documentation hashed with repository LF bytes. Historical input manifests and archive identities unchanged |
 | Protected-file byte comparison | PASS: 293 preexisting non-documentation files match baseline Git blob bytes exactly, including scientific source, PDFs, numerical inputs/algorithms, Lean source, archival files, licenses and existing workflows |
 | `git diff --check` | PASS: whitespace consistency; final staged scope reviewed before commit |
 
