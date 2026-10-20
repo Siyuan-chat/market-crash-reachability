@@ -69,7 +69,7 @@ ARCHIVE below means historical material retained in place with an explicit scope
 
 The maintenance diff is measured from `5f34f4991640829cfa9b3585a4564d44cbc3f645` on the existing Lean cleanup branch. It changes documentation, a citation note, documentation QA/CI and the active working-tree release manifest only. No mathematical statement, hypothesis, analytical proof, Lean proof semantics, numerical algorithm/result, exact rational input, manuscript AI-use declaration, historical PDF, archive snapshot, tag or release was edited. The current release checksum file is maintained only for changed documentation paths; original numerical input manifests and archived software identities are preserved.
 
-This branch is based on `codex/lean-scope-cleanup`, one commit ahead of main at task start. Its existing module-removal commit is a separate dependency. Review base: `codex/lean-scope-cleanup`, isolating the documentation changes from those earlier scientific-source deletions. No merge is part of this maintenance delivery.
+This branch was based on `codex/lean-scope-cleanup`, one commit ahead of main at task start. During delivery, that earlier cleanup was merged separately as PR #29. Main commit `9283ac7` has the identical tree to the original review base, so the documentation PR now targets `main` with the same documentation-only diff. No merge of this documentation PR is part of the maintenance delivery.
 
 ## Executed validation
 
