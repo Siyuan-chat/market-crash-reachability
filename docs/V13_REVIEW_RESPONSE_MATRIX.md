@@ -1,7 +1,9 @@
-# V13 reviewer-response matrix (work scope)
+> Historical technical record. Applies to its named source revision; see [current versions](VERSIONS.md) and the current evidence matrix. Retained at this path for provenance and compatibility.
+
+# V13 reviewer-response matrix — historical revision record, 18 October 2026
 
 Baseline: `submission/siam-language-revision/` at main commit `9616803c95985ac6eecd854338d0f9d35a9a27b0`.
-Target: `submission/v13-review-response/` on `revision/v13-review-response`.
+Resulting source: `submission/v13-review-response/` (historical branch `revision/v13-review-response`).
 Historical V12 `paper/`, Lean `formal/`, numerical `verification/` and
 `release/`, and published PDFs are frozen in this work package.
 
@@ -18,23 +20,21 @@ Historical V12 `paper/`, Lean `formal/`, numerical `verification/` and
 | M6 Heterogeneity | Explicit scope and differential-form obstacle for cross-impact | Sec 8 | Future work; no extension theorem claimed |
 | TSE attribution / Section 7 scope | Recast as exchange-agnostic rolling price-band analysis; retain venue-specific details only as institutional contrast | Secs 6,7,8 | Narrative-only; synthetic 3%/25% certificate untouched |
 | M7 Certificate and rate bracket | Preserve published interval certificate and distinguish rate bounds/optimization | Secs 7,8, availability | New 80,000-step audit and global rate optimum **not claimed** |
-| Minor terminology and framing | Clean up discussion, bibliography, source/reproduction provenance | Secs 1,8,9 and docs | Remaining layout validation tracked separately |
+| Minor terminology and framing | Clean up discussion, bibliography, source/reproduction provenance | Secs 1,8,9 and docs | Layout validation is documented in the linked review record |
 
-## Provenance and acceptance gates
+## Provenance and validation methods
 
-1. Run `python scripts/check_v13_revision.py`: assert exact identity of
+1. `python scripts/check_v13_revision.py` checks exact identity of
    all numbered assumption/definition/theorem/proposition bodies with the
    18 October published English source, and validate bibliography coverage.
-2. Run `python scripts/build_v13_revision.py`: BibTeX, repeated pdfLaTeX,
+2. `python scripts/build_v13_revision.py` uses BibTeX and repeated pdfLaTeX; its checks cover
    no unresolved references/citations, no overfull boxes or missing glyphs.
-3. Inspect all resulting rendered pages, floating tables, captions, and reference list.
+3. The all-page review covers rendered pages, floating tables, captions and the reference list.
 4. Original 80,000-step certificate remains evidence from the V12 archive.
-   A genuinely fresh rerun must be recorded separately before saying V13
-   independently regenerated it.
+   This revision does not constitute an independent regeneration of that certificate.
 5. The historical `manuscript.pdf` in the previous source directory is
-   **not** the V13 PDF. Do not modify its SHA and claim it corresponds to V13.
-6. Superseded on 18 October 2026: PR #11 is merged, and the author authorized
-   the completed PDF review followed by publication. See
+   **not** the V13 PDF; its SHA identifies that earlier artifact.
+6. On 18 October 2026, PR #11 was merged and the reviewed V13 edition was published. See
    [current validation/publication status](V13_VALIDATION_STATUS.md) and
    [all-page review](V13_PDF_REVIEW.md).
 

@@ -1,3 +1,5 @@
+> Historical technical record. Applies to its named source revision; see [current versions](VERSIONS.md) and the current evidence matrix. Retained at this path for provenance and compatibility.
+
 # Local acceptance report
 
 Acceptance date: 2026-10-15 (Asia/Tokyo).

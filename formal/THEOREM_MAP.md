@@ -1,3 +1,5 @@
+> Original-baseline technical mapping with dated historical checkpoints. Current manuscript: [V14](../docs/VERSIONS.md); current formal scope: [manifest](ORIGINAL_RESULT_MANIFEST.md). Historical pending statements do not describe current acceptance.
+
 # 论文结果与 Lean 基础映射
 
 状态日期：2026-10-17。权威文本paper/main.tex。原始编号严格验收 **16/16**；接受结果和精确同SHA CI见单一入口 WHOLE_PAPER_LEAN_COMPLETION.md 及下列逐项行。Theorem1.1是非正式概览，不单计第17项。除明确授权的A01边界外不改数学主张。
@@ -279,7 +281,7 @@ This bound is specific to terminal dollar closure and the absence of above-funda
 
 ## Proposition 7.5 — prop:market-cut
 
-证据：paper/main.tex:626。整项 Lean 状态：**PAPER_ACCEPTED，证明 SHA `772d72d6c3b819814ce39a165a1bb56ad6729ee6`，四项同 SHA CI 成功**。完整定理族为 `proposition_7_5_market_cut`、`proposition_7_5_ledger_derivative_bound`、`proposition_7_5_empty_complement`、`proposition_7_5_rolling_constant_impact`。原始价格积分方程到响应坐标积分由已证明的 Lipschitz FTC 导出，不预设端点式。用户明确批准非空 J 与零容量分支边界修正；逐项量词核对见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)。验收分子已从1提高到2；[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704394)；[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704369)；[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704465)；[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704392)。
+证据：paper/main.tex:626。整项 Lean 状态：**PAPER_ACCEPTED，证明 SHA `772d72d6c3b819814ce39a165a1bb56ad6729ee6`，四项同 SHA CI 成功**。完整定理族为 `proposition_7_5_market_cut`、`proposition_7_5_ledger_derivative_bound`、`proposition_7_5_empty_complement`、`proposition_7_5_rolling_constant_impact`。原始价格积分方程到响应坐标积分由已证明的 Lipschitz FTC 导出，不预设端点式。用户明确批准非空 J 与零容量分支边界修正；逐项量词核对见 [A01_SCOPE_AUDIT.md](A01_SCOPE_AUDIT.md)。[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704394)；[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704369)；[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704465)；[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39010704392)。
 
 ```latex
 \begin{proposition}[A market-cut capacity and consecutive-limit lower bound]\label{prop:market-cut}
@@ -303,7 +305,7 @@ When $J^c=\varnothing$, the hypothesized simultaneous strict decrease of all ass
 
 ## Proposition 7.6 — prop:certified-v7
 
-证据：paper/main.tex:660。整项Lean状态：**PAPER_ACCEPTED**。D01 Proposition 7.6 PAPER_ACCEPTED；证明 SHA `15bec0e04613c040489b71a93595861ae5c82343`；本地完整构建、1224项公理审计PASS；四项同SHA CI SUCCESS：[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033132044)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033082716)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828360)、[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828458)。本次不另列SHA-256验收门（用户最新决定）。 canonical `proposition_7_6_original`，完整范围见D01_SCOPE_AUDIT.md；固定市场附加bracket采用任意有限网络实际AC会话接口。
+证据：paper/main.tex:660。整项Lean状态：**PAPER_ACCEPTED**。D01 Proposition 7.6 PAPER_ACCEPTED；证明 SHA `15bec0e04613c040489b71a93595861ae5c82343`；本地完整构建、1224项公理审计PASS；四项同SHA CI SUCCESS：[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033132044)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033082716)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828360)、[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828458)。 canonical `proposition_7_6_original`，完整范围见D01_SCOPE_AUDIT.md；固定市场附加bracket采用任意有限网络实际AC会话接口。
 
 ```latex
 \begin{proposition}[A computer-assisted two-day rate certificate]\label{prop:certified-v7}

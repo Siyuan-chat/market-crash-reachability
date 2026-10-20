@@ -1,7 +1,9 @@
+> Historical technical record. Applies to its named source revision; see [current versions](../docs/VERSIONS.md) and the current evidence matrix. Retained at this path for provenance and compatibility.
+
 # Phase 2 — operational-clock physical response and BV proof gates
 
 **Canonical research baseline:** English V12 Final, M1–M5, Theorems 3.1/3.2.  
-**Tracker:** [Issue #5](https://github.com/Siyuan-chat/market-crash-reachability/issues/5), [Draft PR #7](https://github.com/Siyuan-chat/market-crash-reachability/pull/7).  
+**Historical development references:** [Issue #5](https://github.com/Siyuan-chat/market-crash-reachability/issues/5), [PR #7](https://github.com/Siyuan-chat/market-crash-reachability/pull/7).
 **Exact verified source:** `83213b607f362a828e5556cd4f09b7d315c3ded0`, [Lean 4.19/pinned Mathlib CI #38857616141](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/38857616141): **138/138 declarations kernel-checked and individually axiom-audited; no unfinished proofs or extra axioms**. Main's earlier regular physical-path stage had 76 audited declarations. This count records the formal statements actually present, **not** the whole paper.
 
 ## Formalized results and their exact scopes
@@ -24,21 +26,22 @@
 | M4 — paired network | Nonnegative cumulative directed-edge dollars, incidence cancellation, genuine per-asset physical ledger identity | Ordered multi-edge flow completion at BV jumps must preserve actual execution order |
 | M5 — finite variation, inventory, closure | Shares and prices checked at all internal operational points; finite share variation imposed; nonnegative rates yield edge BV; exact terminal per-asset ledger closure and finite trace concatenation | Prove that *every* manuscript-admissible finite-variation path can be represented; show inventory throughout each completed graph |
 
-## Remaining mathematical bottleneck: arbitrary BV completed graph
+## Historical proposed extension: arbitrary BV completed graph
 
-A physically timed cumulative dollar control `Z_e(t)` can have absolutely continuous, singular-continuous, and atomic parts. Merely imposing a physical-time ODE almost everywhere **misses** the singular-continuous dollars. The correct next abstraction is a **joint flow-completed operational graph**.
+The following obligations describe the broader graph route considered at this checkpoint. They are not current prerequisites for the original-paper results; the [direct route](DIRECT_PAPER_PROOF_ROUTE.md) explains the finite-pulse distinction, and the [completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md) records subsequent acceptance.
+
+A physically timed cumulative dollar control `Z_e(t)` can have absolutely continuous, singular-continuous, and atomic parts. Merely imposing a physical-time ODE almost everywhere **misses** the singular-continuous dollars. This historical route proposed a **joint flow-completed operational graph** with the following mathematical obligations:
 
 - Choose positive reference scales for time and executed dollars (to avoid adding incompatible physical units). Form a normalized cumulative variation clock from physical time plus total executed-dollar variation. Resolve its jumps by explicitly ordered internal execution arcs, retaining the original order of marginal settlement rather than assuming independent edge flows commute for inventory/positivity.
 - Prove existence of monotone **Lipschitz** completed-graph functions `t(u)` and `Z_e(u)`. They have derivatives almost everywhere, may have `t'(u)=0` on positive operational measure, and are not required to be differentiable at every `u`.
 - Define a physical Carathéodory/absolutely-continuous solution to the common-clock price, share, and dollar-ledger equations. Derive the coordinate a.e. chain rule `d Phi(S_i)/du = sum_e B_ie Z_e'(u) - rho*t'(u)*S_i(S_i-F)/g(S_i)`, **without assuming the transformed equation as the market law**.
 - Establish absolute continuity of `H(u)=sum_i Phi(S_i(u))` and of `exp(rho*t(u))*H(u)`; integrate its nonnegative a.e. derivative to propagate the potential barrier.
 - Transport positivity, no-short inventory, execution order, bounded variation, exact per-asset terminal closure and matched initial/terminal state through the representation. Prove both the inclusion relevant to every original M1–M5 path and the needed attainable-price interval coverage. Apply localized elasticity/Jensen and already proved exact crisis semantics.
-- Only then upgrade the **original manuscript's** fully quantified Theorems 3.1/3.2 to a verified claim. Treat other numbered propositions and the Proposition 7.6 rigorous interval certificate as **separate** proof projects.
+- This checkpoint alone did not establish the original manuscript's fully quantified Theorems 3.1/3.2. Other numbered propositions and the Proposition 7.6 rigorous interval certificate had separate proof obligations.
 
-## Review and reproducibility rules
+## Scope and reproducibility qualifications
 
-- Never assume generalized coordinate conservation or the potential barrier inside the **physical solution definition**. Both must be proved from physical price/share/ledger equations.
-- Distinguish `HasDerivAt` at every operational parameter (currently checked) from a.e. derivatives for Lipschitz completed graphs (still open).
-- Do not infer original manuscript statement equivalence from a larger *regular* trace class, a passing audit, or an unproved BV approximation argument.
-- Keep PR #7 **Draft**. Do not edit the canonical V12 Final manuscript, numerical certificate, published mathematics or main branch without separate review.
+- Generalized coordinate conservation and the potential barrier require derivation from physical price/share/ledger equations; including them in a solution definition would make the conclusion conditional.
+- `HasDerivAt` at every operational parameter was checked at this revision; a.e. derivatives for Lipschitz completed graphs were a separate open obligation at that checkpoint.
+- A larger regular trace class, a passing audit or an unproved BV approximation does not establish original-manuscript equivalence.
 - `python formal/check_proof_integrity.py` audits every project theorem individually for axiom dependencies, using `lake` and pinned Mathlib; `release/SHA256SUMS` tracks committed files. Verified source hashes are specific to the stated SHA.

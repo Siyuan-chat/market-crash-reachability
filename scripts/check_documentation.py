@@ -7,11 +7,13 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 PRIMARY = ['README.md', 'REPRODUCE.md', 'docs/STATUS.md',
            'docs/RESEARCH_OVERVIEW.md', 'docs/RESULTS_AND_EVIDENCE.md',
-           'docs/REPRODUCIBILITY.md', 'docs/VERSIONS.md', 'formal/README.md']
+           'docs/REPRODUCIBILITY.md', 'docs/VERSIONS.md', 'formal/README.md',
+           'submission/README.md', 'submission/v14-turnover-dissipation/README.md']
 # Historical technical records and manuscript disclosures are checked for links,
 # but current-version/workflow rules apply only to the explicit primary set.
 KNOWN_DOIS = {'10.5281/zenodo.' + x for x in
-              ('23444647', '23428183', '23427879', '23438609', '23427880')}
+              ('23444647', '23428183', '23427879', '23438609', '23427880', '23478787')}
+KNOWN_DOIS.add('10.2139/ssrn.7622079')
 
 def check():
     errors = []
@@ -37,8 +39,10 @@ def check():
                 errors.append(f'{name}: missing link target {target}')
             elif '#L' in target and resolved.is_file():
                 line = re.fullmatch(r'L(\d+)(?:-L(\d+))?', target.split('#', 1)[1])
-                if line and not 1 <= int(line.group(1)) <= len(resolved.read_text(encoding='utf-8').splitlines()):
-                    errors.append(f'{name}: invalid line anchor {target}')
+                if line:
+                    last = int(line.group(2) or line.group(1))
+                    if not 1 <= int(line.group(1)) <= last <= len(resolved.read_text(encoding='utf-8').splitlines()):
+                        errors.append(f'{name}: invalid line anchor {target}')
             elif '#' in target and resolved.suffix.lower() == '.md':
                 fragment = unquote(target.split('#', 1)[1])
                 headings = re.findall(r'(?m)^#{1,6}\s+(.+?)\s*#*$', resolved.read_text(encoding='utf-8'))
@@ -50,6 +54,7 @@ def check():
         source = (ROOT / name).read_text(encoding='utf-8')
         for pattern in (r'(?i)current public English preprint: V13',
                         r'(?i)latest English preprint \(V13',
+                        r'(?i)Unpublished draft; not the preferred citable preprint',
                         r'(?i)authoritative execution queue',
                         r'(?i)continue autonomously through this queue',
                         r'(?i)V14.{0,30}(?:is fully|entirely) Lean.formalized',
@@ -57,7 +62,8 @@ def check():
                         r'(?i)V14.{0,30}(?:journal.accepted|has a DOI)'):
             if re.search(pattern, source):
                 errors.append(f'{name}: contradictory or operational text: {pattern}')
-        for doi in re.findall(r'10\.5281/zenodo\.\d+', source):
+        for doi in re.findall(r'10\.\d{4,9}/[-._;()/:A-Za-z0-9]+', source):
+            doi = doi.rstrip(').,;:')
             if doi not in KNOWN_DOIS:
                 errors.append(f'{name}: unreviewed DOI {doi}')
         for command_path in re.findall(r'python\s+((?:scripts|verification|formal)/[\w/.-]+\.py)', source):

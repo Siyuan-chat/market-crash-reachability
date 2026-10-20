@@ -1,3 +1,5 @@
+> Historical technical record. Applies to its named source revision; see [current versions](VERSIONS.md) and the current evidence matrix. Retained at this path for provenance and compatibility.
+
 # Changes from the supplied V12 Final package
 
 The original ZIP and full extracted history are retained outside the publication

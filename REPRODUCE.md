@@ -1,6 +1,3 @@
-# Reproducing V12 Final
+# Reproduce the research
 
-The maintained final-version instructions are in
-[docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md).
-Run all Python commands from this repository root. Compile LaTeX in each
-document's own directory, as handled by `scripts/build_papers.py`.
+Start with [the reproducibility guide](docs/REPRODUCIBILITY.md), which separates the original baseline, V14 manuscript checks, loss–breadth certificates and pinned Lean build. Run commands from the repository root. [Versions](docs/VERSIONS.md) and [evidence scope](docs/RESULTS_AND_EVIDENCE.md) identify what each command establishes.

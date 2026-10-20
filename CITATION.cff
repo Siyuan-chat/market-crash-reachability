@@ -43,6 +43,12 @@ preferred-citation:
   url: "https://zenodo.org/records/23444647"
   notes: >-
     V13 public preprint (37 pages, 18 October 2026) with supplementary material.
-    The same V13 revision is public on SSRN (37 pages, revised 18 October 2026):
+    SSRN historically carried V13; its live record checked 20 October 2026
+    reports 46 pages, revised 19 October 2026. Exact current PDF/source
+    identity is not established here. SSRN record:
     https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079.
+    The preferred DOI above identifies the fixed Zenodo V13 edition.
+    A newer V14 manuscript deposit was verified on 20 October 2026:
+    https://doi.org/10.5281/zenodo.23478787. Its new code is outside the
+    immutable software snapshot identified by this CFF file.
     This is a preprint citation, not a claim of journal acceptance.

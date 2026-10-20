@@ -1,8 +1,8 @@
-# V14 turnover--dissipation research draft
+# V14 public research manuscript
 
 **[Open the compiled V14 manuscript PDF](manuscript.pdf)** · [Build provenance](manuscript-build.json).
 
-The PDF is built by GitHub Actions and committed to this directory after a successful source/build check. V14 is still an unpublished research draft; the public citable preprint remains V13.
+The PDF is built by GitHub Actions and committed to this directory after a successful source/build check. V14 is the latest publicly available GitHub research manuscript. V14 was deposited on [Zenodo, DOI 10.5281/zenodo.23478787](https://doi.org/10.5281/zenodo.23478787), on 20 October 2026; its displayed checksum matches this PDF. V13 remains a preserved archival edition. No journal acceptance is asserted. See [versions](../../docs/VERSIONS.md).
 
 
 This **complete English manuscript source** extends the published V13 preprint.
@@ -15,7 +15,7 @@ as p approaches 1 or finite gross-rate feasibility are claimed.
 See [new theorem proof audit](../../docs/V14_SUBLINEAR_SEVERE_PROOF_AUDIT.md).
 
 The new **Proposition 5.2 (Turnover--dissipation bound under constant impact)**
-and its formal proof appear in Section 5 of [main.tex](main.tex), with
+and its analytical proof appear in Section 5 of [main.tex](main.tex), with
 a time-kernel interpretation and three distinct sharpening directions in
 the Discussion. [Detailed proof audit](../../docs/V14_TURNOVER_DISSIPATION_AUDIT.md).
 
@@ -36,7 +36,7 @@ observations or empirical calibration and are not included in the
 historical Lean formalization.
 
 The published V13 manuscript, PDF, Lean proofs, and archived numeric certificates
-are unchanged. This GitHub research draft now includes new internally verified numerical witnesses, but does not claim optimal controls or impossibility results, and has not yet been deposited on Zenodo/SSRN. The additional V14 propositions and sublinear-impact severe-loss theorem,
+are unchanged. This GitHub research manuscript now includes new internally verified numerical witnesses, but does not claim optimal controls or impossibility results. The fixed [V14 Zenodo deposit](https://doi.org/10.5281/zenodo.23478787) is verified; see [versions](../../docs/VERSIONS.md) for the newer live SSRN revision and unresolved PDF/source identity. The additional V14 propositions and sublinear-impact severe-loss theorem,
 including the two Section 8 robustness propositions, have not been
 Lean-formalized and are not counted in the original 16/16 Lean acceptance report.
 
@@ -82,7 +82,7 @@ or negative reachability results. The original main theorem statements,
 the original comparison table (now in Appendix I), and the published V13 snapshots are preserved.
 
 
-## SIFIN V1.1 editorial candidate
+## SIFIN V1.1 editorial organization
 
 The SIFIN V1.1 revision groups the manuscript around structural barriers,
 reachability regimes, and execution resources. Its Introduction is rewritten,

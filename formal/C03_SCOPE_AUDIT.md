@@ -18,7 +18,7 @@ quantified common-constant family: `theorem_6_3_original_family`.
 The full proof preserves finite original execution and uses no instantaneous
 pulses for this witness. The common epsilon and positive c,C,D are chosen
 before the amplitude; they support the subsequent attained-order theorem.
-The main agent checked the complete manuscript statement and the explicit
+Internal review checked the complete manuscript statement and the explicit
 physical-realization relation before integration.
 
 C03 Theorem 6.3 PAPER_ACCEPTED；证明 SHA `937f8d2e1bb5a2556abeb793ab6aaca723b5ddf5`；本地完整构建、593项公理审计及269项发布哈希PASS；四项同SHA CI SUCCESS：[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658676)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658720)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658705)、[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39018658632)。

@@ -16,7 +16,7 @@ Source: paper/main.tex, thm:critical and app:sharp. Canonical theorem:
 | Finite turnover and sufficiently large finite inventory | The same finite trace exposes a finite paired-turnover cap and finite initial-inventory cap; the sibling also exposes a finite cap on actual cumulative net share sales, rather than substituting an edge-gross quantity. These caps may depend on delta, as allowed here. |
 | True full-coverage crisis and unattained supremum | All terminal prices equal F*exp(-delta), hence the actual full-coverage crisis is at least delta. The actual feasible severity set is nonempty and bounded above; its real supremum equals critical. The universal strict bound excludes the critical value and every larger threshold. |
 
-The main agent compared the complete original theorem and construction
+Internal review compared the complete original theorem and construction
 appendix against the canonical theorem and its actual economic witness.
 Additional zero-time isotropic transport stops simplify full-state joins;
 they are finitely many legal original pulses and preserve every recovery

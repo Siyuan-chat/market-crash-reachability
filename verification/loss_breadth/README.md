@@ -65,8 +65,7 @@ never mathematical impossibility.
 
 The two source research packages were produced on 2026-10-18. The original
 phase-3 certificate suite and phase-4 checker are preserved with only the
-following small operational changes: output paths use this directory instead
-of /mnt/data; a no-op NumPy import was removed from the proof-critical
+following small operational changes: output paths use this directory relative to the retained package; a no-op NumPy import was removed from the proof-critical
 phase-4 checker; the compact exact controls were extracted from the preserved
 phase-4 certificate JSON outputs. The phase-4 checker still contains an
 optional legacy CLI referencing optimizer inputs; `verify_all.py` instead

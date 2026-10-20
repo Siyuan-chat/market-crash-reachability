@@ -1,8 +1,10 @@
+> Historical technical record. Applies to its named source revision; see [current versions](../docs/VERSIONS.md) and the current evidence matrix. Retained at this path for provenance and compatibility.
+
 # Phase 3 — a.e. physical BV-response bridge and completed-graph obligations
 
 **Research source:** English V12 Final, Assumption M1–M5 and Theorems 3.1/3.2.  
 **Accepted base on main:** Phase 2 merged through PR #7, 138 declarations kernel-checked on the branch before merging.  
-**Phase 3 development:** [Draft PR #9](https://github.com/Siyuan-chat/market-crash-reachability/pull/9). No theorem in this stage is a whole-BV manuscript theorem.
+**Historical Phase 3 development:** [PR #9](https://github.com/Siyuan-chat/market-crash-reachability/pull/9). No theorem at this checkpoint was a whole-BV manuscript theorem. Subsequent original-scope acceptance is recorded in the [completion matrix](WHOLE_PAPER_LEAN_COMPLETION.md).
 
 ## Verified intermediate milestone
 
@@ -23,7 +25,7 @@ The file `StieltjesVariationClock.lean` derives, for any ordered times `s≤t`,
 - `λ·μ_e((s,t]) ≤ u(t)-u(s)` for every edge `e`, where `μ_e` is its **actual** Lebesgue–Stieltjes measure;
 - `u` is monotone.
 
-The clock `u` can jump when trading contains atoms. These inequalities **do not** construct the completed graph, prove an inverse is 1-Lipschitz, or define execution order within simultaneous atoms. Do not infer any of those claims solely from the clock estimate.
+The clock `u` can jump when trading contains atoms. These inequalities **do not** construct the completed graph, prove an inverse is 1-Lipschitz, or define execution order within simultaneous atoms. The clock estimate alone does not establish those claims.
 
 ### Clock inverse on its actual image (new 159 milestone)
 
@@ -51,7 +53,7 @@ With the **global** elasticity-1 condition, it proves that `d/du {exp(rho·t(u))
 
 This is a **genuine physical-model-to-coordinate a.e. chain-rule proof for the typed operational solution**. It does **not** yet show that *all original BV controls admit such a solution/parameterization*. That inclusion is the mathematically central unfinished part.
 
-## Next analytical gate: a.e. derivative versus endpoint comparison
+## Historical analytical gap: a.e. derivative versus endpoint comparison
 
 A nonnegative derivative almost everywhere does **not** imply that a continuous real function is monotone. The Cantor function is the standard counterexample. Absolute continuity is needed.
 
@@ -63,19 +65,18 @@ Under this explicitly stated FTC identity, `J'(u)≥0` a.e. and `H(a)≥0` yield
 
 **This is not yet the manuscript's BV potential barrier:** the FTC identity must be **proved** from the completed graph's absolute continuity and positive-price response, rather than installed as a new market assumption. In particular, global Lipschitzness of the individual physical components alone is not a proof term for that identity in Lean; composition/local derivative bounds and the a.e. FTC still need a kernel-checked development with the pinned dependencies.
 
-## Remaining original M1–M5 model-equivalence gates
+## Model-equivalence obligations at this checkpoint
 
 1. **From original control to completed graph.** For the full finite-variation, piecewise-continuous controls and finitely many marginally settled pulses, construct a parameterized common graph. Fill every jump explicitly, preserving the directed edge execution order and nonnegative cumulative rates; verify physical time is nondecreasing. An inverse-graph existence theorem and correct handling of co-jumps are still absent.
-2. **Physical response solution.** Construct or verify the weak/measure price-share-ledger solution for those controls, including singular-continuous transactions and ordered jump arcs. Then prove the resulting `S_i, theta_i, X_i` meet the `AEOperationalClockSegment` hypotheses with suitable extensions. Do not simply assert the generalized price-coordinate equation.
+2. **Physical response solution.** This obligation required a weak/measure price-share-ledger solution for those controls, including singular-continuous transactions and ordered jump arcs, and a proof that `S_i, theta_i, X_i` meet the `AEOperationalClockSegment` hypotheses with suitable extensions. The generalized price-coordinate equation required derivation from that solution.
 3. **Absolute continuity and FTC.** Prove the integrating factor `J` is locally absolutely continuous and satisfies its a.e. derivative integral identity. The verified a.e. derivative proof, inverse-clock estimates and the conditional FTC theorem are not by themselves the original all-BV endpoint comparison.
 4. **Model side conditions.** Prove strict positive prices at *every* internal graph point, no-short inventory throughout each jump, finite total variation, correct physical-time matching and exact terminal **per-asset** dollar closure for the whole constructed path.
 5. **Attainable-price curvature.** Extend the radial/visited-price argument and the log-Jensen argument to the complete original path, including internal jump prices and all concatenations. The current multi-segment barrier uses stronger global elasticity premises.
 6. **Original paper theorem scope.** Only after all gates can the full M1–M5 quantifiers in manuscript Theorems 3.1/3.2 be declared Lean-verified. Other numbered results and Proposition 7.6's interval certificate are separate verification projects.
 
-## Proof and process rules
+## Proof-scope qualifications
 
-- No `sorry`, custom axioms, or assumed generalized-price conservation.
-- Label all new statements according to their actual scope: one-edge Stieltjes, operational smooth, or a.e. Lipschitz.
-- A conditional lemma exposing the FTC premise is valuable, but must never be counted as a complete physical BV barrier.
-- Only report an axiom-audit success for the **exact tested Git SHA**.
-- No change to the canonical paper, resource certificates or `main` as part of Phase 3. Keep PR #9 Draft until the next proof gates and review are complete.
+- The cited audit found no unfinished proofs or custom axioms; generalized-price conservation was derived from the physical equations.
+- One-edge Stieltjes, operational smooth and a.e. Lipschitz statements have distinct scopes.
+- A conditional FTC lemma does not establish a complete physical BV barrier.
+- Axiom-audit success applies to the exact tested Git SHA.
