@@ -1,5 +1,12 @@
 # Lean formalization — sixteen original results
 
+Maintenance, 2026-10-20: removed the superseded `SmoothMarket`,
+`WeakBVFiniteExecution` and `WeakBVOriginalCrisis` modules, their three imports
+and thirteen audit entries. All sixteen original canonical proof families are
+retained. The current local verification status is recorded in the
+[single status entry](WHOLE_PAPER_LEAN_COMPLETION.md). The 1,224-declaration
+audit below and `FINAL_AXIOM_AUDIT.json` describe the historical accepted source.
+
 2026-10-17: Original-paper acceptance is **16/16**. Proposition 7.6 proof SHA `15bec0e04613c040489b71a93595861ae5c82343` passed the full local Lean 4.19.0 build, 1224-declaration standard-axiom audit and all four exact-SHA workflows. Every original numbered result is accepted; PR #10 remains Draft. See the [single current status entry](WHOLE_PAPER_LEAN_COMPLETION.md).
 
 ## Historical proof checkpoints (superseded)

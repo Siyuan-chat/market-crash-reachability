@@ -1,5 +1,17 @@
 # Lean 全文验收清单与证据（2026-10-17）
 
+## 当前维护：2026-10-20 冗余模块清理
+
+用户授权移除 `SmoothMarket`、`WeakBVFiniteExecution`、`WeakBVOriginalCrisis`
+三个已由原始物理路径证明取代且不再被编号结果依赖的历史模型模块；同步移除
+总入口的三条导入及十三条公理审计项。原始十六项 canonical proof families 保留，
+V14 新增结果不在本次清理范围内。
+
+本次固定 Lean 4.19.0/Mathlib 完整本地构建 PASS；1211 条定理的 kernel/axiom 审计 PASS，十六项 canonical proof families 全部保留，无未完成证明或额外公理。
+下文 1224 条声明与原证明 SHA 的记录，以及 `FINAL_AXIOM_AUDIT.json`，均为保留的
+历史验收证据。清理变更提交后的精确 SHA 与 GitHub CI 结果由对应维护 PR 记录。
+本地维护证据包括完整构建、公理审计、发布清单检查及修改前备份。
+
 当前验收 **16/16**，目标 **16/16** 已达成。D01 Proposition 7.6 PAPER_ACCEPTED；证明 SHA `15bec0e04613c040489b71a93595861ae5c82343`；本地完整构建、1224项公理审计PASS；四项同SHA CI SUCCESS：[translations](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033132044)、[siam](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39033082716)、[verify](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828360)、[lean](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39032828458)。本次不另列SHA-256验收门（用户最新决定）。 全部原始编号结果的量词与物理模型范围见下表及各项审查。PR #10保持Draft；本入口单写入。
 
 **权威原文**：English V12 Final，见 `paper/main.tex`；具体原文映射见 [THEOREM_MAP.md](THEOREM_MAP.md)。**源代码证明范围以 Lean 定理的精确量词与假设为准，不能以声明总数量代替全文完成度。**
