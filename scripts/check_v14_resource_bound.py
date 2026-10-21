@@ -280,6 +280,9 @@ def main():
     assert "Above-benchmark excursion required for a dollar-closed limit-down streak" in new
     # The working V14-R1 abstract leads with geometry and two cases instead
     # of duplicating the complete theorem hypotheses in four long clauses.
+    # Hard line wrapping in LaTeX should not change the meaning of a
+    # prose validation gate. Keep the exact semantic phrases below.
+    abstract_prose = re.sub(r"\s+", " ", abstract).strip()
     for phrase in (
         "Dollar-neutral trading need not be price-neutral",
         "state-dependent price impact",
@@ -291,9 +294,9 @@ def main():
         "unattained horizon-dependent ceiling",
         "not crash probabilities",
     ):
-        assert phrase in abstract, ("Missing revised abstract meaning", phrase)
-    assert abstract.count("In an idealized ten-asset") == 1
-    assert abstract.count("an interval-certified") == 1
+        assert phrase in abstract_prose, ("Missing revised abstract meaning", phrase)
+    assert abstract_prose.count("In an idealized ten-asset") == 1
+    assert abstract_prose.count("an interval-certified") == 1
     assert r"All subsequent results use Assumption~\ref{asmp:model} unless stated otherwise." in new
     assert "All subsequent theorems use the same market definition" not in new
     regime=new.split(r"\section{Reachability Regimes under Power-Law Impact}",1)[1].split(
