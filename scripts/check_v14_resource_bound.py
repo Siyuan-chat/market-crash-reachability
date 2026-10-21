@@ -205,7 +205,18 @@ def main():
         r"\section*{Declaration on AI-assisted tools}",1)[0]
     for label in ("app:v7certificate","app:loss-breadth","app:sublinear-severe"):
         assert r"\ref{"+label+"}" in availability, ("Missing code availability reference",label)
-    assert "establishing elasticity barriers for that alternative model requires a separate curvature analysis" in new
+    # V14-R1 rewrites the resilience discussion with explicit volume-coordinate
+    # identities and separates preserved resource bounds from unproved barriers.
+    for required in (
+        r"\label{subsec:resilience-metric}",
+        r"\dot V=-\rho V",
+        r"\dd^2\Phi/\dd V^2=g(S)>0",
+        r"S V(S)>\Phi(S)",
+        r"\rho\int_0^T(S_i-F)V(S_i)\dd t",
+        r"Theorem~\ref{thm:resource}",
+        r"elasticity barriers",
+    ):
+        assert required in new, ("Missing volume-recovery scope", required)
     assert "requires adequate execution capacity" in new
     assert "time-resolved transaction and order-book observations" in new
 
@@ -267,16 +278,22 @@ def main():
     assert "These studies motivate the question without implying" not in new
     assert r"All subsequent results use Assumption~\ref{asmp:model} unless stated otherwise." in new
     assert "Above-benchmark excursion required for a dollar-closed limit-down streak" in new
-    assert "Under constant per-share impact, full-coverage drawdowns obey a sharp" in abstract
-    assert abstract.count("Under constant per-share impact") == 1
-
+    # The working V14-R1 abstract leads with geometry and two cases instead
+    # of duplicating the complete theorem hypotheses in four long clauses.
     for phrase in (
-        "price-level recovery toward a fixed fundamental benchmark",
-        "bounded below by two throughout the admissible price range",
-        "an elasticity bounded below by one throughout that range",
-        "whereas finite gross execution-rate constraints yield",
+        "Dollar-neutral trading need not be price-neutral",
+        "state-dependent price impact",
+        "price-level resilience",
+        "flow-completed instantaneous trades",
+        "seven assets",
+        "falling more than 20.2 percent",
+        "turnover below five",
+        "unattained horizon-dependent ceiling",
+        "not crash probabilities",
     ):
-        assert phrase in abstract, ("Missing precise abstract assumption",phrase)
+        assert phrase in abstract, ("Missing revised abstract meaning", phrase)
+    assert abstract.count("In an idealized ten-asset") == 1
+    assert abstract.count("an interval-certified") == 1
     assert r"All subsequent results use Assumption~\ref{asmp:model} unless stated otherwise." in new
     assert "All subsequent theorems use the same market definition" not in new
     regime=new.split(r"\section{Reachability Regimes under Power-Law Impact}",1)[1].split(
@@ -308,7 +325,7 @@ def main():
     # Verify scholarly meaning and citation placement rather than pinning
     # defensive or transitional English sentences verbatim.
     for phrase in (
-        "specifies price-level recovery",
+        r"\dot S=-\rho(S-F)",
         "volume-recovery specifications with drift",
         "providing an intrinsic model scale",
         "multi-session proportional-reset price-band protocol",
