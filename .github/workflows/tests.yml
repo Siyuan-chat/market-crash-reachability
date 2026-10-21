@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install .
-      - run: python scripts/check_hashes.py
+      - run: python scripts/check_revision_hashes.py
       - run: python scripts/run_checks.py quick
       - if: github.event_name == 'workflow_dispatch' && inputs.full
         run: python scripts/run_checks.py full

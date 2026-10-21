@@ -1,9 +1,9 @@
 name: V14 analytical manuscript
 on:
   push:
-    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','verification/loss_breadth/**','.github/workflows/v14.yml']
+    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','verification/loss_breadth/**','verification/twin_ten_asset_benchmarks.py','data/twin_ten_asset_benchmarks.json','.github/workflows/v14.yml']
   pull_request:
-    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','verification/loss_breadth/**','.github/workflows/v14.yml']
+    paths: ['submission/v14-turnover-dissipation/**','scripts/*v14*','verification/loss_breadth/**','verification/twin_ten_asset_benchmarks.py','data/twin_ten_asset_benchmarks.json','.github/workflows/v14.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -31,6 +31,16 @@ jobs:
             build/v14-turnover-dissipation/build_summary.json
             build/v14-turnover-dissipation/pdflatex-*.txt
             build/v14-turnover-dissipation/bibtex.txt
+
+  idealized-twin-benchmarks:
+    name: Reconstruct idealized twin ten-asset witnesses
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python verification/twin_ten_asset_benchmarks.py --check
 
   ode-audit:
     name: Independent loss-breadth ODE audit

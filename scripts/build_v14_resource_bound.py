@@ -22,7 +22,7 @@ def main():
     OUT.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="v14-",dir=OUT) as tmp:
         work=Path(tmp)
-        for filename in ("main.tex","shared.tex","references.bib"):
+        for filename in ("main.tex","shared.tex","references.bib","twin_conservation_figure.tex"):
             shutil.copyfile(SRC/filename,work/filename)
         shutil.copytree(PREV/"figures",work/"figures")
         # The copied figures resolve locally; neither the old source nor its PDFs change.
