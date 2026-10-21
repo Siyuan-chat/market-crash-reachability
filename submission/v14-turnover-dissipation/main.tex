@@ -42,18 +42,43 @@ excluded by market structure, and what resources does reaching them require?
 We study deterministic feasibility rather than crash likelihood, traders'
 equilibrium incentives, or a historical no-news event.
 
-There are two accounting constraints, not one. At every instant,
-\emph{paired-dollar execution} requires
-$\sum_i\dd X_i=0$: purchasing assets are funded by selling others.
-\emph{Terminal assetwise dollar closure} additionally requires
-$X_i(T)=0$ for every $i$, so each asset's cumulative signed executed
-dollars vanish over the horizon. Neither constraint requires the
-corresponding share inventory to return to its starting value. Under the
-model's execution-cost identity, terminal price displacement and
-recovery dissipation instead consume benchmark-valued inventory. The
-question is therefore not whether a costless, share-flat round-trip
-manipulates prices, but how cashless reallocation with available initial
-shares interacts with restorative dynamics.
+This reachability question connects two established lines of research.
+One examines price formation and execution, from Kyle's auction model
+\citep{Kyle1985} and Almgren--Chriss execution \citep{AlmgrenChriss2001}
+to resilient order books \citep{ObizhaevaWang2013,AlfonsiSchied2010,AlfonsiFruthSchied2010}
+and large-trader or supply-curve models
+\citep{BankBaum2004,CetinJarrowProtter2004}.
+Conditions excluding price manipulation, quasi-arbitrage, or
+inadmissible transient impact constrain the costs of trading programs
+\citep{HubermanStanzl2004,Gatheral2010,AlfonsiSchiedSlynko2012,CuratoGatheralLillo2017}.
+A central comparison in this literature is a \emph{share-flat}
+round trip, which restores the executed share position and whose
+nonnegative cost depends on the specified impact and recovery laws.
+The second line studies price movements without contemporaneous
+public news through inference and hedging \citep{GennotteLeland1990,Romer1993},
+endogenous liquidity feedback \citep{HuangWang2009},
+fire sales and portfolio contagion
+\citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017,KirilenkoEtAl2017},
+and predatory trading or cross-impact
+\citep{BrunnermeierPedersen2005,AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017,CordoniLillo2024}.
+These contributions explain different trading costs and loss-amplification
+mechanisms; they need not all involve an external aggregate cash outflow.
+The complementary question here is which terminal systemic losses remain
+mechanically reachable when both aggregate transaction pairing and
+assetwise executed-dollar closure are imposed.
+
+These two accounting restrictions differ from the share-flat boundary
+condition. At each trade, \emph{paired-dollar execution} requires
+$\sum_i\dd X_i=0$: purchases of one asset are funded by sales of
+another. At maturity, \emph{assetwise dollar closure} additionally
+requires $X_i(T)=0$ for every $i$. Neither condition implies
+$\theta_i(T)=\theta_i(0)$. Under the model's execution-cost identity,
+terminal price displacement and recovery dissipation are financed
+by consuming initial share inventory; dollar-flat reallocation is
+therefore distinct from a costless share-flat round trip.
+The distinction also depends on whether resilience acts on the
+price level or on displaced order-book volume
+\citep{AlfonsiFruthSchied2010,RochSoner2013}.
 
 The organizing insight is geometric. Write $g(S)>0$ for the effective
 price response per executed share. The response-adapted coordinate
@@ -70,6 +95,9 @@ recovery episodes. Without resilience, the same terminal dollar closure
 would force every terminal price back to the benchmark. Figure~
 \ref{fig:conservation-geometry} plots an explicit two-asset
 trade--recovery path and the ten-asset construction.
+The elasticity studied below is a local price-state response,
+distinct from cumulative metaorder impact scaling
+\citep{BucciEtAl2019,KyleObizhaeva2023}.
 
 \input{twin_conservation_figure.tex}
 
@@ -106,36 +134,6 @@ paired turnover $M<5$. With a larger turnover allowance
 declines above $2\%$ across all ten assets. Together,
 the benchmarks contrast idealized radial reachability
 with rate- and band-constrained realizations.
-
-Price impact and execution have long been studied through
-Kyle's auction model \citep{Kyle1985},
-Almgren--Chriss optimal execution \citep{AlmgrenChriss2001},
-resilient order books
-\citep{ObizhaevaWang2013,AlfonsiSchied2010,AlfonsiFruthSchied2010},
-and large-trader and supply-curve formulations
-\citep{BankBaum2004,CetinJarrowProtter2004}.
-Restrictions on transient impact, round-trip execution and
-price manipulation delimit admissible market models
-\citep{CuratoGatheralLillo2017,Gatheral2010,AlfonsiSchiedSlynko2012,HubermanStanzl2004}.
-Our terminally dollar-flat protocol is distinct from the
-share-flat execution-cost problem. Different specifications of
-price recovery and order-book volume recovery need not have
-the same invariant regions
-\citep{AlfonsiFruthSchied2010,RochSoner2013};
-local response elasticity also differs from cumulative
-metaorder impact scaling
-\citep{BucciEtAl2019,KyleObizhaeva2023}.
-
-No-news market movements have other proposed mechanisms,
-including inference and hedging \citep{GennotteLeland1990,Romer1993},
-endogenous liquidity \citep{HuangWang2009},
-fire sales and indirect contagion
-\citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017,KirilenkoEtAl2017},
-and predatory trading or cross-impact
-\citep{BrunnermeierPedersen2005,AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017,CordoniLillo2024}.
-Rather than selecting a mechanism that must operate in actual
-markets, we identify structural barriers and explicit admissible
-controls within one precisely stated model.
 
 Our contributions are connected stages of a single argument.
 First, response-adapted conservation geometry and its
