@@ -1,0 +1,38 @@
+{
+  "full_coverage": {
+    "N": 10,
+    "k": 10,
+    "rho": 0.4,
+    "T": 40.0,
+    "terminal_price_each": 0.5,
+    "critical_ordinary_drop_unattained": 0.6837721570347343,
+    "turnover": 34.37368048230633,
+    "max_cumulative_sales": 16.588482258125342
+  },
+  "partial_coverage": [
+    {
+      "target_log_loss": 3,
+      "C_0.9": 2.6956888201134652,
+      "turnover": 27.166666093087013,
+      "max_cumulative_sales": 7.727231332697343
+    },
+    {
+      "target_log_loss": 5,
+      "C_0.9": 4.494491742332364,
+      "turnover": 27.164613825142695,
+      "max_cumulative_sales": 7.726435072085544
+    },
+    {
+      "target_log_loss": 10,
+      "C_0.9": 8.994469666204342,
+      "turnover": 27.164578642459436,
+      "max_cumulative_sales": 7.727431524359109
+    },
+    {
+      "target_log_loss": 20,
+      "C_0.9": 17.994469665202253,
+      "turnover": 27.16457864890311,
+      "max_cumulative_sales": 7.72747692154797
+    }
+  ]
+}
