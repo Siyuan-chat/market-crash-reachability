@@ -458,16 +458,9 @@ nonseparable cross-impact require separate analysis.
 
 \section{Reachability Regimes under Power-Law Impact}\label{sec:regimes}
 \paragraph{Main results of this section}
-The power-law family reveals two distinct thresholds: the first separates finite
-from divergent inventory requirements near the zero-price boundary, and the
-second establishes a global barrier to positive systemic loss.
-Theorem~\ref{thm:ABC} classifies the canonical responses.
-For every fixed sublinear exponent, Theorem~\ref{thm:sublinear-severe}
-constructs arbitrarily severe partial-coverage losses with a fixed finite
-horizon and turnover and inventory bounds independent of loss severity,
-provided flow-completed pulses are permitted. By contrast,
-Theorem~\ref{thm:critical} gives a sharp, unattained horizon ceiling
-when every asset must decline.
+The power-law family separates structural barriers, finite-inventory
+severity bounds and constructive reachability. The distinction between
+partial and full coverage also yields different horizon and resource limits.
 
 To compare exclusion and reachability under matched assumptions, we vary only the response shape in the family
 \begin{equation}\label{eq:power}
@@ -505,7 +498,7 @@ The constants in (C) may depend on $N,T,F,\rho,\eta$, but not on $\delta$. They 
 \caption{\textbf{A single response family, three price sensitivities.} The plot shows the model-implied instantaneous \emph{log-price change per executed dollar}, normalized by its common initial value. All curves coincide at $S=F$.}\label{fig:response}
 \end{figure}
 
-Under the same executed-dollar and recovery protocol, the three response functions produce distinct attainable-state geometries. Market A supplies a global invariant-region barrier; Market B shows that nonzero partial-coverage losses need not permit arbitrarily large ones when stock inventory is finite; and Market C supplies an explicit trajectory with a severe loss. The condition $k<N$ in (C) is essential: at least one asset must be available to carry the compensating flow. Finite gross share rates further constrain the compensating asset's \emph{capacity}.
+The condition $k<N$ in (C) is essential: at least one asset must be available to carry the compensating flow. Finite gross share rates further constrain the compensating asset's \emph{capacity}.
 
 For $p=1$, the inventory potential from \eqref{eq:E} is
 \begin{equation}\label{eq:inventoryb}
@@ -533,8 +526,6 @@ Let $k<N$, $e_0=e(F)<2$, $c=g(F)/F^2$, and $r=e^{-\rho T}<2-e_0$. Select a zero-
 \begin{proof}
 The individual losses satisfy $L_i(T)=c(1-r)hu_i+O(h^2)$, while the first-order term vanishes when averaged because $\sum_i u_i=0$. The strictly positive quadratic coefficient in \eqref{eq:two-pulse} proves the result. See Appendix~\ref{app:local}.
 \end{proof}
-
-The preceding two propositions describe local reachability within this classification. A two-pulse path can generate a partial-coverage loss under a less restrictive elasticity threshold; a three-pulse path with an additional cancellation step can generate a small decline of \emph{every} asset when $e(F)<1$. The global severe-loss construction for Market C is established separately.
 
 \paragraph{A concrete common-budget comparison} For $N=3$, $k=2$, $F=\eta=\rho=1$, $T=3$, common turnover cap $M_0=3$, and per-asset initial inventory cap $H_0=8.2$, the $p=2$ market cannot reach any positive crisis; the $p=1$ market can reach a small positive crisis but not the threshold $\delta=10$ (it would require over $9$ shares of selling by any qualifying asset); a constructive $p=0$ path reaches $\Cris_{2/3}(T)\approx13.32$ with turnover approximately $2.62$ and a maximum per-asset cumulative share sale below $3.94$. Here the large threshold $\delta=10$ serves as a theoretical stress test separating bounded from unbounded logarithmic losses. In Market C, $E_0(Fe^{-\delta})=\frac{F^2}{2\eta}(1-e^{-\delta})^2$ remains finite as $\delta\to\infty$, whereas $\log(F/S)\to\infty$ as $S\downarrow0$. Thus, while all constructed paths maintain strictly positive prices, the unbounded-loss limit probes the asymptotic $S\downarrow0$ boundary under normalized units ($F=\eta=1$). Validation code accompanies the source files.
 
@@ -606,28 +597,15 @@ Thus, for fixed $p\in(1,2)$, the inventory-based severity
 ceiling scales at most logarithmically in large $H_0$, rather than
 linearly as for $p=1$. At the second threshold $p=2$,
 $-\Phi_2(0^+)$ diverges and Theorem~\ref{thm:barrier2}
-excludes every positive systemic crisis measure. These
-thresholds distinguish local and global reachability as well
-as the boundary resource singularities. Uniform severity bounds
-in the sublinear regime allow constants that depend on the fixed
-exponent and horizon; they do not impose a finite execution-rate cap.
+excludes every positive systemic crisis measure. These thresholds distinguish local and global reachability as well
+as the boundary resource singularities.
 
 
 \Needspace{14\baselineskip}
 \paragraph{Construction of the severe-loss path}
-The proof has four steps. First, the generalized radial quantity
-$\sum_i S_i^{2-p}$ is invariant under paired-dollar pulses.
-Second, strictly positive price directions are rotated to drive
-the qualifying target prices arbitrarily close to zero, with
-a compensating asset receiving the offsetting dollar flow.
-Third, a continuity argument and a partition of the recovery
-interval close the executed-dollar ledger of \emph{each} asset,
-not merely the market-wide sum. Finally, exact coordinate and
-share-variation estimates bound turnover and gross share sales
-independently of the terminal loss severity. The horizon and
-resource constants may depend on the fixed asset number,
-impact exponent, and market parameters. Appendix~\ref{app:sublinear-severe}
-gives the full positive-price construction and closure argument.
+The generalized-radius construction closes each asset's executed-dollar
+ledger, not merely the market-wide sum, with finite turnover and inventory
+bounds. The full proof is in Appendix~\ref{app:sublinear-severe}.
 
 \begin{theorem}[Uniform-resource severe partial-coverage losses for sublinear impact]\label{thm:sublinear-severe}
 Fix $N\ge2$, $k=\lceil\alpha N\rceil<N$, positive $F,\eta,\rho$,
@@ -699,9 +677,7 @@ analytic-primitive, double-precision reconstruction reports
 paired turnover $M\simeq34.37368048$, maximum gross
 cumulative sale shares $\max_iH_i^-\simeq16.58848226$,
 and maximum per-asset terminal executed-dollar residual
-below $10^{-12}$. All intermediate prices are strictly
-positive. This checks the proof's specific path, not a
-new interval certificate or minimum-resource calculation.
+below $10^{-12}$. All intermediate prices remain strictly positive.
 
 The theorem gives
 $\delta_{\rm crit}(10,40)\simeq1.15129230$ for the same
@@ -724,23 +700,16 @@ The $L=3,5,10,20$ numerical reconstructions in
 Table~\ref{tab:twin-severe} (Appendix~\ref{app:numerics})
 show how the resulting systemic log loss, paired
 turnover and gross share sales depend on target severity.
-The theorem supplies a resource bound
-\emph{uniform in the target severity} for its
-constructed family; four numerical samples neither
-bound arbitrary trading strategies nor prove convergence
-of the displayed turnover sequence. A1 and A2
-share the ten-asset scale but differ in horizon
-and recovery rate.
+These reconstructions illustrate the severity-independent
+finite resource bound established for the constructed path
+family by Theorem~\ref{thm:ABC}(C).
+A1 and A2 have distinct horizons and recovery rates.
 
 \section{Execution Resources and Turnover Bounds}\label{sec:budget}
-The response regimes determine whether a loss state is reachable. We
-next quantify the dollar turnover and share sales required to attain a
-specified breadth and severity. The idealized A1 witness in
-Section~\ref{sec:allcoverage} is feasible but uses over $34$
-units of paired turnover; its existence does not establish
-feasibility under the smaller budgets of
-Section~\ref{subsec:twin-constrained}. The following necessary
-bounds apply to general positive response functions.
+The idealized constructions in Section~\ref{sec:regimes} demonstrate
+reachability with finite execution resources (for example,
+$M\simeq34.4$ in A1). We now establish general lower bounds on the
+dollar turnover and share sales required for a specified drawdown.
 
 \begin{theorem}[Execution-resource lower bounds]\label{thm:resource}
 Suppose an admissible terminal path satisfies $\Cris_\alpha(T)\ge\delta>0$. Write $k=\lceil\alpha N\rceil$ and $s=Fe^{-\delta}$. Alongside $\Phi$, define the monotone share-response coordinate $\Psi(S)=\int_F^S\dd u/g(u)$. Then the necessary dollar-turnover and total share-sale bounds are simply the respective coordinate distances to $s$:
