@@ -1689,7 +1689,7 @@ are log-loss values rather than ordinary percentage
 declines. Every row is checked for strict price
 positivity, paired dollar flows and terminal ledger closure.
 
-\begin{table}[tbp]\centering\small
+\begin{table}[H]\centering\small
 \caption{\textbf{Twin ten-asset A2: nine-target log-loss
 severity.} $L$ and $\Cris_{0.9}$ are in log-loss units,
 $M$ counts paired dollars once, and gross share sales
@@ -1712,7 +1712,7 @@ to reproduce both idealized families and check the
 regression fixture; the \texttt{--json} flag prints
 all underlying cut times, prices and residuals.
 
-The plotted experiment uses a finite, high-resolution sampling grid only to display continuous recovery segments; the underlying segment values and cash-flow integrals are evaluated using analytic expressions, and terminal closure is checked separately. For the $N=12$, $L=5$ construction, the maximum terminal dollar-ledger residual under double precision is less than $10^{-13}$ in the distributed script. Numerical tolerance is evidence of correct accounting implementation, not a substitute for the constructive proof in Appendix~\ref{app:severe}.
+The plotted experiment uses a finite, high-resolution sampling grid only to display continuous recovery segments; the underlying segment values and cash-flow integrals are evaluated using analytic expressions, and terminal closure is checked separately. For the $N=12$, $L=5$ construction, the maximum terminal dollar-ledger residual under double precision is less than $10^{-13}$ in the distributed script. These residuals provide an implementation-level check of the analytic closure construction in Appendix~\ref{app:severe}.
 
 The numerical panels use model-generated inputs. Implementation details and reproduction commands are provided in the repository documentation.
 
