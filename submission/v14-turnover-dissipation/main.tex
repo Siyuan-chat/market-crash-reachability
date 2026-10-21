@@ -29,18 +29,18 @@ the execution resources needed to realize systemic drawdowns.
 \begin{MSCcodes}91G15, 91G45, 93B03, 65G30, 91G80.\end{MSCcodes}
 
 \section{Introduction}\label{sec:intro}
-Consider ten assets whose fundamental benchmark prices never change. Each
-executed sale must fund an equal-dollar purchase, and by the end of the
-horizon every asset's signed executed-dollar ledger must return to zero.
-Can all ten prices nevertheless close at half their initial values? Under
-a particular constant-impact, resilient-price specification the answer is
-yes. The construction requires substantial execution resources and
-idealized flow-completed instantaneous trades, but it is a fully
-dollar-closed price path. This apparent paradox motivates a precise
-question: which systemic terminal losses are \emph{reachable}, which are
-excluded by market structure, and what resources does reaching them require?
-We study deterministic feasibility rather than crash likelihood, traders'
-equilibrium incentives, or a historical no-news event.
+Consider ten assets with fixed fundamental benchmark prices, where
+each executed sale funds an equal-dollar purchase and every asset's
+cumulative executed-dollar ledger closes at maturity. Even under these
+constraints, all ten prices can finish at half their initial values in
+a constant-impact, resilient market. This path requires finite initial
+share inventory and substantial execution resources, including idealized
+flow-completed instantaneous trades, yet closes every dollar ledger
+exactly. We characterize the terminal systemic drawdowns reachable under
+such trading, the losses excluded by market structure, and their
+execution-resource requirements. The analysis concerns deterministic
+feasibility rather than crash probabilities, equilibrium incentives, or
+historical no-news episodes.
 
 This reachability question connects two established lines of research.
 One examines price formation and execution, from Kyle's auction model
@@ -95,14 +95,14 @@ recovery episodes. Without resilience, the same terminal dollar closure
 would force every terminal price back to the benchmark. Figure~
 \ref{fig:conservation-geometry} plots an explicit two-asset
 trade--recovery path and the ten-asset construction.
-The elasticity studied below is a local price-state response,
-distinct from cumulative metaorder impact scaling
-\citep{BucciEtAl2019,KyleObizhaeva2023}.
 
 \input{twin_conservation_figure.tex}
 
 This mechanism explains why the response shape matters. Let
-$e(S)=Sg'(S)/g(S)$ be the local impact elasticity. Under the paper's
+$e(S)=Sg'(S)/g(S)$ denote the local price-state impact elasticity,
+distinct from cumulative metaorder impact scaling
+\citep{BucciEtAl2019,KyleObizhaeva2023}.
+Under the paper's
 price-level recovery and positivity assumptions, $e(S)\ge1$ on the
 relevant price range excludes a decline in \emph{every} asset,
 whereas $e(S)\ge2$ rules out positive losses under the combined
@@ -111,8 +111,7 @@ per-share impact permits arbitrarily severe losses over a proper
 subset of assets, provided a compensator is allowed; this extends
 to every fixed sublinear power exponent with severity-independent
 finite turnover and inventory bounds. Full asset coverage instead
-has a sharp, unattained time-dependent ceiling. These statements
-concern different terminal target sets and must not be conflated.
+has a sharp, unattained time-dependent ceiling.
 
 Two ten-asset benchmark families make the distinction tangible.
 In the idealized full-coverage construction (A1),
@@ -265,10 +264,10 @@ For any admissible path beginning at $F$ the execution-cost identity is
 \int_0^T S_i\dd\theta_i=F[\theta_i(T)-\theta_i(0)]+E(S_i(T))
 +\rho\int_0^T\frac{(S_i-F)^2}{g(S_i)}\dd t.
 \end{equation}
-Thus a \emph{share-flat} round trip has nonnegative executed cost under (M2)--(M3). The paper's terminal condition $X_i(T)=0$ instead closes executed \emph{dollars}, not shares: a terminally dollar-flat path may consume initial inventory. Appendix~\ref{app:accounting} proves the accounting identity and its consequences for admissible controls.
+Thus a \emph{share-flat} round trip has nonnegative executed cost under (M2)--(M3). Appendix~\ref{app:accounting} proves the accounting identity and its consequences for admissible controls.
 
 \paragraph{Comparison with share-flat trading}
-The terminal dollar condition and the standard share-flat condition are not interchangeable. For example, with $g\equiv\eta$, a single asset purchased by a sufficiently small $a>0$ shares at time $0$ and sold by $a$ shares at time $T$ has $\theta(T)=\theta(0)$ but terminal price $S(T)=F-\eta a(1-e^{-\rho T})<F$; its net executed dollars are not zero and the positive cost in \eqref{eq:cost} is paid through the cash account. Conversely, under (M4), requiring every asset to be share-flat \emph{as well as} terminally dollar-flat would force $\sum_i[E(S_i(T))+\rho\int_0^T(S_i-F)^2/g(S_i)\,\dd t]=0$. Thus there can be no positive-time dissipative price excursion under both closures together. The dollar-flat protocol deliberately isolates an economic question distinct from standard share-round-trip execution.
+For example, with $g\equiv\eta$, a single asset purchased by a sufficiently small $a>0$ shares at time $0$ and sold by $a$ shares at time $T$ has $\theta(T)=\theta(0)$ but terminal price $S(T)=F-\eta a(1-e^{-\rho T})<F$; its net executed dollars are not zero and the positive cost in \eqref{eq:cost} is paid through the cash account. Conversely, under (M4), requiring every asset to be share-flat \emph{as well as} terminally dollar-flat would force $\sum_i[E(S_i(T))+\rho\int_0^T(S_i-F)^2/g(S_i)\,\dd t]=0$. Thus there can be no positive-time dissipative price excursion under both closures together.
 
 \section{Structural Barriers and Robustness}\label{sec:barriers}
 The normal form~\eqref{eq:normal-form} supplies a conserved scalar during trading. Write $H(\bm S)=\one^\top\bm y=\sum_i\Phi(S_i)$. Summing over assets cancels every matched dollar transfer and leaves only recovery:
@@ -276,15 +275,9 @@ The normal form~\eqref{eq:normal-form} supplies a conserved scalar during tradin
 \dd H=-\rho\sum_{i=1}^N\mathcal R(y_i)\dd t
 =-\rho\sum_{i=1}^N\frac{S_i(S_i-F)}{g(S_i)}\dd t.
 \end{equation}
-The scalar $H$ is invariant under trading and evolves through price
-recovery between trades. Its restoring drift need not have a single
-sign along an arbitrary path: reallocation changes the configuration
-at which the restoring field acts. The level surfaces alone therefore
-neither prove a barrier nor guarantee a crash; the relevant question
-is whether the coupled trading and recovery dynamics can enter
-the terminal crisis region. Curvature comparisons provide the
-answer for the structural exclusions below.
-Introduce the response elasticity
+The sign of the restoring drift depends on the price configuration.
+Structural exclusion therefore requires curvature conditions on the
+response-adapted coordinate. Introduce the elasticity
 \begin{equation}\label{eq:elasticity}
 e(S)=\frac{Sg'(S)}{g(S)}.
 \end{equation}
@@ -455,11 +448,6 @@ time-varying fundamentals, heterogeneous restoration, and
 nonseparable cross-impact require separate analysis.
 
 \section{Reachability Regimes under Power-Law Impact}\label{sec:regimes}
-\paragraph{Main results of this section}
-The power-law family separates structural barriers, finite-inventory
-severity bounds and constructive reachability. The distinction between
-partial and full coverage also yields different horizon and resource limits.
-
 To compare exclusion and reachability under matched assumptions, we vary only the response shape in the family
 \begin{equation}\label{eq:power}
  g_p(S)=\eta\left(\frac SF\right)^p,\qquad p\in\{2,1,0\},\quad \eta>0.
@@ -600,11 +588,6 @@ as the boundary resource singularities.
 
 
 \Needspace{14\baselineskip}
-\paragraph{Construction of the severe-loss path}
-The generalized-radius construction closes each asset's executed-dollar
-ledger, not merely the market-wide sum, with finite turnover and inventory
-bounds. The full proof is in Appendix~\ref{app:sublinear-severe}.
-
 \begin{theorem}[Uniform-resource severe partial-coverage losses for sublinear impact]\label{thm:sublinear-severe}
 Fix $N\ge2$, $k=\lceil\alpha N\rceil<N$, positive $F,\eta,\rho$,
 and an exponent $0\le p<1$ in
@@ -1271,8 +1254,7 @@ A second constructive case uses uniform $\pm25\%$ rolling bands
 for all ten assets, in contrast to the preceding path's narrower
 target-asset bands. The two sessions, response and recovery parameters,
 gross share-rate cap, inventory limits and per-asset dollar closure
-are unchanged. The full comparison matrix, including higher-turnover
-controls, appears in Appendix~\ref{app:loss-breadth}.
+are unchanged.
 
 \begin{proposition}[An eight-asset large drawdown under uniform rolling bands]
 \label{prop:loss-breadth-eight}
@@ -1298,12 +1280,6 @@ $x(40)<0.892$ and $x(40)^8y(40)^2<0.97^{10}$.
 Finally, $\int_0^{40}u(t)\dd t=0$ ensures
 $X_i(40)=0$ for every asset.
 \end{proof}
-
-The additional strictly enclosed price paths establish further
-breadth--severity combinations. Their schedules, resource budgets
-and conservative loss thresholds are reported in
-Table~\ref{tab:loss-breadth} and the supplementary table
-\ref{tab:loss-breadth-additional}.
 
 \subsection{Further certified ten-asset drawdowns under rolling price limits}
 \label{subsec:twin-constrained}
@@ -1768,8 +1744,6 @@ For the three-bin control~\eqref{eq:bounded-control}, the identities $\int f=0$ 
 \end{equation}
 The resulting coefficient is $\rho/2$. Substituting $h_1/h_0=(e_0-1)/F$ and $L_i=-\log(S_i/F)$ proves~\eqref{eq:finite-rate-coefficient}. At $p=1$ the quadratic coefficient vanishes; this is consistent with the all-asset barrier but does not exclude a partial-coverage loss under a different bounded signal. The independent verifier integrates the nonlinear ODE directly with the dollar-rate signal, computes gross share execution before netting, and compares the finite-amplitude loss with~\eqref{eq:finite-rate-coefficient}.
 
-A high-precision reconstruction of the severe pulse construction confirms its terminal-dollar accounting. Bounded-rate controls constitute a more restrictive admissible class, whose local construction and barrier are established separately.
-
 \section{Numerical experiments and reproducibility}\label{app:numerics}
 This appendix documents deterministic price paths constructed under the exact marginal-price settlement protocol. For the severe-crash construction we use $g(S)=1$, $F=\eta=\rho=1$. The code selects a positive price direction and numerically solves for the compensator direction and time partitions; between switches the radius and ledger have analytic primitives. At every transaction time the paired executed-dollar sum is zero, and at maturity \emph{each} signed-dollar ledger closes to numerical accuracy.
 
@@ -1823,9 +1797,9 @@ $20$ & $17.99447$ & $27.16458$ & $7.72748$ & $<3\cdot10^{-14}$\\
 \bottomrule\end{tabular}
 \end{table}
 
-Run \texttt{python verification/twin\_ten\_asset\_benchmarks.py --check}
+Run \texttt{python verification/twin\_ten\_asset\_benchmarks.py -{}-check}
 to reproduce both idealized families and check the
-regression fixture; the \texttt{--json} flag prints
+regression fixture; the \texttt{-{}-json} flag prints
 all underlying cut times, prices and residuals.
 
 The plotted experiment uses a finite, high-resolution sampling grid only to display continuous recovery segments; the underlying segment values and cash-flow integrals are evaluated using analytic expressions, and terminal closure is checked separately. For the $N=12$, $L=5$ construction, the maximum terminal dollar-ledger residual under double precision is less than $10^{-13}$ in the distributed script. These residuals provide an implementation-level check of the analytic closure construction in Appendix~\ref{app:severe}.
@@ -2129,12 +2103,8 @@ These interval computations establish feasibility of the
 specified controls at the budgets and rates reported
 in Table~\ref{tab:loss-breadth}.
 
-\paragraph{Fixed-budget and relaxed-budget comparison}
-The primary loss--breadth certificate family is summarized below.
-Its target losses refer to ordinary individual price declines,
-while index losses refer to the equal-weight geometric price index.
-
-\begin{table}[tbp]\centering\small
+\Needspace{14\baselineskip}
+\begin{table}[H]\centering\small
 \caption{\textbf{Systemic loss--breadth comparison for specified
 positive-price dollar-closed controls.} All new cases use uniform
 two-session $\pm25\%$ rolling bands, unlike the original
@@ -2192,6 +2162,7 @@ F100-2-M7 & 10 & $>2.00\%$ & $>2.0\%$ & $6.732$ & $0.281818$ & $7$\\
 \bottomrule\end{tabular}
 \end{table}
 
+\Needspace{5\baselineskip}
 The complete twenty-four-cell fixed-$M<3$ research matrix,
 strict interval bounds, and hashes of exact controls are
 available in \path{verification/loss_breadth/}.

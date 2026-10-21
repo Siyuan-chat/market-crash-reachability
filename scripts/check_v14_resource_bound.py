@@ -219,7 +219,7 @@ def main():
         r"\section{Discussion}",1)[0]
     appendix=new.split(r"\section{Reproducing the uniform-band loss--breadth witnesses}",1)[1].split(
         r"\bibliographystyle{siamplain}",1)[0]
-    table=appendix.split(r"\begin{table}[tbp]\centering\small",1)[1].split(r"\end{table}",1)[0]
+    table=appendix.split(r"\begin{table}[H]\centering\small",1)[1].split(r"\end{table}",1)[0]
     assert "No row claims an optimal frontier" not in appendix
     assert "exactly rational input" not in appendix
     assert "directed-integer interval verifier" not in appendix
@@ -339,10 +339,11 @@ def main():
     assert "All subsequent theorems use the same market definition" not in new
     regime=new.split(r"\section{Reachability Regimes under Power-Law Impact}",1)[1].split(
         r"\section{Execution Resources and Turnover Bounds}",1)[0]
-    assert r"\paragraph{Main results of this section}" in regime
-    assert r"Theorem~\ref{thm:sublinear-severe}" in regime
+    assert "To compare exclusion and reachability under matched assumptions" in regime
+    assert r"\label{thm:ABC}" in regime
+    assert r"\label{thm:sublinear-severe}" in regime
     assert r"\label{thm:critical}" in regime
-    assert "not merely the market-wide sum" in regime
+    assert r"$X_i(T)=0$" in regime
     # Figure 6 belongs to Appendix G. The fixed placement and barrier
     # prevent it from moving across the start of the Appendix H proof.
     appendix_g=new.split(
@@ -359,7 +360,20 @@ def main():
         "Rolling Price Limits: Constrained Realizations",
     ):
         assert heading in new
-    assert "Construction of the severe-loss path" in new
+    # Introductory evidence remains, while rhetorical questions and
+    # duplicate heading teasers are intentionally absent.
+    introduction=new.split(r"\section{Introduction}",1)[1].split(
+        r"\section{Model and Systemic Drawdown Criterion}",1)[0]
+    intro_open=introduction.split("This reachability question connects",1)[0]
+    assert "?" not in intro_open, "The introductory hook should be declarative"
+    assert "Even under these" in intro_open and "half their initial values" in intro_open
+    assert "Construction of the severe-loss path" not in regime
+    appendix_i=new.split(
+        r"\section{Reproducing the uniform-band loss--breadth witnesses}",1
+    )[1].split(r"\bibliographystyle",1)[0]
+    assert "Fixed-budget and relaxed-budget comparison" not in appendix_i
+    assert r"\begin{table}[H]\centering\small" in appendix_i
+    assert "Run " in new and r"-{}-check" in new and r"-{}-json" in new
 
     assert "The Flash Crash: High-frequency trading in an electronic market" in bib
     assert "The flash crash: high-frequency trading in an electronic market" not in bib
