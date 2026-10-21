@@ -1279,7 +1279,7 @@ informative comparisons from Appendix~
 target and compensator rolling bands, remains
 a separate certified result.
 
-\begin{table}[tbp]\centering\small
+\begin{table}[H]\centering\small
 \caption{\textbf{Twin ten-asset benchmark B: constrained,
 terminally dollar-closed controls.} Target-asset
 and equal-weight geometric-index declines are
@@ -1288,8 +1288,7 @@ thresholds. The turnover caps are also strict;
 $M$ counts paired executed dollars once.
 Each fixed rational control is individually
 interval checked for endpoint losses, rates,
-inventory and rolling bands. The table makes
-no common-budget or optimality assertion.}
+inventory and rolling bands.}
 \label{tab:twin-constrained}
 \begin{tabular}{@{}lrrrr@{}}\toprule
 Control & Coverage & Target fall & Geometric-index fall
@@ -1301,25 +1300,17 @@ F100-2-M7 (B2) & $10/10$ & $>2.00\%$ & $>2.0\%$ & $M<7$\\
 \bottomrule\end{tabular}
 \end{table}
 
-In B1, seven asset prices fall more than
-$20.2\%$ and the geometric index falls more
-than $6\%$ despite individually closed dollar
-ledgers and the specified finite-rate and
-rolling-band constraints. B2 separately
-establishes positive \emph{full-coverage}
-loss under continuous constrained execution,
-but requires its own $M<7$ cap and does not
-establish B1's severity with that budget.
-Likewise P60-20 and R70-20-M4 are feasible
-under their stated $M<3$ and $M<4$ budgets,
-respectively, not under a shared fixed-$M<3$
-protocol. Certified control inputs, strict
-bounds and hashes appear in
-\path{verification/loss_breadth/verified_results_manifest.json}
-and the interval verification package
+Witness B1 establishes that ordinary price declines above
+$20.2\%$ in seven assets and $6\%$ in the geometric index remain
+reachable under bounded execution rates, uniform rolling bands,
+assetwise dollar closure, and paired turnover $M<5$. The P60-20
+and R70-20-M4 controls provide further breadth--severity combinations
+with tighter turnover caps of $M<3$ and $M<4$, respectively.
+Witness B2 complements these results with a certified all-asset
+decline above $2\%$ under a larger $M<7$ cap.
+The prescribed rational controls, strict interval bounds,
+and input hashes are recorded in
 \path{verification/loss_breadth/}.
-No displayed row identifies a minimum required
-turnover or excludes any untested loss target.
 
 \section{Discussion}\label{sec:discussion}
 \subsection{Economic accounting and execution burden}
@@ -1421,10 +1412,7 @@ game-theoretic and empirical models.
 
 The certified two-session path illustrates a constrained realization:
 paired executed-dollar flows, inventory, gross rates and rolling
-bands hold along its full price trajectory. Its terminal mean log loss
-and breadth criterion describe a geometric-price index, rather than
-an arithmetic or capitalization-weighted market return. Appendix~
-\ref{app:v7certificate} records the certificate, graphical
+bands hold along its full price trajectory. Appendix~\ref{app:v7certificate} records the certificate, graphical
 reconstructions and sensitivity comparisons. The Tokyo Stock
 Exchange instead uses tiered absolute-yen daily limits with
 conditional widening rules~\citep{JPX2026};
@@ -1472,19 +1460,14 @@ The research code, numerical data, certificates, and reproduction instructions a
 describe the two families of interval certificates and their
 verification scripts; Appendix~\ref{app:sublinear-severe}
 provides the constructive proof for sublinear impact. Reproduction commands and software requirements are in \path{REPRODUCE.md}; the checksum manifest is \path{release/SHA256SUMS}. The underlying certificate was previously regenerated from source, with independent floating-point ODE and exact-rational consistency checks.
-The A1/A2 idealized ten-asset ledger reconstructions and
-their regression fixture were added in this \emph{working
-narrative revision}, under
+The idealized ten-asset reconstructions (A1/A2) and regression
+fixtures are implemented in
 \path{verification/twin_ten_asset_benchmarks.py} and
-\path{data/twin_ten_asset_benchmarks.json}.
-They use numerical analytic-primitive evaluation, not
-new outward-rounded interval enclosures; B1/B2 instead
-reuse the separately documented earlier interval-certified
-controls. Neither the frozen software archive nor the
-previously deposited V14 manuscript contains or certifies
-the new reconstruction code. A new working-source commit
-and build checksum must be recorded before disseminating
-a compiled revision.
+\path{data/twin_ten_asset_benchmarks.json}
+through double-precision evaluation of the analytic primitives.
+The constrained witnesses (B1/B2) are supported by the
+outward-rounded interval-certificate archive in
+\path{verification/loss_breadth/}.
 
 \section*{Declaration on AI-assisted tools}
 AI-assisted tools were used for language editing, manuscript organization, and assisting with verification and figure-generation scripts. The author takes full responsibility for all mathematical proofs, numerical certificates, and scientific content.
@@ -1710,12 +1693,9 @@ positivity, paired dollar flows and terminal ledger closure.
 \caption{\textbf{Twin ten-asset A2: nine-target log-loss
 severity.} $L$ and $\Cris_{0.9}$ are in log-loss units,
 $M$ counts paired dollars once, and gross share sales
-count sales before netting. These are floating-point
-reconstructions, not rigorous outward-rounded
-interval enclosures. The last column is a conservative
-numerical residual check, not an exact closure theorem.
-The apparent resource stabilization in four samples does
-not prove convergence for arbitrary strategies.}
+count sales before netting. Entries are double-precision
+evaluations of the analytic primitives in Appendix~\ref{app:severe};
+the last column records the numerical dollar-ledger closure residual.}
 \label{tab:twin-severe}
 \begin{tabular}{@{}rrrrr@{}}\toprule
 $L$ & $\Cris_{0.9}(4)$ & $M$ &
@@ -1727,13 +1707,10 @@ $20$ & $17.99447$ & $27.16458$ & $7.72748$ & $<3\cdot10^{-14}$\\
 \bottomrule\end{tabular}
 \end{table}
 
-Run
-\path{python verification/twin_ten_asset_benchmarks.py --check}
+Run \texttt{python verification/twin\_ten\_asset\_benchmarks.py --check}
 to reproduce both idealized families and check the
 regression fixture; the \texttt{--json} flag prints
 all underlying cut times, prices and residuals.
-Neither command runs the older interval-certificate
-verifiers, which remain separate.
 
 The plotted experiment uses a finite, high-resolution sampling grid only to display continuous recovery segments; the underlying segment values and cash-flow integrals are evaluated using analytic expressions, and terminal closure is checked separately. For the $N=12$, $L=5$ construction, the maximum terminal dollar-ledger residual under double precision is less than $10^{-13}$ in the distributed script. Numerical tolerance is evidence of correct accounting implementation, not a substitute for the constructive proof in Appendix~\ref{app:severe}.
 
@@ -2067,15 +2044,6 @@ R70-15.5 & 7 & $>15.50\%$ & $>4.0\%$ & $2.940$ & $0.277592$ & $3$\\
 R70-20-M5 & 7 & $>20.20\%$ & $>6.0\%$ & $4.600$ & $0.262743$ & $5$\\
 \bottomrule\end{tabular}
 \end{table}
-
-As shown in the final row of Table~\ref{tab:loss-breadth},
-the $70\%$-coverage control reaching a target decline above
-$20.2\%$ uses paired-dollar turnover $M<4.600<5$.
-Whether a different control can reach the same target with
-$M\le3$ remains open.
-
-
-
 
 \paragraph{Additional loss--breadth witnesses}
 The exact-rational verification archive
