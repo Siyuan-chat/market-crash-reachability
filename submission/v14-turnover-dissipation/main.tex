@@ -61,11 +61,9 @@ fire sales and portfolio contagion
 \citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017,KirilenkoEtAl2017},
 and predatory trading or cross-impact
 \citep{BrunnermeierPedersen2005,AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017,CordoniLillo2024}.
-These studies illuminate trading costs and channels of price
-amplification. Our complementary object is the set of terminal
-price states attainable under \emph{both} paired-dollar
-reallocation and assetwise dollar closure, without imposing
-a particular information, funding, or trading-motive mechanism.
+Whereas those models focus on round-trip execution costs or specific
+amplification channels, we characterize the terminal price states
+attainable under paired-dollar reallocation and assetwise dollar closure.
 
 These two accounting restrictions differ from the share-flat boundary
 condition. At each trade, \emph{paired-dollar execution} requires
@@ -80,7 +78,7 @@ The distinction also depends on whether resilience acts on the
 price level or on displaced order-book volume
 \citep{AlfonsiFruthSchied2010,RochSoner2013}.
 
-The organizing insight is geometric. Write $g(S)>0$ for the effective
+Write $g(S)>0$ for the effective
 price response per executed share. The response-adapted coordinate
 \begin{equation}\label{eq:phi-intro}
 \Phi(S)=\int_F^S\frac{u}{g(u)}\dd u.
@@ -134,7 +132,7 @@ declines above $2\%$ across all ten assets. Together,
 the benchmarks contrast idealized radial reachability
 with rate- and band-constrained realizations.
 
-Our contributions are connected stages of a single argument.
+The paper proceeds in three stages.
 First, response-adapted conservation geometry and its
 interaction with resilience yield \emph{structural barriers}
 and perturbation bounds for imperfect dollar pairing or
@@ -728,7 +726,6 @@ turnover and gross share sales depend on target severity.
 These reconstructions illustrate the severity-independent
 finite resource bound established for the constructed path
 family by Theorem~\ref{thm:ABC}(C).
-A1 and A2 have distinct horizons and recovery rates.
 
 \section{Execution Resources and Turnover Bounds}\label{sec:budget}
 The idealized constructions in Section~\ref{sec:regimes} demonstrate
@@ -915,7 +912,7 @@ In particular, a necessary finite-speed condition to reach threshold $\delta>0$ 
 \begin{equation}\label{eq:min-speed}
 \ \bar v\ge\frac{\rho F(1-e^{-\delta})}{G(1-e^{-\rho T})}.\ 
 \end{equation}
-A one-session lower price limit independently excludes any $\delta> -\log(1-\beta_-)$. These are \emph{necessary} constraints, generally not sharp reachability thresholds. For comparison, if a \emph{hypothetical} multi-session regime resets a proportional lower band to each preceding close, then over $D$ sessions the elementary bound is only
+A one-session lower price limit independently excludes any $\delta> -\log(1-\beta_-)$. For comparison, if a \emph{hypothetical} multi-session regime resets a proportional lower band to each preceding close, then over $D$ sessions the elementary bound is only
 $S_i(T_D)\ge F\prod_{d=1}^D(1-\beta_{-,d})$ and
 $\mathcal C_\alpha(T_D)\le-\sum_{d=1}^D\log(1-\beta_{-,d})$.
 The cumulative ceiling depends on the successive closing-price resets.
@@ -956,7 +953,7 @@ Then, with or without terminal dollar closure and for \emph{every} $N\ge2$ and b
 \left[d_T-\rho T e^{-\rho T}
  +\frac{d_T^2}{2(1-b_T)^2}\right].\ 
 \end{equation}
-Consequently, the supremum of attainable systemic losses is $O(\bar v^2)$ as $\bar v\downarrow0$. For fixed $N,T$ and positive price-band widths on both sides of the benchmark, Theorem~\ref{thm:finite-rate-construct} supplies a matching construction. Here $\bar v_*(\delta)$ denotes the infimum rate cap permitting severity at least $\delta$, with fixed $N,T,F,\rho,\eta,\alpha$, positive per-asset initial inventory allowances, terminal dollar closure, and prescribed bands $\beta_->0$, $\beta_+>0$. In this constrained class, $\bar v_*(\delta)=\Theta(\sqrt\delta)$ as $\delta\downarrow0$. These bounds determine the scaling order; the optimal constants remain undetermined.
+Consequently, the supremum of attainable systemic losses is $O(\bar v^2)$ as $\bar v\downarrow0$. For fixed $N,T$ and positive price-band widths on both sides of the benchmark, Theorem~\ref{thm:finite-rate-construct} supplies a matching construction. Here $\bar v_*(\delta)$ denotes the infimum rate cap permitting severity at least $\delta$, with fixed $N,T,F,\rho,\eta,\alpha$, positive per-asset initial inventory allowances, terminal dollar closure, and prescribed bands $\beta_->0$, $\beta_+>0$. In this constrained class, $\bar v_*(\delta)=\Theta(\sqrt\delta)$ as $\delta\downarrow0$.
 \end{theorem}
 \begin{proof}
 Set $x_i(t)=S_i(t)-F$ and $m(t)=\sum_i x_i(t)$. Variation of constants gives
@@ -1401,7 +1398,6 @@ Section~\ref{sec:barriers} elasticity barriers
 may change substantially, and general-impact
 statements in Sections~\ref{sec:rateband}--\ref{sec:multiday}
 must be reassessed under the modified drift.
-No new elasticity threshold is claimed here.
 
 The local response elasticity $e(S)=Sg'(S)/g(S)$
 is distinct from cumulative metaorder impact,
