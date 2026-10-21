@@ -219,7 +219,7 @@ def main():
         r"\section{Discussion}",1)[0]
     appendix=new.split(r"\section{Reproducing the uniform-band loss--breadth witnesses}",1)[1].split(
         r"\bibliographystyle{siamplain}",1)[0]
-    table=appendix.split(r"\begin{table}[tbp]\centering\small",1)[1].split(r"\end{table}",1)[0]
+    table=appendix.split(r"\begin{table}[H]\centering\small",1)[1].split(r"\end{table}",1)[0]
     assert "No row claims an optimal frontier" not in appendix
     assert "exactly rational input" not in appendix
     assert "directed-integer interval verifier" not in appendix
