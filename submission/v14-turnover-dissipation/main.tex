@@ -4,30 +4,157 @@
 \raggedbottom
 \maketitle
 \begin{abstract}
-We study systemic drawdown reachability in a deterministic multiasset market with state-dependent price impact, price-level recovery toward a fixed fundamental benchmark, and paired-dollar execution. Each asset's terminal executed-dollar ledger closes, although its share inventory may change. A response-adapted coordinate yields two structural barriers: a price-impact elasticity bounded below by two throughout the admissible price range excludes positive systemic losses under our average-log-loss and breadth criterion, while an elasticity bounded below by one throughout that range precludes a simultaneous decline in all prices. Power-law impact distinguishes excluded, inventory-bounded, and unbounded-loss partial-coverage regimes. For every fixed sublinear exponent, arbitrarily severe partial-coverage logarithmic losses are attainable over a fixed finite horizon with turnover and inventory bounds independent of severity, using flow-completed instantaneous trades. Under constant per-share impact, full-coverage drawdowns obey a sharp, unattained horizon-dependent ceiling, whereas finite gross execution-rate constraints yield matching quadratic upper and constructive lower orders for small attainable systemic losses. Perturbation bounds quantify deviations from exact dollar pairing and homogeneous impact. These results separate structural barriers to market-wide drawdowns from the execution resources required to realize them.
+Dollar-neutral trading need not be price-neutral. We study this distinction
+in a deterministic multiasset market with fixed fundamentals, state-dependent
+price impact, paired-dollar transfers, price-level resilience, and zero
+terminal net executed dollars for each asset. A response-adapted price
+coordinate exposes the mechanism: paired trades preserve its sum, while
+resilience generally moves the system between the corresponding invariant
+surfaces. Terminal price displacements can therefore survive closed dollar
+ledgers, at a cost in share inventory. The resulting geometry yields global
+elasticity barriers, constructive reachability results, and execution-resource
+bounds. In an idealized ten-asset constant-impact witness, every asset
+finishes at half its fundamental price, with finite turnover and inventory
+but flow-completed instantaneous trades. Separately, an interval-certified
+finite-rate ten-asset witness under rolling price limits has seven assets
+falling more than 20.2 percent and an equal-weight geometric index falling
+more than 6 percent, with paired-dollar turnover below five. Arbitrarily
+severe partial-coverage losses remain constructively reachable with uniform
+finite resources for each fixed sublinear impact exponent, whereas full
+coverage faces an unattained horizon-dependent ceiling. These are
+model-conditional reachability statements, not crash probabilities,
+equilibrium predictions, or cost-optimal strategies.
 \end{abstract}
 
 \begin{keywords}market crashes; price impact; market resilience; systemic drawdown; reachability; execution constraints.\end{keywords}
 \begin{MSCcodes}91G15, 91G45, 93B03, 65G30, 91G80.\end{MSCcodes}
 
 \section{Introduction}\label{sec:intro}
-Market prices can change even when a fundamental benchmark remains fixed. Trading moves marginal prices, while liquidity recovery changes their subsequent paths. We ask which terminal patterns of market-wide loss are reachable through trading alone, which structures rule them out, and what resources are required. This is a deterministic reachability question, distinct from equilibrium selection or a crash probability.
+Consider ten assets whose fundamental benchmark prices never change. Each
+executed sale must fund an equal-dollar purchase, and by the end of the
+horizon every asset's signed executed-dollar ledger must return to zero.
+Can all ten prices nevertheless close at half their initial values? Under
+a particular constant-impact, resilient-price specification the answer is
+yes. The construction requires substantial execution resources and
+idealized flow-completed instantaneous trades, but it is a fully
+dollar-closed price path. This apparent paradox motivates a precise
+question: which systemic terminal losses are \emph{reachable}, which are
+excluded by market structure, and what resources does reaching them require?
+We study deterministic feasibility rather than crash likelihood, traders'
+equilibrium incentives, or a historical no-news event.
 
-We specify a finite risky-asset reallocation pool with fixed fundamentals, state-dependent price impact, and price-level recovery. An executed sale is paired with an equal-dollar purchase of another asset. At the horizon each asset's net executed-dollar flow closes, although its share inventory need not return to its initial position. Closing both dollar and share ledgers would force the nonnegative terminal-displacement and recovery-dissipation terms in the accounting identity to vanish. Dollar closure alone allows residual displacements financed by initial inventory.
+There are two accounting constraints, not one. At every instant,
+\emph{paired-dollar execution} requires
+$\sum_i\dd X_i=0$: purchasing assets are funded by selling others.
+\emph{Terminal assetwise dollar closure} additionally requires
+$X_i(T)=0$ for every $i$, so each asset's cumulative signed executed
+dollars vanish over the horizon. Neither constraint requires the
+corresponding share inventory to return to its starting value. Under the
+model's execution-cost identity, terminal price displacement and
+recovery dissipation instead consume benchmark-valued inventory. The
+question is therefore not whether a costless, share-flat round-trip
+manipulates prices, but how cashless reallocation with available initial
+shares interacts with restorative dynamics.
 
-Classical work connects trading and price formation through Kyle's auction model \citep{Kyle1985}, Almgren--Chriss optimal execution \citep{AlmgrenChriss2001}, and resilient order books \citep{ObizhaevaWang2013,AlfonsiSchied2010,AlfonsiFruthSchied2010}. Transient impact and price-manipulation restrictions constrain admissible execution models \citep{CuratoGatheralLillo2017,Gatheral2010,AlfonsiSchiedSlynko2012,HubermanStanzl2004}; large-trader and supply-curve formulations supply other state-dependent responses \citep{BankBaum2004,CetinJarrowProtter2004}. Our object is the attainable terminal price set under prescribed rules, rather than an agent's cost-minimizing execution schedule.
-
-Price movements without contemporaneous public news arise through hedging and inference \citep{GennotteLeland1990}, information revealed by trading \citep{Romer1993}, and endogenous liquidity imbalances \citep{HuangWang2009}. Fire sales, inventory constraints, and portfolio-linked contagion transmit stress through intermediaries and securities \citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017,KirilenkoEtAl2017}. Predatory trading and cross-impact supply further mechanisms \citep{BrunnermeierPedersen2005,AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017,CordoniLillo2024}.
-
-The share-flat execution-cost identity in our model is nonnegative because price displacement and recovery dissipate trading resources. In particular, recovering a displaced price and recovering order-book volume are different specifications \citep{AlfonsiFruthSchied2010,RochSoner2013}. Cumulative metaorder scaling and large-bet market effects provide useful comparisons with the local price-state elasticity studied here \citep{BucciEtAl2019,KyleObizhaeva2023}.
-
-Our contributions fall into three groups. \emph{Structural barriers and robustness:} a response-adapted scalar coordinate and curvature comparisons yield global exclusion conditions and quantitative perturbation bounds for departures from paired, homogeneous impact. \emph{Reachability and sharp boundaries:} power-law responses generate distinct feasible regimes; a generalized radial construction establishes uniform resource bounds for any fixed sublinear exponent, while full coverage has a sharp, unattained horizon ceiling. \emph{Execution resources and constrained realizations:} inventory and turnover bounds quantify necessary inputs, a continuous strategy matches the quadratic small-rate upper bound in order, and validated rolling-band examples show simultaneous feasibility of additional constraints.
-
-The principal coordinate, normalized to vanish at the reference price, is
+The organizing insight is geometric. Write $g(S)>0$ for the effective
+price response per executed share. The response-adapted coordinate
 \begin{equation}\label{eq:phi-intro}
-\Phi(S)=\int_F^S\frac{u}{g(u)}\dd u.
+\Phi(S)=\int_F^S\frac{u}{g(u)}\dd u
 \end{equation}
-It makes each marginal executed dollar an additive coordinate increment and separates paired trading from restorative drift. We prove structural barriers by tangent and Jensen inequalities, develop severe-loss paths through generalized radial geometry and per-asset ledger closure, and derive resource bounds by comparison inequalities. Outward-rounded interval calculations certify the finite-rate examples \citep{Tucker2011}. Section~\ref{sec:model} sets up the model; Sections~\ref{sec:barriers}--\ref{sec:regimes} examine barriers and reachability; Sections~\ref{sec:budget}--\ref{sec:rateband} bound execution resources; Section~\ref{sec:multiday} applies rolling bands, followed by discussion and conclusion. Full constructions and numerical certificates appear in the appendices.
+satisfies $\dd\Phi|_{\rm trade}=\dd X$. Consequently paired-dollar
+trades preserve
+$H(\bm S)=\sum_i\Phi(S_i)$, moving prices along its level sets.
+Price-level resilience generally changes $H$ between trades. In
+particular, even if every cumulative dollar ledger closes at maturity,
+the price path can cross invariant surfaces during its intervening
+recovery episodes. Without resilience, the same terminal dollar closure
+would force every terminal price back to the benchmark. Figure~
+\ref{fig:conservation-geometry} plots an explicit two-asset
+trade--recovery path and the ten-asset construction.
+
+This mechanism explains why the response shape matters. Let
+$e(S)=Sg'(S)/g(S)$ be the local impact elasticity. Under the paper's
+price-level recovery and positivity assumptions, $e(S)\ge1$ on the
+relevant price range excludes a decline in \emph{every} asset,
+whereas $e(S)\ge2$ rules out positive losses under the combined
+average-log-loss and breadth criterion. At the other end, constant
+per-share impact permits arbitrarily severe losses over a proper
+subset of assets, provided a compensator is allowed; this extends
+to every fixed sublinear power exponent with severity-independent
+finite turnover and inventory bounds. Full asset coverage instead
+has a sharp, unattained time-dependent ceiling. These statements
+concern different terminal target sets and must not be conflated.
+
+Two ten-asset benchmark families make the distinction tangible.
+In the idealized full-coverage construction (A1),
+$N=10$, $F=\eta=1$, $\rho=0.4$, and $T=40$ yield
+$S_i(T)=0.5$ for all ten assets, an ordinary price fall of
+$50\%$ per asset ($\log2$ in log-loss units), with paired
+turnover approximately $34.374$ and maximum cumulative share
+sales approximately $16.589$ per asset. An idealized
+nine-target construction (A2) further illustrates unbounded
+partial-coverage log severity with a uniform finite resource
+upper bound. By contrast, a distinct, absolutely continuous
+and interval-certified rolling-band witness (B1), with
+$N=10$, $F=\eta=1$, $\rho=0.4$, $T=40$, and uniform
+two-session $\pm25\%$ rolling limits, produces ordinary price
+declines above $20.2\%$ in seven assets and a geometric-index
+fall above $6\%$, with gross share rates below $0.285$,
+per-asset cumulative share sales below two, and
+paired turnover $M<5$. Another certified path (B2)
+achieves declines above $2\%$ in all ten assets with
+$M<7$, not under B1's budget. These examples occupy
+different execution classes: they do not imply a common
+optimal budget or empirical attainability.
+
+Price impact and execution have long been studied through
+Kyle's auction model \citep{Kyle1985},
+Almgren--Chriss optimal execution \citep{AlmgrenChriss2001},
+resilient order books
+\citep{ObizhaevaWang2013,AlfonsiSchied2010,AlfonsiFruthSchied2010},
+and large-trader and supply-curve formulations
+\citep{BankBaum2004,CetinJarrowProtter2004}.
+Restrictions on transient impact, round-trip execution and
+price manipulation delimit admissible market models
+\citep{CuratoGatheralLillo2017,Gatheral2010,AlfonsiSchiedSlynko2012,HubermanStanzl2004}.
+Our terminally dollar-flat protocol is distinct from the
+share-flat execution-cost problem. Different specifications of
+price recovery and order-book volume recovery need not have
+the same invariant regions
+\citep{AlfonsiFruthSchied2010,RochSoner2013};
+local response elasticity also differs from cumulative
+metaorder impact scaling
+\citep{BucciEtAl2019,KyleObizhaeva2023}.
+
+No-news market movements have other proposed mechanisms,
+including inference and hedging \citep{GennotteLeland1990,Romer1993},
+endogenous liquidity \citep{HuangWang2009},
+fire sales and indirect contagion
+\citep{CespaFoucault2014,ContWagalath2013,ContSchaanning2017,KirilenkoEtAl2017},
+and predatory trading or cross-impact
+\citep{BrunnermeierPedersen2005,AlfonsiKlockSchied2016,SchneiderLillo2019,BenzaquenEtAl2017,CordoniLillo2024}.
+Rather than selecting a mechanism that must operate in actual
+markets, we identify structural barriers and explicit admissible
+controls within one precisely stated model.
+
+Our contributions are connected stages of a single argument.
+First, response-adapted conservation geometry and its
+interaction with resilience yield \emph{structural barriers}
+and perturbation bounds for imperfect dollar pairing or
+heterogeneous impact. Second, power-law constructions and
+the sharp full-coverage boundary distinguish \emph{reachable
+from excluded terminal loss states}. Third, turnover,
+inventory, bounded-rate and rolling-band analysis establish
+\emph{execution-resource requirements} and certified
+constrained realizations. Section~\ref{sec:model} derives
+the coordinates and accounting protocol; Section~\ref{sec:barriers}
+develops the barriers; Section~\ref{sec:regimes} proves the
+reachability results with the idealized ten-asset examples;
+Sections~\ref{sec:budget}--\ref{sec:rateband} treat
+resources and rates; Section~\ref{sec:multiday} gives
+constrained certificates; and Section~\ref{sec:discussion}
+discusses the economic meaning and limits. The appendices
+preserve the full constructive proofs and certification methods.
 
 \section{Model and Systemic Drawdown Criterion}\label{sec:micro}\label{sec:model}
 We specify a risky-asset reallocation submarket in which every executed sale is matched by an equal-dollar purchase. Settlement and price response are distinct assumptions: the former constrains flows, while the latter determines the induced price motion. All subsequent results use Assumption~\ref{asmp:model} unless stated otherwise.
@@ -46,20 +173,22 @@ Fix $N\ge2$ assets and a finite horizon $[0,T]$. The following jointly define th
 
 
 \paragraph{Price-level resilience as a modeling choice}
-Assumption (M3) specifies price-level recovery, $\dot S=-\rho(S-F)$, separately from the frozen-book matching relation in (M2). For comparison, a displacement-in-volume coordinate $V(S)=\int_F^S g(u)^{-1}\dd u$, relaxing according to $\dot V=-\rho V$, instead implies
-\[
-\dot S\big|_{\mathrm{vol}}=-\rho g(S)V(S),\qquad
-\dot\Phi(S)\big|_{\mathrm{vol}}=-\rho S V(S).
-\]
-Except in special response families such as constant $g$, this is a different restoring field from $-\rho S(S-F)/g(S)$ in \eqref{eq:normal-form}. Order-book models with depth and resilience provide the relevant comparison \citep{AlfonsiFruthSchied2010,RochSoner2013}. The elasticity barriers below use the price-level restoring drift in (M3).
+Assumption (M3) fixes recovery in the \emph{price} coordinate,
+$\dot S=-\rho(S-F)$, separately from the effective trade response in (M2).
+Recovery in the order-book volume coordinate is a different model,
+except for constant impact; Subsection~\ref{subsec:resilience-metric}
+examines which results survive that replacement. The structural
+elasticity barriers below use (M3).
 
-\paragraph{Interpretation of terminal dollar closure}
-The complete two-sided transaction graph describes a cashless
-portfolio-switching pool: executed sales purchase other risky assets.
-Its terminal condition $X_i(T)=0$ closes each asset's signed
-executed-dollar ledger. The execution-cost identity below makes the
-resulting inventory accounting precise; a share-flat round trip
-imposes a different condition.
+\paragraph{Two levels of executed-dollar accounting}
+The complete bidirectional graph represents a cashless
+portfolio-switching pool: $\one^\top\dd\bm X=0$
+holds at each paired trade. In addition, the terminal
+condition $X_i(T)=0$ closes \emph{each} asset's cumulative
+executed-dollar ledger. These conditions neither impose
+$\theta_i(T)=\theta_i(0)$ nor rule out a terminal price
+displacement. The inventory cost of the latter is made
+explicit by~\eqref{eq:cost}.
 
 \paragraph{Finite-variation paths and marginally settled pulses}
 For absolutely continuous controls the differential notation is classical. At a jump, settlement follows the within-event price path rather than valuing the entire transaction at an endpoint. Hold physical time fixed and parameterize a directed edge $e:i\to j$ carrying dollar mass $z>0$ by $a\in[0,z]$:
@@ -100,6 +229,17 @@ The entire multiasset market then has the \emph{trade-normalized form}
 \dd\bm y=B\dd\bm z-\rho\mathcal R(\bm y)\dd t,\qquad\one^\top B=0,
 \end{equation}
 where $\mathcal R$ acts componentwise and the execution rule applies also to flow-completed pulses. Trading is therefore an additive zero-sum input; all nonlinear price-state dependence has moved into the restoring term and the inverse map $S=\Phi^{-1}(y)$. The transformed state space is $\mathcal J^N$, where $\mathcal J=\Phi((0,\infty))$. For $g_p(S)=\eta(S/F)^p$, the range is $(-F^2/[\eta(2-p)],\infty)$ for $p<2$, $\mathbb R$ for $p=2$, and $(-\infty,F^2/[\eta(p-2)])$ for $p>2$. Thus additive trading inputs do not remove strict price positivity or execution constraints. This change of coordinates does not alter which price states are reachable. With $\rho=0$ the traded sum of generalized coordinates is exactly conserved.
+
+The distinction between trading and recovery is now visible: within
+each flow-completed pulse, the state moves on a level surface of
+$H=\sum_i\Phi(S_i)$, whereas intervening restoration moves it
+across such surfaces. Closing each $X_i(T)$ need not undo the
+recovery-induced change in $H$; it would do so if the restoring
+drift were absent. Figure~\ref{fig:conservation-geometry} uses
+trajectories calculated from the stated equations, including a
+terminally dollar-closed ten-asset path.
+
+\input{twin_conservation_figure.tex}
 
 \begin{definition}[Terminal systemic drawdown]\label{def:crash}
 Let $L_i(T)=\log[F/S_i(T)]$ and $\overline L(T)=N^{-1}\sum_i L_i(T)$. The $k$th-largest loss, where $k=\lceil\alpha N\rceil$, is $Q_\alpha(T)$. Define
@@ -150,7 +290,14 @@ The normal form~\eqref{eq:normal-form} supplies a conserved scalar during tradin
 \dd H=-\rho\sum_{i=1}^N\mathcal R(y_i)\dd t
 =-\rho\sum_{i=1}^N\frac{S_i(S_i-F)}{g(S_i)}\dd t.
 \end{equation}
-The scalar $H$ is invariant under trading and evolves through price recovery between trades. Whether the recovery drift can carry $H$ through a crisis boundary depends on the curvature of $\Phi$.
+The scalar $H$ is invariant under trading and evolves through price
+recovery between trades. Its restoring drift need not have a single
+sign along an arbitrary path: reallocation changes the configuration
+at which the restoring field acts. The level surfaces alone therefore
+neither prove a barrier nor guarantee a crash; the relevant question
+is whether the coupled trading and recovery dynamics can enter
+the terminal crisis region. Curvature comparisons provide the
+answer for the structural exclusions below.
 Introduce the response elasticity
 \begin{equation}\label{eq:elasticity}
 e(S)=\frac{Sg'(S)}{g(S)}.
