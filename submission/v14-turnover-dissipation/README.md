@@ -1,9 +1,15 @@
-# V14 public research manuscript
+# V14 manuscript — working narrative revision V14-R1
 
-**[Open the compiled V14 manuscript PDF](manuscript.pdf)** · [Build provenance](manuscript-build.json).
+**[Revised V14-R1 LaTeX source](main.tex)** · [Twin-benchmark revision evidence](../../docs/TWIN_TEN_ASSET_REVISION_V1.md) · [Prior built V14 PDF](manuscript.pdf) · [Its build provenance](manuscript-build.json).
 
-The PDF is built by GitHub Actions and committed to this directory after a successful source/build check. V14 is the latest publicly available GitHub research manuscript. V14 was deposited on [Zenodo, DOI 10.5281/zenodo.23478787](https://doi.org/10.5281/zenodo.23478787), on 20 October 2026; its displayed checksum matches this PDF. V13 remains a preserved archival edition. No journal acceptance is asserted. See [versions](../../docs/VERSIONS.md).
+The PDF is built by GitHub Actions and committed to this directory **on main** after a successful source/build check. The working V14-R1 revision changes the manuscript and adds new, separate A1/A2 numerical fixtures: until a new PDF is built from this source, the linked PDF is the previously compiled V14 snapshot. The **frozen** V14 manuscript was deposited on [Zenodo, DOI 10.5281/zenodo.23478787](https://doi.org/10.5281/zenodo.23478787) on 20 October 2026; its recorded checksum matched that earlier PDF. It does **not** include this revision's source, diagram, or A1/A2 tests. V13 and the original immutable software archive remain preserved. No journal acceptance is asserted. See [versions](../../docs/VERSIONS.md).
 
+
+## Narrative-focused major revision (working V14-R1)
+
+The revised Abstract and Introduction make response-adapted conservation geometry, resilience-driven movement between invariant surfaces, structural exclusions, reachability, and execution resources the paper's primary narrative. A new figure is generated directly from model trajectories in [editable TikZ source](twin_conservation_figure.tex), not from freehand curves. Section 4 adds A1 (ten assets each down 50%, double-precision analytic reconstruction) and A2 (nine-target severe-log-loss series), and Appendix F records the new numerical ledger checks. Section 7 promotes B1 (seven targets >20.2% and index >6% with **M<5**) and B2 (ten targets >2% with **M<7**) from existing internally interval-certified controls. These are separately budgeted evidence classes. Section 8 explains volume-coordinate recovery without claiming that all nonconstant-impact barrier results survive. Existing proof blocks and historically published editions are unchanged.
+
+For instructions and the result-to-evidence matrix see [the revision record](../../docs/TWIN_TEN_ASSET_REVISION_V1.md). Reproduce newly added idealized examples with `python verification/twin_ten_asset_benchmarks.py --check` from the repository root. This is **not** part of the frozen V14 Zenodo code snapshot; the earlier exact-control certificate archive is independent.
 
 This **complete English manuscript source** extends the published V13 preprint.
 Section 4 now includes a [continuous power-law exponent analysis](../../docs/V14_CONTINUOUS_EXPONENT_SPECTRUM.md)
@@ -36,7 +42,7 @@ observations or empirical calibration and are not included in the
 historical Lean formalization.
 
 The published V13 manuscript, PDF, Lean proofs, and archived numeric certificates
-are unchanged. This GitHub research manuscript now includes new internally verified numerical witnesses, but does not claim optimal controls or impossibility results. The fixed [V14 Zenodo deposit](https://doi.org/10.5281/zenodo.23478787) is verified; see [versions](../../docs/VERSIONS.md) for the newer live SSRN revision and unresolved PDF/source identity. The additional V14 propositions and sublinear-impact severe-loss theorem,
+are unchanged. This GitHub working manuscript includes additional numerical reconstructions (A1/A2) and refers to previously internally interval-certified controls (B1/B2), but does not claim optimal controls or impossibility results. The fixed [V14 Zenodo deposit](https://doi.org/10.5281/zenodo.23478787) verifies the **earlier** source and PDF, not this later revision; see [versions](../../docs/VERSIONS.md) for SSRN/source identity caveats. The additional V14 propositions and sublinear-impact severe-loss theorem,
 including the two Section 8 robustness propositions, have not been
 Lean-formalized and are not counted in the original 16/16 Lean acceptance report.
 
