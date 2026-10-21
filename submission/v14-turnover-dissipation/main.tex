@@ -1304,6 +1304,66 @@ and conservative loss thresholds are reported in
 Table~\ref{tab:loss-breadth} and the supplementary table
 \ref{tab:loss-breadth-additional}.
 
+\subsection{Further certified ten-asset drawdowns under rolling price limits}
+\label{subsec:twin-constrained}
+The following ten-asset controls share one synthetic
+execution protocol: $F=\eta=1$, $\rho=0.4$,
+$T=40$ in two 20-unit sessions, uniform
+$\pm25\%$ rolling bands for \emph{each} asset,
+strictly positive prices, gross share rate
+below $0.285$ per asset, cumulative gross sales
+below two shares per asset, and terminal closure
+$X_i(40)=0$ for every asset. Importantly, their
+turnover budgets \emph{differ}. Table~
+\ref{tab:twin-constrained} promotes the most
+informative comparisons from Appendix~
+\ref{app:loss-breadth}; Proposition~
+\ref{prop:certified-v7}, which uses different
+target and compensator rolling bands, remains
+a separate certified result.
+
+\begin{table}[tbp]\centering\small
+\caption{\textbf{Twin ten-asset benchmark B: constrained,
+terminally dollar-closed controls.} Target-asset
+and equal-weight geometric-index declines are
+conservative \emph{strict ordinary percentage}
+thresholds. The turnover caps are also strict;
+$M$ counts paired executed dollars once.
+Each fixed rational control is individually
+interval checked for endpoint losses, rates,
+inventory and rolling bands. The table makes
+no common-budget or optimality assertion.}
+\label{tab:twin-constrained}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Control & Coverage & Target fall & Geometric-index fall
+  & Turnover cap\\\midrule
+P60-20 & $6/10$ & $>20.90\%$ & $>5.0\%$ & $M<3$\\
+R70-20-M4 & $7/10$ & $>20.00\%$ & $>6.0\%$ & $M<4$\\
+R70-20-M5 (B1) & $7/10$ & $>20.20\%$ & $>6.0\%$ & $M<5$\\
+F100-2-M7 (B2) & $10/10$ & $>2.00\%$ & $>2.0\%$ & $M<7$\\
+\bottomrule\end{tabular}
+\end{table}
+
+In B1, seven asset prices fall more than
+$20.2\%$ and the geometric index falls more
+than $6\%$ despite individually closed dollar
+ledgers and the specified finite-rate and
+rolling-band constraints. B2 separately
+establishes positive \emph{full-coverage}
+loss under continuous constrained execution,
+but requires its own $M<7$ cap and does not
+establish B1's severity with that budget.
+Likewise P60-20 and R70-20-M4 are feasible
+under their stated $M<3$ and $M<4$ budgets,
+respectively, not under a shared fixed-$M<3$
+protocol. Certified control inputs, strict
+bounds and hashes appear in
+\path{verification/loss_breadth/verified_results_manifest.json}
+and the interval verification package
+\path{verification/loss_breadth/}.
+No displayed row identifies a minimum required
+turnover or excludes any untested loss target.
+
 \section{Discussion}\label{sec:discussion}
 \subsection{Economic accounting and execution burden}
 Recovery has two roles: for the price-level dynamics in Assumption~\ref{asmp:model}, it enters the curvature-based exclusion argument, but it also makes nontrivial terminal displacement possible under dollar closure. If $\rho=0$, $\dd\Phi(S_i)=\dd X_i$ and $X_i(T)=0$ implies $S_i(T)=F$ (Appendix~\ref{app:accounting}). For $\rho>0$, the identity \eqref{eq:cost} shows that the nonnegative terminal potential and cumulative recovery dissipation are financed by a reduction of net share inventory, valued at the fixed benchmark. For any terminally dollar-closed path $\gamma$, define this benchmark-valued inventory consumption by
