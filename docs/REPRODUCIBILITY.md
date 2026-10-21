@@ -1,4 +1,6 @@
-# Reproducibility: original baseline and V14
+# Reproducibility: current GitHub V14-R1 and the original baseline
+
+The current [V14-R1 working manuscript](../submission/v14-turnover-dissipation/main.tex) and [its CI-built PDF](../submission/v14-turnover-dissipation/manuscript.pdf) are distinct from the frozen 20 October V14 Zenodo deposit. The manuscript has new idealized A1/A2 numerical reconstructions and an analytical BV lemma beyond that deposit. Use [the working-version SHA-256 checker](../scripts/check_revision_hashes.py) for the original baseline plus the explicitly reviewed V14-R1 overlay; `check_hashes.py` below examines only the frozen baseline.
 
 Install Python 3.11 and run `python -m pip install .` in a fresh virtual
 environment. Dependencies are pinned in `pyproject.toml`. Python 3.10 is also
@@ -47,7 +49,7 @@ pdfLaTeX build and must be compared separately with the original PDFs.
 Do not replace the distributed final PDFs without comparing the rebuilt
 documents and recording the new hashes.
 
-Run `python scripts/check_hashes.py` for the distributed-file checksum check.
+Run `python scripts/check_revision_hashes.py` on the current GitHub working tree; it verifies the frozen baseline checksum entries **with an explicitly constrained working-revision overlay**. The lower-level `python scripts/check_hashes.py` command checks only the **original frozen manifest** and is expected to flag intentionally updated working documentation on modern commits.
 The checksum manifest excludes itself, generated outputs, Git internals and
 transient build files. CI artifacts retain command stdout/stderr and reports.
 CI configuration is not evidence that GitHub Actions has already run.
@@ -75,7 +77,8 @@ The completed local comparison is documented in [PDFLATEX_ACCEPTANCE.md](PDFLATE
 | C. V14 static checks | `python scripts/check_v14_resource_bound.py` | Compares retained theorem/equation content with V13, checks five additions and manuscript consistency; not a proof checker |
 | C. V14 build | `python scripts/build_v14_resource_bound.py` | Requires pdfLaTeX, BibTeX and packages in V14 source; uses retained SIAM template and earlier figure inputs; output `build/v14-turnover-dissipation/main.pdf` and build logs; preserves distributed PDFs |
 | D. V14 loss–breadth | `python verification/loss_breadth/verify_all.py` | Standard-library rational controls and integer outward rounding; input hashes and strict resource/band/ledger checks. Run without Python optimization. See certificate guide for per-case outputs |
-| E. Lean | Commands below | Pinned kernel build and full declaration axiom audit; original 16 result families only |
+| D2. V14-R1 twin A1/A2 | `python verification/twin_ten_asset_benchmarks.py --check` | Numerical evaluation of analytic primitives and terminal dollar-ledger residuals; **not** a new outward-rounded interval certificate |
+| E. Lean | Commands below | Pinned kernel build and full declaration axiom audit; original 16 result families only (not the five V14 additions or subsequent BV lemma) |
 
 ```sh
 cd formal/lean
@@ -89,4 +92,4 @@ Install Elan and the toolchain in `formal/lean/lean-toolchain` (Lean 4.19.0). `l
 
 Additional ordinary regression: `python scripts/check_sublinear_severe_extension.py`. Optional floating-point cross-check: `python verification/loss_breadth/verify_all.py --audit` (NumPy/SciPy required). Neither substitutes for analytical proof or an independent external audit. See [certificate methodology](../verification/loss_breadth/README.md), [evidence matrix](RESULTS_AND_EVIDENCE.md) and [versions](VERSIONS.md).
 
-Documentation QA: `python scripts/check_documentation.py`. Distributed-file integrity: `python scripts/check_hashes.py`. The current working-tree release manifest may track documentation changes; the immutable software archive and historical certificate input manifests retain their original identities. No blanket byte-identity requirement applies to PDFs rebuilt with different TeX environments.
+Documentation QA: `python scripts/check_documentation.py`. Current working-file integrity: `python scripts/check_revision_hashes.py`; original frozen manifest alone: `python scripts/check_hashes.py`. The current working-tree release manifest may track documentation changes; the immutable software archive and historical certificate input manifests retain their original identities. No blanket byte-identity requirement applies to PDFs rebuilt with different TeX environments.

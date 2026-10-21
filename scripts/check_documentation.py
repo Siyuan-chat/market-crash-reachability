@@ -1,11 +1,14 @@
 """Deterministic public-documentation checks; no network or LLM required."""
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
+from hashlib import sha256
+import json
 import re
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-PRIMARY = ['README.md', 'REPRODUCE.md', 'docs/STATUS.md',
+PRIMARY = ['README.md', 'REPRODUCE.md', 'CONTRIBUTING.md',
+           'docs/REPOSITORY_STRUCTURE.md', 'docs/STATUS.md',
            'docs/RESEARCH_OVERVIEW.md', 'docs/RESULTS_AND_EVIDENCE.md',
            'docs/REPRODUCIBILITY.md', 'docs/VERSIONS.md', 'formal/README.md',
            'submission/README.md', 'submission/v14-turnover-dissipation/README.md']
@@ -71,9 +74,29 @@ def check():
                 errors.append(f'{name}: missing reproduction program {command_path}')
     readme = (ROOT / 'README.md').read_text(encoding='utf-8')
     for required in ('Latest GitHub manuscript: V14', 'not Lean-formalized',
-                     'submission/v14-turnover-dissipation/manuscript.pdf'):
+                     'submission/v14-turnover-dissipation/manuscript.pdf',
+                     'docs/REPOSITORY_STRUCTURE.md', 'manuscript-build.json'):
         if required not in readme:
             errors.append('README.md: missing required scope marker ' + required)
+    # The tracked manuscript PDF and its build provenance must agree even
+    # when a documentation-only commit follows the scientific source commit.
+    record_path = ROOT / 'submission/v14-turnover-dissipation/manuscript-build.json'
+    pdf_path = ROOT / 'submission/v14-turnover-dissipation/manuscript.pdf'
+    try:
+        record = json.loads(record_path.read_text(encoding='utf-8'))
+        pdf_bytes = pdf_path.read_bytes()
+        if not pdf_bytes.startswith(b'%PDF-'):
+            errors.append('V14 working manuscript PDF has no PDF header')
+        if sha256(pdf_bytes).hexdigest() != record.get('pdf_sha256'):
+            errors.append('V14 working PDF SHA-256 differs from manuscript-build.json')
+        if len(pdf_bytes) != record.get('pdf_size'):
+            errors.append('V14 working PDF size differs from manuscript-build.json')
+        if not record.get('source_commit') or not record.get('workflow_run'):
+            errors.append('V14 working PDF build provenance is incomplete')
+        if record.get('problems'):
+            errors.append('V14 working PDF build metadata reports problems')
+    except (OSError, json.JSONDecodeError, TypeError) as exc:
+        errors.append('V14 working PDF provenance unreadable: ' + str(exc))
     citation = (ROOT / 'CITATION.cff').read_text(encoding='utf-8')
     for identity in ('1.0.0rc1+git.d6e2606', 'd6e2606590f955a6287c6945488a080e5acab004',
                      '10.5281/zenodo.23428183', '10.5281/zenodo.23444647'):

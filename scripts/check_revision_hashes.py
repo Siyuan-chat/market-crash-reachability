@@ -22,10 +22,21 @@ REVISION = ROOT / "release/SHA256SUMS_V14_R1"
 
 # This explicit whitelist prevents a later revision from silently masking
 # changed historical certificate, data or Lean files behind an overlay.
+# Current-repository navigation and documentation QA are deliberately
+# allowed editorial paths; no mathematical source, certificate, archived
+# figure or formal Lean proof is added to this exception list.
 REVISION_FILES = {
     ".github/workflows/tests.yml",
     ".github/workflows/v14.yml",
     "README.md",
+    "REPRODUCE.md",
+    "CONTRIBUTING.md",
+    "docs/REPOSITORY_STRUCTURE.md",
+    "docs/STATUS.md",
+    "docs/RESEARCH_OVERVIEW.md",
+    "docs/REPRODUCIBILITY.md",
+    "scripts/check_documentation.py",
+    "submission/README.md",
     "data/twin_ten_asset_benchmarks.json",
     "docs/TWIN_TEN_ASSET_REVISION_V1.md",
     "docs/VERSIONS.md",
