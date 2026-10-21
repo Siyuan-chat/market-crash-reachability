@@ -722,7 +722,9 @@ Moreover, if $X_i(T)=0$, no short sales are allowed, and the initial inventory o
 These necessary lower bounds need not be sharp.
 \end{theorem}
 \begin{proof}
-For a terminally qualifying asset, the final price is at most $s<F$. Both transformed coordinates increase with price, and recovery acts toward their zero values at $F$. Consequently the cumulative negative executed-dollar and share variations must be at least $-\Phi(s)$ and $-\Psi(s)$, respectively. Summing over $k$ distinct qualifying assets proves \eqref{eq:resource-lower} because sales by qualifying assets form a subset of total sales, and each paired execution is counted once in total sales. Equation~\eqref{eq:share-bound} follows from the nonnegative right-hand side of \eqref{eq:cost} with $X_i(T)=0$ and $\theta_i(0)-\theta_i(T)\le H_i$. The detailed variation argument is given in Appendix~\ref{app:accounting}.
+For a terminally qualifying asset, the final price is at most $s<F$. Both transformed coordinates increase with price, and recovery acts toward their zero values at $F$. Consequently the cumulative negative executed-dollar and share variations must be at least $-\Phi(s)$ and $-\Psi(s)$, respectively. Summing over $k$ distinct qualifying assets proves \eqref{eq:resource-lower} because sales by qualifying assets form a subset of total sales, and each paired execution is counted once in total sales. Equation~\eqref{eq:share-bound} follows from the nonnegative right-hand side of \eqref{eq:cost} with $X_i(T)=0$ and $\theta_i(0)-\theta_i(T)\le H_i$. Lemma~\ref{lem:one-sided-BV} in Appendix~\ref{app:accounting}
+justifies the variation argument for continuous finite-variation
+controls and flow-completed transaction pulses.
 \end{proof}
 
 Geometrically, the resource bounds measure distances in the two monotone coordinates. Trading direction, recovery time, and the buying capacity of receiving assets impose further requirements; we turn to these execution restrictions next.
@@ -1497,11 +1499,65 @@ Then
 \qquad
 \dd z=\dd\theta-\rho\frac{S-F}{g(S)}\dd t.
 \end{equation}
-The recovery terms have signs opposite to $S-F$. Thus whenever $y<0$ (equivalently $S<F$), the no-trade drift in $y$ is positive; likewise for $z$. By separating the positive and negative variations in \eqref{eq:appendix-yz}, a trajectory ending at $y(T)\le\Phi(s)<0$ must accumulate at least $-\Phi(s)$ in negative executed-dollar variation. One way to see this is to start at the \emph{last} time when $y$ equals zero (or $t=0$ if no later zero exists). On the remaining interval $y\le0$ and the recovery drift is nonnegative. The negative transaction variation must therefore account for the entire fall to $y(T)$. The same argument in $z$ gives the share-sale bound. Summing sales across qualifying assets counts each paired-dollar transfer at most once. If a terminally qualifying asset has inventory cap $H_i$ and $X_i(T)=0$, equation \eqref{eq:cost} implies
+\begin{lemma}[One-sided variation under restorative drift]
+\label{lem:one-sided-BV}
+For any admissible finite-variation execution path starting at
+$S_i(0)=F$, including graph-completed transaction pulses, let
+$\operatorname{Var}^{-}(X_i;[0,T])$ and
+$\operatorname{Var}^{-}(\theta_i;[0,T])$ denote cumulative
+negative variation along the completed paths. Then
 \[
-E(S_i(T))\le F\left[\theta_i(0)-\theta_i(T)\right]\le FH_i.
+\big[-\Phi(S_i(T))\big]_+
+ \le\operatorname{Var}^{-}(X_i;[0,T]),
+\qquad
+\big[-\Psi(S_i(T))\big]_+
+ \le\operatorname{Var}^{-}(\theta_i;[0,T]).
 \]
-Since $E(S)$ increases as $S$ falls below $F$, $S_i(T)\le s$ implies $E(s)\le FH_i$. This proves Theorem~\ref{thm:resource}.
+\end{lemma}
+\begin{proof}
+Use an absolutely continuous graph parameter $\sigma$ for the
+finite-variation trajectory, with nondecreasing physical time
+$t(\sigma)$ and $t'=0$ along each instantaneous pulse. The
+flow-completed chain rule for~\eqref{eq:appendix-yz} gives,
+almost everywhere on the completed path,
+\[
+\begin{aligned}
+y'&=X_i'-\rho\,\frac{S_i(S_i-F)}{g(S_i)}\,t',\\
+z'&=\theta_i'-\rho\,\frac{S_i-F}{g(S_i)}\,t'.
+\end{aligned}
+\]
+Because $\Phi$ and $\Psi$ are increasing and both vanish at
+$F$, either coordinate is negative exactly when $S_i<F$.
+On that negative half-line its recovery drift is
+nonnegative; at the origin the drift vanishes. Applying the
+Lipschitz negative-part function to the absolutely continuous
+completed coordinates therefore yields, almost everywhere,
+\[
+\frac{\dd}{\dd\sigma}[-y]_+\le[-X_i']_+,
+\qquad
+\frac{\dd}{\dd\sigma}[-z]_+\le[-\theta_i']_+.
+\]
+The same inequalities apply on pulse arcs, where $t'=0$ and
+trading follows the prescribed within-pulse execution flow.
+Integration, using $y(0)=z(0)=0$, proves both bounds.
+\end{proof}
+
+For a qualifying asset $S_i(T)\le s<F$, monotonicity gives
+$-\Phi(S_i(T))\ge-\Phi(s)$ and
+$-\Psi(S_i(T))\ge-\Psi(s)$.
+Moreover, each directed paired-dollar transfer contributes
+negative dollar variation at only its selling endpoint; hence
+$\sum_i\operatorname{Var}^{-}(X_i;[0,T])\le M$, even when
+simultaneous edge flows cancel at an asset.
+The lemma gives the dollar and share distances in
+\eqref{eq:resource-lower}. Finally, if $X_i(T)=0$ and short
+sales are forbidden, equation~\eqref{eq:cost} implies
+\[
+E(S_i(T))\le F[\theta_i(0)-\theta_i(T)]\le FH_i.
+\]
+Since $E(S)$ increases as $S$ falls below $F$,
+$S_i(T)\le s$ implies $E(s)\le FH_i$.
+This completes the proof of Theorem~\ref{thm:resource}.
 
 When $\rho=0$, $\dd\Phi(S_i)=\dd X_i$. Terminal dollar closure therefore implies $\Phi(S_i(T))=\Phi(F)=0$ and, by strict monotonicity, $S_i(T)=F$. Within the present separable response class, recovery makes the nontrivial dollar-closed endpoint effect possible.
 
@@ -1519,12 +1575,30 @@ Hence, writing $e_0=e(F)$, the price ratio after a small dollar-coordinate displ
 \end{equation}
 with constants uniformly bounded for paths in a compact neighborhood of $F$.
 
-For the two-pulse experiment, the first impulse displaces $y$ by $hu_i$ at time zero. It produces the initial price response according to \eqref{eq:local-Taylor}. Recovery over $T$ multiplies the \emph{level} displacement $S-F$ by $r=e^{-\rho T}$; the terminal pulse subtracts the same dollar amount $hu_i$ from the executed-dollar coordinate. Expanding $\Phi$ and $\Phi^{-1}$ around $F$ gives
+For the two-pulse experiment, put $v=hu_i$ and
+$r=e^{-\rho T}$. The first pulse moves the dollar coordinate
+from zero to $v$; recovery multiplies the resulting
+\emph{price-level} displacement $S-F$ by $r$.
+Using~\eqref{eq:local-Taylor} and its local inverse,
+the dollar coordinate immediately before the final pulse is
+\[
+\Phi(S_i(T^-))
+=rv+\frac{e_0-1}{2}\,c\,r(1-r)v^2+O(v^3).
+\]
+The final pulse subtracts $v$, so that
+$y_i(T)=\Phi(S_i(T^-))-v$.
+Inverting once more and expanding
+$-\log(1+w)=-w+w^2/2+O(w^3)$ gives
 \begin{align}\label{eq:local-two}
 L_i(T)&=c(1-r)hu_i+\frac{c^2h^2}{2}\,\lambda(r,e_0)u_i^2+O(h^3),\\
 \frac1N\sum_i L_i(T)&=\frac{c^2h^2}{2N}(1-r)(2-e_0-r)\sum_i u_i^2+O(h^3),\nonumber
 \end{align}
-where the individual second-order coefficient $\lambda$ is not needed separately. The linear term vanishes in the mean because $\sum_i u_i=0$. If at least $k$ components are positive, those assets have positive first-order losses and the $k$th-largest loss is positive for small $h$; the mean is positive under the horizon condition $r<2-e_0$.
+where the explicit individual second-order coefficient is
+$\lambda(r,e_0)=(1-r)(2-e_0-r)$.
+The linear term vanishes in the mean because $\sum_i u_i=0$.
+If at least $k$ components are positive, those assets have
+positive first-order losses and the $k$th-largest loss is positive
+for small $h$; the mean is positive when $r<2-e_0$.
 
 For the three-pulse experiment, the dollar-coordinate impulses at $0,T/2,T$ have amounts $hu_i$, $-(1+r)hu_i$, and $rhu_i$ with $r=e^{-\rho T/2}$. Direct substitution and second-order expansion yield
 \begin{equation}\label{eq:local-three}
