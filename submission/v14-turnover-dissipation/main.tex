@@ -626,13 +626,27 @@ finite gross execution-rate cap are asserted.
 \begin{proof}
 Put $\nu=2-p>1$. Paired-dollar pulses preserve
 $\sum_iS_i^\nu$, so their positive-price orbits are
-$\ell^\nu$ spheres. The constructive $\ell^\nu$-radial
-extension of Appendix~\ref{app:severe} is given in
-Appendix~\ref{app:sublinear-severe}, including per-asset
-terminal dollar closure and bounds on pulse turnover,
-continuous turnover, and total share sales that are
-independent of the terminal target price
-$\varepsilon\downarrow0$.
+$\ell^\nu$ spheres. The $\ell^\nu$-radial construction in
+Appendix~\ref{app:sublinear-severe} first closes the
+compensating asset's dollar ledger using a direction
+parameter $b_\varepsilon\in(b_-,\bar b)$, where the
+positive lower bound $b_->0$ and the finite horizon
+are independent of $\varepsilon$. A partition by equal
+positive recovery-weight integrals then closes every
+target asset's ledger. On continuous control stages,
+all direction coordinates exceed
+$d_*=\min\{c,b_-\}>0$, which bounds their share rates.
+On each of the finitely many transaction pulses,
+the gross share variation remains finite uniformly
+as $\varepsilon\downarrow0$, because
+\[
+\frac{F^p}{\eta}\int_0^{FN^{1/\nu}}u^{-p}\dd u
+=\frac{F}{\eta(1-p)}\,N^{(1-p)/\nu}<\infty.
+\]
+The $\ell^\nu$ radius also bounds pulse-dollar variation;
+the appendix combines these estimates with bounded
+continuous turnover to give constants $M_0,H_0$
+independent of $\varepsilon$ and hence of $\delta$.
 \end{proof}
 
 \subsection{A sharp boundary when every asset must fall}\label{sec:allcoverage}
@@ -647,11 +661,41 @@ Under Assumption~\ref{asmp:model} with $g(S)=\eta$ and $k=N$, define
 For every $\delta\in(0,\delta_{\mathrm{crit}}(N,T))$, some admissible terminally dollar-closed control reaches $\Cris_1(T)\ge\delta$ with finite turnover and sufficiently large finite inventory. If $\delta\ge\delta_{\mathrm{crit}}(N,T)$, no such positive-price path exists. Thus $\delta_{\mathrm{crit}}$ is the \emph{unattained supremum} of the all-asset common log drawdown.
 \end{theorem}
 \begin{proof}[Proof sketch]
-Set $R(t)^2=\sum_iS_i(t)^2$. Under constant response, any paired-dollar trade satisfies $\dd R^2|_{\rm trade}=2\eta\sum_i\dd X_i=0$. Between trades,
+Set $R(t)^2=\sum_iS_i(t)^2$. Under constant response,
+any paired-dollar trade satisfies
+$\dd R^2|_{\rm trade}=2\eta\sum_i\dd X_i=0$.
+Between trades,
 \[
 \dot R=-\rho\left(R-F\frac{\sum_iS_i}{R}\right).
 \]
-For positive prices, $\sum_iS_i/R>1$, whence $R(T)>F\{1+(\sqrt N-1)e^{-\rho T}\}$. If each asset ends below $Fe^{-\delta}$, then $R(T)\le F\sqrt Ne^{-\delta}$, proving necessity. For sufficiency, rotate the price vector through $N$ positive spherical directions with one high coordinate, allotting each asset equal recovery weight. Each reorientation is a zero-sum paired-dollar pulse, and paired controls during recovery keep the direction fixed. Equal terminal prices and equal recovery integrals, together with $\sum_iX_i(T)=0$, give $X_i(T)=0$ for every $i$. Moving the positive low coordinates toward zero approaches the bound continuously. A full constructive proof is in Appendix~\ref{app:sharp}.
+Strict positivity and $N\ge2$ give
+$\sum_iS_i/R>1$ at each finite time. Comparing the
+radial equation with $\dot r=-\rho(r-F)$, starting from
+$R(0)=F\sqrt N$, yields
+\[
+R(T)>F\{1+(\sqrt N-1)e^{-\rho T}\}.
+\]
+If all terminal prices are at most $Fe^{-\delta}$,
+then $R(T)\le F\sqrt N e^{-\delta}$; combining the
+two inequalities proves the strict necessary ceiling.
+
+For sufficiency, use the $N$ permutations of a positive
+unit direction $(a,b,\ldots,b)$, with
+$0<b<1/\sqrt N$. Each spherical reorientation is a
+paired-dollar pulse, and matched continuous flows keep
+a chosen direction fixed during recovery. The difference
+between high- and low-coordinate recovery integrands is
+the strictly positive weight $W_b$ in~\eqref{eq:fullW}.
+Partitioning the horizon into $N$ equal integrals of
+$W_b$ makes every asset's cumulative recovery integral
+identical. As the initial and terminal prices are also
+identical, the ledger identity~\eqref{eq:Xledger} makes
+all $X_i(T)$ equal; paired-dollar balance makes their
+sum zero, so each is zero. Finally, varying $b$ between
+its two limiting endpoints continuously spans all common
+terminal prices strictly between the benchmark and the
+unattained radial floor. Appendix~\ref{app:sharp} gives
+the positive-price construction in full.
 \end{proof}
 
 
