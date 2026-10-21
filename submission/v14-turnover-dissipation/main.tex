@@ -29,18 +29,18 @@ the execution resources needed to realize systemic drawdowns.
 \begin{MSCcodes}91G15, 91G45, 93B03, 65G30, 91G80.\end{MSCcodes}
 
 \section{Introduction}\label{sec:intro}
-Consider ten assets whose fundamental benchmark prices never change. Each
-executed sale must fund an equal-dollar purchase, and by the end of the
-horizon every asset's signed executed-dollar ledger must return to zero.
-Can all ten prices nevertheless close at half their initial values? Under
-a particular constant-impact, resilient-price specification the answer is
-yes. The construction requires substantial execution resources and
-idealized flow-completed instantaneous trades, but it is a fully
-dollar-closed price path. This apparent paradox motivates a precise
-question: which systemic terminal losses are \emph{reachable}, which are
-excluded by market structure, and what resources does reaching them require?
-We study deterministic feasibility rather than crash likelihood, traders'
-equilibrium incentives, or a historical no-news event.
+Consider ten assets with fixed fundamental benchmark prices, where
+each executed sale funds an equal-dollar purchase and every asset's
+cumulative executed-dollar ledger closes at maturity. Even under these
+constraints, all ten prices can finish at half their initial values in
+a constant-impact, resilient market. This path requires finite initial
+share inventory and substantial execution resources, including idealized
+flow-completed instantaneous trades, yet closes every dollar ledger
+exactly. We characterize the terminal systemic drawdowns reachable under
+such trading, the losses excluded by market structure, and their
+execution-resource requirements. The analysis concerns deterministic
+feasibility rather than crash probabilities, equilibrium incentives, or
+historical no-news episodes.
 
 This reachability question connects two established lines of research.
 One examines price formation and execution, from Kyle's auction model
@@ -95,14 +95,14 @@ recovery episodes. Without resilience, the same terminal dollar closure
 would force every terminal price back to the benchmark. Figure~
 \ref{fig:conservation-geometry} plots an explicit two-asset
 trade--recovery path and the ten-asset construction.
-The elasticity studied below is a local price-state response,
-distinct from cumulative metaorder impact scaling
-\citep{BucciEtAl2019,KyleObizhaeva2023}.
 
 \input{twin_conservation_figure.tex}
 
 This mechanism explains why the response shape matters. Let
-$e(S)=Sg'(S)/g(S)$ be the local impact elasticity. Under the paper's
+$e(S)=Sg'(S)/g(S)$ denote the local price-state impact elasticity,
+distinct from cumulative metaorder impact scaling
+\citep{BucciEtAl2019,KyleObizhaeva2023}.
+Under the paper's
 price-level recovery and positivity assumptions, $e(S)\ge1$ on the
 relevant price range excludes a decline in \emph{every} asset,
 whereas $e(S)\ge2$ rules out positive losses under the combined
@@ -111,8 +111,7 @@ per-share impact permits arbitrarily severe losses over a proper
 subset of assets, provided a compensator is allowed; this extends
 to every fixed sublinear power exponent with severity-independent
 finite turnover and inventory bounds. Full asset coverage instead
-has a sharp, unattained time-dependent ceiling. These statements
-concern different terminal target sets and must not be conflated.
+has a sharp, unattained time-dependent ceiling.
 
 Two ten-asset benchmark families make the distinction tangible.
 In the idealized full-coverage construction (A1),
@@ -265,10 +264,10 @@ For any admissible path beginning at $F$ the execution-cost identity is
 \int_0^T S_i\dd\theta_i=F[\theta_i(T)-\theta_i(0)]+E(S_i(T))
 +\rho\int_0^T\frac{(S_i-F)^2}{g(S_i)}\dd t.
 \end{equation}
-Thus a \emph{share-flat} round trip has nonnegative executed cost under (M2)--(M3). The paper's terminal condition $X_i(T)=0$ instead closes executed \emph{dollars}, not shares: a terminally dollar-flat path may consume initial inventory. Appendix~\ref{app:accounting} proves the accounting identity and its consequences for admissible controls.
+Thus a \emph{share-flat} round trip has nonnegative executed cost under (M2)--(M3). Appendix~\ref{app:accounting} proves the accounting identity and its consequences for admissible controls.
 
 \paragraph{Comparison with share-flat trading}
-The terminal dollar condition and the standard share-flat condition are not interchangeable. For example, with $g\equiv\eta$, a single asset purchased by a sufficiently small $a>0$ shares at time $0$ and sold by $a$ shares at time $T$ has $\theta(T)=\theta(0)$ but terminal price $S(T)=F-\eta a(1-e^{-\rho T})<F$; its net executed dollars are not zero and the positive cost in \eqref{eq:cost} is paid through the cash account. Conversely, under (M4), requiring every asset to be share-flat \emph{as well as} terminally dollar-flat would force $\sum_i[E(S_i(T))+\rho\int_0^T(S_i-F)^2/g(S_i)\,\dd t]=0$. Thus there can be no positive-time dissipative price excursion under both closures together. The dollar-flat protocol deliberately isolates an economic question distinct from standard share-round-trip execution.
+For example, with $g\equiv\eta$, a single asset purchased by a sufficiently small $a>0$ shares at time $0$ and sold by $a$ shares at time $T$ has $\theta(T)=\theta(0)$ but terminal price $S(T)=F-\eta a(1-e^{-\rho T})<F$; its net executed dollars are not zero and the positive cost in \eqref{eq:cost} is paid through the cash account. Conversely, under (M4), requiring every asset to be share-flat \emph{as well as} terminally dollar-flat would force $\sum_i[E(S_i(T))+\rho\int_0^T(S_i-F)^2/g(S_i)\,\dd t]=0$. Thus there can be no positive-time dissipative price excursion under both closures together.
 
 \section{Structural Barriers and Robustness}\label{sec:barriers}
 The normal form~\eqref{eq:normal-form} supplies a conserved scalar during trading. Write $H(\bm S)=\one^\top\bm y=\sum_i\Phi(S_i)$. Summing over assets cancels every matched dollar transfer and leaves only recovery:
