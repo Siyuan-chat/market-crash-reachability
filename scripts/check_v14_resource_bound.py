@@ -101,6 +101,31 @@ def main():
     assert r"q_i(t)=\dot X_i(t)" not in block
     assert "compensating assets can make" not in block
 
+    # Independently reconstruct a dollar-closed two-pulse scalar leg
+    # for several power-law responses and compare with the explicit
+    # quadratic coefficient from Appendix B. This is a regression
+    # check, not a substitute for the analytic BV lemma.
+    import math
+    for p in (0.0, 0.25, 0.5, 1.0, 1.5):
+        nu = 2.0 - p
+        r = math.exp(-0.71)
+        for v in (0.004, 0.002):
+            first = math.exp(math.log1p(nu * v) / nu)
+            recovered = 1.0 + r * (first - 1.0)
+            y_before = math.expm1(nu * math.log(recovered)) / nu
+            terminal = math.exp(math.log1p(nu * (y_before - v)) / nu)
+            actual_loss = -math.log(terminal)
+            predicted = ((1.0 - r) * v
+                         + (1.0 - r) * (2.0 - p - r) * v * v / 2.0)
+            assert abs(actual_loss - predicted) < 0.5 * v**3
+            phi_terminal = math.expm1(nu * math.log(terminal)) / nu
+            psi = (math.log if p == 1.0
+                   else lambda z: math.expm1((1.0 - p) * math.log(z)) / (1.0 - p))
+            sale_shares = psi(recovered) - psi(terminal)
+            assert max(0.0, -phi_terminal) <= v + 1e-12
+            assert max(0.0, -psi(terminal)) <= sale_shares + 1e-12
+    print("PASS independent two-pulse expansion and one-sided variation sanity")
+
     assert r"1.02020225507905<h<1.02020225507908" in new, "Correct interval missing"
     assert "1.020225507905" not in new, "Incorrect left endpoint reappeared"
     assert r"1.2219388<y(20)<1.2225356" in new, "Certified y(20) endpoint changed"
