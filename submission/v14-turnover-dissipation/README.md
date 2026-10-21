@@ -1,102 +1,57 @@
-# V14 manuscript — working narrative revision V14-R1
+# Current GitHub manuscript — V14-R1
 
-**[Revised V14-R1 LaTeX source](main.tex)** · [Twin-benchmark revision evidence](../../docs/TWIN_TEN_ASSET_REVISION_V1.md) · [Prior built V14 PDF](manuscript.pdf) · [Its build provenance](manuscript-build.json).
+**[Read PDF](manuscript.pdf)** · [Edit/inspect LaTeX](main.tex) · [Verify exact build identity](manuscript-build.json) · [References](references.bib) · [Editable model diagram](twin_conservation_figure.tex)
 
-The PDF is built by GitHub Actions and committed to this directory **on main** after a successful source/build check. The working V14-R1 revision changes the manuscript and adds new, separate A1/A2 numerical fixtures: until a new PDF is built from this source, the linked PDF is the previously compiled V14 snapshot. The **frozen** V14 manuscript was deposited on [Zenodo, DOI 10.5281/zenodo.23478787](https://doi.org/10.5281/zenodo.23478787) on 20 October 2026; its recorded checksum matched that earlier PDF. It does **not** include this revision's source, diagram, or A1/A2 tests. V13 and the original immutable software archive remain preserved. No journal acceptance is asserted. See [versions](../../docs/VERSIONS.md).
+This is the **current English GitHub working manuscript** of Siyuan Ye's *When Can Markets Crash Without News?* It incorporates the V14 analytical results, a revised conservation-geometry exposition, twin ten-asset benchmarks, and later analytical proof-completeness updates (including a finite-variation lemma).
 
+The PDF is published by [V14 GitHub Actions](../../.github/workflows/v14.yml) after compilation and the relevant V14 checks. Its `manuscript-build.json` records the exact **source commit**, PDF SHA-256, build details and workflow run. The commit that writes the PDF may be newer than its unchanged scientific source. The [frozen V14 Zenodo deposit](https://doi.org/10.5281/zenodo.23478787) is a distinct **earlier** source/PDF (20 October 2026, 46 pages): it contains neither the later A1/A2 reconstructions nor the BV proof supplement. No new V14-R1 archival DOI has been issued. [Versions and citations](../../docs/VERSIONS.md).
 
-## Narrative-focused major revision (working V14-R1)
+## Scientific contents
 
-The revised Abstract and Introduction make response-adapted conservation geometry, resilience-driven movement between invariant surfaces, structural exclusions, reachability, and execution resources the paper's primary narrative. A new figure is generated directly from model trajectories in [editable TikZ source](twin_conservation_figure.tex), not from freehand curves. Section 4 adds A1 (ten assets each down 50%, double-precision analytic reconstruction) and A2 (nine-target severe-log-loss series), and Appendix F records the new numerical ledger checks. Section 7 promotes B1 (seven targets >20.2% and index >6% with **M<5**) and B2 (ten targets >2% with **M<7**) from existing internally interval-certified controls. These are separately budgeted evidence classes. Section 8 explains volume-coordinate recovery without claiming that all nonconstant-impact barrier results survive. Existing proof blocks and historically published editions are unchanged.
+The price-impact coordinate `\Phi(S)=\int_F^S u/g(u)\,du` makes paired-dollar execution additive: matched transfers preserve the aggregate price potential, while price-level resilience can move between its level sets. Under exact assetwise terminal dollar closure, the paper classifies structural drawdown exclusions and reachability, and establishes resource and rate bounds.
 
-For instructions and the result-to-evidence matrix see [the revision record](../../docs/TWIN_TEN_ASSET_REVISION_V1.md). Reproduce newly added idealized examples with `python verification/twin_ten_asset_benchmarks.py --check` from the repository root. This is **not** part of the frozen V14 Zenodo code snapshot; the earlier exact-control certificate archive is independent.
+The current working paper includes:
+- **Barriers and regimes:** elasticity thresholds, a three-market `p=2,1,0` comparison, sublinear partial-coverage severe-loss constructions with uniform finite resources, and the sharp full-coverage horizon ceiling.
+- **Execution constraints:** dollar-turnover/share-inventory bounds, turnover–dissipation, bounded continuous execution and sessionwise rolling limits.
+- **Two evidence classes:** idealized analytic paths with numerical regression (A1/A2), alongside prescribed, internally interval-checked finite-rate and rolling-band controls (B1/B2).
+- **Analytical proof supplement:** the one-sided BV variation lemma for graph-completed pulses and explicit two-pulse Taylor terms. The historical Lean accepted family does **not** include these additional results.
 
-This **complete English manuscript source** extends the published V13 preprint.
-Section 4 now includes a [continuous power-law exponent analysis](../../docs/V14_CONTINUOUS_EXPONENT_SPECTRUM.md)
-covering the two thresholds at p=1 and p=2, with explicit inventory-growth
-comparisons. A new **uniform-resource severe-loss theorem** extends the
-partial-coverage global construction from p=0 to every fixed 0<=p<1,
-with a complete generalized-radius appendix proof. No bounds uniform
-as p approaches 1 or finite gross-rate feasibility are claimed.
-See [new theorem proof audit](../../docs/V14_SUBLINEAR_SEVERE_PROOF_AUDIT.md).
+### Ten-asset benchmark index
 
-The new **Proposition 5.2 (Turnover--dissipation bound under constant impact)**
-and its analytical proof appear in Section 5 of [main.tex](main.tex), with
-a time-kernel interpretation and three distinct sharpening directions in
-the Discussion. [Detailed proof audit](../../docs/V14_TURNOVER_DISSIPATION_AUDIT.md).
+| Case | Terminal outcome | Verification and budgets |
+|---|---|---|
+| A1 | Ten assets each finish at `F/2` (ordinary fall **50%**) | Constant-impact analytic construction; numerical reconstruction `M≈34.37368` and gross share sales `≈16.58848`; allows idealized pulses |
+| A2 | Nine target assets with severity `L=3,5,10,20` | Analytic bounded-resource severe-loss family plus ordinary numerical ledger checks |
+| B1 | Seven target ordinary falls **>20.2%**, geometric-index ordinary fall **>6%** | Internally interval-certified rational control, rolling ±25% bands, **`M<5`** |
+| B2 | All ten ordinary falls **>2%** | Separate internally interval-certified rational control under same band/rate class and higher **`M<7`** budget |
 
-The sublinear uniform-resource theorem now follows the continuous-spectrum discussion and precedes the sharp all-asset horizon subsection. Its mathematical statement is unchanged; the printed theorem numbering updates automatically. The polynomial-root bracket in Section 7 is already correct and independently checked.
+The B-series controls also obey gross share rate `<0.285` and gross shares sold `<2` per asset. The A-series numerical reconstruction is **not** a new outward-rounded interval certificate. See the [benchmark/evidence record](../../docs/TWIN_TEN_ASSET_REVISION_V1.md) and [interval verifier](../../verification/loss_breadth/README.md).
 
-Section 7 now includes an independently rerunnable **80% coverage / over 10.8% target-price decline** interval witness under uniform +/-25% rolling bands, a comparison table of six new internally certified paths, and a reproduction appendix. See [loss-breadth certificate methodology](../../docs/LOSS_BREADTH_CERTIFICATES.md), [rational verifier](../../verification/loss_breadth_certified.py), [per-case summary](../../verification/loss_breadth_witness_summary.csv), and [independent SciPy ODE audit](../../verification/loss_breadth_ode_crosscheck.py). The relaxed M<5 row is visibly distinguished from the original M<3 budget. This **new proposition** is not covered by the original Lean formalization.
+## Files and build inputs
 
-Section 8 now also derives **two purely theoretical robustness bounds**:
-an exponentially recovery-weighted bound on the mean systemic loss when
-dollar flows in the modeled basket are not perfectly matched, and a
-weighted-flow bound for asset-specific quadratic impact strengths.
-An explicit two-asset, **terminally dollar-closed** matched-pulse
-counterexample shows that heterogeneous impact can invalidate the
-homogeneous elasticity barrier even when both per-asset exponents equal 2.
-These calculations leave the original barrier theorems, existing nine
-appendices, and all interval-witness inputs unchanged. They use no market
-observations or empirical calibration and are not included in the
-historical Lean formalization.
+| File | Function |
+|---|---|
+| [`main.tex`](main.tex) | Authoritative current English mathematical manuscript |
+| [`shared.tex`](shared.tex), [`references.bib`](references.bib) | SIAM definitions and bibliography |
+| [`twin_conservation_figure.tex`](twin_conservation_figure.tex) | Editable analytic/model-derived Figure 1 (TikZ) |
+| [`manuscript.pdf`](manuscript.pdf) | CI-built current working PDF |
+| [`manuscript-build.json`](manuscript-build.json) | Build provenance (`source_commit`, PDF hash, logs/run identity) |
 
-The published V13 manuscript, PDF, Lean proofs, and archived numeric certificates
-are unchanged. This GitHub working manuscript includes additional numerical reconstructions (A1/A2) and refers to previously internally interval-certified controls (B1/B2), but does not claim optimal controls or impossibility results. The fixed [V14 Zenodo deposit](https://doi.org/10.5281/zenodo.23478787) verifies the **earlier** source and PDF, not this later revision; see [versions](../../docs/VERSIONS.md) for SSRN/source identity caveats. The additional V14 propositions and sublinear-impact severe-loss theorem,
-including the two Section 8 robustness propositions, have not been
-Lean-formalized and are not counted in the original 16/16 Lean acceptance report.
+Other PDF figures are deliberately reused from [the earlier English figure directory](../siam-language-revision/figures/), as specified in [`scripts/build_v14_resource_bound.py`](../../scripts/build_v14_resource_bound.py). Those archival assets must not be relocated without updating LaTeX and build fixtures.
 
-For constant per-share impact and absolutely continuous paired-dollar controls,
-if prices are bounded below by a>0 and |S_i-F|<=b, writing
-V_2(T)=sum_i(S_i(T)^2-F^2)/2 gives
+## Verify and compile
 
-    0 <= -V_2(T) <= [eta*b/(a*exp(1))] * M(T).
+From the **repository root**, with Python 3.11:
 
-Under two hypothetical 25% rolling bands a=b=9F/16, so with eta=1,
--V_2(T) <= M(T)/exp(1). In the full-coverage N=10, F=eta=1,
-2% ordinary-loss example, M>=0.5382, **not** an exclusion at M<=3.
+```bash
+python scripts/check_revision_hashes.py
+python scripts/check_v14_resource_bound.py
+python verification/twin_ten_asset_benchmarks.py --check
+python verification/loss_breadth/verify_all.py
+python scripts/build_v14_resource_bound.py
+```
 
-The gross-versus-net trade relation is a <= bound; see the proof audit.
-In the paper, executed-dollar flow rates are written as dot X_i; q_i remains
-reserved for log prices in Section 2.
+The final command requires pdfLaTeX, BibTeX and the SIAM style dependencies. It produces `build/v14-turnover-dissipation/main.pdf` and a build summary; it **does not** silently overwrite a deposited Zenodo PDF or the tracked GitHub PDF. The workflow handles GitHub PDF publication after checks. See [the complete reproduction guide](../../REPRODUCE.md), [evidence matrix](../../docs/RESULTS_AND_EVIDENCE.md) and [repository map](../../docs/REPOSITORY_STRUCTURE.md).
 
-Rebuild with:
-    python scripts/check_v14_resource_bound.py
-    python scripts/build_v14_resource_bound.py
+Software is MIT licensed; this manuscript, figures and research data have the separate terms in [NOTICE.md](../../NOTICE.md).
 
-The build takes unchanged figure PDFs from the earlier English source directory and
-writes its new output to build/v14-turnover-dissipation.
-
-Independent dollar-ledger reconstruction tests (not a mathematical proof):
-
-    python scripts/check_sublinear_severe_extension.py
-
-
-## Additional certified loss--breadth comparisons
-
-Appendix I now displays six further prescribed controls beyond the six main
-Table 3 interval witnesses, covering k=7, 9, and 10, with M<3 and separately
-relaxed M<4/M<7 turnover cases. All twelve exact rational schedules, their
-SHA-256 input/program manifest, and the 24-cell research matrix are retained
-in [`verification/loss_breadth/`](../../verification/loss_breadth/).
-
-Reproduce with `python verification/loss_breadth/verify_all.py` from the
-repository root. The runner refuses optimized Python because the underlying
-proof-critical modules use enabled assertions. New numerical comparisons
-remain internally certified existence statements, not optimum-frontier
-or negative reachability results. The original main theorem statements,
-the original comparison table (now in Appendix I), and the published V13 snapshots are preserved.
-
-
-## SIFIN V1.1 editorial organization
-
-The SIFIN V1.1 revision groups the manuscript around structural barriers,
-reachability regimes, and execution resources. Its Introduction is rewritten,
-the Abstract contains no mathematical notation, robustness propositions move
-to Section 3, and the sharp all-asset theorem remains in Section 4.
-Section 7 retains the principal constrained existence results, with extra
-numerical figures and comparison tables now in Appendices G and I.
-See [the editorial migration and result-location map](../../docs/V14_SIFIN_V11_MIGRATION.md).
-Formal statements, existing numbered equations, bibliography, and exact
-certificate inputs are unchanged. The independent proof audit is a
-separate future step; this editorial release does not claim it is complete.

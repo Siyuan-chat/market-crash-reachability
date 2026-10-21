@@ -1,5 +1,7 @@
 # Narrative-focused major revision — twin ten-asset benchmarks (working V14-R1)
 
+> **Historical revision note (21 October 2026).** This page documents the first twin-benchmark narrative revision, not every later manuscript edit. The [current GitHub V14-R1](../submission/v14-turnover-dissipation/main.tex) subsequently added an analytical one-sided finite-variation lemma and further proof/editorial refinements. See [version identities](VERSIONS.md) and [PDF build provenance](../submission/v14-turnover-dissipation/manuscript-build.json). The original frozen V14 Zenodo DOI still does not include these working changes.
+
 **Status:** GitHub working revision, 21 October 2026. This document describes *revision changes*, not an independently peer-reviewed manuscript, a new SSRN submission or a Zenodo archival deposit. The frozen 20 October 2026 V14 Zenodo edition ([10.5281/zenodo.23478787](https://doi.org/10.5281/zenodo.23478787)) and original immutable software archive ([10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183)) **do not contain or validate this revision's added A1/A2 reconstructions and figure**. The preceding research baseline remains separately identifiable.
 
 ## Organizing mechanism

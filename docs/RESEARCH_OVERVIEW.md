@@ -1,7 +1,7 @@
 # Research overview and FAQ: When Can Markets Crash Without News?
 
 **Author:** Siyuan Ye (Independent Researcher)
-**Current manuscript:** *When Can Markets Crash Without News?*, V14 ([GitHub and Zenodo](VERSIONS.md)); V13 is a preserved Zenodo archival edition; see the version reference for the newer live SSRN revision. See [versions](VERSIONS.md).
+**Current GitHub manuscript:** *When Can Markets Crash Without News?*, **V14-R1 working edition** ([PDF](../submission/v14-turnover-dissipation/manuscript.pdf), [source](../submission/v14-turnover-dissipation/main.tex)); the [frozen V14 Zenodo edition](https://doi.org/10.5281/zenodo.23478787) predates A1/A2 reconstructions and the later analytical BV lemma. V13 remains preserved. See [versions](VERSIONS.md).
 **Research-software version:** 1.0.0rc1 · [public repository](https://github.com/Siyuan-chat/market-crash-reachability)
 
 This is a reader-oriented guide, not a replacement for theorem statements. For precise claims and hypotheses, consult the [manuscript](../submission/v14-turnover-dissipation/manuscript.pdf), [LaTeX source](../submission/v14-turnover-dissipation/main.tex), [supplement](../supplementary/supplementary.pdf), and [theorem-to-evidence map](RESULTS_AND_EVIDENCE.md). The English manuscript is authoritative.
@@ -62,7 +62,7 @@ The [Lean manifest](../formal/ORIGINAL_RESULT_MANIFEST.md) records sixteen origi
 
 ### What new results appear in V14?
 
-V14 adds a turnover–dissipation inequality under constant impact, a constructive uniform-resource severe-loss theorem for each fixed power-law exponent 0<=p<1, an eight-target loss–breadth interval witness, and two robustness propositions for unmatched dollar flow and heterogeneous quadratic impact. Each has explicit hypotheses; the severe-loss bounds are not uniform as p approaches 1 and do not establish bounded gross-rate execution. Extra comparison paths use distinct fixed or relaxed turnover budgets.
+V14 adds a turnover–dissipation inequality under constant impact, a constructive uniform-resource severe-loss theorem for each fixed power-law exponent 0<=p<1, an eight-target loss–breadth interval witness, and two robustness propositions for unmatched dollar flow and heterogeneous quadratic impact. Each has explicit hypotheses; the severe-loss bounds are not uniform as p approaches 1 and do not establish bounded gross-rate execution. Extra comparison paths use distinct fixed or relaxed turnover budgets. The **current V14-R1 working edition** also includes the model-derived conservation diagram, A1/A2 analytic-primitive reconstructions, B1/B2 comparison, and a later analytical one-sided BV variation lemma; those working additions are not contained in the frozen V14 DOI.
 
 ### What does mathematical reachability mean?
 
