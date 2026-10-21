@@ -43,6 +43,7 @@ def canonical_editorial_math(source):
         ("Preconditioning needed for a dollar-closed limit-down streak",
          "Above-benchmark excursion required for a dollar-closed limit-down streak"),
         (" It is not sufficient to produce a consecutive limit-down path.",""),
+        (r" These are \emph{necessary} constraints, generally not sharp reachability thresholds.",""),
         (" These bounds determine the scaling order; the optimal constants remain undetermined.",""),
     )
     for before,after in allowed_rewording:
