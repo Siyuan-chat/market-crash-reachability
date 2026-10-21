@@ -1388,11 +1388,70 @@ The certified terminal interval supplies this bound; enclosing the recovery inte
 Jointly minimizing this inventory cost, executed-dollar turnover, and the gross rate gives a constrained optimal-control problem.
 
 \subsection{Dependence on resilience, impact, and the loss metric}
-Our global elasticity conditions rely jointly on the local response $g$ and linear \emph{price-level} restoration toward $F$. Under volume displacement recovery as described in Section~\ref{sec:model}, $\dot\Phi|_{\mathrm{vol}}=-\rho S V(S)$ replaces the specific drift used in the tangent comparison; establishing elasticity barriers for that alternative model requires a separate curvature analysis. A more general theory would classify which restoring fields preserve analogous barrier regions. The elasticity $e(S)=Sg'(S)/g(S)$ differentiates local per-share impact with respect to the price state; cumulative metaorder impact instead depends on order size, execution history, and replenishment \citep{AlfonsiFruthSchied2010,BucciEtAl2019,CuratoGatheralLillo2017}.
+\label{subsec:resilience-metric}
+The elasticity barriers depend on \emph{price-level} recovery,
+$\dot S=-\rho(S-F)$. To distinguish this model from
+recovery of order-book volume, define
+$V(S)=\int_F^S g(u)^{-1}\dd u$ and alternatively
+prescribe $\dot V=-\rho V$. Then
+\[
+\dot S\big|_{\rm vol}=-\rho g(S)V(S),\qquad
+\dot\Phi\big|_{\rm vol}=-\rho S V(S).
+\]
+Viewed as a function of $V$, the dollar coordinate
+satisfies $\dd\Phi/\dd V=S$ and
+$\dd^2\Phi/\dd V^2=g(S)>0$.
+Strict convexity with $\Phi(F)=V(F)=0$ implies
+$S V(S)>\Phi(S)$ for $S\ne F$.
+Thus order-book volume and transaction dollars
+have related but nonidentical recovery geometries
+for nonconstant $g$.
+
+Several \emph{necessary resource} bounds survive.
+Since volume-coordinate recovery still restores
+positive prices monotonically toward $F$ and
+both $\Phi$ and $V$ increase with $S$,
+the dollar-coordinate turnover distance
+and share-coordinate gross-sale distance of
+Theorem~\ref{thm:resource} remain necessary.
+The inventory inequality also follows by applying
+the same potential $E$ from~\eqref{eq:E}:
+\[
+\int_0^T S_i\dd\theta_i
+=F[\theta_i(T)-\theta_i(0)]+E(S_i(T))
++\rho\int_0^T(S_i-F)V(S_i)\dd t,\qquad
+(S_i-F)V(S_i)\ge0.
+\]
+The corresponding dissipation is nonnegative
+because $V$ has the sign of $S-F$.
+For constant $g\equiv\eta$,
+$V=(S-F)/\eta$ makes the two recovery
+dynamics identical, so every constant-impact
+result and its certified controls are unchanged.
+For nonconstant $g$, the structural
+Section~\ref{sec:barriers} elasticity barriers
+may change substantially, and general-impact
+statements in Sections~\ref{sec:rateband}--\ref{sec:multiday}
+must be reassessed under the modified drift.
+No new elasticity threshold is claimed here.
+
+The local response elasticity $e(S)=Sg'(S)/g(S)$
+is distinct from cumulative metaorder impact,
+which also depends on order size, execution history
+and replenishment
+\citep{AlfonsiFruthSchied2010,BucciEtAl2019,CuratoGatheralLillo2017}.
 
 The severity of Market C is also a boundary result: logarithmic loss diverges as a positive price tends to zero, while constant $g$ yields finite coordinate distance and finite inventory potential at that boundary. Fixed strictly positive price floors, realistic depth deterioration, rate caps, and trade halts can all limit its quantitative significance without invalidating the mathematical existence theorem. Accordingly, the attainable-loss bounds in Section~\ref{sec:rateband} describe the quadratic small-rate regime; reaching a fixed large threshold requires adequate execution capacity.
 
-The definition $\Cris_\alpha=\min\{\overline L,Q_\alpha\}$ uses the equal-weight geometric price index as well as coverage. Metric choice matters: in the $p=1$ market, paired-dollar trades give $\dd\sum_i S_i|_{\rm trade}=(\eta/F)\sum_i\dd X_i=0$, and the common price-level recovery preserves the initial sum $NF$. Thus the arithmetic mean remains $F$ even when a partial-coverage geometric-index crisis is reachable. Market-capitalization-weighted indices, arithmetically aggregated prices, rolling-peak losses, and different coverage criteria define different target sets. Changing the weighting or loss baseline changes the corresponding target set for reachability.
+The target statistic is the geometric-index
+and coverage measure defined in Section~\ref{sec:model}.
+In particular, the $p=1$ market can preserve
+the arithmetic price mean at $F$ while a
+partial-coverage geometric-index loss is positive.
+Capitalization weighting, arithmetic aggregation,
+rolling peaks and other breadth rules define
+different target sets, not equivalent versions
+of the present crisis criterion.
 
 \subsection{Deterministic reachability and institutional scope}
 The barrier theorems exclude terminal price states for every admissible
