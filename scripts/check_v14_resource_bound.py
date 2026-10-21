@@ -43,6 +43,7 @@ def canonical_editorial_math(source):
         ("Preconditioning needed for a dollar-closed limit-down streak",
          "Above-benchmark excursion required for a dollar-closed limit-down streak"),
         (" It is not sufficient to produce a consecutive limit-down path.",""),
+        (" These bounds determine the scaling order; the optimal constants remain undetermined.",""),
     )
     for before,after in allowed_rewording:
         source=source.replace(before,after)
@@ -408,6 +409,19 @@ def main():
         "not as an empirically representative market crash",
     ):
         assert stale not in new, ("Old prose restored",stale)
+    for phrase in (
+        "These studies illuminate trading costs",
+        "Our complementary object is",
+        "The organizing insight is geometric.",
+        "Our contributions are connected stages of a single argument.",
+        "A1 and A2 have distinct horizons and recovery rates.",
+        r"These are \emph{necessary} constraints, generally not sharp reachability thresholds.",
+        "These bounds determine the scaling order; the optimal constants remain undetermined.",
+        "No new elasticity threshold is claimed here.",
+    ):
+        assert phrase not in new, ("Unrequested defensive/ornamental wording restored", phrase)
+    assert "Whereas those models focus on round-trip execution costs" in new
+    assert "The paper proceeds in three stages." in new
     print("PASS corrected theorem ordering, bibliography proper noun and prose scope")
     print("PASS V13 original math, V14 propositions and new graph-completed BV lemma")
     print("PASS all-asset necessary M>=",Mmin,"(original budget remains inconclusive)")
