@@ -745,7 +745,14 @@ share the ten-asset scale but differ in horizon
 and recovery rate.
 
 \section{Execution Resources and Turnover Bounds}\label{sec:budget}
-The response regimes determine whether a loss state is reachable. We next quantify the dollar turnover and share sales required to attain a specified breadth and severity. The following bounds apply to general positive response functions.
+The response regimes determine whether a loss state is reachable. We
+next quantify the dollar turnover and share sales required to attain a
+specified breadth and severity. The idealized A1 witness in
+Section~\ref{sec:allcoverage} is feasible but uses over $34$
+units of paired turnover; its existence does not establish
+feasibility under the smaller budgets of
+Section~\ref{subsec:twin-constrained}. The following necessary
+bounds apply to general positive response functions.
 
 \begin{theorem}[Execution-resource lower bounds]\label{thm:resource}
 Suppose an admissible terminal path satisfies $\Cris_\alpha(T)\ge\delta>0$. Write $k=\lceil\alpha N\rceil$ and $s=Fe^{-\delta}$. Alongside $\Phi$, define the monotone share-response coordinate $\Psi(S)=\int_F^S\dd u/g(u)$. Then the necessary dollar-turnover and total share-sale bounds are simply the respective coordinate distances to $s$:
@@ -881,7 +888,14 @@ falling subset alone.
 
 
 \section{Reachability under Bounded Execution Rates}\label{sec:rateband}
-A structurally reachable loss may require trades that cannot be completed at finite speed. We therefore restrict the control set by gross executed-share rates and single-session price bands. These restrictions preserve the barrier theorems, while positive reachability requires a new continuous construction rather than the pulse controls used in Market C.
+A structurally reachable loss may require trades that cannot be
+completed at finite speed. We therefore restrict the control set
+by gross executed-share rates and single-session price bands.
+These restrictions preserve the barrier theorems, while
+positive reachability requires a new continuous construction
+rather than the pulse controls used in Market C. The
+B1--B2 witnesses in Section~\ref{subsec:twin-constrained}
+belong to this restricted class, unlike A1--A2.
 
 Finite-speed controls connect the execution setting to optimal trading and bounded-rate strategies \citep{AlmgrenChriss2001,Yang2019}. Here the rate limit constrains which aggregate loss states can be reached.
 
@@ -1593,6 +1607,45 @@ $10$ & $6.6501$ & $2.6179$ & $3.9319$\\
 $20$ & $13.3168$ & $2.6179$ & $3.9319$\\
 \bottomrule\end{tabular}
 \end{table}
+The second idealized ten-asset family, summarized in
+Table~\ref{tab:twin-severe}, fixes $N=10$, $k=9$,
+$F=\eta=\rho=1$, $T=4$ and $c=10^{-3}$.
+The compensator direction and the equal recovery-weight
+cut times are solved numerically using the analytic
+radial primitives. The $\Cris_{0.9}$ entries
+are log-loss values rather than ordinary percentage
+declines. Every row is checked for strict price
+positivity, paired dollar flows and terminal ledger closure.
+
+\begin{table}[tbp]\centering\small
+\caption{\textbf{Twin ten-asset A2: nine-target log-loss
+severity.} $L$ and $\Cris_{0.9}$ are in log-loss units,
+$M$ counts paired dollars once, and gross share sales
+count sales before netting. These are floating-point
+reconstructions, not rigorous outward-rounded
+interval enclosures. The last column is a conservative
+numerical residual check, not an exact closure theorem.
+The apparent resource stabilization in four samples does
+not prove convergence for arbitrary strategies.}
+\label{tab:twin-severe}
+\begin{tabular}{@{}rrrrr@{}}\toprule
+$L$ & $\Cris_{0.9}(4)$ & $M$ &
+$\max_i H_i^-$ & $\max_i|X_i(4)|$\\\midrule
+$3$ & $2.69569$ & $27.16667$ & $7.72723$ & $<3\cdot10^{-14}$\\
+$5$ & $4.49449$ & $27.16461$ & $7.72644$ & $<3\cdot10^{-14}$\\
+$10$ & $8.99447$ & $27.16458$ & $7.72743$ & $<3\cdot10^{-14}$\\
+$20$ & $17.99447$ & $27.16458$ & $7.72748$ & $<3\cdot10^{-14}$\\
+\bottomrule\end{tabular}
+\end{table}
+
+Run
+\path{python verification/twin_ten_asset_benchmarks.py --check}
+to reproduce both idealized families and check the
+regression fixture; the \texttt{--json} flag prints
+all underlying cut times, prices and residuals.
+Neither command runs the older interval-certificate
+verifiers, which remain separate.
+
 The plotted experiment uses a finite, high-resolution sampling grid only to display continuous recovery segments; the underlying segment values and cash-flow integrals are evaluated using analytic expressions, and terminal closure is checked separately. For the $N=12$, $L=5$ construction, the maximum terminal dollar-ledger residual under double precision is less than $10^{-13}$ in the distributed script. Numerical tolerance is evidence of correct accounting implementation, not a substitute for the constructive proof in Appendix~\ref{app:severe}.
 
 The numerical panels use model-generated inputs. Implementation details and reproduction commands are provided in the repository documentation.
