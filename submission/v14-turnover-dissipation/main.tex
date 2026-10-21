@@ -1515,6 +1515,19 @@ The research code, numerical data, certificates, and reproduction instructions a
 describe the two families of interval certificates and their
 verification scripts; Appendix~\ref{app:sublinear-severe}
 provides the constructive proof for sublinear impact. Reproduction commands and software requirements are in \path{REPRODUCE.md}; the checksum manifest is \path{release/SHA256SUMS}. The underlying certificate was previously regenerated from source, with independent floating-point ODE and exact-rational consistency checks.
+The A1/A2 idealized ten-asset ledger reconstructions and
+their regression fixture were added in this \emph{working
+narrative revision}, under
+\path{verification/twin_ten_asset_benchmarks.py} and
+\path{data/twin_ten_asset_benchmarks.json}.
+They use numerical analytic-primitive evaluation, not
+new outward-rounded interval enclosures; B1/B2 instead
+reuse the separately documented earlier interval-certified
+controls. Neither the frozen software archive nor the
+previously deposited V14 manuscript contains or certifies
+the new reconstruction code. A new working-source commit
+and build checksum must be recorded before disseminating
+a compiled revision.
 
 \section*{Declaration on AI-assisted tools}
 AI-assisted tools were used for language editing, manuscript organization, and assisting with verification and figure-generation scripts. The author takes full responsibility for all mathematical proofs, numerical certificates, and scientific content.
