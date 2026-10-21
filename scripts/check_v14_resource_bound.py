@@ -56,13 +56,14 @@ def main():
     extras=[item for item in new_results if item not in old_results]
     missing=[item for item in old_results if item not in new_results]
     assert not missing, ("Historical statements changed",missing)
-    assert len(extras)==5, ("Expected four V14 propositions and one theorem",extras)
-    assert sorted(item[0] for item in extras)==["proposition"]*4+["theorem"],extras
+    assert len(extras)==6, ("Expected four propositions, one theorem and one BV lemma",extras)
+    assert sorted(item[0] for item in extras)==["lemma"]+["proposition"]*4+["theorem"],extras
     assert any(r"\label{prop:turnover-dissipation}" in item[1] for item in extras)
     assert any(r"\label{thm:sublinear-severe}" in item[1] for item in extras)
     assert any(r"\label{prop:loss-breadth-eight}" in item[1] for item in extras)
     assert any(r"\label{prop:unbalanced-stability}" in item[1] for item in extras)
     assert any(r"\label{prop:heterogeneous-quadratic}" in item[1] for item in extras)
+    assert any(r"\label{lem:one-sided-BV}" in item[1] for item in extras)
     old_eq=[canonical_editorial_math(eq) for eq in numbered_equations(old)]
     new_eq=[canonical_editorial_math(eq) for eq in numbered_equations(new)]
     assert all(eq in new_eq for eq in old_eq), "Historical numbered equations changed"
@@ -72,11 +73,20 @@ def main():
     assert any(r"\label{eq:V2-turnover}" in eq for eq in extra_eq)
     for label in ("eq:sublinear-ledger","eq:sublinear-stage","eq:sublinear-inventory"):
         assert any(r"\label{"+label+"}" in eq for eq in extra_eq), label
-    assert len(new_results)==len(old_results)+5
+    assert len(new_results)==len(old_results)+6
     assert len(new_eq)==len(old_eq)+5
     assert set(re.findall(r"\\label\{([^}]+)\}",old)) <= set(re.findall(r"\\label\{([^}]+)\}",new))
-    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+5
-    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+5
+    assert new.count(r"\begin{proof}") == old.count(r"\begin{proof}")+6
+    assert new.count(r"\end{proof}") == old.count(r"\end{proof}")+6
+    # New lemma adds exactly one statement and proof, but no equation
+    # framing or alteration to any older theorem or equation.
+    for required in (
+        r"\label{lem:one-sided-BV}",
+        r"\operatorname{Var}^{-}(X_i;[0,T])",
+        r"\operatorname{Var}^{-}(\theta_i;[0,T])",
+        r"\lambda(r,e_0)=(1-r)(2-e_0-r)",
+    ):
+        assert required in new, ("Missing proof-completeness statement", required)
     for term in ("Turnover--dissipation bound under constant impact",
                  "Two-session rolling-band example",
                  r"\sum_i|\dot X_i|\le2\sum_e\dot z_e",
@@ -360,7 +370,7 @@ def main():
     ):
         assert stale not in new, ("Old prose restored",stale)
     print("PASS corrected theorem ordering, bibliography proper noun and prose scope")
-    print("PASS V13 original math, V14 new proposition plus sublinear severity theorem")
+    print("PASS V13 original math, V14 propositions and new graph-completed BV lemma")
     print("PASS all-asset necessary M>=",Mmin,"(original budget remains inconclusive)")
 if __name__=="__main__":
     main()
