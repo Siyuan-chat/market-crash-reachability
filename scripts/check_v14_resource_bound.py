@@ -194,7 +194,10 @@ def main():
     assert r"9\int_0^{40}|u(t)|\dd t<2.984" in new
     assert "Outward-rounded fixed-point interval arithmetic" in block
     assert r"x(40)^8y(40)^2<0.97^{10}" in block
-    assert r"M<4.600<5" in appendix
+    # The main constrained table states the strict M<5 cap. Appendix I
+    # records the certified M upper bound without duplicating the prose.
+    assert r"R70-20-M5" in appendix and "4.600" in appendix
+    assert r"\label{tab:twin-constrained}" in new and r"$M<5$" in new
     assert r"\label{tab:loss-breadth-additional}" in appendix
     assert r"\label{tab:sensitivity}" in new and r"\label{fig:v7rates}" in new
     assert r"\label{fig:multiday-crisis-trigger}" in new
@@ -292,7 +295,7 @@ def main():
         "falling more than 20.2 percent",
         "turnover below five",
         "unattained horizon-dependent ceiling",
-        "not crash probabilities",
+        "These results distinguish structural impact barriers",
     ):
         assert phrase in abstract_prose, ("Missing revised abstract meaning", phrase)
     assert abstract_prose.count("In an idealized ten-asset") == 1
@@ -303,7 +306,7 @@ def main():
         r"\section{Execution Resources and Turnover Bounds}",1)[0]
     assert r"\paragraph{Main results of this section}" in regime
     assert r"Theorem~\ref{thm:sublinear-severe}" in regime
-    assert r"Theorem~\ref{thm:critical}" in regime
+    assert r"\label{thm:critical}" in regime
     assert "not merely the market-wide sum" in regime
     # Figure 6 belongs to Appendix G. The fixed placement and barrier
     # prevent it from moving across the start of the Appendix H proof.
@@ -329,7 +332,7 @@ def main():
     # defensive or transitional English sentences verbatim.
     for phrase in (
         r"\dot S=-\rho(S-F)",
-        "volume-recovery specifications with drift",
+        "nonidentical recovery geometries",
         "providing an intrinsic model scale",
         "multi-session proportional-reset price-band protocol",
         "records the benchmark value of inventory consumed",
