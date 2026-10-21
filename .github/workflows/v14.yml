@@ -80,7 +80,7 @@ jobs:
 
   publish-pdf:
     name: Commit validated V14 PDF to main
-    needs: [build, ode-audit, extended-loss-breadth]
+    needs: [build, ode-audit, extended-loss-breadth, idealized-twin-benchmarks]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
@@ -127,6 +127,29 @@ jobs:
             echo 'V14 PDF already matches current build'
           else
             git commit -m "Store V14 compiled PDF and source provenance"
-            git push origin HEAD:main
+            # Long-running numerical and TeX checks permit unrelated commits
+            # to land. Rebase only if the exact manuscript/build inputs
+            # are unchanged since the source commit that generated this PDF.
+            for attempt in 1 2 3; do
+              git fetch origin main
+              if ! git diff --quiet "$GITHUB_SHA" origin/main -- \
+                  submission/v14-turnover-dissipation/main.tex \
+                  submission/v14-turnover-dissipation/shared.tex \
+                  submission/v14-turnover-dissipation/references.bib \
+                  submission/v14-turnover-dissipation/twin_conservation_figure.tex \
+                  submission/siam-language-revision/figures/ \
+                  scripts/build_v14_resource_bound.py \
+                  scripts/check_v14_resource_bound.py \
+                  third_party/siam/siamonline_250211_complete.zip; then
+                echo 'Source/build inputs changed since compilation; refuse stale PDF.'
+                exit 1
+              fi
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+            done
+            echo 'Publishing failed after three guarded retries.'
+            exit 1
           fi
 
