@@ -15,14 +15,21 @@ The PDF above is the current GitHub working manuscript. Its `manuscript-build.js
 
 Equal-dollar purchases and sales need not leave prices unchanged, even when every asset's cumulative executed-dollar ledger returns to zero. We study which **terminal systemic drawdowns** can be reached in a multi-asset market with fixed fundamental benchmarks, state-dependent price impact, and price-level resilience.
 
-For positive response `g(S)`, the trade-adapted coordinate and terminal crisis statistic are
+For positive response $g(S)$, the trade-adapted price coordinate is
 
 $$
-\Phi(S)=\int_F^S\frac{u}{g(u)}\,du,\qquad
-\mathcal C_\alpha(T)=\min\left\{\frac{1}{N}\sum_{i=1}^N\log\frac{F}{S_i(T)},\ Q_\alpha(T)\right\},
+\Phi(S)=\int_F^S\frac{u}{g(u)}\,du.
 $$
 
-where `Q_\alpha` is the `k`-th largest log loss and `k=\lceil\alpha N\rceil`. Paired-dollar trades preserve `\sum_i\Phi(S_i)`, while resilience can move prices between its level sets. The research concerns **deterministic reachability**, not an estimated probability of a crash, an equilibrium strategy, or a historical-event attribution.
+The terminal systemic-drawdown statistic is
+
+$$
+A(T)=\frac{1}{N}\sum_{i=1}^{N}\log\frac{F}{S_i(T)},
+\qquad
+\mathcal{C}_{\alpha}(T)=\min(A(T),Q_{\alpha}(T)).
+$$
+
+Here $Q_{\alpha}(T)$ is the $k$-th largest log loss, where $k=\lceil\alpha N\rceil$. Paired-dollar trades preserve $\sum_i\Phi(S_i)$, while resilience can move prices between its level sets. The research concerns **deterministic reachability**, not an estimated probability of a crash, an equilibrium strategy, or a historical-event attribution.
 
 ## Main results
 
