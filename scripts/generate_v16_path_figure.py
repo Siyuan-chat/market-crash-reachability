@@ -61,19 +61,19 @@ r"""\begin{figure}[!t]
 \resizebox{0.98\linewidth}{!}{%
 \begin{tikzpicture}[font=\scriptsize,>=stealth]
 % Panel (a): exact target knots and numerically reconstructed compensator ODE.
-\begin{scope}[x=.14cm,y=2.5cm]
+\begin{scope}[shift={(0,-1.395cm)},x=.14cm,y=3.1cm]
 \draw[->] (0,0.45)--(42,0.45) node[right] {$t$};
 \draw[->] (0,0.45)--(0,1.42) node[above] {$S_i$};
 \draw[dashed,gray] (0,1)--(40,1) node[right] {$F$};
 \draw[densely dashed,gray!60] (20,0.45)--(20,1.40);
 \foreach \t in {0,20,40}{\draw (\t,0.45)--(\t,0.42) node[below] {\t};}
 \foreach \p in {0.5,0.75,1,1.25}{\draw (0,\p)--(-.4,\p) node[left] {\p};}
-\node[anchor=west] at (1,1.37) {\textbf{(a) Price trajectories}};
+\node[anchor=west] at (0,1.58) {\textbf{(a) Price trajectories}};
 """ + coordinates(r,1) + "\n" +coordinates(r,2)+r"""
 \fill[teal!70!black] (20,.75) circle (.020);
 \fill[teal!70!black] (40,.5625) circle (.020);
-\node[teal!70!black,anchor=west] at (3,1.28) {Five targets $x(t)$};
-\node[magenta!85!black,anchor=west] at (3,1.17) {Five compensators $y(t)$};
+\node[teal!70!black,anchor=west] at (2,1.48) {Five targets $x(t)$};
+\node[magenta!85!black,anchor=west] at (23,1.48) {Five compensators $y(t)$};
 \end{scope}
 % Panel (b): absolute gross share rates before netting.
 \begin{scope}[shift={(7.2cm,0)},x=.14cm,y=8.6cm]
@@ -83,10 +83,10 @@ r"""\begin{figure}[!t]
 \draw[densely dashed,gray!60] (20,0)--(20,.32);
 \foreach \t in {0,20,40}{\draw (\t,0)--(\t,-.009) node[below] {\t};}
 \foreach \p in {0,.15,.285}{\draw (0,\p)--(-.4,\p) node[left] {\p};}
-\node[anchor=west] at (1,.328) {\textbf{(b) Gross share execution rates}};
+\node[anchor=west] at (0,.407) {\textbf{(b) Gross share execution rates}};
 """ + coordinates(r,3,True) + "\n" + coordinates(r,4,True) +r"""
-\node[teal!70!black,anchor=west] at (4,.26) {$|u|/x$};
-\node[magenta!85!black,anchor=west] at (4,.225) {$|u|/y$};
+\node[teal!70!black,anchor=west] at (2,.370) {Targets $|u|/x$};
+\node[magenta!85!black,anchor=west] at (23,.370) {Compensators $|u|/y$};
 \end{scope}
 \end{tikzpicture}%
 }
