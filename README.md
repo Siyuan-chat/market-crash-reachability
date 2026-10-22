@@ -2,14 +2,15 @@
 
 **Siyuan Ye** · Mathematical finance · Deterministic systemic-drawdown reachability
 
-[![V14 manuscript CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v14.yml/badge.svg)](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v14.yml)
+[![V16 manuscript CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v16.yml/badge.svg)](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v16.yml)
+[![V14 historical CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v14.yml/badge.svg)](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v14.yml)
 [![Reproducibility](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/tests.yml/badge.svg)](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/tests.yml)
 
-**Latest GitHub manuscript: V14-R1 (working edition).**
+**Latest English working manuscript: V16 — three constructive ten-asset results (22 October 2026).**
 
-**[Read the manuscript (PDF)](submission/v14-turnover-dissipation/manuscript.pdf)** · [LaTeX source](submission/v14-turnover-dissipation/main.tex) · [Build provenance](submission/v14-turnover-dissipation/manuscript-build.json) · [Reproduce the results](REPRODUCE.md) · [Results and evidence](docs/RESULTS_AND_EVIDENCE.md)
+**[Read V16 PDF (successful CI build artifact; ZIP download)](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39739415539/artifacts/12409050841)** · [V16 LaTeX source](submission/v16-three-certified-constructions/main.tex) · [V16 numerical proof and independent audit](docs/TWO_DAY_25PCT_FIVE_TARGET_CERTIFICATE.md) · [V16 build workflow](.github/workflows/v16.yml) · [Older V14-R1 PDF](submission/v14-turnover-dissipation/manuscript.pdf)
 
-The PDF above is the current GitHub working manuscript. Its `manuscript-build.json` records the **exact source commit, PDF SHA-256 and successful build run**; a later PDF-only publication commit on `main` does not change that source identity. This working edition **is not** the fixed [V14 Zenodo deposit](https://doi.org/10.5281/zenodo.23478787), which predates the twin ten-asset examples and subsequent proof/editorial revisions. [Version and citation details](docs/VERSIONS.md).
+V16 contains a new internally interval-certified two-session witness under uniform ±25% rolling price bands, with five assets closing at both lower limits. The V16 PDF is distributed as a CI artifact rather than a separately committed PDF file; its mathematical/computational results have not undergone external peer review or an external certificate-code audit. The earlier V14-R1 and [frozen V14 Zenodo deposit](https://doi.org/10.5281/zenodo.23478787) retain their original provenance and must not be cited as containing the newer V16 construction. [Version and citation details](docs/VERSIONS.md).
 
 ## Research question
 
@@ -38,18 +39,21 @@ Here $Q_{\alpha}(T)$ is the $k$-th largest log loss, where $k=\lceil\alpha N\rce
 - **Execution resources:** necessary turnover/inventory inequalities, a constant-impact turnover–dissipation bound, and small-rate bounds distinguish mathematical reachability from bounded-rate or rolling-band feasibility.
 - **Constrained paths:** prescribed ten-asset schedules meet positive-price, paired-dollar, terminal assetwise closure, and finite execution constraints, with specified internally interval-checked certificates.
 
-### Four ten-asset benchmarks
+### Three core ten-asset constructions
 
-| Benchmark | Achieved terminal outcome | Execution and evidence |
+| Construction | Certified or analytically proved terminal outcome | Execution and evidence |
 |---|---|---|
-| **A1 · all ten** | Every price finishes at **50%** of its fundamental benchmark | Constant impact, idealized flow-completed pulses, reconstructed paired turnover `M ≈ 34.37`; analytical construction + double-precision regression |
-| **A2 · nine targets** | Severity series `L=3,5,10,20` illustrates unbounded partial-coverage log losses | Constructive uniform-resource theorem + double-precision reconstruction |
-| **B1 · seven targets** | Seven ordinary price falls **>20.2%**; geometric-index fall **>6%** | Rolling ±25% bands, gross-rate cap <0.285, per-asset sales <2, **`M<5`**; internally interval-checked |
-| **B2 · all ten** | Every ordinary price fall **>2%** | Same band/rate/inventory class but a **different control** and **`M<7`** budget; internally interval-checked |
+| **I · all ten decline** | All ten prices end at **50%** of the initial fundamental benchmark | Constant impact; idealized flow-completed pulses; explicit analytical path and numerical reconstruction, paired turnover approximately 34.37 |
+| **II · nine severe losses** | Nine targets can incur arbitrarily severe terminal log losses while one asset compensates | Analytic uniform finite resource bound independent of target severity, with reconstruction checks |
+| **III · two consecutive lower-limit closes** | Five of ten assets close at **−25%** on both sessions (cumulative individual loss **−43.75%**); equal-weight geometric price index falls **more than 16%** | Uniform ±25% rolling bands for all ten; absolutely continuous paired-dollar controls; internally outward-rounded interval certificate, sales <2 per asset, gross rate <0.285 and turnover M<14 |
 
-A1/A2 numerical reconstructions and B1/B2 interval certificates provide **different evidence types**. See the [twin-benchmark explanation](docs/TWIN_TEN_ASSET_REVISION_V1.md), [verification archive](verification/loss_breadth/README.md) and [full evidence matrix](docs/RESULTS_AND_EVIDENCE.md).
+The third construction **proves reachability for five assets**, not that five is optimal. A separate necessary bound establishes that eight or more assets cannot meet both consecutive lower closes under the specified parameters; attainability of six or seven remains open. Historical V14 A1/A2/B1/B2 numerical research assets are preserved but are not presented as extra main-paper examples. See the [third proof and evidence note](docs/TWO_DAY_25PCT_FIVE_TARGET_CERTIFICATE.md).
 
 ## Reproduce
+
+For the latest V16 construction and manuscript, use `python verification/two_day_25pct_five_assets.py`, `python verification/audit_two_day_25pct.py`, `python scripts/check_v16_three_constructions.py`, and (with LaTeX/BibTeX available) `python scripts/build_v16_three_constructions.py`. The checked V16 PDF build also validates reference numbering by first citation order.
+
+The following commands reproduce the preserved V14-R1 and broader historical verification suite:
 
 Python **3.11** is the acceptance environment; the primary dependencies are pinned in [`pyproject.toml`](pyproject.toml). From the repository root:
 
@@ -64,13 +68,13 @@ python verification/loss_breadth/verify_all.py
 python scripts/run_checks.py quick
 ```
 
-The checks serve different purposes: manuscript consistency; analytical-primitives numerical regression; internally outward-rounded rational controls; and baseline numerical checks. To **build the V14-R1 PDF**, install the pdfLaTeX/BibTeX dependencies and run `python scripts/build_v14_resource_bound.py`. Outputs go under the ignored `build/` directory. For the original 80,000-step certificate, Lean build and exact command scopes, use [REPRODUCE.md](REPRODUCE.md) and [the technical guide](docs/REPRODUCIBILITY.md).
+The checks serve different purposes: manuscript consistency; analytical-primitives numerical regression; internally outward-rounded rational controls; and baseline numerical checks. To **build the preserved V14-R1 PDF**, install the pdfLaTeX/BibTeX dependencies and run `python scripts/build_v14_resource_bound.py`. Outputs go under the ignored `build/` directory. For the original 80,000-step certificate, Lean build and exact command scopes, use [REPRODUCE.md](REPRODUCE.md) and [the technical guide](docs/REPRODUCIBILITY.md).
 
 ## Repository guide
 
 | Location | Role |
 |---|---|
-| [`submission/v14-turnover-dissipation/`](submission/v14-turnover-dissipation/README.md) | **Current working English manuscript:** source, PDF, build metadata, bibliography and TikZ figure |
+| [`submission/v14-turnover-dissipation/`](submission/v14-turnover-dissipation/README.md) | Preserved earlier English working manuscript: source, PDF, build metadata, bibliography and TikZ figure |
 | [`submission/`](submission/README.md), [`paper/`](paper/main.tex), [`supplementary/`](supplementary/supplementary.tex) | Preserved English editions, original research baseline and supplement |
 | [`verification/`](verification/loss_breadth/README.md) and [`data/`](data/twin_ten_asset_benchmarks.json) | Numerical checks, exact rational controls, interval certificates and fixtures |
 | [`formal/`](formal/README.md) | Lean 4 formalization of the **original sixteen result families**, with recorded scope qualifications |
@@ -80,13 +84,13 @@ The checks serve different purposes: manuscript consistency; analytical-primitiv
 
 **[Full repository structure and file policy →](docs/REPOSITORY_STRUCTURE.md)**
 
-The original frozen release and its input certificates are **not reorganized or overwritten**. The current GitHub working revision has a separate allowed-file checksum overlay, [`release/SHA256SUMS_V14_R1`](release/SHA256SUMS_V14_R1).
+The original frozen release and its input certificates are **not reorganized or overwritten**. The preserved V14-R1 revision has a separate allowed-file checksum overlay, [`release/SHA256SUMS_V14_R1`](release/SHA256SUMS_V14_R1).
 
 ## Evidence, citation and license
 
 The manuscript contains analytic proofs; a later one-sided bounded-variation (BV) lemma completes a step in the current working proof exposition. Historical Lean acceptance covers the **original sixteen result families**; the five added V14 results and the later analytical BV lemma are **not Lean-formalized**. The constrained witness verifiers are internal reproducibility evidence, not external peer review.
 
-- **Current working V14-R1:** cite the specific Git source revision recorded in [`manuscript-build.json`](submission/v14-turnover-dissipation/manuscript-build.json); there is **no separately assigned archival DOI** for this revision.
+- **Preserved V14-R1:** cite the specific Git source revision recorded in [`manuscript-build.json`](submission/v14-turnover-dissipation/manuscript-build.json); there is **no separately assigned archival DOI** for this revision.
 - **Frozen manuscript V14:** [Zenodo 10.5281/zenodo.23478787](https://doi.org/10.5281/zenodo.23478787), deposited 20 October 2026; **does not contain V14-R1**.
 - **Earlier V13:** [Zenodo 10.5281/zenodo.23444647](https://doi.org/10.5281/zenodo.23444647). **Fixed original software:** [10.5281/zenodo.23428183](https://doi.org/10.5281/zenodo.23428183). The software-specific [CITATION.cff](CITATION.cff) intentionally retains those frozen identities.
 - **SSRN:** [record](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7622079), whose PDF has **not** been established as identical to the current GitHub revision.
