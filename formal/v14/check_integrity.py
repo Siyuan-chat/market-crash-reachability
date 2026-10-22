@@ -22,6 +22,10 @@ PROOFS = {
         "sublinear_radial_exponent_gt_one",
         "normalized_radial_flow_pairing",
     ],
+    "Robustness.lean": [
+        "weighted_flow_decomposition",
+        "paired_flow_can_have_positive_weighted_imbalance",
+    ],
 }
 MANUSCRIPT_LABELS = {
     "lem:one-sided-BV",
