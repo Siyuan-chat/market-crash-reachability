@@ -50,6 +50,7 @@ def main():
     original_figure=(SRC.parent/"twin_conservation_figure.tex").read_text(encoding="utf-8")
     assert r"\input{twin_conservation_figure.tex}" in intro
     assert "fig:conservation-geometry" in original_figure
+    assert original_figure==(ROOT/"submission/v14-turnover-dissipation/twin_conservation_figure.tex").read_text(encoding="utf-8"), "Figure 1 must match original V14 source exactly"
     assert r"\input{two_day_streak_figure.tex}" in main
     assert (ROOT/"scripts/generate_v16_path_figure.py").exists()
     assert (ROOT/"verification/audit_two_day_25pct_squared_interval.py").exists()
