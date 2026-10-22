@@ -78,7 +78,7 @@ r"""\begin{figure}[!t]
 % Panel (b): absolute gross share rates before netting.
 \begin{scope}[shift={(7.2cm,0)},x=.14cm,y=8.6cm]
 \draw[->] (0,0)--(42,0) node[right] {$t$};
-\draw[->] (0,0)--(0,.34) node[above] {Gross rate};
+\draw[->] (0,0)--(0,.34);
 \draw[dashed,gray] (0,.285)--(40,.285);
 \draw[densely dashed,gray!60] (20,0)--(20,.32);
 \foreach \t in {0,20,40}{\draw (\t,0)--(\t,-.009) node[below] {\t};}
