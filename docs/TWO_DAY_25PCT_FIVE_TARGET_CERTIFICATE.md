@@ -102,6 +102,64 @@ Summing over k targets and both 20-unit sessions therefore gives
 
 Hence k≤7. The coverage bound is **necessary**, not sufficient: attainability of six or seven consecutive lower closes remains unproved.
 
+## Independent transformed-coordinate audit of Appendix H
+
+The main certificate in `verification/two_day_25pct_five_assets.py` propagates the compensator price \(y\), while a separately coded checker,
+`verification/audit_two_day_25pct_squared_interval.py`, propagates \(w=y^2\) directly:
+
+\[
+\dot w=-\frac45(w-\sqrt w)-2u(t),\qquad w(0)=1.
+\]
+
+This transformed ODE is independently discretized with outward integer rounding,
+exact rational segment slopes and a monotone Euler-map argument.
+On the rigorously maintained strip \(0.7<\sqrt w<1.55\), the segmentwise
+bounds \(|u|<1/2\), \(|u'|<1/5\) imply \(|\dot w|<17/10\)
+and \(|\ddot w|<2\). The independent verifier checks the interior
+bootstrap and **both rolling price bands on every one of 80,000 steps**;
+it also separately bounds gross executed-share rates, cumulative sales
+and turnover.
+
+The second checker establishes \(w(40)<1.569892\), hence
+\(y(40)<1.253\). For five identical targets and five compensators,
+\(G(40)/G(0)=\sqrt{(9/16)y(40)}\). The exact squared-price comparison
+therefore certifies
+
+\[
+G(40)/G(0)<0.8396,\qquad 1-G(40)/G(0)>16.04\%.
+\]
+
+The older primary end-interval \(y(40)<1.253525\) implies a lower
+bound of approximately \(16.0293\%\) for the ordinary geometric-index
+drop, only \(0.0293\) percentage points above the headline \(16\%\)
+threshold. The new transformed-coordinate proof yields a somewhat tighter
+buffer, but it remains a modest-margin numerical statement.
+Accordingly the manuscript continues to headline the conservative
+**greater-than-16%** result.
+
+Reproduce the two independent rigorous coordinates and the independent
+floating-point reconstruction with:
+
+    python verification/two_day_25pct_five_assets.py
+    python verification/audit_two_day_25pct_squared_interval.py
+    python verification/audit_two_day_25pct.py
+
+The two *validated* programs do not reuse the same state variable or
+integration recurrence. This is **independent internal computational
+cross-validation**, not a third-party review of either implementation.
+External implementation audit and journal peer review remain outstanding.
+
+## Figure provenance
+
+The original two-panel conservation-geometry Figure 1 has been restored
+from the unchanged V14-R1 source file, at
+`submission/v16-three-certified-constructions/twin_conservation_figure.tex`.
+The new two-panel price-and-gross-rate figure is generated deterministically
+from the exact target knots and a numerical ODE reconstruction by
+`scripts/generate_v16_path_figure.py`. That figure is explanatory;
+the model's admissibility and endpoint inequalities are established by
+the separate interval proofs, not inferred from pixels.
+
 ## Reproduction
 
 From the repository root:

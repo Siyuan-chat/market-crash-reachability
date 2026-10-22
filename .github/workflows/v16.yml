@@ -7,6 +7,8 @@ on:
       - 'scripts/build_v16_three_constructions.py'
       - 'verification/two_day_25pct_five_assets.py'
       - 'verification/audit_two_day_25pct.py'
+      - 'verification/audit_two_day_25pct_squared_interval.py'
+      - 'scripts/generate_v16_path_figure.py'
       - '.github/workflows/v16.yml'
   pull_request:
     paths:
@@ -15,6 +17,8 @@ on:
       - 'scripts/build_v16_three_constructions.py'
       - 'verification/two_day_25pct_five_assets.py'
       - 'verification/audit_two_day_25pct.py'
+      - 'verification/audit_two_day_25pct_squared_interval.py'
+      - 'scripts/generate_v16_path_figure.py'
       - '.github/workflows/v16.yml'
   workflow_dispatch:
 permissions:
@@ -33,6 +37,7 @@ jobs:
         run: |
           python verification/two_day_25pct_five_assets.py
           python verification/audit_two_day_25pct.py
+          python verification/audit_two_day_25pct_squared_interval.py
       - name: Install TeX tools
         run: |
           sudo apt-get update

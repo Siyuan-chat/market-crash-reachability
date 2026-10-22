@@ -4,6 +4,7 @@ on:
     paths:
       - 'verification/two_day_25pct_five_assets.py'
       - 'verification/audit_two_day_25pct.py'
+      - 'verification/audit_two_day_25pct_squared_interval.py'
       - 'docs/TWO_DAY_25PCT_FIVE_TARGET_CERTIFICATE.md'
       - 'submission/v16-**'
       - '.github/workflows/two-day-limit-down.yml'
@@ -11,6 +12,7 @@ on:
     paths:
       - 'verification/two_day_25pct_five_assets.py'
       - 'verification/audit_two_day_25pct.py'
+      - 'verification/audit_two_day_25pct_squared_interval.py'
       - 'docs/TWO_DAY_25PCT_FIVE_TARGET_CERTIFICATE.md'
       - 'submission/v16-**'
       - '.github/workflows/two-day-limit-down.yml'
@@ -39,17 +41,26 @@ jobs:
       - name: Independent numeric path reconstruction
         run: |
           python verification/audit_two_day_25pct.py --out build/two-day-25pct/independent_audit.json
+      - name: Independent squared-price rigorous audit
+        run: python verification/audit_two_day_25pct_squared_interval.py --out build/two-day-25pct/squared_price_audit.json
       - name: Require conservative strict proof thresholds
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          from fractions import Fraction as Fr
           c=json.loads(Path('build/two-day-25pct/certificate.json').read_text())
           a=json.loads(Path('build/two-day-25pct/independent_audit.json').read_text())
           q=c['certificate']
+          w=json.loads(Path('build/two-day-25pct/squared_price_audit.json').read_text())
+          assert w['certified_geometric_index_decline_strict_lower']=='0.1604'
+          assert int(w['steps'])==80000
+          assert Fr(w['per_asset_gross_share_rate_upper'])<Fr(285,1000)
+          assert Fr(w['target_sales_upper'])<2
+          assert Fr(w['compensator_sales_upper'])<2
+          assert Fr(w['matched_dollar_turnover_upper'])<14
           assert c['root']['exact_target_ledger_zero']
           assert c['coverage_obstruction']['necessary_maximum_k']==7
-          assert c['k'] if 'k' in c else True
           assert q['time_steps']==80000
           assert float(q['gross_rate_upper'])<0.285
           assert float(q['shares_sold_per_target_upper'])<2
