@@ -15,6 +15,34 @@ namespace MarketCrashV14
 
 open MarketCrash
 
+/-- A trace-level result: no terminal dollar closure is required, so the
+paper's one-sided bound also holds for every physically feasible prefix. -/
+theorem one_sided_BV_original_trace
+    {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    {F rho : ι → ℝ} {response : ι → Response}
+    {edges : κ → PairedEdge ι}
+    {s t : PhysicalMarketState ι}
+    (trace : OriginalPhysicalReachable F rho response edges s t)
+    (i : ι) (hstart : s.prices i = F i) :
+    max (-(coordinate (F i) (response i).impact (t.prices i))) 0 ≤
+      trace.dollarSales i ∧
+    max (-(shareResponseCoordinate (F i) (response i).impact (t.prices i))) 0 ≤
+      trace.shareSales i := by
+  have hd := trace.dollar_resource_lower i
+  have hs := trace.share_resource_lower i
+  rw [hstart, coordinate_at_benchmark] at hd
+  rw [hstart, shareResponseCoordinate_at_benchmark] at hs
+  simp only [min_self, zero_sub] at hd hs
+  constructor
+  · apply max_le
+    · linarith
+    · exact trace.dollarSales_nonnegative i
+  · apply max_le
+    · linarith
+    · exact trace.shareSales_nonnegative i
+
+/-- The V14 lemma for an original admissible physical path, derived from
+the stronger path-prefix version above (which does not need dollar closure). -/
 theorem one_sided_BV_original_path
     {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
     {F rho : ι → ℝ} {response : ι → Response}
@@ -23,20 +51,10 @@ theorem one_sided_BV_original_path
     max (-(coordinate (F i) (response i).impact (p.terminal.prices i))) 0 ≤
       p.trace.dollarSales i ∧
     max (-(shareResponseCoordinate (F i) (response i).impact (p.terminal.prices i))) 0 ≤
-      p.trace.shareSales i := by
-  have hd := p.trace.dollar_resource_lower i
-  have hs := p.trace.share_resource_lower i
-  rw [p.initial_prices i, coordinate_at_benchmark] at hd
-  rw [p.initial_prices i, shareResponseCoordinate_at_benchmark] at hs
-  simp only [min_self, zero_sub] at hd hs
-  constructor
-  · apply max_le
-    · linarith
-    · exact p.trace.dollarSales_nonnegative i
-  · apply max_le
-    · linarith
-    · exact p.trace.shareSales_nonnegative i
+      p.trace.shareSales i :=
+  one_sided_BV_original_trace p.trace i (p.initial_prices i)
 
+#print axioms MarketCrashV14.one_sided_BV_original_trace
 #print axioms MarketCrashV14.one_sided_BV_original_path
 
 end MarketCrashV14

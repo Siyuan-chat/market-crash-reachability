@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT / "formal"))
 from lean_declarations import relative_theorem_names, strip_lean_comments
 
 PROOFS = {
-    "OneSidedBV.lean": ["one_sided_BV_original_path"],
+    "OneSidedBV.lean": ["one_sided_BV_original_trace", "one_sided_BV_original_path"],
     "SublinearSevere.lean": [
         "sublinear_radial_exponent_gt_one",
         "normalized_radial_flow_pairing",
