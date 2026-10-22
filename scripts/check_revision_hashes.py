@@ -91,7 +91,7 @@ def read_lean_import_prune() -> dict[str, str]:
     entries = read_manifest(LEAN_IMPORT_PRUNE)
     if set(entries) != {LEAN_ENTRY}:
         raise AssertionError("Lean import overlay must contain only the aggregate entrypoint")
-    expected = "".join("import " + module + "\\n" for module in EXPECTED_LEAN_IMPORTS)
+    expected = "".join("import " + module + "\n" for module in EXPECTED_LEAN_IMPORTS)
     actual = (ROOT / LEAN_ENTRY).read_text(encoding="utf-8")
     if actual != expected:
         raise AssertionError("Lean entrypoint must contain only the eight validated imports")
