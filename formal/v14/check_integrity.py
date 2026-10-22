@@ -39,14 +39,14 @@ def static_check() -> None:
         ROOT / "submission/v14-turnover-dissipation/main.tex"
     ).read_text(encoding="utf-8")
     for label in sorted(MANUSCRIPT_LABELS):
-        if not re.search(r"\\label\\{" + re.escape(label) + r"\\}", manuscript):
+        if not re.search(r"\\label\{" + re.escape(label) + r"\}", manuscript):
             raise AssertionError(f"V14-R1 manuscript label absent: {label}")
 
     for filename, expected in PROOFS.items():
         path = ROOT / "formal/v14" / filename
         source = path.read_text(encoding="utf-8")
         code = strip_lean_comments(source)
-        if re.search(r"\\b(sorry|admit|axiom)\\b", code):
+        if re.search(r"\b(sorry|admit|axiom)\b", code):
             raise AssertionError(f"Unfinished proof/custom axiom in {filename}")
         actual = relative_theorem_names(source, root_namespace="MarketCrashV14")
         if actual != expected:
@@ -57,7 +57,7 @@ def static_check() -> None:
                 raise AssertionError(f"Missing/duplicated per-theorem axiom audit: {marker}")
 
     source_index = ROOT / "formal/ORIGINAL_RESULT_MANIFEST.md"
-    if len(re.findall(r"^\\| (?:Theorem|Proposition) \\d", source_index.read_text(), re.M)) != 16:
+    if len(re.findall(r"^\| (?:Theorem|Proposition) \d", source_index.read_text(), re.M)) != 16:
         raise AssertionError("Original 16-result manifest unexpectedly changed")
     print("PASS: V14 labels, declaration roster, axiom markers and original-result count")
 
@@ -76,7 +76,7 @@ def prove_and_audit() -> None:
         out = completed.stdout
         printed = {}
         for full_name, dependencies, no_axioms in re.findall(
-            r"^'MarketCrashV14\\.([^']+)' (?:depends on axioms: \\[([^]]*)\\]|(does not depend on any axioms))$",
+            r"^'MarketCrashV14\.([^']+)' (?:depends on axioms: \[([^]]*)\]|(does not depend on any axioms))$",
             out, re.M,
         ):
             if full_name in printed:
