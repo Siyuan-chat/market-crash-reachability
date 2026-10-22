@@ -12,6 +12,33 @@ ALLOWED={
     "2d74fc697977dbbd1283ec814eb57777be701c76a9325fbdf754ba9abf7a3e98",
 }
 
+def check_first_appearance_numbering(aux_file: Path, bbl_file: Path) -> dict:
+    """BibTeX item order must equal first occurrence of each citation in LaTeX."""
+    aux = aux_file.read_text(encoding="utf-8", errors="replace")
+    bbl = bbl_file.read_text(encoding="utf-8", errors="replace")
+    assert r"\bibstyle{unsrtnat}" in aux, "An unsorted numeric bibliography is required."
+    citations = []
+    seen = set()
+    for grouped in re.findall(r"\\citation\{([^{}]+)\}", aux):
+        for raw in grouped.split(","):
+            key = raw.strip()
+            if not key or key == "*" or key in seen:
+                continue
+            seen.add(key)
+            citations.append(key)
+    items = re.findall(r"\\bibitem(?:\[[^\]]*\])?\{([^{}]+)\}", bbl)
+    if not citations or not items:
+        raise RuntimeError("Missing resolved references in LaTeX auxiliary files")
+    if citations != items:
+        difference = next((idx for idx, (a, b) in enumerate(zip(citations, items), 1)
+                           if a != b), None)
+        raise RuntimeError("Bibliography is not numbered by first citation order: "
+                           f"first difference at {difference}; "
+                           f"citations={citations}, bibitems={items}")
+    return {"numbering": "first-citation-order", "entries": len(items),
+            "first_five": items[:5]}
+
+
 def main():
     subprocess.run(["python",str(ROOT/"scripts/check_v15_three_constructions.py")],cwd=ROOT,check=True)
     assert hashlib.sha256(ZIP.read_bytes()).hexdigest() in ALLOWED, "Unrecognized SIAM template"
@@ -48,12 +75,13 @@ def main():
                 break
         else:
             raise SystemExit("V15 references did not converge")
+        bibliography_audit=check_first_appearance_numbering(work/"main.aux", work/"main.bbl")
         problems=re.findall(r"Overfull \\hbox[^\n]*|Overfull \\vbox[^\n]*|Package natbib Warning: Author undefined[^\n]*|Missing character:[^\n]*|LaTeX Warning: (?:Citation|Reference) [^\n]*undefined",log)
         for suffix in (".pdf",".log",".aux",".bbl"):
             file=work/("main"+suffix)
             if file.is_file():
                 shutil.copyfile(file,OUT/file.name)
-        summary={"passes":passes, "problems":problems,
+        summary={"passes":passes, "problems":problems, "bibliography":bibliography_audit,
             "pdf_sha256":hashlib.sha256((OUT/"main.pdf").read_bytes()).hexdigest(),
             "pdf_size":(OUT/"main.pdf").stat().st_size}
         (OUT/"build_summary.json").write_text(json.dumps(summary,indent=2)+"\n")
