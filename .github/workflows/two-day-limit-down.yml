@@ -1,0 +1,67 @@
+name: Exact two-session 25-percent lower-limit construction
+on:
+  push:
+    paths:
+      - 'verification/two_day_25pct_five_assets.py'
+      - 'verification/audit_two_day_25pct.py'
+      - 'docs/TWO_DAY_25PCT_FIVE_TARGET_CERTIFICATE.md'
+      - 'submission/v16-**'
+      - '.github/workflows/two-day-limit-down.yml'
+  pull_request:
+    paths:
+      - 'verification/two_day_25pct_five_assets.py'
+      - 'verification/audit_two_day_25pct.py'
+      - 'docs/TWO_DAY_25PCT_FIVE_TARGET_CERTIFICATE.md'
+      - 'submission/v16-**'
+      - '.github/workflows/two-day-limit-down.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  interval-certificate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild exact root and 80000-step interval certificate
+        run: |
+          mkdir -p build/two-day-25pct
+          python verification/two_day_25pct_five_assets.py --out build/two-day-25pct/certificate.json
+      - name: Refuse Python optimized mode that disables proof assertions
+        run: |
+          if python -O verification/two_day_25pct_five_assets.py > /tmp/optimized-proof.log 2>&1; then
+            echo "ERROR: optimized Python unexpectedly accepted as proof"
+            exit 1
+          fi
+          grep -F 'Disabled assertions invalidate certificate' /tmp/optimized-proof.log
+      - name: Independent numeric path reconstruction
+        run: |
+          python verification/audit_two_day_25pct.py --out build/two-day-25pct/independent_audit.json
+      - name: Require conservative strict proof thresholds
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path('build/two-day-25pct/certificate.json').read_text())
+          a=json.loads(Path('build/two-day-25pct/independent_audit.json').read_text())
+          q=c['certificate']
+          assert c['root']['exact_target_ledger_zero']
+          assert c['coverage_obstruction']['necessary_maximum_k']==7
+          assert c['k'] if 'k' in c else True
+          assert q['time_steps']==80000
+          assert float(q['gross_rate_upper'])<0.285
+          assert float(q['shares_sold_per_target_upper'])<2
+          assert float(q['shares_sold_per_compensator_upper'])<2
+          assert float(q['paired_dollar_turnover_upper'])<14
+          assert q['target_closes']==['3/4','9/16']
+          assert a['geometric_index_ratio']<0.84
+          assert all(abs(x)<1e-9 for x in a['terminal_dollar_residuals'])
+          print('PASS exact-root proof, bands, budgets, index and independent ODE audit')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: five-target-two-session-25pct-proof-evidence
+          path: build/two-day-25pct/

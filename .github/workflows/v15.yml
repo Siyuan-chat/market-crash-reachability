@@ -1,0 +1,52 @@
+name: V15 focused three-construction manuscript
+on:
+  push:
+    paths:
+      - 'submission/v15-three-constructions/**'
+      - 'scripts/build_v15_three_constructions.py'
+      - 'scripts/check_v15_three_constructions.py'
+      - '.github/workflows/v15.yml'
+  pull_request:
+    paths:
+      - 'submission/v15-three-constructions/**'
+      - 'scripts/build_v15_three_constructions.py'
+      - 'scripts/check_v15_three_constructions.py'
+      - '.github/workflows/v15.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-manuscript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify V15 source references and claim status
+        run: python scripts/check_v15_three_constructions.py
+      - name: Install TeX dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-science poppler-utils
+      - name: Build V15 manuscript PDF
+        run: python scripts/build_v15_three_constructions.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v15-three-constructions-working-draft
+          path: |
+            build/v15-three-constructions/main.pdf
+            build/v15-three-constructions/main.log
+            build/v15-three-constructions/build_summary.json
+            build/v15-three-constructions/pdflatex-*.txt
+            build/v15-three-constructions/bibtex.txt
+  existing-analytical-witnesses:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reconstruct two existing ten-asset severe-loss examples
+        run: python verification/twin_ten_asset_benchmarks.py --check
