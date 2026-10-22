@@ -69,6 +69,35 @@ def read_manifest(path: Path) -> dict[str, str]:
     return entries
 
 
+# Separate pin for a mechanical entrypoint-import reduction.  The frozen
+# release manifest and its original formal proof files remain unchanged.
+LEAN_IMPORT_PRUNE = ROOT / "release/SHA256SUMS_LEAN_IMPORT_PRUNE"
+LEAN_ENTRY = "formal/lean/MarketCrash.lean"
+EXPECTED_LEAN_IMPORTS = (
+    "MarketCrash.MarketCut",
+    "MarketCrash.RollingRate",
+    "MarketCrash.OriginalDollarTurnover",
+    "MarketCrash.OriginalSecondSession",
+    "MarketCrash.ThreePulseUniform",
+    "MarketCrash.QuadraticRateAttainment",
+    "MarketCrash.OriginalABC",
+    "MarketCrash.OriginalCertificateAssembly",
+)
+
+
+def read_lean_import_prune() -> dict[str, str]:
+    if not LEAN_IMPORT_PRUNE.exists():
+        return {}
+    entries = read_manifest(LEAN_IMPORT_PRUNE)
+    if set(entries) != {LEAN_ENTRY}:
+        raise AssertionError("Lean import overlay must contain only the aggregate entrypoint")
+    expected = "".join("import " + module + "\n" for module in EXPECTED_LEAN_IMPORTS)
+    actual = (ROOT / LEAN_ENTRY).read_text(encoding="utf-8")
+    if actual != expected:
+        raise AssertionError("Lean entrypoint must contain only the eight validated imports")
+    return entries
+
+
 def main() -> None:
     frozen = read_manifest(BASE)
     if REVISION.exists():
@@ -85,8 +114,10 @@ def main() -> None:
     else:
         overlay = {}
 
+    lean_import_prune = read_lean_import_prune()
+
     mistakes = []
-    for name, expected in {**frozen, **overlay}.items():
+    for name, expected in {**frozen, **overlay, **lean_import_prune}.items():
         found = sha256((ROOT / name).read_bytes()).hexdigest()
         if found != expected:
             mistakes.append((name, expected, found))
@@ -99,6 +130,7 @@ def main() -> None:
           f"{len(overlay)} separately pinned working-revision files "
           f"({len(frozen.keys() | overlay.keys())} distinct tracked files)")
     print("Original release/SHA256SUMS unchanged; no certificate hashes overridden")
+    print(f"Lean entrypoint import-only overlay: {len(lean_import_prune)} pinned file(s)")
 
 
 if __name__ == "__main__":
