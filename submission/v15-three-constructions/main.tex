@@ -349,10 +349,12 @@ The constants in (C) may depend on $N,T,F,\rho,\eta$, but not on $\delta$. They 
 \begin{proof}
 (A) is Theorem~\ref{thm:barrier2}; (B) follows from Proposition~\ref{prop:two-pulse} and the inventory inequality~\eqref{eq:inventoryb}. We give the constructive mechanism for (C), with the auxiliary estimates in Appendix~\ref{app:severe}. Put $m=N-1$ and take $g\equiv\eta$. Paired-dollar pulses preserve $R^2=\sum_iS_i^2$. Choose a fixed small $c>0$, a compensator direction $b\in(0,1/5)$, and $a=\sqrt{1-b^2-(m-1)c^2}>b,c$. During stage $j$, set
 \[
- \bm u_j=(c,\ldots,\underbrace{a}_{j},\ldots,c,b),\qquad
- \bm S(t)=R_b(t)\bm u_j,\quad
- R_b(t)=F[H_b+(\sqrt N-H_b)e^{-\rho t}],
- \quad H_b=a+(m-1)c+b.
+\begin{aligned}
+ \bm u_j&=(c,\ldots,\underbrace{a}_{j},\ldots,c,b),
+ &H_b&=a+(m-1)c+b,\\
+ \bm S(t)&=R_b(t)\bm u_j,
+ &R_b(t)&=F\bigl[H_b+(\sqrt N-H_b)e^{-\rho t}\bigr].
+\end{aligned}
 \]
 The necessary continuous rates are
 $\dot\theta_i=(\rho F/\eta)(u_{j,i}H_b-1)$, whose executed-dollar sum vanishes since $\sum_i u_{j,i}^2=1$ and $\sum_i u_{j,i}=H_b$. Switching directions by strictly positive squared-price interpolation yields paired fixed-radius pulses. A final pulse sets the first $m$ terminal prices to $\varepsilon>0$ and the compensator to $\sqrt{R_b(T)^2-m\varepsilon^2}$.
