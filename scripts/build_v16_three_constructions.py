@@ -95,8 +95,8 @@ def main():
             capture_output=True, text=True, check=True)
         pdf_first_page = re.sub(r"\s+", " ", pdf_text_run.stdout)
         for phrase in (
-            "nine can incur arbitrarily severe logarithmic losses",
-            "five assets can close at their lower limits",
+            "nine assets incur arbitrarily severe logarithmic losses",
+            "two successive lower-limit closes for five assets",
             "the maximal attainable coverage is unresolved",
             "Elasticity barriers, a sharp full-coverage horizon bound",
         ):
