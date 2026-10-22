@@ -20,11 +20,12 @@ def main():
     assert not re.search(r"(?<!\\)%",abstract)
     assert r"50\%" in abstract and r"43.75\%" in abstract
     assert r"\pm25\%" in abstract
-    assert "five assets can close at their lower limits" in abstract
+    assert "two successive lower-limit closes for five assets" in abstract
+    assert "maximal attainable coverage is unresolved" in abstract
     assert intro.index("Gennotte and Leland")<intro.index(
-        "We therefore consider a deliberately minimal market")
-    assert intro.index("We therefore consider a deliberately minimal market")<intro.index(
-        "The key mathematical tool")
+        "To isolate that question, we construct a deliberately minimal market")
+    assert intro.index("To isolate that question, we construct a deliberately minimal market")<intro.index(
+        "The main mathematical tool")
     assert re.search(r"^\\bibliographystyle\{unsrtnat\}\s*$",tex,re.MULTILINE)
     assert r"\end{document}" in tex
     assert tex.count(r"\begin{proof}") == tex.count(r"\end{proof}")
@@ -46,7 +47,18 @@ def main():
     assert r"0.7659099&<y(t)<1.1797780" in main
     assert r"\Cris_{1/2}(40)>-\log(0.84)>0.174" in main
     assert r"\bar v" in main and r"M<14" in main
+    original_figure=(SRC.parent/"twin_conservation_figure.tex").read_text(encoding="utf-8")
+    assert r"\\input{twin_conservation_figure.tex}" in intro
+    assert "fig:conservation-geometry" in original_figure
+    assert r"\\input{two_day_streak_figure.tex}" in main
+    assert (ROOT/"scripts/generate_v16_path_figure.py").exists()
+    assert (ROOT/"verification/audit_two_day_25pct_squared_interval.py").exists()
+    assert r"\\label{eq:independent-squared-endpoint}" in tex
+    assert "The second idealized ten-asset family" not in tex
+    assert "For the $N=12$" not in tex
     labels=set(re.findall(r"\\label\{([^}]+)\}",tex))
+    labels.update(re.findall(r"\\label\{([^}]+)\}",original_figure))
+    labels.add("fig:two-day-price-rate")
     refs=set(re.findall(r"\\(?:ref|eqref|autoref)\{([^}]+)\}",tex))
     assert not (refs-labels),("missing labels",sorted(refs-labels))
     bkeys=set(re.findall(r"@\w+\s*\{\s*([^,\s]+)\s*,",bib))
@@ -54,6 +66,7 @@ def main():
     for raw in re.findall(r"\\cite[pt]?(?:\[[^\]]*\])?\{([^}]+)\}",tex):
         cited.update(z.strip() for z in raw.split(","))
     assert cited<=bkeys,("unknown citations",sorted(cited-bkeys))
+    assert len(cited)>=30,("unexpectedly pruned literature",len(cited))
     assert tex.count(r"\begin{equation}")==tex.count(r"\end{equation}")
     assert tex.count(r"\begin{figure}")==tex.count(r"\end{figure}")
     print(f"PASS V16 abstract={len(abstract.split())} words; introduction={len(intro_no_cites.split())} words")
