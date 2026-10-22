@@ -1095,6 +1095,10 @@ The enclosure uses the exact rational isolating interval for $h$, an intrastep d
 The same stepwise enclosures give a maximum gross executed-share rate below $0.268148$, cumulative share sales below $1.618$ for each target and $1.673$ for each compensator, and matched-dollar turnover $M<13.323$. Thus two initially available shares per asset prevent short sales, all execution-resource conditions in the statement hold, and no instantaneous pulse is used. Finally, the certified terminal upper bound for $y$ gives $(9/16)y(40)<0.84^2$. The equal-weight geometric index is $\sqrt{(9/16)y(40)}<0.84$, while the five target losses equal $\log(16/9)>-\log(0.84)$; hence $\Cris_{1/2}(40)>-\log(0.84)$. Appendix~\ref{app:two-day-cert} and the accompanying reproducible verifier give the directed-rounding steps and independent numerical check.
 \end{proof}
 
+Figure~\ref{fig:two-day-price-rate} plots the constructed target and compensator prices, together with gross share execution rates, using the exact target knots and a numerical reconstruction of~\eqref{eq:two-day-compensator}. It illustrates the mechanism and the within-session rate profile; certification remains based on the stated analytical and interval arguments.
+
+\input{two_day_streak_figure.tex}
+
 The number five is an attained coverage, not a proven optimum. The same fixed market admits an additional structural obstruction:
 
 \begin{proposition}[At most seven simultaneous repeated 25\% lower-limit closes]\label{prop:two-day-coverage-obstruction}
@@ -1657,7 +1661,27 @@ The independent interval checker verifies $|y''|<2$ and $|y'|<1$ on the common b
 
 Starting from the exact singleton interval $y(0)=1$, integer fixed-point arithmetic at scale $10^{28}$ propagates an enclosing interval by evaluating the Euler map at its ordered endpoints with directed division and multiplication. The intrastep enclosure expands the interval of two adjacent grid states by $d$, using $|y'|<1$. At every step the verifier checks the bootstrap strip, both session bands (including the second-day band based on an interval for $y(20)$), nonnegative share inventories through cumulative gross sales, and the gross share-rate cap. These bounds imply~\eqref{eq:two-day-y-certified} and the stated resource inequalities, independently of floating-point ODE output.
 
-For reproducibility, run \path{verification/two_day_25pct_five_assets.py} to regenerate the exact-root and directed-rounding certificate, then \path{verification/audit_two_day_25pct.py} for an independently coded numerical integration. The latter is a crosscheck rather than the mathematical enclosure. The internal certificate has not undergone an external formal verification audit.
+For reproducibility, run \path{verification/two_day_25pct_five_assets.py} to regenerate the exact-root and directed-rounding certificate, then \path{verification/audit_two_day_25pct.py} for an independently coded numerical integration. The latter is a numerical crosscheck rather than a mathematical enclosure.
+
+\paragraph{Independent squared-price interval audit and certification margin.}
+A second, independently implemented \emph{validated} ODE audit works in the squared compensator price $w=y^2$, rather than propagating intervals for $y$. The same prescribed target price $x$ and dollar rate $u$ produce
+\[
+\dot w=-\tfrac45(w-\sqrt w)-2u(t),\qquad w(0)=1.
+\]
+On the verified strip $7/10<\sqrt w<31/20$, the scalar drift is decreasing in $w$, and its time-step Euler map is order preserving for step size $1/2000$. Exact interval bounds $|u|<1/2$ and $|u'|<1/5$ imply
+\[
+|\dot w|<17/10,\qquad
+|\ddot w|<
+\frac{11}{20}\frac{17}{10}+\frac25<2.
+\]
+Thus an outward-rounded integer Euler enclosure with per-step second-order remainder at most $h^2$ is valid for $h=1/2000$, provided the intrastep positivity and bootstrap strips are maintained. The independent verifier establishes these strips and the two daily price bands on all $80{,}000$ intervals, and separately bounds gross share rates, cumulative sales and paired dollar turnover.
+
+The second checker certifies
+\begin{equation}\label{eq:independent-squared-endpoint}
+ w(40)<1.569892,\quad y(40)<1.253,\qquad
+ \frac{G(40)}{G(0)}<0.8396,
+\end{equation}
+so its own interval result proves a geometric-index ordinary decline \emph{strictly exceeding $16.04\%$}. The weaker $16\%$ threshold reported in Proposition~\ref{prop:five-two-day-limits} is deliberately conservative. This independent-coordinate enclosure crosschecks the main program's terminal and resource inequalities without relying on its $y$-coordinate recurrence. Its script is \path{verification/audit_two_day_25pct_squared_interval.py}. Both checkers are internally authored: they provide two different validated implementations, \emph{not} independent external peer review or a third-party audit.
 
 \bibliographystyle{unsrtnat}
 \enlargethispage{2\baselineskip}
