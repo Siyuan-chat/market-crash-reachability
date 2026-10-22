@@ -45,6 +45,8 @@ def main():
                    cwd=ROOT,check=True)
     subprocess.run(["python",str(ROOT/"verification/audit_two_day_25pct.py")],
                    cwd=ROOT,check=True)
+    subprocess.run(["python",str(ROOT/"verification/audit_two_day_25pct_squared_interval.py")],
+                   cwd=ROOT,check=True)
     assert hashlib.sha256(ZIP.read_bytes()).hexdigest() in ALLOWED, "Unrecognized SIAM template"
     pdflatex=shutil.which("pdflatex")
     bibtex=shutil.which("bibtex")
@@ -53,9 +55,12 @@ def main():
     OUT.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="v16-",dir=OUT) as tmp:
         work=Path(tmp)
-        for filename in ("main.tex","shared.tex","references.bib"):
+        for filename in ("main.tex","shared.tex","references.bib","twin_conservation_figure.tex"):
             shutil.copyfile(SRC/filename,work/filename)
         shutil.copytree(PREV/"figures",work/"figures")
+        subprocess.run(["python",str(ROOT/"scripts/generate_v16_path_figure.py"),
+                        "--out",str(work/"two_day_streak_figure.tex")],
+                       cwd=ROOT,check=True)
         # The copied figures resolve locally; neither the old source nor its PDFs change.
         with zipfile.ZipFile(ZIP) as z:
             for name in ("siamonline250211.cls","siamplain.bst"):
@@ -92,6 +97,7 @@ def main():
         for phrase in (
             "nine can incur arbitrarily severe logarithmic losses",
             "five assets can close at their lower limits",
+            "the maximal attainable coverage is unresolved",
             "Elasticity barriers, a sharp full-coverage horizon bound",
         ):
             if phrase not in pdf_first_page:
