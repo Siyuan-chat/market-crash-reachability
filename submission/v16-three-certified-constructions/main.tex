@@ -662,7 +662,7 @@ For the power family $g_p(S)=\eta(S/F)^p$, the necessary dollar-turnover bound i
 \delta,&p=2.
 \end{cases}
 \]
-In the ten-asset, two-session constant-impact certificate, $F=g_F=1$, $\rho=0.4$, $M<3$, $\max_iH_i^-<2$, and $\bar v_{\mathrm{used}}<0.285$ imply $\widehat M<3$, $\max_i\widehat H_i^-<2$, and $\widehat v_{\mathrm{used}}<0.7125$. Relating these dimensionless quantities to observed market depth, accessible inventory, or average daily volume requires asset-specific empirical calibration of $g_F$ and $\rho$.
+For the five-target two-session construction proved in Proposition~\ref{prop:five-two-day-limits}, $F=g_F=1$, $\rho=0.4$, $M<14$, $\max_iH_i^-<2$, and $\bar v_{\mathrm{used}}<0.285$, so $\widehat M<14$, $\max_i\widehat H_i^-<2$, and $\widehat v_{\mathrm{used}}<0.7125$. These are internal model scales; no market-specific empirical calibration is assumed.
 
 
 
@@ -728,7 +728,7 @@ dollar of turnover to the \emph{upper-bound estimate}: late trades
 allow little time for recovery dissipation, while earlier disturbances
 decay before $T$. 
 
-\paragraph{Two-session rolling-band example}
+\paragraph{An aggregate resource inequality for two rolling sessions}
 Consider a uniform symmetric $\pm25\%$ price band during each of two
 sessions, with the second session referenced to the preceding close.
 Then every price lies in
@@ -741,10 +741,6 @@ $-\mathcal V_2(T)\ge NF^2(2d-d^2)/2$, implying
 \[
 M(T)\ge\frac{\mathrm e\,NF^2}{2\eta}(2d-d^2).
 \]
-At $N=10$, $F=\eta=1$ and $d=0.02$, this becomes
-$M(T)\ge0.5382$, compared with $M(T)\ge0.198$ from
-Theorem~\ref{thm:resource}. Both bounds remain below $M=3$.
-
 For partial coverage, appreciation of the compensating assets can
 offset part of the falling subset's potential deficit. The aggregate
 potential itself cannot become positive by~\eqref{eq:V2-identity};
@@ -1039,7 +1035,7 @@ For constant per-share impact $g_i\equiv\eta$, $k=|J|$ identical lower-limit ass
 \bar v\ge \frac{k}{m}\,
 \frac{F\,\big(q^{2(d-1)}-q^{2d}\big)}{2\eta\tau_d(1+\beta_{c,+})^{d}}\quad(d\ge2),
 \end{equation}
-provided all $k$ target prices remain below $F$ and each compensator's preceding reference price has evolved from $F$ under the specified upper bands. The $k/m$ multiplier makes the funding bottleneck explicit. The condition gives a \emph{necessary} lower bound on the rate. For the ten-asset, two-day example ($k=9,m=1,q=0.97,\beta_{c,+}=0.25,\tau_d=20$), it gives only $\bar v\gtrsim 0.0080$; the stronger systemic quadratic bound below is more informative for that particular configuration.
+provided all $k$ target prices remain below $F$ and each compensator's preceding reference price has evolved from $F$ under the specified upper bands. The $k/m$ multiplier makes the funding bottleneck explicit. The condition gives a \emph{necessary} lower bound on the execution rate and is especially restrictive when few compensating assets can receive the paired-dollar flows.
 
 \subsection{Construction III: repeated 25\% lower-limit closes}
 \label{subsec:two-day-limit}
