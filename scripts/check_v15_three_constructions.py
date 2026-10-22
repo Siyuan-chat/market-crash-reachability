@@ -10,6 +10,22 @@ def main() -> None:
     tex = SRC.read_text(encoding="utf-8")
     bib = BIB.read_text(encoding="utf-8")
     core = tex.split(r"\appendix", 1)[0]
+    abstract = tex.split(r"\begin{abstract}", 1)[1].split(r"\end{abstract}", 1)[0].strip()
+    introduction = tex.split(r"\section{Introduction}\label{sec:intro}", 1)[1].split(
+        r"\section{Model and Systemic Drawdown Criterion}", 1)[0].strip()
+    introduction_prose = re.sub(
+        r"\\begin\{equation\}[\s\S]*?\\end\{equation\}", "", introduction)
+    introduction_prose = re.sub(r"\\cite[pt]?\{[^{}]+\}", "", introduction_prose)
+    intro_words = len(introduction_prose.split())
+    abstract_words = len(abstract.split())
+    assert 450 <= intro_words <= 530, ("Introduction misses ~500-word target", intro_words)
+    assert 125 <= abstract_words <= 155, ("Abstract misses concise target", abstract_words)
+    assert "?" not in abstract, "Abstract must be declarative"
+    assert r"\bibliographystyle{unsrtnat}" in tex, "Reference order style changed"
+    assert introduction.index("Gennotte and Leland") < introduction.index(
+        "We therefore consider a deliberately minimal market"), "Literature must precede model"
+    assert introduction.index("We therefore consider a deliberately minimal market") < introduction.index(
+        "The key mathematical tool"), "Model motivation must precede mathematical tool"
     assert r"\end{document}" in tex
     assert tex.count(r"\begin{proof}") == tex.count(r"\end{proof}")
     assert "Proof sketch" not in tex
@@ -39,6 +55,7 @@ def main() -> None:
     assert cited <= keys, f"Unresolved citations: {sorted(cited-keys)}"
     assert tex.count(r"\begin{equation}") == tex.count(r"\end{equation}")
     assert tex.count(r"\begin{figure}") == tex.count(r"\end{figure}")
+    print(f"PASS V15 abstract {abstract_words} words; introduction {intro_words} words")
     print(f"PASS V15 editorial source: {len(core.splitlines())} main lines, "
           f"{len(tex.splitlines())} total lines, "
           f"{len(labels)} labels, {len(cited)} cited keys.")
