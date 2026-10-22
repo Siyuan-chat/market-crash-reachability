@@ -1,14 +1,10 @@
-"""Verify the frozen release SHA-256 manifest plus a pinned working-revision overlay.
+"""Verify historical SHA-256 evidence plus an explicit V16 documentation overlay.
 
-The immutable original manifest release/SHA256SUMS remains byte-for-byte
-unchanged. A working manuscript necessarily changes README/version/source
-files, so the new revision is pinned *separately* in
-release/SHA256SUMS_V14_R1. The overlay may only replace these explicitly
-reviewed manuscript/editorial and test workflow paths. It must not override
-the frozen model, data, interval certificates, historical Lean proofs,
-earlier PDFs, or original release metadata.
-
-Without the revision overlay, verify the historical manifest normally.
+The original release/SHA256SUMS and release/SHA256SUMS_V14_R1 stay
+unchanged; their historical checks are not rebaselined to new manuscript
+content. release/SHA256SUMS_V16_DOCS contains only five allowed
+current-documentation/integrity-checker overrides. It cannot mask edits
+to mathematical models, certificates, data, archived PDFs, or Lean proofs.
 """
 from __future__ import annotations
 
@@ -19,6 +15,15 @@ import re
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "release/SHA256SUMS"
 REVISION = ROOT / "release/SHA256SUMS_V14_R1"
+V16_DOCS = ROOT / "release/SHA256SUMS_V16_DOCS"
+PINNED_V14_OVERLAY_SHA256 = "ec9e4ba2b8c21c60425bc9a8139a15b02b6ea9f10aec73897fc4ae703f55ed47"
+V16_DOC_FILES = {
+    "README.md",
+    "docs/VERSIONS.md",
+    "submission/README.md",
+    "scripts/check_documentation.py",
+    "scripts/check_revision_hashes.py",
+}
 
 # This explicit whitelist prevents a later revision from silently masking
 # changed historical certificate, data or Lean files behind an overlay.
@@ -101,6 +106,8 @@ def read_lean_import_prune() -> dict[str, str]:
 def main() -> None:
     frozen = read_manifest(BASE)
     if REVISION.exists():
+        if sha256(REVISION.read_bytes()).hexdigest() != PINNED_V14_OVERLAY_SHA256:
+            raise AssertionError("Historical V14-R1 manifest changed unexpectedly")
         overlay = read_manifest(REVISION)
         if set(overlay) != REVISION_FILES:
             raise AssertionError(
@@ -114,10 +121,28 @@ def main() -> None:
     else:
         overlay = {}
 
+    if V16_DOCS.exists():
+        if not REVISION.exists():
+            raise AssertionError("V16 docs require the pinned V14-R1 historical overlay")
+        v16_docs = read_manifest(V16_DOCS)
+        if set(v16_docs) != V16_DOC_FILES:
+            raise AssertionError(
+                f"V16 docs manifest paths differ: "
+                f"missing={sorted(V16_DOC_FILES - set(v16_docs))}, "
+                f"unexpected={sorted(set(v16_docs) - V16_DOC_FILES)}"
+            )
+        for name in V16_DOC_FILES:
+            if name not in overlay or overlay[name] == v16_docs[name]:
+                raise AssertionError("V16 documentation must override an actual V14-R1 record: " + name)
+    elif (ROOT / "submission/v16-three-certified-constructions/main.tex").exists():
+        raise AssertionError("V16 working manuscript requires a separate V16 docs hash manifest")
+    else:
+        v16_docs = {}
+
     lean_import_prune = read_lean_import_prune()
 
     mistakes = []
-    for name, expected in {**frozen, **overlay, **lean_import_prune}.items():
+    for name, expected in {**frozen, **overlay, **v16_docs, **lean_import_prune}.items():
         found = sha256((ROOT / name).read_bytes()).hexdigest()
         if found != expected:
             mistakes.append((name, expected, found))
@@ -127,9 +152,9 @@ def main() -> None:
         raise AssertionError(f"{len(mistakes)} SHA-256 mismatch(es)")
 
     print(f"PASS: {len(frozen)} frozen baseline paths, "
-          f"{len(overlay)} separately pinned working-revision files "
-          f"({len(frozen.keys() | overlay.keys())} distinct tracked files)")
-    print("Original release/SHA256SUMS unchanged; no certificate hashes overridden")
+          f"{len(overlay)} pinned V14-R1 files and {len(v16_docs)} V16 documentation overrides "
+          f"({len(frozen.keys() | overlay.keys() | v16_docs.keys())} distinct tracked files)")
+    print("Frozen release and historical V14-R1 hash manifests verified unchanged; no certificate hashes overridden")
     print(f"Lean entrypoint import-only overlay: {len(lean_import_prune)} pinned file(s)")
 
 
