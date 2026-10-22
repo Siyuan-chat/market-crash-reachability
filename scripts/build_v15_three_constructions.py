@@ -81,7 +81,18 @@ def main():
             file=work/("main"+suffix)
             if file.is_file():
                 shutil.copyfile(file,OUT/file.name)
+        pdf_text_run = subprocess.run(
+            ["pdftotext", "-f", "1", "-l", "1", str(OUT/"main.pdf"), "-"],
+            capture_output=True, text=True, check=True)
+        pdf_first_page = re.sub(r"\s+", " ", pdf_text_run.stdout)
+        for phrase in (
+            "nine assets incur arbitrarily severe logarithmic losses",
+            "These results demonstrate that admissible trading alone",
+        ):
+            if phrase not in pdf_first_page:
+                raise SystemExit("V15 abstract appears truncated in the rendered PDF: "+phrase)
         summary={"passes":passes, "problems":problems, "bibliography":bibliography_audit,
+            "abstract_pdf_complete": True,
             "pdf_sha256":hashlib.sha256((OUT/"main.pdf").read_bytes()).hexdigest(),
             "pdf_size":(OUT/"main.pdf").stat().st_size}
         (OUT/"build_summary.json").write_text(json.dumps(summary,indent=2)+"\n")
