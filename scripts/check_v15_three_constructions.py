@@ -21,7 +21,9 @@ def main() -> None:
     assert 450 <= intro_words <= 530, ("Introduction misses ~500-word target", intro_words)
     assert 125 <= abstract_words <= 155, ("Abstract misses concise target", abstract_words)
     assert "?" not in abstract, "Abstract must be declarative"
-    assert r"\bibliographystyle{unsrtnat}" in tex, "Reference order style changed"
+    assert re.search(r"^\\bibliographystyle\{unsrtnat\}\s*$", tex, re.MULTILINE), (
+        "BibTeX style command must be active, on its own line, not swallowed by a LaTeX comment"
+    )
     assert introduction.index("Gennotte and Leland") < introduction.index(
         "We therefore consider a deliberately minimal market"), "Literature must precede model"
     assert introduction.index("We therefore consider a deliberately minimal market") < introduction.index(
