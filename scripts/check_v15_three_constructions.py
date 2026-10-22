@@ -21,6 +21,12 @@ def main() -> None:
     assert 450 <= intro_words <= 530, ("Introduction misses ~500-word target", intro_words)
     assert 125 <= abstract_words <= 155, ("Abstract misses concise target", abstract_words)
     assert "?" not in abstract, "Abstract must be declarative"
+    assert not re.search(r"(?<!\\)%", abstract), (
+        "Unescaped % in abstract silently comments out the remainder of a TeX source line"
+    )
+    assert r"50\\%" in abstract and "These results demonstrate" in abstract, (
+        "Abstract must retain its complete results and conclusion"
+    )
     assert re.search(r"^\\bibliographystyle\{unsrtnat\}\s*$", tex, re.MULTILINE), (
         "BibTeX style command must be active, on its own line, not swallowed by a LaTeX comment"
     )
