@@ -24,7 +24,7 @@ def main() -> None:
     assert not re.search(r"(?<!\\)%", abstract), (
         "Unescaped % in abstract silently comments out the remainder of a TeX source line"
     )
-    assert r"50\\%" in abstract and "These results demonstrate" in abstract, (
+    assert r"50\%" in abstract and "These results demonstrate" in abstract, (
         "Abstract must retain its complete results and conclusion"
     )
     assert re.search(r"^\\bibliographystyle\{unsrtnat\}\s*$", tex, re.MULTILINE), (
