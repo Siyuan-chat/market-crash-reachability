@@ -39,3 +39,11 @@ Only then update the V15 abstract/introduction/conclusion to include the proven 
 ## CI and preservation
 
 The old V14 directory and its historical acceptance test remain unchanged. V15 gets its own build, editorial integrity check, and GitHub Actions PDF artifact. Do not merge this draft as the final paper while Construction III remains uncertified.
+
+## Introduction, abstract, and reference ordering (2026-10-22)
+
+- **Abstract:** 134 words; declarative, mathematical-tool-driven, and confined to the two existing certified/analytical severe-loss constructions. It does not present the consecutive 25% lower-limit target as completed.
+- **Introduction:** approximately 493 words, six natural paragraphs in this order: problem → literature on crashes without contemporaneous public news → mechanisms and assumptions behind prior results → justification for an idealized market → model and response-adapted coordinate → main constructive results and boundary theorems.
+- **References:** use `unsrtnat` numerical bibliography style so numbering follows the **first citation's appearance in the manuscript**, rather than alphabetical order. `scripts/build_v15_three_constructions.py` compares the order of cited keys in the compiled `.aux` file against the ordered `\bibitem` entries in the compiled `.bbl`; the build fails if they differ.
+- These edits affect exposition and bibliography formatting only. The two established mathematical constructions, structural theorems, resource bounds, and the unproved status of the third target remain unchanged.
+
