@@ -73,7 +73,7 @@ def check():
             if not (ROOT / command_path).is_file():
                 errors.append(f'{name}: missing reproduction program {command_path}')
     readme = (ROOT / 'README.md').read_text(encoding='utf-8')
-    for required in ('Latest GitHub manuscript: V14', 'not Lean-formalized',
+    for required in ('Latest English working manuscript: V16', 'not Lean-formalized',
                      'submission/v14-turnover-dissipation/manuscript.pdf',
                      'docs/REPOSITORY_STRUCTURE.md', 'manuscript-build.json'):
         if required not in readme:
