@@ -48,12 +48,12 @@ def main():
     assert r"\Cris_{1/2}(40)>-\log(0.84)>0.174" in main
     assert r"\bar v" in main and r"M<14" in main
     original_figure=(SRC.parent/"twin_conservation_figure.tex").read_text(encoding="utf-8")
-    assert r"\\input{twin_conservation_figure.tex}" in intro
+    assert r"\input{twin_conservation_figure.tex}" in intro
     assert "fig:conservation-geometry" in original_figure
-    assert r"\\input{two_day_streak_figure.tex}" in main
+    assert r"\input{two_day_streak_figure.tex}" in main
     assert (ROOT/"scripts/generate_v16_path_figure.py").exists()
     assert (ROOT/"verification/audit_two_day_25pct_squared_interval.py").exists()
-    assert r"\\label{eq:independent-squared-endpoint}" in tex
+    assert r"\label{eq:independent-squared-endpoint}" in tex
     assert "The second idealized ten-asset family" not in tex
     assert "For the $N=12$" not in tex
     labels=set(re.findall(r"\\label\{([^}]+)\}",tex))
