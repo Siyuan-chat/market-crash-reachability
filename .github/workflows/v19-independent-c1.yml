@@ -5,6 +5,11 @@ on:
     paths:
       - 'research/v19-activity-recovery/verify_c1_independent_rational.py'
       - '.github/workflows/v19-independent-c1.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/v19-activity-recovery/verify_c1_independent_rational.py'
+      - '.github/workflows/v19-independent-c1.yml'
   workflow_dispatch:
 
 jobs:
