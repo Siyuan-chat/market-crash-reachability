@@ -174,6 +174,29 @@ def verify():
     assert Htarget.hi<I(2).lo and Hcomp.hi<I(2).lo
     assert max(rate1.hi,rate2.hi)<I(F("0.133")).lo
     assert F(9,16)*F("1.23")<F("0.84")**2
+    certificate = {
+        "status": "INTERNAL_INTERVAL_CROSSCHECK_2",
+        "method": "outward rational grid 1e-65, analytic series remainders",
+        "parameters": {"N": 10, "p": 0, "K": 2,
+                       "root_left": CLEFT, "root_right": CRIGHT,
+                       "events_per_pair": 19, "compensator_cycles": 5},
+        "left_ledger": [str(left["ledger"].lower()), str(left["ledger"].upper())],
+        "right_ledger": [str(right["ledger"].lower()), str(right["ledger"].upper())],
+        "edge_amounts": [[str(z.lower()), str(z.upper())] for z in p["zs"]],
+        "target_prices_at_endpoints": [[str(x.lower()), str(x.upper())] for x in p["xs"]],
+        "compensator_prices_at_endpoints": [[str(x.lower()), str(x.upper())] for x in p["ys"]],
+        "compensator_final_prices": [[str(x.lower()), str(x.upper())] for x in prices],
+        "day1_amount": [str(p["a1"].lower()), str(p["a1"].upper())],
+        "day2_amount": [str(p["a2"].lower()), str(p["a2"].upper())],
+        "total_amount": [str(M.lower()), str(M.upper())],
+        "gross_share_rate_upper": str(F(max(rate1.hi, rate2.hi), S)),
+        "target_inventory_upper": str(Htarget.upper()),
+        "compensator_inventory_upper": str(Hcomp.upper()),
+        "limits": {"turnover_lt": "11.261627", "gross_rate_lt": "0.133",
+                   "inventory_lt": "2", "final_compensator_lt": "1.23"}
+    }
+    with open("research/v19-activity-recovery/independent_c1_certificate.json", "w", encoding="utf-8") as fp:
+        json.dump(certificate, fp, sort_keys=True, indent=2)
     print("PASS independently certified 19 event pairs, 5 cycles, full bounds")
     print("left ledger",left["ledger"],"right ledger",right["ledger"])
     print("M",M,"max gross share rate",I.raw(0,max(rate1.hi,rate2.hi)))
