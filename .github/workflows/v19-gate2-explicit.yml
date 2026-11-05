@@ -1,0 +1,25 @@
+name: V19 explicit Gate 2 analytic witnesses
+on:
+  pull_request:
+    paths:
+      - 'research/v19-activity-recovery/certify_gate2_explicit.py'
+      - '.github/workflows/v19-gate2-explicit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/v19-activity-recovery/certify_gate2_explicit.py'
+      - '.github/workflows/v19-gate2-explicit.yml'
+  workflow_dispatch:
+jobs:
+  audit-explicit-bounds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact-rational explicit constants
+        run: python research/v19-activity-recovery/certify_gate2_explicit.py
+      - name: Independently check discrete Green inverses
+        run: python research/v19-activity-recovery/gate2_jacobian_exact.py

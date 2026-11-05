@@ -1,0 +1,31 @@
+construction,asset,control_class,terminal_price,terminal_dollar_ledger,gross_dollar_activity_per_asset,true_seller_shares_upper,path_price_lower,status,caveat
+I_EXPLICIT,1,C0,1/2 exact,0 exact,4000000000000000000,100000000000000000000,3/50,ANALYTIC_EXACT_EXISTENCE,alternative h=1e-16; cached h=.2 remains float-only
+I_EXPLICIT,2,C0,1/2 exact,0 exact,4000000000000000000,100000000000000000000,3/50,ANALYTIC_EXACT_EXISTENCE,alternative h=1e-16; cached h=.2 remains float-only
+I_EXPLICIT,3,C0,1/2 exact,0 exact,4000000000000000000,100000000000000000000,3/50,ANALYTIC_EXACT_EXISTENCE,alternative h=1e-16; cached h=.2 remains float-only
+I_EXPLICIT,4,C0,1/2 exact,0 exact,4000000000000000000,100000000000000000000,3/50,ANALYTIC_EXACT_EXISTENCE,alternative h=1e-16; cached h=.2 remains float-only
+I_EXPLICIT,5,C0,1/2 exact,0 exact,4000000000000000000,100000000000000000000,3/50,ANALYTIC_EXACT_EXISTENCE,alternative h=1e-16; cached h=.2 remains float-only
+I_EXPLICIT,6,C0,1/2 exact,0 exact,4000000000000000000,100000000000000000000,3/50,ANALYTIC_EXACT_EXISTENCE,alternative h=1e-16; cached h=.2 remains float-only
+I_EXPLICIT,7,C0,1/2 exact,0 exact,4000000000000000000,100000000000000000000,3/50,ANALYTIC_EXACT_EXISTENCE,alternative h=1e-16; cached h=.2 remains float-only
+I_EXPLICIT,8,C0,1/2 exact,0 exact,4000000000000000000,100000000000000000000,3/50,ANALYTIC_EXACT_EXISTENCE,alternative h=1e-16; cached h=.2 remains float-only
+I_EXPLICIT,9,C0,1/2 exact,0 exact,4000000000000000000,100000000000000000000,3/50,ANALYTIC_EXACT_EXISTENCE,alternative h=1e-16; cached h=.2 remains float-only
+I_EXPLICIT,10,C0,1/2 exact,0 exact,4000000000000000000,100000000000000000000,3/50,ANALYTIC_EXACT_EXISTENCE,alternative h=1e-16; cached h=.2 remains float-only
+II_EXPLICIT,1,C0,"qR(T), 1<=R(T)<4",0 exact,20000000000000000000,3000000000000000000000000,"min(q,1/100000)",ANALYTIC_EXACT_EXISTENCE_ALL_0_LT_Q_LE_1_100,alternative h=1e-16; cached h=.012 remains float-only
+II_EXPLICIT,2,C0,"qR(T), 1<=R(T)<4",0 exact,20000000000000000000,3000000000000000000000000,"min(q,1/100000)",ANALYTIC_EXACT_EXISTENCE_ALL_0_LT_Q_LE_1_100,alternative h=1e-16; cached h=.012 remains float-only
+II_EXPLICIT,3,C0,"qR(T), 1<=R(T)<4",0 exact,20000000000000000000,3000000000000000000000000,"min(q,1/100000)",ANALYTIC_EXACT_EXISTENCE_ALL_0_LT_Q_LE_1_100,alternative h=1e-16; cached h=.012 remains float-only
+II_EXPLICIT,4,C0,"qR(T), 1<=R(T)<4",0 exact,20000000000000000000,3000000000000000000000000,"min(q,1/100000)",ANALYTIC_EXACT_EXISTENCE_ALL_0_LT_Q_LE_1_100,alternative h=1e-16; cached h=.012 remains float-only
+II_EXPLICIT,5,C0,"qR(T), 1<=R(T)<4",0 exact,20000000000000000000,3000000000000000000000000,"min(q,1/100000)",ANALYTIC_EXACT_EXISTENCE_ALL_0_LT_Q_LE_1_100,alternative h=1e-16; cached h=.012 remains float-only
+II_EXPLICIT,6,C0,"qR(T), 1<=R(T)<4",0 exact,20000000000000000000,3000000000000000000000000,"min(q,1/100000)",ANALYTIC_EXACT_EXISTENCE_ALL_0_LT_Q_LE_1_100,alternative h=1e-16; cached h=.012 remains float-only
+II_EXPLICIT,7,C0,"qR(T), 1<=R(T)<4",0 exact,20000000000000000000,3000000000000000000000000,"min(q,1/100000)",ANALYTIC_EXACT_EXISTENCE_ALL_0_LT_Q_LE_1_100,alternative h=1e-16; cached h=.012 remains float-only
+II_EXPLICIT,8,C0,"qR(T), 1<=R(T)<4",0 exact,20000000000000000000,3000000000000000000000000,"min(q,1/100000)",ANALYTIC_EXACT_EXISTENCE_ALL_0_LT_Q_LE_1_100,alternative h=1e-16; cached h=.012 remains float-only
+II_EXPLICIT,9,C0,"qR(T), 1<=R(T)<4",0 exact,20000000000000000000,3000000000000000000000000,"min(q,1/100000)",ANALYTIC_EXACT_EXISTENCE_ALL_0_LT_Q_LE_1_100,alternative h=1e-16; cached h=.012 remains float-only
+II_EXPLICIT,10,C0,"R(T)*sqrt(1-9q^2), 1<=R(T)<4",0 exact,20000000000000000000,3000000000000000000000000,1/100000,ANALYTIC_EXACT_EXISTENCE_ALL_0_LT_Q_LE_1_100,alternative h=1e-16; cached h=.012 remains float-only
+III_INDEPENDENT_C1,1,C1,9/16 exact,0 exact by bracketing / 5 cycles,eventwise enclosure: check certificate,2,9/16,INTERNAL_INTERVAL_CROSSCHECK_2,M<11.261627 and peak gross-share rate<0.133; exact rational witness in scripts
+III_INDEPENDENT_C1,2,C1,9/16 exact,0 exact by bracketing / 5 cycles,eventwise enclosure: check certificate,2,9/16,INTERNAL_INTERVAL_CROSSCHECK_2,M<11.261627 and peak gross-share rate<0.133; exact rational witness in scripts
+III_INDEPENDENT_C1,3,C1,9/16 exact,0 exact by bracketing / 5 cycles,eventwise enclosure: check certificate,2,9/16,INTERNAL_INTERVAL_CROSSCHECK_2,M<11.261627 and peak gross-share rate<0.133; exact rational witness in scripts
+III_INDEPENDENT_C1,4,C1,9/16 exact,0 exact by bracketing / 5 cycles,eventwise enclosure: check certificate,2,9/16,INTERNAL_INTERVAL_CROSSCHECK_2,M<11.261627 and peak gross-share rate<0.133; exact rational witness in scripts
+III_INDEPENDENT_C1,5,C1,9/16 exact,0 exact by bracketing / 5 cycles,eventwise enclosure: check certificate,2,9/16,INTERNAL_INTERVAL_CROSSCHECK_2,M<11.261627 and peak gross-share rate<0.133; exact rational witness in scripts
+III_INDEPENDENT_C1,6,C1,"(1.225708344806434091,1.225708344807892702)",0 exact by bracketing / 5 cycles,eventwise enclosure: check certificate,2,3/4 conservative,INTERNAL_INTERVAL_CROSSCHECK_2,M<11.261627 and peak gross-share rate<0.133; exact rational witness in scripts
+III_INDEPENDENT_C1,7,C1,"(1.220021200239709058,1.220021200240371195)",0 exact by bracketing / 5 cycles,eventwise enclosure: check certificate,2,3/4 conservative,INTERNAL_INTERVAL_CROSSCHECK_2,M<11.261627 and peak gross-share rate<0.133; exact rational witness in scripts
+III_INDEPENDENT_C1,8,C1,"(1.220021200239565839,1.220021200240514636)",0 exact by bracketing / 5 cycles,eventwise enclosure: check certificate,2,3/4 conservative,INTERNAL_INTERVAL_CROSSCHECK_2,M<11.261627 and peak gross-share rate<0.133; exact rational witness in scripts
+III_INDEPENDENT_C1,9,C1,"(1.220021200239453485,1.220021200240626769)",0 exact by bracketing / 5 cycles,eventwise enclosure: check certificate,2,3/4 conservative,INTERNAL_INTERVAL_CROSSCHECK_2,M<11.261627 and peak gross-share rate<0.133; exact rational witness in scripts
+III_INDEPENDENT_C1,10,C1,"(1.220021200239365555,1.220021200240714698)",0 exact by bracketing / 5 cycles,eventwise enclosure: check certificate,2,3/4 conservative,INTERNAL_INTERVAL_CROSSCHECK_2,M<11.261627 and peak gross-share rate<0.133; exact rational witness in scripts
