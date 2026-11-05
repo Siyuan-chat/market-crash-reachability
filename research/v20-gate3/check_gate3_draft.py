@@ -12,6 +12,11 @@ ROOT = Path(__file__).resolve().parents[2]
 REG = ROOT / 'research/v20-gate3/GATE3_43_ITEM_CONTENT_REGISTER.csv'
 MANUS = ROOT / 'submission/v20-gate3-activity-recovery/main.tex'
 FIGS = ROOT / 'submission/v20-gate3-activity-recovery/figures'
+raw_ledger = REG.read_text(encoding='utf-8-sig')
+assert raw_ledger.startswith('ID,'), (
+    'Gate 3 CSV must begin with the canonical ID header; '
+    'remove spreadsheet-renderer metadata and synthetic index columns'
+)
 rows = list(csv.DictReader(REG.open(encoding='utf-8-sig', newline='')))
 expected = {
     *(f'M{i:02d}' for i in range(1, 4)),
