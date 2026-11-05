@@ -8,6 +8,7 @@ permissions:
 jobs:
   lean:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -18,9 +19,25 @@ jobs:
           curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/v4.1.2/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           "$HOME/.elan/bin/elan" toolchain install leanprover/lean4:v4.19.0
+      # Pinned Mathlib c44e0c8... requires exactly leantar 0.1.15.
+      # Build its pinned source instead of accepting an unchecked release tarball.
+      - name: Install pinned leantar 0.1.15 from source
+        env:
+          CARGO_NET_RETRY: 5
+        run: |
+          set -euo pipefail
+          cargo --version
+          cargo install --locked \
+            --git https://github.com/digama0/leangz \
+            --tag v0.1.15 --bin leantar \
+            --root "$RUNNER_TEMP/lean-archive-tools"
+          "$RUNNER_TEMP/lean-archive-tools/bin/leantar" --version | tee "$RUNNER_TEMP/leantar-version.txt"
+          grep -Eq '^leantar 0[.]1[.]15([[:space:]]|$)' "$RUNNER_TEMP/leantar-version.txt"
+          echo "$RUNNER_TEMP/lean-archive-tools/bin" >> "$GITHUB_PATH"
       - name: Mathlib cache and kernel build
         working-directory: formal/lean
         run: |
+          set -euo pipefail
           lake exe cache get
           lake build
       - name: Proof integrity and axiom audit
