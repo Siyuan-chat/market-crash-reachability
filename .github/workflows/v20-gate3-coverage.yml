@@ -1,0 +1,25 @@
+name: V20 Gate 3 draft coverage (non-mathematical)
+on:
+  pull_request:
+    paths:
+      - 'research/v20-gate3/**'
+      - 'submission/v20-gate3-activity-recovery/**'
+      - '.github/workflows/v20-gate3-coverage.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/v20-gate3/**'
+      - 'submission/v20-gate3-activity-recovery/**'
+      - '.github/workflows/v20-gate3-coverage.yml'
+  workflow_dispatch:
+jobs:
+  verify-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify manuscript/figure/43-item coverage register
+        run: python research/v20-gate3/check_gate3_draft.py
