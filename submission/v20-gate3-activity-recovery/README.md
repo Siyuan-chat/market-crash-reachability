@@ -4,7 +4,7 @@ This directory is the **first substantive English manuscript reconstruction** af
 
 ## Draft contents as of 2026-11-05
 
-- `main.tex`: 17 primary sections including appendices; 26 theorem/lemma/proposition environments plus a new mathematical corollary; both an analytic severity ladder and a separately labelled numerical reconstruction table. The article-class fallback preview is about 24 pages, **not** evidence of full original-paper coverage.
+- `main.tex`: 17 primary sections including appendices; 26 theorem/lemma/proposition environments plus a new mathematical corollary; both an analytic severity ladder and a separately labelled numerical reconstruction table. The article-class fallback preview is about 25 pages, **not** evidence of full original-paper coverage.
 - `shared.tex`: SIAM interface with an article-class fallback only for inspection when the SIAM class is absent.
 - `figures/`: six V19-model PDF plots. The I/II numerical trajectories are **NUMERIC_ONLY**, not plots of the rigorously certified new explicit high-budget witnesses. Construction III is an internally cross-checked interval proof, **not an external certificate**.
 - `../../research/v20-gate3/GATE1_GATE2_RECHECK_GATE3_ENTRY_2026-11-05_ZH.md`: scope-limited independent audit and go/no-go.
@@ -12,7 +12,7 @@ This directory is the **first substantive English manuscript reconstruction** af
 
 ## Reproducibility/build note
 
-The manuscript cites the preserved 33-entry original BibTeX at `../v16-three-certified-constructions/references.bib`; review/correct citations for the final version. Build from this directory with the repository's SIAM manuscript environment and working LaTeX/BibTeX tooling. An independent **local fallback article-class PDF** was rendered on 2026-11-05 (24 pages, checked for undefined references and overflow). Its *temporary* nine-entry BibTeX substitute was for offline display only and is **not** the scholarly reference baseline.
+The manuscript cites the preserved 33-entry original BibTeX at `../v16-three-certified-constructions/references.bib`; review/correct citations for the final version. Build from this directory with the repository's SIAM manuscript environment and working LaTeX/BibTeX tooling. An independent **local fallback article-class PDF** was rendered on 2026-11-05 (25 pages, checked for undefined references and overflow). Its *temporary* nine-entry BibTeX substitute was for offline display only and is **not** the scholarly reference baseline.
 
 ## Core research claims and acceptance scope
 
