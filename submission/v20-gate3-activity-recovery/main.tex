@@ -1902,7 +1902,11 @@ interchangeable. The checker's scope is an \emph{internally
 implemented} interval proof, not a formally verified implementation
 or external independent peer review.
 
+\ifnum\isSIAM=1
+\bibliographystyle{siamplain}
+\else
 \bibliographystyle{unsrtnat}
+\fi
 \enlargethispage{2\baselineskip}
 {\small\bibliography{../v16-three-certified-constructions/references}}
 \end{document}
