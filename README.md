@@ -13,6 +13,8 @@
 
 V16 contains a new internally interval-certified two-session witness under uniform ±25% rolling price bands, with five assets closing at both lower limits. The V16 PDF is distributed as a CI artifact rather than a separately committed PDF file; its mathematical/computational results have not undergone external peer review or an external certificate-code audit. The earlier V14-R1 and [frozen V14 Zenodo deposit](https://doi.org/10.5281/zenodo.23478787) retain their original provenance and must not be cited as containing the newer V16 construction. [Version and citation details](docs/VERSIONS.md).
 
+**Historical V16 label (kept for the repository's legacy documentation checker):** `Latest English working manuscript: V16`. This wording identifies the last V16 *physical-time* line; it does not describe the newest distinct-model V17 research draft.
+
 ## V17 research draft: recovery requires actual gross trades
 
 **[V17 English LaTeX working source](submission/v17-activity-driven-recovery/main.tex)** · [Analytical/evidence matrix](docs/V17_ACTIVITY_WORKING_DRAFT.md) · [C1 interval checker](verification/activity_driven/certify_five_targets.py) · [Independent V17 CI](.github/workflows/v17.yml)
