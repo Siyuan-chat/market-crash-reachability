@@ -32,7 +32,7 @@ def check():
         source = re.sub(r'(?ms)^\s*```.*?^\s*```[^\n]*', '', source)
         # Inline-code spans are literal text, not Markdown links; a mathematical
         # expression such as `[...](...-1)` is not a filesystem target.
-        source = re.sub(r'(?<!`)(`+)(?!`)(.*?)\\1(?!`)', '', source,
+        source = re.sub(r'(?<!`)(`+)(?!`)(.*?)\1(?!`)', '', source,
                         flags=re.DOTALL)
         targets = re.findall(r'!?\[[^\]\n]*\]\(\s*(<[^>]+>|[^\s)]+)', source)
         targets += re.findall(r'(?m)^\s*\[[^\]]+\]:\s*(<[^>]+>|\S+)', source)
