@@ -195,8 +195,15 @@ def verify():
         prices[i],prices[j],z=transfer(prices[i],prices[j],-1,
                                        xnext=invert(prim(prices[i],-1)-box(Z),-1,Q('0.5'),Q('1.34')))
         assert rat(z)[0]>0
-        # Strictly also require the executed amount is exactly Z, not just
-        # an enclosure: one dimensional inverse ensures this mathematically.
+        # Exact cycle amount Z is defined by the inverse equation; interval
+        # subtraction must also enclose that exact value tightly.
+        assert rat(z)[0] <= Z <= rat(z)[1]
+        # Check *every* intermediate cycle endpoint, not merely final prices.
+        # Both endpoint price paths are monotone along one directed edge.
+        for p in prices:
+            assert rat(p)[0]>Q('1.2') and rat(p)[1]<Q('1.30')
+            assert rat(p)[0]>Q(3,4)*rat(close_y)[1]
+            assert rat(p)[1]<Q(5,4)*rat(close_y)[0]
         cycle_history.append([interval_bounds(v) for v in prices])
     for p in prices:
         assert rat(p)[0]>Q('1.2') and rat(p)[1]<Q('1.23')
