@@ -23,10 +23,11 @@ protocol establishes local all-asset declines for arbitrary smooth positive
 response functions, while scalar activity floors and execution-resource
 inequalities restrict severe losses. Heterogeneous quadratic responses
 can also produce a two-node systemic loss through a closed, sequential
-dollar round trip, despite the homogeneous quadratic obstruction. In the constant-impact model, a
-continuous-direction argument provides analytic existence constructions for
-all ten prices to end at half their benchmarks, and for nine prices to become
-arbitrarily small with uniform finite turnover and inventory budgets.
+dollar round trip, despite the homogeneous quadratic obstruction. In the constant-impact model, a continuous-direction argument gives
+an analytic existence construction for all ten prices to end at half
+their benchmarks. For every fixed power-law exponent $0\le p<1$,
+nine prices can become arbitrarily small under one common finite
+turnover and inventory envelope (with constants depending on $p$).
 A separate cross-checked internally interval-verified, no-instantaneous-netting ten-asset
 path makes five assets close at the lower limit of successive $\pm25\%$
 rolling sessions. The path has finite gross share-execution rate and an
@@ -776,17 +777,101 @@ $q=0$ configuration is used only in the continuous bracketing
 argument, not as an admissible price path.
 \end{proof}
 
-\begin{remark}[Extension and nonuniformity in the response exponent]
-For each \emph{fixed} $0\le p<1$, the radial construction may
-be generalized using $\nu=2-p>1$ and $x_i=R Y_i^{1/\nu}$.
-The terminal share inventory remains integrable because
-$\int_0^1(1-s)^{-1/\nu}ds=\nu/(\nu-1)<\infty$.
-The analysis and constants need not be uniform as $p\uparrow1$;
-the explicit certificates \eqref{eq:ninecert}--\eqref{eq:nineresult}
-are for $p=0$ only. A detailed audit of the general $p<1$
-parameter extension is preserved as a separate mathematical
-research proof, rather than being silently inferred from the
-$p=0$ numerical constants.
+\begin{theorem}[Uniform-resource severe partial coverage for fixed $p<1$]
+\label{thm:nine-general}
+Fix $N=10$, $F=\eta=1$, and any \emph{fixed}
+$0\le p<1$. There exist constants $T,K,M_0,H_0\in(0,\infty)$,
+depending on $p$ but \emph{independent} of the desired severity
+$\delta$, such that for every $\delta>0$ there is an
+absolutely continuous, strictly positive $\mathsf C_0$ execution
+on $[0,T]$ with $X_i(T)=0$ for all ten assets and
+\begin{equation}\label{eq:general-severity}
+ \Cris_{0.9}(T)>\delta,\qquad M\le M_0,\qquad
+ H_i^-\le H_0\quad(i=1,\ldots,10).
+\end{equation}
+Neither $T$, $K$, nor the budgets $M_0,H_0$ depend on
+$\delta$. This theorem does \emph{not} assert bounds uniform
+as $p\uparrow1$, or a bounded pointwise gross-share rate as
+$\delta\to\infty$.
+\end{theorem}
+\begin{proof}
+Put $\nu=2-p>1$, take equal gross dollar-activity rates
+$a_0$, and set $\rho=Ka_0=1$. For the positive direction vector
+$Y$, write $x_i=R Y_i^{1/\nu}$. The exact radial and ledger
+identities are \eqref{eq:radial-general}--\eqref{eq:ledger-general}.
+Take nine successive role stages, with each target high exactly
+once, all other targets low, and a fixed compensator component:
+\[
+ c=b_+=\tfrac1{100},\quad 0<b<b_+,\qquad
+ a(b)=\bigl(1-8c^\nu-b^\nu\bigr)^{1/\nu}.
+\]
+The constant stage source is
+$H_b=a^{\nu-1}+8c^{\nu-1}+b^{\nu-1}$, independent of
+which target is high, and
+$R_b(t)=H_b+(10^{1/\nu}-H_b)e^{-t}$. We have
+$aR_b(t)>1>cR_b(t)$ for all stages, so
+$W_b(t)=\psi_\nu(aR_b)-\psi_\nu(cR_b)>0$, where
+$\psi_\nu(x)=x^{\nu-1}(x-1)$. Therefore the sharp
+nine-stage target-ledger differences have a unique ordered
+cut-time root by equal-$W_b$ partitions. Their Jacobian
+$J_0=L_8\operatorname{diag}(W_b(t_j))$ has strictly
+positive determinant, uniformly bounded inverse on a fixed
+positive compact interval for $b$.
+
+At the formal endpoint $q=0$ of the last target direction,
+the compensator ledger is positive at $b=0$, while for the
+fixed $b_+$ it is negative for a sufficiently large \emph{finite}
+choice of $T$. Choose such a $T$, then $b_->0$ small enough
+that these strict signs persist at $b_-$ and $b_+$, and
+then $q_0>0$ sufficiently small to preserve them for
+all $q\in[0,q_0]$. The detailed endpoint calculation is in
+Appendix~\ref{app:general-p}.
+
+Use fixed-width affine transitions in the $Y$ coordinates,
+including one terminal ramp to target components $q^\nu$.
+The perturbation in the ledger differences and the cut-time
+Jacobian tends uniformly to zero as $h\downarrow0$ on
+$b\in[b_-,b_+]$, $q\in[0,q_0]$. The moving-cut radial
+derivative is controlled in $L^1$, not pointwise, by
+\eqref{eq:movingsensitivity}; the direct interpolation
+variation converges to the sharp-stage integrand jump.
+Thus a \emph{single} positive width $h$, independent of $q$,
+ensures exact ordered cut-time roots by a uniform contraction.
+The compensator endpoint signs survive that perturbation, so
+the intermediate value theorem chooses an exact
+$b=b(q)$ closing the compensator. The other nine dollar
+ledgers close by equalization and zero-sum paired accounting.
+
+The fixed positive $h$ bounds all $|\dot u_i|$ independently
+of $q$; choose finite $a_0$ larger than that bound and put
+$K=1/a_0$. The equal-activity completion lemma realizes the
+net rates on genuine nonnegative paired edges, with
+$M_0=10a_0T/2$. Before the last ramp every target price is
+at least $c$; during that ramp its shares satisfy the
+uniform integrability bound
+\eqref{eq:inventory-general}, independent of $q$.
+The compensator stays above the positive lower bound $b_-$.
+Consequently a single finite $H_0$ covers every genuine
+seller-side share quantity.
+
+Finally $1\le R(T)\le10^{1/\nu}$ and the nine targets
+end at $x_i(T)=qR(T)$. Their ninth-largest loss and the
+average log loss both tend to infinity as $q\downarrow0$.
+Select $q>0$ sufficiently small for the requested $\delta$.
+All executed trajectories have strictly positive prices;
+$q=0$ was used only to isolate an endpoint root, not as an
+admissible execution. This completes the quantified construction.
+\end{proof}
+
+\begin{remark}[The distinction from the explicit $p=0$ witness]
+The fixed-resource result above holds for every fixed
+$0\le p<1$, but its constants are allowed to depend strongly
+on $p$ and need not be numerically economical. The explicit
+$h=10^{-16}$, $M=10^{20}$ and $H_i^-<3\cdot10^{24}$
+certificate of Theorem~\ref{thm:nine} remains a
+\emph{$p=0$-specific} alternative; it is not reused for a
+different exponent. The terminal inventory bound diverges as
+$\nu\downarrow1$.
 \end{remark}
 
 \subsection{Construction III: two lower-limit closes without instantaneous netting}
@@ -1161,8 +1246,10 @@ closed-dollar local systemic loss. This counterexample does not
 classify the larger market or its strategic incentives.
 
 For $p<1$ the scalar floor boundary $K_c(p)$ rules out
-unbounded severity at sufficiently large $K$, while Theorem
-\ref{thm:nine} establishes a nonempty small-$K$ existence region.
+unbounded severity at sufficiently large $K$, while
+Theorem~\ref{thm:nine-general} establishes a nonempty
+fixed-exponent existence region (with explicit $p=0$ constants
+in Theorem~\ref{thm:nine}).
 The intervening parameter range and sharp resource-efficient bounds
 remain open. Price-floor nonexistence alone is not a sufficiency
 theorem. The two-session witness establishes attainability for
@@ -1181,7 +1268,8 @@ scalar floors, aggregate barriers and necessary execution bounds
 restrict their scale. In the quadratic family, the exact heterogeneous
 weighted balance and a two-node round-trip counterexample delimit
 the homogeneous barrier. Exact analytic continuation establishes
-all-ten halving and a nine-target uniform-resource severity family;
+all-ten halving and, for each fixed $0\le p<1$, a nine-target
+uniform-resource severity family;
 an independent internally certified ten-asset control achieves
 five repeated lower-limit closes with finite rate and strict
 sessionwise bands. These conclusions concern deterministic
@@ -1515,9 +1603,9 @@ $q\downarrow0$.
 This section makes explicit the scope of the fixed $p<1$
 research extension. It establishes the change of variables and
 the \emph{resource integrability} at a terminal zero-direction
-limit, but the full sharp-cut bracketing and Jacobian estimates
-must be checked afresh for each exponent; the $p=0$ certificate
-is not a universal certificate in $p$.
+limit, but the sharp-cut bracketing and Jacobian estimates
+are proved below for each fixed exponent; the $p=0$ certificate
+is not a universal numerical certificate in $p$.
 
 \begin{lemma}[Exact radial identities for $0\le p<1$]
 \label{lem:radial-general}
@@ -1594,13 +1682,184 @@ Integrate $\int_0^1(1-s)^{-1/\nu}\dd s
 $\dot A_i^-/x_i\le a_0/x_i$.
 \end{proof}
 
-The two lemmas are exact but are not by themselves an
-all-severity existence proof at general $0<p<1$. For a fixed
-$\nu\in(1,2)$, the missing steps are a compensator endpoint
-sign bracket, a uniform lower bound on the role-stage Jacobian,
-and a positive smoothing width independent of the limiting
-terminal parameter $q$. These are separate analytical obligations;
-no $p$-uniform conclusion or closed global phase diagram is claimed.
+\subsection{Strict endpoint signs and a compact role-stage root}
+\label{app:general-ends}
+We give the endpoint construction used in
+Theorem~\ref{thm:nine-general}. Fix $\nu\in(1,2]$,
+$\rho=1$, $c=b_+=1/100$, and for $b\in[0,b_+]$ define
+\[
+ a(b)=(1-8c^\nu-b^\nu)^{1/\nu},\qquad
+ H_b=a(b)^{\nu-1}+8c^{\nu-1}+b^{\nu-1},\qquad
+ R_b(t)=H_b+(10^{1/\nu}-H_b)e^{-t}.
+\]
+Since $\nu>1$, $9c^\nu\le9c<1$, so $a>c,b$.
+Moreover, $aR_b(0)>1$, because
+$10a^\nu=10(1-8c^\nu-b^\nu)\ge9.1>1$.
+At the other endpoint of the radial trajectory,
+\begin{equation}\label{eq:nu-high-sign}
+ aH_b=a^\nu+8ac^{\nu-1}+ab^{\nu-1}
+ =1+8c^{\nu-1}(a-c)+b^{\nu-1}(a-b)>1.
+\end{equation}
+Since $R_b$ lies between $10^{1/\nu}$ and $H_b$,
+$aR_b(t)>1$ everywhere. Meanwhile
+$cR_b(t),bR_b(t)\le c\,10^{1/\nu}\le0.1<1$.
+Thus for the strictly positive high-minus-low ledger weight
+\begin{equation}\label{eq:nu-weight}
+ W_b(t)=\psi_\nu(aR_b(t))-\psi_\nu(cR_b(t))>0,
+ \qquad\psi_\nu(x)=x^{\nu-1}(x-1),
+\end{equation}
+the positivity is uniform on compact
+$b\in[b_-,b_+]$ and $t\in[0,T]$ for any $b_->0$.
+The sharp nine role cuts $0=t_0<t_1<\cdots<t_9=T$ are
+the unique solution of
+\[
+ \int_{t_{j-1}}^{t_j}W_b(t)\dd t
+ =\frac19\int_0^T W_b(t)\dd t\quad(j=1,\ldots,9).
+\]
+All cut gaps are uniformly bounded away from zero on the
+chosen compact $b$ interval: $0<w_*\le W_b\le w^*$
+implies $t_j-t_{j-1}\ge w_*T/(9w^*)$.
+
+At formal terminal target fraction $q^\nu$ and compensator
+fraction $1-9q^\nu$, the sharp compensator ledger is
+\begin{equation}\label{eq:nu-compensator}
+ F_q(b)=\frac{R_b(T)^\nu(1-9q^\nu)-1}{\nu}
+       +\int_0^T\psi_\nu(bR_b(t))\dd t.
+\end{equation}
+At $b=0$ and $q=0$, the integral vanishes by $\nu>1$;
+moreover $H_0>1$ because for the nonzero positive stage
+components $a,c$ we have
+$H_0=\sum v_i^{\nu-1}>\sum v_i^\nu=1$.
+Therefore $F_0(0)=(R_0(T)^\nu-1)/\nu>0$
+for every finite $T$. At $b=b_+$,
+$\psi_\nu(b_+R_{b_+}(t))<0$ for all $t$, and its value
+converges to the strictly negative constant
+$\psi_\nu(b_+H_{b_+})$ as $t\to\infty$. Consequently the
+integral in \eqref{eq:nu-compensator} tends to $-\infty$
+linearly with $T$, while the terminal term remains bounded.
+Choose one finite $T$ for which $F_0(b_+)<0$.
+By continuity as $b\downarrow0$, choose
+$0<b_-<b_+$ with $F_0(b_-)>0$. Finally choose
+$0<q_0<c/2$ small enough that both strict signs persist
+uniformly for all $q\in[0,q_0]$.
+
+\subsection{Uniform positive smoothing and exact account closure}
+\label{app:general-smooth}
+Inside the nine stages, the directions are permutations of
+one fixed positive vector. Smooth every internal cut by
+an $h$-wide affine interpolation in the \emph{fractions} $Y_i$,
+and similarly interpolate the initial equal fractions and the
+terminal $(q^\nu,\ldots,q^\nu,1-9q^\nu)$. The sharp
+interior cuts have a compact positive separation, so all
+ramps are disjoint for one sufficiently small fixed $h>0$.
+The smoothed radial source $H_\nu(Y)$ differs from the sharp
+source only on the $11$ ramp intervals, of total length
+$O(h)$. Since $1\le H_\nu(Y)\le10^{1/\nu}$,
+variation of constants gives
+$\|R_h-R_b\|_\infty=O(h)$, uniformly in
+$b\in[b_-,b_+]$ and $q\in[0,q_0]$.
+The ledger integrands $\psi_\nu(RY_i^{1/\nu})$ are
+uniformly bounded even as $q\downarrow0$, and their radial
+derivatives remain bounded because
+\[
+ \partial_R\psi_\nu(RY_i^{1/\nu})
+ =\nu R^{\nu-1}Y_i-(\nu-1)R^{\nu-2}
+                         Y_i^{(\nu-1)/\nu}.
+\]
+Hence ledger residuals differ from their sharp counterparts
+by $O(h)$, uniformly over those parameters.
+
+Let $D_j^h=X_j^h(T)-X_{j+1}^h(T)$ for targets
+$j=1,\ldots,8$, and let $t$ denote the eight free
+internal cut times. At the sharp equal-weight root,
+\begin{equation}\label{eq:nu-jacobian}
+ \partial_t D^0= L_8\operatorname{diag}
+       \bigl(W_b(t_1),\ldots,W_b(t_8)\bigr),\qquad
+ \| (\partial_t D^0)^{-1}\|_\infty\le 10/w_*.
+\end{equation}
+The determinant is $9\prod_{j=1}^8W_b(t_j)>0$.
+The moving-ramp derivative of $R_h$ satisfies the same
+localized-pulse identity as \eqref{eq:movingderivative};
+its $L^1$ norm and terminal value are $O(h)$ uniformly in
+$b,q$, because the two stages flanking any internal cut are
+permutations and have identical radial sources.
+The direct derivative from translating the $Y$ interpolation
+converges to the exact neighboring sharp-stage jump by the
+fundamental theorem of calculus on the fixed positive
+internal fraction interval. Its convergence is uniform because
+all \emph{internal} stage components are at least
+$\min(c,b_-)^\nu>0$. The terminal ramp may contain
+$q=0$ but is fixed while the internal cuts vary; no derivative
+with respect to $q$ is used. These observations establish
+\[
+ \sup_{b,q,t}\|\partial_tD^h-\partial_tD^0\|_\infty
+ \longrightarrow0\qquad(h\downarrow0)
+\]
+on a fixed small compact neighborhood of the ordered
+sharp cut roots. The analogous uniform residual convergence
+holds for $D^h-D^0$.
+
+Using the explicit inverse bound \eqref{eq:nu-jacobian},
+choose a common cut ball radius $r>0$ such that the sharp
+preconditioned Jacobian differs from the identity by less
+than $1/4$ throughout the ball. Then choose a single
+$h>0$, independent of $q\in[0,q_0]$, making the additional
+preconditioned derivative error $<1/4$ and the center
+residual displacement $<r/2$. The map
+\[
+ t\longmapsto t-(\partial_tD^0)^{-1}D^h(b,q,t)
+\]
+therefore contracts each ball with constant at most $1/2$,
+remains inside that ball, and has a unique ordered exact
+cut-time root continuous in $b,q$. At the root the smoothed
+compensator ledger remains uniformly close to
+\eqref{eq:nu-compensator}, so the strict opposite endpoint
+signs at $b_-,b_+$ persist. The intermediate value theorem
+selects some $b=b(q)$ closing it exactly. All nine target
+ledgers are equal, and the exact paired-dollar identity
+$\sum_i X_i(T)=0$ forces each target ledger to vanish.
+
+\subsection{A single finite-dollar and inventory envelope}
+\label{app:general-budget}
+Along each smoothed path, $1\le R\le10^{1/\nu}$ and
+$Y_i$ remains in the simplex. On a fixed-width affine
+ramp $|\dot Y_i|\le1/h$, and outside ramps it vanishes.
+The formula \eqref{eq:controls-general} therefore yields
+a finite parameter-uniform bound on $\max_{i,t}|\dot u_i|$
+for all $q\in(0,q_0]$. Choose $a_0$ larger than that bound,
+set $K=1/a_0$, and realize every net rate by Lemma
+\ref{lem:completion}, prescribing \emph{actual} equal gross
+dollar activity $a_0$ at each node. The total paired turnover
+is the fixed finite $M=10a_0T/2$.
+Before the terminal ramp every target has $Y_i\ge c^\nu$,
+so $x_i\ge c$. In that ramp the positive-price and gross
+sale-share estimates are precisely
+\eqref{eq:inventory-general}; thus for all targets
+\[
+ H_i^-\le a_0\left(\frac{T}{c}
+                 +\frac{h\nu}{c(\nu-1)}\right).
+\]
+The compensator fractions are at least $b_-^\nu$ before
+and during the final ramp (the final fraction is positive
+and larger than $b_-^\nu$ after reducing $q_0$ if needed),
+so $x_{10}\ge b_-$ and
+$H_{10}^-\le a_0T/b_-$. A single finite
+$H_0$ dominates these fixed bounds.
+
+The nine terminal target prices are $qR(T)$ and the tenth
+price is at most $10^{1/\nu}$. Thus
+\begin{align*}
+ Q_{0.9}(T)&\ge\log(1/q)-(\log10)/\nu,\\
+ \overline L(T)&\ge\tfrac9{10}\log(1/q)
+                              -(\log10)/\nu.
+\end{align*}
+Both diverge as $q\downarrow0$, while $M$, $H_0$, $T$,
+$K$ and $h$ remain fixed. Positivity holds for every
+strictly positive $q$; the formal $q=0$ limit is never
+counted as an admissible path. The constants may deteriorate
+rapidly as $p\uparrow1$, so the proof makes no claim uniform
+in the response exponent.
+
 
 \section{Independent interval checker for Construction III}\label{app:interval}
 The executable is
