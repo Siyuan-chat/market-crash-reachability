@@ -57,7 +57,8 @@ for row in rows:
 for needed in ('prop:hetero-two', 'prop:hetero-weighted', 'lem:one-sided-bv',
                'prop:rate-explicit', 'prop:rate-local-match',
                'lem:radial-general', 'lem:terminal-inventory',
-               'cor:at-most-n-minus-one', 'tab:analytic-severity'):
+               'cor:at-most-n-minus-one', 'tab:analytic-severity',
+               'thm:nine-general', 'eq:nu-jacobian', 'eq:nu-compensator'):
     assert needed in labels, f'Round 2 result label missing: {needed}'
 assert 'not third-party formal verification' in text.lower() or \
        'not third-party formal' in text.lower(), 'interval-scope qualifier missing'
