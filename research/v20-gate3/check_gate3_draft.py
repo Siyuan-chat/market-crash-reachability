@@ -30,6 +30,8 @@ assert len({r['ID'] for r in rows}) == 43, 'duplicate IDs'
 assert {r['ID'] for r in rows} == expected, 'missing/extra original items'
 allowed = {'drafted', 'partial', 'partial_open', 'not_yet_drafted'}
 assert all(r['Gate3 manuscript state'] in allowed for r in rows)
+assert all(r['Gate3 manuscript state'] != 'not_yet_drafted' for r in rows), \
+    'Round 2 should have no undrafted original items'
 for row in rows:
     assert row['Gate3 writing obligation'].strip(), f"missing obligation: {row['ID']}"
     assert row['evidence level'].strip(), f"missing evidence level: {row['ID']}"
@@ -48,6 +50,15 @@ for f in figs:
     assert path.is_file() and path.stat().st_size > 8000, f'missing figure {path}'
 # Guard explicit numerical evidence qualifiers and avoid treating Gate3 as accepted.
 assert r'NUMERIC\_ONLY' in text, 'floating-point evidence needs explicit label'
+labels = set(re.findall(r'\\label\{([^}]+)\}', text))
+for row in rows:
+    fields = [x.strip() for x in row['Gate3 label/section'].split('/')]
+    assert any(key in labels for key in fields), f"undocumented label for {row['ID']}: {fields}"
+for needed in ('prop:hetero-two', 'prop:hetero-weighted', 'lem:one-sided-bv',
+               'prop:rate-explicit', 'prop:rate-local-match',
+               'lem:radial-general', 'lem:terminal-inventory',
+               'cor:at-most-n-minus-one', 'tab:analytic-severity'):
+    assert needed in labels, f'Round 2 result label missing: {needed}'
 assert 'not third-party formal verification' in text.lower() or \
        'not third-party formal' in text.lower(), 'interval-scope qualifier missing'
 assert 'GATE 3 WORKING DRAFT' in text[:400], 'WIP disclosure missing'
