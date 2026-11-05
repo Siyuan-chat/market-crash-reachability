@@ -1,0 +1,24 @@
+name: V19 independent interval construction III
+
+on:
+  pull_request:
+    paths:
+      - 'research/v19-activity-recovery/verify_c1_independent_rational.py'
+      - '.github/workflows/v19-independent-c1.yml'
+  workflow_dispatch:
+
+jobs:
+  verify-independent-c1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent exact-rational interval construction
+        run: python research/v19-activity-recovery/verify_c1_independent_rational.py
+      - name: Exact stage-Jacobian identities
+        run: python research/v19-activity-recovery/gate2_jacobian_exact.py
+      - name: Exact local-event coefficients
+        run: python research/v19-activity-recovery/gate1_formal_coefficients.py
