@@ -20,6 +20,17 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "release/SHA256SUMS"
 REVISION = ROOT / "release/SHA256SUMS_V14_R1"
 
+# Independently pinned CURRENT editorial updates. Do not rewrite V14-R1's
+# historic overlay: it records the V14 baseline and remains immutable.
+CURRENT_EDITORIAL = ROOT / "release/SHA256SUMS_V20_EDITORIAL_R1"
+CURRENT_EDITORIAL_FILES = {
+    "README.md",
+    "docs/VERSIONS.md",
+    "scripts/check_documentation.py",
+    "submission/README.md",
+    "scripts/check_revision_hashes.py",
+}
+
 # This explicit whitelist prevents a later revision from silently masking
 # changed historical certificate, data or Lean files behind an overlay.
 # Current-repository navigation and documentation QA are deliberately
@@ -114,10 +125,24 @@ def main() -> None:
     else:
         overlay = {}
 
+    # The V20 editorial layer may override only these five already whitelisted
+    # documentation/checker paths. Never allow model, data, theorem, certificate,
+    # prior manuscript or proof files into this overlay.
+    if not CURRENT_EDITORIAL.is_file():
+        raise AssertionError("Current editorial manifest is required")
+    editorial = read_manifest(CURRENT_EDITORIAL)
+    if set(editorial) != CURRENT_EDITORIAL_FILES:
+        raise AssertionError(
+            f"Current editorial manifest paths differ: "
+            f"missing={sorted(CURRENT_EDITORIAL_FILES - set(editorial))}, "
+            f"unexpected={sorted(set(editorial) - CURRENT_EDITORIAL_FILES)}"
+        )
+    if not CURRENT_EDITORIAL_FILES <= REVISION_FILES:
+        raise AssertionError("Current editorial manifest has unreviewed paths")
     lean_import_prune = read_lean_import_prune()
 
     mistakes = []
-    for name, expected in {**frozen, **overlay, **lean_import_prune}.items():
+    for name, expected in {**frozen, **overlay, **lean_import_prune, **editorial}.items():
         found = sha256((ROOT / name).read_bytes()).hexdigest()
         if found != expected:
             mistakes.append((name, expected, found))
@@ -129,6 +154,7 @@ def main() -> None:
     print(f"PASS: {len(frozen)} frozen baseline paths, "
           f"{len(overlay)} separately pinned working-revision files "
           f"({len(frozen.keys() | overlay.keys())} distinct tracked files)")
+    print(f"Current V20 editorial overlay: {len(editorial)} whitelisted paths")
     print("Original release/SHA256SUMS unchanged; no certificate hashes overridden")
     print(f"Lean entrypoint import-only overlay: {len(lean_import_prune)} pinned file(s)")
 
