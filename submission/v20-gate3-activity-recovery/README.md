@@ -1,37 +1,29 @@
-# V20: Gate 3 activity-driven recovery — **WORKING DRAFT**
+# V20 / Gate 3 — Activity-Driven Recovery (working scientific manuscript)
 
-This directory is the **first substantive English manuscript reconstruction** after scoped Gate 1 and core-construction Gate 2 reviews. It is **not** an accepted Gate 3 manuscript, release, or DOI. Original author 40-page PDF and GitHub V16 remain the scientific coverage baseline. V16/V17 files are not modified.
+**Status 2026-11-05: Gate 3 in progress — NOT ACCEPTED / NOT A RELEASE.** The original 40-page author paper and repository V16 are the research-coverage baselines. V16/V17 sources and historical release/DOI remain unchanged. This V20 paper is a *substantive scientific reconstruction*, not a shorter replacement that omits research tasks.
 
-## Draft contents as of 2026-11-05
+## Working draft
 
-- `main.tex`: 17 primary sections including appendices; 26 theorem/lemma/proposition environments plus a new mathematical corollary; both an analytic severity ladder and a separately labelled numerical reconstruction table. The article-class fallback preview is about 25 pages, **not** evidence of full original-paper coverage.
-- `shared.tex`: SIAM interface with an article-class fallback only for inspection when the SIAM class is absent.
-- `figures/`: six V19-model PDF plots. The I/II numerical trajectories are **NUMERIC_ONLY**, not plots of the rigorously certified new explicit high-budget witnesses. Construction III is an internally cross-checked interval proof, **not an external certificate**.
-- `../../research/v20-gate3/GATE1_GATE2_RECHECK_GATE3_ENTRY_2026-11-05_ZH.md`: scope-limited independent audit and go/no-go.
-- `../../research/v20-gate3/GATE3_43_ITEM_CONTENT_REGISTER.csv`: all 43 original items preserved; **32 drafted, 4 partial, 7 partial-open, 0 not yet drafted**. Per-row status is the governing coverage record.
+- `main.tex` and `shared.tex`: English manuscript; 28-page article-class preview as of round 3, 17 first-level sections (including appendices), 11 theorems, 11 propositions, 5 lemmas and 1 corollary, 6 source research PDF figures. Article preview page length is **not** a coverage/acceptance criterion.
+- `figures/`: 6 activity-driven scientific figures. Historical I/II **floating-point reconstructions are NUMERIC_ONLY**, not plots of the analytically certified alternative high-resource witnesses. Construction III has two internally independent interval algorithms; this is not third-party formal verification.
+- `../../research/v20-gate3/GATE3_43_ITEM_CONTENT_REGISTER.csv`: full 43 original IDs; current authoring classification **35 drafted / 2 partial / 6 partial-open / 0 undrafted**. Classification describes prose coverage and proof-draft status, **not 35 externally certified statements**.
+- `../../research/v20-gate3/GATE3_ROUND2_MATH_REVIEW_ZH.md`: historic round-two math review; `GATE3_GENERAL_P_FIXED_RESOURCE_PROOF_AUDIT_ZH.md`: subsequent round-three fixed-`p` uniform-resource proof audit. The latter supersedes the former where the prior report called general-p closure OPEN.
 
-## Reproducibility/build note
+## New general-p theorem (round 3)
 
-The manuscript cites the preserved 33-entry original BibTeX at `../v16-three-certified-constructions/references.bib`; review/correct citations for the final version. Build from this directory with the repository's SIAM manuscript environment and working LaTeX/BibTeX tooling. An independent **local fallback article-class PDF** was rendered on 2026-11-05 (25 pages, checked for undefined references and overflow). Its *temporary* nine-entry BibTeX substitute was for offline display only and is **not** the scholarly reference baseline.
+For **each fixed** `p in [0,1)`, the paper proves at research-manuscript standard that one finite event horizon, positive smoothing width, gross paired-dollar turnover ceiling, and per-asset *true gross seller-share* inventory ceiling suffice for all arbitrarily severe nine-target terminal drawdowns in `C0` while closing every dollar ledger. The proof treats sharp positive role weights, compensator endpoint signs, exact cut Jacobian, `q`-uniform moving-cut smoothing, graph completion, and integrability at the terminal low-price ramp. **Quantifiers:** constants may depend on fixed `p`; not uniform for `p` approaching 1 and not a bounded pointwise gross-share-rate theorem. This is an internal analytical manuscript proof, not external referee acceptance; the p=0 fixed numeric constants are not transferred to general p. No legacy low-turnover floating-point roots are promoted to rigorous witnesses.
 
-## Core research claims and acceptance scope
+## Reference/build provenance
 
-1. Activity-driven recovery occurs only during *actual* nonnegative paired-dollar execution; `C0` admits simultaneous gross buy/sell at a node and `C1` does not. Close each individual dollar ledger and count true seller-side share inventory.
-2. Gate 1 **reverse mathematical audit** is scoped to checking correct assumptions, formula derivations, invalid V16 transfers, and OPEN boundaries. It does *not* settle full phase diagrams or optimal breadth.
-3. Gate 2 core constructions: (I) exact all-ten half-price analytical positive-h witness; (II) p=0 all-severity nine-target fixed-resource positive-h witness; (III) two-session C1 five-target internally cross-checked interval witness. Previous low-turnover floating-point roots for I/II remain NUMERIC_ONLY; no inference of real-world crash probability.
-4. General 0<=p<1 severity extension and all appendix statements must be independently checked and fully stated in the final manuscript. The complete quantitative proof and parameter source remain `research/v19-activity-recovery/`, not abbreviated into unexamined slogans.
+- Scholarly reference master is the unchanged 33-entry `../v16-three-certified-constructions/references.bib` (GitHub blob `f5ebe530c08ce5d12a89b227a1677c440a07c1c6`).
+- The downloadable 28-page PDF is an *article-class local-preview build*. It uses a temporary 9-entry `.bbl` file for offline display because this local runtime does not contain the traditional BibTeX executable. It is **not** a final SIAM manuscript or reference audit. GitHub `audit_bibliography.py --strict-original` checks the master 33-entry corpus; it does not replace a complete independent SIAM build.
+- Run `python research/v20-gate3/check_gate3_draft.py` from repository or elsewhere to check all 43 IDs, paths, figure count and evidence markers. Other algebra checks (`audit_new_math.py`) are exact rational regressions, not theorem verification.
 
-## Gate 3 completion obligations
+## Remaining Gate 3 acceptance obligations
 
-- Restore **all 43** source-coverage items with either a correct theorem/proof, explicitly bounded result, or substantively explained open problem; no dropping sections just to shorten the paper.
-- The second-round draft restores a BV appendix (L01), a bounded-gross-share-rate appendix (A05/T08), heterogeneous quadratic identities and a two-node counterexample (P12), and a general-p radial/inventory appendix (A07). All still require independent line-by-line peer-style review. The sharp all-asset/full-phase classification, general-p uniform cut roots, and 6-to-9-target repeated-band reachability remain open.
-- Audit all source bibliography entries and finish the final SIAM template/build review. Match every asserted theorem to explicit hypotheses and its actual evidence level.
-- Replace any unsupported theorem statement, verify full SIAM build/figure/cross-reference layout, then prepare a complete English paper before any line-by-line Chinese translation or editable Word artifacts (Gate 4).
-- Do **not** release a new edition or overwrite V16/V17 until this Gate 3 acceptance is independently recorded.
+1. Independently review all 43 statements and sources, especially `P02`, `T03`, `T05`, `P10`, `R01–R03`, and the general-p cut continuation. Do not turn open problems into unjustified theorems. The original 15 high-risk IDs remain traceable even where subclaims have now been proved.
+2. Audit the full SIAM-class build, bibliography and all 6 figures, equations, page-level line wraps and mathematical claims against the original 40 pages and V16. Reconcile any discrepancy in the working article preview.
+3. Retain the difference between deterministic reachability and real-world crisis probability, internally verified intervals vs external formal verification, necessary bounds vs sufficient paths, and numerical reconstructions vs rigorous analytic witnesses.
+4. Only after a written Gate 3 acceptance decision should the project move to Gate 4's paragraph/formula aligned Chinese version and two fully editable/annotatable Word deliverables.
 
-## Round 2 update (still not Gate 3 acceptance)
-
-- New proof: activity-driven heterogeneous p=2 weighted-log balance and a C1 two-node dollar-closed counterexample for unequal kappa_i/D_i.
-- Necessary rolling-limit bound: all N assets cannot both close at lower limits in two consecutive sessions, so the ten-asset two-day 25% optimum is bounded by 5 <= k* <= 9, **not** known to equal 5 or 7.
-- Both analytic and historical numerical severity tables are kept; old I/II floating-point roots remain `NUMERIC_ONLY`.
-- Tests: `check_gate3_draft.py` is structural, `audit_new_math.py` is exact rational algebra, and `audit_bibliography.py --strict-original` verifies the original 33-entry source corpus in GitHub Actions. These checks do not replace theorem auditing.
+**No new release or DOI is authorized by this working draft.**
