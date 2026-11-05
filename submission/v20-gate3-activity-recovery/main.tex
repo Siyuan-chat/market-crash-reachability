@@ -1,0 +1,1185 @@
+% GATE 3 WORKING DRAFT (not yet complete): 2026-11-05.
+% Original 40-page paper + V16 are scientific coverage baselines.
+% Core Gate 1/2 mathematical acceptance is scoped, not peer review.
+% V16/V17 source and historical DOI must remain unchanged.
+\IfFileExists{siamonline250211.cls}{%
+ \documentclass[review,hidelinks,onefignum,onetabnum]{siamonline250211}%
+ \def\isSIAM{1}%
+}{%
+ \documentclass[11pt]{article}%
+ \def\isSIAM{0}%
+}
+\input{shared}
+\begin{document}
+\raggedbottom
+\maketitle
+\begin{abstract}
+Matched-dollar transfers can produce systemic terminal price losses even when
+fundamental benchmarks are fixed and every asset's cumulative executed-dollar
+ledger closes at zero. We replace recovery in physical time by recovery driven
+exclusively by gross executed-dollar activity. The resulting nonlinear control
+system has no price motion without transactions. A nine-edge three-asset
+protocol establishes local all-asset declines for arbitrary smooth positive
+response functions, while scalar activity floors and execution-resource
+inequalities restrict severe losses. In the constant-impact model, a
+continuous-direction argument provides analytic existence constructions for
+all ten prices to end at half their benchmarks, and for nine prices to become
+arbitrarily small with uniform finite turnover and inventory budgets.
+A separate cross-checked internally interval-verified, no-instantaneous-netting ten-asset
+path makes five assets close at the lower limit of successive $\pm25\%$
+rolling sessions. The path has finite gross share-execution rate and an
+equal-weight geometric-index loss above $16\%$. These are deterministic
+reachability results, not equilibrium crash predictions.
+\end{abstract}
+\begin{keywords}market crashes; trade activity; price impact; systemic drawdown; reachability; interval verification; execution constraints\end{keywords}
+\begin{MSCcodes}91G15, 91G45, 93B03, 65G30\end{MSCcodes}
+
+\section{Introduction}\label{sec:intro}
+Crashes may accompany public news, forced selling, liquidity withdrawal or
+information revealed by trades. Their respective theoretical mechanisms are
+studied, among others, by \citet{GennotteLeland1990,Romer1993},
+\citet{HuangWang2009,CespaFoucault2014}, and \citet{ContWagalath2013}.
+An independent mathematical question is whether a price decline is compatible
+with a fully paired stream of trades whose \emph{cumulative dollar balance
+in each asset} is zero. This is a reachability question, not an explanation
+of any particular historical crash.
+
+Resilient execution models typically assign time dynamics to the liquidity
+state; see \citet{ObizhaevaWang2013,AlfonsiSchied2010}. We instead ask what
+changes when price resilience is triggered only by gross dollar activity
+associated with actual trades. Such activity can be strictly positive even
+when a node's simultaneous net executed-dollar flow vanishes. It is therefore
+essential to distinguish a permissive control class from a stricter class
+in which each node can only buy or only sell at a given instant. Our model
+is an explicitly parameterized price-response law, not a strategic equilibrium
+or a no-manipulation result of the type considered by
+\citet{Gatheral2010,HubermanStanzl2004}.
+
+We provide a self-contained analytic reachability chain and one narrow
+computer-assisted construction. The universal results are local triangular
+reachability, scalar floors, an aggregate full-coverage barrier, and necessary
+turnover and inventory bounds. The ten-asset results are: (I) all ten
+terminal prices equal one half of the benchmark; (II) nine losses have no
+finite severity ceiling while time, turnover and inventory are bounded by
+one set of constants; and (III) the same five assets close at the lower limits
+of two consecutive $\pm25\%$ sessions under the stricter no-instantaneous-
+netting class. The first two are analytic existence constructions whose
+parameters need not coincide with the old physical-time model's numerical
+budgets. The third has a reproducible, internally outward-rounded certificate.
+No earlier fixed-version manuscript or its numerical certificate is
+represented as a certificate for the present dynamics.
+
+\section{The activity-driven paired-dollar market}\label{sec:model}
+Fix $N\ge2$, a fixed benchmark $F>0$, positive transaction prices $S_i$,
+and a positive locally $C^2$ response $g$. The complete bidirectional graph
+without self-edges has incidence matrix $B$: for an edge from seller $i$ to
+buyer $j$, $B_{ie}=-1$ and $B_{je}=1$. A control is a vector of nonnegative
+edge-flow measures $\dd z_e$. The \emph{executed-dollar ledger} and \emph{gross
+dollar activity} of asset $i$ are
+\begin{equation}\label{eq:model}
+ \dd X_i=\sum_e B_{ie}\dd z_e,\qquad
+ \dd A_i=\sum_e|B_{ie}|\dd z_e,\qquad
+ \boxed{\dd S_i=\frac{g(S_i)}{S_i}\dd X_i-\kappa(S_i-F)\dd A_i},\quad\kappa>0.
+\end{equation}
+The sums $\sum_i\dd X_i=0$, $\sum_i\dd A_i=2\sum_e\dd z_e$, and the
+nodewise inequality $|\dd X_i|\le\dd A_i$ follow from incidence accounting.
+A direct edge transfer of dollar mass $z>0$ is integrated in its own amount
+parameter $a\in[0,z]$, including \emph{both} terms in \eqref{eq:model},
+with $\dd\theta_i=\dd X_i/S_i$ for share positions. Finite sequences of such
+flows and absolutely continuous rates are admissible while all intermediate
+prices are positive. This flow-completed convention preserves the usual
+chain rule; an old rule in which recovery freezes during a trade is \emph{not}
+used here. If $\dd z=0$, prices do not move.
+
+\begin{definition}[Controls and execution resources]\label{def:controls}
+In $\mathsf C_0$ every nonnegative edge flow is allowed, including simultaneous
+inflow and outflow at one vertex. In $\mathsf C_1\subset\mathsf C_0$, each
+asset is a pure dollar buyer or a pure dollar seller almost everywhere on
+active periods; equivalently $|\dot X_i|=\dot A_i$ when $\dot A_i>0$.
+Switching direction over time is permitted in both classes.
+All paths start at $S_i(0)=F$ and impose $X_i(T)=0$ for \emph{every} asset.
+The paired turnover and cumulative sales in shares are
+\begin{equation}\label{eq:resource}
+ M=\sum_e\int_0^T\dd z_e=\frac12\sum_i A_i(T),\qquad
+ H_i^-=\sum_{e:\,B_{ie}=-1}\int_0^T\frac{\dd z_e}{S_i};
+\end{equation}
+when control is absolutely continuous the gross share-execution rate is
+$r_i^{\rm gross}=\dot A_i/S_i$. In $\mathsf C_0$, $H_i^-$ counts
+\emph{actual gross share sales} even when simultaneous purchases cancel
+net executed dollars; the net negative variation of $X_i$ would undercount
+those sales. Starting inventory $H_i\ge H_i^-$ prevents short sales.
+Dollar closure does not require share-flatness.
+\end{definition}
+
+For power responses let
+\begin{equation}\label{eq:power}
+ g_p(S)=\eta(S/F)^p,\quad D_F=F^2/\eta,\quad
+ x_i=S_i/F,\quad u_i=X_i/D_F,\quad a_i=A_i/D_F,\quad K=\kappa D_F.
+\end{equation}
+The uniquely relevant normalized dynamics are
+\begin{equation}\label{eq:normalized}
+ \boxed{\dd x_i=x_i^{p-1}\dd u_i-K(x_i-1)\dd a_i},\qquad
+ |\dd u_i|\le\dd a_i,\quad\sum_i\dd u_i=0.
+\end{equation}
+In the power-law sections, dollars, shares, and prices are explicitly
+normalized by $F=\eta=1$ where indicated. The duration $T$ does not affect
+unconstrained activity paths: any absolutely continuous path can be
+reparameterized over any positive interval, but gross-rate limits do depend
+on physical time.
+
+\begin{definition}[Terminal systemic crisis]\label{def:crisis}
+Write $L_i(T)=\log(F/S_i(T))$, $\bar L=N^{-1}\sum_iL_i$ and
+$k=\lceil\alpha N\rceil$. If $Q_\alpha$ is the $k$th largest $L_i$, define
+\begin{equation}\label{eq:crisis}
+ \Cris_\alpha(T)=\min\{\bar L(T),Q_\alpha(T)\}.
+\end{equation}
+The terminal event is $\Cris_\alpha(T)\ge\delta>0$; neither rolling
+peak drawdowns nor first-passage times are identified with this criterion.
+\end{definition}
+
+\subsection{Exact transformed accounting}
+Define for positive prices
+\begin{equation}\label{eq:coords}
+ \Phi(S)=\int_F^S\frac{v}{g(v)}\dd v,\quad
+ \Psi(S)=\int_F^S\frac{\dd v}{g(v)},\quad
+ E(S)=\int_F^S\frac{v-F}{g(v)}\dd v\ge0,\quad
+ R(S)=\frac{S(S-F)}{g(S)}.
+\end{equation}
+\begin{proposition}[The activity balance and execution cost]\label{prop:account}
+For each flow-completed path,
+\begin{align}
+ \dd\Phi(S_i)&=\dd X_i-\kappa R(S_i)\dd A_i,\label{eq:phi}\\
+ \dd\left[\sum_i\Phi(S_i)\right]&=-\kappa\sum_iR(S_i)\dd A_i,\label{eq:potential}\\
+ X_i(T)&=F\,[\theta_i(T)-\theta_i(0)]+E(S_i(T))
+  +\kappa\int\frac{(S_i-F)^2}{g(S_i)}\dd A_i.\label{eq:cost}
+\end{align}
+In particular, exact dollar closure and equal share positions both at $0$
+and $T$ force a stationary price path. If $X_i(T)=0$ and $S_i(T)<F$,
+then $\int_{S_i>F}R(S_i)\dd A_i>0$.
+\end{proposition}
+\begin{proof}
+Use $\Phi'(S)=S/g(S)$ in \eqref{eq:model} to get \eqref{eq:phi};
+paired transfers cancel in \eqref{eq:potential}. For the last identity,
+$\dd X_i=S_i\dd\theta_i$ and
+$\dd X_i-F\dd\theta_i=(S_i-F)\dd X_i/S_i
+=(S_i-F)\dd S_i/g(S_i)+\kappa(S_i-F)^2\dd A_i/g(S_i)$.
+Integrate and apply the chain rule to $E$.
+The last two nonnegative terms in \eqref{eq:cost} must both vanish under
+simultaneous closures. For $S_i(T)<F$, \eqref{eq:phi} with $X_i(T)=0$
+implies $-\Phi(S_i(T))=\kappa\int R(S_i)\dd A_i>0$;
+$R$ is positive only above $F$.
+\end{proof}
+
+\section{Local all-asset reachability}\label{sec:local}
+For $g_p$ set
+\begin{equation}\label{eq:w}
+ w_p(x)=\int_1^x s^{1-p}\dd s
+ =\begin{cases}(x^{2-p}-1)/(2-p),&p\ne2,\\ \log x,&p=2,\end{cases}
+ \qquad r_p(w_p(x))=x^{1-p}(x-1).
+\end{equation}
+Then $\dd w_i=\dd u_i-Kr_p(w_i)\dd a_i$ with
+$r_p(0)=0$ and $r_p'(0)=1$. The same linearization works for a general
+smooth positive $g$ after scaling executed dollars by $F^2/g(F)$.
+
+\begin{theorem}[Triangular local reachability]\label{thm:triangle}
+On the complete bidirectional graph, for every $N\ge3$, $\kappa>0$
+and every positive $C^2$ response $g$ near $F$, a finite $\mathsf C_1$
+sequence has strictly positive intermediate prices,
+$X_i(T)=0$ for every $i$, and $S_i(T)<F$ for every $i$.
+For a normalized power response its prices satisfy
+$w_i(T)=-m_iKz^2+O_N(z^3)$ as $z\downarrow0$, with
+$m_1=m_2=N-2$ and $m_j=1$ for $j\ge3$.
+\end{theorem}
+\begin{proof}
+On a triple $(a,b,c)$ execute nine equal-mass oriented edges, in order:
+\[
+ a\to b,\ b\to c,\ c\to a,\ b\to c,\ c\to a,\ a\to b,\ c\to a,\ a\to b,\ b\to c.
+\]
+Each vertex receives and sends exactly $3z$. Its six signs in its own
+activity clock are respectively
+$(-,+,+,-,+,-)$, $(+,-,-,+,+,-)$, and $(+,-,+,-,-,+)$.
+All three satisfy $\sum_j\sigma_j=0$ and $\sum_jj\sigma_j=-1$.
+In the transformed coordinate $r(w)=w+O(w^2)$, hence variation of
+constants gives
+\begin{align*}
+ w(6z)&=\sum_{j=1}^6\sigma_j
+ \int_{(j-1)z}^{jz}e^{-K(6z-a)}\dd a+O(z^3)\\
+ &=Kz^2\sum_{j=1}^6j\sigma_j+O(z^3)=-Kz^2+O(z^3).
+\end{align*}
+Repeat the same triple protocol on $(1,2,j)$ for $j=3,\ldots,N$.
+The shared vertices start the later protocols only $O(z^2)$ away from
+benchmark, so subsequent increments retain the displayed quadratic
+term; $m_i$ counts participation. Each edge is a one-directional sale/purchase
+at the instant of execution, hence it is in $\mathsf C_1$. For sufficiently
+small $z$ the full path stays in a compact positive price neighborhood;
+initial inventories covering its finite sales suffice.
+\end{proof}
+
+\begin{remark}
+The distinction between $N\ge3$ and $N=2$ matters. If $N=2$ then both
+assets have identical activity clocks. If $e(S)=Sg'(S)/g(S)\ge1$ on the path,
+concavity of $\Phi$ gives $R(S)\le\Phi(S)$ and
+$\dd H\ge-\kappa H\dd A$, where $H=\sum_i\Phi(S_i)$ and $A$ is the common
+clock. Since $H(0)=0$, simultaneous losses of both assets are impossible.
+If $e\ge2$, concavity of $q\mapsto\Phi(Fe^q)$ also excludes
+$\Cris_\alpha>0$ by Jensen's inequality. Neither is a general
+$N\ge3$ obstruction in this activity model.
+\end{remark}
+
+
+\section{The two-asset boundary and partial coverage}\label{sec:twoasset}
+The distinction between two and three assets does not arise from the number
+of possible signs in a dollar ledger: it arises from the fact that both assets
+of a two-node market must share the \emph{same gross activity clock}. In a
+three-node market, one edge can change the activity of two nodes without
+changing the third. The resulting heterogeneity permits the nine-edge
+construction of Theorem~\ref{thm:triangle}.
+
+\begin{proposition}[Two-node common-clock barriers]\label{prop:two-node-barriers}
+Suppose $N=2$ and the response elasticity
+$e(S)=Sg'(S)/g(S)\ge1$ on the positive-price state domain traversed
+by an admissible dollar-closed path. Then both final prices cannot be
+strictly less than $F$. If also $e(S)\ge2$, then
+$\overline L(T)\le0$, and hence $\Cris_\alpha(T)\le0$ for every
+$0<\alpha\le1$.
+\end{proposition}
+\begin{proof}
+Every admissible edge increments both gross activity clocks equally,
+including when opposite edges are simultaneously active in $\mathsf C_0$.
+Let the common clock be $a$. Define $H=\Phi(S_1)+\Phi(S_2)$ and
+$R(S)=S(S-F)/g(S)$. Because $\Phi''=(1-e)/g\le0$ and
+$(R-\Phi)'=(S-F)\Phi''$, with $R(F)=\Phi(F)=0$,
+one has $R(S)\le\Phi(S)$ for every $S$ in the state domain.
+Thus $dH/da=-\kappa(R(S_1)+R(S_2))\ge-\kappa H$,
+so $H\ge0$ by Gronwall from $H(0)=0$. Both prices below $F$
+would imply $H<0$. If $e\ge2$, set $G(z)=\Phi(Fe^z)$.
+Then $G'>0$ and $G''(z)=S^2[2-e(S)]/g(S)\le0$.
+Concavity gives $G((\log(S_1/F)+\log(S_2/F))/2)\ge H/2\ge0$;
+monotonicity of $G$ gives nonnegative mean log return.
+\end{proof}
+
+\begin{theorem}[A local two-node power-law classification]\label{thm:two-local}
+Fix $N=2$, $K>0$ and a power-law exponent $p\ge0$.
+For $0\le p\le1$, a sufficiently small dollar-closed two-edge
+round trip has $\Cris_{1/2}(T)>0$; for $0\le p<1$,
+its average terminal log loss is
+\begin{equation}\label{eq:two-loss}
+ \bar L=\frac{K(1-p)}{3}z^3+O(z^4)>0.
+\end{equation}
+For every fixed $1<p<2$ there exists $\varepsilon(p,K)>0$
+such that \emph{no} terminally dollar-closed two-node path with total
+paired turnover $A<\varepsilon$ can have positive mean log loss.
+For $p\ge2$ no positive terminal systemic loss is possible, regardless
+of the turnover budget. The result for $1<p<2$ is only a
+\emph{small-turnover} exclusion, not an assertion of global
+unreachability.
+\end{theorem}
+\begin{proof}
+In node activity time $a$, write $w=(x^{\nu}-1)/\nu$,
+$\nu=2-p$ (using $w=\log x$ if $p=2$) and
+$r(w)=x^{\nu-1}(x-1)$. For a two-edge reversed transfer of
+amount $z$ each, the two zero-order $w$ paths are $\pm a$
+on $[0,z]$ and $\pm(2z-a)$ on $[z,2z]$. Since
+\[
+ r(w)=w-\tfrac12(p-1)w^2+O(w^3),
+\]
+the sum $H=w_1+w_2$ satisfies
+$H(2z)=-(2/3)K(1-p)z^3+O(z^4)$ and each
+terminal $w_i=O(z^2)$. Expanding $\log x_i=w_i+O(w_i^2)$
+then proves \eqref{eq:two-loss}. One node has a strictly negative
+terminal $w_i$ of order $z^2$, so the coverage condition also holds.
+At $p=1$ the equation for $H$ is exactly $H'=-KH$,
+therefore $x_1+x_2=2$ at the terminal time; the prices differ
+on a nontrivial reverse pair and strict AM--GM gives $\bar L>0$.
+
+For $1<p<2$, put $b(w)=w-r(w)$, so
+$b(w)=(p-1)w^2/2+O(w^3)$. In a sufficiently small fixed
+neighborhood of zero choose constants $c,L,C>0$ with
+$b(w)\ge c w^2$, $|r(w)|\le L|w|$ and
+$\log x(w)\ge w-Cw^2$. Under the shared gross clock $a\in[0,A]$,
+$w_i'=\sigma_i-Kr(w_i)$, $|\sigma_i|\le1$,
+$\sigma_1+\sigma_2=0$ and $\int_0^A\sigma_i\,da=0$.
+Gronwall bounds $|w_i(a)|\le a\exp(KLa)$, so all admissible
+controls stay in the chosen neighborhood for small enough $A$.
+Let $J=\int_0^A(w_1^2+w_2^2)\,da$. Then
+\[
+ H(A)=K\int_0^A e^{-K(A-a)}\sum_i b(w_i(a))\,da
+ \ge Kce^{-KA}J.
+\]
+Terminal ledger closure and Cauchy--Schwarz yield
+$\sum_i w_i(A)^2\le K^2L^2AJ$. Consequently
+\[
+ \sum_i\log x_i(A)\ge
+ K\{ce^{-KA}-CKL^2A\}J\ge0
+\]
+when $A$ is below a strictly positive threshold depending only
+on $p,K$. Finally $p\ge2$ follows from Proposition~\ref{prop:two-node-barriers}.
+\end{proof}
+
+\paragraph{Open finite-turnover question.}
+For $1<p<2$ the preceding local exclusion neither constructs nor
+rules out a large-turnover systemic loss in the two-node market. A
+full global boundary in $p,K,N$ and graph topology remains open.
+
+\section{Floors, aggregate barriers and execution resources}\label{sec:resources}
+\begin{theorem}[Scalar activity-driven price floors]\label{thm:floor}
+For the power response $g_p$, every individual normalized price is
+bounded from below by the largest root $r\in(0,1)$ of
+$K(1-r)=r^{p-1}$ whenever such a root exists. More precisely:
+(i) if $p<1$, a strictly positive floor occurs for
+\begin{equation}\label{eq:kc}
+ K\ge K_c(p)=\frac{(2-p)^{2-p}}{(1-p)^{1-p}};
+\end{equation}
+(ii) for $p=1$ it occurs if $K>1$, and equals $1-1/K$;
+(iii) for $p>1$ it occurs for every $K>0$.
+For $p=0$, $K_c=4$ and the upper root is
+$r=(1+\sqrt{1-4/K})/2$.
+\end{theorem}
+\begin{proof}
+Using activity as clock and $|\dd u/\dd a|\le1$, the lowest possible
+drift in $(0,1)$ is
+$\dd x/\dd a\ge K(1-x)-x^{p-1}=:f_-(x)$.
+A root of $f_-$ is a one-sided barrier by scalar comparison and local
+ODE uniqueness. For $p<1$, minimize
+$x^{p-1}/(1-x)$ on $(0,1)$ to get \eqref{eq:kc}, including the
+noncrossable double root at equality. For $p=1$ solve the linear
+root equation. For $p>1$, $f_-$ decreases strictly from $K$ at zero
+to $-1$ at one and has a unique positive zero.
+\end{proof}
+
+\begin{theorem}[Necessary full-coverage bound]\label{thm:aggregate}
+For any finite-variation flow-completed control in $\mathsf C_0$,
+$p<2$ and $x_i(0)=1$,
+\begin{equation}\label{eq:aggregate}
+ \sum_{i=1}^N x_i(t)^{2-p}\ge1.
+\end{equation}
+In particular all $N$ prices cannot simultaneously be no larger than
+$e^{-\delta}$ unless $\delta\le(\log N)/(2-p)$.
+\end{theorem}
+\begin{proof}
+Put $\nu=2-p>0$ and $H=\sum_i w_p(x_i)$.
+At every state where $H\le(1-N)/\nu$, we have
+$\sum_i x_i^\nu\le1$, whence every $x_i\le1$ and
+$\dd H=-K\sum_i x_i^{1-p}(x_i-1)\dd a_i\ge0$.
+Initially $H=0>(1-N)/\nu$; continuity and the inward-pointing
+inequality forbid crossing below $(1-N)/\nu$.
+The event-flow convention permits the same argument during every edge
+of a finite-variation path. Rearrangement gives \eqref{eq:aggregate}.
+\end{proof}
+
+\begin{theorem}[Necessary resources]\label{thm:lower}
+Suppose at least $k$ assets end at $S_i(T)\le s=Fe^{-\delta}<F$.
+Then for any $\mathsf C_0$ control,
+\begin{equation}\label{eq:bounds}
+ M\ge k[-\Phi(s)],\qquad
+ \sum_iH_i^-\ge k[-\Psi(s)].
+\end{equation}
+If $X_i(T)=0$ and initial shares $H_i$ are available, then
+$E(S_i(T))\le F H_i$. If $R(S)\le R_{\max}$ for all $S\in[F,U]$
+and $S_i(t)\le U$ throughout, a terminally dollar-closed asset ending
+below $s$ must have above-benchmark activity
+\begin{equation}\label{eq:above}
+ \int_{S_i>F}\dd A_i\ge\frac{-\Phi(s)}{\kappa R_{\max}}
+ \quad (R_{\max}>0).
+\end{equation}
+\end{theorem}
+\begin{proof}
+On the last downward excursion from $F$ to $s$,
+$\dd\Phi=\dd X-\kappa R\dd A\ge\dd X$ since $R<0$ below $F$.
+Thus the negative-dollar variation of each target is at least
+$-\Phi(s)$; summing sellers counts each paired dollar transfer once.
+Similarly, a downward price excursion below $F$ satisfies
+$\dd S\ge-g(S)(-\dd\theta)_+$ and therefore requires at least
+$-\Psi(s)$ sold shares. Cost identity \eqref{eq:cost} and
+$\Delta\theta_i\ge-H_i$ give the inventory inequality.
+Finally, $-\Phi(S_i(T))=\kappa\int R\dd A$
+under dollar closure and its positive part can only arise above $F$;
+there $R\le R_{\max}$. If $S_i(T)\le s$, the stated bound follows.
+\end{proof}
+
+\begin{theorem}[A $K$-dependent turnover lower bound]\label{thm:kresource}
+For $p=0$, define $D_F=F^2/\eta$. If $k$ dollar-closed assets
+end at or below $s=Fe^{-\delta}$, then
+\begin{equation}\label{eq:Kbound}
+ M\ge kD_F\sqrt{\frac{1-e^{-2\delta}}{2K(2+K)}}.
+\end{equation}
+In particular this necessary lower bound diverges as $K^{-1/2}$
+when $K\downarrow0$ at a fixed positive target severity.
+\end{theorem}
+\begin{proof}
+Normalize $F=\eta=1$ and use the $i$th node's activity clock
+$a\in[0,2b]$. Dollar closure makes its total buys and sells equal $b$,
+so its signed ledger obeys $u(0)=u(2b)=0$ and
+$u(a)\le\min(a,2b-a)$. For $w=(x^2-1)/2$ and $r=x(x-1)$,
+$\dd w=\dd u-Kr\dd a$. Since $r\ge-1/4$ and
+$r\le2[w]_+$ for every $x>0$,
+\[
+ [w(a)]_+\le\min(a,2b-a)+Ka/4,
+ \qquad \int_0^{2b}r\dd a\le(2+K)b^2.
+\]
+At the terminal time, $-w(T)=K\int r\dd a\ge(1-s^2)/2$.
+Hence $b\ge\sqrt{(1-s^2)/[2K(2+K)]}$.
+The sum of all dollar purchases equals paired turnover $M$.
+Restore the executed-dollar unit $D_F$.
+\end{proof}
+
+\begin{proposition}[All-node second-session obstruction]\label{prop:second}
+If all assets stay at or below $F$ throughout a second trading session,
+they cannot all close that session strictly below their respective
+opening prices, regardless of execution-rate bounds.
+\end{proposition}
+\begin{proof}
+The activity potential obeys \eqref{eq:potential}, and every
+$R(S_i)\le0$ throughout the session, hence $H$ cannot decrease.
+Strict decline of every price would strictly decrease
+$H=\sum_i\Phi(S_i)$, a contradiction.
+\end{proof}
+
+
+\section{Bounded gross share rates and local speed constraints}
+\label{sec:rates}
+A rate bound changes the admissible set: specify the \emph{gross}
+share rate, not the rate of the net executed-dollar ledger,
+\begin{equation}\label{eq:grossrate}
+ \frac{\dot A_i(t)}{S_i(t)}\le v
+ \quad\text{for almost every }t\in[0,T],\qquad v<\infty.
+\end{equation}
+Writing $h(S)=g(S)/S$, the pairing condition
+$\sum_i\dot X_i=0$ cancels the first-order aggregate price
+response at the common benchmark. This cancellation is local and
+does not imply a conserved scalar over the full path.
+
+\begin{theorem}[Conditional quadratic small-rate barrier]\label{thm:ratequadratic}
+Let $I=[F-d,F+d]\subset(0,\infty)$ be a compact interval on
+which $g$ is positive and $C^2$. Define
+\[
+ C_I=\sup_{S\in I}\{g(S)+\kappa S|S-F|\},\quad
+ U_I=\sup I,\quad L_I=\sup_{S\in I}|h'(S)|.
+\]
+If $v C_IT<d$, every trajectory satisfying \eqref{eq:grossrate}
+remains in $I$ and
+\begin{equation}\label{eq:ratebarrier}
+ |\bar S(T)-F|\le\frac12 v^2T^2 C_IU_I(L_I+\kappa),
+ \quad \Cris_\alpha(T)\le\bar L(T)\le B_I v^2T^2,
+\end{equation}
+where $B_I$ is the explicit constant obtained by combining the
+first bound with the Taylor inequality
+$-\log(1+y)\le-y+y^2/[2(1-b)^2]$ for
+$|y|\le b=v C_IT/F<1$. Thus a uniformly bounded-rate market
+cannot produce a fixed positive terminal crisis severity on an
+arbitrarily short, sufficiently regular horizon.
+\end{theorem}
+\begin{proof}
+The inequalities $|\dot X_i|\le\dot A_i\le vS_i$ imply
+$|\dot S_i|\le v C_I$ as long as $S_i\in I$. A first-exit
+argument establishes invariance of $I$ under $vC_IT<d$.
+Let $y_i=S_i-F$. Summing the price equations and subtracting
+the common coefficient $h(F)$ from their trade terms gives
+\[
+ \dot{\bar S}=
+ \frac1N\sum_i [h(S_i)-h(F)]\dot X_i
+ -\frac\kappa N\sum_i(S_i-F)\dot A_i.
+\]
+Use $|y_i(t)|\le v C_I t$,
+$|h(S_i)-h(F)|\le L_I |y_i|$ and
+$\dot A_i\le v U_I$ and integrate $t$ from $0$ to $T$.
+The logarithmic estimate and $\Cris_\alpha\le\bar L$
+complete the proof. The same conclusion holds for either $\mathsf C_0$
+or $\mathsf C_1$ control, since gross activity was retained throughout.
+\end{proof}
+
+\begin{proposition}[Pure-sale speed test]\label{prop:pure-sale}
+Suppose the price falls from $s_0$ to $s_1<s_0$ during a
+period of length $\tau$, and the gross share rate is bounded by $v$.
+On a price interval where
+$G_-(S)=g(S)+\kappa S(S-F)>0$,
+a necessary condition is
+\begin{equation}\label{eq:puresell}
+ v\tau\ge\int_{s_1}^{s_0}\frac{dS}{G_-(S)}.
+\end{equation}
+In the normalized $p=0,K=2$ model,
+$G_-(x)=2(x-\tfrac12)^2+\tfrac12$, so the integral equals
+$\arctan(2s_0-1)-\arctan(2s_1-1)$.
+\end{proposition}
+\begin{proof}
+A sale is the maximal instantaneous negative net-dollar flow,
+$\dot X_i\ge-\dot A_i$. Thus
+$-\dot S_i\le[g(S_i)/S_i+\kappa(S_i-F)]\dot A_i
+\le vG_-(S_i)$ when $G_->0$. Integrate a decreasing
+segment. The result is a \emph{necessary} scalar constraint; it does
+not construct paired-dollar counterparties or close their ledgers.
+\end{proof}
+
+\paragraph{A bounded-rate local construction.}
+Spread the nine-edge triangle of Theorem~\ref{thm:triangle}
+over a fixed positive interval, assigning each edge its required
+dollar amount at a sufficiently small positive rate. The price path
+remains in a compact neighborhood of $F$, and each gross share
+rate is of order $z/T$ while its terminal losses are of order
+$z^2$. Thus the quadratic exponent in \eqref{eq:ratebarrier}
+is locally attainable for $N\ge3$, though neither the constant nor
+any severe-loss optimal execution is inferred from this local scaling.
+
+\section{Rolling price limits, breadth, and market cuts}\label{sec:bands}
+Suppose consecutive sessions are indexed by $d=1,\dots,D$.
+Within each session, a price may not move beyond a fraction
+$\ell\in(0,1)$ of its preceding close. Specifically, if
+$s_{i,d-1}$ is the previous close, the entire session must satisfy
+$(1-\ell)s_{i,d-1}\le S_i(t)\le(1+\ell)s_{i,d-1}$.
+The next session's band is reset to the new close; the fundamental
+benchmark $F$ is \emph{not} reset.
+
+\begin{proposition}[Exact cross-sectional compensation criterion]
+\label{prop:breadthprod}
+Let $k$ named targets close at the same lower band ratio
+$q=1-\ell$ for $D$ consecutive sessions, so that
+$S_i(T)=Fq^D$ on that target set $J$. Put $\lambda=-\log q$.
+For a coverage level $\alpha$ with $\lceil\alpha N\rceil\le k$,
+$\Cris_\alpha(T)\ge\delta$ is equivalent to
+\begin{equation}\label{eq:product}
+ \delta\le D\lambda\quad\text{and}\quad
+ \prod_{j\notin J}\frac{S_j(T)}{F}
+ \le \exp\{kD\lambda-N\delta\}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The $k$ targets imply $Q_\alpha(T)\ge D\lambda$.
+The average log loss is exactly
+\[
+ \bar L(T)=\frac{kD\lambda-\sum_{j\notin J}\log(S_j(T)/F)}{N}.
+\]
+Rearrange the inequality for its being at least $\delta$.
+\end{proof}
+
+\begin{proposition}[Cut receiving capacity under gross speed]\label{prop:cutcap}
+Under the rate cap \eqref{eq:grossrate}, any nonempty proper
+asset subset $J$ obeys
+\begin{equation}\label{eq:cutcap}
+ \left|\sum_{i\in J}\dot X_i(t)\right|
+ \le v\min\left\{\sum_{i\in J}S_i(t),
+                         \sum_{j\notin J}S_j(t)\right\}
+\end{equation}
+for almost every active time. Integrating this inequality gives
+a necessary duration/counterparty-capacity constraint for any
+proposed multiday target path.
+\end{proposition}
+\begin{proof}
+All transfers internal to $J$ cancel from its net dollar flow;
+only genuine cut edges contribute. The absolute net flow is at most
+the total gross cut activity on either side. Each side's gross
+amount is bounded by $v$ times its sum of contemporaneous prices.
+\end{proof}
+
+No ``at most seven repeated limits'' conclusion transfers from the
+physical-time manuscript. In the activity model the attainable
+coverage count and optimal gross rate under rolling bands remain
+open; Proposition~\ref{prop:cutcap} and
+Proposition~\ref{prop:pure-sale} are necessary tests only. The
+certified five-target example of Section~\ref{sec:conIII} is an
+attainability result, not an optimizer.
+
+\section{Three ten-asset constructions}\label{sec:examples}
+We now normalize $F=\eta=1$ and use the complete graph. A useful
+completion fact separates the design of a price path from the design
+of a paired transaction network.
+\begin{lemma}[Equal-activity graph completion]\label{lem:completion}
+Let $N\ge2$, $a_0>0$, $\sum_iu_i(t)=0$ and
+$|u_i(t)|\le a_0$ almost everywhere. In $\mathsf C_0$ there exist
+nonnegative edge-flow rates with
+$\dot X_i=u_i(t)$ and $\dot A_i=a_0$ for every $i$.
+\end{lemma}
+\begin{proof}
+Set desired node purchases $b_i=(a_0+u_i)/2$ and sales
+$s_i=(a_0-u_i)/2$. Their respective totals are $Na_0/2$.
+A seller $i$ can reach every buyer except itself, and the singleton
+Hall condition is $s_i+b_i=a_0\le Na_0/2$. A group of at least
+two distinct sellers reaches every buyer, so every remaining
+max-flow/min-cut inequality holds. A nonnegative zero-diagonal
+transportation matrix therefore realizes the rates.
+\end{proof}
+
+\begin{lemma}[Continuous embedding with actual trade activity]\label{lem:embed}
+Let $x_i(t)>0$ be an absolutely continuous trajectory satisfying
+$\sum_i x_i(t)[\dot x_i(t)+\rho(x_i(t)-1)]=0$ and
+$|u_i(t)|\le a_0$, where
+$u_i=x_i[\dot x_i+\rho(x_i-1)]$ and $\rho>0$.
+Then under $p=0$, $K=\rho/a_0$ and controls in $\mathsf C_0$,
+$x_i$ solves the \emph{new} activity system with exactly
+$\dot A_i=a_0$ and $\dot X_i=u_i$.
+\end{lemma}
+\begin{proof}
+Apply Lemma~\ref{lem:completion}; in the new equation
+$\dot x_i=u_i/x_i-K(x_i-1)a_0
+=u_i/x_i-\rho(x_i-1)$, identically.
+No free decay occurs: the last term is generated by the paired
+gross execution flow. The turnover is $Na_0T/2$.
+\end{proof}
+
+
+\subsection{Construction I: exact ten-asset halving}\label{sec:conI}
+\begin{theorem}[All ten prices exactly halve with finite resources]
+\label{thm:tenhalf}
+Fix $N=10$, $p=0$, and normalized $F=\eta=1$.
+There exists a strictly positive-price, absolutely continuous
+$\mathsf C_0$ control on the fixed horizon $T=40$, with
+\begin{equation}\label{eq:tenhalfcert}
+ \rho=\frac25,\qquad h=10^{-16},\qquad
+ a_0=10^{17},\qquad K=4\cdot10^{-18},
+\end{equation}
+for which $X_i(T)=0$ and $x_i(T)=1/2$ for every $i$.
+It can be implemented with paired turnover
+$M=2\cdot10^{19}$ and gross seller inventories
+$H_i^-<10^{20}$. These constants certify an analytic
+\emph{alternative} to the much smaller, only floating-point
+historical trial $K=1/75$, $M=6000$.
+\end{theorem}
+\begin{proof}
+Write $x_i(t)=R(t)\sqrt{Y_i(t)}$ with
+$\sum_iY_i\equiv1$ and
+$\dot R=\rho(\sum_i\sqrt{Y_i}-R)$, $R(0)=\sqrt{10}$.
+Use ten successive role stages, in which each target once takes
+the high direction $a=\sqrt{1-9b^2}$ and otherwise takes a common
+low direction $b$, for $b\in[.06,.07]$. Set the initial and
+terminal direction to the uniform vector. The sharp-stage radial
+solution is $R_b(t)=H_b+(\sqrt{10}-H_b)e^{-\rho t}$,
+$H_b=a+9b$. The terminal-radius residual
+$E(b)=R_b(40)/\sqrt{10}-1/2$ has rigorously bracketed signs
+$E(.06)<-.018$ and $E(.07)>.001$.
+The high-minus-low ledger weight
+$W_b(t)=\psi(aR_b(t))-\psi(bR_b(t))$, with
+$\psi(z)=z(z-1)$, is greater than $.7$ on the full parameter
+interval. Equal-$W_b$ stage integrals therefore make all ten
+sharp target ledgers equal; the nine moving-cut Jacobian has the
+exact discrete Green inverse estimate
+$\|J_0^{-1}\|_\infty<45$.
+
+Replace every limiting jump by a width-$h$ interpolation linear
+in $Y$, including the two endpoint ramps. The node-ledger error
+is less than $2800h$ and each cut derivative differs from its
+sharp value by less than $200h$; these estimates are uniform on
+radius $r=10^{-6}$ neighborhoods of the equal-weight cut times.
+The map $t\mapsto t-J_0^{-1}D^h(b,t)$ contracts each such ball
+with derivative norm below $1/4$ and center displacement below
+$r/2$. Thus every $b$ admits unique exact equal-ledger cuts.
+Their terminal-radius residual retains the strict endpoint signs,
+so the intermediate value theorem selects $b^*$ with
+$R_h(T)=\sqrt{10}/2$. Equality of all dollar ledgers and the
+paired-dollar identity $\sum_iX_i(T)=0$ give exact zero for all.
+The net dollar rates satisfy $|u_i|<5/h+8<a_0$.
+Lemma~\ref{lem:completion} yields nonnegative no-self-edge
+paired flows with every node's gross dollar rate $a_0$.
+Since all prices exceed $.06$, each gross seller inventory is
+below $a_0T/.06<10^{20}$. Detailed constants and the correct
+$L^1$ moving-cut derivative appear in Appendix~\ref{app:smoothing}.
+\end{proof}
+
+\subsection{Construction II: nine targets, arbitrarily severe losses}
+\label{sec:conII}
+\begin{theorem}[A fixed-resource all-severity family at 90\% breadth]
+\label{thm:nine}
+For $N=10$, $p=0$, and $F=\eta=1$, choose
+\begin{equation}\label{eq:ninecert}
+ \rho=1,\quad T=200,\quad h=10^{-16},\quad
+ a_0=10^{17},\quad K=10^{-17},\quad c=\frac1{100}.
+\end{equation}
+For every $\delta>0$ there exists an admissible $\mathsf C_0$
+path on this \emph{same} horizon and under the \emph{same}
+model coefficients, with strictly positive prices and
+$X_i(T)=0$ for all $i$, such that
+\begin{equation}\label{eq:nineresult}
+ \Cris_{0.9}(T)>\delta,\qquad M=10^{20},\qquad
+ H_i^-<3\cdot10^{24}\quad(i=1,\dots,10).
+\end{equation}
+These are analytic existence bounds rather than the
+historical floating-point trial with $T=4$, $h=.012$,
+$K=.002$ and $M=10000$; the latter remains \emph{numeric only}.
+\end{theorem}
+\begin{proof}
+Set nine successive stage directions so that one of the nine
+targets has high component
+$a=\sqrt{1-8c^2-b^2}$ at a time, the other eight have the
+low component $c$, and the tenth compensator has component
+$b\in[10^{-5},.05]$. The final direction assigns component
+$q\in(0,.01]$ to each target and
+$\sqrt{1-9q^2}$ to the compensator.
+The sharp radial solution is
+$R_b(t)=H_b+(\sqrt{10}-H_b)e^{-t}$,
+$H_b=a+8c+b$. The compensator ledger
+\[
+ F_q(b)=\frac{R_b(T)^2(1-9q^2)-1}{2}
+     +\int_0^T\psi(bR_b(t))\,dt
+\]
+has $F_q(10^{-5})>.06$ and $F_q(.05)<-3$ for \emph{all}
+$0\le q\le.01$. The high-minus-low weight
+$W_b(t)=\psi(aR_b)-\psi(cR_b)>.08$ makes every equal-weight
+nine-stage partition unique and supplies
+$\|J_0^{-1}\|_\infty\le125$.
+
+For $h=10^{-16}$, the node ledger differences from the sharp
+model are at most $72400h$ and cut derivatives differ by at most
+$1000h$, uniformly in $b,q$ and cut neighborhoods of radius
+$10^{-6}$. The preconditioned cut-time contraction again has
+norm below $1/4$ and center displacement below $r/2$, so the
+nine target ledgers can be equalized with \emph{exact}, ordered
+cut times for all $b,q$. The compensator's two endpoint signs
+survive; the intermediate value theorem closes its exact ledger.
+The other nine ledgers close by equality and paired-dollar
+accounting.
+
+The radial comparison gives $1\le R\le\sqrt{10}<4$,
+so terminal target prices $x_i(T)=qR(T)$ tend to zero as
+$q\downarrow0$. Since the compensator remains at a uniformly
+positive final price, the average and ninth-largest log losses
+both diverge. Every node has gross dollar activity rate $a_0$,
+realized by Lemma~\ref{lem:completion}; hence the dollar turnover
+is fixed at $Na_0T/2=10^{20}$.
+Before the final $h$-window, every price exceeds $10^{-5}$.
+During the final window the targets satisfy
+$x_i(t)\ge c\sqrt{1-s}$ for $s\in[0,1]$, so
+$\int_{T-h}^T dt/x_i\le2h/c$ uniformly in $q$.
+Consequently
+$H_i^-\le a_0(T/10^{-5}+2h/c)<3\cdot10^{24}$.
+The final windows are positive for all $q>0$; the limiting
+$q=0$ configuration is used only in the continuous bracketing
+argument, not as an admissible price path.
+\end{proof}
+
+\begin{remark}[Extension and nonuniformity in the response exponent]
+For each \emph{fixed} $0\le p<1$, the radial construction may
+be generalized using $\nu=2-p>1$ and $x_i=R Y_i^{1/\nu}$.
+The terminal share inventory remains integrable because
+$\int_0^1(1-s)^{-1/\nu}ds=\nu/(\nu-1)<\infty$.
+The analysis and constants need not be uniform as $p\uparrow1$;
+the explicit certificates \eqref{eq:ninecert}--\eqref{eq:nineresult}
+are for $p=0$ only. A detailed audit of the general $p<1$
+parameter extension is preserved as a separate mathematical
+research proof, rather than being silently inferred from the
+$p=0$ numerical constants.
+\end{remark}
+
+\subsection{Construction III: two lower-limit closes without instantaneous netting}
+\label{sec:conIII}
+\begin{theorem}[An internally certified $\mathsf C_1$ witness]\label{thm:two}
+Take ten assets with $p=0$, $F=\eta=1$, $K=2$, and sessions
+$[0,20]$ and $[20,40]$. There is an absolutely continuous
+$\mathsf C_1$ execution such that five targets close at $3/4$
+and then at $9/16$, all assets obey sessionwise rolling
+$\pm25\%$ bands, all dollar ledgers close at $40$, initial
+share inventory $2$ suffices for every asset, and
+\begin{equation}\label{eq:certresult}
+ M<11.261627<14,\quad \sup_{i,t}r_i^{\rm gross}(t)<0.133,
+ \quad G(40)<0.84,
+\end{equation}
+where $G=(\prod_i x_i)^{1/10}$ is the equal-weight geometric
+price index. Hence $\Cris_{1/2}(40)>-\log(.84)>0$ and
+$1-G(40)>16\%$.
+The parameter and path inequalities are \emph{internally}
+verified by outward-rounded interval arithmetic, subject to the
+implementation described in Appendix~\ref{app:interval};
+external certification is not claimed.
+\end{theorem}
+\begin{proof}
+Partition the ten assets into five disjoint target/compensator
+pairs $(x_j,y_j)$. For $K=2$, a pure buyer and pure seller satisfy
+\begin{equation}\label{eq:primitives}
+ P_+'(s)=\frac{s}{1-2s(s-1)},\qquad
+ P_-'(s)=\frac{s}{1+2s(s-1)}.
+\end{equation}
+Both are strictly increasing on the price range used below.
+Buying $z$ dollars sends a price $x$ to the unique $x'$ satisfying
+$P_+(x')-P_+(x)=z$; selling $z$ dollars sends $y$ to $y'$ with
+$P_-(y)-P_-(y')=z$. These are the \emph{complete} activity ODE
+flows, not pure-impact approximations.
+
+In each pair use nine excursions: buy the target while selling the
+compensator to the common floor $c$, then (on the first eight
+excursions) sell the target to the prescribed rational lows
+\begin{equation}\label{eq:lows}
+ (1.085409,1.087707,1.085158,1.099042,
+ 1.106127,1.122661,1.14,1.15).
+\end{equation}
+After the ninth purchase, sell each target to $3/4$ at the end of
+session 1; in session 2 sell it further to $9/16$ while the
+corresponding compensator buys. Every amount is determined
+uniquely by \eqref{eq:primitives}. Let $f(c)$ be the resulting
+signed target-dollar ledger. Directed interval evaluation gives
+\begin{equation}\label{eq:root}
+ f(0.76065368494358)>0>f(0.76065368494359).
+\end{equation}
+Because all inverse branches are continuous and strictly monotone,
+there is an exact $c_*$ in this bracket with $f(c_*)=0$.
+The paired compensator ledger is then also zero.
+
+In the remainder of session 2 sequentially execute the five
+compensator-only transfers
+$y_1\to y_2\to y_3\to y_4\to y_5\to y_1$, each of
+mass exactly $1/25=0.04$. This adds zero net dollars to every
+compensator and avoids opposite-direction flows at any instant.
+The certificate checks all 19 pair-segment endpoints and all five
+cycle transfers; monotonicity between endpoints extends the
+rolling-band bounds to the entire continuous path.
+
+Let $A_1,A_2$ be the dollar amounts per pair in sessions 1 and 2.
+Five disjoint pairs act in parallel at constant per-edge dollar rate
+$A_1/20$ in the first session. In the second, pair transfers followed
+by the five cycle edges are sequentially assigned the common
+active-edge rate $(A_2+5/25)/20$. Each session lasts exactly 20.
+The interval check yields $A_1/20/(3/4)<0.133$ and
+$(A_2+1/5)/20/(9/16)<0.133$.
+The conservative target inventory is $A/(2\cdot9/16)<2$
+where $A=A_1+A_2$; compensator inventory is bounded by
+$A/(2c_*)+(1/25)/1.2<2$. Finally every compensator's
+terminal price is strictly below $1.23$, so
+$G^2<(9/16)\cdot1.23<0.84^2$.
+The interval proof details and reproducibility boundary appear in
+Appendix~\ref{app:interval}.
+\end{proof}
+
+
+
+\section{Numerical reconstruction and visual evidence}
+\label{sec:figures}
+The figures in this section are recomputed for the activity-driven
+model. Figures based on historical floating-point reconstruction
+carry evidence level \texttt{NUMERIC\_ONLY}: they are \emph{diagnostics},
+not interval certification. The exact
+alternative analytic constructions of Theorems~\ref{thm:tenhalf}
+--\ref{thm:nine} have deliberately much larger resource bounds.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=.87\linewidth]{figures/Fig01_trade_activity_not_conservation.pdf}
+\caption{Paired executed-dollar transfers and positive gross activity.
+The activity-driven potential is not generally conserved. This
+replaces the old physical-time conservation diagram.}
+\label{fig:activity}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=.87\linewidth]{figures/Fig02_powerlaw_log_response.pdf}
+\caption{Power-law response and normalized log sensitivity in the
+new model. Curves illustrate scalar mechanisms; they do not
+constitute a complete global $(p,K,N)$ reachability phase diagram.}
+\label{fig:response}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=.86\linewidth]{figures/Fig03_I_ten_asset_float_paths.pdf}
+\caption{Ten-asset half-price trajectory from the independent
+\emph{floating-point} trial with $K=1/75$, $T=40$, $M=6000$.
+The exact analytic witness of Theorem~\ref{thm:tenhalf} uses
+different parameters and does not certify this plotted root.}
+\label{fig:ten-trial}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=.86\linewidth]{figures/Fig04_II_nine_target_float_paths.pdf}
+\caption{Nine-target severe-loss trial using $T=4$, $K=.002$,
+$M=10000$, based on a floating-point reconstruction. Extreme
+$q$ inventory quadrature is not reported as precisely known.}
+\label{fig:nine-trial}
+\end{figure}
+
+\begin{table}[tb]
+\centering\small
+\caption{Reconstruction of the old activity-model \emph{numerical trials}.
+Numbers are floating-point estimates, not exact root certificates.
+The $q=10^{-8}$ share total is intentionally omitted because
+quadrature was not stable.}
+\label{tab:reconstruction}
+\begin{tabular}{@{}lrrrl@{}}\toprule
+Trial & $M$ & $\Cris_{0.9}(T)$ & Max ledger residual & Gross shares \\\midrule
+I, ten halves & $6000$ & --- & $1.03\cdot10^{-9}$ & $6724.54$ (max)\\
+II, $q=10^{-2}$ & $10000$ & $4.08329$ & $2.16\cdot10^{-10}$ & $698769.15$ (max)\\
+II, $q=10^{-4}$ & $10000$ & $8.22846$ & $2.16\cdot10^{-10}$ & $703402.95$ (max)\\
+II, $q=10^{-8}$ & $10000$ & $16.51777$ & $1.25\cdot10^{-10}$ & not reliably integrated \\\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=.87\linewidth]{figures/Fig05_III_C1_two_session_prices.pdf}
+\caption{Two-session target and compensator prices for the
+$\mathsf C_1$ five-target construction. Root isolation and path
+bounds are derived from interval enclosures, not the pixels.}
+\label{fig:twosession}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=.87\linewidth]{figures/Fig06_III_C1_max_gross_share_rate.pdf}
+\caption{Gross executed-share-rate schedule for the certified
+rolling-band construction. The per-node maximum is less than
+$.133$ in the specified time allocation.}
+\label{fig:grossrate}
+\end{figure}
+
+\section{Conditional robustness and unresolved phase boundaries}
+\label{sec:robustness}
+Consider an explicitly defined unmatched-flow perturbation
+$dX_i=\sum_e B_{ie}\,dz_e+e_i(t)dt$, while the \emph{same} gross
+paired-edge activity $dA_i$ triggers recovery. The added term is
+not silently treated as an executed paired edge. Let $y_i=\Phi(S_i)$;
+on a common compact positive price interval the recovery field
+$R(\Phi^{-1}(y))$ is Lipschitz with constant $L$.
+For fixed baseline edge flows and the same initial condition,
+\begin{equation}\label{eq:robust}
+ \sup_{s\le t}|y_i^e(s)-y_i^0(s)|
+ \le e^{\kappa L A_i(t)}\int_0^t |e_i(s)|ds.
+\end{equation}
+Indeed, subtract the two $\Phi$-equations and apply the
+integral Gronwall inequality in activity time. This conditional
+continuous-dependence estimate says nothing by itself about
+terminal dollar-ledger closure after perturbation. A claim about
+structural stability of an exact closed-ledger witness requires a
+separate compensating control argument.
+
+The reachability classification remains intentionally incomplete.
+In particular, the global two-asset case $1<p<2$ with large finite
+turnover, the general $(p,K,N,\mathrm{graph})$ phase diagram,
+the sharp all-asset severity boundary, rate-minimizing executions,
+the largest possible number of repeated lower-band closes, and
+unmatched-flow/heterogeneous weighted-flow global barriers all
+remain open. Stated necessary and sufficient results must not
+be conflated with these optimization or completeness questions.
+
+\section{Interpretation and limitations}\label{sec:discussion}
+The activity clock breaks the trade-time conservation of
+$\sum_i\Phi(S_i)$. Its rate is instead
+$-\kappa\sum_iR(S_i)\dd A_i$; the sign depends on the placement
+of gross activity across price regions. The local triangular protocol
+is already available in $\mathsf C_1$, but the large existence
+constructions I--II exploit the broader $\mathsf C_0$ by assigning
+common activity even to nodes with small net dollar rates. Such
+churning is real executed dollar volume under the stipulated control
+rules, not a claim about rational investors' equilibrium behavior.
+The $\mathsf C_1$ two-session construction excludes instantaneous
+netting but uses many temporal direction reversals; prohibiting
+round trips altogether is a different admissibility restriction.
+
+For $p<1$ the scalar floor boundary $K_c(p)$ rules out
+unbounded severity at sufficiently large $K$, while Theorem
+\ref{thm:nine} establishes a nonempty small-$K$ existence region.
+The intervening parameter range and sharp resource-efficient bounds
+remain open. Price-floor nonexistence alone is not a sufficiency
+theorem. The two-session witness establishes attainability for
+\emph{five} targets, not optimality among six, seven or more.
+In particular the former seven-target obstruction of the
+physical-time model is not transferred here.
+
+\section{Conclusion}
+In an idealized fixed-benchmark market where every dollar transfer
+is paired and every asset's terminal dollar ledger closes, gross
+trade activity can induce both price impact and resilience.
+Three-asset trading cycles yield local all-market losses, while
+scalar floors, aggregate barriers and necessary execution bounds
+restrict their scale. Exact analytic continuation establishes
+all-ten halving and a nine-target uniform-resource severity family;
+an independent internally certified ten-asset control achieves
+five repeated lower-limit closes with finite rate and strict
+sessionwise bands. These conclusions concern deterministic
+admissibility, not real-world crash probability or strategic
+profitability.
+
+\appendix
+
+\section{Quantitative cut-root existence and constant-resource construction}
+\label{app:smoothing}
+This appendix records the derivatives and numerical inequalities
+supporting Theorems~\ref{thm:tenhalf} and \ref{thm:nine}.
+They do \emph{not} certify the cached floating-point roots.
+
+\subsection{Exact activity-driven radial identity}
+Let $Y_i(t)>0$, $\sum_iY_i(t)=1$, and $x_i=R\sqrt{Y_i}$.
+If
+\begin{equation}\label{eq:radial}
+ R'=\rho(H(Y)-R),\quad H(Y)=\sum_i\sqrt{Y_i},\quad
+ R(0)=\sqrt{10},
+\end{equation}
+and
+\begin{equation}\label{eq:rateformula}
+ u_i=\frac{R^2}{2}Y_i'
+    +\rho R\bigl(H(Y)Y_i-\sqrt{Y_i}\bigr),
+\end{equation}
+then $\sum_i u_i=0$ and
+$\dot x_i=u_i/x_i-\rho(x_i-1)$. Taking equal constant gross
+dollar activity $\dot a_i=a_0$, $K=\rho/a_0$, makes these
+the original \emph{activity-driven} dynamics, not an external
+time-decay approximation. Chain rule gives the exact terminal
+ledger, with $\psi(z)=z(z-1)$,
+\begin{equation}\label{eq:ledgerradial}
+ X_i(T)=\frac{R(T)^2Y_i(T)-1}{2}
+             +\rho\int_0^T\psi(R(t)\sqrt{Y_i(t)})\,dt.
+\end{equation}
+Since $1\le H(Y)\le\sqrt{10}$, the solution to
+\eqref{eq:radial} satisfies $1\le R\le\sqrt{10}$.
+
+\subsection{Exact Green inverse for cut times}
+On each of $m$ constant-direction role stages, the radial source
+$H_b$ is the same because the role directions differ by
+permutation only. Write
+$A_j=\int_{t_{j-1}}^{t_j}W_b(t)dt$,
+where $W_b$ is the positive high-minus-low ledger integrand.
+Equating adjacent account ledgers yields
+$D_j=\rho(A_j-A_{j+1})=0$ for $j=1,\dots,m-1$.
+The sharp Jacobian is
+\begin{equation}\label{eq:sharpJ}
+ J_0=\rho L_{m-1}\operatorname{diag}(W_b(t_1),\dots,W_b(t_{m-1})),
+\end{equation}
+with $L_n$ the Dirichlet tridiagonal matrix $2,-1,-1$.
+Its inverse admits an \emph{exact} discrete Green kernel:
+\[
+ (L_{m-1}^{-1})_{ij}=
+ \frac{\min(i,j)(m-\max(i,j))}{m},
+ \qquad \|L_{m-1}^{-1}\|_\infty
+ =\max_i\frac{i(m-i)}2.
+\]
+Consequently the inverse norms are $25/2$ for ten stages
+and $10$ for nine. If $W_b\ge w_*>0$, then
+$\|J_0^{-1}\|_\infty\le\|L^{-1}\|_\infty/(\rho w_*)$,
+and $\det J_0=m\rho^{m-1}\prod_jW_b(t_j)>0$.
+This is a quantitative nondegeneracy certificate; it does not
+assert that a double-precision cut vector is a mathematical root.
+
+\subsection{Moving ramps: correct $L^1$, not $L^\infty$, derivative}
+Take an interior $h$-wide affine $Y$-ramp centered at a cut $\tau$.
+The two flanking role stages have the \emph{same} source $H_b$,
+and the ramp contributes a compact pulse
+$\Delta_h(t;\tau)=d_b((t-\tau)/h)$ with
+$\Delta_h=0$ at both endpoints and
+$|\Delta_h|\le D_*\le4$. Differentiation of the radial
+variation-of-constants formula followed by integration by parts
+gives the exact identity
+\begin{equation}\label{eq:movingderivative}
+ \partial_\tau R_h(t)=-\rho\Delta_h(t;\tau)
+ +\rho^2\int_0^t e^{-\rho(t-s)}\Delta_h(s;\tau)ds.
+\end{equation}
+The right-hand side is $O(1)$ \emph{inside} the ramp, so a
+pointwise global $O(h)$ derivative estimate would be false.
+However, Tonelli's theorem yields
+\begin{equation}\label{eq:movingsensitivity}
+ \|\partial_\tau R_h\|_{L^1(0,T)}\le2\rho D_*h,
+ \qquad |\partial_\tau R_h(T)|\le\rho^2D_*h.
+\end{equation}
+The integrand in \eqref{eq:ledgerradial} has bounded radial
+derivative $|\partial_R\psi(R\sqrt{Y_i})|\le9$.
+The integrated radial part of the cut derivative is therefore
+$O(h)$. The direct interpolation derivative converges to the
+jump between adjacent sharp-stage integrands, uniformly over
+compact positive internal direction parameters. The end ramps
+are stationary when interior cuts vary. In Construction II the
+terminal direction $q\downarrow0$ is included only as a
+continuous endpoint parameter, never differentiated with
+respect to $q$ at zero.
+
+\subsection{Explicit contraction and sign bounds}
+Choose $h=10^{-16}$, a cut-neighborhood radius $r=10^{-6}$ and
+$a_0=10^{17}$. For Construction I, the compact parameter interval
+$b\in[3/50,7/100]$ has $W_b>.7$ and ten sharp stage gaps
+larger than $14/65$. The endpoint residual
+$R_b(40)/\sqrt{10}-1/2$ is below $-.018$ on the left and
+above $.001$ on the right. There are eleven smoothing windows;
+from their total length and $1\le R\le\sqrt{10}$,
+\[
+ \|R_h-R_b\|_\infty<18h,\quad
+ \max_i|X_i^h-X_i^0|<2800h,\quad
+ \max_{i,j}|\partial_{t_j}X_i^h-
+                    \partial_{t_j}X_i^0|<200h.
+\]
+The $\infty$-norm Jacobian preconditioner is below $45$,
+so the contraction norm is smaller than
+$45[(2/5)400r+3600h]<1/4$ and center displacement is
+below $45(2\cdot2800h)<r/2$.
+The resulting exact cut roots preserve the endpoint signs.
+
+For Construction II, take
+$b\in[10^{-5},.05]$, $c=.01$, $T=200$.
+The sharp compensator ledger is greater than $.06$ at the left
+endpoint and less than $-3$ at the right for all
+$0\le q\le.01$. The weight satisfies $W_b>.08$ and
+nine stage gaps exceed $16/117$. The ten smoothing windows give
+\[
+ \|R_h-R_b\|_\infty\le40h,\quad
+ \max_i|X_i^h-X_i^0|\le72400h,\quad
+ \max_{i,j}|\partial_{t_j}X_i^h-
+                    \partial_{t_j}X_i^0|<1000h.
+\]
+With $\|J_0^{-1}\|_\infty\le125$, the contraction norm is
+$125(400r+16000h)<1/4$ and the center displacement
+is $125(2\cdot72400h)<r/2$. These statements apply
+\emph{uniformly in $q$}, with one fixed strictly positive $h$.
+The exact rational inequalities, including square-root and
+exponential brackets, are also checked by the independent
+\texttt{certify\_gate2\_explicit.py} diagnostic; the script
+is not a substitute for the analytic derivation.
+
+\subsection{Edge completion, finite turnover, and true gross inventories}
+Equation \eqref{eq:rateformula} implies
+$|u_i|\le5/h+8$ for I and $|u_i|\le5/h+20$ for II,
+which are both below $a_0=10^{17}$. At each instant prescribe
+purchases $b_i=(a_0+u_i)/2$ and sales $s_i=(a_0-u_i)/2$.
+The complete directed graph without self-edges admits a
+nonnegative transportation matrix from the sellers to the
+buyers because total supplies and demands both equal
+$Na_0/2$ and every singleton satisfies
+$b_i+s_i=a_0\le Na_0/2$.
+Thus $A_i'=a_0$, $X_i'=u_i$ and
+$M=Na_0T/2$, \emph{with real gross opposite flows} in
+$\mathsf C_0$ rather than a fictitious ``activity clock.''
+In I, every price remains above $.06$, giving
+$H_i^-<a_0T/.06<10^{20}$. In II, before the final ramp every
+price is at least $10^{-5}$; on the last ramp target prices are
+at least $c\sqrt{1-s}$ for $0\le s\le1$. Therefore
+$\int_{T-h}^T dt/x_i\le2h/c$, independent of $q>0$;
+this leads to $H_i^-<3\cdot10^{24}$.
+No fixed \emph{pointwise} share-rate cap is claimed for II as
+$q\downarrow0$.
+
+\section{Independent interval checker for Construction III}\label{app:interval}
+The executable is
+\texttt{verification/activity\_driven/certify\_five\_targets.py}.
+It does not use V16's physical-time ODE or its 80,000-step
+certificate. Its price primitive is integrated from
+\eqref{eq:primitives}; explicit antiderivatives are
+\begin{align*}
+ P_+(s)&=-\frac14\log\bigl(\tfrac32-2(s-\tfrac12)^2\bigr)
+ +\frac1{2\sqrt3}\operatorname{artanh}
+   \!\left(\frac{2(s-\tfrac12)}{\sqrt3}\right),\\
+ P_-(s)&=\frac14\log\bigl(2(s-\tfrac12)^2+\tfrac12\bigr)
+ +\frac12\arctan(2s-1).
+\end{align*}
+The program computes these with outward-rounded interval
+operations; the arctangent uses a finite alternating Taylor series
+with a separately included geometric remainder after the
+argument reduction $\arctan(t)=\pi/4+\arctan((t-1)/(t+1))$.
+Each inverse is enclosed by rational endpoints whose primitive
+interval evaluations lie strictly below and above the desired
+primitive interval. The root is isolated by strict interval signs
+at \eqref{eq:root}; all path prices for the resulting exact root
+are then propagated as intervals. Since buying and selling have
+strictly monotone price flows on the certified ranges, checking
+all event endpoints proves the sessionwise bounds between events.
+A second internally independent implementation, now archived at
+\texttt{research/v19-activity-recovery/verify\_c1\_independent\_rational.py},
+uses a $10^{-65}$ exact rational grid with directed rounding,
+explicit Taylor remainder enclosures, and an independently
+bracketed inverse-primitive algorithm. Its agreement with the
+original checker strengthens internal cross-validation but
+is not third-party formal verification. Both programs must pass.
+The checker then verifies interval upper bounds on $M$, the
+per-asset dollar sales and conservative share inventories, the
+specified physical-time rate schedule, and the elementary exact
+inequality $(9/16)1.23<0.84^2$. It prints a JSON evidence record.
+The JSON records the certified rate schedule separately from a
+historical floating-point trial rate of $0.28$; these are not
+interchangeable. The checker's scope is an \emph{internally
+implemented} interval proof, not a formally verified implementation
+or external independent peer review.
+
+\bibliographystyle{unsrtnat}
+\enlargethispage{2\baselineskip}
+{\small\bibliography{../v16-three-certified-constructions/references}}
+\end{document}
