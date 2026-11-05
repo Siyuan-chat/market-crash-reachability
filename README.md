@@ -2,17 +2,26 @@
 
 **Siyuan Ye** · Mathematical finance · Deterministic systemic-drawdown reachability
 
+[![V17 activity-driven working draft CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v17.yml/badge.svg)](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v17.yml)
 [![V16 manuscript CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v16.yml/badge.svg)](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v16.yml)
 [![V14 historical CI](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v14.yml/badge.svg)](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/v14.yml)
 [![Reproducibility](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/tests.yml/badge.svg)](https://github.com/Siyuan-chat/market-crash-reachability/actions/workflows/tests.yml)
 
-**Latest English working manuscript: V16 — three constructive ten-asset results (22 October 2026).**
+**Newest research working draft: V17 (5 November 2026) — activity-driven recovery; independent model.** V16 (22 October 2026) remains the preserved time-recovery manuscript and is not overwritten.
 
 **[Read V16 PDF (successful CI build artifact; ZIP download)](https://github.com/Siyuan-chat/market-crash-reachability/actions/runs/39739415539/artifacts/12409050841)** · [V16 LaTeX source](submission/v16-three-certified-constructions/main.tex) · [V16 numerical proof and independent audit](docs/TWO_DAY_25PCT_FIVE_TARGET_CERTIFICATE.md) · [V16 build workflow](.github/workflows/v16.yml) · [Older V14-R1 PDF](submission/v14-turnover-dissipation/manuscript.pdf)
 
 V16 contains a new internally interval-certified two-session witness under uniform ±25% rolling price bands, with five assets closing at both lower limits. The V16 PDF is distributed as a CI artifact rather than a separately committed PDF file; its mathematical/computational results have not undergone external peer review or an external certificate-code audit. The earlier V14-R1 and [frozen V14 Zenodo deposit](https://doi.org/10.5281/zenodo.23478787) retain their original provenance and must not be cited as containing the newer V16 construction. [Version and citation details](docs/VERSIONS.md).
 
-## Research question
+## V17 research draft: recovery requires actual gross trades
+
+**[V17 English LaTeX working source](submission/v17-activity-driven-recovery/main.tex)** · [Analytical/evidence matrix](docs/V17_ACTIVITY_WORKING_DRAFT.md) · [C1 interval checker](verification/activity_driven/certify_five_targets.py) · [Independent V17 CI](.github/workflows/v17.yml)
+
+V17 uses $dS_i=[g(S_i)/S_i]dX_i-\kappa(S_i-F)dA_i$ with paired $dX=Bdz$ and $dA_i=\sum_e|B_{ie}|dz_e$. **Unlike V16, prices do not recover during periods without trading.** $\mathsf C_0$ allows simultaneous offsetting gross flows, while $\mathsf C_1$ prohibits such instantaneous offsetting. The new paper develops analytical all-ten halving and uniform-budget nine-asset severity constructions under $\mathsf C_0$ and an **internally interval-checked** repeated five-target 25%-lower-limit witness under $\mathsf C_1$. The V17 manuscript remains an unreviewed working draft; independent proof and interval-implementation auditing are still necessary. The existing V16 results and historical frozen DOIs refer to the former physical-time model only.
+
+Reproduce: `python -m pip install mpmath==1.3.0`; `python verification/activity_driven/test_activity.py`; `python verification/activity_driven/certify_five_targets.py`; `python scripts/check_v17_activity.py`; `python scripts/build_v17_activity.py` (with SIAM ZIP and TeX installed). No archival DOI or release is assigned to V17.
+
+## Research question (original V16 formulation)
 
 Equal-dollar purchases and sales need not leave prices unchanged, even when every asset's cumulative executed-dollar ledger returns to zero. We study which **terminal systemic drawdowns** can be reached in a multi-asset market with fixed fundamental benchmarks, state-dependent price impact, and price-level resilience.
 
@@ -32,7 +41,7 @@ $$
 
 Here $Q_{\alpha}(T)$ is the $k$-th largest log loss, where $k=\lceil\alpha N\rceil$. Paired-dollar trades preserve $\sum_i\Phi(S_i)$, while resilience can move prices between its level sets. The research concerns **deterministic reachability**, not an estimated probability of a crash, an equilibrium strategy, or a historical-event attribution.
 
-## Main results
+## Historical V16 main results (physical-time recovery)
 
 - **Structural barriers:** under the stated common-impact and price-level-recovery assumptions, elasticity `e(S)\ge1` prevents all assets falling together; `e(S)\ge2` excludes positive losses under the systemic crisis criterion.
 - **Partial versus full coverage:** for each fixed power exponent `0\le p<1`, sufficiently severe **partial-coverage** log losses admit a constructive path with bounded turnover and initial share inventory; **full coverage** has a sharp, unattained horizon-dependent ceiling under constant impact.

@@ -1,0 +1,35 @@
+% V17 uses the V16 SIAM manuscript interface. The article fallback is solely
+% for offline preview when the repository's unchanged SIAM ZIP is unavailable.
+\usepackage{microtype,xurl,needspace}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools,bm}
+\usepackage{graphicx,booktabs,enumitem,tabularx}
+\usepackage[numbers,sort&compress]{natbib}
+\ifnum\isSIAM=1
+  \newsiamremark{assumption}{Assumption}
+  \newsiamremark{remark}{Remark}
+  \headers{When Can Markets Crash Without News?}{Siyuan Ye}
+  \renewcommand{\footercopyright}{}
+  \setlength{\headheight}{14pt}
+\else
+  \usepackage[hidelinks]{hyperref}
+  \usepackage[margin=1in]{geometry}
+  \newtheorem{theorem}{Theorem}[section]
+  \newtheorem{lemma}[theorem]{Lemma}
+  \newtheorem{proposition}[theorem]{Proposition}
+  \newtheorem{corollary}[theorem]{Corollary}
+  \newtheorem{definition}[theorem]{Definition}
+  \newtheorem{assumption}[theorem]{Assumption}
+  \newtheorem{remark}[theorem]{Remark}
+  \newcommand{\headers}[2]{}
+  \newenvironment{keywords}{\noindent\textbf{Keywords.} }{\par}
+  \newenvironment{MSCcodes}{\noindent\textbf{MSC codes.} }{\par}
+\fi
+\title{When Can Markets Crash Without News?\\Activity-Driven Recovery and Systemic Reachability}
+\author{Siyuan Ye\thanks{Independent Researcher.}}
+\hypersetup{pdftitle={When Can Markets Crash Without News? Activity-Driven Recovery and Systemic Reachability},pdfauthor={Siyuan Ye}}
+\setlength{\emergencystretch}{2em}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\Cris}{\mathcal{C}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\pos}[1]{\left[#1\right]_+}
+\newcommand{\TV}{\operatorname{TV}}
