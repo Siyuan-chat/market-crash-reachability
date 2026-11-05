@@ -23,6 +23,12 @@ jobs:
           python-version: '3.11'
       - name: Independent exact-rational interval construction
         run: python research/v19-activity-recovery/verify_c1_independent_rational.py
+      - name: Upload exact interval evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: v19-independent-c1-certificate
+          path: research/v19-activity-recovery/independent_c1_certificate.json
+          if-no-files-found: error
       - name: Exact stage-Jacobian identities
         run: python research/v19-activity-recovery/gate2_jacobian_exact.py
       - name: Exact local-event coefficients
