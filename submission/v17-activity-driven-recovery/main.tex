@@ -98,11 +98,14 @@ All paths start at $S_i(0)=F$ and impose $X_i(T)=0$ for \emph{every} asset.
 The paired turnover and cumulative sales in shares are
 \begin{equation}\label{eq:resource}
  M=\sum_e\int_0^T\dd z_e=\frac12\sum_i A_i(T),\qquad
- H_i^-=\int_0^T\frac{(-\dd X_i)_+}{S_i};
+ H_i^-=\sum_{e:\,B_{ie}=-1}\int_0^T\frac{\dd z_e}{S_i};
 \end{equation}
 when control is absolutely continuous the gross share-execution rate is
-$r_i^{\rm gross}=\dot A_i/S_i$. Starting inventory $H_i\ge H_i^-$
-prevents short sales. Dollar closure does not require share-flatness.
+$r_i^{\rm gross}=\dot A_i/S_i$. In $\mathsf C_0$, $H_i^-$ counts
+\emph{actual gross share sales} even when simultaneous purchases cancel
+net executed dollars; the net negative variation of $X_i$ would undercount
+those sales. Starting inventory $H_i\ge H_i^-$ prevents short sales.
+Dollar closure does not require share-flatness.
 \end{definition}
 
 For power responses let
