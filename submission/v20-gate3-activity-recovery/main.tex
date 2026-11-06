@@ -143,10 +143,66 @@ The uniquely relevant normalized dynamics are
  |\dd u_i|\le\dd a_i,\quad\sum_i\dd u_i=0.
 \end{equation}
 In the power-law sections, dollars, shares, and prices are explicitly
-normalized by $F=\eta=1$ where indicated. The duration $T$ does not affect
-unconstrained activity paths: any absolutely continuous path can be
-reparameterized over any positive interval, but gross-rate limits do depend
-on physical time.
+normalized by $F=\eta=1$ where indicated. The absence of a calendar-time resilience term makes the following
+time-scale statement exact; it replaces, rather than inherits, the
+old physical-time model's critical-horizon theorem.
+
+\begin{proposition}[No intrinsic horizon threshold without gross-rate caps]
+\label{prop:time-change}
+Fix the response law, the trading graph, the model parameters,
+and a strictly positive admissible path on $[0,T]$, $T>0$,
+formed from absolutely continuous nonnegative paired edge-dollar
+rates and, optionally, finitely many ordered flow-completed edge
+events, with finite turnover and genuine share inventories.
+For every $T'>0$
+there is an admissible path on $[0,T']$ in the \emph{same} class
+$\mathsf C_0$ or $\mathsf C_1$ with precisely the same terminal
+prices, individual terminal dollar ledgers, paired turnover, and
+gross seller-share quantities. In particular, a terminal market
+loss reachable on some positive horizon is reachable on every
+positive horizon, so there is no nonzero \emph{calendar-time}
+critical horizon in the model without a gross-rate constraint.
+The conclusion does not imply that a loss state is reachable at
+all; structural price and budget barriers still apply.
+\end{proposition}
+\begin{proof}
+For an arbitrary $T'>0$ put $\lambda=T/T'$ and, for
+$t\in[0,T']$, define
+\[
+ \widetilde S_i(t)=S_i(\lambda t),\quad
+ \widetilde X_i(t)=X_i(\lambda t),\quad
+ \widetilde A_i(t)=A_i(\lambda t),\quad
+ \dot{\widetilde z}_e(t)
+       =\lambda\dot z_e(\lambda t)\ge0.
+\]
+The absolutely continuous chain rule and the fact that
+\eqref{eq:model} has no free $\dd t$ term show that these
+transformed paths satisfy the same activity-driven model.
+Their prices remain positive and every edge retains its
+original incidence signs and transaction ordering.
+The nodewise buyer/seller exclusivity required by
+$\mathsf C_1$ is invariant under this positive time change.
+For each of finitely many ordered flow-completed edge events,
+transport its calendar timestamp $\tau$ to $\tau/\lambda$
+while retaining its executed dollar amount and its relative
+ordering. The event ODE is parameterized by executed dollar amount,
+not elapsed time; hence its completed positive-price map and
+share increment are identical before and after time rescaling.
+Changing variables in the cumulative executed-dollar,
+turnover and genuine gross share-sale integrals proves
+\[
+ \widetilde X_i(T')=X_i(T),\qquad
+ \widetilde M=M,\qquad
+ \widetilde H_i^-=H_i^-,\qquad
+ \widetilde S_i(T')=S_i(T).
+\]
+Thus terminal dollar closure and systemic losses are unchanged.
+By contrast, the gross share rate transforms as
+$\widetilde r_i^{\rm gross}(t)
+ =\lambda r_i^{\rm gross}(\lambda t)$.
+Consequently the argument does not preserve a fixed cap
+$r_i^{\rm gross}\le v$ when $\lambda>1$.
+\end{proof}
 
 \begin{definition}[Terminal systemic crisis]\label{def:crisis}
 Write $L_i(T)=\log(F/S_i(T))$, $\bar L=N^{-1}\sum_iL_i$ and
