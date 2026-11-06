@@ -27,3 +27,6 @@ For **each fixed** `p in [0,1)`, the paper proves at research-manuscript standar
 4. Only after a written Gate 3 acceptance decision should the project move to Gate 4's paragraph/formula aligned Chinese version and two fully editable/annotatable Word deliverables.
 
 **No new release or DOI is authorized by this working draft.**
+## Genuine SIAM + original V16 BibTeX build (new CI guard)
+
+The original SIAM workflow builds the historic paper; it does not validate this V20 draft. Use `python research/v20-gate3/build_siam_v20.py` (with `pdflatex` and `bibtex` installed) to build this source against the pinned complete SIAM template and **the original 33-item V16 bibliography**. The new `v20-gate3-siam.yml` workflow executes that build, requires resolved references and no overfull boxes, and uploads the actual PDF, .bbl, .log and hash-bearing JSON report. This is a research build checkpoint, **not Gate 3 acceptance**. The temporary nine-entry reference list previously used for local display is not the scholarly bibliography.

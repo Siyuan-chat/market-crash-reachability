@@ -1,0 +1,47 @@
+name: V20 actual SIAM + original V16 BibTeX build
+on:
+  pull_request:
+    paths:
+      - 'submission/v20-gate3-activity-recovery/**'
+      - 'research/v20-gate3/build_siam_v20.py'
+      - 'research/v20-gate3/audit_bibliography.py'
+      - '.github/workflows/v20-gate3-siam.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'submission/v20-gate3-activity-recovery/**'
+      - 'research/v20-gate3/build_siam_v20.py'
+      - 'research/v20-gate3/audit_bibliography.py'
+      - '.github/workflows/v20-gate3-siam.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-v20-true-siam:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install authentic TeX and BibTeX build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-science texlive-bibtex-extra poppler-utils
+      - name: Verify the complete 33-entry V16 bibliography before build
+        run: python research/v20-gate3/audit_bibliography.py --strict-original
+      - name: Build V20 with SIAM class and original V16 BibTeX
+        run: python research/v20-gate3/build_siam_v20.py
+      - name: Upload actual PDF, bibliography, logs and provenance
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v20-real-siam-full-bibliography
+          path: |
+            build/v20-gate3-siam/main.pdf
+            build/v20-gate3-siam/main.bbl
+            build/v20-gate3-siam/main.log
+            build/v20-gate3-siam/build_report.json
+            build/v20-gate3-siam/*.txt
+          if-no-files-found: warn
