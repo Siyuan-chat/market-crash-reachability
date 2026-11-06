@@ -24,7 +24,7 @@ response functions, while scalar activity floors and execution-resource
 inequalities restrict severe losses. Heterogeneous quadratic responses
 can also produce a two-node systemic loss through a closed, sequential
 dollar round trip, despite the homogeneous quadratic obstruction.
-For homogeneous two-node power laws with $1<p<3/2$,
+For homogeneous two-node power laws with $1<p\le3/2$,
 a finite-size reversal produces systemic loss even though
 every sufficiently small dollar-closed path is obstructed.
 One explicit $\mathsf C_1$ witness uses $p=5/4$, $K=1$
@@ -498,14 +498,78 @@ is therefore exact and independent of ODE numerical
 integration.
 \end{proof}
 
+\begin{proposition}[The critical two-node exponent $p=3/2$ is also reachable]
+\label{prop:two-critical-p}
+For $N=2$, $F=\eta=1$, any $K>0$ and $p=3/2$,
+there is a finite-dollar, terminally dollar-closed
+two-edge reversal in $\mathsf C_1$ with strictly positive
+$\Cris_{1/2}(T)$, finite actual seller-side inventory,
+and a finite gross share-execution rate.
+\end{proposition}
+\begin{proof}
+Use the scalar buyer/seller flows $x'=f_\pm(x)$ from
+Theorem~\ref{thm:two-large-turnover}, now with $r=p-1=1/2$.
+Their stable positive equilibria satisfy $x_-x_+=1$,
+because $f_-(1/x_+)=0$.
+The positive magnitudes of the linearized relaxation
+rates are
+\[
+ \gamma_-=-f_-'(x_-)
+   =\frac K2\left(1+\frac1{x_-}\right),\qquad
+ \gamma_+=-f_+'(x_+)
+   =\frac K2\left(1+\frac1{x_+}\right).
+\]
+Since $x_-<1<x_+$, one has $\gamma_->\gamma_+>0$.
+
+Write $\phi_\pm(a;y)$ for the scalar flow of
+$x'=f_\pm(x)$ after executed-dollar activity $a$,
+started from $x(0)=y$. After the first of two
+opposite transfers of equal dollar amount $z$,
+the first asset is in $[1,x_+]$ and the second
+in $[x_-,1]$. Scalar order preservation gives
+\[
+ \begin{aligned}
+ 0<\Delta_-(z):=x_1(2z)-x_-
+   &\le\phi_-(z;x_+)-x_-=:A(z),\\
+ 0<\Delta_+(z):=x_+-x_2(2z)
+   &\ge x_+-\phi_+(z;1)=:B(z)>0.
+ \end{aligned}
+\]
+For a scalar $C^1$ flow approaching a hyperbolic
+stable equilibrium $x_*$ with $f'(x_*)=-\gamma$,
+the logarithmic derivative of the positive distance
+to equilibrium tends to $-\gamma$. Integrating
+this logarithmic derivative and averaging over
+the elapsed activity interval proves
+\[
+ \lim_{a\to\infty}
+    \frac{1}{a}\log|x(a)-x_*|=-\gamma.
+\]
+Applying this result to $A(z)$ and $B(z)$
+shows that $A(z)/B(z)\to0$, because
+$\gamma_->\gamma_+$. Hence
+$\Delta_-(z)/\Delta_+(z)\to0$, and for all
+sufficiently large finite $z$,
+\[
+ x_1(2z)x_2(2z)-1
+ =x_+\Delta_-(z)-x_-\Delta_+(z)
+                     -\Delta_-(z)\Delta_+(z)<0.
+\]
+Thus $\Cris_{1/2}=-\tfrac12\log(x_1x_2)>0$.
+The dollar ledgers close exactly, each asset's
+true seller shares do not exceed $z/x_-$,
+and unit dollar execution rate gives a finite
+gross share rate at most $1/x_-$.
+\end{proof}
+
 \paragraph{The remaining two-node global boundary.}
-For $1<p<3/2$, the combination of
-Theorems~\ref{thm:two-local} and
-\ref{thm:two-large-turnover} establishes a genuine
+For $1<p\le3/2$, the combination of
+Theorems~\ref{thm:two-local}, \ref{thm:two-large-turnover}
+and Proposition~\ref{prop:two-critical-p} establishes a genuine
 turnover-dependent reachability transition: sufficiently
 small dollar-closed round trips are obstructed, yet an
 appropriate finite larger round trip succeeds. The
-global reachability question for $3/2\le p<2$
+global reachability question for $3/2<p<2$
 is \emph{not} classified by this theorem, and neither
 the minimum successful turnover nor the full
 $p,K,N$ and graph-topology phase diagram is claimed.
@@ -1441,11 +1505,11 @@ two-node quadratic-response obstruction is parameter-sensitive:
 heterogeneous activity-recovery coefficients permit a
 closed-dollar local systemic loss. Theorem~\ref{thm:two-large-turnover}
 adds a complementary homogeneous result: throughout
-$1<p<3/2$, a finite turnover path achieves a two-node
+$1<p\le3/2$, a finite turnover path achieves a two-node
 systemic loss despite the rigorous small-turnover barrier.
 The explicit $p=5/4$ witness obeys the stricter
 $\mathsf C_1$ constraint and a finite gross share-rate cap.
-Neither result classifies the remaining $3/2\le p<2$
+Neither result classifies the remaining $3/2<p<2$
 region or introduces strategic trading incentives.
 
 For $p<1$ the scalar floor boundary $K_c(p)$ rules out
