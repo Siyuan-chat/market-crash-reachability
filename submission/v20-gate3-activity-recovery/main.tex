@@ -42,6 +42,13 @@ Crashes may accompany public news, forced selling, liquidity withdrawal or
 information revealed by trades. Their respective theoretical mechanisms are
 studied, among others, by \citet{GennotteLeland1990,Romer1993},
 \citet{HuangWang2009,CespaFoucault2014}, and \citet{ContWagalath2013}.
+The predatory-trading mechanism studied by
+\citet{BrunnermeierPedersen2005} introduces strategic reactions
+that are intentionally absent from our model. These explanations
+are distinct from a deterministic existence proof: they posit
+endogenous information or incentives that may induce particular
+trades, whereas we test which price endpoints are mechanically
+compatible with the execution and settlement constraints.
 An independent mathematical question is whether a price decline is compatible
 with a fully paired stream of trades whose \emph{cumulative dollar balance
 in each asset} is zero. This is a reachability question, not an explanation
@@ -57,6 +64,11 @@ in which each node can only buy or only sell at a given instant. Our model
 is an explicitly parameterized price-response law, not a strategic equilibrium
 or a no-manipulation result of the type considered by
 \citet{Gatheral2010,HubermanStanzl2004}.
+Large-trader and liquidity-adjusted pricing frameworks
+\citep{BankBaum2004,CetinJarrowProtter2004} offer a related
+motivation for state-dependent execution responses, without
+identifying their equilibria or supply curves with the
+activity-driven law defined here.
 
 We provide a self-contained analytic reachability chain and one narrow
 computer-assisted construction. The universal results are local triangular
@@ -94,7 +106,11 @@ with $\dd\theta_i=\dd X_i/S_i$ for share positions. Finite sequences of such
 flows and absolutely continuous rates are admissible while all intermediate
 prices are positive. This flow-completed convention preserves the usual
 chain rule; an old rule in which recovery freezes during a trade is \emph{not}
-used here. If $\dd z=0$, prices do not move.
+used here. Graph-completed impulsive-control systems provide a related
+mathematical framework \citep{BressanRampazzo1988}, but the present
+ordered-edge prescription is an explicit modeling assumption, not
+a general assertion of path-order independence. If $\dd z=0$,
+prices do not move.
 
 \begin{definition}[Controls and execution resources]\label{def:controls}
 In $\mathsf C_0$ every nonnegative edge flow is allowed, including simultaneous
@@ -453,6 +469,12 @@ Writing $h(S)=g(S)/S$, the pairing condition
 $\sum_i\dot X_i=0$ cancels the first-order aggregate price
 response at the common benchmark. This cancellation is local and
 does not imply a conserved scalar over the full path.
+Whereas optimal-execution studies such as
+\citet{AlmgrenChriss2001,Yang2019} investigate how to choose
+trading rates under cost and speed constraints, our gross
+share-rate restriction is a \emph{reachability} constraint:
+it rules out certain terminal losses without identifying an
+investor's optimal trading policy.
 
 \begin{theorem}[Conditional quadratic small-rate barrier]\label{thm:ratequadratic}
 Let $I=[F-d,F+d]\subset(0,\infty)$ be a compact interval on
@@ -536,6 +558,13 @@ $s_{i,d-1}$ is the previous close, the entire session must satisfy
 $(1-\ell)s_{i,d-1}\le S_i(t)\le(1+\ell)s_{i,d-1}$.
 The next session's band is reset to the new close; the fundamental
 benchmark $F$ is \emph{not} reset.
+This repeatedly resetting percentage band is a stylized
+mathematical constraint, not a claim about the detailed
+tick-based daily limits of any specific exchange. Real
+market schedules, including the domestic-equity rules
+documented by Japan Exchange Group \citep{JPX2026},
+may be price-level dependent; the $\pm25\%$ scenarios
+below are therefore hypothetical stress constraints.
 
 \begin{proposition}[Exact cross-sectional compensation criterion]
 \label{prop:breadthprod}
