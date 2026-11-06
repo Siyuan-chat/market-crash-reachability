@@ -23,7 +23,12 @@ protocol establishes local all-asset declines for arbitrary smooth positive
 response functions, while scalar activity floors and execution-resource
 inequalities restrict severe losses. Heterogeneous quadratic responses
 can also produce a two-node systemic loss through a closed, sequential
-dollar round trip, despite the homogeneous quadratic obstruction. In the constant-impact model, a continuous-direction argument gives
+dollar round trip, despite the homogeneous quadratic obstruction.
+For homogeneous two-node power laws with $1<p<3/2$,
+a finite-size reversal produces systemic loss even though
+every sufficiently small dollar-closed path is obstructed.
+One explicit $\mathsf C_1$ witness uses $p=5/4$, $K=1$
+and only eight units of paired turnover. In the constant-impact model, a continuous-direction argument gives
 an analytic existence construction for all ten prices to end at half
 their benchmarks. For every fixed power-law exponent $0\le p<1$,
 nine prices can become arbitrarily small under one common finite
@@ -393,10 +398,117 @@ when $A$ is below a strictly positive threshold depending only
 on $p,K$. Finally $p\ge2$ follows from Proposition~\ref{prop:two-node-barriers}.
 \end{proof}
 
-\paragraph{Open finite-turnover question.}
-For $1<p<2$ the preceding local exclusion neither constructs nor
-rules out a large-turnover systemic loss in the two-node market. A
-full global boundary in $p,K,N$ and graph topology remains open.
+\begin{theorem}[Finite-budget two-node crises beyond the small-turnover barrier]
+\label{thm:two-large-turnover}
+Fix $N=2$, $F=\eta=1$, $K>0$ and $1<p<3/2$. There is
+a strictly positive, terminally dollar-closed, sequential
+$\mathsf C_1$ path of finite paired turnover, finite true
+seller-side share inventory, and finite gross share-execution
+rate for which $\Cris_{1/2}(T)>0$.
+In particular, for $p=5/4$ and $K=1$ two reversed
+four-dollar transfers at unit dollar rate on $[0,4]$
+and $[4,8]$ give a fully explicit witness satisfying
+\begin{equation}\label{eq:two-explicit-witness}
+\begin{gathered}
+ T=8,\quad M=8,\quad X_1(T)=X_2(T)=0,\\
+ H_i^-<16,\quad \sup_{i,t}r_i^{\rm gross}(t)<4,\\
+ S_1(T)S_2(T)<\frac{7555}{7716}<1,\qquad
+ \Cris_{1/2}(T)>\frac12\log\frac{7716}{7555}>0.
+\end{gathered}
+\end{equation}
+The lower bounds on initial shares and the upper rate bound
+are genuine seller-side quantities, not net dollar variation.
+\end{theorem}
+\begin{proof}
+Write $r=p-1\in(0,1/2)$ and use each node's
+incident dollar amount as its activity clock. On an edge,
+the buyer and seller prices respectively solve
+\[
+ \frac{\dd x}{\dd a}=f_+(x):=x^r-K(x-1),
+ \qquad
+ \frac{\dd x}{\dd a}=f_-(x):=-x^r-K(x-1).
+\]
+There is a unique attracting seller equilibrium
+$x_-\in(0,1)$, since $f_-(0+)=K$, $f_-(1)=-1$,
+and $f_-'(x)=-r x^{r-1}-K<0$.
+There is also a unique attracting buyer equilibrium
+$x_+>1$: the ratio $x^r/(x-1)$ is strictly
+decreasing from $+\infty$ to zero on $(1,\infty)$.
+The defining identity $K(x_+-1)=x_+^r$ yields
+\[
+ f_-(1/x_+)
+ =x_+^{r-1}-x_+^{-r}<0
+ \qquad (r<1/2).
+\]
+As $f_-$ is strictly decreasing, $x_-<1/x_+$,
+so $x_-x_+<1$.
+
+Transfer $z$ dollars from asset 2 to asset 1, followed
+by $z$ from asset 1 to asset 2, in two nonoverlapping
+active periods of dollar rate one. The exact individual
+dollar ledgers close after the second period, and the
+path belongs to $\mathsf C_1$. Starting at $x_i=1$,
+the first-period prices remain between $x_-$ and $x_+$.
+The reversed second-period seller flow converges
+uniformly toward $x_-$ for initial states in
+$[1,x_+]$, while the buyer flow converges uniformly
+toward $x_+$ for initial states in $[x_-,1]$.
+This follows by scalar comparison with the respective
+flows starting at the extreme endpoints of those compact
+intervals. Therefore, as $z\to\infty$,
+\[
+ (x_1(2z),x_2(2z))\longrightarrow(x_-,x_+),
+ \qquad x_1(2z)x_2(2z)\longrightarrow x_-x_+<1.
+\]
+Some finite $z$ consequently has negative mean terminal
+log return. For $N=2$ and $\alpha=1/2$, the maximum of
+the two losses is at least their mean, so
+$\Cris_{1/2}=\bar L=-\frac12\log(x_1x_2)>0$.
+Throughout the construction $x_i\ge x_->0$; hence
+$M=2z$, $H_i^-\le z/x_-$ and
+$r_i^{\rm gross}\le1/x_-$ are all finite.
+
+For the promised explicit witness take $p=5/4$, $K=1$
+and $z=4$. The strict rational fourth-power comparisons
+\[
+ (3/4)^4>1/4,\quad (2/3)^4<1/3,\quad
+ (3/2)^4>5/2
+\]
+imply $1/4<x_-<1/3$ and $1<x_+<5/2$.
+The seller flow satisfies $f_-'(x)<-1$, so
+during the second four-dollar period,
+\[
+ x_1(8)-x_-\le
+ e^{-4}(x_1(4)-x_-)<\tfrac52 e^{-4}.
+\]
+The second-period buyer price remains below $x_+<5/2$.
+Since the positive exponential series gives
+$e^4>\sum_{k=0}^{5}4^k/k!=643/15$, it follows that
+\[
+ x_1(8)x_2(8)
+ <\frac52\left(\frac13+\frac52\frac{15}{643}\right)
+ =\frac{7555}{7716}<1.
+\]
+Both prices always exceed $x_->1/4$. Each asset
+sells exactly four dollars once, so its actual sale of
+shares is less than $4/(1/4)=16$; the unit incident
+dollar rate gives $r_i^{\rm gross}<4$.
+Every asserted inequality in \eqref{eq:two-explicit-witness}
+is therefore exact and independent of ODE numerical
+integration.
+\end{proof}
+
+\paragraph{The remaining two-node global boundary.}
+For $1<p<3/2$, the combination of
+Theorems~\ref{thm:two-local} and
+\ref{thm:two-large-turnover} establishes a genuine
+turnover-dependent reachability transition: sufficiently
+small dollar-closed round trips are obstructed, yet an
+appropriate finite larger round trip succeeds. The
+global reachability question for $3/2\le p<2$
+is \emph{not} classified by this theorem, and neither
+the minimum successful turnover nor the full
+$p,K,N$ and graph-topology phase diagram is claimed.
 
 \section{Floors, aggregate barriers and execution resources}\label{sec:resources}
 \begin{theorem}[Scalar activity-driven price floors]\label{thm:floor}
@@ -1327,8 +1439,14 @@ round trips altogether is a different admissibility restriction.
 Proposition~\ref{prop:hetero-two} shows that even the
 two-node quadratic-response obstruction is parameter-sensitive:
 heterogeneous activity-recovery coefficients permit a
-closed-dollar local systemic loss. This counterexample does not
-classify the larger market or its strategic incentives.
+closed-dollar local systemic loss. Theorem~\ref{thm:two-large-turnover}
+adds a complementary homogeneous result: throughout
+$1<p<3/2$, a finite turnover path achieves a two-node
+systemic loss despite the rigorous small-turnover barrier.
+The explicit $p=5/4$ witness obeys the stricter
+$\mathsf C_1$ constraint and a finite gross share-rate cap.
+Neither result classifies the remaining $3/2\le p<2$
+region or introduces strategic trading incentives.
 
 For $p<1$ the scalar floor boundary $K_c(p)$ rules out
 unbounded severity at sufficiently large $K$, while
