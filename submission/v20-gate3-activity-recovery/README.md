@@ -30,3 +30,9 @@ For **each fixed** `p in [0,1)`, the paper proves at research-manuscript standar
 ## Genuine SIAM + original V16 BibTeX build (new CI guard)
 
 The original SIAM workflow builds the historic paper; it does not validate this V20 draft. Use `python research/v20-gate3/build_siam_v20.py` (with `pdflatex` and `bibtex` installed) to build this source against the pinned complete SIAM template and **the original 33-item V16 bibliography**. The new `v20-gate3-siam.yml` workflow executes that build, requires resolved references and no overfull boxes, and uploads the actual PDF, .bbl, .log and hash-bearing JSON report. This is a research build checkpoint, **not Gate 3 acceptance**. The temporary nine-entry reference list previously used for local display is not the scholarly bibliography.
+
+## Scientific literature identity and citation coverage (2026-11-06)
+
+After a source-by-source comparison against the preserved V16 manuscript, the current V20 English text now cites **16 distinct keys**, preserving all **15** keys explicitly cited in V16. The original 33-entry BibTeX master is preserved byte-for-byte and validated by its exact SHA-256, not just reference count. The full crosswalk is `../../research/v20-gate3/V20_REFERENCE_CROSSWALK_2026-11-06.md`. Bibliography records not cited remain in the source master; publication output should not artificially list unused sources.
+
+This revision also separates financial-market mechanisms (strategic order flow, supply curves and optimal execution) from this paper's deterministic activity-driven reachability, and explicitly distinguishes the hypothetical repeated 25% research band from real exchange price-limit rules.
