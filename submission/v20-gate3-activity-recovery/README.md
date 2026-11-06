@@ -43,8 +43,12 @@ V20 now proves the explicit activity-only time-change theorem `prop:time-change`
 
 ## Two-asset finite-budget reachability (Gate 3 revision, 2026-11-06)
 
-Theorem `thm:two-large-turnover` establishes a **new positive reachability region** in the homogeneous two-node power-law model: for every fixed `K>0` and `1<p<3/2`, a finite-turnover, actual-share-inventory-feasible, sequential `C1` reversal causes strictly positive terminal `C_(1/2)`. This coexists with the previously proved small-turnover exclusion for all `1<p<2`; it does not assert a sharp budget threshold.
+Theorem `thm:two-large-turnover` establishes a **new positive reachability region** in the homogeneous two-node power-law model: for every fixed `K>0` and `1<p<=3/2`, a finite-turnover, actual-share-inventory-feasible, sequential `C1` reversal causes strictly positive terminal `C_(1/2)`. This coexists with the previously proved small-turnover exclusion for all `1<p<2`; it does not assert a sharp budget threshold.
 
 The special case `p=5/4,K=1` has a completely explicit analytic witness `z=4` per opposing event, `T=8`, `M=8`, each gross seller inventory `<16` and gross share rate `<4`, with terminal price product strictly `<7555/7716`. The proof uses scalar equilibrium comparison and rational fourth-power/exponential inequalities, not numerical integration. Independently rerunnable rational checks are in `../../research/v20-gate3/audit_two_asset_finite_witness.py`; the Chinese proof audit is `../../research/v20-gate3/GATE3_P02_FINITE_BUDGET_CRISIS_AUDIT_ZH_2026-11-06.md`.
 
-Global `3/2<=p<2` classification, minimal successful turnover, and the full `p,K,N,graph` phase diagram remain open. All 43 items stay in the traceability register; Gate 3 is still **NOT CLEARED**.
+Global `3/2<p<2` classification, minimal successful turnover, and the full `p,K,N,graph` phase diagram remain open. All 43 items stay in the traceability register; Gate 3 is still **NOT CLEARED**.
+
+### Critical exponent p=3/2
+
+Proposition `prop:two-critical-p` completes the boundary p=3/2 for every K>0. Here the stationary prices satisfy x_-x_+=1, so endpoint limits by themselves are inconclusive; the proof uses the **strictly larger seller than buyer linearized relaxation exponent** and a two-sided scalar-flow comparison to establish a finite C1 reversal with positive systemic mean log loss. See `../../research/v20-gate3/GATE3_P02_CRITICAL_P_AUDIT_ZH_2026-11-06.md`. The unclassified interval is now strictly 3/2<p<2; small-turnover exclusion still holds across all 1<p<2.
