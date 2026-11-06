@@ -47,6 +47,11 @@ def main() -> None:
         raise SystemExit("SIAM complete template ZIP missing or digest mismatch")
     if not V16_BIB.is_file():
         raise SystemExit("GitHub V16 33-entry bibliography missing")
+    # Exact source-identity check: the full 33-entry master must be the
+    # frozen V16 bibliography, not merely any file with 33 keys.
+    expected_bib_sha256 = "555df0a2e0bb6a3749cf64a144626b8f3d086c3a5d95e97ce5d31551701de0f2"
+    if sha(V16_BIB) != expected_bib_sha256:
+        raise SystemExit("V16 reference master changed; review source identity")
     bib = V16_BIB.read_text(encoding="utf-8")
     keys = set(re.findall(r"(?m)^@\w+\{([^,\s]+),", bib))
     if len(keys) != 33:
