@@ -23,6 +23,10 @@ REVISION = ROOT / "release/SHA256SUMS_V14_R1"
 # Independently pinned CURRENT editorial updates. Do not rewrite V14-R1's
 # historic overlay: it records the V14 baseline and remains immutable.
 CURRENT_EDITORIAL = ROOT / "release/SHA256SUMS_V20_EDITORIAL_R1"
+# The original Lean CI workflow was pinned in the V12 release manifest.
+# A separate one-file manifest records this *runner-only* installation repair.
+LEAN_CI_WORKFLOW = ROOT / "release/SHA256SUMS_V20_LEAN_WORKFLOW_R1"
+LEAN_CI_WORKFLOW_FILES = {".github/workflows/lean.yml"}
 CURRENT_EDITORIAL_FILES = {
     "README.md",
     "docs/VERSIONS.md",
@@ -140,9 +144,16 @@ def main() -> None:
     if not CURRENT_EDITORIAL_FILES <= REVISION_FILES:
         raise AssertionError("Current editorial manifest has unreviewed paths")
     lean_import_prune = read_lean_import_prune()
+    # Do not alter the frozen release manifest to modernize CI. The new layer
+    # may override exactly the historical workflow YAML, never a Lean proof.
+    if not LEAN_CI_WORKFLOW.is_file():
+        raise AssertionError("Pinned Lean CI workflow manifest is required")
+    lean_ci = read_manifest(LEAN_CI_WORKFLOW)
+    if set(lean_ci) != LEAN_CI_WORKFLOW_FILES:
+        raise AssertionError("Lean CI overlay may pin only the lean.yml workflow")
 
     mistakes = []
-    for name, expected in {**frozen, **overlay, **lean_import_prune, **editorial}.items():
+    for name, expected in {**frozen, **overlay, **lean_import_prune, **editorial, **lean_ci}.items():
         found = sha256((ROOT / name).read_bytes()).hexdigest()
         if found != expected:
             mistakes.append((name, expected, found))
@@ -155,6 +166,7 @@ def main() -> None:
           f"{len(overlay)} separately pinned working-revision files "
           f"({len(frozen.keys() | overlay.keys())} distinct tracked files)")
     print(f"Current V20 editorial overlay: {len(editorial)} whitelisted paths")
+    print(f"Pinned Lean CI workflow: {len(lean_ci)} YAML file; Lean source unmodified")
     print("Original release/SHA256SUMS unchanged; no certificate hashes overridden")
     print(f"Lean entrypoint import-only overlay: {len(lean_import_prune)} pinned file(s)")
 
