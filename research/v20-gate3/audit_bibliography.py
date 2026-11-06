@@ -6,6 +6,7 @@ labelled nine-entry stand-in. --strict-original ensures the CI source
 really contains at least the original 33 bibliography keys.
 """
 import argparse
+import hashlib
 import re
 from pathlib import Path
 arg=argparse.ArgumentParser()
@@ -23,7 +24,9 @@ for match in re.finditer(r'\\(?:cite|citep|citet|citealp|citealt)(?:\[[^]]*\])*\
 missing=cites-set(entries)
 assert not missing,f'Unmatched citation keys: {missing}'
 if opts.strict_original:
-    assert len(entries)>=33,('the original 33-reference corpus is not present',len(entries))
+    assert len(entries) == 33, ('expected exactly original 33 references', len(entries))
+    expected_sha256 = '555df0a2e0bb6a3749cf64a144626b8f3d086c3a5d95e97ce5d31551701de0f2'
+    assert hashlib.sha256((root/'submission/v16-three-certified-constructions/references.bib').read_bytes()).hexdigest() == expected_sha256, 'V16 reference corpus digest differs from frozen source'
 else:
     if len(entries)<33:
         print('LOCAL PREVIEW ONLY: original 33-entry BibTeX unavailable; using 9-entry temporary stand-in')
