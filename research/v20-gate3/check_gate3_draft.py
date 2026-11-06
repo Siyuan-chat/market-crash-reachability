@@ -17,7 +17,13 @@ assert raw_ledger.startswith('ID,'), (
     'Gate 3 CSV must begin with the canonical ID header; '
     'remove spreadsheet-renderer metadata and synthetic index columns'
 )
-rows = list(csv.DictReader(REG.open(encoding='utf-8-sig', newline='')))
+with REG.open(encoding='utf-8-sig', newline='') as handle:
+    reader = csv.DictReader(handle)
+    assert len(reader.fieldnames or []) == 16, 'Expected exact 16-column matrix schema'
+    assert reader.fieldnames[0] == 'ID'
+    rows = list(reader)
+assert all(None not in row and all(value is not None for value in row.values())
+           for row in rows), 'Unquoted delimiter or incomplete CSV row detected'
 expected = {
     *(f'M{i:02d}' for i in range(1, 4)),
     *(f'T{i:02d}' for i in range(1, 10)),
