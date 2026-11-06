@@ -6,7 +6,7 @@
 
 - `main.tex` and `shared.tex`: English manuscript; 28-page article-class preview as of round 3, 17 first-level sections (including appendices), 11 theorems, 11 propositions, 5 lemmas and 1 corollary, 6 source research PDF figures. Article preview page length is **not** a coverage/acceptance criterion.
 - `figures/`: 6 activity-driven scientific figures. Historical I/II **floating-point reconstructions are NUMERIC_ONLY**, not plots of the analytically certified alternative high-resource witnesses. Construction III has two internally independent interval algorithms; this is not third-party formal verification.
-- `../../research/v20-gate3/GATE3_43_ITEM_CONTENT_REGISTER.csv`: full 43 original IDs; current authoring classification **35 drafted / 2 partial / 6 partial-open / 0 undrafted**. Classification describes prose coverage and proof-draft status, **not 35 externally certified statements**.
+- `../../research/v20-gate3/GATE3_43_ITEM_CONTENT_REGISTER.csv`: full 43 original IDs; current authoring classification **36 drafted / 2 partial / 5 partial-open / 0 undrafted**. Classification describes prose coverage and proof-draft status, **not 35 externally certified statements**.
 - `../../research/v20-gate3/GATE3_ROUND2_MATH_REVIEW_ZH.md`: historic round-two math review; `GATE3_GENERAL_P_FIXED_RESOURCE_PROOF_AUDIT_ZH.md`: subsequent round-three fixed-`p` uniform-resource proof audit. The latter supersedes the former where the prior report called general-p closure OPEN.
 
 ## New general-p theorem (round 3)
@@ -36,3 +36,7 @@ The original SIAM workflow builds the historic paper; it does not validate this 
 After a source-by-source comparison against the preserved V16 manuscript, the current V20 English text now cites **16 distinct keys**, preserving all **15** keys explicitly cited in V16. The original 33-entry BibTeX master is preserved byte-for-byte and validated by its exact SHA-256, not just reference count. The full crosswalk is `../../research/v20-gate3/V20_REFERENCE_CROSSWALK_2026-11-06.md`. Bibliography records not cited remain in the source master; publication output should not artificially list unused sources.
 
 This revision also separates financial-market mechanisms (strategic order flow, supply curves and optimal execution) from this paper's deterministic activity-driven reachability, and explicitly distinguishes the hypothetical repeated 25% research band from real exchange price-limit rules.
+
+## T05 clarified: horizon vs severity (2026-11-06)
+
+V20 now proves the explicit activity-only time-change theorem `prop:time-change`: without a gross execution-rate cap or fixed session clock, a given legal terminal state reachable at any positive horizon is reachable at **all** positive horizons, with unchanged individual dollar closure, gross sales, and turnover. This resolves the historical T05 *calendar-time threshold transfer* as inapplicable to the new model rather than inheriting its V16 constant. The independent proof audit is `../../research/v20-gate3/GATE3_TIME_CHANGE_AUDIT_2026-11-06.md`. The sharp all-asset **loss amplitude** problem A04 and all fixed-rate/session duration questions remain open.
