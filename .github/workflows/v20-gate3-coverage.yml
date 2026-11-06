@@ -25,5 +25,7 @@ jobs:
         run: python research/v20-gate3/check_gate3_draft.py
       - name: Exact rational regression for new scoped lemmas
         run: python research/v20-gate3/audit_new_math.py
+      - name: Audit exact rational finite-budget two-node witness
+        run: python research/v20-gate3/audit_two_asset_finite_witness.py
       - name: Validate full V16 bibliography corpus and V20 citation keys
         run: python research/v20-gate3/audit_bibliography.py --strict-original
