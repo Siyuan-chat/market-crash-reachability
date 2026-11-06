@@ -23,7 +23,12 @@ protocol establishes local all-asset declines for arbitrary smooth positive
 response functions, while scalar activity floors and execution-resource
 inequalities restrict severe losses. Heterogeneous quadratic responses
 can also produce a two-node systemic loss through a closed, sequential
-dollar round trip, despite the homogeneous quadratic obstruction. In the constant-impact model, a continuous-direction argument gives
+dollar round trip, despite the homogeneous quadratic obstruction.
+For homogeneous two-node power laws with $1<p<3/2$,
+a finite-size reversal produces systemic loss even though
+every sufficiently small dollar-closed path is obstructed.
+One explicit $\mathsf C_1$ witness uses $p=5/4$, $K=1$
+and only eight units of paired turnover. In the constant-impact model, a continuous-direction argument gives
 an analytic existence construction for all ten prices to end at half
 their benchmarks. For every fixed power-law exponent $0\le p<1$,
 nine prices can become arbitrarily small under one common finite
@@ -1434,8 +1439,14 @@ round trips altogether is a different admissibility restriction.
 Proposition~\ref{prop:hetero-two} shows that even the
 two-node quadratic-response obstruction is parameter-sensitive:
 heterogeneous activity-recovery coefficients permit a
-closed-dollar local systemic loss. This counterexample does not
-classify the larger market or its strategic incentives.
+closed-dollar local systemic loss. Theorem~\ref{thm:two-large-turnover}
+adds a complementary homogeneous result: throughout
+$1<p<3/2$, a finite turnover path achieves a two-node
+systemic loss despite the rigorous small-turnover barrier.
+The explicit $p=5/4$ witness obeys the stricter
+$\mathsf C_1$ constraint and a finite gross share-rate cap.
+Neither result classifies the remaining $3/2\le p<2$
+region or introduces strategic trading incentives.
 
 For $p<1$ the scalar floor boundary $K_c(p)$ rules out
 unbounded severity at sufficiently large $K$, while
