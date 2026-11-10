@@ -924,11 +924,73 @@ decrease their prices from $(1-\ell)F$ to
 $(1-\ell)^2F$, strictly decreasing $H$, a contradiction.
 \end{proof}
 
+\begin{proposition}[A strict lower bound for repeated-limit gross share rates]
+\label{prop:two-day-rate-lower}
+Fix the normalized $p=0$, $K=2$ activity-driven
+price law and the two sessions $[0,20]$ and $[20,40]$.
+If an asset closes successively at $x(20)=3/4$ and
+$x(40)=9/16$, while its gross share-execution rate
+satisfies $\dot A(t)/x(t)\le v$ almost everywhere,
+then necessarily
+\begin{equation}\label{eq:two-day-rate-lower}
+ v\ge
+ v_{\rm necessary}:=
+ \frac{\arctan(1/2)-\arctan(1/8)}{20}
+ >0.0169.
+\end{equation}
+Consequently the infimum $v^*_5$ over all valid
+ten-asset $\mathsf C_1$ executions with five such
+targets, exact terminal dollar closure and the
+same rolling bands, has the certified bracket
+\begin{equation}\label{eq:five-rate-bracket}
+ \frac{\arctan(1/2)-\arctan(1/8)}{20}
+ \le v^*_5<0.133.
+\end{equation}
+The upper bound uses Construction III and presumes
+its stated finite turnover and inventory resources
+are allowed. This is a nonsharp necessary-speed
+certificate, not an assertion that either bound is
+attained as the exact optimum.
+\end{proposition}
+\begin{proof}
+In the normalized constant-impact model the
+absolutely continuous activity dynamics satisfy
+\[
+ \dot x=\frac{\dot u}{x}-2(x-1)\dot a,\qquad
+ |\dot u|\le\dot a,\qquad \dot a/x\le v.
+\]
+Because $1+2x(x-1)=2(x-1/2)^2+1/2>0$
+for every $x>0$, scalar comparison gives
+\[
+ \dot x\ge-\frac{\dot a}{x}
+                  [1+2x(x-1)]
+         \ge-v[1+2x(x-1)].
+\]
+With $\varphi(x)=\arctan(2x-1)$ one has
+$\varphi'(x)=1/[1+2x(x-1)]$; therefore
+$\frac{\dd}{\dd t}\varphi(x(t))\ge-v$.
+Integrate over the second session:
+\[
+ \varphi(9/16)-\varphi(3/4)\ge-20v.
+\]
+Since $\varphi(3/4)=\arctan(1/2)$
+and $\varphi(9/16)=\arctan(1/8)$, this
+proves the first bound. Each of five named
+targets satisfies the same inequality.
+Construction III supplies one admissible
+five-target $\mathsf C_1$ path with strict
+maximum gross share rate below $0.133$,
+hence the stated upper bound on the infimum.
+\end{proof}
+
 The upper bound $N-1$ is \emph{not} shown to be attainable.
 In particular, no ``at most seven repeated limits'' conclusion
 transfers from the physical-time manuscript. The exact optimum
-between five and nine for ten assets, and the minimum gross rate
-under rolling bands, remain open. Propositions~\ref{prop:cutcap}
+between five and nine for ten assets remains open.
+Proposition~\ref{prop:two-day-rate-lower} bounds the
+five-target minimum gross share rate strictly between
+an explicit positive necessary bound and $0.133$;
+its sharp value remains open. Propositions~\ref{prop:cutcap}
 and \ref{prop:pure-sale} are necessary tests only.
 
 \section{Three ten-asset constructions}\label{sec:examples}
