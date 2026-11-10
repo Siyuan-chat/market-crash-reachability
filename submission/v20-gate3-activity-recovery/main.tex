@@ -1677,11 +1677,10 @@ For $N=10$, $p=0$, $F=\eta=1$ and fixed
 $K_0=4\cdot10^{-18}$, define
 \[
  \delta_{\mathrm{all}}^*(K_0):=
- \sup\left\{\min_{1\le i\le10}\log(1/x_i(T)):
-  \begin{array}{l}
-   \text{strictly positive terminally closed}\\
-   \mathsf C_0\text{ execution with finite resources}
-  \end{array}\right\}.
+ \sup_{\substack{\mathsf C_0\text{ admissible},\
+                   X_i(T)=0\ \forall i\\
+                   M<\infty,\ H_i^-<\infty\ \forall i}}
+ \min_{1\le i\le10}\log(1/x_i(T)).
 \]
 Construction I and the aggregate invariant
 \eqref{eq:aggregate} rigorously imply
