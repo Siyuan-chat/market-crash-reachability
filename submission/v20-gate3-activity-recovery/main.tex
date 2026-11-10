@@ -1612,10 +1612,15 @@ from robustness within it. Formula \eqref{eq:robust} is a
 \emph{conditional} comparison for fixed edge flows, not a
 control perturbation theorem preserving exact target prices. The
 heterogeneous weighted identity does not supply a new
-unweighted global phase diagram. In particular, global large-turnover
-two-asset reachability for homogeneous $1<p<2$, sharp full-coverage
-severity, maximum repeated-limit breadth, and globally optimal
-execution rates remain open.
+unweighted global phase diagram. In particular, the still-unclassified higher-exponent
+part of the homogeneous two-node phase diagram, sharp
+full-coverage severity, maximum repeated-limit breadth,
+and globally optimal execution rates remain open; the
+positive region established through and locally beyond
+$p=3/2$ is given by
+Theorem~\ref{thm:two-large-turnover},
+Proposition~\ref{prop:two-critical-p}, and
+Corollary~\ref{cor:nearcritical-beyond}.
 
 \section{Interpretation and limitations}\label{sec:discussion}
 The activity clock breaks the trade-time conservation of
@@ -1659,6 +1664,80 @@ rules out simultaneous repeated lower closes for all ten,
 so the attainable optimum is between five and nine. The
 former seven-target obstruction of the physical-time model
 is not transferred here.
+
+\subsection{Quantified but unresolved sharpness questions}
+\label{sec:open-sharpness}
+The present analysis preserves three distinct optimization
+questions from the full research baseline. Their status is a
+proved two-sided bound or a necessary condition, not a
+numerical guess promoted to an optimum.
+
+\paragraph{Full-coverage amplitude (A04).}
+For $N=10$, $p=0$, $F=\eta=1$ and fixed
+$K_0=4\cdot10^{-18}$, define
+\[
+ \delta_{\mathrm{all}}^*(K_0):=
+ \sup\left\{\min_{1\le i\le10}\log(1/x_i(T)):
+  \begin{array}{l}
+   \text{strictly positive terminally closed}\\
+   \mathsf C_0\text{ execution with finite resources}
+  \end{array}\right\}.
+\]
+Construction I and the aggregate invariant
+\eqref{eq:aggregate} rigorously imply
+\begin{equation}\label{eq:open-all-bracket}
+ \log2\le\delta_{\mathrm{all}}^*(K_0)
+                \le\frac12\log10.
+\end{equation}
+No construction or exclusion sharpens this interval to
+an equality at present. In particular, a bound on the
+calendar horizon is not a bound on all-asset loss
+amplitude (Proposition~\ref{prop:time-change}).
+
+\paragraph{Repeated-limit coverage (P10/R03).}
+For the ten-asset $p=0$, $K=2$, two-session
+$\pm25\%$ problem in the broad admissible
+$\mathsf C_1$ class with finite turnover, gross rate
+and seller inventories, let $k_*^{\rm band}$ be the
+largest feasible number of assets closing at
+both lower session limits. Construction III and
+Corollary~\ref{cor:at-most-n-minus-one} give
+\begin{equation}\label{eq:open-coverage-bracket}
+ 5\le k_*^{\rm band}\le9.
+\end{equation}
+If the five-target condition is prescribed instead,
+Proposition~\ref{prop:two-day-rate-lower} gives the
+genuine gross share-speed bracket
+\begin{equation}\label{eq:open-speed-bracket}
+ \frac{\arctan(1/2)-\arctan(1/8)}{20}
+ \le v_5^*<0.133.
+\end{equation}
+The upper speed bound requires allowing the turnover
+and inventories of the existing five-target certificate.
+The full nine-target upper bound is not a claim that
+six, seven, eight or nine targets are constructible.
+No exact optimal speed is identified.
+
+\paragraph{Remaining two-node and robust-control sectors (T03/R01/R02).}
+For each fixed $K>0$ the proved two-node homogeneous
+reachability region contains all $1<p\le3/2$
+and some further interval
+$3/2<p<3/2+\varepsilon(K)$.
+The proof does not establish the full reachable set
+within $3/2+\varepsilon(K)\le p<2$, nor does it
+prove that reachability is monotone in $p$ or $K$.
+The heterogeneous construction changes the model
+parameters; it is not a continuation theorem for a
+fixed homogeneous market. Robustness estimates such
+as \eqref{eq:crisis-robust} hold only on a common
+positive compact price strip with explicitly controlled
+unmatched-dollar forcing, and do not imply global
+closed-loop robustness or optimality.
+
+These genuinely unresolved questions are part of
+the scientific scope of this manuscript. None is used
+as a premise for the three ten-asset existence results
+or for an unqualified conclusion in the abstract.
 
 \section{Conclusion}
 In an idealized fixed-benchmark market where every dollar transfer
