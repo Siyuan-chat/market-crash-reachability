@@ -25,8 +25,10 @@ inequalities restrict severe losses. Heterogeneous quadratic responses
 can also produce a two-node systemic loss through a closed, sequential
 dollar round trip, despite the homogeneous quadratic obstruction.
 For homogeneous two-node power laws with $1<p\le3/2$,
-a finite-size reversal produces systemic loss even though
-every sufficiently small dollar-closed path is obstructed.
+a finite-size reversal produces systemic loss despite the
+small-turnover barrier. For each fixed $K$, this finite-budget
+region extends to a nonempty exponent interval above $3/2$
+by continuity of the exact price-response flows.
 One explicit $\mathsf C_1$ witness uses $p=5/4$, $K=1$
 and only eight units of paired turnover. In the constant-impact model, a continuous-direction argument gives
 an analytic existence construction for all ten prices to end at half
@@ -562,15 +564,72 @@ and unit dollar execution rate gives a finite
 gross share rate at most $1/x_-$.
 \end{proof}
 
+\begin{corollary}[Reachability extends strictly beyond $p=3/2$]
+\label{cor:nearcritical-beyond}
+For every fixed $K>0$ there exists
+$\varepsilon(K)\in(0,1/2)$ such that, for every exponent
+$3/2\le p<3/2+\varepsilon(K)$, one and the same finite
+two-edge dollar amount $z_K>0$ generates a terminally
+dollar-closed $\mathsf C_1$ path with
+$\Cris_{1/2}(2z_K)>0$.
+The paths have strictly positive prices, finite
+turnover $M=2z_K$, genuine seller-side share
+inventories and finite gross share-execution rates
+under unit dollar-amount-per-time scheduling.
+No value of $\varepsilon(K)$ or sharp exponent
+threshold is asserted here.
+\end{corollary}
+\begin{proof}
+Fix $K>0$. Proposition~\ref{prop:two-critical-p}
+provides a finite $z_K$ whose two consecutive
+oppositely directed transfers, each of dollar amount
+$z_K$, have terminal positive prices and strict
+product $x_1(2z_K)x_2(2z_K)<1$ at $p=3/2$.
+The entire reference trajectory is positive and
+continuous on the compact amount interval
+$[0,2z_K]$, and therefore has a positive minimum
+price. On a compact positive neighborhood of this
+reference path, the two scalar edge-flow vector
+fields
+\[
+ f_\pm(x;p)=\pm x^{p-1}-K(x-1)
+\]
+are continuously differentiable in $(x,p)$.
+Standard continuous dependence of ODE solutions
+on parameters, applied successively to both
+fixed-dollar stages, implies uniform convergence
+of the trajectories and convergence of their
+terminal-price products as $p\to3/2$.
+The strict terminal product inequality persists
+throughout some one-sided interval
+$[3/2,3/2+\varepsilon(K))$.
+After narrowing that interval if needed, every
+price along the two events exceeds half the
+positive minimum reference price. Thus true
+seller-side share consumptions and gross
+share-execution rates are finite, uniformly in
+$p$ on the stated interval. Both edges have
+the same fixed positive dollar mass and opposite
+directions, so the individual executed-dollar
+ledgers close exactly for all such $p$, and
+$\mathsf C_1$ holds at every active time.
+For two assets at $\alpha=1/2$, a terminal
+price product below one gives positive
+$\Cris_{1/2}$, as required.
+\end{proof}
+
 \paragraph{The remaining two-node global boundary.}
-For $1<p\le3/2$, the combination of
-Theorems~\ref{thm:two-local}, \ref{thm:two-large-turnover}
-and Proposition~\ref{prop:two-critical-p} establishes a genuine
-turnover-dependent reachability transition: sufficiently
+For $1<p\le3/2$, Theorems~\ref{thm:two-local},
+\ref{thm:two-large-turnover} and
+Proposition~\ref{prop:two-critical-p} establish a genuine
+turnover-dependent reachability transition; by
+Corollary~\ref{cor:nearcritical-beyond}, this positive
+region extends slightly above $p=3/2$ for each fixed $K$: sufficiently
 small dollar-closed round trips are obstructed, yet an
 appropriate finite larger round trip succeeds. The
-global reachability question for $3/2<p<2$
-is \emph{not} classified by this theorem, and neither
+global reachability question for the remaining
+$p\in[3/2+\varepsilon(K),2)$ is \emph{not}
+classified by these results, and neither
 the minimum successful turnover nor the full
 $p,K,N$ and graph-topology phase diagram is claimed.
 
@@ -1509,8 +1568,11 @@ $1<p\le3/2$, a finite turnover path achieves a two-node
 systemic loss despite the rigorous small-turnover barrier.
 The explicit $p=5/4$ witness obeys the stricter
 $\mathsf C_1$ constraint and a finite gross share-rate cap.
-Neither result classifies the remaining $3/2<p<2$
-region or introduces strategic trading incentives.
+Corollary~\ref{cor:nearcritical-beyond} additionally
+proves a nonempty reachable interval immediately above
+$p=3/2$ for every fixed $K$. The global classification
+outside this demonstrated range remains open; none of
+these results introduces strategic trading incentives.
 
 For $p<1$ the scalar floor boundary $K_c(p)$ rules out
 unbounded severity at sufficiently large $K$, while
