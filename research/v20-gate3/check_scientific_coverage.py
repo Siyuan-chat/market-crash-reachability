@@ -49,7 +49,7 @@ assert all(labels), 'A mathematical result has no stable label'
 for m in results:
     tail=text[m.end():].lstrip()
     assert tail.startswith(r'\begin{proof}'),('No adjacent proof',m.group(1),m.start())
-    proof_end=tail.find(r'\\end{proof}')
+    proof_end=tail.find(r'\end{proof}')
     assert proof_end>len(r'\begin{proof}'),('Empty proof',m.start())
 all_labels=[x.group(1) for x in re.finditer(r'\\label\{([^}]+)\}',text)]
 assert len(all_labels)==len(set(all_labels)), 'Duplicate TeX labels'
