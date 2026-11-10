@@ -975,7 +975,17 @@ Integrate over the second session:
 \]
 Since $\varphi(3/4)=\arctan(1/2)$
 and $\varphi(9/16)=\arctan(1/8)$, this
-proves the first bound. Each of five named
+proves the first bound. For a strictly rational
+verification of the displayed decimal lower bound,
+use the alternating-integrand inequality
+$1/(1+t^2)\ge1-t^2+t^4-t^6$ for $0\le t\le1/2$:
+\[
+ \arctan(1/2)-\arctan(1/8)
+ =\int_{1/8}^{1/2}\frac{\dd t}{1+t^2}
+ \ge\frac{24890949}{73400320}
+ >\frac{169}{500}.
+\]
+Each of five named
 targets satisfies the same inequality.
 Construction III supplies one admissible
 five-target $\mathsf C_1$ path with strict
