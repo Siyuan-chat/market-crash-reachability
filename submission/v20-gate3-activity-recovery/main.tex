@@ -25,8 +25,10 @@ inequalities restrict severe losses. Heterogeneous quadratic responses
 can also produce a two-node systemic loss through a closed, sequential
 dollar round trip, despite the homogeneous quadratic obstruction.
 For homogeneous two-node power laws with $1<p\le3/2$,
-a finite-size reversal produces systemic loss even though
-every sufficiently small dollar-closed path is obstructed.
+a finite-size reversal produces systemic loss despite the
+small-turnover barrier. For each fixed $K$, this finite-budget
+region extends to a nonempty exponent interval above $3/2$
+by continuity of the exact price-response flows.
 One explicit $\mathsf C_1$ witness uses $p=5/4$, $K=1$
 and only eight units of paired turnover. In the constant-impact model, a continuous-direction argument gives
 an analytic existence construction for all ten prices to end at half
@@ -562,15 +564,72 @@ and unit dollar execution rate gives a finite
 gross share rate at most $1/x_-$.
 \end{proof}
 
+\begin{corollary}[Reachability extends strictly beyond $p=3/2$]
+\label{cor:nearcritical-beyond}
+For every fixed $K>0$ there exists
+$\varepsilon(K)\in(0,1/2)$ such that, for every exponent
+$3/2\le p<3/2+\varepsilon(K)$, one and the same finite
+two-edge dollar amount $z_K>0$ generates a terminally
+dollar-closed $\mathsf C_1$ path with
+$\Cris_{1/2}(2z_K)>0$.
+The paths have strictly positive prices, finite
+turnover $M=2z_K$, genuine seller-side share
+inventories and finite gross share-execution rates
+under unit dollar-amount-per-time scheduling.
+No value of $\varepsilon(K)$ or sharp exponent
+threshold is asserted here.
+\end{corollary}
+\begin{proof}
+Fix $K>0$. Proposition~\ref{prop:two-critical-p}
+provides a finite $z_K$ whose two consecutive
+oppositely directed transfers, each of dollar amount
+$z_K$, have terminal positive prices and strict
+product $x_1(2z_K)x_2(2z_K)<1$ at $p=3/2$.
+The entire reference trajectory is positive and
+continuous on the compact amount interval
+$[0,2z_K]$, and therefore has a positive minimum
+price. On a compact positive neighborhood of this
+reference path, the two scalar edge-flow vector
+fields
+\[
+ f_\pm(x;p)=\pm x^{p-1}-K(x-1)
+\]
+are continuously differentiable in $(x,p)$.
+Standard continuous dependence of ODE solutions
+on parameters, applied successively to both
+fixed-dollar stages, implies uniform convergence
+of the trajectories and convergence of their
+terminal-price products as $p\to3/2$.
+The strict terminal product inequality persists
+throughout some one-sided interval
+$[3/2,3/2+\varepsilon(K))$.
+After narrowing that interval if needed, every
+price along the two events exceeds half the
+positive minimum reference price. Thus true
+seller-side share consumptions and gross
+share-execution rates are finite, uniformly in
+$p$ on the stated interval. Both edges have
+the same fixed positive dollar mass and opposite
+directions, so the individual executed-dollar
+ledgers close exactly for all such $p$, and
+$\mathsf C_1$ holds at every active time.
+For two assets at $\alpha=1/2$, a terminal
+price product below one gives positive
+$\Cris_{1/2}$, as required.
+\end{proof}
+
 \paragraph{The remaining two-node global boundary.}
-For $1<p\le3/2$, the combination of
-Theorems~\ref{thm:two-local}, \ref{thm:two-large-turnover}
-and Proposition~\ref{prop:two-critical-p} establishes a genuine
-turnover-dependent reachability transition: sufficiently
+For $1<p\le3/2$, Theorems~\ref{thm:two-local},
+\ref{thm:two-large-turnover} and
+Proposition~\ref{prop:two-critical-p} establish a genuine
+turnover-dependent reachability transition; by
+Corollary~\ref{cor:nearcritical-beyond}, this positive
+region extends slightly above $p=3/2$ for each fixed $K$: sufficiently
 small dollar-closed round trips are obstructed, yet an
 appropriate finite larger round trip succeeds. The
-global reachability question for $3/2<p<2$
-is \emph{not} classified by this theorem, and neither
+global reachability question for the remaining
+$p\in[3/2+\varepsilon(K),2)$ is \emph{not}
+classified by these results, and neither
 the minimum successful turnover nor the full
 $p,K,N$ and graph-topology phase diagram is claimed.
 
@@ -865,11 +924,83 @@ decrease their prices from $(1-\ell)F$ to
 $(1-\ell)^2F$, strictly decreasing $H$, a contradiction.
 \end{proof}
 
+\begin{proposition}[A strict lower bound for repeated-limit gross share rates]
+\label{prop:two-day-rate-lower}
+Fix the normalized $p=0$, $K=2$ activity-driven
+price law and the two sessions $[0,20]$ and $[20,40]$.
+If an asset closes successively at $x(20)=3/4$ and
+$x(40)=9/16$, while its gross share-execution rate
+satisfies $\dot A(t)/x(t)\le v$ almost everywhere,
+then necessarily
+\begin{equation}\label{eq:two-day-rate-lower}
+ v\ge
+ v_{\rm necessary}:=
+ \frac{\arctan(1/2)-\arctan(1/8)}{20}
+ >0.0169.
+\end{equation}
+Consequently the infimum $v^*_5$ over all valid
+ten-asset $\mathsf C_1$ executions with five such
+targets, exact terminal dollar closure and the
+same rolling bands, has the certified bracket
+\begin{equation}\label{eq:five-rate-bracket}
+ \frac{\arctan(1/2)-\arctan(1/8)}{20}
+ \le v^*_5<0.133.
+\end{equation}
+The upper bound uses Construction III and presumes
+its stated finite turnover and inventory resources
+are allowed. This is a nonsharp necessary-speed
+certificate, not an assertion that either bound is
+attained as the exact optimum.
+\end{proposition}
+\begin{proof}
+In the normalized constant-impact model the
+absolutely continuous activity dynamics satisfy
+\[
+ \dot x=\frac{\dot u}{x}-2(x-1)\dot a,\qquad
+ |\dot u|\le\dot a,\qquad \dot a/x\le v.
+\]
+Because $1+2x(x-1)=2(x-1/2)^2+1/2>0$
+for every $x>0$, scalar comparison gives
+\[
+ \dot x\ge-\frac{\dot a}{x}
+                  [1+2x(x-1)]
+         \ge-v[1+2x(x-1)].
+\]
+With $\varphi(x)=\arctan(2x-1)$ one has
+$\varphi'(x)=1/[1+2x(x-1)]$; therefore
+$\frac{\dd}{\dd t}\varphi(x(t))\ge-v$.
+Integrate over the second session:
+\[
+ \varphi(9/16)-\varphi(3/4)\ge-20v.
+\]
+Since $\varphi(3/4)=\arctan(1/2)$
+and $\varphi(9/16)=\arctan(1/8)$, this
+proves the first bound. For a strictly rational
+verification of the displayed decimal lower bound,
+use the alternating-integrand inequality
+$1/(1+t^2)\ge1-t^2+t^4-t^6$ for $0\le t\le1/2$:
+\[
+ \arctan(1/2)-\arctan(1/8)
+ =\int_{1/8}^{1/2}\frac{\dd t}{1+t^2}
+ \ge\frac{24890949}{73400320}
+ >\frac{169}{500}.
+\]
+Each of five named
+targets satisfies the same inequality.
+Construction III supplies one admissible
+five-target $\mathsf C_1$ path with strict
+maximum gross share rate below $0.133$,
+hence the stated upper bound on the infimum.
+\end{proof}
+
 The upper bound $N-1$ is \emph{not} shown to be attainable.
 In particular, no ``at most seven repeated limits'' conclusion
 transfers from the physical-time manuscript. The exact optimum
-between five and nine for ten assets, and the minimum gross rate
-under rolling bands, remain open. Propositions~\ref{prop:cutcap}
+between five and nine for ten assets remains open.
+Proposition~\ref{prop:two-day-rate-lower} bounds the
+five-target minimum gross share rate strictly between
+an explicit positive necessary bound and $0.133$;
+its sharp value remains open. Propositions~\ref{prop:cutcap}
 and \ref{prop:pure-sale} are necessary tests only.
 
 \section{Three ten-asset constructions}\label{sec:examples}
@@ -1481,10 +1612,15 @@ from robustness within it. Formula \eqref{eq:robust} is a
 \emph{conditional} comparison for fixed edge flows, not a
 control perturbation theorem preserving exact target prices. The
 heterogeneous weighted identity does not supply a new
-unweighted global phase diagram. In particular, global large-turnover
-two-asset reachability for homogeneous $1<p<2$, sharp full-coverage
-severity, maximum repeated-limit breadth, and globally optimal
-execution rates remain open.
+unweighted global phase diagram. In particular, the still-unclassified higher-exponent
+part of the homogeneous two-node phase diagram, sharp
+full-coverage severity, maximum repeated-limit breadth,
+and globally optimal execution rates remain open; the
+positive region established through and locally beyond
+$p=3/2$ is given by
+Theorem~\ref{thm:two-large-turnover},
+Proposition~\ref{prop:two-critical-p}, and
+Corollary~\ref{cor:nearcritical-beyond}.
 
 \section{Interpretation and limitations}\label{sec:discussion}
 The activity clock breaks the trade-time conservation of
@@ -1509,8 +1645,11 @@ $1<p\le3/2$, a finite turnover path achieves a two-node
 systemic loss despite the rigorous small-turnover barrier.
 The explicit $p=5/4$ witness obeys the stricter
 $\mathsf C_1$ constraint and a finite gross share-rate cap.
-Neither result classifies the remaining $3/2<p<2$
-region or introduces strategic trading incentives.
+Corollary~\ref{cor:nearcritical-beyond} additionally
+proves a nonempty reachable interval immediately above
+$p=3/2$ for every fixed $K$. The global classification
+outside this demonstrated range remains open; none of
+these results introduces strategic trading incentives.
 
 For $p<1$ the scalar floor boundary $K_c(p)$ rules out
 unbounded severity at sufficiently large $K$, while
@@ -1525,6 +1664,79 @@ rules out simultaneous repeated lower closes for all ten,
 so the attainable optimum is between five and nine. The
 former seven-target obstruction of the physical-time model
 is not transferred here.
+
+\subsection{Quantified but unresolved sharpness questions}
+\label{sec:open-sharpness}
+The present analysis preserves three distinct optimization
+questions from the full research baseline. Their status is a
+proved two-sided bound or a necessary condition, not a
+numerical guess promoted to an optimum.
+
+\paragraph{Full-coverage amplitude (A04).}
+For $N=10$, $p=0$, $F=\eta=1$ and fixed
+$K_0=4\cdot10^{-18}$, define
+\[
+ \delta_{\mathrm{all}}^*(K_0):=
+ \sup_{\substack{\mathsf C_0\text{ positive execution}\\
+                   X_i(T)=0\ \forall i\\
+                   M<\infty,\ H_i^-<\infty\ \forall i}}
+ \min_{1\le i\le10}\log(1/x_i(T)).
+\]
+Construction I and the aggregate invariant
+\eqref{eq:aggregate} rigorously imply
+\begin{equation}\label{eq:open-all-bracket}
+ \log2\le\delta_{\mathrm{all}}^*(K_0)
+                \le\frac12\log10.
+\end{equation}
+No construction or exclusion sharpens this interval to
+an equality at present. In particular, a bound on the
+calendar horizon is not a bound on all-asset loss
+amplitude (Proposition~\ref{prop:time-change}).
+
+\paragraph{Repeated-limit coverage (P10/R03).}
+For the ten-asset $p=0$, $K=2$, two-session
+$\pm25\%$ problem in the broad admissible
+$\mathsf C_1$ class with finite turnover, gross rate
+and seller inventories, let $k_*^{\rm band}$ be the
+largest feasible number of assets closing at
+both lower session limits. Construction III and
+Corollary~\ref{cor:at-most-n-minus-one} give
+\begin{equation}\label{eq:open-coverage-bracket}
+ 5\le k_*^{\rm band}\le9.
+\end{equation}
+If the five-target condition is prescribed instead,
+Proposition~\ref{prop:two-day-rate-lower} gives the
+genuine gross share-speed bracket
+\begin{equation}\label{eq:open-speed-bracket}
+ \frac{\arctan(1/2)-\arctan(1/8)}{20}
+ \le v_5^*<0.133.
+\end{equation}
+The upper speed bound requires allowing the turnover
+and inventories of the existing five-target certificate.
+The full nine-target upper bound is not a claim that
+six, seven, eight or nine targets are constructible.
+No exact optimal speed is identified.
+
+\paragraph{Remaining two-node and robust-control sectors (T03/R01/R02).}
+For each fixed $K>0$ the proved two-node homogeneous
+reachability region contains all $1<p\le3/2$
+and some further interval
+$3/2<p<3/2+\varepsilon(K)$.
+The proof does not establish the full reachable set
+within $3/2+\varepsilon(K)\le p<2$, nor does it
+prove that reachability is monotone in $p$ or $K$.
+The heterogeneous construction changes the model
+parameters; it is not a continuation theorem for a
+fixed homogeneous market. Robustness estimates such
+as \eqref{eq:crisis-robust} hold only on a common
+positive compact price strip with explicitly controlled
+unmatched-dollar forcing, and do not imply global
+closed-loop robustness or optimality.
+
+These genuinely unresolved questions are part of
+the scientific scope of this manuscript. None is used
+as a premise for the three ten-asset existence results
+or for an unqualified conclusion in the abstract.
 
 \section{Conclusion}
 In an idealized fixed-benchmark market where every dollar transfer

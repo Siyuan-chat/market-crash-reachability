@@ -71,6 +71,15 @@ for needed in ('prop:hetero-two', 'prop:hetero-weighted', 'lem:one-sided-bv',
                'cor:at-most-n-minus-one', 'tab:analytic-severity',
                'thm:nine-general', 'eq:nu-jacobian', 'eq:nu-compensator'):
     assert needed in labels, f'Round 2 result label missing: {needed}'
+for needed in ('cor:nearcritical-beyond', 'prop:two-day-rate-lower',
+               'eq:open-all-bracket', 'eq:open-coverage-bracket',
+               'eq:open-speed-bracket'):
+    assert needed in labels, f'November 10 evidence/open-boundary item missing: {needed}'
+for id_ in ('T03','P02','P10','R01','R02','R03','A04'):
+    item = next(r for r in rows if r['ID'] == id_)
+    assert item['Gate3 writing obligation'].strip(), id_
+    assert item['blocks strong abstract claim'].strip(), id_
+# These assert only presence and traceability, not theorem truth.
 assert 'not third-party formal verification' in text.lower() or \
        'not third-party formal' in text.lower(), 'interval-scope qualifier missing'
 assert 'GATE 3 WORKING DRAFT' in text[:400], 'WIP disclosure missing'
