@@ -41,6 +41,7 @@ jobs:
           path: |
             build/v20-gate3-siam/main.pdf
             build/v20-gate3-siam/main.bbl
+            build/v20-gate3-siam/main.aux
             build/v20-gate3-siam/main.log
             build/v20-gate3-siam/build_report.json
             build/v20-gate3-siam/*.txt
