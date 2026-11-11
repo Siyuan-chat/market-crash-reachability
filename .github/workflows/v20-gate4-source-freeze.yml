@@ -1,0 +1,33 @@
+name: V20 Gate 4 source freeze for bilingual Word
+on:
+  pull_request:
+    paths:
+      - 'research/v20-gate4/package_frozen_sources.py'
+      - '.github/workflows/v20-gate4-source-freeze.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/v20-gate4/package_frozen_sources.py'
+      - '.github/workflows/v20-gate4-source-freeze.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  create-frozen-source-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify pinned scientific source and package snapshot
+        run: python research/v20-gate4/package_frozen_sources.py
+      - name: Upload full sources and frozen hash manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: v20-gate4-frozen-source-snapshot
+          path: |
+            build/v20-gate4-source-freeze/v20_gate4_source_snapshot.zip
+            build/v20-gate4-source-freeze/source_manifest.json
+          if-no-files-found: error
