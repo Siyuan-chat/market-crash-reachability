@@ -106,6 +106,7 @@ def main() -> None:
         raise RuntimeError("No substantive SIAM PDF produced")
     shutil.copyfile(pdf, BUILD / "main.pdf")
     shutil.copyfile(w / "main.bbl", BUILD / "main.bbl")
+    shutil.copyfile(w / "main.aux", BUILD / "main.aux")
     shutil.copyfile(w / "main.log", BUILD / "main.log")
     pdfinfo = shutil.which("pdfinfo")
     pages = None
