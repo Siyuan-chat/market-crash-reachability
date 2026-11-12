@@ -1,8 +1,24 @@
 # Reproduce *When Can Markets Crash Without News?*
 
-These commands are for the **current GitHub V14-R1 working manuscript**. Run them from the repository root. The [full technical guide](docs/REPRODUCIBILITY.md) covers the original V12 baseline, exact-rational certificates, figure regeneration, pinned Lean environment and source/PDF comparisons. [Version boundaries](docs/VERSIONS.md) · [Evidence types](docs/RESULTS_AND_EVIDENCE.md).
+The historical sections below reproduce the **preserved V14-R1 physical-time manuscript**. Run them from the repository root. The [full technical guide](docs/REPRODUCIBILITY.md) covers the original V12 baseline, exact-rational certificates, figure regeneration, pinned Lean environment and source/PDF comparisons. [Version boundaries](docs/VERSIONS.md) · [Evidence types](docs/RESULTS_AND_EVIDENCE.md).
 
-## 1. Python environment and basic regression
+## New V17 activity-driven recovery working draft (2026-11-05)
+
+This is **not** the older time-recovery model. For the new $dA_i$-driven equation, run from the repository root:
+
+```bash
+python -m pip install mpmath==1.3.0
+python verification/activity_driven/test_activity.py
+python verification/activity_driven/certify_five_targets.py
+python scripts/check_v17_activity.py
+python scripts/build_v17_activity.py
+```
+
+The last command requires `pdflatex`, `bibtex`, and the repository's unchanged `third_party/siam/siamonline_250211_complete.zip`. It builds to `build/v17-activity-driven-recovery/main.pdf` without overwriting any historical source or PDF. GitHub Actions [V17 workflow](.github/workflows/v17.yml) publishes its build as a CI artifact when successful. See the [V17 theorem/evidence matrix](docs/V17_ACTIVITY_WORKING_DRAFT.md); analytic IFT existence statements are **not numeric interval witnesses**, and the new C1 checker is an internally authored interval algorithm, not an externally audited proof. Results in the historical sections below refer to their old editions.
+
+---
+
+## 1. Python environment and basic regression (historical V14-R1)
 
 Use **Python 3.11** for the CI acceptance environment and create a virtual environment:
 

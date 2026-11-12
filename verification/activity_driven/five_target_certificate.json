@@ -1,0 +1,65 @@
+{
+  "status": "internal directed-interval certificate; not external peer review",
+  "model": "N=10, p=0, K=2, C1, F=eta=1, two sessions of length 20",
+  "root_sign_left": [
+    "0.000000000000",
+    "0.000000000000"
+  ],
+  "root_sign_right": [
+    "-0.000000000000",
+    "-0.000000000000"
+  ],
+  "c_root_bracket": [
+    "0.76065368494358",
+    "0.76065368494359"
+  ],
+  "segments": 19,
+  "cycle_edges": 5,
+  "cycle_edge_dollar_amount": "1/25",
+  "first_session_target_close": "3/4",
+  "second_session_target_close": "9/16",
+  "day1_compensator_close": [
+    "1.180261464119",
+    "1.180261514187"
+  ],
+  "day2_precycle_compensator": [
+    "1.261555013657",
+    "1.261555063725"
+  ],
+  "final_compensator_prices": [
+    [
+      "1.225566406250",
+      "1.225976562500"
+    ],
+    [
+      "1.220019683838",
+      "1.220022888184"
+    ],
+    [
+      "1.220016479492",
+      "1.220029296875"
+    ],
+    [
+      "1.219824218750",
+      "1.220234375000"
+    ],
+    [
+      "1.219824218750",
+      "1.220234375000"
+    ]
+  ],
+  "max_paired_turnover_certified_upper": "11.261627",
+  "max_paired_turnover_display_approx": "11.261626014140734",
+  "sales_target_certified_upper": "2",
+  "sales_compensator_certified_upper": "2",
+  "rate_schedule": {
+    "first_session_edge_dollar_rate": "A1 / 20",
+    "second_session_edge_dollar_rate": "(A2+5*0.04) / 20",
+    "all_edges_assigned_their_respective_session_duration": true
+  },
+  "max_gross_share_rate_certified_upper": "0.133",
+  "max_gross_share_rate_display_approx": "0.13271793696043757",
+  "geometric_index_strict_upper": "0.84",
+  "gross_activity_vs_net": "No instantaneous offsetting; temporal round trips allowed",
+  "audit": "all prices are monotone within each single-edge event; exact pairing and zero dollar closure by IVT; interval bounds on each endpoint"
+}

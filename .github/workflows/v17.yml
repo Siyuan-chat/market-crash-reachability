@@ -1,0 +1,53 @@
+name: V17 activity-driven recovery (working draft)
+on:
+  push:
+    paths:
+      - 'submission/v17-activity-driven-recovery/**'
+      - 'verification/activity_driven/**'
+      - 'scripts/check_v17_activity.py'
+      - 'scripts/build_v17_activity.py'
+      - '.github/workflows/v17.yml'
+  pull_request:
+    paths:
+      - 'submission/v17-activity-driven-recovery/**'
+      - 'verification/activity_driven/**'
+      - 'scripts/check_v17_activity.py'
+      - 'scripts/build_v17_activity.py'
+      - '.github/workflows/v17.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-certificate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install mpmath==1.3.0
+      - run: python verification/activity_driven/test_activity.py
+      - run: python verification/activity_driven/certify_five_targets.py
+      - run: python scripts/check_v17_activity.py
+      - name: Verify V16 unchanged mathematical regression
+        run: |
+          python scripts/check_v16_three_constructions.py
+          python verification/two_day_25pct_five_assets.py
+          python verification/audit_two_day_25pct.py
+      - name: Install LaTeX toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-science poppler-utils
+      - name: Build new V17 SIAM PDF, not V16
+        run: python scripts/build_v17_activity.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v17-activity-driven-working-pdf
+          path: |
+            build/v17-activity-driven-recovery/main.pdf
+            build/v17-activity-driven-recovery/main.log
+            build/v17-activity-driven-recovery/main.bbl
+            build/v17-activity-driven-recovery/build_summary.json
+            build/v17-activity-driven-recovery/pdflatex-*.log
+            build/v17-activity-driven-recovery/*.log
