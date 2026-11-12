@@ -53,6 +53,18 @@ def patch(src,dst):
    if prop.find(q('nor')) is None:
     prop.insert(0,etree.Element(q('nor')))
     changed['leading_matrix_relation']+=1
+ # Additional LO parser exceptions for asterisk scripts and sup/inf operator names.
+ # These retain all symbol text, math tags, and equation structure; only use
+ # the ordinary text glyph style instead of an imported invalid token.
+ for r in root.xpath('//m:r',namespaces={'m':M}):
+  texts=list(r.iter(q('t')))
+  if len(texts)!=1 or (texts[0].text or '') not in ('*','sup','inf'):continue
+  tok=texts[0].text
+  prop=r.find(q('rPr'))
+  if prop is None:prop=etree.Element(q('rPr'));r.insert(0,prop)
+  if prop.find(q('nor')) is None:
+   prop.insert(0,etree.Element(q('nor')))
+   changed['operator_literal_'+tok]+=1
  after=[(x.tag,x.text) for x in root.iter() if x.tag==q('t')]
  assert before==after,'Math text changed'
  parts['word/document.xml']=etree.tostring(root,encoding='UTF-8',xml_declaration=True,standalone=True)
