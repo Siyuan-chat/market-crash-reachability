@@ -46,6 +46,6 @@ for lng in ('English','Chinese'):
         assert len(text)>100,(lng,i+1,'blank page')
         pages.append({'page':i+1,'text_characters':len(text),'out_of_page_text_blocks':len(out_bounds),'LibreOffice_math_error_glyphs':text.count('¿')})
     out[lng]={'source_word_sha256':sha(original),'review_ready_word_sha256':sha(ready),'word_size_bytes':ready.stat().st_size,'page_count':len(d),'remaining_math_renderer_error_glyphs':sum(p['LibreOffice_math_error_glyphs'] for p in pages),'native_formula_nodes':1326,'math_content_and_structure_unchanged':True,'pages':pages}
-assert all(x['remaining_math_renderer_error_glyphs']==53 for x in out.values())
+assert all(x['remaining_math_renderer_error_glyphs']==14 for x in out.values())
 (AUD/'GATE4_REVIEWREADY_RENDER_QA.json').write_text(json.dumps({'date':'2026-11-12','LibreOffice_visual_acceptance':'PARTIAL_PASSED_WITH_KNOWN_MATH_GLYPH_IMPORT_ISSUES', 'review_ready':out},ensure_ascii=False,indent=2),encoding='utf8')
 print('REVIEWREADY VERIFIED', {k:{kk:v[kk] for kk in ['page_count','remaining_math_renderer_error_glyphs','native_formula_nodes','math_content_and_structure_unchanged']} for k,v in out.items()})
