@@ -735,4 +735,4 @@ P_{-}(s) & = \frac{1}{4}\log\left( 2\left( s - \frac{1}{2} \right)^{2} + \frac{1
 
 \[16\] Y. Yang, "Finite horizon optimal execution with bounded rate of transaction," *Stoch. Models*, vol. 35, pp. 469--495, 2019, doi: [10.1080/15326349.2019.1621760](https://doi.org/10.1080/15326349.2019.1621760).
 
-[^1]: 独立研究者。
+*作者身份说明：* 独立研究者。
