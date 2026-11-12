@@ -1,0 +1,494 @@
+{
+  "date": "2026-11-12",
+  "status": "GATE4_DOCUMENT_REVIEW_IN_PROGRESS_NOT_SCIENTIFIC_REACCEPTANCE",
+  "source_main_tex_sha256": "9d36ab61019bcb395073918c133bfc4a4cf23c32b99efd9a84c021fb7d092baa",
+  "siam_pdf_sha256": "25c0f8977bf45936420398acfed33a85657314d0fa03c004ca84b00f723b9e0b",
+  "siam_pdf_pages": 35,
+  "bib_sha256": "555df0a2e0bb6a3749cf64a144626b8f3d086c3a5d95e97ce5d31551701de0f2",
+  "English_word_sha256": "6be34d9a059d0e7a07edca8b096bfbface21302b328cdc6342ce6580b31ad8cf",
+  "Chinese_word_sha256": "c274c2ec3b30a0aa2a8b8c85f9125894f8843f3e994331cb6a7aed68440d1a28",
+  "english_word_pages": 31,
+  "chinese_word_pages": 30,
+  "par_count_original": 386,
+  "par_count_deliverables": 387,
+  "prose_paragraphs_translated": 259,
+  "math_native_oMath_nodes_each": 1326,
+  "display_math_paragraphs_each": 106,
+  "figures": 6,
+  "tables": 2,
+  "formula_nodes_preserved_exactly": true,
+  "original_figure_media_SHA_unchanged": true,
+  "siam_crossreference_labels": 131,
+  "label_breakdown": {
+    "sec": 15,
+    "eq": 65,
+    "def": 2,
+    "prop": 14,
+    "thm": 12,
+    "cor": 2,
+    "lem": 5,
+    "tab": 2,
+    "fig": 6,
+    "app": 8
+  },
+  "33_mathematical_result_anchors": 33,
+  "formula_number_anchor_misses": [],
+  "bibliography_items": 16,
+  "bibliography_order": "SIAM main.bbl alphabetical and in-text references renumbered",
+  "unchanged_scientific_responsibilities": 43,
+  "open_research_ids": [
+    "T03",
+    "P02",
+    "P10",
+    "R01",
+    "R02",
+    "R03",
+    "A04"
+  ],
+  "render_checks": {
+    "English": {
+      "pages": 31,
+      "per_page": [
+        {
+          "page": 1,
+          "chars": 3924,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 2,
+          "chars": 3650,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 3,
+          "chars": 3339,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 3,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 4,
+          "chars": 2538,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 4,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 5,
+          "chars": 3229,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 6,
+          "chars": 2480,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 18,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 7,
+          "chars": 2300,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 21,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 8,
+          "chars": 3348,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 12,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 9,
+          "chars": 3060,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 6,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 10,
+          "chars": 3011,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 2,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 11,
+          "chars": 3198,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 12,
+          "chars": 2960,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 2,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 13,
+          "chars": 3429,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 1,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 14,
+          "chars": 3307,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 1,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 15,
+          "chars": 3644,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 9,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 16,
+          "chars": 3256,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 10,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 17,
+          "chars": 836,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 18,
+          "chars": 813,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 19,
+          "chars": 1279,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 20,
+          "chars": 2557,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 4,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 21,
+          "chars": 3198,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 18,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 22,
+          "chars": 3212,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 4,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 23,
+          "chars": 3303,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 11,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 24,
+          "chars": 2367,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 2,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 25,
+          "chars": 2912,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 1,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 26,
+          "chars": 2564,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 5,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 27,
+          "chars": 2989,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 28,
+          "chars": 2508,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 5,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 29,
+          "chars": 3015,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 14,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 30,
+          "chars": 2903,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 9,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 31,
+          "chars": 4319,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        }
+      ],
+      "total_math_renderer_errors": 162
+    },
+    "Chinese": {
+      "pages": 30,
+      "per_page": [
+        {
+          "page": 1,
+          "chars": 1342,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 2,
+          "chars": 1574,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 3,
+          "chars": 1431,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 4,
+          "chars": 1456,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 7,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 5,
+          "chars": 1695,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 6,
+          "chars": 1498,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 15,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 7,
+          "chars": 1278,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 24,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 8,
+          "chars": 1616,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 12,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 9,
+          "chars": 1689,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 6,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 10,
+          "chars": 1531,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 2,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 11,
+          "chars": 1438,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 12,
+          "chars": 1310,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 2,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 13,
+          "chars": 1814,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 1,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 14,
+          "chars": 1774,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 5,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 15,
+          "chars": 1791,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 8,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 16,
+          "chars": 1235,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 7,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 17,
+          "chars": 182,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 18,
+          "chars": 779,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 19,
+          "chars": 616,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 1,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 20,
+          "chars": 1853,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 21,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 21,
+          "chars": 1440,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 22,
+          "chars": 1219,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 6,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 23,
+          "chars": 1469,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 11,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 24,
+          "chars": 1472,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 1,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 25,
+          "chars": 1271,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 5,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 26,
+          "chars": 1638,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 27,
+          "chars": 1601,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 5,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 28,
+          "chars": 1540,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 16,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 29,
+          "chars": 1565,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 7,
+          "unicode_replacement_chars": 0
+        },
+        {
+          "page": 30,
+          "chars": 3027,
+          "out_of_page_blocks": 0,
+          "unrendered_math_error_glyphs": 0,
+          "unicode_replacement_chars": 0
+        }
+      ],
+      "total_math_renderer_errors": 162
+    }
+  },
+  "caveats": [
+    "OMML maths are retained word-native; LibreOffice has import bugs for certain algebraic operator tokens, quantified in render QA.",
+    "Bilingual prose translation had one-to-one placeholder review; semantics may need independent human proofread.",
+    "No fresh Gate0-Gate3 science rerun; 7 open questions unchanged."
+  ]
+}
