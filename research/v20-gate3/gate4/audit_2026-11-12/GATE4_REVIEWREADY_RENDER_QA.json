@@ -4,10 +4,10 @@
   "review_ready": {
     "English": {
       "source_word_sha256": "6be34d9a059d0e7a07edca8b096bfbface21302b328cdc6342ce6580b31ad8cf",
-      "review_ready_word_sha256": "9f3a556797ee55615fa8388f543e672fb3b54b57a6c353d56ed2d88286aaa403",
-      "word_size_bytes": 545840,
+      "review_ready_word_sha256": "c332d81b872e537dcbe50b81fd770f37c1c43a37be8efbeea931fb36c3c59a68",
+      "word_size_bytes": 545848,
       "page_count": 31,
-      "remaining_math_renderer_error_glyphs": 53,
+      "remaining_math_renderer_error_glyphs": 14,
       "native_formula_nodes": 1326,
       "math_content_and_structure_unchanged": true,
       "pages": [
@@ -43,75 +43,75 @@
         },
         {
           "page": 6,
-          "text_characters": 2774,
+          "text_characters": 2583,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 2
+          "LibreOffice_math_error_glyphs": 1
         },
         {
           "page": 7,
-          "text_characters": 2419,
+          "text_characters": 2347,
+          "out_of_page_text_blocks": 0,
+          "LibreOffice_math_error_glyphs": 0
+        },
+        {
+          "page": 8,
+          "text_characters": 3240,
           "out_of_page_text_blocks": 0,
           "LibreOffice_math_error_glyphs": 2
         },
         {
-          "page": 8,
-          "text_characters": 3248,
-          "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 3
-        },
-        {
           "page": 9,
-          "text_characters": 2993,
+          "text_characters": 2927,
           "out_of_page_text_blocks": 0,
           "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 10,
-          "text_characters": 3033,
+          "text_characters": 2745,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 2
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 11,
-          "text_characters": 2921,
+          "text_characters": 3172,
           "out_of_page_text_blocks": 0,
           "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 12,
-          "text_characters": 2956,
+          "text_characters": 3043,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 2
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 13,
-          "text_characters": 3228,
+          "text_characters": 3126,
           "out_of_page_text_blocks": 0,
           "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 14,
-          "text_characters": 3340,
+          "text_characters": 3303,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 2
+          "LibreOffice_math_error_glyphs": 1
         },
         {
           "page": 15,
-          "text_characters": 3831,
+          "text_characters": 3879,
           "out_of_page_text_blocks": 0,
           "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 16,
-          "text_characters": 3473,
+          "text_characters": 3355,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 3
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 17,
-          "text_characters": 1033,
+          "text_characters": 1539,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 1
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 18,
@@ -127,9 +127,9 @@
         },
         {
           "page": 20,
-          "text_characters": 2557,
+          "text_characters": 2563,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 4
+          "LibreOffice_math_error_glyphs": 1
         },
         {
           "page": 21,
@@ -139,33 +139,33 @@
         },
         {
           "page": 22,
-          "text_characters": 3211,
+          "text_characters": 3213,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 4
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 23,
-          "text_characters": 3300,
-          "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 7
-        },
-        {
-          "page": 24,
-          "text_characters": 2367,
+          "text_characters": 3299,
           "out_of_page_text_blocks": 0,
           "LibreOffice_math_error_glyphs": 2
         },
         {
-          "page": 25,
-          "text_characters": 2912,
+          "page": 24,
+          "text_characters": 2366,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 1
+          "LibreOffice_math_error_glyphs": 0
+        },
+        {
+          "page": 25,
+          "text_characters": 2914,
+          "out_of_page_text_blocks": 0,
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 26,
           "text_characters": 2564,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 5
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 27,
@@ -181,9 +181,9 @@
         },
         {
           "page": 29,
-          "text_characters": 3045,
+          "text_characters": 3046,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 6
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 30,
@@ -201,10 +201,10 @@
     },
     "Chinese": {
       "source_word_sha256": "c274c2ec3b30a0aa2a8b8c85f9125894f8843f3e994331cb6a7aed68440d1a28",
-      "review_ready_word_sha256": "b1524fd7424d865fd80f6d702b413fa9647be2326e8ac41a1739f08dea04b546",
-      "word_size_bytes": 546719,
+      "review_ready_word_sha256": "da4e094ddf0503512bac352e2719f349011ac27ade25565482d3be89997a1071",
+      "word_size_bytes": 546733,
       "page_count": 30,
-      "remaining_math_renderer_error_glyphs": 53,
+      "remaining_math_renderer_error_glyphs": 14,
       "native_formula_nodes": 1326,
       "math_content_and_structure_unchanged": true,
       "pages": [
@@ -240,9 +240,9 @@
         },
         {
           "page": 6,
-          "text_characters": 1477,
+          "text_characters": 1479,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 2
+          "LibreOffice_math_error_glyphs": 1
         },
         {
           "page": 7,
@@ -254,7 +254,7 @@
           "page": 8,
           "text_characters": 1506,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 5
+          "LibreOffice_math_error_glyphs": 2
         },
         {
           "page": 9,
@@ -264,9 +264,9 @@
         },
         {
           "page": 10,
-          "text_characters": 1483,
+          "text_characters": 1488,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 2
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 11,
@@ -278,13 +278,13 @@
           "page": 12,
           "text_characters": 1417,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 2
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 13,
           "text_characters": 1814,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 1
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 14,
@@ -294,15 +294,15 @@
         },
         {
           "page": 15,
-          "text_characters": 1789,
+          "text_characters": 1791,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 1
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 16,
           "text_characters": 1231,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 3
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 17,
@@ -318,15 +318,15 @@
         },
         {
           "page": 19,
-          "text_characters": 615,
+          "text_characters": 617,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 1
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 20,
-          "text_characters": 1834,
+          "text_characters": 1838,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 3
+          "LibreOffice_math_error_glyphs": 1
         },
         {
           "page": 21,
@@ -336,27 +336,27 @@
         },
         {
           "page": 22,
-          "text_characters": 1218,
+          "text_characters": 1220,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 6
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 23,
-          "text_characters": 1466,
+          "text_characters": 1462,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 7
+          "LibreOffice_math_error_glyphs": 2
         },
         {
           "page": 24,
-          "text_characters": 1472,
+          "text_characters": 1474,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 1
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 25,
           "text_characters": 1271,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 5
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 26,
@@ -374,7 +374,7 @@
           "page": 28,
           "text_characters": 1444,
           "out_of_page_text_blocks": 0,
-          "LibreOffice_math_error_glyphs": 6
+          "LibreOffice_math_error_glyphs": 0
         },
         {
           "page": 29,
