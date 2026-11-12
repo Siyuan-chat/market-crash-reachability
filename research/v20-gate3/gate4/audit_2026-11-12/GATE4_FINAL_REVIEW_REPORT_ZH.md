@@ -18,7 +18,7 @@
 - 翻译了 **259 个含英语自然语言的正文/标题/证明/附录段落**，包括 A–E 技术附录；公式段保留英文冻结源的数学字符；参考文献保留正式书目外文姓名与出版数据。
 - 每份 Word 均含 **1326 个原生 `m:oMath` 节点、106 个 `m:oMathPara` 展示数学段、6 张真实研究图和 2 张表**。
 - 数学对象在**未经字体兼容补丁**的中英文 SIAM-aligned Word 中与原英文 Word 的数学 XML 多重集合一致，逐段 0–369 数学 XML 多重集合一致；图像媒体摘要一致。
-- 为改善 LibreOffice 导入异常，ReviewReady 版只增加部分 OMML 数学 run 的 `m:nor` 字形属性（300 个脚标单符号、102 个标点、17 个行首关系符号），未改变所有 `m:t` 字符、数学算子标签或数学对象个数。已使用忽略运行时字形样式的规范化 OMML 树做**逐数学对象**全量等同性检查：通过。
+- 为改善 LibreOffice 导入异常，ReviewReady 版只增加部分 OMML 数学 run 的 `m:nor` 字形属性（300 个脚标单符号、102 个标点、17 个行首关系符号、29 个星号及 11 个 sup 算子），未改变所有 `m:t` 字符、数学算子标签或数学对象个数。已使用忽略运行时字形样式的规范化 OMML 树做**逐数学对象**全量等同性检查：通过。
 - 参考文献正文交叉引用和文末实际排序修正为 SIAM `main.bbl` 16 条的作者排序；留存旧→新编号及 BibTeX key 全表。
 - 数学主结果：12 个 theorem、14 个 proposition、5 个 lemma、2 个 corollary，合计 33；对应标题与编号在中英文 Word 均已定位。
 - 从 `main.aux` 中去掉 `@cref` 二级别名后，**131/131 个主标签找到中英文段落锚点**，涵盖 65 `eq`、15 `sec`、14 `prop`、12 `thm`、8 `app`、6 `fig`、5 `lem`、2 `def`、2 `cor`、2 `tab`。跨文字编号、公式和图表的核对结果见 CSV。
@@ -28,8 +28,8 @@
 
 - 审阅稿用同一个 LibreOffice 环境从 DOCX 独立渲染：**英文 31 页、中文 30 页**。该页数允许不同于 35 页的 SIAM 正式 PDF。
 - 每份已检查每一页都有实质正文（英文最少 813 个提取字符，中文最少 182 个），文本块均在页面范围内，无检出的空白页/页面越界。已检查两份共 61 页的 contact sheet。
-- **尚有排版兼容性例外：**LibreOffice 从复杂原生 OMML 导入会产生红色错误字形 `¿`，修补前中英文各 **162** 处，修补后各 **53** 处。此数值是渲染器替代字形的检测计数，**不能据此断定 Word 数学公式内容失真或判定 Microsoft Word 相同显示**；但也**不应将这两个 Word 的全页视觉审查表述为完全通过**。相关位置可用渲染文件及逐页 JSON 追踪。
-- 因存在上述 53 处 LO 渲染问题，Gate 4 全面交付验收 **NOT CLEARED**；后续应使用 Microsoft Word 原生渲染确认或继续逐处消除兼容性错误，并对翻译作独立逐句语义校对。
+- **尚有排版兼容性例外：**LibreOffice 从复杂原生 OMML 导入会产生红色错误字形 `¿`，修补前中英文各 **162** 处，修补后各 **14** 处。此数值是渲染器替代字形的检测计数，**不能据此断定 Word 数学公式内容失真或判定 Microsoft Word 相同显示**；但也**不应将这两个 Word 的全页视觉审查表述为完全通过**。相关位置可用渲染文件及逐页 JSON 追踪。
+- 因存在上述 14 处 LO 渲染问题，Gate 4 全面交付验收 **NOT CLEARED**；后续应使用 Microsoft Word 原生渲染确认或继续逐处消除兼容性错误，并对翻译作独立逐句语义校对。
 
 ## 科学断言范围及翻译红线
 
@@ -41,8 +41,8 @@
 
 | 交付件 | SHA-256 |
 |---|---|
-| English ReviewReady Word (`Gate4_When_Can_Markets_Crash_English_Full_Editable_ReviewReady_v20.docx`) | `9f3a556797ee55615fa8388f543e672fb3b54b57a6c353d56ed2d88286aaa403` |
-| Chinese ReviewReady Word (`Gate4_When_Can_Markets_Crash_Chinese_Full_Editable_ReviewReady_v20.docx`) | `b1524fd7424d865fd80f6d702b413fa9647be2326e8ac41a1739f08dea04b546` |
+| English ReviewReady Word (`Gate4_When_Can_Markets_Crash_English_Full_Editable_ReviewReady_v20.docx`) | `c332d81b872e537dcbe50b81fd770f37c1c43a37be8efbeea931fb36c3c59a68` |
+| Chinese ReviewReady Word (`Gate4_When_Can_Markets_Crash_Chinese_Full_Editable_ReviewReady_v20.docx`) | `da4e094ddf0503512bac352e2719f349011ac27ade25565482d3be89997a1071` |
 | English unpatched exact-OMML Word (`Gate4_When_Can_Markets_Crash_English_Full_Editable_SIAM_Aligned_v20.docx`) | `6be34d9a059d0e7a07edca8b096bfbface21302b328cdc6342ce6580b31ad8cf` |
 | Chinese unpatched exact-OMML Word (`Gate4_When_Can_Markets_Crash_Chinese_Full_Editable_SIAM_Aligned_v20.docx`) | `c274c2ec3b30a0aa2a8b8c85f9125894f8843f3e994331cb6a7aed68440d1a28` |
 | English Markdown review source (`Gate4_When_Can_Markets_Crash_English_Full_Source_SIAM_Aligned_v20.md`) | `7c2ad644aaa9339fab582cf7bcfff2cb72814cb0ab6e30825656e208d3990c16` |
@@ -55,7 +55,7 @@
 - `GATE4_43_RESPONSIBILITIES_UNCHANGED.csv`：原 43 项追踪登记原值复制；不重新标记结案。
 - `GATE4_SIAM_REFERENCE_RENUMBERING.csv`：16 项 BibTeX key、旧 Word 引文序号及 SIAM 正式序号。
 - `GATE4_DOCUMENT_AUDIT.json`：冻结 SHA、公式 XML、图表、标签与初版页面渲染检查。
-- `GATE4_REVIEWREADY_RENDER_QA.json`：ReviewReady 数学结构等同性、页面与 53 处剩余 glyph 的逐页计数。
+- `GATE4_REVIEWREADY_RENDER_QA.json`：ReviewReady 数学结构等同性、页面与 14 处剩余 glyph 的逐页计数。
 - `verify_gate4_docs.py`、`verify_reviewready_omml.py`、`fix_omml_render_style.py`：可复验脚本。
 
 ## GitHub、交付和验收结论
