@@ -46,3 +46,23 @@ jobs:
             build/v20-gate3-siam/build_report.json
             build/v20-gate3-siam/*.txt
           if-no-files-found: warn
+
+      - name: Upload exact V20 source and Gate 3 audit inventory
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v20-gate3-source-and-43-item-audit
+          path: |
+            submission/v20-gate3-activity-recovery/main.tex
+            submission/v20-gate3-activity-recovery/shared.tex
+            submission/v20-gate3-activity-recovery/README.md
+            submission/v20-gate3-activity-recovery/figures/*.pdf
+            submission/v16-three-certified-constructions/references.bib
+            research/v20-gate3/*.py
+            research/v20-gate3/*.csv
+            research/v20-gate3/*.md
+            research/v19-activity-recovery/*.md
+            research/v19-activity-recovery/*.py
+            research/v19-activity-recovery/*.csv
+            docs/V20_GITHUB_ISSUES_AND_CI_TRIAGE_2026-11-06.md
+          if-no-files-found: error
